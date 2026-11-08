@@ -26,7 +26,7 @@ function renderWorld(){
  $('rank').textContent=won?'自在行者':count>=7?'山河故人':count>=3?'渐入佳境':count?'循灯之人':'初入山河';
  $('journey-progress').style.width=(count*10)+'%';$('journey-progress-label').textContent=won?'十境已明，归途已通。':count===10?'十境已点亮，归途试炼等你。':`已点亮 ${count} / 10 处地域`;
  $('traveler-line').textContent=won?'归途不是终点，下一步仍由你选择。':'走过的路，会成为你的答案。';
- $('start-game').textContent=state.current?'继续当前旅程 ↗':won?'重访这片山河 ↗':count?'继续我的旅程 ↗':'开始我的旅程 ↗';
+ $('start-game').textContent=state.current?'继续经典剧情 ↗':won?'重访经典十境 ↗':count?'继续经典剧情 ↗':'经典剧情 · 33 场故事 ↗';
  $('journey-caption').textContent=state.current?'正在探索 · '+byId.get(state.current.id).title:won?'全篇通关 · 可自由重访各境':'无需账号 · 进度保存在本机';
  $('map-nodes').replaceChildren(...chapters.map((c,i)=>{const b=el('button','map-node');b.dataset.chapter=c.id;b.disabled=!unlocked(c.id);b.classList.toggle('passed',passed(c.id));b.classList.toggle('available',unlocked(c.id)&&!passed(c.id));b.style.setProperty('--x',desktop[i][0]+'%');b.style.setProperty('--y',desktop[i][1]+'%');b.style.setProperty('--mx',(i%2?70:29)+'%');b.style.setProperty('--my',(7+i*8.4)+'%');b.setAttribute('aria-label',`${i+1}. ${c.title}，${c.book}，${b.disabled?'尚未解锁':passed(c.id)?'已通关，可重访':'可探索'}`);b.append(el('span','node-glyph',passed(c.id)?'✓':b.disabled?'·':c.icon),el('span','node-name',c.title),el('span','node-book',c.book));b.addEventListener('click',()=>openChapter(c.id));return b;}));
  $('finale-node').disabled=count<10;$('finale-node').querySelector('small').textContent=won?'已经通关 · 可再挑战':count===10?'十境已明 · 归途开启':'点亮十境后开启';
@@ -63,5 +63,6 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
  $('return-map').addEventListener('click',()=>{state.current=null;save();closeQuest();$('world-map').scrollIntoView({block:'start',behavior:'smooth'});});$('quest-panel').addEventListener('cancel',event=>{event.preventDefault();closeQuest();});
  $('reset-game').addEventListener('click',()=>$('reset-dialog').showModal());$('cancel-reset').addEventListener('click',()=>$('reset-dialog').close());$('confirm-reset').addEventListener('click',()=>{state=fresh();save();$('reset-dialog').close();renderWorld();announce('已重新启程。典籍手册的阅读记录保持原样。');$('start-game').focus();});
  $('export-save').addEventListener('click',exportSave);$('import-save').addEventListener('change',importSave);matchMedia('(max-width:760px)').addEventListener('change',trail);
- renderWorld();if(state.current)showQuest();
+ let expeditionPriority=false;try{const exp=JSON.parse(localStorage.getItem('earth-online-expedition-v2')||'null');expeditionPriority=!!(exp?.run&&window.EarthExpedition?.validateRestore(exp.run));}catch(e){}
+ renderWorld();if(state.current&&!expeditionPriority&&!location.hash.startsWith('#run='))showQuest();
 })();

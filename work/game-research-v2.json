@@ -1,0 +1,658 @@
+{
+  "title": "地球 Online · GitHub 玩法融合研究",
+  "reviewDate": "2026-11-08",
+  "scoringMethod": "面向本轮静态、离线、中文短局游戏的编辑判断，不是上游质量排名、性能基准或成功概率；星数仅为检索时背景信息，不计分。",
+  "dimensions": [
+    {
+      "id": "gameplay",
+      "label": "玩法适配",
+      "max": 30
+    },
+    {
+      "id": "offline",
+      "label": "离线运行",
+      "max": 20
+    },
+    {
+      "id": "maintenance",
+      "label": "维护与稳定",
+      "max": 15
+    },
+    {
+      "id": "license",
+      "label": "许可明确",
+      "max": 15
+    },
+    {
+      "id": "performance",
+      "label": "体积与性能适配",
+      "max": 10
+    },
+    {
+      "id": "integration",
+      "label": "接入成本",
+      "max": 10
+    }
+  ],
+  "projects": [
+    {
+      "repo": "davidbau/seedrandom",
+      "name": "seedrandom",
+      "category": "代码依赖",
+      "decision": "采用 · 同局挑战",
+      "scores": [
+        29,
+        20,
+        10,
+        15,
+        10,
+        10
+      ],
+      "license": "MIT（源码完整许可头）",
+      "licensePath": "seedrandom.js",
+      "reading": "README.md",
+      "why": "明确种子可复现随机序列，使每日挑战、好友挑战与重开复盘共用同一套发牌规则。",
+      "use": "用局部随机生成器生成事件顺序和遗物候选，固定规则版本；同种子、同角色、同选择得到同一结果。",
+      "tradeoff": "默认分支最近提交较旧；固定版本并用确定性测试守住兼容性。必须使用 new Math.seedrandom(seed)，避免改写全局 Math.random。",
+      "dimensionsWhy": [
+        "直接支撑公平的同局比较",
+        "本地纯 JavaScript",
+        "功能稳定，但不把旧提交称为活跃维护",
+        "完整源码头核实 MIT；API license 字段为空不代表没有许可",
+        "采用文件实测 1,631 字节",
+        "只需一个局部 PRNG 接口"
+      ],
+      "version": "3.0.5",
+      "score": 94,
+      "dimensions": {
+        "gameplay": 29,
+        "offline": 20,
+        "maintenance": 10,
+        "license": 15,
+        "performance": 10,
+        "integration": 10
+      },
+      "evidence": {
+        "full_name": "davidbau/seedrandom",
+        "description": "seeded random number generator for Javascript",
+        "html_url": "https://github.com/davidbau/seedrandom",
+        "default_branch": "released",
+        "stargazers_count": 2131,
+        "forks_count": 169,
+        "archived": false,
+        "pushed_at": "2024-04-25T08:17:08Z",
+        "license": null,
+        "head": {
+          "sha": "4460ad325a0a15273a211e509f03ae0beb99511a",
+          "date": "2019-09-17T10:37:21Z",
+          "url": "https://github.com/davidbau/seedrandom/commit/4460ad325a0a15273a211e509f03ae0beb99511a"
+        }
+      },
+      "links": {
+        "repo": "https://github.com/davidbau/seedrandom",
+        "readme": "https://github.com/davidbau/seedrandom/blob/4460ad325a0a15273a211e509f03ae0beb99511a/README.md",
+        "license": "https://github.com/davidbau/seedrandom/blob/4460ad325a0a15273a211e509f03ae0beb99511a/seedrandom.js",
+        "commit": "https://github.com/davidbau/seedrandom/commit/4460ad325a0a15273a211e509f03ae0beb99511a"
+      }
+    },
+    {
+      "repo": "pieroxy/lz-string",
+      "name": "lz-string",
+      "category": "代码依赖",
+      "decision": "采用 · 挑战码",
+      "scores": [
+        26,
+        20,
+        12,
+        15,
+        10,
+        9
+      ],
+      "license": "MIT（1.5.0 LICENSE）",
+      "licensePath": "LICENSE.md",
+      "reading": "README.md",
+      "why": "将有限的挑战配置编码成可复制的短文本，适合静态网页通过链接邀请朋友体验同一局。",
+      "use": "只压缩规则版本、种子与开局配置；接收端先限制长度、校验结构，再重建一局。分享不包含心得或个人笔记。",
+      "tradeoff": "压缩不是加密，也不是防作弊；不以客户端分数冒充可信排行榜。默认分支正向 2.x 迁移，本次固定已核验 MIT 的 1.5.0。",
+      "dimensionsWhy": [
+        "支撑挑战传播而非核心数值",
+        "浏览器本地编解码",
+        "上游仍更新，但大版本布局变化需隔离",
+        "核对 1.5.0 的 LICENSE，不沿用旧版许可证推断",
+        "采用文件实测 4,814 字节",
+        "既有脚本全局对象可直接接入"
+      ],
+      "version": "1.5.0",
+      "score": 92,
+      "dimensions": {
+        "gameplay": 26,
+        "offline": 20,
+        "maintenance": 12,
+        "license": 15,
+        "performance": 10,
+        "integration": 9
+      },
+      "evidence": {
+        "full_name": "pieroxy/lz-string",
+        "description": "LZ-based compression algorithm for JavaScript",
+        "html_url": "https://github.com/pieroxy/lz-string",
+        "default_branch": "master",
+        "stargazers_count": 4443,
+        "forks_count": 563,
+        "archived": false,
+        "pushed_at": "2026-10-30T14:42:44Z",
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "node_id": "MDc6TGljZW5zZTEz"
+        },
+        "head": {
+          "sha": "b399c1fa7710c8554cc11c00d67a3edfb25f9022",
+          "date": "2026-10-30T14:42:44Z",
+          "url": "https://github.com/pieroxy/lz-string/commit/b399c1fa7710c8554cc11c00d67a3edfb25f9022"
+        }
+      },
+      "links": {
+        "repo": "https://github.com/pieroxy/lz-string",
+        "readme": "https://github.com/pieroxy/lz-string/blob/b399c1fa7710c8554cc11c00d67a3edfb25f9022/README.md",
+        "license": "https://github.com/pieroxy/lz-string/blob/4a94308c1e684fb98866f7ba1288f3db6d9f8801/LICENSE",
+        "commit": "https://github.com/pieroxy/lz-string/commit/b399c1fa7710c8554cc11c00d67a3edfb25f9022"
+      }
+    },
+    {
+      "repo": "y-lohse/inkjs",
+      "name": "inkjs",
+      "category": "架构参考",
+      "decision": "借鉴 · 条件叙事",
+      "scores": [
+        28,
+        20,
+        14,
+        15,
+        5,
+        5
+      ],
+      "license": "MIT",
+      "licensePath": "LICENSE.md",
+      "reading": "README.md",
+      "why": "面向互动叙事，故事运行时与呈现层分离，支持将故事内容编译为数据后由浏览器解释。",
+      "use": "借鉴“状态影响可选分支”的组织方式，把原先找标准答案的题目改成资源代价与情境后果；本轮内容仍为原创数据。",
+      "tradeoff": "未复制其代码、故事或编译产物，也未接入运行时。当前内容量使用现有数据模型更轻；分支内容扩大后再评估迁移。",
+      "dimensionsWhy": [
+        "与选择叙事高度相关",
+        "官方说明零依赖并支持浏览器",
+        "默认分支近期更新",
+        "仓库明确 MIT",
+        "额外解释器需要重新评估现有体积预算",
+        "迁移现有剧情与存档有成本"
+      ],
+      "score": 87,
+      "dimensions": {
+        "gameplay": 28,
+        "offline": 20,
+        "maintenance": 14,
+        "license": 15,
+        "performance": 5,
+        "integration": 5
+      },
+      "evidence": {
+        "full_name": "y-lohse/inkjs",
+        "description": "A javascript port of inkle's ink scripting language.",
+        "html_url": "https://github.com/y-lohse/inkjs",
+        "default_branch": "master",
+        "stargazers_count": 664,
+        "forks_count": 124,
+        "archived": false,
+        "pushed_at": "2026-11-01T13:11:38Z",
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "node_id": "MDc6TGljZW5zZTEz"
+        },
+        "head": {
+          "sha": "fdc440a2c5a69c1fdb1e7d9765490a06d4cd092b",
+          "date": "2026-11-01T13:11:36Z",
+          "url": "https://github.com/y-lohse/inkjs/commit/fdc440a2c5a69c1fdb1e7d9765490a06d4cd092b"
+        }
+      },
+      "links": {
+        "repo": "https://github.com/y-lohse/inkjs",
+        "readme": "https://github.com/y-lohse/inkjs/blob/fdc440a2c5a69c1fdb1e7d9765490a06d4cd092b/README.md",
+        "license": "https://github.com/y-lohse/inkjs/blob/fdc440a2c5a69c1fdb1e7d9765490a06d4cd092b/LICENSE.md",
+        "commit": "https://github.com/y-lohse/inkjs/commit/fdc440a2c5a69c1fdb1e7d9765490a06d4cd092b"
+      }
+    },
+    {
+      "repo": "catdad/canvas-confetti",
+      "name": "canvas-confetti",
+      "category": "代码依赖",
+      "decision": "采用 · 通关反馈",
+      "scores": [
+        20,
+        20,
+        12,
+        15,
+        9,
+        10
+      ],
+      "license": "ISC",
+      "licensePath": "LICENSE",
+      "reading": "README.md",
+      "why": "提供浏览器粒子庆祝反馈，并提供尊重减少动态偏好的选项。",
+      "use": "仅在完成远征等关键时刻短暂触发；设置 disableForReducedMotion:true，避免持续占用注意力和渲染资源。",
+      "tradeoff": "视觉反馈不会自动增加策略深度；保留文字结算，不以动效代替结果。使用已校验的官方 npm 浏览器构建，无 CDN 请求。",
+      "dimensionsWhy": [
+        "强化结算反馈，非主要玩法",
+        "本地浏览器构建可内嵌",
+        "固定 1.9.4 并关注浏览器修复",
+        "逐字保留 ISC 许可",
+        "官方未压缩构建实测 24,914 字节",
+        "单函数调用；减少动态选项已有"
+      ],
+      "version": "1.9.4",
+      "score": 86,
+      "dimensions": {
+        "gameplay": 20,
+        "offline": 20,
+        "maintenance": 12,
+        "license": 15,
+        "performance": 9,
+        "integration": 10
+      },
+      "evidence": {
+        "full_name": "catdad/canvas-confetti",
+        "description": "🎉 performant confetti animation in the browser",
+        "html_url": "https://github.com/catdad/canvas-confetti",
+        "default_branch": "master",
+        "stargazers_count": 12852,
+        "forks_count": 470,
+        "archived": false,
+        "pushed_at": "2025-10-25T05:17:21Z",
+        "license": {
+          "key": "isc",
+          "name": "ISC License",
+          "spdx_id": "ISC",
+          "url": "https://api.github.com/licenses/isc",
+          "node_id": "MDc6TGljZW5zZTEw"
+        },
+        "head": {
+          "sha": "20eebad51dde793070c373d594099a7ed8d96e22",
+          "date": "2025-10-25T05:17:19Z",
+          "url": "https://github.com/catdad/canvas-confetti/commit/20eebad51dde793070c373d594099a7ed8d96e22"
+        }
+      },
+      "links": {
+        "repo": "https://github.com/catdad/canvas-confetti",
+        "readme": "https://github.com/catdad/canvas-confetti/blob/20eebad51dde793070c373d594099a7ed8d96e22/README.md",
+        "license": "https://github.com/catdad/canvas-confetti/blob/20eebad51dde793070c373d594099a7ed8d96e22/LICENSE",
+        "commit": "https://github.com/catdad/canvas-confetti/commit/20eebad51dde793070c373d594099a7ed8d96e22"
+      }
+    },
+    {
+      "repo": "doublespeakgames/adarkroom",
+      "name": "A Dark Room",
+      "category": "机制参考",
+      "decision": "借鉴 · 探索与消耗",
+      "scores": [
+        29,
+        20,
+        9,
+        10,
+        8,
+        6
+      ],
+      "license": "MPL-2.0",
+      "licensePath": "LICENSE.md",
+      "reading": "script/world.js",
+      "why": "极简文字冒险的源码把探索移动与食物、水和生命等资源关联，能在文字界面中建立明确的风险。",
+      "use": "借鉴可观察的设计思路：有限补给、事件选择、进入下一站的代价，以及由行动产生的故事。自行编写东方题材的事件与规则。",
+      "tradeoff": "未复制代码、剧情、音乐或素材；其 MPL-2.0 代码许可需要独立遵守。本轮不引入长时间等待或放置计时。",
+      "dimensionsWhy": [
+        "资源取舍与旅程目标高度相关",
+        "浏览器文字游戏可参考",
+        "默认分支最近更新距核查已有一段时间",
+        "MPL 的文件级义务不同，不能按 MIT 处理",
+        "文字表达的呈现成本较低；此项为设计判断",
+        "只能借鉴机制，不能直接拼接整款游戏"
+      ],
+      "score": 82,
+      "dimensions": {
+        "gameplay": 29,
+        "offline": 20,
+        "maintenance": 9,
+        "license": 10,
+        "performance": 8,
+        "integration": 6
+      },
+      "evidence": {
+        "full_name": "doublespeakgames/adarkroom",
+        "description": "A Dark Room - A Minimalist Text Adventure",
+        "html_url": "https://github.com/doublespeakgames/adarkroom",
+        "default_branch": "main",
+        "stargazers_count": 8383,
+        "forks_count": 1848,
+        "archived": false,
+        "pushed_at": "2025-05-23T15:33:06Z",
+        "license": {
+          "key": "mpl-2.0",
+          "name": "Mozilla Public License 2.0",
+          "spdx_id": "MPL-2.0",
+          "url": "https://api.github.com/licenses/mpl-2.0",
+          "node_id": "MDc6TGljZW5zZTE0"
+        },
+        "head": {
+          "sha": "1fada4620b6c66bd07bf15a3f1eb8223df8bc1d7",
+          "date": "2025-05-23T15:33:06Z",
+          "url": "https://github.com/doublespeakgames/adarkroom/commit/1fada4620b6c66bd07bf15a3f1eb8223df8bc1d7"
+        }
+      },
+      "links": {
+        "repo": "https://github.com/doublespeakgames/adarkroom",
+        "readme": "https://github.com/doublespeakgames/adarkroom/blob/1fada4620b6c66bd07bf15a3f1eb8223df8bc1d7/script/world.js",
+        "license": "https://github.com/doublespeakgames/adarkroom/blob/1fada4620b6c66bd07bf15a3f1eb8223df8bc1d7/LICENSE.md",
+        "commit": "https://github.com/doublespeakgames/adarkroom/commit/1fada4620b6c66bd07bf15a3f1eb8223df8bc1d7"
+      }
+    },
+    {
+      "repo": "boardgameio/boardgame.io",
+      "name": "boardgame.io",
+      "category": "架构参考",
+      "decision": "借鉴 · 回合状态",
+      "scores": [
+        24,
+        15,
+        13,
+        15,
+        4,
+        4
+      ],
+      "license": "MIT",
+      "licensePath": "LICENSE",
+      "reading": "README.md",
+      "why": "通过描述行动引起的状态变化组织回合制游戏，提供阶段、日志、多人与机器人能力。",
+      "use": "借鉴行动→状态→结果的明确边界，把引擎做成可重放、可测试的纯逻辑；本轮不接入网络框架。",
+      "tradeoff": "当前是单人离线体验，多人匹配与同步不能仅靠引入依赖自动成为本项目已实现功能。要另行设计可信服务端与隐私方案。",
+      "dimensionsWhy": [
+        "回合模型相关，但多人并非本轮目标",
+        "本地规则可运行，多人功能需服务",
+        "默认分支近期更新",
+        "仓库明确 MIT",
+        "通用客户端与同步能力超出本轮所需",
+        "加入服务端会增加维护范围"
+      ],
+      "score": 75,
+      "dimensions": {
+        "gameplay": 24,
+        "offline": 15,
+        "maintenance": 13,
+        "license": 15,
+        "performance": 4,
+        "integration": 4
+      },
+      "evidence": {
+        "full_name": "boardgameio/boardgame.io",
+        "description": "State Management and Multiplayer Networking for Turn-Based Games",
+        "html_url": "https://github.com/boardgameio/boardgame.io",
+        "default_branch": "main",
+        "stargazers_count": 12484,
+        "forks_count": 835,
+        "archived": false,
+        "pushed_at": "2026-10-30T14:58:52Z",
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "node_id": "MDc6TGljZW5zZTEz"
+        },
+        "head": {
+          "sha": "47adef2b46e375999931209ba7b41e9654c506e1",
+          "date": "2026-10-26T22:34:38Z",
+          "url": "https://github.com/boardgameio/boardgame.io/commit/47adef2b46e375999931209ba7b41e9654c506e1"
+        }
+      },
+      "links": {
+        "repo": "https://github.com/boardgameio/boardgame.io",
+        "readme": "https://github.com/boardgameio/boardgame.io/blob/47adef2b46e375999931209ba7b41e9654c506e1/README.md",
+        "license": "https://github.com/boardgameio/boardgame.io/blob/47adef2b46e375999931209ba7b41e9654c506e1/LICENSE",
+        "commit": "https://github.com/boardgameio/boardgame.io/commit/47adef2b46e375999931209ba7b41e9654c506e1"
+      }
+    },
+    {
+      "repo": "phaserjs/phaser",
+      "name": "Phaser",
+      "category": "后续候选",
+      "decision": "暂缓 · 实时玩法引擎",
+      "scores": [
+        18,
+        18,
+        14,
+        15,
+        4,
+        5
+      ],
+      "license": "MIT",
+      "licensePath": "LICENSE.md",
+      "reading": "README.md",
+      "why": "完整的 HTML5 2D 游戏框架，官方支持桌面与移动浏览器以及 Canvas/WebGL 渲染。",
+      "use": "保留为未来加入实时操作、精灵碰撞、场景和音频系统时的候选。",
+      "tradeoff": "这轮重点是读卡、资源选择与短局复盘。迁移到实时引擎会增加渲染、输入和无障碍适配工作，不能仅为“像游戏”而更换框架。",
+      "dimensionsWhy": [
+        "实时框架能力强，但与当前卡牌叙事只部分重合",
+        "可本地打包，仍需管理素材加载",
+        "官方持续维护与文档支持",
+        "仓库明确 MIT",
+        "未做同条件包体基准；本轮预算适配度较低",
+        "需重做场景、输入和状态接入"
+      ],
+      "score": 74,
+      "dimensions": {
+        "gameplay": 18,
+        "offline": 18,
+        "maintenance": 14,
+        "license": 15,
+        "performance": 4,
+        "integration": 5
+      },
+      "evidence": {
+        "full_name": "phaserjs/phaser",
+        "description": "Phaser is a fun, free and fast 2D game framework for making HTML5 games for desktop and mobile web browsers, supporting Canvas and WebGL rendering.",
+        "html_url": "https://github.com/phaserjs/phaser",
+        "default_branch": "master",
+        "stargazers_count": 40666,
+        "forks_count": 7186,
+        "archived": false,
+        "pushed_at": "2026-08-21T06:56:13Z",
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "node_id": "MDc6TGljZW5zZTEz"
+        },
+        "head": {
+          "sha": "02d8931b626d9764c133cbb3fbf99966c03c757c",
+          "date": "2026-08-21T06:04:38Z",
+          "url": "https://github.com/phaserjs/phaser/commit/02d8931b626d9764c133cbb3fbf99966c03c757c"
+        }
+      },
+      "links": {
+        "repo": "https://github.com/phaserjs/phaser",
+        "readme": "https://github.com/phaserjs/phaser/blob/02d8931b626d9764c133cbb3fbf99966c03c757c/README.md",
+        "license": "https://github.com/phaserjs/phaser/blob/02d8931b626d9764c133cbb3fbf99966c03c757c/LICENSE.md",
+        "commit": "https://github.com/phaserjs/phaser/commit/02d8931b626d9764c133cbb3fbf99966c03c757c"
+      }
+    },
+    {
+      "repo": "pixijs/pixijs",
+      "name": "PixiJS",
+      "category": "后续候选",
+      "decision": "暂缓 · 大规模渲染",
+      "scores": [
+        15,
+        18,
+        15,
+        15,
+        5,
+        4
+      ],
+      "license": "MIT",
+      "licensePath": "LICENSE",
+      "reading": "README.md",
+      "why": "提供 WebGL/WebGPU 渲染、资源加载、触摸交互和图形文字能力。",
+      "use": "作为未来地图大量精灵或高密度动画的渲染候选，而非替代规则设计。",
+      "tradeoff": "本轮 DOM 卡牌与 SVG 地图已有可访问基础。尚无渲染瓶颈实测证据，因此不引入新的渲染层。",
+      "dimensionsWhy": [
+        "主要解决渲染，不直接解决玩法",
+        "资源本地化后可离线",
+        "默认分支与生态近期活跃",
+        "仓库明确 MIT",
+        "未实测胜过现有 DOM；当前必要性较低",
+        "渲染层迁移与语义交互映射成本较高"
+      ],
+      "score": 72,
+      "dimensions": {
+        "gameplay": 15,
+        "offline": 18,
+        "maintenance": 15,
+        "license": 15,
+        "performance": 5,
+        "integration": 4
+      },
+      "evidence": {
+        "full_name": "pixijs/pixijs",
+        "description": "The HTML5 Creation Engine: Create beautiful digital content with the fastest, most flexible 2D WebGL renderer.",
+        "html_url": "https://github.com/pixijs/pixijs",
+        "default_branch": "dev",
+        "stargazers_count": 48651,
+        "forks_count": 5140,
+        "archived": false,
+        "pushed_at": "2026-11-08T12:04:29Z",
+        "license": {
+          "key": "mit",
+          "name": "MIT License",
+          "spdx_id": "MIT",
+          "url": "https://api.github.com/licenses/mit",
+          "node_id": "MDc6TGljZW5zZTEz"
+        },
+        "head": {
+          "sha": "2ab93d21c9b4f28e3e6f66a9e82ea1e81e771a49",
+          "date": "2026-11-06T17:53:14Z",
+          "url": "https://github.com/pixijs/pixijs/commit/2ab93d21c9b4f28e3e6f66a9e82ea1e81e771a49"
+        }
+      },
+      "links": {
+        "repo": "https://github.com/pixijs/pixijs",
+        "readme": "https://github.com/pixijs/pixijs/blob/2ab93d21c9b4f28e3e6f66a9e82ea1e81e771a49/README.md",
+        "license": "https://github.com/pixijs/pixijs/blob/2ab93d21c9b4f28e3e6f66a9e82ea1e81e771a49/LICENSE",
+        "commit": "https://github.com/pixijs/pixijs/commit/2ab93d21c9b4f28e3e6f66a9e82ea1e81e771a49"
+      }
+    }
+  ],
+  "vendor": {
+    "retrievedDate": "2026-11-08",
+    "files": [
+      {
+        "repo": "davidbau/seedrandom",
+        "commit": "4460ad325a0a15273a211e509f03ae0beb99511a",
+        "path": "work/vendor/seedrandom-3.0.5.min.js",
+        "sourcePath": "seedrandom.min.js",
+        "url": "https://raw.githubusercontent.com/davidbau/seedrandom/4460ad325a0a15273a211e509f03ae0beb99511a/seedrandom.min.js",
+        "bytes": 1631,
+        "sha256": "d2eb17a05ada2abf19c8bcb1f0f1ae62bb6da5d59a69dc6414ced08704a88cd1"
+      },
+      {
+        "repo": "davidbau/seedrandom",
+        "commit": "4460ad325a0a15273a211e509f03ae0beb99511a",
+        "path": "work/vendor/seedrandom-3.0.5.js",
+        "sourcePath": "seedrandom.js",
+        "url": "https://raw.githubusercontent.com/davidbau/seedrandom/4460ad325a0a15273a211e509f03ae0beb99511a/seedrandom.js",
+        "bytes": 8602,
+        "sha256": "df5431fa9ba4b311f182a046e60cdd36ae37a1a80f515d6e9b1f568528735047"
+      },
+      {
+        "repo": "pieroxy/lz-string",
+        "commit": "4a94308c1e684fb98866f7ba1288f3db6d9f8801",
+        "path": "work/vendor/lz-string-1.5.0.min.js",
+        "sourcePath": "libs/lz-string.min.js",
+        "url": "https://raw.githubusercontent.com/pieroxy/lz-string/4a94308c1e684fb98866f7ba1288f3db6d9f8801/libs/lz-string.min.js",
+        "bytes": 4814,
+        "sha256": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7"
+      },
+      {
+        "repo": "pieroxy/lz-string",
+        "commit": "4a94308c1e684fb98866f7ba1288f3db6d9f8801",
+        "path": "work/vendor/LICENSE-lz-string-1.5.0.txt",
+        "sourcePath": "LICENSE",
+        "url": "https://raw.githubusercontent.com/pieroxy/lz-string/4a94308c1e684fb98866f7ba1288f3db6d9f8801/LICENSE",
+        "bytes": 1064,
+        "sha256": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80"
+      },
+      {
+        "repo": "catdad/canvas-confetti",
+        "commit": "5f77cdeb0b9f6b69558e8369c63071fc9415f842",
+        "path": "work/vendor/LICENSE-canvas-confetti-1.9.4.txt",
+        "sourcePath": "LICENSE",
+        "url": "https://raw.githubusercontent.com/catdad/canvas-confetti/5f77cdeb0b9f6b69558e8369c63071fc9415f842/LICENSE",
+        "bytes": 743,
+        "sha256": "fd44477c30a832a1dee9ef0b6cfb34677fbe5ef58c0cf655d27c646f11bb2f7a"
+      },
+      {
+        "repo": "catdad/canvas-confetti",
+        "version": "1.9.4",
+        "commit": "5f77cdeb0b9f6b69558e8369c63071fc9415f842",
+        "npmGitHead": "5f77cdeb0b9f6b69558e8369c63071fc9415f842",
+        "path": "work/vendor/canvas-confetti-1.9.4.js",
+        "sourcePath": "package/dist/confetti.browser.js",
+        "url": "https://registry.npmjs.org/canvas-confetti/-/canvas-confetti-1.9.4.tgz",
+        "packageIntegrity": "sha512-yxQbJkAVrFXWNbTUjPqjF7G+g6pDotOUHGbkZq2NELZUMDpiJ85rIEazVb8GTaAptNW2miJAXbs1BtioA251Pw==",
+        "bytes": 24914,
+        "sha256": "49f4bcbc56e7ceb5c3d25d13db1d0da965b6cd1c8a54a707bb055be0685b0a95"
+      },
+      {
+        "repo": "davidbau/seedrandom",
+        "commit": "4460ad325a0a15273a211e509f03ae0beb99511a",
+        "path": "work/vendor/LICENSE-seedrandom-3.0.5.txt",
+        "sourcePath": "seedrandom.js header",
+        "url": "https://raw.githubusercontent.com/davidbau/seedrandom/4460ad325a0a15273a211e509f03ae0beb99511a/seedrandom.js",
+        "derived": "Full license header extracted, comment delimiters removed",
+        "bytes": 1050,
+        "sha256": "54624bc262234371635aacf512f779e523fc06412869108d0758b71569f7c41a"
+      }
+    ]
+  },
+  "integrationStatus": "三个固定版本依赖已接入远征：seedrandom 用于确定性生成与回放，lz-string 用于种子和角色口令，canvas-confetti 用于成功结局且尊重减少动态偏好。接口测试已通过，完整游戏验收见对应版本验证记录。",
+  "validation": [
+    "局部随机序列的同种子可复现",
+    "未改写全局 Math.random",
+    "含中文挑战配置压缩/解压往返一致",
+    "浏览器 confetti 全局可用",
+    "减少动态偏好下不创建动画 DOM"
+  ],
+  "successMetrics": [
+    {
+      "name": "首局启动率",
+      "definition": "实际开始远征的独立访客 / 看到入口的独立访客",
+      "status": "待真实玩家测试；无生产埋点数据"
+    },
+    {
+      "name": "首局完成率",
+      "definition": "首局抵达结算的玩家 / 首局开始玩家",
+      "status": "需区分主动退出、失败结局和通关"
+    },
+    {
+      "name": "主动重开率",
+      "definition": "首次结算后主动再开一局的玩家 / 首次结算玩家",
+      "status": "仅是假设指标，不能伪造改善百分比"
+    },
+    {
+      "name": "分享带回新局",
+      "definition": "被分享的挑战被另一个玩家实际启动的次数",
+      "status": "当前不伪造在线人数、全球排名或裂变成绩"
+    }
+  ]
+}

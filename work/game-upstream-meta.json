@@ -1,0 +1,172 @@
+[
+  {
+    "full_name": "davidbau/seedrandom",
+    "description": "seeded random number generator for Javascript",
+    "html_url": "https://github.com/davidbau/seedrandom",
+    "default_branch": "released",
+    "stargazers_count": 2131,
+    "forks_count": 169,
+    "archived": false,
+    "pushed_at": "2024-04-25T08:17:08Z",
+    "license": null,
+    "head": {
+      "sha": "4460ad325a0a15273a211e509f03ae0beb99511a",
+      "date": "2019-09-17T10:37:21Z",
+      "url": "https://github.com/davidbau/seedrandom/commit/4460ad325a0a15273a211e509f03ae0beb99511a"
+    }
+  },
+  {
+    "full_name": "pieroxy/lz-string",
+    "description": "LZ-based compression algorithm for JavaScript",
+    "html_url": "https://github.com/pieroxy/lz-string",
+    "default_branch": "master",
+    "stargazers_count": 4443,
+    "forks_count": 563,
+    "archived": false,
+    "pushed_at": "2026-10-30T14:42:44Z",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "head": {
+      "sha": "b399c1fa7710c8554cc11c00d67a3edfb25f9022",
+      "date": "2026-10-30T14:42:44Z",
+      "url": "https://github.com/pieroxy/lz-string/commit/b399c1fa7710c8554cc11c00d67a3edfb25f9022"
+    }
+  },
+  {
+    "full_name": "catdad/canvas-confetti",
+    "description": "🎉 performant confetti animation in the browser",
+    "html_url": "https://github.com/catdad/canvas-confetti",
+    "default_branch": "master",
+    "stargazers_count": 12852,
+    "forks_count": 470,
+    "archived": false,
+    "pushed_at": "2025-10-25T05:17:21Z",
+    "license": {
+      "key": "isc",
+      "name": "ISC License",
+      "spdx_id": "ISC",
+      "url": "https://api.github.com/licenses/isc",
+      "node_id": "MDc6TGljZW5zZTEw"
+    },
+    "head": {
+      "sha": "20eebad51dde793070c373d594099a7ed8d96e22",
+      "date": "2025-10-25T05:17:19Z",
+      "url": "https://github.com/catdad/canvas-confetti/commit/20eebad51dde793070c373d594099a7ed8d96e22"
+    }
+  },
+  {
+    "full_name": "y-lohse/inkjs",
+    "description": "A javascript port of inkle's ink scripting language.",
+    "html_url": "https://github.com/y-lohse/inkjs",
+    "default_branch": "master",
+    "stargazers_count": 664,
+    "forks_count": 124,
+    "archived": false,
+    "pushed_at": "2026-11-01T13:11:38Z",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "head": {
+      "sha": "fdc440a2c5a69c1fdb1e7d9765490a06d4cd092b",
+      "date": "2026-11-01T13:11:36Z",
+      "url": "https://github.com/y-lohse/inkjs/commit/fdc440a2c5a69c1fdb1e7d9765490a06d4cd092b"
+    }
+  },
+  {
+    "full_name": "phaserjs/phaser",
+    "description": "Phaser is a fun, free and fast 2D game framework for making HTML5 games for desktop and mobile web browsers, supporting Canvas and WebGL rendering.",
+    "html_url": "https://github.com/phaserjs/phaser",
+    "default_branch": "master",
+    "stargazers_count": 40666,
+    "forks_count": 7186,
+    "archived": false,
+    "pushed_at": "2026-08-21T06:56:13Z",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "head": {
+      "sha": "02d8931b626d9764c133cbb3fbf99966c03c757c",
+      "date": "2026-08-21T06:04:38Z",
+      "url": "https://github.com/phaserjs/phaser/commit/02d8931b626d9764c133cbb3fbf99966c03c757c"
+    }
+  },
+  {
+    "full_name": "pixijs/pixijs",
+    "description": "The HTML5 Creation Engine: Create beautiful digital content with the fastest, most flexible 2D WebGL renderer.",
+    "html_url": "https://github.com/pixijs/pixijs",
+    "default_branch": "dev",
+    "stargazers_count": 48651,
+    "forks_count": 5140,
+    "archived": false,
+    "pushed_at": "2026-11-08T12:04:29Z",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "head": {
+      "sha": "2ab93d21c9b4f28e3e6f66a9e82ea1e81e771a49",
+      "date": "2026-11-06T17:53:14Z",
+      "url": "https://github.com/pixijs/pixijs/commit/2ab93d21c9b4f28e3e6f66a9e82ea1e81e771a49"
+    }
+  },
+  {
+    "full_name": "boardgameio/boardgame.io",
+    "description": "State Management and Multiplayer Networking for Turn-Based Games",
+    "html_url": "https://github.com/boardgameio/boardgame.io",
+    "default_branch": "main",
+    "stargazers_count": 12484,
+    "forks_count": 835,
+    "archived": false,
+    "pushed_at": "2026-10-30T14:58:52Z",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "head": {
+      "sha": "47adef2b46e375999931209ba7b41e9654c506e1",
+      "date": "2026-10-26T22:34:38Z",
+      "url": "https://github.com/boardgameio/boardgame.io/commit/47adef2b46e375999931209ba7b41e9654c506e1"
+    }
+  },
+  {
+    "full_name": "doublespeakgames/adarkroom",
+    "description": "A Dark Room - A Minimalist Text Adventure",
+    "html_url": "https://github.com/doublespeakgames/adarkroom",
+    "default_branch": "main",
+    "stargazers_count": 8383,
+    "forks_count": 1848,
+    "archived": false,
+    "pushed_at": "2025-05-23T15:33:06Z",
+    "license": {
+      "key": "mpl-2.0",
+      "name": "Mozilla Public License 2.0",
+      "spdx_id": "MPL-2.0",
+      "url": "https://api.github.com/licenses/mpl-2.0",
+      "node_id": "MDc6TGljZW5zZTE0"
+    },
+    "head": {
+      "sha": "1fada4620b6c66bd07bf15a3f1eb8223df8bc1d7",
+      "date": "2025-05-23T15:33:06Z",
+      "url": "https://github.com/doublespeakgames/adarkroom/commit/1fada4620b6c66bd07bf15a3f1eb8223df8bc1d7"
+    }
+  }
+]

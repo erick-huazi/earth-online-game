@@ -42,25 +42,33 @@ readme = '''地球 Online · 通关手册 / 全书 HTML 版
 
 版本：2026-09-17
 '''
-readme = '''地球 Online · 入世之旅 / 游戏与完整典籍手册
+readme = '''地球 Online · 山河远征 v2 / 游戏与完整典籍手册
 
-游戏入口
-1. 完整解压后打开 index.html 或 earth-online-game.html。
-2. 点击“开始我的旅程”，探索十处地域，每关有三次原创情境选择；达到4/6点领悟即可点亮本境并开放下一境。
-3. 每关都可查看锦囊、打开对应完整原典。通关收集信物，点亮十境后开启归途终章；共33场情境、99个选项。
-4. 重试保留最佳成绩。刷新会恢复当前场景；游戏存档独立于典籍手册的心得、书签和阅读进度。
-5. “我的营地”可导出JSON，导入时合并较好成绩；浏览器无法保存时请在关闭页面前导出。重新启程只清空游戏存档。
-6. 原创剧情、锦囊和评分不等同于原典结论，不用于医学诊断、命运预测或现实人生评价。
-7. 游戏、原文均可离线运行；完整原页图需要保留配套books文件夹。上线网址与file://离线文件的存档可能各自独立，请用导出/导入转移。
+山河远征
+1. 完整解压后打开 index.html 或 earth-online-game.html。点击“挑战今日山河”或“自由远征”，选择角色后出发。
+2. 每局最多12站，从30个原创事件、90个选项中生成旅程；先选路线，再根据眼前资源做取舍。每个选项都有代价与收益，没有始终正确的固定答案。
+3. 3种角色提供不同开局，10枚遗物书印提供不同能力；旅途中选择书印组成自己的流派。9种结局记录不同的归途，页面保存本机最佳旅程分和已见结局。
+4. 每日挑战按北京时间每日零点更换共用种子。同种子、同角色、同选择可复现相同结果；自由远征生成新种子。一次约3–5分钟是体验设计目标，实际时长取决于阅读和选择速度。
+5. 结算后可下载PNG战报，复制同图挑战链接或分享口令。朋友可在游戏中粘贴口令重建相同种子与角色的开局，走出自己的结局。分享不包含心得、书签或存档；本机分数不是全球排行榜。
+6. 刷新自动续局。远征使用独立本机存储键 earth-online-expedition-v2；经典剧情使用 earth-online-game-v1，典籍记录保持原有存储。界面“导出续局”可下载JSON，再用“导入远征存档”恢复该局。续局文件不等于全部本机成就档案。
+7. 更换浏览器、设备、网址或 file:// 打开方式时，记录可能分别保存，请先导出。浏览器无法保存时，此页仍可游玩，关闭前应导出续局。
+8. seedrandom 3.0.5、lz-string 1.5.0、canvas-confetti 1.9.4 已作为本地代码内嵌；游玩无需CDN。它们分别提供确定性随机、挑战口令压缩和成功结局庆祝；减少动态偏好会关闭庆祝动画。完整许可见 game-third-party-notices.txt。
+9. game-research-v2.html 提供8个GitHub项目的六维评分、融合方式与取舍；game-research-v2.json 保留证据、版本和哈希。评分是本项目适配判断，不是上游品质总排名，也不是玩家留存或爆款保证。
 
-游戏版本：2026-11-08
+经典剧情与原典
+1. 点击“进入经典剧情 · 33场故事”，仍可探索十境与归途终章，共33场原创情境、99个选项；每境三题，达到4/6点领悟即可解锁下一境。
+2. 原有锦囊、十枚信物、原典入口、重试保留最佳成绩、刷新续玩和JSON存档导入导出继续保留。“我的营地”操作只管理经典剧情存档。
+3. 游戏与完整原文可离线运行；原页图与原件需保留配套 books/ 文件夹，独立全书页需保留 html/ 文件夹。完整典籍手册仍为 earth-online-manual.html。
+4. 原创事件、剧情、锦囊和评分不等同于原典结论，不用于医学诊断、命运预测或现实人生评价。
+
+游戏版本：2.0.0 / 2026-11-08
 
 以下为完整典籍手册说明：
 
 ''' + readme
 (out / '使用说明.txt').write_text(readme, encoding='utf-8')
 archive = out / 'earth-online-offline-library.zip'
-files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt'] + sorted((out / 'books').rglob('*')) + sorted((out / 'html').rglob('*.html'))
+files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt', out / 'game-research-v2.html', out / 'game-research-v2.json', out / 'game-third-party-notices.txt'] + sorted((out / 'books').rglob('*')) + sorted((out / 'html').rglob('*.html'))
 files = [p for p in files if p.is_file() and not p.name.endswith('.part')]
 with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=5, allowZip64=True) as z:
     for p in files:
@@ -71,6 +79,7 @@ with zipfile.ZipFile(archive) as z:
         raise RuntimeError('Archive integrity error: ' + corrupt)
     names = set(z.namelist())
     assert 'earth-online-manual.html' in names
+    assert {'game-research-v2.html', 'game-research-v2.json', 'game-third-party-notices.txt'} <= names
     catalog = json.loads((out / 'books' / 'download-catalog.json').read_text(encoding='utf-8'))
     for b in catalog['books']:
         assert b['htmlPath'] in names, b['htmlPath']

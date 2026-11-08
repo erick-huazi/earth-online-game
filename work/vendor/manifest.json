@@ -1,0 +1,72 @@
+{
+  "retrievedDate": "2026-11-08",
+  "files": [
+    {
+      "repo": "davidbau/seedrandom",
+      "commit": "4460ad325a0a15273a211e509f03ae0beb99511a",
+      "path": "work/vendor/seedrandom-3.0.5.min.js",
+      "sourcePath": "seedrandom.min.js",
+      "url": "https://raw.githubusercontent.com/davidbau/seedrandom/4460ad325a0a15273a211e509f03ae0beb99511a/seedrandom.min.js",
+      "bytes": 1631,
+      "sha256": "d2eb17a05ada2abf19c8bcb1f0f1ae62bb6da5d59a69dc6414ced08704a88cd1"
+    },
+    {
+      "repo": "davidbau/seedrandom",
+      "commit": "4460ad325a0a15273a211e509f03ae0beb99511a",
+      "path": "work/vendor/seedrandom-3.0.5.js",
+      "sourcePath": "seedrandom.js",
+      "url": "https://raw.githubusercontent.com/davidbau/seedrandom/4460ad325a0a15273a211e509f03ae0beb99511a/seedrandom.js",
+      "bytes": 8602,
+      "sha256": "df5431fa9ba4b311f182a046e60cdd36ae37a1a80f515d6e9b1f568528735047"
+    },
+    {
+      "repo": "pieroxy/lz-string",
+      "commit": "4a94308c1e684fb98866f7ba1288f3db6d9f8801",
+      "path": "work/vendor/lz-string-1.5.0.min.js",
+      "sourcePath": "libs/lz-string.min.js",
+      "url": "https://raw.githubusercontent.com/pieroxy/lz-string/4a94308c1e684fb98866f7ba1288f3db6d9f8801/libs/lz-string.min.js",
+      "bytes": 4814,
+      "sha256": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7"
+    },
+    {
+      "repo": "pieroxy/lz-string",
+      "commit": "4a94308c1e684fb98866f7ba1288f3db6d9f8801",
+      "path": "work/vendor/LICENSE-lz-string-1.5.0.txt",
+      "sourcePath": "LICENSE",
+      "url": "https://raw.githubusercontent.com/pieroxy/lz-string/4a94308c1e684fb98866f7ba1288f3db6d9f8801/LICENSE",
+      "bytes": 1064,
+      "sha256": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80"
+    },
+    {
+      "repo": "catdad/canvas-confetti",
+      "commit": "5f77cdeb0b9f6b69558e8369c63071fc9415f842",
+      "path": "work/vendor/LICENSE-canvas-confetti-1.9.4.txt",
+      "sourcePath": "LICENSE",
+      "url": "https://raw.githubusercontent.com/catdad/canvas-confetti/5f77cdeb0b9f6b69558e8369c63071fc9415f842/LICENSE",
+      "bytes": 743,
+      "sha256": "fd44477c30a832a1dee9ef0b6cfb34677fbe5ef58c0cf655d27c646f11bb2f7a"
+    },
+    {
+      "repo": "catdad/canvas-confetti",
+      "version": "1.9.4",
+      "commit": "5f77cdeb0b9f6b69558e8369c63071fc9415f842",
+      "npmGitHead": "5f77cdeb0b9f6b69558e8369c63071fc9415f842",
+      "path": "work/vendor/canvas-confetti-1.9.4.js",
+      "sourcePath": "package/dist/confetti.browser.js",
+      "url": "https://registry.npmjs.org/canvas-confetti/-/canvas-confetti-1.9.4.tgz",
+      "packageIntegrity": "sha512-yxQbJkAVrFXWNbTUjPqjF7G+g6pDotOUHGbkZq2NELZUMDpiJ85rIEazVb8GTaAptNW2miJAXbs1BtioA251Pw==",
+      "bytes": 24914,
+      "sha256": "49f4bcbc56e7ceb5c3d25d13db1d0da965b6cd1c8a54a707bb055be0685b0a95"
+    },
+    {
+      "repo": "davidbau/seedrandom",
+      "commit": "4460ad325a0a15273a211e509f03ae0beb99511a",
+      "path": "work/vendor/LICENSE-seedrandom-3.0.5.txt",
+      "sourcePath": "seedrandom.js header",
+      "url": "https://raw.githubusercontent.com/davidbau/seedrandom/4460ad325a0a15273a211e509f03ae0beb99511a/seedrandom.js",
+      "derived": "Full license header extracted, comment delimiters removed",
+      "bytes": 1050,
+      "sha256": "54624bc262234371635aacf512f779e523fc06412869108d0758b71569f7c41a"
+    }
+  ]
+}

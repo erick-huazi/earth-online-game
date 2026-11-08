@@ -1,12 +1,13 @@
 {
   "name": "earth-online-game",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "地球 Online · 入世之旅：原创情境闯关与完整典籍阅读",
+  "description": "地球 Online · 山河远征：短局资源策略、同图挑战与完整典籍阅读",
   "scripts": {
     "build": "node work/build.cjs && node work/build-game.cjs",
     "build:game": "node work/build-game.cjs",
-    "test": "node work/qa-earth-game.cjs"
+    "test": "node work/qa-earth-game.cjs && node work/qa-expedition-engine.cjs && node work/qa-expedition-browser.cjs",
+    "test:engine": "node work/qa-expedition-engine.cjs"
   },
   "engines": {
     "node": ">=20"
