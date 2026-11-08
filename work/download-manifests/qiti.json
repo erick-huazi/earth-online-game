@@ -1,0 +1,25 @@
+{
+  "id": "qiti",
+  "title": "炁体源流",
+  "kind": "pdf",
+  "files": [
+    {
+      "label": "上册",
+      "path": "books/qiti/vol-1.pdf",
+      "bytes": 32408186,
+      "sha256": "9ae0ffeca973e686718ee68d5165f266303cb5046c4eafa6cc6898c5535ec511",
+      "sourceUrl": "https://raw.githubusercontent.com/ynhugo/ynhugo.github.io_old/master/post/book/米晶子/resources/炁體源流（上）.pdf",
+      "pages": 234
+    },
+    {
+      "label": "下册",
+      "path": "books/qiti/vol-2.pdf",
+      "bytes": 32915094,
+      "sha256": "4133e52a42c412e134ed2bf9e0e41db1b7001dfaeac2c4f849fb05f02f021aef",
+      "sourceUrl": "https://raw.githubusercontent.com/ynhugo/ynhugo.github.io_old/master/post/book/米晶子/resources/炁體源流（下）.pdf",
+      "pages": 278
+    }
+  ],
+  "sections": [],
+  "sourceNote": "上下册扫描版 PDF。已从公开 GitHub 仓库下载；已核验 PDF 文件头、大小、页数，使用 PyMuPDF 抽验首尾页可正常显示，未逐字校勘。"
+}

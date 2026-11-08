@@ -1,0 +1,3050 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>易经 · 全书 HTML</title><style>
+:root{--bg:#181e15;--paper:#ebe7d8;--ink:#273020;--line:#bbc0aa;--gold:#d9bc76;--muted:#616b55;--serif:'Noto Serif SC','Songti SC','SimSun',serif;--sans:'Microsoft YaHei','PingFang SC',sans-serif}*{box-sizing:border-box}html{scroll-padding-top:150px}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.8 var(--sans)}a{color:inherit;text-underline-offset:4px}button,input,select{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #796337;outline-offset:3px}[hidden]{display:none!important}.top{background:var(--bg);color:var(--paper);padding:13px 5vw;display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{color:var(--gold);text-decoration:none}.top a{font-size:12px}.layout{max-width:1390px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr)}nav{border-right:1px solid var(--line);padding:35px 20px;position:sticky;top:0;height:100vh;overflow:auto;font-size:12px}nav h2{font-size:14px;margin:0 0 15px}nav summary{cursor:pointer;padding:10px 0;font-weight:600}nav ol{list-style:none;padding:0;margin:0}nav li a{display:block;padding:7px 6px;border-bottom:1px solid #d4d7c8;text-decoration:none}nav li a:hover{background:#d8ddc8}nav li a[aria-current="location"]{background:#d8ddc8;font-weight:700}nav li span{color:var(--muted);display:inline-block;min-width:24px}main{min-width:0;padding:38px 6vw 80px}.book-head h1{font:400 clamp(32px,4vw,52px)/1.3 var(--serif);margin:0 0 18px}.book-head p{font-size:12px;color:var(--muted);max-width:75ch}.conversion{border-top:1px solid var(--line);padding-top:12px;margin:18px 0 25px;font-size:11px;color:var(--muted)}.conversion summary{cursor:pointer}.toolbar{position:sticky;top:0;z-index:2;background:var(--paper);padding:13px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap;align-items:center}.toolbar select{flex:1 1 240px;width:100%;min-width:0}.toolbar input{flex:1 1 130px;width:130px;min-width:0}.toolbar button{flex:0 0 auto}.toolbar input,.toolbar select,.toolbar button{height:38px;background:#f4f0e5;color:var(--ink);border:1px solid var(--line);padding:5px 9px;border-radius:2px}.toolbar label{font-size:11px;color:var(--muted)}.search-state{font-size:11px;color:var(--muted);flex-basis:100%}.book-section{padding:36px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.origin{font-size:11px;color:var(--muted);margin:0 0 10px}.book-section h2{font:400 26px/1.5 var(--serif);margin:0 0 23px}.prose{font:var(--size,19px)/2.05 var(--serif);white-space:pre-wrap;max-width:70ch}.prose mark{background:#dfbd6f;color:#232c1c}.book-section.match{border-bottom-color:#897044}.facsimile{margin:25px 0 0;font-size:12px}.facsimile summary{cursor:pointer;padding:8px 0}figure{margin:20px 0}figure img{display:block;max-width:100%;height:auto;margin:auto;background:white}figcaption,.empty{color:var(--muted);font-size:11px}footer{padding-top:35px;font-size:12px;color:var(--muted)}footer a{display:inline-block;margin:6px 12px 6px 0}button:disabled{opacity:.5;cursor:default}.mobile-index{display:none}
+@media(max-width:850px){.layout{grid-template-columns:1fr}nav{display:none}main{padding:30px 22px 65px}.top{padding:13px 22px}.mobile-index{display:block}.toolbar select{flex-basis:100%}.toolbar input,.toolbar select{font-size:16px}.toolbar button{min-height:42px}.toolbar{gap:6px}.prose{font-size:var(--size,18px)}.book-section h2{font-size:24px}.book-section{padding:28px 0}html{scroll-padding-top:175px}}
+@media(max-width:850px){.mobile-index{display:none}.toolbar{display:grid;grid-template-columns:40px 40px minmax(0,1fr) 48px}.toolbar select{grid-column:1/-1}.toolbar input{width:100%}.toolbar button{padding:5px 4px}.search-state{grid-column:3/-1;align-self:center;line-height:1.6}}
+.skip-link{position:fixed;top:8px;left:12px;z-index:20;padding:10px 16px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);transform:translateY(-180%)}.skip-link:focus{transform:translateY(0)}.toolbar input,.toolbar select,.toolbar button{min-height:44px;min-width:44px}.book-section:focus{outline:none}.book-section:focus-visible{outline:2px solid #796337;outline-offset:6px}
+@media(max-width:850px){.toolbar{grid-template-columns:44px 44px minmax(0,1fr) 48px}}
+@media print{nav,.top,.toolbar,.facsimile,footer,.skip-link{display:none}.layout{display:block}main{padding:0}.book-section{break-inside:auto}.prose{font-size:11pt}h2{break-after:avoid}}
+.bookmark-panel{font:12px/1.8 var(--sans);border-top:1px solid var(--paper-line,var(--line));margin:12px 0 0;color:var(--paper-ink,var(--ink))}.bookmark-panel>summary{cursor:pointer;min-height:44px;padding:10px 0}.bookmark-list{max-height:300px;overflow:auto}.bookmark-row{display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--paper-line,var(--line));padding:9px 0}.bookmark-row button,.bookmark-add,.bookmark-undo{font:12px/1.7 var(--sans);color:inherit;background:transparent;border:1px solid var(--paper-line,var(--line));min-height:44px;border-radius:2px;cursor:pointer;padding:8px 10px}.bookmark-open{flex:1;min-width:0;text-align:left;border:0!important}.bookmark-open strong,.bookmark-open span{display:block;overflow-wrap:anywhere}.bookmark-open strong{font-weight:500}.bookmark-open span,.bookmark-empty,.bookmark-status{color:var(--paper-muted,var(--muted));font-size:11px}.bookmark-remove{flex:0 0 auto}.bookmark-panel button:hover,.bookmark-add:hover{background:var(--bookmark-hover,#d8ddc8)}.bookmark-panel :focus-visible,.bookmark-add:focus-visible{outline:2px solid var(--bookmark-focus,#796337);outline-offset:3px}.bookmark-status{margin:10px 0;line-height:1.8}.bookmark-toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:14px 0}.bookmark-toolbar .bookmark-panel{border:0;margin:0;flex:1}.bookmark-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:30;max-width:min(520px,calc(100vw - 32px));width:max-content;margin:0;padding:11px 18px;background:#263020;color:#f4f0e5;font:13px/1.8 'Microsoft YaHei',sans-serif;border:1px solid #98a18c;border-radius:2px;overflow-wrap:anywhere}.earth-full-book .bookmark-panel{--paper-ink:var(--ink);--paper-muted:var(--muted);--paper-line:var(--line)}.toolbar .bookmark-add{font-size:11px;padding:6px;min-width:54px}.earth-full-book .bookmark-panel{margin-bottom:18px}.earth-full-book .bookmark-status{max-width:75ch}.earth-full-book .search-state{flex:1 1 60%}
+@media(max-width:850px){.earth-full-book .toolbar .search-state{grid-column:3;grid-row:3}.earth-full-book .toolbar .bookmark-add{grid-column:4;grid-row:3;min-width:44px;padding:3px 0;font-size:10px}}
+@media print{.bookmark-panel,.bookmark-add,.bookmark-toolbar,.bookmark-toast{display:none!important}}
+@media(max-width:550px){.bookmark-toolbar{display:block;position:relative}.bookmark-toolbar>.bookmark-add{position:absolute;right:0;top:0;margin-top:0}.bookmark-toolbar .bookmark-panel>summary{padding-right:85px}}
+.bookmark-toolbar{align-items:flex-start}.bookmark-toolbar .bookmark-panel{min-width:0}.bookmark-toolbar>.bookmark-add{margin-top:5px}.bookmark-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,.6fr);gap:5px 12px;margin:5px 0 12px}.bookmark-filters>label:first-child{grid-column:1}.bookmark-search-row{display:flex;gap:6px;grid-column:1;grid-row:2}.bookmark-scope-field{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;gap:5px}.bookmark-filters :is(input,select,button),.bookmark-more{min-width:0;min-height:44px;border:1px solid var(--paper-line,var(--line));border-radius:2px;background:var(--appearance-control,var(--paper));color:inherit;font:12px/1.6 var(--sans);padding:8px}.bookmark-filters input{width:100%;flex:1}.bookmark-filters input::placeholder{color:var(--paper-muted,var(--muted));opacity:1}.bookmark-filters button{flex:0 0 auto;min-width:44px}.bookmark-filters button:disabled{opacity:.5;cursor:default}.bookmark-more{width:100%;margin-top:8px}.bookmark-scope-field select{width:100%}@media(max-width:550px){.bookmark-filters{grid-template-columns:minmax(0,1fr)}.bookmark-scope-field{grid-column:1;grid-row:3}.bookmark-filters :is(input,select){font-size:16px}}
+
+/* Optional reader palettes. Paper intentionally inherits the existing design. */
+body.earth-manual [data-reading-appearance],body.earth-full-book [data-reading-appearance]{margin:8px 0 16px;max-width:100%}
+.appearance-field{display:flex;align-items:center;gap:14px;max-width:100%;font-size:12px}
+.appearance-field>label{flex:0 0 auto}
+.appearance-field select{min-height:44px;min-width:130px;max-width:100%;padding:7px 32px 7px 10px;background:var(--paper,#ebe7d8);color:var(--paper-ink,var(--ink,#273020));border:1px solid var(--paper-line,var(--line,#bbc0aa));border-radius:2px;font:inherit}
+.appearance-field select:focus-visible,.appearance-settings>summary:focus-visible{outline:2px solid #796337;outline-offset:3px}
+.appearance-notice{font-size:11px;line-height:1.7;margin:6px 0 0;color:var(--paper-muted,var(--muted,#616b55))}
+.appearance-settings{border-top:1px solid var(--line);margin:14px 0 20px;font-size:12px}
+.appearance-settings>summary{min-height:44px;display:list-item;align-content:center;cursor:pointer;padding:9px 0}
+html[data-reading-theme="night"] body.earth-manual .reader,html[data-reading-theme="night"] body.earth-full-book{
+ --appearance-paper:#20261f;--appearance-reading:#20261f;--appearance-ink:#e7e6db;--appearance-muted:#bbc4b2;--appearance-line:#61725b;--appearance-control:#2b3428;--appearance-hover:#3b4935;--appearance-accent:#ead097;--appearance-selected:#d9bd7a;--appearance-on-selected:#20261f;--appearance-mark:#e0c17e;--appearance-mark-ink:#202818;
+}
+html[data-reading-theme="white"] body.earth-manual .reader,html[data-reading-theme="white"] body.earth-full-book{
+ --appearance-paper:#fff;--appearance-reading:#fff;--appearance-ink:#263020;--appearance-muted:#56614d;--appearance-line:#a5ad9c;--appearance-control:#f4f6ef;--appearance-hover:#e6ecdf;--appearance-accent:#695627;--appearance-selected:#34472b;--appearance-on-selected:#fff;--appearance-mark:#f0cf83;--appearance-mark-ink:#232c1c;
+}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader{
+ --paper:var(--appearance-paper);--paper-ink:var(--appearance-ink);--paper-muted:var(--appearance-muted);--paper-line:var(--appearance-line);--bookmark-hover:var(--appearance-hover);--bookmark-focus:var(--appearance-accent);background:var(--paper);color:var(--paper-ink);color-scheme:light;
+}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book{
+ --paper:var(--appearance-paper);--ink:var(--appearance-ink);--muted:var(--appearance-muted);--line:var(--appearance-line);--bookmark-hover:var(--appearance-hover);--bookmark-focus:var(--appearance-accent);background:var(--paper);color:var(--ink);color-scheme:light;
+}
+html[data-reading-theme="night"] body.earth-manual .reader,html[data-reading-theme="night"] body.earth-full-book{color-scheme:dark}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(input,select,textarea){background:var(--appearance-control);color:var(--paper-ink);border-color:var(--paper-line)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(input,textarea)::placeholder{color:var(--paper-muted);opacity:1}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .text-reading{background:var(--appearance-reading);scrollbar-color:var(--appearance-muted) var(--appearance-paper)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .fulltext-content{color:var(--paper-ink)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.reader-tool,.search-result):hover{background:var(--appearance-hover)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.reader-tab[aria-pressed="true"],.complete-btn,#local-downloads .open-book){background:var(--appearance-selected);color:var(--appearance-on-selected);border-color:var(--appearance-selected)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.complete-btn,.open-book):hover{background:var(--appearance-selected);color:var(--appearance-on-selected);filter:brightness(1.08)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.seal,.theme-item span,.source-links a:hover,.chapter-control:hover){color:var(--appearance-accent);border-color:var(--appearance-accent)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.local-files a,.source-links a){border-color:var(--paper-line)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book .top{color:#ebe7d8}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book nav li a{border-color:var(--line)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book nav li a:is(:hover,[aria-current="location"]){background:var(--appearance-hover);color:var(--ink)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book :is(.toolbar input,.toolbar select,.toolbar button,.appearance-field select){background:var(--appearance-control);color:var(--ink);border-color:var(--line)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book .toolbar input::placeholder{color:var(--muted);opacity:1}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book .toolbar button:not(:disabled):hover{background:var(--appearance-hover)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book .book-section.match{border-bottom-color:var(--appearance-accent)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.earth-manual .reader,body.earth-full-book) mark{background:var(--appearance-mark);color:var(--appearance-mark-ink)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.earth-manual .reader,body.earth-full-book) :focus-visible{outline:2px solid var(--appearance-accent);outline-offset:3px}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.earth-manual .reader,body.earth-full-book) ::selection{background:var(--appearance-selected);color:var(--appearance-on-selected)}
+@media(max-width:850px){.appearance-field select{font-size:16px}.appearance-settings{margin-bottom:14px}}
+@media print{
+ [data-reading-appearance],.appearance-settings{display:none!important}
+ html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader,html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book{--appearance-paper:#fff;--appearance-reading:#fff;--appearance-ink:#000;--appearance-muted:#333;--appearance-line:#aaa;--appearance-control:#fff;--appearance-mark:#eee;--appearance-mark-ink:#000;color-scheme:light}
+}
+
+.page-jump{border-top:1px solid var(--paper-line,var(--line));margin:15px 0;font:12px/1.8 var(--sans);color:var(--paper-ink,var(--ink))}.page-jump summary{min-height:44px;padding:10px 0;cursor:pointer}.page-jump-help,.page-jump-status{font-size:11px;color:var(--paper-muted,var(--muted));line-height:1.8}.page-jump-status:empty{display:none}.page-jump-fields{display:grid;grid-template-columns:minmax(120px,1fr) minmax(90px,.65fr) auto;gap:10px;align-items:end}.page-jump-fields label{display:flex;flex-direction:column;gap:5px;min-width:0}.page-jump-fields :is(input,select,button),.return-reading{font:12px/1.8 var(--sans);color:var(--paper-ink,var(--ink));background:var(--appearance-control,var(--paper));border:1px solid var(--paper-line,var(--line));border-radius:2px;min-height:44px;min-width:44px;padding:8px 10px;max-width:100%}.page-jump-fields :is(input,select){width:100%}.page-jump-fields button,.return-reading{cursor:pointer}.page-jump-fields [aria-invalid="true"]{border-color:currentColor;border-width:2px}.page-jump :focus-visible,.return-reading:focus-visible{outline:2px solid var(--bookmark-focus,#796337);outline-offset:3px}.return-reading{margin:0 0 18px}.return-reading:disabled{opacity:.55;cursor:default}@media(max-width:550px){.page-jump-fields{grid-template-columns:minmax(0,1fr) auto}.page-jump-fields label:first-child{grid-column:1/-1}.page-jump-fields :is(input,select){font-size:16px}}@media print{[data-original-page-jump],.return-reading{display:none!important}}
+
+.search-options{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0;color:var(--paper-muted,var(--muted));font:12px/1.8 var(--sans)}
+.search-options label{display:flex;align-items:center;gap:10px;min-width:0}
+.search-options select{min-height:44px;max-width:100%;padding:7px 28px 7px 10px;background:var(--appearance-control,var(--paper));color:var(--paper-ink,var(--ink));border:1px solid var(--paper-line,var(--line));border-radius:2px;font:inherit}
+.search-options select:focus-visible{outline:2px solid var(--bookmark-focus,#796337);outline-offset:3px}
+.search-options>span{font-size:11px}.note-copy-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.note-copy-actions button{min-height:44px;max-width:100%;padding:8px 12px;font:12px/1.8 var(--sans);color:var(--paper-ink);background:transparent;border:1px solid var(--paper-line);border-radius:2px}
+.note-copy-actions button:hover{background:var(--appearance-hover,#d8ddc8)}.note-copy-actions button:focus-visible{outline:2px solid var(--paper-muted);outline-offset:3px}
+@media(max-width:850px){.search-options select{font-size:16px}.search-options{gap:5px}.search-options>span{flex-basis:100%}}
+@media print{.search-options,.note-copy-actions{display:none!important}}
+</style></head><body class="earth-full-book"><a class="skip-link" id="skip-reading" href="#section-0">跳到正文</a><a class="skip-link" href="#reading-controls">跳到目录与搜索</a><header class="top"><a class="brand" href="../earth-online-manual.html#library">地球 ONLINE · 典籍手册</a><a href="#top">返回书首 ↑</a></header><div class="layout"><nav aria-label="全书目录"><h2>易经 · 全书目录</h2><details open><summary>易经 · 69 节</summary><ol><li><a href="#section-0">〈乾〉第一</a></li><li><a href="#section-1">〈坤〉第二</a></li><li><a href="#section-2">〈屯〉第三</a></li><li><a href="#section-3">〈蒙〉第四</a></li><li><a href="#section-4">〈需〉第五</a></li><li><a href="#section-5">〈訟〉第六</a></li><li><a href="#section-6">〈師〉第七</a></li><li><a href="#section-7">〈比〉第八</a></li><li><a href="#section-8">〈小畜〉第九</a></li><li><a href="#section-9">〈履〉第十</a></li><li><a href="#section-10">〈泰〉第十一</a></li><li><a href="#section-11">〈否〉第十二</a></li><li><a href="#section-12">〈同人〉第十三</a></li><li><a href="#section-13">〈大有〉第十四</a></li><li><a href="#section-14">〈謙〉第十五</a></li><li><a href="#section-15">〈豫〉第十六</a></li><li><a href="#section-16">〈隨〉第十七</a></li><li><a href="#section-17">〈蠱〉第十八</a></li><li><a href="#section-18">〈臨〉第十九</a></li><li><a href="#section-19">〈觀〉第二十</a></li><li><a href="#section-20">〈噬嗑〉第二十一</a></li><li><a href="#section-21">〈賁〉第二十二</a></li><li><a href="#section-22">〈剝〉第二十三</a></li><li><a href="#section-23">〈復〉第二十四</a></li><li><a href="#section-24">〈无妄〉第二十五</a></li><li><a href="#section-25">〈大畜〉第二十六</a></li><li><a href="#section-26">〈頤〉第二十七</a></li><li><a href="#section-27">〈大過〉第二十八</a></li><li><a href="#section-28">〈習坎〉第二十九</a></li><li><a href="#section-29">〈離〉第三十</a></li><li><a href="#section-30">〈咸〉第三十一</a></li><li><a href="#section-31">〈恆〉第三十二</a></li><li><a href="#section-32">〈遯〉第三十三</a></li><li><a href="#section-33">〈大壯〉第三十四</a></li><li><a href="#section-34">〈晉〉第三十五</a></li><li><a href="#section-35">〈明夷〉第三十六</a></li><li><a href="#section-36">〈家人〉第三十七</a></li><li><a href="#section-37">〈睽〉第三十八</a></li><li><a href="#section-38">〈蹇〉第三十九</a></li><li><a href="#section-39">〈解〉第四十</a></li><li><a href="#section-40">〈損〉第四十一</a></li><li><a href="#section-41">〈益〉第四十二</a></li><li><a href="#section-42">〈夬〉第四十三</a></li><li><a href="#section-43">〈姤〉第四十四</a></li><li><a href="#section-44">〈萃〉第四十五</a></li><li><a href="#section-45">〈升〉第四十六</a></li><li><a href="#section-46">〈困〉第四十七</a></li><li><a href="#section-47">〈井〉第四十八</a></li><li><a href="#section-48">〈革〉第四十九</a></li><li><a href="#section-49">〈鼎〉第五十</a></li><li><a href="#section-50">〈震〉第五十一</a></li><li><a href="#section-51">〈艮〉第五十二</a></li><li><a href="#section-52">〈漸〉第五十三</a></li><li><a href="#section-53">〈歸妹〉第五十四</a></li><li><a href="#section-54">〈豐〉第五十五</a></li><li><a href="#section-55">〈旅〉第五十六</a></li><li><a href="#section-56">〈巽〉第五十七</a></li><li><a href="#section-57">〈兌〉第五十八</a></li><li><a href="#section-58">〈渙〉第五十九</a></li><li><a href="#section-59">〈節〉第六十</a></li><li><a href="#section-60">〈中孚〉第六十一</a></li><li><a href="#section-61">〈小過〉第六十二</a></li><li><a href="#section-62">〈既濟〉第六十三</a></li><li><a href="#section-63">〈未濟〉第六十四</a></li><li><a href="#section-64">〈繫辭上〉</a></li><li><a href="#section-65">〈繫辭下〉</a></li><li><a href="#section-66">〈說卦〉</a></li><li><a href="#section-67">〈序卦〉</a></li><li><a href="#section-68">〈雜卦〉</a></li></ol></details></nav><main id="top"><header class="book-head"><h1>易经</h1><p>易经 · 69 个阅读节 · 全部收录文字均在本页</p><p>《周易》繁体 TXT，按篇保存，含六十四卦及《系辞》《说卦》等传文。</p><details class="conversion"><summary>版本与转换说明</summary><p>来源：kanripo/KR1a0001，底本标识 tls；保存仓库全部 69 个正文 TXT 和原目录。阅读版仅移除 Mandoku 页码、段落符及技术元数据，并合并同段内换行；原始 TXT 保留全部来源标记，正文文字未改写。包含六十四卦（彖、象及乾坤文言随卦收录），并含《繫辭上》《繫辭下》《說卦》《序卦》《雜卦》。</p><p>页码指原文件中的位置；可使用浏览器查找在全文中定位。原页图保存在配套 books 文件夹。</p></details><div data-original-page-jump></div><details class="appearance-settings"><summary>阅读配色</summary><div data-reading-appearance></div></details><details class="bookmark-panel" data-bookmark-panel><summary>我的书签<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>书签保存在当前浏览器。导出后可在主手册合并恢复。</p><button class="bookmark-undo" data-bookmark-export type="button">导出本页书签 ↓</button><p class="bookmark-status" data-bookmark-export-status role="status"></p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><div class="search-options"><label for="search-mode">查找方式<select id="search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div></header><div class="toolbar" id="reading-controls" tabindex="-1" role="search" aria-label="全书目录与搜索"><label class="mobile-index" for="jump">目录</label><select id="jump" aria-label="全书章节目录"><option value="section-0">〈乾〉第一</option><option value="section-1">〈坤〉第二</option><option value="section-2">〈屯〉第三</option><option value="section-3">〈蒙〉第四</option><option value="section-4">〈需〉第五</option><option value="section-5">〈訟〉第六</option><option value="section-6">〈師〉第七</option><option value="section-7">〈比〉第八</option><option value="section-8">〈小畜〉第九</option><option value="section-9">〈履〉第十</option><option value="section-10">〈泰〉第十一</option><option value="section-11">〈否〉第十二</option><option value="section-12">〈同人〉第十三</option><option value="section-13">〈大有〉第十四</option><option value="section-14">〈謙〉第十五</option><option value="section-15">〈豫〉第十六</option><option value="section-16">〈隨〉第十七</option><option value="section-17">〈蠱〉第十八</option><option value="section-18">〈臨〉第十九</option><option value="section-19">〈觀〉第二十</option><option value="section-20">〈噬嗑〉第二十一</option><option value="section-21">〈賁〉第二十二</option><option value="section-22">〈剝〉第二十三</option><option value="section-23">〈復〉第二十四</option><option value="section-24">〈无妄〉第二十五</option><option value="section-25">〈大畜〉第二十六</option><option value="section-26">〈頤〉第二十七</option><option value="section-27">〈大過〉第二十八</option><option value="section-28">〈習坎〉第二十九</option><option value="section-29">〈離〉第三十</option><option value="section-30">〈咸〉第三十一</option><option value="section-31">〈恆〉第三十二</option><option value="section-32">〈遯〉第三十三</option><option value="section-33">〈大壯〉第三十四</option><option value="section-34">〈晉〉第三十五</option><option value="section-35">〈明夷〉第三十六</option><option value="section-36">〈家人〉第三十七</option><option value="section-37">〈睽〉第三十八</option><option value="section-38">〈蹇〉第三十九</option><option value="section-39">〈解〉第四十</option><option value="section-40">〈損〉第四十一</option><option value="section-41">〈益〉第四十二</option><option value="section-42">〈夬〉第四十三</option><option value="section-43">〈姤〉第四十四</option><option value="section-44">〈萃〉第四十五</option><option value="section-45">〈升〉第四十六</option><option value="section-46">〈困〉第四十七</option><option value="section-47">〈井〉第四十八</option><option value="section-48">〈革〉第四十九</option><option value="section-49">〈鼎〉第五十</option><option value="section-50">〈震〉第五十一</option><option value="section-51">〈艮〉第五十二</option><option value="section-52">〈漸〉第五十三</option><option value="section-53">〈歸妹〉第五十四</option><option value="section-54">〈豐〉第五十五</option><option value="section-55">〈旅〉第五十六</option><option value="section-56">〈巽〉第五十七</option><option value="section-57">〈兌〉第五十八</option><option value="section-58">〈渙〉第五十九</option><option value="section-59">〈節〉第六十</option><option value="section-60">〈中孚〉第六十一</option><option value="section-61">〈小過〉第六十二</option><option value="section-62">〈既濟〉第六十三</option><option value="section-63">〈未濟〉第六十四</option><option value="section-64">〈繫辭上〉</option><option value="section-65">〈繫辭下〉</option><option value="section-66">〈說卦〉</option><option value="section-67">〈序卦〉</option><option value="section-68">〈雜卦〉</option></select><button id="smaller" aria-label="缩小字号">A−</button><button id="larger" aria-label="放大字号">A＋</button><input id="query" type="search" placeholder="搜索全书文字" aria-label="搜索全书文字"><button id="clear-search" type="button" disabled>清除</button><button id="prev-match" disabled>上处</button><button id="next-match" disabled>下处</button><button class="bookmark-add" data-bookmark-add type="button">存书签</button><span id="search-state" class="search-state" aria-live="polite">连续阅读全部内容，或用目录跳转。</span></div><section class="book-section" tabindex="-1" id="section-0" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈乾〉第一</h2><div class="prose">䷀乾下乾上
+
+《乾》元亨，利貞。
+
+初九、潛龍勿用。
+
+九二：見龍在田，利見大人。
+
+九三：君子終日乾乾，夕惕若厲。无咎。
+
+九四：或躍在淵，无咎。
+
+九五：飛龍在天，利見大人。
+
+上九：亢龍，有悔。
+
+用九：見群龍无首，吉。
+
+《彖》曰：大哉「乾元」，萬物資始，乃統天。雲行雨施，品物流形。大明終始，六位時成。時乘六龍以御天。乾道變化，各正性命。保合大和，乃「利貞」。首出庶物，萬國咸寧。
+
+《象》曰：天行健，君子以自強不息。「潛龍勿用」、陽在下也。「見龍在田」、德施普也。「終日乾乾」、反復道也。「或躍在淵」、進「无咎」也。「飛龍在天」、「大人」造也。「亢龍有悔」、盈不可久也。「用九」、天德不可為首也。
+
+《文言》曰：「元」者、善之長也，「亨」者、嘉之會也，《利》者、義之和也，「貞」者、事之幹也。君子體仁足以長人，嘉會足以合禮，利物足以和義，貞固足以幹事。君子行此四德者，故曰「乾、元、亨、利、貞」。
+
+初九曰、「潛龍勿用」，何謂也？子曰：「龍、德而隱者也。不易乎世，不成乎名，遯世无悶，不見是而无悶。樂則行之，憂則違之，確乎其不可拔，潛龍也。」
+
+九二曰、「見龍在田、利見大人」，何謂也？子曰：「龍德而正中者也。庸言之信，庸行之謹，閑邪存其誠，善世而不伐，德博而化。《易》曰、『見龍在田、利見大人』，君德也。」
+
+九三曰、「君子終日乾乾、夕惕若、厲、无咎」。何謂也？子曰：「君子進德脩業，忠信，所以進德也，脩辭立其誠，所以居業也。知至至之，可與幾也，知終終之，可與存義也。是故居上位而不驕，在下位而不憂，故乾乾因其時而惕，雖危无咎矣。」
+
+九四曰、「或躍在淵、无咎。」何謂也？子曰：「上下无常，非為邪也。進退无恆，非離群也。君子進德脩業、欲及時也，故无咎。」
+
+九五曰、「飛龍在天、利見大人」。何謂也？子曰：「同聲相應，同氣相求。水流濕，火就燥，雲從龍，風從虎，聖人作而萬物覩。本乎天者親上，本乎地者親下，則各從其類也。」
+
+上九曰、「亢龍有悔」，何謂也？子曰：「貴而无位，高而无民，賢人在下位而无輔，是以動而有悔也。」
+
+「潛龍勿用」、下也，「見龍在田」、時舍也，「終日乾乾」、行事也，「或躍在淵」、自試也，「飛龍在天」、上治也，「亢龍有悔」、窮之災也。乾元「用九」、天下治也。
+
+「潛龍勿用」，陽氣潛藏。「見龍在田」，天下文明。「終日乾乾」，與時偕行。「或躍在淵」，乾道乃革。「飛龍在天」，乃位乎天德。「亢龍有悔」，與時偕極。乾元「用九」，乃見天則。
+
+《乾》「元」「亨」者、始而亨者也。「利貞」者、性情也。乾始能以美利利天下，不言所利，大矣哉！
+
+大哉乾乎！剛健中正，純粹精也。六爻發揮，旁通情也。「時乘六龍」、以「御天」也，「雲行雨施」、天下平也。君子以成德為行，日可見之行也。
+
+「潛」之為言也，隱而未見，行而未成，是以君子「弗用」也。君子學以聚之，問以辯之，寬以居之，仁以行之。《易》曰、「見龍在田、利見大人」，君德也。九三重剛而不中，上不在天，下不在田，故「乾乾」因其時而「惕」，雖危「无咎」矣。九四重剛而不中，上不在天，下不在田，中不在人，故「或」之。「或」之者、疑之也，故「无咎」。夫「大人」者、與天地合其德，與日月合其明，與四時合其序，與鬼神合其吉凶，先天而天弗違，後天而奉天時。天且弗違，而況於人乎？況於鬼神乎？「亢」之為言也，知進而不知退，知存而不知亡，知得而不知喪。其唯聖人乎！知進退存亡而不失其正者，其唯聖人乎！</div></section>
+<section class="book-section" tabindex="-1" id="section-1" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈坤〉第二</h2><div class="prose">䷁坤下坤上
+
+《坤》元亨。利牝馬之貞。君子有攸往，先迷後得主，利，西南得朋，東北喪朋。安貞吉。
+
+《彖》曰：至哉「坤元」，萬物資生，乃順承天。坤厚載物，德合无疆。含弘光大，品物咸「亨」。「牝馬」地類，行地无疆，柔順「利貞」。「君子」攸行，「先迷」失道，「後」順「得」常。「西南得朋」，乃與類行。「東北喪朋」，乃終有慶。「安貞」之「吉」，應地无疆。
+
+《象》曰：地勢坤。君子以厚德載物。
+
+初六：履霜、堅冰至。
+
+《象》曰：「履霜堅冰」、陰始凝也。馴致其道，至「堅冰」也。
+
+六二：直、方、大，不習无不利。
+
+《象》曰：六二之動、「直」以「方」也，「不習无不利」、地道光也。
+
+六三：含章可貞，或從王事，无成有終。
+
+《象》曰：「含章可貞」、以時發也。「或從王事」、知光大也。
+
+六四：括囊，无咎无譽。
+
+《象》曰：「括囊无咎」、慎不害也。
+
+六五：黃裳元吉。
+
+《象》曰：「黃裳元吉」、文在中也。
+
+上六：龍戰于野，其血玄黃。
+
+《象》曰：「龍戰于野」，其道窮也。
+
+用六：利永貞。
+
+《象》曰：「用六永貞」，以大終也。
+
+《文言》曰：《坤》至柔而動也剛，至靜而德方，後得主而有常，含萬物而化光。坤道其順乎，承天而時行。積善之家必有餘慶，積不善之家必有餘殃。臣弒其君，子弒其父，非一朝一夕之故，其所由來者漸矣，由辯之不早辯也。
+
+《易》曰、「履霜、堅冰至」，蓋言順也。「直」其正也，「方」其義也。君子敬以直內，義以方外，敬義立而德不孤。「直、方、大、不習无不利」，則不疑其所行也。陰雖有美「含」之以從王事，弗敢成也。地道也，妻道也，臣道也。地道「無成」而代「有終」也。天地變化，草木蕃。天地閉，賢人隱。《易》曰、「括囊、无咎无譽」，蓋言謹也。君子「黃」中通理，正位居體，美在其中而暢於四支，發於事業，美之至也。陰疑於陽必「戰」，為其嫌於无陽也，故稱「龍」焉。猶未離其類也，故稱「血」焉。夫「玄黃」者、天地之雜也。天玄而地黃。</div></section>
+<section class="book-section" tabindex="-1" id="section-2" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈屯〉第三</h2><div class="prose">䷂震下坎上
+
+《屯》元亨，利貞。勿用有攸往。利建侯。
+
+《彖》曰：《屯》，剛柔始交而難生。動乎險中，大「亨貞」。雷雨之動滿盈，天造草昧。宜「建侯」而不寧。
+
+《象》曰：雲雷、屯。君子以經綸。
+
+初九：磐桓。利居貞。利建侯。
+
+《象》曰：雖「磐桓」，志行正也。以貴下賤，大得民也。
+
+六二：屯如邅如，乘馬班如。匪寇，婚媾。女子貞不字，十年乃字。
+
+《象》曰：六二之難、乘剛也，「十年乃字」、反常也。
+
+六三：即鹿無虞，惟入于林中，君子幾不如舍，往吝。
+
+《象》曰：「即鹿无虞」以從禽也。「君子舍」之，「往吝」窮也。
+
+六四：乘馬班如，求婚媾。往吉，无不利。
+
+《象》曰：「求」而「往」、明也。
+
+九五：屯其膏，小貞吉，大貞凶。
+
+《象》曰：「屯其膏」、施未光也。
+
+上六：乘馬班如，泣血漣如。
+
+《象》曰：「泣血漣如」，何可長也？</div></section>
+<section class="book-section" tabindex="-1" id="section-3" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈蒙〉第四</h2><div class="prose">䷃坎下艮上
+
+《蒙》亨。匪我求童蒙，童蒙來求我。初筮告，再三瀆，瀆則不告。利貞。
+
+《彖》曰：《蒙》，山下有險，險而止，《蒙》。《蒙》「亨」，以亨行，時中也。「匪我求童蒙、童蒙來求我」，志應也。「初筮告」、以剛中也。「再三瀆、瀆則不告」，瀆蒙也。蒙以養正，聖功也。
+
+《象》曰：山下出泉，《蒙》。君子以果行育德。
+
+初六：發蒙，利用刑人，用說桎梏，以往吝。
+
+《象》曰：「利用刑人」、以正法也。
+
+九二：苞蒙，吉。納婦吉。子克家。
+
+《象》曰：「子克家」、剛柔接也。
+
+六三：勿用取女，見金夫，不有躬。无攸利。
+
+《象》曰：「勿用取女」、行不順也。
+
+六四：困蒙，吝。
+
+《象》曰：「困蒙」之「吝」、獨遠實也。
+
+六五：童蒙，吉。
+
+《象》曰：「童蒙」之吉、順以巽也。
+
+上九：擊蒙，不利為寇，利禦寇。
+
+《象》曰：「利」用「禦寇」，上下順也。</div></section>
+<section class="book-section" tabindex="-1" id="section-4" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈需〉第五</h2><div class="prose">䷄乾下坎上
+
+《需》有孚，光亨。貞吉。利涉大川。
+
+《彖》曰：《需》、須也。險在前也，剛健而不陷，其義不困窮矣。《需》、「有孚、光亨、貞吉」，位乎天位以正中也。「利涉大川」、往有功也。
+
+《象》曰：雲上於天，《需》。君子以飲食宴樂。
+
+初九：需于郊，利用恆，无咎。
+
+《象》曰：「需于郊」、不犯難行也。「利用恆无咎」、未失常也。
+
+九二：需于沙，小有言，終吉。
+
+《象》曰：「需于沙」、行在中也。雖「小有言」、以「吉」「終」也。
+
+九三：需于泥，致寇至。
+
+《象》曰：「需于泥」、災在外也。自我「致寇」、敬慎不敗也。
+
+六四：需于血，出自穴。
+
+《象》曰：「需于血」、順以聽也。
+
+九五：需于酒食，貞吉。
+
+《象》曰：「酒食貞吉」、以中正也。
+
+上六：入于穴，有不速之客三人來，敬之終吉。
+
+《象》曰：「不速之客來、敬之終吉」也，雖不當位，未大失也。</div></section>
+<section class="book-section" tabindex="-1" id="section-5" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈訟〉第六</h2><div class="prose">䷅坎下乾上
+
+《訟》有孚窒，惕，中吉，終凶。利見大人。不利涉大川。
+
+《彖》曰：《訟》，上剛下險，險而健，訟。《訟》、「有孚、窒、惕、中吉」，剛來而得中也。「終凶」、訟不可成也。「利見大人」、尚中正也。「不利涉大川」、入于淵也。
+
+《象》曰：天與水違行，《訟》。君子以作事謀始。
+
+初六：不永所事，小有言，終吉。
+
+《象》曰：「不永所事」、訟不可長也。雖「小有言」、其辯明也。
+
+九二：不克訟，歸而逋其邑，人三百戶无眚。
+
+《象》曰：「不克訟」、「歸逋」竄也。自下訟上，患至掇也。
+
+六三：食舊德，貞厲，終吉。或從王事无成。
+
+《象》曰：「食舊德」、從上「吉」也。
+
+九四：不克訟，復即命，渝。安貞吉。
+
+《象》曰：「復即命、渝」、「安貞」不失也。
+
+九五：訟元吉。
+
+《象》曰：「訟元吉」、以中正也。
+
+上九：或錫之鞶、帶，終朝三褫之。
+
+《象》曰：以訟受服、亦不足敬也。</div></section>
+<section class="book-section" tabindex="-1" id="section-6" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈師〉第七</h2><div class="prose">䷆坎下坤上
+
+《師》貞丈人吉，无咎。
+
+《彖》曰：「師」、眾也，「貞」、正也。能以眾正，可以王矣。剛中而應，行險而順，以此毒天下而民從之，「吉」、又何咎矣。
+
+《象》曰：地中有水，《師》。君子以容民畜眾。
+
+初六：師出以律，否臧凶。
+
+《象》曰：「師出以律」，失律「凶」也。
+
+九二：在師中，吉、无咎，王三錫命。
+
+《象》曰：「在師中吉」、承天寵也，「王三錫命」、懷萬邦也。
+
+六三：師或輿尸，凶。
+
+《象》曰：「師或輿尸」、大无功也。
+
+六四：師左次，无咎。
+
+《象》曰：「左次无咎」、未失常也。
+
+六五：田有禽。利執言，无咎。長子帥師，弟子輿尸，貞凶。
+
+《象》曰：「長子帥師」、以中行也，「弟子輿尸」、使不當也。
+
+上六：大君有命，開國承家，小人勿用。
+
+《象》曰：「大君有命」、以正功也，「小人勿用」、必亂邦也。</div></section>
+<section class="book-section" tabindex="-1" id="section-7" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈比〉第八</h2><div class="prose">䷇坤下坎上
+
+《比》吉。原筮元，永貞无咎。不寧方來，後夫凶。
+
+《彖》曰：（《比》、「吉」也），《比》、輔也，下順從也，「《比》、「吉」、原筮元、永貞无咎」，以剛中也。「不寧方來」、上下應也，「後夫凶」、其道窮也。
+
+《象》曰：地上有水，《比》。先王以建萬國，親諸侯。
+
+初六：有孚比之，无咎。有孚盈缶，終來，有它吉。
+
+《象》曰：《比》之初六、「有它吉」也。
+
+六二：比之自內，貞吉。
+
+《象》曰：「比之自內」、不自失也。
+
+六三：比之匪人。
+
+《象》曰：「比之匪人」、不亦傷乎？
+
+六四：外比之，貞吉。
+
+《象》曰：「外比」於賢、以從上也。
+
+九五：顯比，王用三驅，失前禽，邑人不誡，吉。
+
+《象》曰：「顯比」之「吉」、位正中也，舍逆取順、「失前禽」也，「邑人不誡」、上使中也。
+
+上六：比之无首，凶。
+
+《象》曰：「比之无首」、无所終也。</div></section>
+<section class="book-section" tabindex="-1" id="section-8" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈小畜〉第九</h2><div class="prose">䷈乾下巽上
+
+《小畜》亨。密雲不雨，自我西郊。
+
+《彖》曰：《小畜》，柔得位而上下應之，曰《小畜》。健而巽，剛中而志行，乃「亨」。「密雲不雨」、尚往也，「自我西郊」、施未行也。
+
+《象》曰：風行天上，《小畜》。君子以懿文德。
+
+初九：復自道，何其咎，吉。
+
+《象》曰：「復自道」、其義「吉」也。
+
+九二：牽復，吉。
+
+《象》曰：「牽復」在中、亦不自失也。
+
+九三：輿說輻。夫妻反目。
+
+《象》曰：「夫妻反目」、不能正室也。
+
+六四：有孚血去惕出，无咎。
+
+《象》曰：「有孚惕出」、上合志也。
+
+九五：有孚攣如，富以其鄰。
+
+《象》曰：「有孚攣如」、不獨富也。
+
+上九：既雨既處，尚德載。婦貞厲。月幾望，君子征凶。
+
+《象》曰：「既雨既處」、「德」積「載」也。「君子征凶」、有所疑也。</div></section>
+<section class="book-section" tabindex="-1" id="section-9" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈履〉第十</h2><div class="prose">䷉兌下乾上
+
+《履》履虎尾，不咥人。亨。
+
+《彖》曰：《履》、柔履剛也。說而應乎乾，是以「履虎尾、不咥人、亨」，剛中正、履帝位而不疚，光明也。
+
+《象》曰：上天下澤，《履》。君子以辯上下，定民志。
+
+初九：素履往，无咎。
+
+《象》曰：「素履」之「往」、獨行願也。
+
+九二：履道坦坦，幽人貞吉。
+
+《象》曰：「幽人貞吉」、中不自亂也。
+
+六三：眇能視，跛能履，履虎尾，咥人凶。武人為于大君。
+
+《象》曰：「眇能視」、不足以有明也，「跛能履」、不足以與行也。「咥人」之「凶」、位不當也，「武人為于大君」、志剛也。
+
+九四：履虎尾愬愬，終吉。
+
+《象》曰：「愬愬終吉」、志行也。
+
+九五：夬履貞厲。
+
+《象》曰：「夬履貞厲」、位正當也。
+
+上九：視履考祥，其旋，元吉。
+
+《象》曰：「元吉」在上、大有慶也。</div></section>
+<section class="book-section" tabindex="-1" id="section-10" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈泰〉第十一</h2><div class="prose">䷊乾下坤上
+
+《泰》小往大來，吉，亨。
+
+《彖》曰：「《泰》、小往大來、吉、亨」。則是天地交而萬物通也，上下交而其志同也。內陽而外陰，內健而外順，內君子而外小人，君子道長，小人道消也。
+
+《象》曰：天地交，《泰》。后以財成天地之道，輔相天地之宜，以左右民。
+
+初九：拔茅茹以其彙。征吉。
+
+《象》曰：「拔茅征吉」、志在外也。
+
+九二：苞荒，用馮河，不遐遺。朋亡，得尚于中行。
+
+《象》曰：「苞荒、得尚于中行」，以光大也。
+
+九三：无平不陂，无往不復。艱貞，无咎。勿恤其孚，于食有福。
+
+《象》曰：「无往不復」、天地際也。
+
+六四：翩翩，不富以其鄰，不戒以孚。
+
+《象》曰：「翩翩不富」、皆失實也，「不戒以孚」、中心願也。
+
+六五：帝乙歸妹，以祉，元吉。
+
+《象》曰：「以祉元吉」、中以行願也。
+
+上六：城復于隍，勿用師，自邑告命、貞吝。
+
+《象》曰：「城復于隍」、其命亂也。</div></section>
+<section class="book-section" tabindex="-1" id="section-11" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈否〉第十二</h2><div class="prose">䷋坤下乾上
+
+《否》否之匪人。不利君子貞。大往小來。
+
+《彖》曰：「否之匪人、不利君子貞、大往小來」。則是天地不交而萬物不通也，上下不交而天下无邦也；內陰而外陽，內柔而外剛，內小人而外君子，小人道長，君子道消也。
+
+《象》曰：天地不交，《否》。君子以儉德辟難，不可榮以祿。
+
+初六：拔茅茹，以其彙。貞吉亨。
+
+《象》曰：「拔茅貞吉」、志在君也。
+
+六二：苞承，小人吉，大人否。亨。
+
+《象》曰：「大人否亨」、不亂群也。
+
+六三：苞羞。
+
+《象》曰：「苞羞」、位不當也。
+
+九四：有命，无咎，疇離祉。
+
+《象》曰：「有命无咎」、志行也。
+
+九五：休否，大人吉。其亡其亡，繫于苞桑。
+
+《象》曰：「大人」之「吉」、位正當也。
+
+上九：傾否，先否後喜。
+
+《象》曰：「否」終則「傾」、何可長也。</div></section>
+<section class="book-section" tabindex="-1" id="section-12" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈同人〉第十三</h2><div class="prose">䷌離下乾上
+
+《同人》同人于野，亨。利涉大川。利君子貞。
+
+《彖》曰：《同人》，柔得位得中而應乎乾曰《同人》。《同人》曰、「同人于野、亨、利涉大川」，乾行也。文明以健，中正而應，「君子」正也。唯君子為能通天下之志。
+
+《象》曰：天與火、《同人》。君子以類族辨物。
+
+初九：同人于門，无咎。
+
+《象》曰：「出門同人」，又誰「咎」也。
+
+六二：同人于宗，吝。
+
+《象》曰：「同人于宗」、「吝」道也。
+
+九三：伏戎于莽，升其高陵，三歲不興。
+
+《象》曰：「伏戎于莽」、敵剛也，「三歲不興」、安行也。
+
+九四：乘其墉，弗克攻，吉。
+
+《象》曰：「乘其墉」、義「弗克」也。其「吉」、則困而反則也。
+
+九五：同人先號咷而後笑，大師克，相遇。
+
+《象》曰：「同人」之「先」以中直也。「大師相遇」、言相「克」也。
+
+上九：同人于郊，无悔。
+
+《象》曰：「同人于郊」、志未得也。</div></section>
+<section class="book-section" tabindex="-1" id="section-13" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈大有〉第十四</h2><div class="prose">䷍乾下離上
+
+《大有》元亨。
+
+《彖》曰：《大有》，柔得尊位大中而上下應之曰《大有》。其德剛健而文明，應乎天而時行，是以「元亨」。
+
+《象》曰：火在天上，《大有》。君子以遏惡揚善，順天休命。
+
+初九：无交害，匪咎、艱則无咎。
+
+《象》曰：《大有》初九，无交害也。
+
+九二：大車以載，有攸往，无咎。
+
+《象》曰：「大車以載」、積中不敗也。
+
+九三：公用亨于天子，小人弗克。
+
+《象》曰：「公用亨于天子」、「小人」害也。
+
+九四：匪其彭，无咎。
+
+《象》曰：「匪其彭、无咎」、明辯晢也。
+
+六五：厥孚交如，威如吉。
+
+《象》曰：「厥孚交如」、信以發志也，「威如」之「吉」、易而无備也。
+
+上九：自天祐之，吉无不利。
+
+《象》曰：《大有》上「吉」、「自天祐」也。</div></section>
+<section class="book-section" tabindex="-1" id="section-14" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈謙〉第十五</h2><div class="prose">䷎艮下坤上
+
+《謙》亨。君子有終。
+
+《彖》曰：《謙》「亨」。天道下濟而光明，地道卑而上行。天道虧盈而益謙，地道變盈而流謙，鬼神害盈而福謙，人道惡盈而好謙。《謙》、尊而光，卑而不可踰，「君子」之「終」也。
+
+《象》曰：地中有山，《謙》。君子以裒多益寡，稱物平施。
+
+初六：謙謙君子，用涉大川，吉。
+
+《象》曰：「謙謙君子」、卑以自牧也。
+
+六二：鳴謙，貞吉。
+
+《象》曰：「鳴謙貞吉」、中心得也。
+
+九三：勞謙，君子有終、吉。
+
+《象》曰：「勞謙君子」、萬民服也。
+
+六四：无不利，撝謙。
+
+《象》曰：「无不利、撝謙」、不違則也。
+
+六五：不富以其鄰，利用侵伐，无不利。
+
+《象》曰：「利用侵伐」、征不服也。
+
+上六：鳴謙，利用行師征邑國。
+
+《象》曰：「鳴謙」、志未得也。可「用行師」、征邑國也。</div></section>
+<section class="book-section" tabindex="-1" id="section-15" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈豫〉第十六</h2><div class="prose">䷏坤下震上
+
+《豫》利建侯行師。
+
+《彖》曰：《豫》，剛應而志行，順以動，《豫》。《豫》順以動，故天地如之，而況「建侯行師」乎？天地以順動，故日月不過而四時不忒。聖人以順動，則刑罰清而民服，《豫》之時義大矣哉！
+
+《象》曰：雷出地奮，《豫》。先王以作樂崇德，殷薦之上帝以配祖考。
+
+初六：鳴豫，凶。
+
+《象》曰：「初六鳴豫」、志窮「凶」也。
+
+六二：介于石，不終日，貞吉。
+
+《象》曰：「不終日貞吉」、以中正也。
+
+六三：盱豫，悔，遲有悔。
+
+《象》曰：「盱豫有悔」、位不當也。
+
+九四：由豫，大有得，勿疑。朋盍簪。
+
+《象》曰：「由豫大有得」、志大行也。
+
+六五：貞疾，恆不死。
+
+《象》曰：「六五貞疾」、乘剛也，「恆不死」、中未亡也。
+
+上六：冥豫成，有渝、无咎。
+
+《象》曰：「冥豫」在「上」、何可長也？</div></section>
+<section class="book-section" tabindex="-1" id="section-16" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈隨〉第十七</h2><div class="prose">䷐震下兌上
+
+《隨》元亨，利貞，无咎。
+
+《彖》曰：《隨》，剛來而下柔，動而說，《隨》。大「亨、貞、无咎」而天下隨之，隨之時義大矣哉！
+
+《象》曰：澤中有雷，《隨》。君子以嚮晦入宴息。
+
+初九：官有渝，貞吉，出門交有功。
+
+《象》曰：「官有渝」、從正「吉」也，「出門交有功」、不失也。
+
+六二：係小子，失丈夫。
+
+《象》曰：「係小子」、弗兼與也。
+
+六三：係丈夫，失小子，隨有求、得。利居貞。
+
+《象》曰：「係丈夫」、志舍下也。
+
+九四：隨有獲，貞凶。有孚在道，以明，何咎？
+
+《象》曰：「隨有獲」、其義「凶」也，「有孚在道」、「明」功也。
+
+九五：孚于嘉、吉。
+
+《象》曰：「孚于嘉吉」、位正中也。
+
+上六：拘係之乃從，維之，王用亨于西山。
+
+《象》曰：「拘係之」、上窮也。</div></section>
+<section class="book-section" tabindex="-1" id="section-17" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈蠱〉第十八</h2><div class="prose">䷎）䷑巽下艮上
+
+《蠱》元亨。利涉大川，先甲三日，後甲三日。
+
+《彖》曰：《蠱》、剛上而柔下，巽而止，《蠱》。《蠱》「元亨」，而天下治也。「利涉大川」、往有事也。「先甲三日、後甲三日」，終則有始，天行也。
+
+《象》曰：山下有風，《蠱》。君子以振民育德。
+
+初六：幹父之蠱，有子，考无咎，厲終吉。
+
+《象》曰：「幹父之蠱」、意承「考」也。
+
+九二：幹母之蠱，不可貞。
+
+《象》曰：「幹母之蠱」、得中道也。
+
+九三：幹父之蠱，小有悔，无大咎。
+
+《象》曰：「幹父之蠱」、終「无咎」也。
+
+六四：裕父之蠱，往見吝。
+
+《象》曰：「裕父之蠱」、往未得也。
+
+六五：幹父之蠱，用譽。
+
+《象》曰：「幹父用譽」、承以德也。
+
+上九：不事王侯，高尚其事。
+
+《象》曰：「不事王侯」、志可則也。</div></section>
+<section class="book-section" tabindex="-1" id="section-18" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈臨〉第十九</h2><div class="prose">䷒兌下坤上
+
+《臨》元亨，利貞。至于八月有凶。
+
+《彖》曰：《臨》，剛浸而長，說而順，剛中而應。大「亨」以正、天之道也。「至于八月有凶」、消不久也。
+
+《象》曰：澤上有地，《臨》。君子以教思无窮，容保民无疆。
+
+初九：咸臨，貞吉。
+
+《象》曰：「咸臨貞吉」、志行正也。
+
+九二：咸臨吉，无不利。
+
+《象》曰：「咸臨吉无不利」、未順命也。
+
+六三：甘臨，无攸利；既憂之，无咎。
+
+《象》曰：「甘臨」、位不當也，「既憂之」、「咎」不長也。
+
+六四：至臨，无咎。
+
+《象》曰：「至臨无咎」、位當也。
+
+六五：知臨，大君之宜，吉。
+
+《象》曰：「大君之宜」、行中之謂也。
+
+上六：敦臨吉，无咎。
+
+《象》曰：「敦臨」之「吉」、志在內也。</div></section>
+<section class="book-section" tabindex="-1" id="section-19" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈觀〉第二十</h2><div class="prose">䷓坤下巽上
+
+《觀》盥而不薦。有孚顒若。
+
+《彖》曰：大觀在上，順而巽，中正以觀天下，《觀》。「盥而不薦、有孚顒若」、下觀而化也，觀天之神道而四時不忒。聖人以神道設教而天下服矣。
+
+《象》曰：風行地上，《觀》。先王以省方觀民設教。
+
+初六：童觀，小人无咎，君子吝。
+
+《象》曰：「初六童觀」、「小人」道也。
+
+六二：闚觀，利女貞。
+
+《象》曰：「闚觀女貞」、亦可醜也。
+
+六三：觀我生進退。
+
+《象》曰：「觀我生進退」、未失道也。
+
+六四：觀國之光，利用賓于王。
+
+《象》曰：「觀國之光」、尚「賓」也。
+
+九五：觀我生，君子无咎。
+
+《象》曰：「觀我生」、觀民也。
+
+上九：觀其生，君子无咎。
+
+《象》曰：「觀其生」、志未平也。</div></section>
+<section class="book-section" tabindex="-1" id="section-20" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈噬嗑〉第二十一</h2><div class="prose">䷔震下離上
+
+《噬嗑》亨。利用獄。
+
+《彖》曰：頤中有物曰《噬嗑》。《噬嗑》而「亨」，剛柔分，動而明，雷電合而章。柔得中而上行，雖不當位，「利用獄」也。
+
+《象》曰：雷電《噬嗑》。先王以明罰勑法。
+
+初九：屨校滅趾，无咎。
+
+《象》曰：「屨校滅趾」、不行也。
+
+六二：噬膚滅鼻，无咎。
+
+《象》曰：「噬膚滅鼻」、乘剛也。
+
+六三：噬腊肉遇毒，小吝，无咎。
+
+《象》曰：「遇毒」、位不當也。
+
+九四：噬乾胏，得金矢。利艱貞、吉。
+
+《象》曰：「利艱貞吉」、未光也。
+
+六五：噬乾肉，得黃金。貞厲无咎。
+
+《象》曰：「貞厲无咎」、得當也。
+
+上九：何校滅耳，凶。
+
+《象》曰：「何校滅耳」、聰不明也。</div></section>
+<section class="book-section" tabindex="-1" id="section-21" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈賁〉第二十二</h2><div class="prose">䷕離下艮上
+
+《賁》亨。小利有攸往。
+
+《彖》曰：《賁》「亨」，柔來而文剛，故「亨」。分剛上而文柔，故「小利有攸往」。剛柔交錯、天文也。文明以止，人文也。觀乎天文以察時變，觀乎人文以化成天下。
+
+《象》曰：山下有火，《賁》。君子以明庶政，无敢折獄。
+
+初九：賁其趾，舍車而徒。
+
+《象》曰：「舍車而徒」、義弗乘也。
+
+六二：賁其須。
+
+《象》曰：「賁其須」、與上興也。
+
+九三：賁如濡如，永貞吉。
+
+《象》曰：「永貞」之「吉」、終莫之陵也。
+
+六四：賁如皤如，白馬翰如，匪寇，婚媾。
+
+《象》曰：「六四」、當位疑也，「匪寇婚媾」、終无尤也。
+
+六五：賁于丘園，束帛戔戔，吝終吉。
+
+《象》曰：「六五」之「吉」、有喜也。
+
+上九：白賁，无咎。
+
+《象》曰：「白賁无咎」、上得志也。</div></section>
+<section class="book-section" tabindex="-1" id="section-22" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈剝〉第二十三</h2><div class="prose">䷖坤下艮上
+
+《剝》不利有攸往。
+
+《彖》曰：《剝》、剝也。柔變剛也。「不利有攸往」、小人長也。順而止之，觀象也。君子尚消息盈虛，天行也。
+
+《象》曰：山附於地，《剝》。上以厚下安宅。
+
+初六：剝床以足，蔑貞凶。
+
+《象》曰：「剝床以足」、以滅下也。
+
+六二：剝床以辨，蔑貞凶。
+
+《象》曰：「剝床以辨」、未有與也。
+
+六三：剝之无咎。
+
+《象》曰：「剝之无咎」、失上下也。
+
+六四：剝床以膚，凶。
+
+《象》曰：「剝床以膚」、切近災也。
+
+六五：貫魚以宮人寵，无不利。
+
+《象》曰：「以宮人寵」、終无尤也。
+
+上九：碩果不食，君子得輿，小人剝廬。
+
+《象》曰：「君子得輿」、民所載也，「小人剝廬」、終不可用也。</div></section>
+<section class="book-section" tabindex="-1" id="section-23" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈復〉第二十四</h2><div class="prose">䷗震下坤上
+
+《復》亨。出入无疾。朋來无咎。反復其道，七日來復。利有攸往。
+
+《彖》曰：《復》「亨」。剛反動而以順行。是以「出入无疾、朋來无咎」。「反復其道、七日來復」，天行也。「利有攸往」、剛長也。《復》、其見天地之心乎。
+
+《象》曰：雷在地中，《復》。先王以至日閉關，商旅不行，后不省方。
+
+初九：不遠復，无祗悔，元吉。
+
+《象》曰：「不遠」之「復」、以脩身也。
+
+六二：休復，吉。
+
+《象》曰：「休復」之「吉」、以下仁也。
+
+六三：頻復，厲、无咎。
+
+《象》曰：「頻復」之「厲」、義「无咎」也。
+
+六四：中行獨復。
+
+《象》曰：「中行獨復」、以從道也。
+
+六五：敦復，无悔。
+
+《象》曰：「敦復无悔」、中以自考也。
+
+上六：迷復，凶，有災眚。用行師，終有大敗，以其國君凶，至于十年不克征。
+
+《象》曰：「迷復」之「凶」、反君道也。</div></section>
+<section class="book-section" tabindex="-1" id="section-24" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈无妄〉第二十五</h2><div class="prose">䷘震下乾上
+
+《无妄》元亨，利貞。其匪正有眚，不利有攸往。
+
+《彖》曰：《无妄》，剛自外來而為主於內，動而健，剛中而應。大「亨」以正，天之命也。「其匪正有眚、不利有攸往」，无妄之往何之矣？天命不祐，行矣哉！
+
+《象》曰：天下雷行，物與《无妄》。先王以茂對時育萬物。
+
+初九：无妄，往吉。
+
+《象》曰：「无妄」之「往」、得志也。
+
+六二：不耕穫；不菑畬；則利有攸往。
+
+《象》曰：「不耕穫」、未富也。
+
+六三：无妄之災，或繫之牛，行人之得，邑人之災。
+
+《象》曰：「行人得」牛、「邑人災」也。
+
+九四：可貞，无咎。
+
+《象》曰：「可貞无咎」、固有之也。
+
+九五：无妄之疾，勿藥有喜。
+
+《象》曰：「无妄」之「藥」、不可試也。
+
+上九：无妄，行有眚，无攸利。
+
+《象》曰：「无妄」之「行」、窮之災也。</div></section>
+<section class="book-section" tabindex="-1" id="section-25" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈大畜〉第二十六</h2><div class="prose">䷙乾下艮上
+
+《大畜》利貞。不家食吉。利涉大川。
+
+《彖》曰：《大畜》，剛健篤實，煇光日新。其德剛上而尚賢，能止健，大正也，「不家食吉」、養賢也，「利涉大川」、應乎天也。
+
+《象》曰：天在山中，《大畜》。君子以多識前言往行以畜其德。
+
+初九：有厲，利己。
+
+《象》曰：「有厲利己」、不犯災也。
+
+九二：輿說輹。
+
+《象》曰：「輿說輹」、中无尤也。
+
+九三：良馬逐，利艱貞，曰閑輿衛，利有攸往。
+
+《象》曰：「利有攸往」、上合志也。
+
+六四：童牛之牿，元吉。
+
+《象》曰：「六四元吉」、有喜也。
+
+六五：豶豕之牙，吉。
+
+《象》曰：「六五」之「吉」、有慶也。
+
+上九：何天之衢，亨。
+
+《象》曰：「何天之衢」、道大行也。</div></section>
+<section class="book-section" tabindex="-1" id="section-26" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈頤〉第二十七</h2><div class="prose">䷚震下艮上
+
+《頤》貞吉。觀頤，自求口實。
+
+《彖》曰：《頤》「貞吉」，養正則吉也。「觀頤」、觀其所養也，「自求口實」、觀其自養也。天地養萬物，聖人養賢以及萬民，《頤》之時大矣哉！
+
+《象》曰：山下有雷，《頤》。君子以慎言語、節飲食。
+
+初九：舍爾靈龜，觀我朵頤，凶。
+
+《象》曰：「觀我朵頤」、亦不足貴也。
+
+六二：顛頤，拂經于丘，頤、征凶。
+
+《象》曰：「六二征凶」、行失類也。
+
+六三：拂頤貞、凶，十年勿用，无攸利。
+
+《象》曰：「十年勿用」、道大悖也。
+
+六四：顛頤，吉。虎視眈眈，其欲逐逐，无咎。
+
+《象》曰：「顛頤」之「吉」、上施光也。
+
+六五：拂經，居貞、吉，不可涉大川。
+
+《象》曰：「居貞」之「吉」、順以從上也。
+
+上九：由頤，厲、吉。利涉大川。
+
+《象》曰：「由頤厲吉」、大有慶也。</div></section>
+<section class="book-section" tabindex="-1" id="section-27" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈大過〉第二十八</h2><div class="prose">䷛巽下兌上
+
+《大過》棟橈，利有攸往，亨。
+
+《彖》曰：《大過》、大者過也。「棟橈」、本末弱也。剛過而中，巽而說，行。「利有攸往」乃「亨」。《大過》之時大矣哉！
+
+《象》曰：澤滅木，《大過》。君子以獨立不懼，遯世无悶。
+
+初六：藉用白茅，无咎。
+
+《象》曰：「藉用白茅」、柔在下也。
+
+九二：枯楊生稊，老夫得其女妻，无不利。
+
+《象》曰：「老夫女妻」、過以相與也。
+
+九三：棟橈，凶。
+
+《象》曰：「棟橈」之「凶」、不可以有輔也。
+
+九四：棟隆、吉。有它、吝。
+
+《象》曰：「棟隆」之「吉」、不橈乎下也。
+
+九五：枯楊生華，老婦得其士夫，无咎无譽。
+
+《象》曰：「枯楊生華」、何可久也，「老婦士夫」、亦可醜也。
+
+上六：過涉滅頂，凶。无咎。
+
+《象》曰：「過涉」之「凶」、不可咎也。</div></section>
+<section class="book-section" tabindex="-1" id="section-28" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈習坎〉第二十九</h2><div class="prose">䷇）䷜坎下坎上
+
+《習坎》有孚，維心、亨。行有尚。
+
+《彖》曰：《習坎》、重險也。水流而不盈。行險而不失其信。「維心亨」、乃以剛中也，「行有尚」、往有功也，天險、不可升也，地險、山川丘陵也。王公設險以守其國。險之時用大矣哉！
+
+《象》曰：水洊至，《習坎》。君子以常德行、習教事。
+
+初六：習坎，入于坎窞，凶。
+
+《象》曰：「習坎入坎」、失道「凶」也。
+
+九二：坎有險，求小得。
+
+《象》曰：「求小得」、未出中也。
+
+六三：來之坎坎，險且枕，入于坎窞，勿用。
+
+《象》曰：「來之坎坎」、終无功也。
+
+六四：樽酒、簋貳、用缶，納約自牖，終无咎。
+
+《象》曰：「樽酒簋貳」、剛柔際也。
+
+九五：坎不盈，衹既平，无咎。
+
+《象》曰：「坎不盈」、中未大也。
+
+上六：係用徽纆，寘于叢棘，三歲不得，凶。
+
+《象》曰：「上六」失道、「凶」「三歲」也。</div></section>
+<section class="book-section" tabindex="-1" id="section-29" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈離〉第三十</h2><div class="prose">䷝離下離上
+
+《離》利貞。亨。畜牝牛吉。
+
+《彖》曰：《離》、麗也。日月麗乎天，百穀草木麗乎土。重明以麗乎正，乃化成天下。柔麗乎中正，故「亨」，是以「畜牝牛吉」也。
+
+《象》曰：明兩、作《離》。大人以繼明照于四方。
+
+初九：履錯然敬之，无咎。
+
+《象》曰：「履錯」之「敬」、以辟咎也。
+
+六二：黃離，元吉。
+
+《象》曰：「黃離元吉」、得中道也。
+
+九三：日昃之離，不鼓缶而歌，則大耋之嗟，凶。
+
+《象》曰：「日昃之離」、何可久也？
+
+九四：突如、其來如，焚如，死如，棄如。
+
+《象》曰：「突如其來如」、无所容也。
+
+六五：出涕沱若，戚嗟若，吉。
+
+《象》曰：「六五」之「吉」、離王公也。
+
+上九：王用出征，有嘉折首，獲匪其醜，无咎。
+
+《象》曰：「王用出征」、以正邦也。</div></section>
+<section class="book-section" tabindex="-1" id="section-30" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈咸〉第三十一</h2><div class="prose">䷞艮下兌上
+
+《咸》亨。利貞。取女吉。
+
+《彖》曰：《咸》、感也。柔上而剛下，二氣感應以相與，止而說，男下女，是以「亨利貞、取女吉」也。天地感而萬物化生，聖人感人心而天下和平。觀其所感而天地萬物之情可見矣。
+
+《象》曰：山上有澤，《咸》。
+
+君子以虛受人。
+
+初六：咸其拇。
+
+《象》曰：「咸其拇」、志在外也。
+
+六二：咸其腓，凶。居吉。
+
+《象》曰：雖「凶居吉」、順不害也。
+
+九三：咸其股，執其隨，往吝。
+
+《象》曰：「咸其股」、亦不處也，志在「隨」人、所「執」下也。
+
+九四：貞吉。悔亡。憧憧往來，朋從爾思。
+
+《象》曰：「貞吉悔亡」、未感害也，「憧憧往來」、未光大也。
+
+九五：咸其脢，无悔。
+
+《象》曰：「咸其脢」、志末也。
+
+上六：咸其輔頰舌。
+
+《象》曰：「咸其輔頰舌」、滕口說也。</div></section>
+<section class="book-section" tabindex="-1" id="section-31" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈恆〉第三十二</h2><div class="prose">䷟巽下震上
+
+《恆》亨。无咎。利貞。利有攸往。
+
+《彖》曰：《恆》、久也。剛上而柔下。雷風相與。巽而動，剛柔皆應，《恆》。「恆亨无咎利貞」、久於其道也。天地之道恆久而不已也。「利有攸往」、終則有始也。日月得天而能久照，四時變化而能久成。聖人久於其道而天下化成。觀其所恆而天地萬物之情可見矣。
+
+《象》曰：雷風《恆》。君子以立不易方。
+
+初六：浚恆，貞凶，无攸利。
+
+《象》曰：「浚恆」之「凶」、始求深也。
+
+九二：悔亡。
+
+《象》曰：「九二悔亡」、能久中也。
+
+九三：不恆其德，或承之羞，貞吝。
+
+《象》曰：「不恆其德」、无所容也。
+
+九四：田无禽。
+
+《象》曰：久非其位，安得「禽」也。
+
+六五：恆其德、貞，婦人吉，夫子凶。
+
+《象》曰：「婦人貞吉」、從一而終也。「夫子」制義、從婦「凶」也。
+
+上六：振恆，凶。
+
+《象》曰：「振恆」在上、大无功也。</div></section>
+<section class="book-section" tabindex="-1" id="section-32" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈遯〉第三十三</h2><div class="prose">䷠艮下乾上
+
+《遯》亨。小利貞。
+
+《彖》曰：《遯》「亨」，遯而亨也。剛當位而應，與時行也。「小利貞」、浸而長也。《遯》之時義大矣哉！
+
+《象》曰：天下有山，《遯》。君子以遠小人，不惡而嚴。
+
+初六：遯尾、厲，勿用有攸往。
+
+《象》曰：「遯尾」之「厲」、不往何災也？
+
+六二：執之用黃牛之革，莫之勝、說。
+
+《象》曰：「執用黃牛」、固志也。
+
+九三：係遯，有疾厲，畜臣妾吉。
+
+《象》曰：「係遯」之「厲」、有疾憊也，「畜臣妾吉」、不可大事也。
+
+九四：好遯，君子吉，小人否。
+
+《象》曰：「君子好遯、小人否」也。
+
+九五：嘉遯，貞吉。
+
+《象》曰：「嘉遯貞吉」、以正志也。
+
+上九：肥遯，无不利。
+
+《象》曰：「肥遯无不利」、无所疑也。</div></section>
+<section class="book-section" tabindex="-1" id="section-33" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈大壯〉第三十四</h2><div class="prose">䷡乾下震上
+
+《大壯》利貞。
+
+《彖》曰：《大壯》、大者壯也。剛以動，故壯。《大壯》「利貞」，大者、正也。正大而天地之情可見矣。
+
+《象》曰：雷在天上，《大壯》。君子以非禮弗履。
+
+初九：壯于趾，征凶有孚。
+
+《象》曰：「壯于趾」、其「孚」窮也。
+
+九二：貞吉。
+
+《象》曰：「九二貞吉」、以中也。
+
+九三：小人用壯，君子用罔，貞厲。羝羊觸藩，羸其角。
+
+《象》曰：「小人用壯、君子用罔」也。
+
+九四：貞吉，悔亡。藩決不羸，壯于大輿之輹。
+
+《象》曰：「藩決不羸」、尚往也。
+
+六五：喪羊于易，无悔。
+
+《象》曰：「喪羊于易」、位不當也。
+
+上六：羝羊觸藩，不能退，不能遂，无攸利，艱則吉。
+
+《象》曰：「不能退、不能遂」、不詳也，「艱則吉」、咎不長也。</div></section>
+<section class="book-section" tabindex="-1" id="section-34" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈晉〉第三十五</h2><div class="prose">䷢坤下離上
+
+《晉》康侯用錫馬蕃庶，晝日三接。
+
+《彖》曰：《晉》、進也。明出地上。順而麗乎大明，柔進而上行，是以「康侯」用「錫馬蕃庶晝日三接」也。
+
+《象》曰：明出地上，《晉》。君子以自昭明德。
+
+初六：晉如摧如，貞吉。罔孚，裕无咎。
+
+《象》曰：「晉如摧如」、獨行正也，「裕无咎」、未受命也。
+
+六二：晉如，愁如，貞吉。受茲介福于其王母。
+
+《象》曰：「受茲介福」、以中正也。
+
+六三：眾允，悔亡。
+
+《象》曰：「眾允」之、志上行也。
+
+九四：晉如鼫鼠，貞厲。
+
+《象》曰：「鼫鼠貞厲」、位不當也。
+
+六五：悔亡，失得勿恤。往吉，无不利。
+
+《象》曰：「失得勿恤」、往有慶也。
+
+上九：晉其角，維用伐邑，厲吉，无咎，貞吝。
+
+《象》曰：「維用伐邑」、道未光也。</div></section>
+<section class="book-section" tabindex="-1" id="section-35" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈明夷〉第三十六</h2><div class="prose">䷣離下坤上
+
+《明夷》利艱貞。
+
+《彖》曰：明入地中，《明夷》。內文明而外柔順，以蒙大難，文王以之。「利艱貞」、晦其明也，內難而能正其志，箕子以之。
+
+《象》曰：明入地中，《明夷》。君子以莅眾用晦而明。
+
+初九：明夷于飛，垂其翼。君子于行，三日不食。有攸往，主人有言。
+
+《象》曰：「君子于行」、義「不食」也。
+
+六二：明夷、夷于左股，用拯馬、壯吉。
+
+《象》曰：「六二」之「吉」、順以則也。
+
+九三：明夷于南狩，得其大首，不可疾貞。
+
+《象》曰：「南狩」之志、乃大得也。
+
+六四：入于左腹，獲明夷之心于出門庭。
+
+《象》曰：「入于左腹」、獲心意也。
+
+六五：箕子之明夷，利貞。
+
+《象》曰：「箕子」之「貞」、「明」不可息也。
+
+上六：不明、晦。初登于天，後入于地。
+
+《象》曰：「初登于天」、照四國也，「後入于地」、失則也。</div></section>
+<section class="book-section" tabindex="-1" id="section-36" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈家人〉第三十七</h2><div class="prose">䷤離下巽上
+
+《家人》利女貞。
+
+《彖》曰：《家人》，女正位乎內，男正位乎外。男女正，天地之大義也。家人有嚴君焉，父母之謂也。父父、子子、兄兄、弟弟、夫夫、婦婦而家道正，正家而天下定矣。
+
+《象》曰：風自火出，《家人》。君子以言有物而行有恆。
+
+初九：閑有家，悔亡。
+
+《象》曰：「閑有家」、志未變也。
+
+六二：无攸遂，在中饋，貞吉。
+
+《象》曰：「六二」之「吉」、順以巽也。
+
+九三：家人嗃嗃，悔厲，吉；婦子嘻嘻，終吝。
+
+《象》曰：「家人嗃嗃」、未失也，「婦子嘻嘻」、失家節也。
+
+六四：富家，大吉。
+
+《象》曰：「富家大吉」、順在位也。
+
+九五：王假有家，勿恤，吉。
+
+《象》曰：「王假有家」、交相愛也。
+
+上九：有孚威如，終吉。
+
+《象》曰：「威如」之「吉」、反身之謂也。</div></section>
+<section class="book-section" tabindex="-1" id="section-37" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈睽〉第三十八</h2><div class="prose">䷥兌下離上
+
+《睽》小事吉。
+
+《彖》曰：《睽》、火動而上，澤動而下。二女同居，其志不同行。說而麗乎明，柔進而上行，得中而應乎剛，是以「小事吉」。天地睽而其事同也。男女睽而其志通也。萬物睽而其事類也，睽之時用大矣哉！
+
+《象》曰：上火下澤，《睽》。君子以同而異。
+
+初九：悔亡。喪馬，勿逐自復。見惡人无咎。
+
+《象》曰：「見惡人」、以辟「咎」也。
+
+九二：遇主于巷，无咎。
+
+《象》曰：「遇主于巷」、未失道也。
+
+六三：見輿曳，其牛掣，其人天且劓，无初有終。
+
+《象》曰：「見輿曳」、位不當也，「无初有終」、遇剛也。
+
+九四：睽孤，遇元夫，交孚，厲无咎。
+
+《象》曰：「交孚无咎」、志行也。
+
+六五：悔亡。厥宗噬膚，往何咎？
+
+《象》曰：「厥宗噬膚」、「往」有慶也。
+
+上九：睽孤，見豕負塗，載鬼一車，先張之弧，後說之弧，匪寇，婚媾。往遇雨，則吉。
+
+《象》曰：「遇雨」之「吉」、群疑亡也。</div></section>
+<section class="book-section" tabindex="-1" id="section-38" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈蹇〉第三十九</h2><div class="prose">䷎）䷦艮下坎上
+
+《蹇》利西南，不利東北。利見大人。貞吉。
+
+《彖》曰：《蹇》、難也，險在前也。見險而能止，知矣哉！《蹇》、「利西南」，往得中也，「不利東北」、其道窮也，「利見大人」、往有功也，當位「貞吉」、以正邦也。《蹇》之時用大矣哉！
+
+《象》曰：山上有水，《蹇》。君子以反身修德。
+
+初六：往蹇來譽。
+
+《象》曰：「往蹇來譽」、宜待也。
+
+六二：王臣蹇蹇，匪躬之故。
+
+《象》曰：「王臣蹇蹇」、終无尤也。
+
+九三：往蹇來反。
+
+《象》曰：「往蹇來反」、內喜之也。
+
+六四：往蹇來連。
+
+《象》曰：「往蹇來連」、當位實也。
+
+九五：大蹇，朋來。
+
+《象》曰：「大蹇朋來」、以中節也。
+
+上六：往蹇，來碩，吉，利見大人。
+
+《象》曰：「往蹇來碩」、志在內也，「利見大人」、以從貴也。</div></section>
+<section class="book-section" tabindex="-1" id="section-39" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈解〉第四十</h2><div class="prose">䷧坎下震上
+
+《解》利西南。无所往，其來復吉。有攸往，夙吉。
+
+《彖》曰：《解》、險以動，動而免乎險，《解》。《解》「利西南」、往得眾也，「其來復吉」、乃得中也。「有攸往夙吉」、往有功也。天地解而雷雨作，雷雨作而百果草木皆甲坼。《解》之時大矣哉！
+
+《象》曰：雷雨作，《解》。君子以赦過宥罪。
+
+初六：无咎。
+
+《象》曰：剛柔之際，義「无咎」也。
+
+九二：田獲三狐，得黃矢，貞吉。
+
+《象》曰：「九二」「貞吉」、得中道也。
+
+六三：負且乘，致寇至，貞吝。
+
+《象》曰：「負且乘」、亦可醜也。自我致戎，又誰咎也？
+
+九四：解而拇，朋至斯孚。
+
+《象》曰：「解而拇」、未當位也。
+
+六五：君子維有解，吉，有孚于小人。
+
+《象》曰：「君子有解」、「小人」退也。
+
+上六：公用射隼于高墉之上，獲之，无不利。
+
+《象》曰：「公用射隼」、以解悖也。</div></section>
+<section class="book-section" tabindex="-1" id="section-40" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈損〉第四十一</h2><div class="prose">䷨兌下艮上
+
+《損》有孚，元吉，无咎可貞。利有攸往。曷之用，二簋可用享。
+
+《彖》曰：《損》、損下益上，其道上行。損而「有孚」，「元吉、无咎、可貞、利有攸往、曷之用二簋、可用享」，二簋應有時。損剛益柔有時，損益盈虛，與時偕行。
+
+《象》曰：山下有澤，《損》。君子以懲忿窒欲。
+
+初九：已事遄往，无咎。酌損之。
+
+《象》曰：「已事遄往」，尚合志也。
+
+九二：利貞。征凶，弗損，益之。
+
+《象》曰：「九二利貞」，中以為志也。
+
+六三：三人行則損一人，一人行則得其友。
+
+《象》曰：「一人行」，「三」則疑也。
+
+六四：損其疾，使遄有喜，无咎。
+
+《象》曰：「損其疾」，亦可「喜」也。
+
+六五：或益之十朋之龜，弗克違，元吉。
+
+《象》曰：「六五」「元吉」，自上祐也。
+
+上九：弗損，益之，无咎，貞吉，利有攸往，得臣无家。
+
+《象》曰：「弗損、益之」，大得志也。</div></section>
+<section class="book-section" tabindex="-1" id="section-41" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈益〉第四十二</h2><div class="prose">䷩震下巽上
+
+《益》利有攸往。利涉大川。
+
+《彖》曰：《益》、損上益下，民說无疆。自上下下，其道大光。「利有攸往」、中正有慶，「利涉大川」、木道乃行。《益》動而巽，日進无疆。天施地生，其益无方。凡益之道，與時偕行。
+
+《象》曰：風雷《益》。君子以見善則遷，有過則改。
+
+初九：利用為大作，元吉，无咎。
+
+《象》曰：「元吉无咎」、下不厚事也。
+
+六二：或益之，十朋之龜弗克違。永貞吉。王用享于帝，吉。
+
+《象》曰：「或益之」、自外來也。
+
+六三：益之，用凶事无咎。有孚，中行。告公用圭。
+
+《象》曰：「益用凶事」、固有之也。
+
+六四：中行告公，從，利用為依遷國。
+
+《象》曰：「告公從」、以益志也。
+
+九五：有孚惠心，勿問，元吉。有孚惠我德。
+
+《象》曰：「有孚惠心」、「勿問」之矣，「惠我德」、大得志也。
+
+上九：莫益之，或擊之，立心勿恆，凶。
+
+《象》曰：「莫益之」、偏辭也，「或擊之」、自外來也。</div></section>
+<section class="book-section" tabindex="-1" id="section-42" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈夬〉第四十三</h2><div class="prose">䷪乾下兌上
+
+《夬》揚于王庭，孚號有厲，告自邑。不利即戎，利有攸往。
+
+《彖》曰：《夬》、決也，剛決柔也。健而說，決而和。「揚于王庭」、柔乘五剛也，「孚號有厲」、其危乃光也。「告自邑不利即戎」、所尚乃窮也，「利有攸往」、剛長乃終也。
+
+《象》曰：澤上於天，《夬》。君子以施祿及下，居德則忌。
+
+初九：壯于前趾，往不勝，為咎。
+
+《象》曰：「不勝」而「往」、「咎」也。
+
+九二：惕號，莫夜有戎，勿恤。
+
+《象》曰：「有戎勿恤」、得中道也。
+
+九三：壯于頄，有凶。君子夬夬，獨行遇雨、若濡，有慍无咎。
+
+《象》曰：「君子夬夬」、終「无咎」也。
+
+九四：臀无膚，其行次且。牽羊悔亡。聞言不信。
+
+《象》曰：「其行次且」、位不當也，「聞言不信」、聰不明也。
+
+九五：莧陸夬夬，中行无咎。
+
+《象》曰：「中行无咎」、中未光也。
+
+上六：无號，終有凶。
+
+《象》曰：「无號」之「凶」、終不可長也。</div></section>
+<section class="book-section" tabindex="-1" id="section-43" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈姤〉第四十四</h2><div class="prose">䷫巽下乾上
+
+《姤》女壯，勿用取女。
+
+《彖》曰：《姤》、遇也，柔遇剛也。「勿用取女」、不可與長也。天地相遇，品物咸章也。剛遇中正，天下大行也。《姤》之時義大矣哉！
+
+《象》曰：天下有風，《姤》。后以施命誥四方。
+
+初六：繫于金柅，貞吉。有攸往，見凶，羸豕孚蹢躅。
+
+《象》曰：「繫于金柅」、柔道牽也。
+
+九二：包有魚，无咎，不利賓。
+
+《象》曰：「包有魚」、義不及「賓」也。
+
+九三：臀无膚，其行次且，厲，无大咎。
+
+《象》曰：「其行次且」、行未牽也。
+
+九四：包无魚，起凶。
+
+《象》曰：「无魚」之「凶」、遠民也。
+
+九五：以杞包瓜，含章，有隕自天。
+
+《象》曰：「九五」「含章」、中正也，「有隕自天」、志不舍命也。
+
+上九：姤其角，吝，无咎。
+
+《象》曰：「姤其角」、上窮「吝」也。</div></section>
+<section class="book-section" tabindex="-1" id="section-44" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈萃〉第四十五</h2><div class="prose">䷬坤下兌上
+
+《萃》亨，王假有廟。利見大人。亨，利貞，用大牲吉。利有攸往。
+
+《彖》曰：《萃》、聚也。順以說，剛中而應，故聚也。「王假有廟」、致孝享也，「利見大人亨」、聚以正也，「用大牲吉、利有攸往」、順天命也。觀其所聚而天地萬物之情可見矣。
+
+《象》曰：澤上於地，《萃》。君子以除戎器，戒不虞。
+
+初六：有孚不終，乃亂乃萃，若號一握為笑，勿恤，往无咎。
+
+《象》曰：「乃亂乃萃」、其志亂也。
+
+六二：引吉，无咎，孚乃利用禴。
+
+《象》曰：「引吉无咎」、中未變也。
+
+六三：萃如嗟如，无攸利，往无咎，小吝。
+
+《象》曰：「往无咎」、上巽也。
+
+九四：大吉无咎。
+
+《象》曰：「大吉无咎」、位不當也。
+
+九五：萃有位，无咎。匪孚，元、永貞悔亡。
+
+《象》曰：「萃有位」、志未光也。
+
+上六：齎咨涕洟，无咎。
+
+《象》曰：「齎咨涕洟」、未安上也。</div></section>
+<section class="book-section" tabindex="-1" id="section-45" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈升〉第四十六</h2><div class="prose">䷭巽下坤上
+
+《升》元亨。用見大人，勿恤。南征吉。
+
+《彖》曰：柔以時升，巽而順，剛中而應，是以大「亨」。「用見大人勿恤」、有慶也，「南征吉」、志行也。
+
+《象》曰：地中生木，升。君子以順德，積小以高大。
+
+初六：允升，大吉。
+
+《象》曰：「允升大吉」、上合志也。
+
+九二：孚乃利用禴，无咎。
+
+《象》曰：「九二」之「孚」、有喜也。
+
+九三：升虛邑。
+
+《象》曰：「升虛邑」、无所疑也。
+
+六四：王用亨于岐山，吉，无咎。
+
+《象》曰：「王用亨于岐山」、順事也。
+
+六五：貞吉，升階。
+
+《象》曰：「貞吉升階」、大得志也。
+
+上六：冥升，利于不息之貞。
+
+《象》曰：「冥升」在上、消不富也。</div></section>
+<section class="book-section" tabindex="-1" id="section-46" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈困〉第四十七</h2><div class="prose">䷮坎下兌上
+
+《困》亨。貞大人吉，无咎。有言不信。
+
+《彖》曰：《困》、剛揜也。險以說，困而不失其所，「亨」，其唯君子乎。「貞大人吉」、以剛中也，「有言不信」、尚口乃窮也。
+
+《象》曰：澤无水，困。君子以致命遂志。
+
+初六：臀困于株木，入于幽谷，三歲不覿。
+
+《象》曰：「入于幽谷」，幽、不明也。
+
+九二：困于酒食，朱紱方來。利用享祀。征凶无咎。
+
+《象》曰：「困于酒食」、中有慶也。
+
+六三：困于石，據于蒺蔾，入于其宮，不見其妻，凶。
+
+《象》曰：「據于蒺蔾」、乘剛也，「入于其宮不見其妻」、不祥也。
+
+九四：來徐徐，困于金車，吝，有終。
+
+《象》曰：「來徐徐」、志在下也。雖不當位，有與也。
+
+九五：劓刖，困于赤紱，乃徐有說，利用祭祀。
+
+《象》曰：「劓刖」、志未得也，「乃徐有說」、以中直也，「利用祭祀」、受福也。
+
+上六：困于葛藟，于臲卼，曰動悔有悔，征吉。
+
+《象》曰：「困于葛藟」、未當也，「動悔有悔」、「吉」行也。</div></section>
+<section class="book-section" tabindex="-1" id="section-47" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈井〉第四十八</h2><div class="prose">䷯巽下坎上
+
+《井》改邑不改井，无喪无得。往來井井。汔至，亦未繘井，羸其瓶，凶。
+
+《彖》曰：巽乎水而上水，《井》。井養而不窮也。「改邑不改井」、乃以剛中也。「往來井，井汔至、亦未繘井」、未有功也，「羸其瓶」、是以凶也。
+
+《象》曰：木上有水，《井》。君子以勞民勸相。
+
+初六：井泥不食。舊井无禽。
+
+《象》曰：「井泥不食」、下也，「舊井无禽」、時舍也。
+
+九二：井谷射鮒，甕敝漏。
+
+《象》曰：「井谷射鮒」、无與也。
+
+九三：井渫不食，為我心惻。可用汲，王明，並受其福。
+
+《象》曰：「井渫不食」、行「惻」也，求「王明」、「受福」也。
+
+六四：井甃，无咎。
+
+《象》曰：「井甃无咎」、脩井也。
+
+九五：井洌寒泉，食。
+
+《象》曰：「寒泉」之「食」、中正也。
+
+上六：井收勿幕，有孚元吉。
+
+《象》曰：「元吉」在「上」、大成也。</div></section>
+<section class="book-section" tabindex="-1" id="section-48" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈革〉第四十九</h2><div class="prose">䷰離下兌上
+
+《革》巳日乃孚。元亨，利貞，悔亡。
+
+《彖》曰：《革》、水火相息，二女同居，其志不相得曰革。「巳日乃孚」，革而信之。文明以說，大「亨」以正。革而當，其「悔」乃「亡」。天地革而四時成，湯武革命，順乎天而應乎人。《革》之時大矣哉！
+
+《象》曰：澤中有火，《革》。君子以治厤明時。
+
+初九：鞏用黃牛之革。
+
+《象》曰：「鞏用黃牛」、不可以有為也。
+
+六二：巳日乃革之，征吉，无咎。
+
+《象》曰：「巳日革之」、行有嘉也。
+
+九三：征凶。貞厲。革言三就有孚。
+
+《象》曰：「革言三就」、又何之矣。
+
+九四：悔亡。有孚改命吉。
+
+《象》曰：「改命」之「吉」、信志也。
+
+九五：大人虎變，未占有孚。
+
+《象》曰：「大人虎變」、其文炳也。
+
+上六：君子豹變，小人革面，征凶，居貞吉。
+
+《象》曰：「君子豹變」、其文蔚也，「小人革面」、順以從君也。</div></section>
+<section class="book-section" tabindex="-1" id="section-49" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈鼎〉第五十</h2><div class="prose">䷱巽下離上
+
+《鼎》元吉，亨。
+
+《彖》曰：《鼎》象也、以木巽火，亨飪也。聖人亨以享上帝，而大亨以養聖賢。巽而耳目聰明，柔進而上行，得中而應乎剛，是以「元亨」。
+
+《象》曰：木上有火，《鼎》。君子以正位凝命。
+
+初六：鼎顛趾，利出否。得妾以其子，无咎。
+
+《象》曰：「鼎顛趾」、未悖也，「利出否」、以從貴也。
+
+九二：鼎有實，我仇有疾，不我能即，吉。
+
+《象》曰：「鼎有實」、慎所之也，「我仇有疾」、終无尤也。
+
+九三：鼎耳革，其行塞，雉膏不食，方雨，虧悔，終吉。
+
+《象》曰：「鼎耳革」、失其義也。
+
+九四：鼎折足，覆公餗，其形渥，凶。
+
+《象》曰：「覆公餗」、信如何也。
+
+六五：鼎黃耳金鉉，利貞。
+
+《象》曰：「鼎黃耳」、中以為實也。
+
+上九：鼎玉鉉，大吉，无不利。
+
+《象》曰：「玉鉉」在「上」、剛柔節也。</div></section>
+<section class="book-section" tabindex="-1" id="section-50" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈震〉第五十一</h2><div class="prose">䷲震下震上
+
+《震》亨。震來虩虩，笑言啞啞，震驚百里，不喪匕鬯。
+
+《彖》曰：《震》「亨」。「震來虩虩」、恐致福也，「笑言啞啞」、後有則也，「震驚百里」、驚遠而懼邇也。不喪匕鬯、出可以守宗廟社稷，以為祭主也。
+
+《象》曰：洊雷、《震》。君子以恐懼脩省。
+
+初九：「震來虩虩」，後「笑言啞啞」，吉。
+
+《象》曰：「震來虩虩」、恐致福也，「笑言啞啞」、「後」有則也。
+
+六二：震來厲，億喪貝，躋于九陵，勿逐，七日得。
+
+《象》曰：「震來厲」、乘剛也。
+
+六三：震蘇蘇，震行无眚。
+
+《象》曰：「震蘇蘇」、位不當也。
+
+九四：震遂泥。
+
+《象》曰：「震遂泥」、未光也。
+
+六五：震往來厲，意无喪有事。
+
+《象》曰：「震往來厲」、危行也，其事在中、大「无喪」也。
+
+上六：震索索，視矍矍，征凶。震不于其躬、于其鄰、无咎。婚媾有言。
+
+《象》曰：「震索索」、中未得也，雖「凶」「无咎」、畏鄰戒也。</div></section>
+<section class="book-section" tabindex="-1" id="section-51" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈艮〉第五十二</h2><div class="prose">䷳艮下艮上
+
+《艮》其背，不獲其身，行其庭，不見其人，无咎。
+
+《彖》曰：《艮》、止也。時止則止，時行則行，動靜不失其時，其道光明。艮其止，止其所也。上下敵應，不相與也。是以不獲其身、行其庭不見其人，无咎也。
+
+《象》曰：兼山，《艮》。君子以思不出其位。
+
+初六：艮其趾，无咎。利永貞。
+
+《象》曰：「艮其趾」、未失正也。
+
+六二：艮其腓，不拯其隨，其心不快。
+
+《象》曰：「不拯其隨」、未退聽也。
+
+九三：艮其限，列其夤，厲薰心。
+
+《象》曰：「艮其限」、危「薰心」也。
+
+六四：艮其身，无咎。
+
+《象》曰：「艮其身」、止諸躬也。
+
+六五：艮其輔，言有序，悔亡。
+
+《象》曰：「艮其輔」、以中正也。
+
+上九：敦艮，吉。
+
+《象》曰：「敦艮」之「吉」、以厚終也。</div></section>
+<section class="book-section" tabindex="-1" id="section-52" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈漸〉第五十三</h2><div class="prose">䷴艮下巽上
+
+《漸》女歸吉。利貞。
+
+《彖》曰：《漸》之進也。「女歸吉」也，進得位，往有功也。進以正，可以正邦也。其位、剛得中也。止而巽，動不窮也。
+
+《象》曰：山上有木，《漸》。君子以居賢德善俗。
+
+初六：鴻漸于干。小子厲有言，无咎。
+
+《象》曰：「小子」之「厲」、義「无咎」也。
+
+六二：鴻漸于磐，飲食衎衎，吉。
+
+《象》曰：「飲食衎衎」、不素飽也。
+
+九三：鴻漸于陸。夫征不復，婦孕不育，凶。利禦寇。
+
+《象》曰：「夫征不復」、離群醜也，「婦孕不育」、失其道也，「利用禦寇」、順相保也。
+
+六四：鴻漸于木，或得其桷，无咎。
+
+《象》曰：「或得其桷」、順以巽也。
+
+九五：鴻漸于陵，婦三歲不孕，終莫之勝，吉。
+
+《象》曰：「終莫之勝吉」、得所願也。
+
+上九：鴻漸于陸，其羽可用為儀，吉。
+
+《象》曰：「其羽可用為儀吉」、不可亂也。</div></section>
+<section class="book-section" tabindex="-1" id="section-53" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈歸妹〉第五十四</h2><div class="prose">䷵兌下震上
+
+《歸妹》征凶，无攸利。
+
+《彖》曰：《歸妹》、天地之大義也。天地不交而萬物不興。《歸妹》、人之終始也。說以動，所歸妹也。「征凶」、位不當也，「无攸利」、柔乘剛也。
+
+《象》曰：澤上有雷，《歸妹》。君子以永終知敝。
+
+初九：歸妹以娣。跛能履，征吉。
+
+《象》曰：「歸妹以娣」、以恆也，「跛能履」、「吉」相承也。
+
+九二：眇能視，利幽人之貞。
+
+《象》曰：「利幽人之貞」、未變常也。
+
+六三：歸妹以須，反歸以娣。
+
+《象》曰：「歸妹以須」、未當也。
+
+九四：歸妹愆期，遲歸有時。
+
+《象》曰：「愆期」之志、有待而行也。
+
+六五：帝乙歸妹，其君之袂不如其娣之袂良。月幾望、吉。
+
+《象》曰：「帝乙歸妹」、「不如其娣之袂良」也。其位在中，以貴行也。
+
+上六：女承筐，无實，士刲羊，无血，无攸利。
+
+《象》曰：「上六」「无實」、「承」虛「筐」也。</div></section>
+<section class="book-section" tabindex="-1" id="section-54" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈豐〉第五十五</h2><div class="prose">䷶離下震上
+
+《豐》亨，王假之。勿憂，宜日中。
+
+《彖》曰：《豐》、大也。明以動，故《豐》。「王假之」、尚大也。「勿憂宜日中」、宜照天下也。日中則昃，月盈則食，天地盈虛，與時消息，而況於人乎，況於鬼神乎？
+
+《象》曰：雷電皆至，《豐》。君子以折獄致刑。
+
+初九：遇其配主，雖旬无咎，往有尚。
+
+《象》曰：「雖旬无咎」、過旬災也。
+
+六二：豐其蔀，日中見斗。往得疑疾，有孚，發若吉。
+
+《象》曰：「有孚發若」、信以發志也。
+
+九三：豐其沛，日中見沬，折其右肱，无咎。
+
+《象》曰：「豐其沛」、不可大事也，「折其右肱」、終不可用也。
+
+九四：豐其蔀，日中見斗，遇其夷主，吉。
+
+《象》曰：「豐其蔀」、位不當也。「日中見斗」、幽不明也，「遇其夷主」、「吉」行也。
+
+六五：來章，有慶譽，吉。
+
+《象》曰：「六五」之「吉」、有慶也。
+
+上六：豐其屋，蔀其家，闚其戶，闃其无人，三歲不覿，凶。
+
+《象》曰：「豐其屋」、天際翔也。「闚其戶、闃其无人」、自藏也。</div></section>
+<section class="book-section" tabindex="-1" id="section-55" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈旅〉第五十六</h2><div class="prose">䷷艮下離上
+
+《旅》小亨。旅貞吉。
+
+《彖》曰：《旅》「小亨」，柔得中乎外而順乎剛，止而麗乎明，是以「小亨旅貞吉」也。旅之時義大矣哉！
+
+《象》曰：山上有火，《旅》。君子以明慎用刑而不留獄。
+
+初六：旅瑣瑣斯，其所取災。
+
+《象》曰：「旅瑣瑣」、志窮「災」也。
+
+六二：旅即次，懷其資，得童僕貞。
+
+《象》曰：「得童僕貞」，終无尤也。
+
+九三：旅焚其次，喪其童僕貞，厲。
+
+《象》曰：「旅焚其次」，亦以傷矣。以旅與下，其義「喪」也。
+
+九四：旅于處，得其資斧，我心不快。
+
+《象》曰：「旅于處」、未得位也。「得其資斧」、「心」未「快」也。
+
+六五：射雉一矢亡，終以譽命。
+
+《象》曰：「終以譽命」、上逮也。
+
+上九：鳥焚其巢，旅人先笑後號咷。喪牛于易，凶。
+
+《象》曰：以「旅」在「上」、其義「焚」也，「喪牛于易」、終莫之聞也。</div></section>
+<section class="book-section" tabindex="-1" id="section-56" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈巽〉第五十七</h2><div class="prose">䷸巽下巽上
+
+《巽》小亨。利有攸往。利見大人。
+
+《彖》曰：重巽以申命。剛巽乎中正而志行。柔皆順乎剛，是以「小亨、利有攸往、利見大人」。
+
+《象》曰：隨風，《巽》。君子以申命行事。
+
+初六：進退。利武人之貞。
+
+《象》曰：「進退」、志疑也，「利武人之貞」、志治也。
+
+九二：巽在床下，用史巫、紛若吉、无咎。
+
+《象》曰：「紛若」之「吉」、得中也。
+
+九三：頻巽，吝。
+
+《象》曰：「頻巽」之「吝」、志窮也。
+
+六四：悔亡，田獲三品。
+
+《象》曰：「田獲三品」、有功也。
+
+九五：貞吉，悔亡，无不利，无初有終。先庚三日，後庚三日，吉。
+
+《象》曰：「九五」之「吉」、位正中也。
+
+上九：巽在床下，喪其資斧，貞凶。
+
+《象》曰：「巽在床下」、「上」窮也，「喪其資斧」、正乎「凶」也。</div></section>
+<section class="book-section" tabindex="-1" id="section-57" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈兌〉第五十八</h2><div class="prose">䷹兌下兌上
+
+《兌》亨。利貞。
+
+《彖》曰：《兌》、說也。剛中而柔外。說以「利貞」，是以順乎天而應乎人。說以先民，民忘其勞。說以犯難，民忘其死。說之大，民勸矣哉！
+
+《象》曰：麗澤，《兌》。君子以朋友講習。
+
+初九：和兌，吉。
+
+《象》曰：「和兌」之「吉」、行未疑也。
+
+九二：孚兌，吉，悔亡。
+
+《象》曰：「孚兌」之「吉」、信志也。
+
+六三：來兌，凶。
+
+《象》曰：「來兌」之「凶」、位不當也。
+
+九四：商兌未寧，介疾有喜。
+
+《象》曰：「九四」之「喜」、有慶也。
+
+九五：孚于剝，有厲。
+
+《象》曰：「孚于剝」、位正當也。
+
+上六：引兌。
+
+《象》曰：「上六、引兌」、未光也。</div></section>
+<section class="book-section" tabindex="-1" id="section-58" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈渙〉第五十九</h2><div class="prose">䷺坎下巽上
+
+《渙》亨。王假有廟。利涉大川，利貞。
+
+《彖》曰：《渙》「亨」，剛來而不窮，柔得位乎外而上同。「王假有廟」、王乃在中也，「利涉大川」、乘木有功也。
+
+《象》曰：風行水上，《渙》。先王以享于帝，立廟。
+
+初六：用拯馬壯，吉。
+
+《象》曰：「初六」之「吉」、順也。
+
+九二：渙奔其机，悔亡。
+
+《象》曰：「渙奔其机」、得願也。
+
+六三：渙其躬，无悔。
+
+《象》曰：「渙其躬」、志在外也。
+
+六四：渙其群，元吉。渙有丘，匪夷所思。
+
+《象》曰：「渙其群元吉」、光大也。
+
+九五：渙汗其大號，渙王居，无咎。
+
+《象》曰：「王居无咎」、正位也。
+
+上九：渙其血，去逖出，无咎。
+
+《象》曰：「渙其血」、遠害也。</div></section>
+<section class="book-section" tabindex="-1" id="section-59" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈節〉第六十</h2><div class="prose">䷻兌下坎上
+
+《節》亨。苦節，不可貞。
+
+《彖》曰：《節》「亨」。剛柔分而剛得中。「苦節不可貞」、其道窮也。說以行險，當位以節，中正以通。天地節而四時成。節以制度，不傷財，不害民。
+
+《象》曰：澤上有水，《節》。君子以制數度，議德行。
+
+初九：不出戶庭，无咎。
+
+《象》曰：「不出戶庭」、知通塞也。
+
+九二：不出門庭，凶。
+
+《象》曰：「不出門庭凶」、失時極也。
+
+六三：不節若，則嗟若，无咎。
+
+《象》曰：「不節」之「嗟」、又誰「咎」也。
+
+六四：安節。亨。
+
+《象》曰：「安節」之「亨」、承上道也。
+
+九五：甘節，吉，往有尚。
+
+《象》曰：「甘節」之「吉」、居位中也。
+
+上六：苦節，貞凶。悔亡。
+
+《象》曰：「苦節貞凶」、其道窮也。</div></section>
+<section class="book-section" tabindex="-1" id="section-60" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈中孚〉第六十一</h2><div class="prose">䷼兌下巽上
+
+《中孚》豚魚，吉。利涉大川，利貞。
+
+《彖》曰：《中孚》、柔在內而剛得中，說而巽，孚，乃化邦也。「豚魚吉」、信及豚魚也，「利涉大川」、乘木舟虛也，中孚以「利貞」、乃應乎天也。
+
+《象》曰：澤上有風，《中孚》。君子以議獄緩死。
+
+初九：虞吉，有它不燕。
+
+《象》曰：「初九、虞吉」、志未變也。
+
+九二：鳴鶴在陰，其子和之。我有好爵，吾與爾靡之。
+
+《象》曰：「其子和之」、中心願也。
+
+六三：得敵，或鼓或罷，或泣或歌。
+
+《象》曰：「或鼓或罷」、位不當也。
+
+六四：月幾望，馬匹亡，无咎。
+
+《象》曰：「馬匹亡」、絕類上也。
+
+九五：有孚攣如，无咎。
+
+《象》曰：「有孚攣如」、位正當也。
+
+上九：翰音登于天，貞凶。
+
+《象》曰：「翰音登于天」、何可長也。</div></section>
+<section class="book-section" tabindex="-1" id="section-61" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈小過〉第六十二</h2><div class="prose">䷽艮下震上
+
+《小過》亨。利貞。可小事，不可大事。飛鳥遺之音，不宜上，宜下，大吉。
+
+《彖》曰：《小過》「亨」、小者過而亨也。過以「利貞」、與時行也。柔得中，是以「小事吉」也。剛失位而不中，是以「不可大事」也。有「飛鳥」之象焉，「飛鳥遺之音、不宜上、宜下、大吉」、上逆而下順也。
+
+《象》曰：山上有雷，《小過》。君子以行過乎恭，喪過乎哀，用過乎儉。
+
+初六：飛鳥以凶。
+
+《象》曰：「飛鳥以凶」、不可如何也。
+
+六二：過其祖，遇其妣。不及其君，遇其臣。无咎。
+
+《象》曰：「不及其君」、臣不可過也。
+
+九三：弗過、防之，從或戕之，凶。
+
+《象》曰：「從或戕之」、「凶」如何也？
+
+九四：无咎。弗過、遇之，往厲必戒。勿用永貞。
+
+《象》曰：「弗過遇之」、位不當也。「往厲必戒」、終不可長也。
+
+六五：密雲不雨，自我西郊。公弋取彼在穴。
+
+《象》曰：「密雲不雨」、已上也。
+
+上六：弗遇、過之，飛鳥離之，凶，是謂災眚。
+
+《象》曰：「弗遇過之」、已亢也。</div></section>
+<section class="book-section" tabindex="-1" id="section-62" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈既濟〉第六十三</h2><div class="prose">䷾離下坎上
+
+《既濟》亨。小利貞。初吉終亂。
+
+《彖》曰：《既濟》「亨」，小者亨也。「利貞」。剛柔正而位當也。「初吉」、柔得中也。「終」止則「亂」，其道窮也。
+
+《象》曰：水在火上，《既濟》。君子以思患而豫防之。
+
+初九：曳其輪，濡其尾，无咎。
+
+《象》曰：「曳其輪」、義「无咎」也。
+
+六二：婦喪其茀，勿逐，七日得。
+
+《象》曰：「七日得」、以中道也。
+
+九三：高宗伐鬼方，三年克之，小人勿用。
+
+《象》曰：「三年克之」、憊也。
+
+六四：繻有衣袽，終日戒。
+
+《象》曰：「終日戒」、有所疑也。
+
+九五：東鄰殺牛，不如西鄰之禴祭實受其福。
+
+《象》曰：「東鄰殺牛」、「不如西鄰」之時也。「實受其福」、吉大來也。
+
+上六：濡其首，厲。
+
+《象》曰：「濡其首、厲」、何可久也？</div></section>
+<section class="book-section" tabindex="-1" id="section-63" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈未濟〉第六十四</h2><div class="prose">䷿坎下離上
+
+《未濟》亨。小狐汔濟，濡其尾，无攸利。
+
+《彖》曰：《未濟》「亨」、柔得中也。「小狐汔濟」、未出中也。「濡其尾、无攸利」、不續終也。雖不當位、剛柔應也。
+
+《象》曰：火在水上，《未濟》。君子以慎辨物居方。
+
+初六：濡其尾，吝。
+
+《象》曰：「濡其尾」、亦不知極也。
+
+九二：曳其輪，貞吉。
+
+《象》曰：「九二」「貞吉」、中以行直也。
+
+六三：未濟，征凶。利涉大川。
+
+《象》曰：「未濟征凶」、位不當也。
+
+九四：貞吉，悔亡，震用伐鬼方，三年，有賞于大國。
+
+《象》曰：「貞吉悔亡」、志行也。
+
+六五：貞吉，无悔。君子之光，有孚、吉。
+
+《象》曰：「君子之光」、其暉「吉」也。
+
+上九：有孚于飲酒，无咎。濡其首，有孚失是。
+
+《象》曰：「飲酒濡首」、亦不知節也。</div></section>
+<section class="book-section" tabindex="-1" id="section-64" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈繫辭上〉</h2><div class="prose">天尊地卑，乾坤定矣。卑高以陳，貴賤位矣。動靜有常，剛柔斷矣。
+
+方以類聚，物以群分，吉凶生矣。在天成象，在地成形，變化見矣。
+
+是故剛柔相摩，八卦相盪，鼓之以雷霆，潤之以風雨。日月運行，一寒一暑。
+
+乾道成男，坤道成女，乾知大始，坤作成物。乾以易知，坤以簡能。
+
+易則易知，簡則易從。易知則有親，易從則有功。有親則可久，有功則可大。可久則賢人之德，可大則賢人之業。
+
+易簡而天下之理得矣。天下之理得，而成位乎其中矣。
+
+聖人設卦觀象，繫辭焉而明吉凶。剛柔相推而生變化。
+
+是故吉凶者、失得之象也，悔吝者、憂虞之象也，變化者、進退之象也，剛柔者、晝夜之象也。六爻之動、三極之道也。
+
+是故君子所居而安者、《易》之序也，所樂而玩者、爻之辭也。
+
+是故君子居則觀其象而玩其辭，動則觀其變而玩其占，
+
+是以自天祐之，吉无不利。
+
+彖者、言乎象者也，爻者、言乎變者也，吉凶者、言乎其失得也，悔吝者、言乎其小疵也，无咎者、善補過也。
+
+是故列貴賤者存乎位，齊小大者存乎卦，辯吉凶者存乎辭，憂悔吝者存乎介，震无咎者存乎悔。
+
+是故卦有小大，辭有險易。辭也者、各指其所之。
+
+《易》與天地準，故能彌綸天地之道。
+
+仰以觀於天文，俯以察於地理，是故知幽明之故。原始反終，故知死生之說。
+
+精氣為物，遊魂為變，是故知鬼神之情狀。
+
+與天地相似，故不違。知周乎萬物，而道濟天下，故不過。
+
+旁行而不流，樂天知命，故不憂。安土敦乎仁，故能愛。
+
+範圍天地之化而不過，曲成萬物而不遺，通乎晝夜之道而知，故神无方而易无體。
+
+一陰一陽之謂道，繼之者善也，成之者性也。
+
+仁者見之謂之仁，知者見之謂之知，百姓日用而不知，故君子之道鮮矣。
+
+顯諸仁，藏諸用，鼓萬物而不與聖人同憂，盛德大業至矣哉！
+
+富有之謂大業，日新之謂盛德。
+
+生生之謂易，成象之謂乾，效法之謂坤，
+
+極數知來之謂占，通變之謂事，陰陽不測之謂神。
+
+夫《易》、廣矣大矣，
+
+以言乎遠則不禦，以言乎邇則靜而正，以言乎天地之間則備矣。
+
+夫乾，其靜也專，其動也直，是以大生焉。
+
+夫坤，其靜也翕，其動也闢，是以廣生焉。
+
+變通配四時，陰陽之義配日月，易簡之善配至德。子曰：「《易》、其至矣乎！夫《易》、聖人所以崇德而廣業也。知崇禮卑，崇效天，卑法地。天地設位，而《易》行乎其中矣。成性存存，道義之門。」
+
+聖人有以見天下之賾，而擬諸其形容，象其物宜，是故謂之象。聖人有以見天下之動，而觀其會通，以行其典禮，繫辭焉以斷其吉凶，是故謂之爻，言天下之至賾而不可惡也，言天下之至動而不可亂也。擬之而後言，議之而後動，擬議以成其變化。「鳴鶴在陰，其子和之。我有好爵，吾與爾靡之。」子曰：「君子居其室，出其言善，則千里之外應之，況其邇者乎？居其室，出其言不善，則千里之外違之，況其邇者乎？言出乎身，加乎民；行發乎邇，見乎遠。言行、君子之樞機。樞機之發、榮辱之主也，言行、君子之所以動天地也。可不慎乎！」「同人先號咷而後笑。」子曰：「君子之道，或出或處，或默或語。二人同心，其利斷金。同心之言，其臭如蘭。」
+
+「初六：藉用白茅，无咎。」子曰：「苟錯諸地而可矣，藉之用茅，何咎之有？慎之至也。夫茅之為物薄，而用可重也。慎斯術也以往，其无所失矣。」「勞謙，君子有終，吉。」子曰：「勞而不伐，有功而不德，厚之至也。語以其功下人者也。德言盛，禮言恭。謙也者、致恭以存其位者也。」「亢龍有悔。」子曰：「貴而无位，高而无民，賢人在下位而无輔，是以動而有悔也。」「不出戶庭，无咎。」子曰：「亂之所生也，則言語以為階。君不密則失臣，臣不密則失身，幾事不密則害成。是以君子慎密而不出也。」子曰：「作《易》者、其知盜乎？《易》曰：『負且乘，致寇至。』負也者、小人之事也，乘也者、君子之器也。小人而乘君子之器，盜思奪之矣。上慢下暴，盜思伐之矣。慢藏誨盜，冶容誨淫。《易》曰：『負且乘，致寇至。』，盜之招也。」
+
+大衍之數五十，其用四十有九。分而為二以象兩。掛一以象三，揲之以四以象四時，歸奇於扐以象閏。五歲再閏，故再扐而後掛。天數五，地數五。五位相得而各有合，天數二十有五，地數三十，凡天地之數五十有五，此所以成變化而行鬼神也。《乾》之策二百一十有六，《坤》之策百四十有四，凡三百有六十，當期之日。二篇之策萬有一千五百二十，當萬物之數也。是故四營而成《易》，十有八變而成卦，八卦而小成。引而伸之，觸類而長之，天下之能事畢矣。顯道、神德行，是故可與酬酢，可與祐神矣。
+
+子曰：「知變化之道者，其知神之所為乎。」《易》有聖人之道四焉：以言者尚其辭，以動者尚其變，以制器者尚其象，以卜筮者尚其占。是以君子將有為也，將有行也，問焉而以言。其受命也如響。无有遠近幽深，遂知來物。非天下之至精，其孰能與於此。參伍以變，錯綜其數。通其變，遂成天下之文；極其數，遂定天下之象。非天下之至變，其孰能與於此？《易》无思也，无為也，寂然不動，感而遂通天下之故。非天下之至神，其孰能與於此？夫《易》、聖人之所以極深而研幾也。唯深也，故能通天下之志；唯幾也，故能成天下之務；唯神也，故不疾而速，不行而至。子曰：「《易》有聖人之道四焉」者，此之謂也。
+
+天一，地二；天三，地四；天五，地六；天七，地八；天九，地十。子曰：「夫《易》、何為者也？夫《易》、開物成務，冒天下之道，如斯而已者也。」是故聖人以通天下之志，以定天下之業，以斷天下之疑。是故蓍之德圓而神，卦之德方以知，六爻之義易以貢。聖人以此洗心，退藏於密，吉凶與民同患。神以知來，知以藏往，其孰能與此哉！古之聰明叡知神武而不殺者夫！是以明於天之道，而察於民之故，是興神物以前民用。聖人以此齊戒，以神明其德夫。是故闔戶謂之坤，闢戶謂之乾，一闔一闢謂之變，往來不窮謂之通，見乃謂之象，形乃謂之器，制而用之謂之法，利用出入，民咸用之謂之神。
+
+是故《易》有太極，是生兩儀。兩儀生四象。四象生八卦。八卦定吉凶。吉凶生大業。是故法象莫大乎天地。變通莫大乎四時。縣象著明莫大乎日月。崇高莫大乎富貴。備物致用，立功成器，以為天下利，莫大乎聖人。探賾索隱，鉤深致遠，以定天下之吉凶，成天下之亹亹者，莫善乎蓍龜。是故天生神物，聖人則之。天地變化，聖人效之。天垂象，見吉凶，聖人象之。河出圖，洛出書，聖人則之。《易》有四象，所以示也。繫辭焉，所以告也。定之以吉凶，所以斷也。《易》曰：「自天祐之，吉无不利。」子曰：「祐者、助也。天之所助者、順也，人之所助者、信也。履信思乎順，又以尚賢也。是以自天祐之，吉无不利也。」
+
+子曰：「書不盡言，言不盡意。」然則聖人之意，其不可見乎？子曰：「聖人立象以盡意，設卦以盡情偽，繫辭焉以盡其言。變而通之以盡利，鼓之舞之以盡神。」乾坤、其《易》之縕邪？乾坤成列，而《易》立乎其中矣。乾坤毀，則无以見《易》。《易》不可見，則乾坤或幾乎息矣。是故形而上者謂之道，形而下者謂之器。化而裁之謂之變，推而行之謂之通，舉而錯之天下之民謂之事業。是故夫象、聖人有以見天下之賾，而擬諸其形容，象其物宜，是故謂之象。聖人有以見天下之動，而觀其會通，以行其典禮，繫辭焉以斷其吉凶，是故謂之爻。極天下之賾者存乎卦，鼓天下之動者存乎辭，化而裁之存乎變，推而行之存乎通，神而明之存乎其人，默而成之，不言而信，存乎德行。</div></section>
+<section class="book-section" tabindex="-1" id="section-65" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈繫辭下〉</h2><div class="prose">八卦成列，象在其中矣。因而重之，爻在其中矣。剛柔相推，變在其中矣。繫辭焉而命之，動在其中矣。吉凶悔吝者、生乎動者也，剛柔者、立本者也，變通者、趣時者也，吉凶者、貞勝者也。天地之道，貞觀者也。日月之道、貞明者也，天下之動、貞夫一者也。夫乾、確然示人易矣，夫坤、隤然示人簡矣。爻也者、效此者也，象也者、像此者也。爻象動乎內，吉凶見乎外，功業見乎變，聖人之情見乎辭。天地之大德曰生，聖人之大寶曰位。何以守位曰仁，何以聚人曰財，理財正辭、禁民為非曰義。
+
+古者包犧氏之王天下也，仰則觀象於天，俯則觀法於地，觀鳥獸之文與地之宜，近取諸身，遠取諸物，於是始作八卦，以通神明之德，以類萬物之情。作結繩而為罔罟，以佃以漁，蓋取諸《離》。包犧氏沒，神農氏作，斲木為耜，揉木為耒，耒耨之利，以教天下，蓋取諸《益》。日中為市，致天下之民，聚天下之貨，交易而退，各得其所，蓋取諸《噬嗑》。神農氏沒，黃帝、堯、舜氏作，通其變，使民不倦，神而化之，使民宜之。《易》，窮則變，變則通，通則久。是以自天祐之，吉无不利。黃帝、堯、舜垂衣裳而天下治，蓋取諸《乾》《坤》。刳木為舟，剡木為楫，舟楫之利，以濟不通，致遠以利天下，蓋取諸《渙》。服牛乘馬，引重致遠，以利天下，蓋取諸《隨》。重門擊柝，以待暴客，蓋取諸《豫》。斷木為杵，掘地為臼，臼、杵之利，萬民以濟，蓋取諸《小過》。弦木為弧，剡木為矢，弧、矢之利，以威天下，蓋取諸《睽》。上古穴居而野處，後世聖人易之以宮室，上棟下宇，以待風雨，蓋取諸《大壯》。古之葬者，厚衣之以薪，葬之中野，不封不樹，喪期无數。後世聖人易之以棺椁，蓋取諸《大過》。上古結繩而治，後世聖人易之以書契，百官以治，萬民以察，蓋取諸《夬》。
+
+是故《易》者、象也，象也者、像也。彖者、材也，爻也者、效天下之動者也。是故吉凶生而悔吝著也。陽卦多陰，陰卦多陽，其故何也？陽卦奇，陰卦耦。其德行何也？陽、一君而二民，君子之道也；陰、二君而一民，小人之道也。《易》曰：「憧憧往來，朋從爾思。」子曰：「天下何思何慮？天下同歸而殊塗，一致而百慮。天下何思何慮？日往則月來，月往則日來，日月相推而明生焉。寒往則暑來，暑往則寒來，寒暑相推而歲成焉。往者屈也，來者信也，屈、信相感而利生焉。尺蠖之屈，以求信也。龍蛇之蟄，以存身也。精義入神，以致用也。利用安身，以崇德也。過此以往，未之或知也。窮神知化，德之盛也。」
+
+《易》曰：「困于石，據于蒺蔾，入于其宮，不見其妻，凶。」子曰：「非所困而困焉，名必辱。非所據而據焉，身必危。既辱且危，死期將至，妻其可得見耶！」《易》曰：「公用射隼于高墉之上，獲之，无不利。」子曰：「隼者、禽也，弓矢者、器也，射之者、人也。君子藏器於身，待時而動，何不利之有？動而不括，是以出而有獲，語成器而動者也。」子曰：「小人不恥不仁，不畏不義，不見利不勸，不威不懲。小懲而大誡，此小人之福也。《易》曰：『屨校滅趾，无咎。』此之謂也。」「善不積不足以成名，惡不積不足以滅身。小人以小善為无益而弗為也，以小惡為无傷而弗去也，故惡積而不可揜，罪大而不可解。《易》曰：『何校滅耳，凶。』」子曰：「危者、安其位者也，亡者、保其存者也，亂者、有其治者也。是故君子安而不忘危，存而不忘亡，治而不忘亂，是以身安而國家可保也。《易》曰：『其亡其亡，繫于苞桑。』」子曰：「德薄而位尊，知小而謀大，力少而任重，鮮不及矣。《易》曰：『鼎折足，覆公餗，其形渥，凶。』言不勝其任也。」子曰：「知幾其神乎！君子上交不諂，下交不瀆，其知幾乎？幾者、動之微、吉之先見者也。君子見幾而作。不俟終日。《易》曰：『介于石，不終日，貞吉。』介如石焉，寧用終日，斷可識矣。君子知微知彰，知柔知剛，萬夫之望。」子曰：「顏氏之子，其殆庶幾乎？有不善未嘗不知，知之未嘗復行也。《易》曰：『不遠復，无衹悔，元吉。』」天地絪縕，萬物化醇。男女構精，萬物化生。《易》曰：『三人行則損一人，一人行則得其友。』言致一也。子曰：「君子安其身而後動，易其心而後語，定其交而後求。君子脩此三者，故全也。危以動，則民不與也。懼以語，則民不應也。无交而求，則民不與也。莫之與，則傷之者至矣。《易》曰：『莫益之，或擊之，立心勿恆，凶。』」
+
+子曰：「乾坤，其《易》之門邪？」乾、陽物也，坤、陰物也。陰陽合德，而剛柔有體。以體天地之撰，以通神明之德。其稱名也，雜而不越。於稽其類，其衰世之意邪？夫《易》、彰往而察來，而微顯、闡幽，開而當名，辯物正言，斷辭則備矣。其稱名也小，其取類也大。其旨遠，其辭文，其言曲而中，其事肆而隱。因貳以濟民行，以明失得之報。
+
+《易》之興也，其於中古乎？作《易》者、其有憂患乎？是故《履》、德之基也，《謙》、德之柄也，《復》、德之本也，《恆》、德之固也，《損》、德之脩也，《益》、德之裕也，《困》、德之辯也，《井》、德之地也，《巽》、德之制也，《履》、和而至，《謙》、尊而光，《復》、小而辨於物，《恆》、雜而不厭，《損》、先難而後易，《益》、長裕而不設，《困》、窮而通，《井》、居其所而遷，《巽》、稱而隱。《履》以和行，《謙》以制禮，《復》以自知，《恆》以一德，《損》以遠害，《益》以興利，《困》以寡怨，《井》以辯義，《巽》以行權。
+
+《易》之為書也不可遠，為道也屢遷，變動不居，周流六虛，上下无常，剛柔相易，不可為典要，唯變所適。其出入以度外內，使知懼。又明於憂患與故。无有師保，如臨父母。初率其辭而揆其方，既有典常。苟非其人，道不虛行。《易》之為書也，原始要終，以為質也。六爻相雜，唯其時物也。其初難知，其上易知，本末也。初辭擬之，卒成之終。若夫雜物撰德，辯是與非，則非其中爻不備。噫亦要存亡吉凶，則居可知矣。知者觀其彖辭，則思過半矣。
+
+二與四同功而異位，其善不同，二多譽，四多懼，近也。柔之為道不利遠者。其要无咎，其用柔中也。三與五同功而異位，三多凶，五多功，貴賤之等也。其柔危，其剛勝邪？《易》之為書也，廣大悉備。有天道焉，有人道焉，有地道焉。兼三材而兩之，故六。六者非它也，三材之道也。道有變動，故曰爻。爻有等，故曰物。物相雜，故曰文。文不當，故吉凶生焉。《易》之興也，其當殷之末世，周之盛德邪？當文王與紂之事邪？是故其辭危。危者使平，易者使傾。其道甚大，百物不廢。懼以終始，其要无咎，此之謂《易》之道也。
+
+夫乾、天下之至健也，德行恆易以知險。夫坤、天下之至順也，德行恆簡以知阻。能說諸心，能研諸侯之慮，定天下之吉凶，成天下之亹亹者。是故變化云為，吉事有祥。象事知器，占事知來。天地設位，聖人成能。人謀鬼謀，百姓與能。八卦以象告，爻彖以情言，剛柔雜居，而吉凶可見矣。變動以利言，吉凶以情遷。是故愛惡相攻而吉凶生，遠近相取而悔吝生，情偽相感而利害生。凡《易》之情，近而不相得則凶，或害之，悔且吝。將叛者其辭慚，中心疑者其辭枝，吉人之辭寡，躁人之辭多，誣善之人其辭游，失其守者其辭屈。</div></section>
+<section class="book-section" tabindex="-1" id="section-66" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈說卦〉</h2><div class="prose">昔者聖人之作《易》也，幽贊於神明而生蓍，參天兩地而倚數，觀變於陰陽而立卦，發揮於剛柔而生爻，和順於道德而理於義，窮理盡性以至於命。
+
+昔者聖人之作《易》也，將以順性命之理，是以立天之道曰陰與陽，立地之道曰柔與剛，立人之道曰仁與義。兼三才而兩之，故《易》六畫而成卦。分陰分陽，迭用柔剛，故《易》六位而成章。
+
+天地定位，山澤通氣，雷風相薄，水火不相射，八封相錯。數往者順，知來者逆，是故《易》逆數也。
+
+雷以動之，風以散之，雨以潤之，日以烜之，艮以止之，兌以說之，乾以君之，坤以藏之。帝出乎震，齊乎巽，相見乎離，致役乎坤，說言乎兌，戰乎乾，勞乎坎，成言乎艮。萬物出乎震，震東方也。齊乎巽，巽東南也，齊也者、言萬物之絜齊也。離也者、明也，萬物皆相見，南方之卦也。聖人南面而聽天下，嚮明而治，蓋取諸此也。坤也者、地也，萬物皆致養焉，故曰：致役乎坤。兌、正秋也，萬物之所說也，故曰：說言乎兌。戰乎乾，乾、西北之卦也，言陰陽相薄也。坎者、水也，正北方之卦也，勞卦也，萬物之所歸也，故曰：勞乎坎。艮、東北之卦也。萬物之所成終而所成始也。故曰：成言乎艮。
+
+神也者、妙萬物而為言者也。動萬物者莫疾乎雷，橈萬物者莫疾乎風，燥萬物者莫熯乎火，說萬物者莫說乎澤，潤萬物者莫潤乎水，終萬物、始萬物者、莫盛乎艮。故水火相逮，雷風不相悖，山澤通氣，然後能變化，既成萬物也。
+
+乾、健也，坤、順也，震、動也，巽、入也，坎、陷也，離、麗也，艮、止也，兌、說也。
+
+乾為馬。坤為牛。震為龍。巽為雞。坎為豕。離為雉。艮為狗。兌為羊。
+
+乾為首。坤為腹。震為足。巽為股。坎為耳。離為目。艮為手。兌為口。
+
+乾、天也，故稱乎父。坤、地也，故稱乎母。震一索而得男，故謂之長男。巽一索而得女，故謂之長女。坎再索而得男，故謂之中男。離再索而得女，故謂之中女。艮三索而得男，故謂之少男。兌三索而得女，故謂之少女。
+
+乾為天，為圜，為君，為父，為玉，為金，為寒，為冰，為大赤，為良馬，為老馬，為瘠馬，為駁馬，為木果。
+
+坤為地，為母，為布，為釜，為吝嗇，為均，為子母牛，為大輿，為文，為眾，為柄，其於地也為黑。
+
+震為雷，為龍，為玄黃，為旉，為大塗，為長子，為決躁，為蒼筤竹，為萑葦。其於馬也，為善鳴，為馵足，為作足，為的顙。其於稼也，為反生。其究為健，為蕃鮮。
+
+巽為木，為風，為長女，為繩直，為工，為白，為長，為高，為進退，為不果，為臭。其於人也，為宣髮，為廣顙，為多白眼，為近利市三倍，其究為躁卦。
+
+坎為水，為溝瀆，為隱伏，為矯輮，為弓輪。其於人也，為加憂，為心病，為耳痛，為血卦，為赤。其於馬也，為美脊，為亟心，為下首，為薄蹄，為曳。其於輿也，為多眚，為通，為月，為盜。其於木也，為堅多心。
+
+離為火，為日，為電，為中女，為甲冑，為戈兵。其於人也，為大腹。為乾卦，為鱉，為蟹，為蠃，為蚌，為龜。其於木也，為科上槁。
+
+艮為山，為徑路，為小石，為門闕，為果蓏，為閽寺，為指，為狗，為鼠，為黔喙之屬。其於木也，為堅多節。
+
+兌為澤，為少女，為巫，為口舌，為毀折，為附決。其於地也，為剛鹵。為妾，為羊。</div></section>
+<section class="book-section" tabindex="-1" id="section-67" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈序卦〉</h2><div class="prose">有天地，然後萬物生焉。盈天地之間者唯萬物，故受之以《屯》。《屯》者、盈也。屯者、物之始生也。物生必蒙，故受之以《蒙》。《蒙》者、蒙也，物之稺也。物稺不可不養也，故受之以《需》。《需》者、飲食之道也。飲食必有訟，故受之以《訟》。訟必有眾起，故受之以《師》。《師》者、眾也。眾必有所比，故受之以《比》。《比》者、比也。比必有所畜，故受之以《小畜》。物畜然後有禮，故受之以《履》。《履》者、禮也。履而泰然後安，故受之以《泰》。《泰》者、通也。物不可以終通，故受之以《否》。物不可以終否，故受之以《同人》。與人同者，物必歸焉，故受之以《大有》。有大者不可以盈，故受之以《謙》。有大而能謙必豫，故受之以《豫》。豫必有隨，故受之以《隨》。以喜隨人者必有事，故受之以《蠱》。《蠱》者、事也。有事而後可大，故受之以《臨》。《臨》者、大也。物大然後可觀，故受之以《觀》。可觀而後有所合，故受之以《噬嗑》。嗑者、合也。物不可以苟合而已，故受之以《賁》。《賁》者、飾也。致飾然後亨則盡矣，故受之以《剝》。《剝》者、剝也。物不可以終盡剝，窮上反下，故受之以《復》。復則不妄矣，故受之以《无妄》。有无妄，物然後可畜，故受之以《大畜》。物畜然後可養，故受之以《頤》。《頤》者、養也。不養則不可動，故受之以《大過》。物不可以終過，故受之以《坎》。《坎》者、陷也。陷必有所麗，故受之以《離》。《離》者、麗也。
+
+有天地然後有萬物，有萬物然後有男女，有男女然後有夫婦，有夫婦然後有父子，有父子然後有君臣，有君臣然後有上下，有上下然後禮義有所錯。夫婦之道不可以不久也，故受之以《恆》。《恆》者、久也。物不可以久居其所，故受之以《遯》。《遯》者、退也。物不可以終遯，故受之以《大壯》。物不可以終壯，故受之以《晉》。《晉》者、進也。進必有所傷，故受之以《明夷》。夷者、傷也。傷於外者必反於家，故受之以《家人》。家道窮必乖，故受之以《睽》。《睽》者、乖也。乖必有難，故受之以《蹇》。《蹇》者、難也。物不可以終難，故受之以《解》。《解》者、緩也。緩必有所失，故受之以《損》。損而不已必益，故受之以《益》。益而不已必決，故受之以《夬》。《夬》者、決也。決必有遇，故受之以《姤》。《姤》者、遇也。物相遇而後聚，故受之以《萃》。《萃》者、聚也。聚而上者謂之升，故受之以《升》。升而不已必困，故受之以《困》。困乎上者必反下，故受之以《井》。井道不可不革，故受之以《革》。革物者莫若鼎，故受之以《鼎》。主器者莫若長子，故受之以《震》。《震》者、動也。物不可以終動，止之，故受之以《艮》。《艮》者、止也。物不可以終止，故受之以《漸》。漸者、進也。進必有所歸，故受之以《歸妹》。得其所歸者必大，故受之以《豐》。《豐》者、大也。窮大者必失其居，故受之以《旅》。旅而无所容，故受之以《巽》。《巽》者、入也。入而後說之，故受之以《兌》。《兌》者、說也。說而後散之，故受之以《渙》。《渙》者、離也。物不可以終離，故受之以《節》。節而信之，故受之以《中孚》。有其信者必行之，故受之以《小過》。有過物者必濟，故受之以《既濟》。物不可窮也，故受之以《未濟》，終焉。</div></section>
+<section class="book-section" tabindex="-1" id="section-68" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">易经</p><h2>〈雜卦〉</h2><div class="prose">《乾》剛《坤》柔。《比》樂《師》憂。《臨》《觀》之義，或與或求。《屯》見而不失其居。《蒙》雜而著。《震》、起也。《艮》、止也。《損》《益》、盛衰之始也。《大畜》、時也。《无妄》、災也。《萃》聚而《升》不來也。《謙》輕而《豫》怠也。《噬嗑》、食也。《賁》、无色也。《兌》見而《巽》伏也。《隨》、无故也。《蠱》則飭也。《剝》、爛也。《復》、反也。《晉》、晝也。《明夷》、誅也。《井》通而《困》相遇也。《咸》、速也。《恆》、久也。《渙》、離也。《節》、止也。《解》、緩也。《蹇》、難也。《睽》、外也。《家人》、內也。《否》《泰》、反其類也。《大壯》則止，《遯》則退也。《大有》、眾也。《同人》、親也。《革》、去故也。《鼎》、取新也。《小過》、過也。《中孚》、信也。《豐》、多故也。親寡《旅》也。《離》上而《坎》下也。《小畜》、寡也。《履》、不處也。《需》、不進也。《訟》、不親也。《大過》、顛也。《姤》、遇也，柔遇剛也。《漸》、女歸待男行也。《頤》、養正也。《既濟》、定也。《歸妹》、女之終也。《未濟》、男之窮也。《夬》、決也，剛決柔也。君子道長，小人道憂也。</div></section><footer><p>来源与原件</p><a href="https://github.com/kanripo/KR1a0001" target="_blank" rel="noopener">打开《周易》原文 ↗</a><p><a href="../earth-online-manual.html#library">返回地球 Online 通关手册</a></p></footer></main></div><script>/*
+ * Character data derived from OpenCC TSCharacters.txt (Apache-2.0).
+ * Upstream: BYVoid/OpenCC, commit c363a7ba51d487950982bd8a589211ffbfd95ba1.
+ * Modified 2026-09-17: follow first-candidate chains to a stable character,
+ * omit identity mappings, and embed the character-only lookup for offline search.
+ * This is not the OpenCC conversion engine or a phrase/semantic converter.
+ * Full upstream license and AUTHORS: 第三方许可-检索字表.txt in the output pack.
+ */
+(function(root){
+ 'use strict';
+ const characters={"㑯":"㑔","㑳":"㑇","㑶":"㐹","㓨":"刾","㗲":"𠵾","㘚":"㘎","㜄":"㚯","㜏":"㛣","㜢":"𡞱","㠏":"㟆","㠣":"𫵷","㥮":"㤘","㩜":"㨫","㩳":"㧐","㩵":"擜","㺏":"𤠋","䁪":"𥇢","䁻":"䀥","䃮":"鿎","䊷":"䌶","䋙":"䌺","䋚":"䌻","䋹":"䌿","䋻":"䌾","䍦":"䍠","䎱":"䎬","䓣":"𬜯","䙡":"䙌","䜀":"䜧","䝼":"䞍","䡵":"𫟦","䥇":"䦂","䥑":"鿏","䥕":"𬭯","䥱":"䥾","䦛":"䦶","䦟":"䦷","䧢":"𨸟","䮄":"𫠊","䯀":"䯅","䰾":"鲃","䱷":"䲣","䱽":"䲝","䲁":"鳚","䲘":"鳤","䴉":"鹮","丟":"丢","並":"并","乾":"干","亂":"乱","亙":"亘","亞":"亚","佇":"伫","佈":"布","佔":"占","併":"并","來":"来","侖":"仑","侶":"侣","侷":"局","俁":"俣","係":"系","俔":"伣","俠":"侠","俥":"伡","俬":"私","倀":"伥","倆":"俩","倈":"俫","倉":"仓","個":"个","們":"们","倖":"幸","倫":"伦","倲":"㑈","偉":"伟","偑":"㐽","側":"侧","偵":"侦","偽":"伪","傌":"㐷","傑":"杰","傖":"伧","傘":"伞","備":"备","傢":"家","傭":"佣","傯":"偬","傳":"传","傴":"伛","債":"债","傷":"伤","傾":"倾","僂":"偻","僅":"仅","僉":"佥","僑":"侨","僕":"仆","僞":"伪","僤":"𫢸","僥":"侥","僨":"偾","僱":"雇","價":"价","儀":"仪","儁":"俊","儂":"侬","億":"亿","儈":"侩","儉":"俭","儎":"傤","儐":"傧","儔":"俦","儕":"侪","儘":"尽","償":"偿","優":"优","儲":"储","儷":"俪","儸":"㑩","儺":"傩","儻":"傥","儼":"俨","兇":"凶","兌":"兑","兒":"儿","兗":"兖","內":"内","兩":"两","冊":"册","冑":"胄","冪":"幂","凈":"净","凍":"冻","凜":"凛","凱":"凯","別":"别","刪":"删","剄":"刭","則":"则","剋":"克","剎":"刹","剗":"刬","剛":"刚","剝":"剥","剮":"剐","剴":"剀","創":"创","剷":"铲","劃":"划","劄":"札","劇":"剧","劉":"刘","劊":"刽","劌":"刿","劍":"剑","劏":"㓥","劑":"剂","劚":"㔉","勁":"劲","動":"动","務":"务","勛":"勋","勝":"胜","勞":"劳","勢":"势","勣":"𪟝","勩":"勚","勱":"劢","勳":"勋","勵":"励","勸":"劝","勻":"匀","匭":"匦","匯":"汇","匱":"匮","區":"区","協":"协","卹":"恤","卻":"却","卽":"即","厙":"厍","厠":"厕","厤":"历","厭":"厌","厲":"厉","厴":"厣","參":"参","叄":"叁","叢":"丛","吒":"咤","吳":"吴","吶":"呐","呂":"吕","咼":"呙","員":"员","唄":"呗","唸":"念","問":"问","啓":"启","啞":"哑","啟":"启","啢":"唡","喎":"㖞","喚":"唤","喪":"丧","喫":"吃","喬":"乔","單":"单","喲":"哟","嗆":"呛","嗇":"啬","嗊":"唝","嗎":"吗","嗚":"呜","嗩":"唢","嗰":"𠮶","嗶":"哔","嘆":"叹","嘍":"喽","嘓":"啯","嘔":"呕","嘖":"啧","嘗":"尝","嘜":"唛","嘩":"哗","嘮":"唠","嘯":"啸","嘰":"叽","嘵":"哓","嘸":"呒","嘽":"啴","噁":"恶","噓":"嘘","噚":"㖊","噝":"咝","噠":"哒","噥":"哝","噦":"哕","噯":"嗳","噲":"哙","噴":"喷","噸":"吨","噹":"当","嚀":"咛","嚇":"吓","嚌":"哜","嚐":"尝","嚕":"噜","嚙":"啮","嚥":"咽","嚦":"呖","嚧":"𠰷","嚨":"咙","嚮":"向","嚲":"亸","嚳":"喾","嚴":"严","嚶":"嘤","囀":"啭","囁":"嗫","囂":"嚣","囅":"冁","囈":"呓","囉":"啰","囌":"苏","囑":"嘱","囪":"囱","圇":"囵","國":"国","圍":"围","園":"园","圓":"圆","圖":"图","團":"团","垻":"坝","埡":"垭","埨":"𫭢","埰":"采","執":"执","堅":"坚","堊":"垩","堖":"垴","堝":"埚","堯":"尧","報":"报","場":"场","塊":"块","塋":"茔","塏":"垲","塒":"埘","塗":"涂","塚":"冢","塢":"坞","塤":"埙","塵":"尘","塸":"𫭟","塹":"堑","塿":"𪣻","墊":"垫","墜":"坠","墠":"𫮃","墮":"堕","墰":"坛","墳":"坟","墶":"垯","墻":"墙","墾":"垦","壇":"坛","壋":"垱","壎":"埙","壓":"压","壗":"𡋤","壘":"垒","壙":"圹","壚":"垆","壜":"坛","壞":"坏","壟":"垄","壠":"垅","壢":"坜","壩":"坝","壪":"塆","壯":"壮","壺":"壶","壼":"壸","壽":"寿","夠":"够","夢":"梦","夥":"伙","夾":"夹","奐":"奂","奧":"奥","奩":"奁","奪":"夺","奬":"奖","奮":"奋","奼":"姹","妝":"妆","姍":"姗","姦":"奸","娙":"𫰛","娛":"娱","婁":"娄","婦":"妇","婭":"娅","媧":"娲","媯":"妫","媰":"㛀","媼":"媪","媽":"妈","嫋":"袅","嫗":"妪","嫵":"妩","嫺":"娴","嫻":"娴","嫿":"婳","嬀":"妫","嬃":"媭","嬈":"娆","嬋":"婵","嬌":"娇","嬙":"嫱","嬡":"嫒","嬤":"嬷","嬪":"嫔","嬰":"婴","嬸":"婶","孃":"娘","孋":"㛤","孌":"娈","孫":"孙","學":"学","孻":"𡥧","孿":"孪","宮":"宫","寀":"采","寢":"寝","實":"实","寧":"宁","審":"审","寫":"写","寬":"宽","寵":"宠","寶":"宝","將":"将","專":"专","尋":"寻","對":"对","導":"导","尷":"尴","屆":"届","屍":"尸","屓":"屃","屜":"屉","屢":"屡","層":"层","屨":"屦","屬":"属","岡":"冈","峯":"峰","峴":"岘","島":"岛","峽":"峡","崍":"崃","崑":"昆","崗":"岗","崙":"仑","崢":"峥","崬":"岽","嵐":"岚","嵗":"岁","嵽":"𫶇","嵾":"㟥","嶁":"嵝","嶄":"崭","嶇":"岖","嶔":"嵚","嶗":"崂","嶠":"峤","嶢":"峣","嶧":"峄","嶨":"峃","嶮":"崄","嶸":"嵘","嶺":"岭","嶼":"屿","嶽":"岳","巋":"岿","巒":"峦","巔":"巅","巖":"岩","巘":"𪩘","巰":"巯","巹":"卺","帥":"帅","師":"师","帳":"帐","帶":"带","幀":"帧","幃":"帏","幓":"㡎","幗":"帼","幘":"帻","幟":"帜","幣":"币","幫":"帮","幬":"帱","幷":"并","幹":"干","幾":"几","庫":"库","廁":"厕","廂":"厢","廄":"厩","廈":"厦","廎":"庼","廕":"荫","廚":"厨","廝":"厮","廞":"𫷷","廟":"庙","廠":"厂","廡":"庑","廢":"废","廣":"广","廩":"廪","廬":"庐","廳":"厅","弒":"弑","弔":"吊","弳":"弪","張":"张","強":"强","彄":"𫸩","彆":"别","彈":"弹","彌":"弥","彎":"弯","彔":"录","彙":"汇","彠":"彟","彥":"彦","彫":"雕","彲":"彨","彿":"佛","後":"后","徑":"径","從":"从","徠":"徕","復":"复","徵":"征","徹":"彻","恆":"恒","恥":"耻","悅":"悦","悞":"悮","悵":"怅","悶":"闷","悽":"凄","惡":"恶","惱":"恼","惲":"恽","惻":"恻","愛":"爱","愜":"惬","愨":"悫","愴":"怆","愷":"恺","愾":"忾","慄":"栗","態":"态","慍":"愠","慘":"惨","慚":"惭","慟":"恸","慣":"惯","慤":"悫","慪":"怄","慫":"怂","慮":"虑","慳":"悭","慶":"庆","慺":"㥪","慼":"戚","慾":"欲","憂":"忧","憊":"惫","憐":"怜","憑":"凭","憒":"愦","憖":"慭","憚":"惮","憤":"愤","憫":"悯","憮":"怃","憲":"宪","憶":"忆","懇":"恳","應":"应","懌":"怿","懍":"懔","懞":"蒙","懟":"怼","懣":"懑","懤":"㤽","懨":"恹","懲":"惩","懶":"懒","懷":"怀","懸":"悬","懺":"忏","懼":"惧","懾":"慑","戀":"恋","戇":"戆","戔":"戋","戧":"戗","戩":"戬","戰":"战","戱":"戯","戲":"戏","戶":"户","扞":"捍","拋":"抛","拚":"拼","挩":"捝","挱":"挲","挾":"挟","捨":"舍","捫":"扪","捱":"挨","捲":"卷","掃":"扫","掄":"抡","掆":"㧏","掗":"挜","掙":"挣","掛":"挂","採":"采","揀":"拣","揚":"扬","換":"换","揮":"挥","揯":"搄","損":"损","搖":"摇","搗":"捣","搧":"扇","搵":"揾","搶":"抢","摑":"掴","摜":"掼","摟":"搂","摯":"挚","摳":"抠","摶":"抟","摺":"折","摻":"掺","撈":"捞","撏":"挦","撐":"撑","撓":"挠","撝":"㧑","撟":"挢","撣":"掸","撥":"拨","撫":"抚","撲":"扑","撳":"揿","撻":"挞","撾":"挝","撿":"捡","擁":"拥","擄":"掳","擇":"择","擊":"击","擋":"挡","擓":"㧟","擔":"担","據":"据","擠":"挤","擡":"抬","擣":"捣","擬":"拟","擯":"摈","擰":"拧","擱":"搁","擲":"掷","擴":"扩","擷":"撷","擺":"摆","擻":"擞","擼":"撸","擽":"㧰","擾":"扰","攄":"摅","攆":"撵","攏":"拢","攔":"拦","攖":"撄","攙":"搀","攛":"撺","攜":"携","攝":"摄","攢":"攒","攣":"挛","攤":"摊","攪":"搅","攬":"揽","敎":"教","敓":"敚","敗":"败","敘":"叙","敵":"敌","數":"数","斂":"敛","斃":"毙","斆":"敩","斕":"斓","斬":"斩","斷":"断","於":"于","旂":"旗","旣":"既","昇":"升","時":"时","晉":"晋","晛":"𬀪","晝":"昼","暈":"晕","暉":"晖","暐":"𬀩","暘":"旸","暢":"畅","暫":"暂","曄":"晔","曆":"历","曇":"昙","曉":"晓","曏":"向","曖":"暧","曠":"旷","曥":"𣆐","曨":"昽","曬":"晒","書":"书","會":"会","朥":"𦛨","朧":"胧","朮":"术","東":"东","枴":"拐","柵":"栅","柺":"拐","査":"查","桱":"𣐕","桿":"杆","梔":"栀","梘":"枧","梜":"𬂩","條":"条","梟":"枭","梲":"棁","棄":"弃","棊":"棋","棖":"枨","棗":"枣","棟":"栋","棡":"㭎","棧":"栈","棲":"栖","棶":"梾","椏":"桠","椲":"㭏","楊":"杨","楓":"枫","楨":"桢","業":"业","極":"极","榘":"矩","榦":"干","榪":"杩","榮":"荣","榲":"榅","榿":"桤","構":"构","槍":"枪","槓":"杠","槤":"梿","槧":"椠","槨":"椁","槮":"椮","槳":"桨","槶":"椢","槼":"椝","樁":"桩","樂":"乐","樅":"枞","樑":"梁","樓":"楼","標":"标","樞":"枢","樢":"㭤","樣":"样","樧":"榝","樫":"㭴","樳":"桪","樸":"朴","樹":"树","樺":"桦","樿":"椫","橈":"桡","橋":"桥","機":"机","橢":"椭","橫":"横","橯":"𣓿","檁":"檩","檉":"柽","檔":"档","檜":"桧","檟":"槚","檢":"检","檣":"樯","檮":"梼","檯":"台","檳":"槟","檸":"柠","檻":"槛","櫃":"柜","櫍":"𬃊","櫓":"橹","櫚":"榈","櫛":"栉","櫝":"椟","櫞":"橼","櫟":"栎","櫥":"橱","櫧":"槠","櫨":"栌","櫪":"枥","櫫":"橥","櫬":"榇","櫱":"蘖","櫳":"栊","櫸":"榉","櫻":"樱","欄":"栏","欅":"榉","權":"权","欏":"椤","欒":"栾","欓":"𣗋","欖":"榄","欞":"棂","欽":"钦","歎":"叹","歐":"欧","歟":"欤","歡":"欢","歲":"岁","歷":"历","歸":"归","歿":"殁","殘":"残","殞":"殒","殤":"殇","殨":"㱮","殫":"殚","殭":"僵","殮":"殓","殯":"殡","殰":"㱩","殲":"歼","殺":"杀","殻":"壳","殼":"壳","毀":"毁","毆":"殴","毿":"毵","氂":"牦","氈":"毡","氌":"氇","氣":"气","氫":"氢","氬":"氩","氳":"氲","氾":"泛","汎":"泛","汙":"污","決":"决","沒":"没","沖":"冲","況":"况","泝":"溯","洩":"泄","洶":"汹","浹":"浃","浿":"𬇙","涇":"泾","涗":"涚","涼":"凉","淒":"凄","淚":"泪","淥":"渌","淨":"净","淩":"凌","淪":"沦","淵":"渊","淶":"涞","淺":"浅","渙":"涣","減":"减","渢":"沨","渦":"涡","測":"测","渾":"浑","湊":"凑","湋":"𣲗","湞":"浈","湧":"涌","湯":"汤","溈":"沩","準":"准","溝":"沟","溫":"温","溮":"浉","溳":"涢","溼":"湿","滄":"沧","滅":"灭","滌":"涤","滎":"荥","滙":"汇","滬":"沪","滯":"滞","滲":"渗","滷":"卤","滸":"浒","滻":"浐","滾":"滚","滿":"满","漁":"渔","漊":"溇","漍":"𬇹","漚":"沤","漢":"汉","漣":"涟","漬":"渍","漲":"涨","漵":"溆","漸":"渐","漿":"浆","潁":"颍","潑":"泼","潔":"洁","潕":"𣲘","潙":"沩","潚":"㴋","潛":"潜","潤":"润","潯":"浔","潰":"溃","潷":"滗","潿":"涠","澀":"涩","澆":"浇","澇":"涝","澐":"沄","澗":"涧","澠":"渑","澤":"泽","澦":"滪","澩":"泶","澫":"𬇕","澮":"浍","澱":"淀","澾":"㳠","濁":"浊","濃":"浓","濄":"㳡","濆":"𣸣","濕":"湿","濘":"泞","濚":"溁","濛":"蒙","濜":"浕","濟":"济","濤":"涛","濧":"㳔","濫":"滥","濰":"潍","濱":"滨","濺":"溅","濼":"泺","濾":"滤","瀂":"澛","瀅":"滢","瀆":"渎","瀇":"㲿","瀉":"泻","瀋":"沈","瀏":"浏","瀕":"濒","瀘":"泸","瀝":"沥","瀟":"潇","瀠":"潆","瀦":"潴","瀧":"泷","瀨":"濑","瀰":"弥","瀲":"潋","瀾":"澜","灃":"沣","灄":"滠","灑":"洒","灒":"𪷽","灕":"漓","灘":"滩","灙":"𣺼","灝":"灏","灡":"㳕","灣":"湾","灤":"滦","灧":"滟","灩":"滟","災":"灾","為":"为","烏":"乌","烴":"烃","無":"无","煉":"炼","煒":"炜","煙":"烟","煢":"茕","煥":"焕","煩":"烦","煬":"炀","煱":"㶽","熅":"煴","熒":"荧","熗":"炝","熰":"𬉼","熱":"热","熲":"颎","熾":"炽","燀":"𬊤","燁":"烨","燈":"灯","燉":"炖","燒":"烧","燖":"𬊈","燙":"烫","燜":"焖","營":"营","燦":"灿","燬":"毁","燭":"烛","燴":"烩","燶":"㶶","燻":"熏","燼":"烬","燾":"焘","爍":"烁","爐":"炉","爛":"烂","爭":"争","爲":"为","爺":"爷","爾":"尔","牀":"床","牆":"墙","牘":"牍","牴":"抵","牽":"牵","犖":"荦","犛":"牦","犢":"犊","犧":"牺","狀":"状","狹":"狭","狽":"狈","猙":"狰","猶":"犹","猻":"狲","獁":"犸","獃":"呆","獄":"狱","獅":"狮","獎":"奖","獨":"独","獪":"狯","獫":"猃","獮":"狝","獰":"狞","獱":"㺍","獲":"获","獵":"猎","獷":"犷","獸":"兽","獺":"獭","獻":"献","獼":"猕","玀":"猡","現":"现","琱":"雕","琺":"珐","琿":"珲","瑋":"玮","瑒":"玚","瑣":"琐","瑤":"瑶","瑩":"莹","瑪":"玛","瑲":"玱","璉":"琏","璊":"𫞩","璕":"𬍤","璗":"𬍡","璡":"琎","璣":"玑","璦":"瑷","璫":"珰","璯":"㻅","環":"环","璵":"玙","璸":"瑸","璽":"玺","璿":"璇","瓅":"𬍛","瓊":"琼","瓏":"珑","瓔":"璎","瓚":"瓒","瓛":"𤩽","甌":"瓯","甕":"瓮","產":"产","産":"产","畝":"亩","畢":"毕","畫":"画","異":"异","畵":"画","當":"当","疇":"畴","疊":"叠","痙":"痉","痠":"酸","痾":"疴","瘂":"痖","瘋":"疯","瘍":"疡","瘓":"痪","瘞":"瘗","瘡":"疮","瘧":"疟","瘮":"瘆","瘲":"疭","瘺":"瘘","瘻":"瘘","療":"疗","癆":"痨","癇":"痫","癉":"瘅","癒":"愈","癘":"疠","癟":"瘪","癡":"痴","癢":"痒","癤":"疖","癥":"症","癧":"疬","癩":"癞","癬":"癣","癭":"瘿","癮":"瘾","癰":"痈","癱":"瘫","癲":"癫","發":"发","皁":"皂","皚":"皑","皰":"疱","皸":"皲","皺":"皱","盃":"杯","盜":"盗","盞":"盏","盡":"尽","監":"监","盤":"盘","盧":"卢","盪":"荡","眞":"真","眥":"眦","眾":"众","睍":"𪾢","睏":"困","睜":"睁","睞":"睐","瞘":"眍","瞜":"䁖","瞞":"瞒","瞶":"瞆","瞼":"睑","矇":"蒙","矓":"眬","矚":"瞩","矯":"矫","硃":"朱","硜":"硁","硤":"硖","硨":"砗","硯":"砚","碕":"埼","碩":"硕","碭":"砀","碸":"砜","確":"确","碼":"码","碽":"䂵","磑":"硙","磚":"砖","磠":"硵","磣":"碜","磧":"碛","磯":"矶","磽":"硗","磾":"䃅","礄":"硚","礎":"础","礐":"𬒈","礙":"碍","礦":"矿","礪":"砺","礫":"砾","礬":"矾","礱":"砻","祕":"秘","祿":"禄","禍":"祸","禎":"祯","禕":"祎","禡":"祃","禦":"御","禪":"禅","禮":"礼","禰":"祢","禱":"祷","禿":"秃","秈":"籼","稅":"税","稈":"秆","稏":"䅉","稜":"棱","稟":"禀","種":"种","稱":"称","穀":"谷","穇":"䅟","穌":"稣","積":"积","穎":"颖","穠":"秾","穡":"穑","穢":"秽","穩":"稳","穫":"获","穭":"穞","窩":"窝","窪":"洼","窮":"穷","窯":"窑","窵":"窎","窶":"窭","窺":"窥","竄":"窜","竅":"窍","竇":"窦","竈":"灶","竊":"窃","竪":"竖","競":"竞","筆":"笔","筍":"笋","筧":"笕","筴":"䇲","箇":"个","箋":"笺","箏":"筝","箚":"札","節":"节","範":"范","築":"筑","篋":"箧","篔":"筼","篠":"筿","篢":"𬕂","篤":"笃","篩":"筛","篳":"筚","篸":"𥮾","簀":"箦","簍":"篓","簑":"蓑","簞":"箪","簡":"简","簣":"篑","簫":"箫","簹":"筜","簽":"签","簾":"帘","籃":"篮","籅":"𥫣","籌":"筹","籔":"䉤","籙":"箓","籛":"篯","籜":"箨","籟":"籁","籠":"笼","籤":"签","籩":"笾","籪":"簖","籬":"篱","籮":"箩","籲":"吁","粵":"粤","糉":"粽","糝":"糁","糞":"粪","糧":"粮","糰":"团","糲":"粝","糴":"籴","糶":"粜","糹":"纟","糾":"纠","紀":"纪","紂":"纣","紃":"𬘓","約":"约","紅":"红","紆":"纡","紇":"纥","紈":"纨","紉":"纫","紋":"纹","納":"纳","紐":"纽","紓":"纾","純":"纯","紕":"纰","紖":"纼","紗":"纱","紘":"纮","紙":"纸","級":"级","紛":"纷","紜":"纭","紝":"纴","紞":"𬘘","紡":"纺","紬":"䌷","紮":"扎","細":"细","紱":"绂","紲":"绁","紳":"绅","紵":"纻","紹":"绍","紺":"绀","紼":"绋","紿":"绐","絀":"绌","終":"终","絃":"弦","組":"组","絅":"䌹","絆":"绊","絎":"绗","結":"结","絕":"绝","絛":"绦","絝":"绔","絞":"绞","絡":"络","絢":"绚","給":"给","絨":"绒","絪":"𬘡","絰":"绖","統":"统","絲":"丝","絳":"绛","絶":"绝","絹":"绢","絺":"𫄨","綁":"绑","綃":"绡","綄":"𬘫","綆":"绠","綈":"绨","綉":"绣","綌":"绤","綎":"𬘩","綏":"绥","綐":"䌼","綑":"捆","經":"经","綖":"𫄧","綜":"综","綝":"𬘭","綞":"缍","綠":"绿","綡":"𫟅","綢":"绸","綣":"绻","綧":"𬘯","綪":"𬘬","綫":"线","綬":"绶","維":"维","綯":"绹","綰":"绾","綱":"纲","網":"网","綳":"绷","綴":"缀","綵":"彩","綸":"纶","綹":"绺","綺":"绮","綻":"绽","綽":"绰","綾":"绫","綿":"绵","緄":"绲","緇":"缁","緊":"紧","緋":"绯","緑":"绿","緒":"绪","緓":"绬","緔":"绱","緗":"缃","緘":"缄","緙":"缂","線":"线","緝":"缉","緞":"缎","締":"缔","緡":"缗","緣":"缘","緦":"缌","編":"编","緩":"缓","緬":"缅","緯":"纬","緱":"缑","緲":"缈","練":"练","緶":"缏","緹":"缇","緻":"致","緼":"缊","縈":"萦","縉":"缙","縊":"缢","縋":"缒","縐":"绉","縑":"缣","縕":"缊","縗":"缞","縛":"缚","縝":"缜","縞":"缟","縟":"缛","縣":"县","縧":"绦","縫":"缝","縭":"缡","縮":"缩","縯":"𬙂","縱":"纵","縲":"缧","縳":"䌸","縴":"纤","縵":"缦","縶":"絷","縷":"缕","縹":"缥","總":"总","績":"绩","繃":"绷","繅":"缫","繆":"缪","繒":"缯","織":"织","繕":"缮","繚":"缭","繞":"绕","繡":"绣","繢":"缋","繩":"绳","繪":"绘","繫":"系","繭":"茧","繮":"缰","繯":"缳","繰":"缲","繳":"缴","繶":"𫄷","繸":"䍁","繹":"绎","繻":"𦈡","繼":"继","繽":"缤","繾":"缱","繿":"䍀","纁":"𫄸","纆":"𬙊","纇":"颣","纈":"缬","纊":"纩","續":"续","纍":"累","纏":"缠","纓":"缨","纔":"才","纕":"𬙋","纖":"纤","纘":"缵","纜":"缆","缽":"钵","罃":"䓨","罈":"坛","罌":"罂","罎":"坛","罰":"罚","罵":"骂","罷":"罢","羅":"罗","羆":"罴","羈":"羁","羋":"芈","羣":"群","羥":"羟","羨":"羡","義":"义","羶":"膻","習":"习","翫":"玩","翬":"翚","翹":"翘","翽":"翙","耬":"耧","耮":"耢","聖":"圣","聞":"闻","聯":"联","聰":"聪","聲":"声","聳":"耸","聵":"聩","聶":"聂","職":"职","聹":"聍","聽":"听","聾":"聋","肅":"肃","脅":"胁","脈":"脉","脛":"胫","脣":"唇","脩":"修","脫":"脱","脹":"胀","腎":"肾","腖":"胨","腡":"脶","腦":"脑","腫":"肿","腳":"脚","腸":"肠","膃":"腽","膕":"腘","膚":"肤","膞":"䏝","膠":"胶","膢":"𦝼","膩":"腻","膽":"胆","膾":"脍","膿":"脓","臉":"脸","臍":"脐","臏":"膑","臘":"腊","臚":"胪","臟":"脏","臠":"脔","臢":"臜","臥":"卧","臨":"临","臺":"台","與":"与","興":"兴","舉":"举","舊":"旧","舖":"铺","舘":"馆","艙":"舱","艤":"舣","艦":"舰","艫":"舻","艱":"艰","艷":"艳","芻":"刍","苧":"苎","茲":"兹","荊":"荆","莊":"庄","莖":"茎","莢":"荚","莧":"苋","華":"华","菴":"庵","菸":"烟","萇":"苌","萊":"莱","萬":"万","萴":"荝","萵":"莴","葉":"叶","葒":"荭","葤":"荮","葦":"苇","葯":"药","葷":"荤","蒍":"𫇭","蒐":"搜","蒓":"莼","蒔":"莳","蒕":"蒀","蒞":"莅","蒼":"苍","蓀":"荪","蓆":"席","蓋":"盖","蓮":"莲","蓯":"苁","蓴":"莼","蓽":"荜","蔄":"𬜬","蔔":"卜","蔘":"参","蔞":"蒌","蔣":"蒋","蔥":"葱","蔦":"茑","蔭":"荫","蔯":"𫈟","蔿":"𫇭","蕁":"荨","蕆":"蒇","蕎":"荞","蕒":"荬","蕓":"芸","蕕":"莸","蕘":"荛","蕢":"蒉","蕩":"荡","蕪":"芜","蕭":"萧","蕷":"蓣","薀":"蕰","薈":"荟","薊":"蓟","薌":"芗","薑":"姜","薔":"蔷","薘":"荙","薟":"莶","薦":"荐","薩":"萨","薳":"䓕","薴":"苎","薵":"䓓","薹":"苔","薺":"荠","藍":"蓝","藎":"荩","藝":"艺","藥":"药","藪":"薮","藭":"䓖","藴":"蕴","藶":"苈","藹":"蔼","藺":"蔺","蘀":"萚","蘄":"蕲","蘆":"芦","蘇":"苏","蘊":"蕴","蘋":"苹","蘚":"藓","蘞":"蔹","蘟":"𦻕","蘢":"茏","蘭":"兰","蘺":"蓠","蘿":"萝","虆":"蔂","虉":"𬟁","處":"处","虛":"虚","虜":"虏","號":"号","虧":"亏","虯":"虬","蛺":"蛱","蛻":"蜕","蜆":"蚬","蝀":"𬟽","蝕":"蚀","蝟":"猬","蝦":"虾","蝨":"虱","蝸":"蜗","螄":"蛳","螞":"蚂","螢":"萤","螮":"䗖","螻":"蝼","螿":"螀","蟄":"蛰","蟈":"蝈","蟎":"螨","蟣":"虮","蟬":"蝉","蟯":"蛲","蟲":"虫","蟳":"𫊻","蟶":"蛏","蟻":"蚁","蠁":"蚃","蠅":"蝇","蠆":"虿","蠍":"蝎","蠐":"蛴","蠑":"蝾","蠔":"蚝","蠟":"蜡","蠣":"蛎","蠨":"蟏","蠱":"蛊","蠶":"蚕","蠻":"蛮","衆":"众","衊":"蔑","術":"术","衕":"同","衚":"胡","衛":"卫","衝":"冲","袞":"衮","袷":"夹","裊":"袅","裏":"里","補":"补","裝":"装","裡":"里","製":"制","複":"复","褌":"裈","褘":"袆","褲":"裤","褳":"裢","褸":"褛","褻":"亵","襀":"𫌀","襇":"裥","襉":"裥","襏":"袯","襖":"袄","襝":"裣","襠":"裆","襤":"褴","襪":"袜","襬":"摆","襯":"衬","襲":"袭","襴":"襕","覈":"核","見":"见","覎":"觃","規":"规","覓":"觅","視":"视","覘":"觇","覡":"觋","覥":"觍","覦":"觎","親":"亲","覬":"觊","覯":"觏","覲":"觐","覷":"觑","覺":"觉","覽":"览","覿":"觌","觀":"观","觴":"觞","觶":"觯","觸":"触","訁":"讠","訂":"订","訃":"讣","計":"计","訊":"讯","訌":"讧","討":"讨","訏":"𬣙","訐":"讦","訒":"讱","訓":"训","訕":"讪","訖":"讫","託":"托","記":"记","訛":"讹","訝":"讶","訟":"讼","訢":"䜣","訣":"诀","訥":"讷","訩":"讻","訪":"访","設":"设","許":"许","訴":"诉","訶":"诃","診":"诊","註":"注","証":"证","詀":"𧮪","詁":"诂","詆":"诋","詎":"讵","詐":"诈","詒":"诒","詔":"诏","評":"评","詖":"诐","詗":"诇","詘":"诎","詛":"诅","詝":"𬣞","詞":"词","詠":"咏","詡":"诩","詢":"询","詣":"诣","試":"试","詩":"诗","詪":"𬣳","詫":"诧","詬":"诟","詭":"诡","詮":"诠","詰":"诘","話":"话","該":"该","詳":"详","詵":"诜","詷":"𫍣","詼":"诙","詿":"诖","誄":"诔","誅":"诛","誆":"诓","誇":"夸","誌":"志","認":"认","誑":"诳","誒":"诶","誕":"诞","誘":"诱","誚":"诮","語":"语","誠":"诚","誡":"诫","誣":"诬","誤":"误","誥":"诰","誦":"诵","誨":"诲","說":"说","説":"说","誰":"谁","課":"课","誶":"谇","誹":"诽","誼":"谊","誾":"訚","調":"调","諂":"谄","諄":"谆","談":"谈","諉":"诿","請":"请","諍":"诤","諏":"诹","諑":"诼","諒":"谅","諓":"𬣡","論":"论","諗":"谂","諛":"谀","諜":"谍","諝":"谞","諞":"谝","諟":"𬤊","諡":"谥","諢":"诨","諤":"谔","諦":"谛","諧":"谐","諫":"谏","諭":"谕","諮":"咨","諱":"讳","諲":"𬤇","諳":"谙","諴":"𫍯","諶":"谌","諷":"讽","諸":"诸","諺":"谚","諼":"谖","諾":"诺","謀":"谋","謁":"谒","謂":"谓","謄":"誊","謅":"诌","謊":"谎","謎":"谜","謏":"𫍲","謐":"谧","謔":"谑","謖":"谡","謗":"谤","謙":"谦","謚":"谥","講":"讲","謝":"谢","謠":"谣","謡":"谣","謨":"谟","謫":"谪","謬":"谬","謭":"谫","謳":"讴","謹":"谨","謾":"谩","譁":"哗","證":"证","譎":"谲","譏":"讥","譓":"𬤝","譖":"谮","識":"识","譙":"谯","譚":"谭","譜":"谱","譞":"𫍽","譟":"噪","譫":"谵","譭":"毁","譯":"译","議":"议","譴":"谴","護":"护","譸":"诪","譽":"誉","譾":"谫","讀":"读","讅":"谉","變":"变","讋":"詟","讌":"䜩","讎":"雠","讒":"谗","讓":"让","讕":"谰","讖":"谶","讚":"赞","讜":"谠","讞":"谳","谿":"溪","豈":"岂","豎":"竖","豐":"丰","豔":"艳","豬":"猪","豶":"豮","貍":"狸","貓":"猫","貙":"䝙","貝":"贝","貞":"贞","貟":"贠","負":"负","財":"财","貢":"贡","貧":"贫","貨":"货","販":"贩","貪":"贪","貫":"贯","責":"责","貯":"贮","貰":"贳","貲":"赀","貳":"贰","貴":"贵","貶":"贬","買":"买","貸":"贷","貺":"贶","費":"费","貼":"贴","貽":"贻","貿":"贸","賀":"贺","賁":"贲","賂":"赂","賃":"赁","賄":"贿","賅":"赅","資":"资","賈":"贾","賊":"贼","賑":"赈","賒":"赊","賓":"宾","賕":"赇","賙":"赒","賚":"赉","賜":"赐","賞":"赏","賠":"赔","賡":"赓","賢":"贤","賣":"卖","賤":"贱","賦":"赋","賧":"赕","質":"质","賫":"赍","賬":"账","賭":"赌","賰":"䞐","賴":"赖","賵":"赗","賺":"赚","賻":"赙","購":"购","賽":"赛","賾":"赜","贄":"贽","贅":"赘","贇":"赟","贈":"赠","贊":"赞","贋":"赝","贍":"赡","贏":"赢","贐":"赆","贓":"赃","贔":"赑","贖":"赎","贗":"赝","贛":"赣","贜":"赃","赬":"赪","趕":"赶","趙":"赵","趨":"趋","趲":"趱","跡":"迹","踐":"践","踰":"逾","踴":"踊","蹌":"跄","蹕":"跸","蹟":"迹","蹠":"跖","蹣":"蹒","蹤":"踪","蹺":"跷","躂":"跶","躉":"趸","躊":"踌","躋":"跻","躍":"跃","躎":"䟢","躑":"踯","躒":"跞","躓":"踬","躕":"蹰","躚":"跹","躡":"蹑","躥":"蹿","躦":"躜","躪":"躏","軀":"躯","車":"车","軋":"轧","軌":"轨","軍":"军","軏":"𫐄","軑":"轪","軒":"轩","軔":"轫","軛":"轭","軝":"𬨂","軟":"软","軤":"轷","軫":"轸","軲":"轱","軸":"轴","軹":"轵","軺":"轺","軻":"轲","軼":"轶","軾":"轼","較":"较","輄":"𨐈","輅":"辂","輇":"辁","輈":"辀","載":"载","輊":"轾","輋":"𪨶","輒":"辄","輓":"挽","輔":"辅","輕":"轻","輗":"𫐐","輛":"辆","輜":"辎","輝":"辉","輞":"辋","輟":"辍","輥":"辊","輦":"辇","輩":"辈","輪":"轮","輬":"辌","輮":"𫐓","輯":"辑","輳":"辏","輶":"𬨎","輸":"输","輻":"辐","輼":"辒","輾":"辗","輿":"舆","轀":"辒","轂":"毂","轄":"辖","轅":"辕","轆":"辘","轉":"转","轍":"辙","轎":"轿","轔":"辚","轟":"轰","轡":"辔","轢":"轹","轤":"轳","辦":"办","辭":"辞","辮":"辫","辯":"辩","農":"农","迴":"回","逕":"径","這":"这","連":"连","週":"周","進":"进","遊":"游","運":"运","過":"过","達":"达","違":"违","遙":"遥","遜":"逊","遞":"递","遠":"远","遡":"溯","適":"适","遲":"迟","遶":"绕","遷":"迁","選":"选","遺":"遗","遼":"辽","邁":"迈","還":"还","邇":"迩","邊":"边","邏":"逻","邐":"逦","郟":"郏","郵":"邮","鄆":"郓","鄉":"乡","鄒":"邹","鄔":"邬","鄖":"郧","鄧":"邓","鄩":"𬩽","鄭":"郑","鄰":"邻","鄲":"郸","鄳":"𫑡","鄴":"邺","鄶":"郐","鄺":"邝","酇":"酂","酈":"郦","醃":"腌","醖":"酝","醜":"丑","醞":"酝","醟":"蒏","醣":"糖","醫":"医","醬":"酱","醱":"酦","醲":"𬪩","釀":"酿","釁":"衅","釃":"酾","釅":"酽","釋":"释","釐":"厘","釒":"钅","釓":"钆","釔":"钇","釕":"钌","釗":"钊","釘":"钉","釙":"钋","針":"针","釣":"钓","釤":"钐","釦":"扣","釧":"钏","釩":"钒","釴":"𬬩","釵":"钗","釷":"钍","釹":"钕","釺":"钎","釾":"䥺","釿":"𬬱","鈀":"钯","鈁":"钫","鈃":"钘","鈄":"钭","鈅":"钥","鈇":"𫓧","鈈":"钚","鈉":"钠","鈍":"钝","鈎":"钩","鈐":"钤","鈑":"钣","鈒":"钑","鈔":"钞","鈕":"钮","鈞":"钧","鈡":"钟","鈣":"钙","鈥":"钬","鈦":"钛","鈧":"钪","鈮":"铌","鈰":"铈","鈳":"钶","鈴":"铃","鈷":"钴","鈸":"钹","鈹":"铍","鈺":"钰","鈽":"钸","鈾":"铀","鈿":"钿","鉀":"钾","鉅":"巨","鉆":"钻","鉈":"铊","鉉":"铉","鉊":"𬬿","鉋":"铇","鉍":"铋","鉑":"铂","鉕":"钷","鉗":"钳","鉚":"铆","鉛":"铅","鉝":"𫟷","鉞":"钺","鉢":"钵","鉤":"钩","鉥":"𬬸","鉦":"钲","鉧":"𬭁","鉬":"钼","鉭":"钽","鉮":"𬬹","鉳":"锫","鉶":"铏","鉷":"𫟹","鉸":"铰","鉺":"铒","鉻":"铬","鉿":"铪","銀":"银","銃":"铳","銅":"铜","銈":"𫓯","銍":"铚","銑":"铣","銓":"铨","銖":"铢","銘":"铭","銚":"铫","銛":"铦","銜":"衔","銠":"铑","銣":"铷","銥":"铱","銦":"铟","銨":"铵","銩":"铥","銪":"铕","銫":"铯","銬":"铐","銱":"铞","銳":"锐","銶":"𨱇","銷":"销","銹":"锈","銻":"锑","銼":"锉","鋁":"铝","鋃":"锒","鋅":"锌","鋇":"钡","鋌":"铤","鋏":"铗","鋐":"𬭎","鋒":"锋","鋗":"𫓶","鋙":"铻","鋝":"锊","鋟":"锓","鋣":"铘","鋤":"锄","鋥":"锃","鋦":"锔","鋨":"锇","鋩":"铓","鋪":"铺","鋭":"锐","鋮":"铖","鋯":"锆","鋰":"锂","鋱":"铽","鋶":"锍","鋸":"锯","鋹":"𬬮","鋼":"钢","錀":"𬬭","錁":"锞","錄":"录","錆":"锖","錇":"锫","錈":"锩","錏":"铔","錐":"锥","錒":"锕","錕":"锟","錘":"锤","錙":"锱","錚":"铮","錛":"锛","錞":"𬭚","錟":"锬","錠":"锭","錡":"锜","錢":"钱","錤":"𫓹","錦":"锦","錨":"锚","錩":"锠","錫":"锡","錮":"锢","錯":"错","録":"录","錳":"锰","錶":"表","錸":"铼","錼":"镎","鍀":"锝","鍁":"锨","鍃":"锪","鍅":"钫","鍆":"钔","鍇":"锴","鍈":"锳","鍊":"炼","鍋":"锅","鍍":"镀","鍔":"锷","鍘":"铡","鍚":"钖","鍛":"锻","鍠":"锽","鍤":"锸","鍥":"锲","鍩":"锘","鍬":"锹","鍭":"𬭤","鍰":"锾","鍵":"键","鍶":"锶","鍺":"锗","鍼":"针","鍾":"钟","鎂":"镁","鎄":"锿","鎇":"镅","鎊":"镑","鎌":"镰","鎓":"𬭩","鎔":"镕","鎖":"锁","鎘":"镉","鎚":"锤","鎛":"镈","鎝":"𨱏","鎡":"镃","鎢":"钨","鎣":"蓥","鎦":"镏","鎧":"铠","鎩":"铩","鎪":"锼","鎬":"镐","鎭":"镇","鎮":"镇","鎰":"镒","鎲":"镋","鎳":"镍","鎵":"镓","鎶":"鿔","鎸":"镌","鎿":"镎","鏃":"镞","鏇":"旋","鏈":"链","鏌":"镆","鏍":"镙","鏏":"𬭬","鏐":"镠","鏑":"镝","鏗":"铿","鏘":"锵","鏜":"镗","鏝":"镘","鏞":"镛","鏟":"铲","鏡":"镜","鏢":"镖","鏤":"镂","鏨":"錾","鏰":"镚","鏵":"铧","鏷":"镤","鏹":"镪","鏺":"䥽","鏻":"𬭸","鏽":"锈","鐃":"铙","鐄":"𨱑","鐇":"𫔍","鐋":"铴","鐍":"𫔎","鐏":"𨱔","鐐":"镣","鐒":"铹","鐓":"镦","鐔":"镡","鐘":"钟","鐙":"镫","鐝":"镢","鐠":"镨","鐥":"䦅","鐦":"锎","鐧":"锏","鐨":"镄","鐩":"𬭼","鐫":"镌","鐮":"镰","鐯":"䦃","鐲":"镯","鐳":"镭","鐵":"铁","鐶":"镮","鐸":"铎","鐺":"铛","鐽":"𫟼","鐿":"镱","鑄":"铸","鑊":"镬","鑌":"镔","鑑":"鉴","鑒":"鉴","鑔":"镲","鑕":"锧","鑞":"镴","鑠":"铄","鑣":"镳","鑥":"镥","鑪":"𬬻","鑭":"镧","鑰":"钥","鑱":"镵","鑲":"镶","鑷":"镊","鑹":"镩","鑼":"锣","鑽":"钻","鑾":"銮","鑿":"凿","钁":"镢","钂":"镋","長":"长","門":"门","閂":"闩","閃":"闪","閆":"闫","閈":"闬","閉":"闭","開":"开","閌":"闶","閎":"闳","閏":"闰","閑":"闲","閒":"闲","間":"间","閔":"闵","閘":"闸","閡":"阂","閣":"阁","閤":"合","閥":"阀","閨":"闺","閩":"闽","閫":"阃","閬":"阆","閭":"闾","閱":"阅","閲":"阅","閶":"阊","閹":"阉","閻":"阎","閼":"阏","閽":"阍","閾":"阈","閿":"阌","闃":"阒","闆":"板","闇":"暗","闈":"闱","闉":"𬮱","闊":"阔","闋":"阕","闌":"阑","闍":"阇","闐":"阗","闑":"𫔶","闒":"阘","闓":"闿","闔":"阖","闕":"阙","闖":"闯","關":"关","闞":"阚","闠":"阓","闡":"阐","闢":"辟","闤":"阛","闥":"闼","陘":"陉","陝":"陕","陞":"升","陣":"阵","陰":"阴","陳":"陈","陸":"陆","陽":"阳","隉":"陧","隊":"队","階":"阶","隑":"𬮿","隕":"陨","際":"际","隤":"𬯎","隨":"随","險":"险","隮":"𬯀","隯":"陦","隱":"隐","隴":"陇","隸":"隶","隻":"只","雋":"隽","雖":"虽","雙":"双","雛":"雏","雜":"杂","雞":"鸡","離":"离","難":"难","雲":"云","電":"电","霑":"沾","霢":"霡","霧":"雾","霽":"霁","靂":"雳","靄":"霭","靆":"叇","靈":"灵","靉":"叆","靚":"靓","靜":"静","靝":"靔","靦":"腼","靨":"靥","鞏":"巩","鞝":"绱","鞦":"秋","鞽":"鞒","韁":"缰","韃":"鞑","韆":"千","韉":"鞯","韋":"韦","韌":"韧","韍":"韨","韓":"韩","韙":"韪","韜":"韬","韝":"鞲","韞":"韫","韻":"韵","響":"响","頁":"页","頂":"顶","頃":"顷","項":"项","順":"顺","頇":"顸","須":"须","頊":"顼","頌":"颂","頍":"𫠆","頎":"颀","頏":"颃","預":"预","頑":"顽","頒":"颁","頓":"顿","頔":"𬱖","頗":"颇","領":"领","頜":"颌","頠":"𬱟","頡":"颉","頤":"颐","頦":"颏","頫":"𫖯","頭":"头","頮":"颒","頰":"颊","頲":"颋","頴":"颕","頵":"𫖳","頷":"颔","頸":"颈","頹":"颓","頻":"频","頽":"颓","顆":"颗","題":"题","額":"额","顎":"颚","顏":"颜","顒":"颙","顓":"颛","顔":"颜","顗":"𫖮","願":"愿","顙":"颡","顛":"颠","類":"类","顢":"颟","顥":"颢","顧":"顾","顫":"颤","顬":"颥","顯":"显","顰":"颦","顱":"颅","顳":"颞","顴":"颧","風":"风","颭":"飐","颮":"飑","颯":"飒","颱":"台","颳":"刮","颶":"飓","颸":"飔","颺":"飏","颻":"飖","颼":"飕","飀":"飗","飄":"飘","飆":"飙","飈":"飚","飛":"飞","飠":"饣","飢":"饥","飣":"饤","飥":"饦","飩":"饨","飪":"饪","飫":"饫","飭":"饬","飯":"饭","飱":"飧","飲":"饮","飴":"饴","飼":"饲","飽":"饱","飾":"饰","飿":"饳","餃":"饺","餄":"饸","餅":"饼","餈":"糍","餉":"饷","養":"养","餌":"饵","餎":"饹","餏":"饻","餑":"饽","餒":"馁","餓":"饿","餕":"馂","餖":"饾","餗":"𫗧","餘":"余","餚":"肴","餛":"馄","餜":"馃","餞":"饯","餡":"馅","館":"馆","餬":"糊","餱":"糇","餳":"饧","餵":"喂","餶":"馉","餷":"馇","餸":"𩠌","餺":"馎","餼":"饩","餾":"馏","餿":"馊","饁":"馌","饃":"馍","饅":"馒","饈":"馐","饉":"馑","饊":"馓","饋":"馈","饌":"馔","饑":"饥","饒":"饶","饗":"飨","饘":"𫗴","饜":"餍","饞":"馋","饢":"馕","馬":"马","馭":"驭","馮":"冯","馱":"驮","馳":"驰","馴":"驯","馹":"驲","馼":"𫘜","駁":"驳","駃":"𫘝","駉":"𬳶","駐":"驻","駑":"驽","駒":"驹","駓":"𬳵","駔":"驵","駕":"驾","駘":"骀","駙":"驸","駛":"驶","駝":"驼","駟":"驷","駡":"骂","駢":"骈","駪":"𬳽","駭":"骇","駰":"骃","駱":"骆","駸":"骎","駼":"𬳿","駿":"骏","騁":"骋","騂":"骍","騄":"𫘧","騅":"骓","騊":"𫘦","騌":"骔","騍":"骒","騎":"骑","騏":"骐","騑":"𬴂","騖":"骛","騙":"骗","騞":"𬴃","騠":"𫘨","騤":"骙","騧":"䯄","騫":"骞","騭":"骘","騮":"骝","騰":"腾","騱":"𫘬","騵":"𫘪","騶":"驺","騷":"骚","騸":"骟","騾":"骡","驀":"蓦","驁":"骜","驂":"骖","驃":"骠","驄":"骢","驅":"驱","驊":"骅","驌":"骕","驍":"骁","驎":"𬴊","驏":"骣","驕":"骄","驗":"验","驚":"惊","驛":"驿","驟":"骤","驢":"驴","驤":"骧","驥":"骥","驦":"骦","驪":"骊","驫":"骉","骯":"肮","髏":"髅","髒":"脏","體":"体","髕":"髌","髖":"髋","髮":"发","鬆":"松","鬍":"胡","鬚":"须","鬢":"鬓","鬥":"斗","鬧":"闹","鬨":"哄","鬩":"阋","鬮":"阄","鬱":"郁","鬹":"鬶","魎":"魉","魘":"魇","魚":"鱼","魛":"鱽","魟":"𫚉","魢":"鱾","魨":"鲀","魯":"鲁","魴":"鲂","魷":"鱿","魺":"鲄","鮀":"𬶍","鮁":"鲅","鮃":"鲆","鮆":"𫚖","鮈":"𬶋","鮊":"鲌","鮋":"鲉","鮍":"鲏","鮎":"鲇","鮐":"鲐","鮑":"鲍","鮒":"鲋","鮓":"鲊","鮚":"鲒","鮜":"鲘","鮝":"鲞","鮞":"鲕","鮟":"𩽾","鮠":"𬶏","鮡":"𬶐","鮣":"䲟","鮦":"鲖","鮪":"鲔","鮫":"鲛","鮭":"鲑","鮮":"鲜","鮳":"鲓","鮶":"鲪","鮸":"𩾃","鮺":"鲝","鯀":"鲧","鯁":"鲠","鯇":"鲩","鯉":"鲤","鯊":"鲨","鯒":"鲬","鯔":"鲻","鯕":"鲯","鯖":"鲭","鯗":"鲞","鯛":"鲷","鯝":"鲴","鯡":"鲱","鯢":"鲵","鯤":"鲲","鯧":"鲳","鯨":"鲸","鯪":"鲮","鯫":"鲰","鯰":"鲶","鯴":"鲺","鯷":"鳀","鯻":"𬶟","鯽":"鲫","鯿":"鳊","鰁":"鳈","鰂":"鲗","鰃":"鳂","鰆":"䲠","鰈":"鲽","鰉":"鳇","鰊":"𬶠","鰌":"䲡","鰍":"鳅","鰏":"鲾","鰐":"鳄","鰒":"鳆","鰓":"鳃","鰛":"鳁","鰜":"鳒","鰟":"鳑","鰠":"鳋","鰣":"鲥","鰤":"𫚕","鰥":"鳏","鰧":"䲢","鰨":"鳎","鰩":"鳐","鰭":"鳍","鰮":"鳁","鰱":"鲢","鰲":"鳌","鰳":"鳓","鰵":"鳘","鰶":"𬶭","鰷":"鲦","鰹":"鲣","鰺":"鲹","鰻":"鳗","鰼":"鳛","鰾":"鳔","鱀":"𬶨","鱂":"鳉","鱅":"鳙","鱇":"𩾌","鱈":"鳕","鱉":"鳖","鱒":"鳟","鱔":"鳝","鱖":"鳜","鱗":"鳞","鱘":"鲟","鱚":"𬶮","鱝":"鲼","鱟":"鲎","鱠":"鲙","鱣":"鳣","鱤":"鳡","鱧":"鳢","鱨":"鲿","鱭":"鲚","鱯":"鳠","鱲":"𫚭","鱷":"鳄","鱸":"鲈","鱺":"鲡","鳥":"鸟","鳧":"凫","鳩":"鸠","鳬":"凫","鳲":"鸤","鳳":"凤","鳴":"鸣","鳶":"鸢","鳾":"䴓","鴆":"鸩","鴇":"鸨","鴉":"鸦","鴒":"鸰","鴕":"鸵","鴛":"鸳","鴝":"鸲","鴞":"鸮","鴟":"鸱","鴣":"鸪","鴦":"鸯","鴨":"鸭","鴯":"鸸","鴰":"鸹","鴴":"鸻","鴷":"䴕","鴻":"鸿","鴿":"鸽","鵁":"䴔","鵂":"鸺","鵃":"鸼","鵏":"𬷕","鵐":"鹀","鵑":"鹃","鵒":"鹆","鵓":"鹁","鵜":"鹈","鵝":"鹅","鵟":"𫛭","鵠":"鹄","鵡":"鹉","鵪":"鹌","鵬":"鹏","鵮":"鹐","鵯":"鹎","鵰":"雕","鵲":"鹊","鵷":"鹓","鵾":"鹍","鶄":"䴖","鶇":"鸫","鶉":"鹑","鶊":"鹒","鶓":"鹋","鶖":"鹙","鶘":"鹕","鶚":"鹗","鶠":"𬸘","鶡":"鹖","鶥":"鹛","鶩":"鹜","鶪":"䴗","鶬":"鸧","鶯":"莺","鶱":"𬸣","鶲":"鹟","鶴":"鹤","鶹":"鹠","鶺":"鹡","鶻":"鹘","鶼":"鹣","鶿":"鹚","鷀":"鹚","鷁":"鹢","鷂":"鹞","鷄":"鸡","鷉":"䴘","鷊":"鹝","鷓":"鹧","鷖":"鹥","鷗":"鸥","鷙":"鸷","鷚":"鹨","鷟":"𬸦","鷥":"鸶","鷦":"鹪","鷫":"鹔","鷭":"𬸪","鷯":"鹩","鷲":"鹫","鷳":"鹇","鷴":"鹇","鷸":"鹬","鷹":"鹰","鷺":"鹭","鷽":"鸴","鸂":"㶉","鸇":"鹯","鸊":"䴙","鸌":"鹱","鸏":"鹲","鸑":"𬸚","鸕":"鸬","鸘":"鹴","鸚":"鹦","鸛":"鹳","鸝":"鹂","鸞":"鸾","鹵":"卤","鹹":"咸","鹺":"鹾","鹼":"碱","鹽":"盐","麗":"丽","麥":"麦","麩":"麸","麪":"面","麫":"面","麬":"𤿲","麯":"曲","麳":"𪎌","麴":"曲","麵":"面","麼":"么","麽":"么","黃":"黄","黌":"黉","點":"点","黨":"党","黲":"黪","黴":"霉","黶":"黡","黷":"黩","黽":"黾","黿":"鼋","鼂":"鼌","鼉":"鼍","鼕":"冬","鼴":"鼹","齊":"齐","齋":"斋","齎":"赍","齏":"齑","齒":"齿","齔":"龀","齕":"龁","齗":"龂","齘":"𬹼","齙":"龅","齜":"龇","齟":"龃","齠":"龆","齡":"龄","齣":"出","齦":"龈","齧":"啮","齪":"龊","齬":"龉","齮":"𬺈","齯":"𫠜","齲":"龋","齶":"腭","齷":"龌","齼":"𬺓","龍":"龙","龎":"厐","龐":"庞","龑":"䶮","龔":"龚","龕":"龛","龜":"龟","鿁":"䜤","鿓":"鿒","𠁞":"𠀾","𠗣":"㓆","𡃕":"𠴛","𡅏":"𠲥","𡑍":"𫭼","𡑭":"𡋗","𡓾":"𡋀","𡔖":"𡍣","𡞵":"㛟","𡠹":"㛿","𡢃":"㛠","𡮉":"𡭜","𡮣":"𡭬","𡳳":"𡳃","𡻕":"岁","𡾱":"㟜","𢣚":"𢘝","𢶫":"𢫞","𢹿":"𢬦","𣈶":"暅","𣙎":"㭣","𣞻":"𣘓","𣠩":"𣞎","𣠲":"𣑶","𣯶":"毶","𣾷":"㳢","𤁣":"𣺽","𤅶":"𣷷","𤓩":"𤊰","𤪺":"㻘","𤫩":"㻏","𤳸":"𤳄","𥊝":"𥅿","𥌃":"𥅘","𥕥":"𥐰","𥖅":"𥐯","𥗽":"𬒗","𥢢":"䅪","𥸠":"𥮋","𥼽":"𥹥","𦘧":"𡳒","𦣎":"𦟗","𦪙":"䑽","𧜗":"䘞","𧜵":"䙊","𧝞":"䘛","𧟀":"𧝧","𧩙":"䜥","𧵳":"䞌","𧶧":"䞎","𨊰":"䢀","𨊸":"䢁","𨋢":"䢂","𨤻":"𨤰","𨦫":"䦀","𨧀":"𬭊","𨧜":"䦁","𨨏":"𬭛","𨭆":"𬭶","𨭎":"𬭳","𨯅":"䥿","𩞯":"䭪","𩠴":"𩠠","𩣑":"䯃","𩶘":"䲞","𰻞":"𰻝"};
+ const mappingPattern=new RegExp('['+Object.keys(characters).join('')+']','gu');
+ const ignored=/[\p{White_Space}\p{P}\uFEFF]+/gu;
+ const ignoredCharacter=/[\p{White_Space}\p{P}\uFEFF]/u;
+ function checkMode(mode){if(mode!=='exact'&&mode!=='flexible')throw new RangeError('Unknown search mode: '+mode);}
+ function checkText(text){if(typeof text!=='string')throw new TypeError('Search text must be a string');}
+ function fold(text,mode='flexible'){
+  checkMode(mode);checkText(text);
+  const lower=text.toLowerCase();
+  return mode==='exact'?lower:lower.replace(mappingPattern,character=>characters[character]).replace(ignored,'');
+ }
+ function ranges(text,query,mode='flexible',limit=100){
+  checkMode(mode);checkText(text);checkText(query);
+  if(!Number.isFinite(limit)||limit<=0)return [];
+  const maximum=Math.floor(limit),needle=fold(query,mode);
+  if(!maximum||!needle||!text)return [];
+  // The full-library fold never allocates this position map. Only a requested
+  // section builds it, in original UTF-16 units for text slicing/DOM ranges.
+  const lower=text.toLowerCase(),pieces=[],starts=[],ends=[];
+  let originalOffset=0,lowerOffset=0;
+  for(const originalCharacter of text){
+   const originalEnd=originalOffset+originalCharacter.length;
+   // Default Unicode lowercase can expand one character (e.g. İ -> i + dot).
+   // Read the actual whole-string lowercase to preserve contextual mappings.
+   const lowerLength=originalCharacter.toLowerCase().length;
+   const lowerPiece=lower.slice(lowerOffset,lowerOffset+lowerLength);
+   lowerOffset+=lowerLength;
+   for(const character of lowerPiece){
+    if(mode==='flexible'&&ignoredCharacter.test(character))continue;
+    const output=mode==='flexible'?(characters[character]||character):character;
+    pieces.push(output);
+    for(let unit=0;unit<output.length;unit++){starts.push(originalOffset);ends.push(originalEnd);}
+   }
+   originalOffset=originalEnd;
+  }
+  const normalized=pieces.join(''),found=[];
+  let from=0,previousEnd=-1;
+  while(found.length<maximum){
+   const position=normalized.indexOf(needle,from);if(position===-1)break;
+   const start=starts[position],end=ends[position+needle.length-1];
+   if(start>=previousEnd){found.push({start,end});previousEnd=end;}
+   from=position+needle.length;
+  }
+  return found;
+ }
+ const api=Object.freeze({fold,ranges});root.EarthTextSearch=api;
+ if(typeof module==='object'&&module.exports)module.exports=api;
+})(typeof window==='object'?window:globalThis);
+
+(function(root){
+ 'use strict';
+ function checkMode(mode){if(mode!=='exact'&&mode!=='flexible')throw new RangeError('Unknown search mode: '+mode);}
+ function create(rows){
+  if(!Array.isArray(rows))throw new TypeError('Search rows must be an array');
+  const source=rows.slice(),ready=Object.create(null),inflight=Object.create(null);
+  const now=root.performance&&typeof root.performance.now==='function'?()=>root.performance.now():()=>Date.now();
+  function peek(mode){checkMode(mode);return ready[mode]||null;}
+  function ensure(mode){
+   checkMode(mode);if(inflight[mode])return inflight[mode];
+   let resolve,reject;
+   const task=new Promise((done,failed)=>{resolve=done;reject=failed;});inflight[mode]=task;
+   const folded=new Array(source.length);let offset=0;
+   function batch(){
+    try{
+     if(!root.EarthTextSearch)throw new Error('Load search-normalizer.js before building a search index');
+     const started=now();let processed=0;
+     while(offset<source.length&&processed<32&&(processed===0||now()-started<8)){
+      const row=source[offset];
+      folded[offset]={title:root.EarthTextSearch.fold(row.title,mode),text:root.EarthTextSearch.fold(row.text,mode)};
+      offset++;processed++;
+     }
+     if(offset<source.length)setTimeout(batch,0);
+     else{ready[mode]=folded;resolve(folded);}
+    }catch(error){delete inflight[mode];reject(error);}
+   }
+   // Yield before the first batch too, so the caller can show a waiting state.
+   setTimeout(batch,0);return task;
+  }
+  return Object.freeze({peek,ensure});
+ }
+ const api=Object.freeze({create});root.EarthSearchIndex=api;
+ if(typeof module==='object'&&module.exports)module.exports=api;
+})(typeof window==='object'?window:globalThis);
+
+(function (root, factory) {
+  'use strict';
+  var createBookmarkStore = factory(root);
+  root.createBookmarkStore = createBookmarkStore;
+  if (typeof module === 'object' && module.exports) module.exports = createBookmarkStore;
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
+  'use strict';
+  var STORAGE_KEY = 'earth-online-bookmarks-v1';
+  var LIMIT = 500;
+  var own = function (object, key) { return Object.prototype.hasOwnProperty.call(object, key); };
+  var clone = function (entries) { return entries.map(function (entry) { return Object.assign({}, entry); }); };
+  var keyOf = function (entry) { return JSON.stringify([entry.bookId, entry.section]); };
+
+  return function createBookmarkStore(options) {
+    var bookSections = new Map();
+    if (options && Array.isArray(options.books)) options.books.forEach(function (book) {
+      if (book && typeof book.id === 'string' && book.id && Number.isSafeInteger(book.sectionCount) && book.sectionCount > 0) {
+        bookSections.set(book.id, book.sectionCount);
+      }
+    });
+    var snapshot = [];
+    // This overlay only contains changes whose last write failed. Null is a
+    // deletion marker, so refreshing another tab cannot resurrect a deletion.
+    var pending = new Map();
+
+    function validReference(bookId, section) {
+      return typeof bookId === 'string' && bookSections.has(bookId) && Number.isSafeInteger(section) && section >= 0 && section < bookSections.get(bookId);
+    }
+    function sanitize(entry) {
+      if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return null;
+      var fields = ['bookId', 'section', 'textOffset', 'title', 'excerpt', 'createdAt', 'updatedAt'];
+      if (!fields.every(function (field) { return own(entry, field); })) return null;
+      if (!validReference(entry.bookId, entry.section) || !Number.isSafeInteger(entry.textOffset) || entry.textOffset < 0 || entry.textOffset > 5000000) return null;
+      if (typeof entry.title !== 'string' || entry.title.length > 240 || typeof entry.excerpt !== 'string' || entry.excerpt.length > 160) return null;
+      if (typeof entry.createdAt !== 'number' || !Number.isFinite(entry.createdAt) || entry.createdAt <= 0 || typeof entry.updatedAt !== 'number' || !Number.isFinite(entry.updatedAt) || entry.updatedAt <= 0) return null;
+      return { bookId: entry.bookId, section: entry.section, textOffset: entry.textOffset, title: entry.title, excerpt: entry.excerpt, createdAt: entry.createdAt, updatedAt: entry.updatedAt };
+    }
+    function validate(entries) {
+      var result = [];
+      var seen = new Set();
+      if (!Array.isArray(entries)) return result;
+      for (var i = 0; i < entries.length && result.length < LIMIT; i++) {
+        var entry = sanitize(entries[i]);
+        if (!entry) continue;
+        var key = keyOf(entry);
+        if (seen.has(key)) continue;
+        seen.add(key);
+        result.push(entry);
+      }
+      return result;
+    }
+    function current() {
+      // Reading each time also observes storage events without a listener or a
+      // lifecycle API. If access is denied, retain the last readable snapshot.
+      try {
+        var storage = root.localStorage;
+        if (storage && typeof storage.getItem === 'function') {
+          var raw = storage.getItem(STORAGE_KEY);
+          var saved;
+          try { saved = raw === null ? null : JSON.parse(raw); } catch (error) { saved = null; }
+          snapshot = saved && saved.version === 1 ? validate(saved.entries) : [];
+        }
+      } catch (error) { /* Session use remains available. */ }
+      var combined = new Map(snapshot.map(function (entry) { return [keyOf(entry), entry]; }));
+      pending.forEach(function (entry, key) { if (entry === null) combined.delete(key); else combined.set(key, entry); });
+      // Keep the complete merged state internally. A bounded display must never
+      // become the source of a write that silently drops another tab's entries.
+      return Array.from(combined.values());
+    }
+    function visible(entries) {
+      if (entries.length <= LIMIT) return clone(entries);
+      // While capacity conflicts are unresolved, show this session's pending
+      // entries first. Other saved entries remain untouched in localStorage.
+      var combined = new Map(entries.map(function (entry) { return [keyOf(entry), entry]; }));
+      var bounded = new Map();
+      pending.forEach(function (entry, key) { if (entry !== null && combined.has(key) && bounded.size < LIMIT) bounded.set(key, combined.get(key)); });
+      combined.forEach(function (entry, key) { if (!bounded.has(key) && bounded.size < LIMIT) bounded.set(key, entry); });
+      return clone(Array.from(bounded.values()));
+    }
+    function commit(entries, changes) {
+      if (entries.length > LIMIT) {
+        changes.forEach(function (entry, key) { pending.set(key, entry); });
+        return { entries: visible(entries), persisted: false, reason: 'capacity' };
+      }
+      try {
+        var storage = root.localStorage;
+        if (!storage || typeof storage.setItem !== 'function') throw new Error('Storage unavailable');
+        storage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, entries: entries }));
+        // Do not expose a successful write before storage has accepted it.
+        snapshot = clone(entries);
+        pending.clear();
+        return { entries: clone(entries), persisted: true };
+      } catch (error) {
+        changes.forEach(function (entry, key) { pending.set(key, entry); });
+        return { entries: clone(entries), persisted: false };
+      }
+    }
+    function upsert(input) {
+      var entries = current();
+      var reference = input && typeof input === 'object' && !Array.isArray(input) ? input : {};
+      var index = entries.findIndex(function (entry) { return entry.bookId === reference.bookId && entry.section === reference.section; });
+      var previous = index >= 0 ? entries[index] : null;
+      var now = Math.max(Date.now(), previous ? previous.updatedAt : 1);
+      var entry = sanitize({ bookId: reference.bookId, section: reference.section, textOffset: reference.textOffset, title: reference.title, excerpt: reference.excerpt, createdAt: previous ? previous.createdAt : now, updatedAt: now });
+      if (!entry) throw new TypeError('Invalid bookmark');
+      if (index < 0 && entries.length >= LIMIT) throw new RangeError('Bookmark limit reached');
+      if (index >= 0) entries[index] = entry;
+      else entries.push(entry);
+      return commit(entries, new Map([[keyOf(entry), entry]]));
+    }
+    function remove(bookId, section) {
+      if (!validReference(bookId, section)) throw new TypeError('Invalid bookmark reference');
+      var key = keyOf({ bookId: bookId, section: section });
+      var entries = current().filter(function (entry) { return keyOf(entry) !== key; });
+      return commit(entries, new Map([[key, null]]));
+    }
+    function merge(imported) {
+      var entries = current();
+      var existing = new Set(entries.map(keyOf));
+      var changes = new Map();
+      validate(imported).forEach(function (entry) {
+        var key = keyOf(entry);
+        if (existing.has(key) || entries.length >= LIMIT) return;
+        existing.add(key);
+        entries.push(entry);
+        changes.set(key, entry);
+      });
+      return commit(entries, changes);
+    }
+    return {
+      read: function () { return visible(current()); },
+      // Backups must retain external entries hidden by the display limit while
+      // a session has pending additions. This method never attempts a write.
+      readForExport: function () { return clone(current()); },
+      validate: validate, upsert: upsert, remove: remove, merge: merge
+    };
+  };
+}));
+
+(() => {
+ 'use strict';
+ // Text offsets survive reflow, changed fonts and a different reader layout.
+ function textRange(element,offset){
+  const walk=document.createTreeWalker(element,NodeFilter.SHOW_TEXT);let node,left=Math.max(0,offset),last=null;
+  while(node=walk.nextNode()){last=node;if(left<node.length){const r=document.createRange();r.setStart(node,left);r.setEnd(node,Math.min(node.length,left+1));return r;}left-=node.length;}
+  if(last&&last.length){const r=document.createRange();r.setStart(last,last.length-1);r.setEnd(last,last.length);return r;}return null;
+ }
+ function captureTextOffset(element,line){
+  const length=element.textContent.length;if(!length||element.getBoundingClientRect().top>=line)return 0;
+  let low=0,high=length-1;
+  while(low<high){const middle=(low+high)>>1,rect=textRange(element,middle)?.getBoundingClientRect();if(rect&&rect.bottom<=line)low=middle+1;else high=middle;}
+  return low;
+ }
+ window.mountEarthBookmarks=function(adapter){
+  const store=createBookmarkStore({books:adapter.books});window.earthBookmarkStore=store;
+  const panel=document.querySelector('[data-bookmark-panel]'),list=panel.querySelector('[data-bookmark-list]'),status=panel.querySelector('[data-bookmark-status]'),undo=panel.querySelector('[data-bookmark-undo]'),add=document.querySelector('[data-bookmark-add]');
+  const toast=document.createElement('p');toast.className='bookmark-toast';toast.hidden=true;toast.setAttribute('role','status');document.body.append(toast);
+  const controls=document.createElement('div');controls.className='bookmark-filters';
+  controls.innerHTML='<label for="bookmark-search">查找书签</label><div class="bookmark-search-row"><input id="bookmark-search" data-bookmark-search type="search" maxlength="160" placeholder="书名、章节或摘录词句"><button type="button" data-bookmark-clear aria-label="清除书签筛选">清除</button></div><label class="bookmark-scope-field" for="bookmark-scope">书籍<select id="bookmark-scope" data-bookmark-scope><option value="all">全部典籍</option></select></label>';
+  const search=controls.querySelector('[data-bookmark-search]'),scope=controls.querySelector('[data-bookmark-scope]'),clear=controls.querySelector('[data-bookmark-clear]');
+  for(const book of adapter.books){const option=document.createElement('option');option.value=book.id;option.textContent=book.title;scope.append(option);}
+  const resultCount=document.createElement('p');resultCount.className='bookmark-status';resultCount.dataset.bookmarkResultCount='';resultCount.setAttribute('role','status');
+  const capacity=document.createElement('p');capacity.className='bookmark-status';capacity.hidden=true;capacity.setAttribute('role','status');
+  const more=document.createElement('button');more.className='bookmark-more';more.dataset.bookmarkMore='';more.type='button';more.hidden=true;
+  list.before(controls,capacity,resultCount);list.after(more);
+  let removed=null,toastTimer,signature='',query='',visibleLimit=40,composing=false;
+  const allEntries=()=>store.readForExport();
+  const matches=entry=>(scope.value==='all'||entry.bookId===scope.value)&&(!query||(adapter.books.find(b=>b.id===entry.bookId).title+' '+entry.title+' '+entry.excerpt).toLocaleLowerCase().includes(query));
+  const capacityMessage='合并后的书签超过 500 枚，操作暂存在本页，已有书签保持原样。请先导出备份，再删除不再需要的书签。';
+  function message(text){status.textContent=text;toast.textContent=text;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{toast.hidden=true},4200);}
+  function syncButton(entries){const current=adapter.current(),found=entries.some(e=>e.bookId===current.bookId&&e.section===current.section);add.textContent=found?'更新书签':'存书签';add.title=found?'更新本节书签到当前位置':'保存当前位置为书签';add.setAttribute('aria-label',add.title);}
+  function render(){
+   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit]);if(next===signature)return;signature=next;
+   const previousScroll=list.scrollTop;panel.querySelector('[data-bookmark-count]').textContent=entries.length?' · '+entries.length:'';list.replaceChildren();
+   controls.hidden=!entries.length&&!query&&scope.value==='all';resultCount.hidden=controls.hidden;
+   clear.disabled=!query&&scope.value==='all'&&!search.value;
+   capacity.hidden=entries.length<=500;capacity.textContent=capacity.hidden?'':capacityMessage;
+   const found=entries.filter(matches).sort((a,b)=>b.updatedAt-a.updatedAt),shown=found.slice(0,visibleLimit);
+   resultCount.textContent='显示 '+shown.length+' / '+found.length+' 枚匹配书签，共 '+entries.length+' 枚。';
+   more.hidden=shown.length>=found.length;more.textContent='再显示 '+Math.min(40,found.length-shown.length)+' 枚';
+   if(!found.length){const empty=document.createElement('p');empty.className='bookmark-empty';empty.textContent=!entries.length?'还没有书签。读到想回看的地方，点“存书签”。':'没有匹配的书签。可换个词句，或清除筛选查看全部。';list.append(empty);return;}
+   for(const entry of shown){
+    const row=document.createElement('div');row.className='bookmark-row';
+    const open=document.createElement('button');open.type='button';open.dataset.bookmarkOpen='';open.className='bookmark-open';
+    const title=document.createElement('strong'),excerpt=document.createElement('span');const book=adapter.books.find(b=>b.id===entry.bookId);
+    title.textContent='《'+book.title+'》 · '+entry.title;excerpt.textContent=entry.excerpt||'本节开头';open.append(title,excerpt);open.addEventListener('click',()=>openEntry(entry));
+    const remove=document.createElement('button');remove.type='button';remove.dataset.bookmarkRemove='';remove.className='bookmark-remove';remove.textContent='删除';remove.setAttribute('aria-label','删除《'+book.title+'》'+entry.title+'书签');
+    remove.addEventListener('click',()=>{const result=store.remove(entry.bookId,entry.section);removed=entry;undo.hidden=false;render();message(result.reason==='capacity'?capacityMessage:result.persisted?'书签已删除，可撤销。':'书签已临时删除；浏览器存储不可用。');undo.focus({preventScroll:true});});
+    row.append(open,remove);list.append(row);
+   }
+   list.scrollTop=previousScroll;
+  }
+  function filter(){query=search.value.trim().toLocaleLowerCase();visibleLimit=40;list.scrollTop=0;render();}
+  search.addEventListener('compositionstart',()=>{composing=true;});
+  search.addEventListener('compositionend',()=>{composing=false;filter();});
+  search.addEventListener('input',event=>{if(!composing&&!event.isComposing)filter();});
+  scope.addEventListener('change',filter);
+  clear.addEventListener('click',()=>{search.value='';scope.value='all';composing=false;filter();search.focus({preventScroll:true});});
+  more.addEventListener('click',()=>{const previous=list.querySelectorAll('[data-bookmark-open]').length;visibleLimit+=40;render();const next=list.querySelectorAll('[data-bookmark-open]')[previous];if(next){list.scrollTop+=next.getBoundingClientRect().top-list.getBoundingClientRect().top;next.focus({preventScroll:true});}});
+  function openEntry(entry){
+   if(adapter.open(entry)===false)return;
+   requestAnimationFrame(()=>{
+    const current=adapter.current();if(current.bookId!==entry.bookId||current.section!==entry.section)return;
+    const range=textRange(current.element,entry.textOffset);if(range){const delta=range.getBoundingClientRect().top-adapter.line();adapter.scrollBy(delta);}
+    adapter.focus();adapter.save();message('已回到书签中的词句。');render();
+   });
+  }
+  add.addEventListener('click',()=>{
+   const current=adapter.current(),text=current.element.textContent,textOffset=captureTextOffset(current.element,adapter.line()),now=Date.now();
+   try{const result=store.upsert({bookId:current.bookId,section:current.section,textOffset,title:current.title.slice(0,240),excerpt:text.slice(textOffset,textOffset+90).replace(/\s+/g,' '),createdAt:now,updatedAt:now});
+   render();message(result.reason==='capacity'?capacityMessage:result.persisted?'书签已保存，可在“我的书签”中回看。':document.body.classList.contains('earth-full-book')?'书签仅临时保存在当前页，请在“我的书签”中导出。':'书签仅临时保存在当前页，请及时下载完整备份。');}catch(e){message('未能添加书签。最多可保留 500 枚，请先删除不再需要的书签。');}
+  });
+  undo.addEventListener('click',()=>{
+   if(!removed)return;
+   const sameEntry=entry=>entry.bookId===removed.bookId&&entry.section===removed.section;
+   const existed=allEntries().some(sameEntry),result=store.merge([removed]),restored=allEntries().find(sameEntry);
+   if(!restored){render();message('未能恢复：书签已达到 500 枚，已保留撤销入口；名额腾出后可重试。');undo.focus({preventScroll:true});return;}
+   const keptExisting=existed||['textOffset','title','excerpt','createdAt','updatedAt'].some(key=>restored[key]!==removed[key]);
+   removed=null;undo.hidden=true;render();
+   message(result.reason==='capacity'?capacityMessage:(keptExisting?(result.persisted?'本节已有新书签，已保留现有书签。':'本节已有新书签，已临时保留，请及时备份。'):(result.persisted?'已恢复删除的书签。':'书签已临时恢复，请及时备份。'))+(!matches(restored)?'当前筛选未显示这枚书签，可清除筛选查看。':''));
+   list.querySelector('button')?.focus({preventScroll:true});
+  });
+  addEventListener('storage',event=>{if(event.key==='earth-online-bookmarks-v1'||event.key===null)render();});
+  window.earthBookmarkUI={refresh:render,open:openEntry};render();
+  const requested=new URL(location.href).searchParams.get('bookmark');
+  if(requested!==null&&/^\d+$/.test(requested)&&adapter.shouldOpenInitialBookmark?.()!==false){const current=adapter.current(),entry=allEntries().find(e=>e.bookId===current.bookId&&e.section===Number(requested));if(entry)requestAnimationFrame(()=>openEntry(entry));}
+  return window.earthBookmarkUI;
+ };
+})();
+
+(() => {
+  'use strict';
+  if (!document.body.matches('.earth-manual, .earth-full-book')) return;
+  const containers = [...document.querySelectorAll('[data-reading-appearance]')];
+  if (!containers.length || containers.every(el => el.dataset.appearanceReady)) return;
+  const key = 'earth-online-appearance-v1';
+  const choices = [['paper', '纸色'], ['night', '夜读'], ['white', '素白']];
+  const validThemes = new Set(choices.map(([value]) => value));
+  const decode = raw => {
+    try {
+      const value = JSON.parse(raw);
+      return value && typeof value === 'object' && !Array.isArray(value) &&
+        Object.keys(value).length === 1 && validThemes.has(value.theme) ? value.theme : 'paper';
+    } catch { return 'paper'; }
+  };
+  let theme = 'paper', canSave = true;
+  try { theme = decode(localStorage.getItem(key)); } catch { canSave = false; }
+  const controls = [], notices = [];
+  const paint = () => {
+    document.documentElement.dataset.readingTheme = theme;
+    controls.forEach(select => { select.value = theme; });
+    notices.forEach(notice => { notice.hidden = canSave; });
+  };
+  const apply = value => {
+    if (!validThemes.has(value)) return false;
+    theme = value;
+    try { localStorage.setItem(key, JSON.stringify({theme})); canSave = true; }
+    catch { canSave = false; }
+    paint();
+    return true;
+  };
+  const refresh = () => {
+    try { theme = decode(localStorage.getItem(key)); canSave = true; }
+    catch { canSave = false; }
+    paint();
+  };
+  containers.forEach((container, index) => {
+    if (container.dataset.appearanceReady) return;
+    const field = document.createElement('div');
+    field.className = 'appearance-field';
+    const text = document.createElement('label');
+    text.textContent = '阅读配色';
+    const select = document.createElement('select');
+    select.id = 'reading-appearance-' + (index + 1);
+    text.htmlFor = select.id;
+    choices.forEach(([value, title]) => {
+      const option = document.createElement('option');
+      option.value = value; option.textContent = title; select.append(option);
+    });
+    select.addEventListener('change', () => {
+      apply(select.value);
+    });
+    field.append(text, select);
+    const notice = document.createElement('p');
+    notice.className = 'appearance-notice';
+    notice.setAttribute('role', 'status');
+    notice.textContent = '仅本页生效，浏览器未开放保存。';
+    controls.push(select); notices.push(notice);
+    container.append(field, notice);
+    container.dataset.appearanceReady = 'true';
+  });
+  window.EarthReadingAppearance = Object.freeze({apply, refresh});
+  paint();
+  window.addEventListener('storage', event => {
+    if (event.key === key || event.key === null) { theme = decode(event.newValue); paint(); }
+  });
+})();
+
+(() => {
+ 'use strict';
+ const button=document.querySelector('[data-bookmark-export]');if(!button)return;
+ button.addEventListener('click',()=>{
+  const data={format:'earth-online-backup',version:1,manual:{completed:[],notes:{}},reading:{},fullBooks:{},bookmarks:window.earthBookmarkStore.readForExport(),appearance:{theme:document.documentElement.dataset.readingTheme||'paper'},exportedAt:new Date().toISOString()};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'})),link=document.createElement('a');
+  link.href=url;link.download='地球Online-书签备份-'+new Date().toISOString().slice(0,10)+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  document.querySelector('[data-bookmark-export-status]').textContent='书签备份已下载，可在主手册“备份与恢复”中合并。';
+ });
+})();
+
+(() => {
+ 'use strict';
+ window.mountOriginalPageJump=function(adapter){
+  const host=document.querySelector('[data-original-page-jump]');if(!host)return;
+  host.innerHTML='<details class="page-jump" data-page-jump><summary>按原文件页码定位</summary><p class="page-jump-help">使用 PDF 文件中的页序，与书上印刷的页码可能不同。</p><div class="page-jump-fields"><label for="page-jump-volume">卷册<select id="page-jump-volume" data-page-jump-volume></select></label><label for="page-jump-number">原文件页码<input id="page-jump-number" data-page-jump-number type="text" inputmode="numeric" maxlength="6" aria-describedby="page-jump-status"></label><button type="button" data-page-jump-go>跳转</button></div></details><p id="page-jump-status" class="page-jump-status" data-page-jump-status role="status"></p>';
+  const panel=host.querySelector('details'),volume=host.querySelector('select'),input=host.querySelector('input'),button=host.querySelector('button'),status=host.querySelector('[data-page-jump-status]');
+  let bookId=null,book,volumes=[];
+  function clearError(){input.removeAttribute('aria-invalid');status.textContent='';}
+  function refresh(){
+   book=adapter.book();const changed=book.id!==bookId;bookId=book.id;
+   volumes=book.volumes.map(v=>({...v,pages:Math.max(0,...book.sections.filter(s=>s.volumeId===v.id).map(s=>s.pageEnd||s.pageStart||0))})).filter(v=>v.pages>0);
+   host.hidden=!volumes.length;if(host.hidden){panel.open=false;return;}
+   if(changed){volume.replaceChildren();for(const v of volumes){const option=document.createElement('option');option.value=v.id;option.textContent=v.label+' · '+v.pages+' 页';volume.append(option);}panel.open=false;clearError();}
+   const current=book.sections[adapter.current()];
+   if(current&&(changed||!host.contains(document.activeElement))){volume.value=current.volumeId;input.value=String(current.pageStart||1);}
+  }
+  volume.addEventListener('change',()=>{clearError();input.value='';input.focus({preventScroll:true});});
+  input.addEventListener('input',clearError);
+  function go(){
+   const v=volumes.find(v=>v.id===volume.value),raw=input.value.trim(),page=Number(raw);
+   if(!v||!/^\d+$/.test(raw)||!Number.isSafeInteger(page)||page<1||page>v.pages){input.setAttribute('aria-invalid','true');status.textContent='请输入 1—'+(v?.pages||1)+' 之间的整数页码。';input.focus({preventScroll:true});return;}
+   const index=book.sections.findIndex(s=>s.volumeId===v.id&&s.pageStart<=page&&(s.pageEnd||s.pageStart)>=page);
+   if(index<0){input.setAttribute('aria-invalid','true');status.textContent='这一页没有对应的阅读节，请使用篇章目录。';return;}
+   clearError();panel.open=false;adapter.open(index);
+   const s=book.sections[index],message='已打开 '+v.label+' · 原文件第 '+page+' 页。'+(s.pageEnd>s.pageStart?'此阅读节覆盖第 '+s.pageStart+'—'+s.pageEnd+' 页。':'');status.textContent=message;adapter.announce?.(message);
+  }
+  button.addEventListener('click',go);input.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.isComposing){event.preventDefault();go();}});
+  window.earthPageJump={refresh};refresh();return window.earthPageJump;
+ };
+})();
+
+const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath":"html/yijing.html"},{"id":"daodejing","title":"道德经","sectionCount":81,"htmlPath":"html/daodejing.html"},{"id":"zhuangzi","title":"庄子","sectionCount":33,"htmlPath":"html/zhuangzi.html"},{"id":"bazi","title":"四柱八字","sectionCount":14,"htmlPath":"html/bazi.html"},{"id":"neijing","title":"黄帝内经","sectionCount":166,"htmlPath":"html/neijing.html"},{"id":"yunqi","title":"五运六气","sectionCount":7,"htmlPath":"html/yunqi.html"},{"id":"mao","title":"毛泽东选集","sectionCount":1960,"htmlPath":"html/mao.html"},{"id":"sunzi","title":"孙子兵法","sectionCount":13,"htmlPath":"html/sunzi.html"},{"id":"yinfu","title":"阴符经","sectionCount":4,"htmlPath":"html/yinfu.html"},{"id":"qiti","title":"炁体源流","sectionCount":512,"htmlPath":"html/qiti.html"}];const pageJumpVolumes=[{"id":"full","label":"易经","sectionCount":69,"pages":null}];
+(() => {
+  'use strict';
+  const bookId = "yijing";
+  const storageKey = 'earth-online-full-book-v1:' + bookId;
+  const sections = Array.from(document.querySelectorAll('.book-section'));
+  const paragraphs = sections.map(section => section.querySelector('.prose'));
+  const texts = paragraphs.map(paragraph => paragraph.textContent);
+  const searchIndex=EarthSearchIndex.create(sections.map((section,index)=>({title:section.querySelector('h2').textContent,text:texts[index]})));
+  const indexById = new Map(sections.map((section, index) => [section.id, index]));
+  const directory = document.querySelector('nav');
+  const directoryLinks = Array.from(directory.querySelectorAll('a[href^="#section-"]'));
+  const jump = document.getElementById('jump');
+  const toolbar = document.querySelector('.toolbar');
+  const queryInput = document.getElementById('query');
+  const searchMode=document.getElementById('search-mode');let searchVersion=0;
+  let searchedMode=searchMode.value;
+  const clearSearch = document.getElementById('clear-search');
+  const searchState = document.getElementById('search-state');
+  const returnReading = document.createElement('button');
+  returnReading.id = 'return-reading-position';
+  returnReading.className = 'reader-tool return-reading';
+  returnReading.type = 'button';
+  returnReading.textContent = '返回刚才阅读处';
+  returnReading.disabled = true;
+  document.querySelector('.book-head h1').after(returnReading);
+  let size = parseInt(getComputedStyle(sections[0].querySelector('.prose')).fontSize, 10) || 19;
+  let activeIndex = -1, matches = [], currentMatch = -1;
+  let searchTimer, saveTimer, scrollFrame;
+  let userInteracted = false, initialized = false;
+  let navigationVersion = 0;
+  let readingPosition = null, focusPosition = null;
+  let lastBodyPosition = null;
+  let keyboardFocusPosition = null;
+  let clampedPosition = null;
+  let entryHash = location.hash;
+  let searchedQuery = '', composing = false;
+  const highlighted = new Map();
+  try { history.scrollRestoration = 'manual'; } catch (error) {}
+
+  function readStoredState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+      if (saved && saved.version === 1 && indexById.has(saved.sectionId)) {
+        return {
+          ...saved,
+          offset: Number.isFinite(saved.offset) ? Math.max(0, saved.offset) : 0,
+          ratio: Number.isFinite(saved.ratio) ? Math.min(1, Math.max(0, saved.ratio)) : 0,
+          fontSize: Number.isFinite(saved.fontSize) ? Math.min(27, Math.max(15, saved.fontSize)) : size
+        };
+      }
+    } catch (error) {}
+    // The previous manual stored chapter indices only. Read it once as a fallback;
+    // independent-book progress never writes to or replaces that older record.
+    try {
+      const previous = JSON.parse(localStorage.getItem('earth-online-reading-v1') || 'null');
+      const index = previous?.positions?.[bookId];
+      const validChapter = Number.isInteger(index) && index >= 0 && index < sections.length;
+      const validFont = Number.isFinite(previous?.fontSize);
+      if (validChapter || validFont) return {
+        sectionId: sections[validChapter ? index : 0].id,
+        offset: 0, ratio: 0, atStart: !validChapter,
+        fontSize: validFont ? Math.min(27, Math.max(15, previous.fontSize)) : size
+      };
+    } catch (error) {}
+    return null;
+  }
+
+  function readingInset() {
+    return toolbar.getBoundingClientRect().height + 12;
+  }
+
+  function currentIndex() {
+    // A short selected section near the end cannot always reach the reading
+    // line. Preserve that explicit choice until the reader actually scrolls.
+    if (clampedPosition) {
+      if (Math.abs(scrollY - clampedPosition.scrollY) < 2) return clampedPosition.index;
+      clampedPosition = null;
+    }
+    const line = readingInset() + 1;
+    let low = 0, high = sections.length - 1, found = 0;
+    while (low <= high) {
+      const middle = (low + high) >> 1;
+      if (sections[middle].getBoundingClientRect().top <= line) {
+        found = middle;
+        low = middle + 1;
+      } else high = middle - 1;
+    }
+    return found;
+  }
+
+  function capturePosition() {
+    const index = currentIndex();
+    const rect = sections[index].getBoundingClientRect();
+    const offset = Math.max(0, readingInset() - rect.top);
+    return {
+      sectionId: sections[index].id,
+      offset,
+      ratio: Math.min(1, offset / Math.max(1, rect.height)),
+      viewportWidth: innerWidth,
+      atStart: index === 0 && rect.top > readingInset() + 4,
+      startOffset: scrollY
+    };
+  }
+
+  function rememberBodyPosition(position) {
+    // The header contains settings and bookmark search, not chapter zero.
+    // Keep its browsing scroll separate from the last actual reading line.
+    if (!position.atStart) {
+      lastBodyPosition = {...position, fontSize: size};
+      returnReading.disabled = false;
+    }
+  }
+
+  function bodyPositionForLayout() {
+    if (!lastBodyPosition) return null;
+    if (lastBodyPosition.viewportWidth !== innerWidth || lastBodyPosition.fontSize !== size) {
+      const index = indexById.get(lastBodyPosition.sectionId);
+      lastBodyPosition = {...lastBodyPosition,
+        offset: lastBodyPosition.ratio * sections[index].getBoundingClientRect().height,
+        viewportWidth: innerWidth, fontSize: size};
+    }
+    return lastBodyPosition;
+  }
+
+  function setActive(index) {
+    jump.value = sections[index].id;
+    if (activeIndex === index) return;
+    if (activeIndex >= 0) directoryLinks[activeIndex].removeAttribute('aria-current');
+    activeIndex = index;
+    window.earthBookmarkUI?.refresh();
+    const link = directoryLinks[index];
+    link.setAttribute('aria-current', 'location');
+    link.closest('details').open = true;
+    // Scroll only the directory, never the document, to expose the selected item.
+    if (directory.getClientRects().length) {
+      const box = directory.getBoundingClientRect(), item = link.getBoundingClientRect();
+      if (item.top < box.top + 12) directory.scrollTop += item.top - box.top - 12;
+      else if (item.bottom > box.bottom - 12) directory.scrollTop += item.bottom - box.bottom + 12;
+    }
+  }
+
+  function restorePosition(position, proportional = false) {
+    const index = indexById.get(position.sectionId);
+    if (index === undefined) return;
+    clampedPosition = null;
+    if (position.atStart) scrollTo(0, Math.max(0, position.startOffset || 0));
+    else {
+      const rect = sections[index].getBoundingClientRect();
+      const offset = proportional ? position.ratio * rect.height : position.offset;
+      scrollTo(0, scrollY + rect.top + Math.min(Math.max(0, offset || 0), Math.max(0, rect.height - 1)) - readingInset());
+    }
+    const top = sections[index].getBoundingClientRect().top;
+    if (!position.atStart && top > readingInset() + 2 && top < innerHeight &&
+        scrollY >= document.documentElement.scrollHeight - innerHeight - 1) {
+      clampedPosition = {index, scrollY};
+    }
+    setActive(index);
+    readingPosition = capturePosition();
+    rememberBodyPosition(readingPosition);
+  }
+
+  function savePosition() {
+    if (!initialized) return;
+    clearTimeout(saveTimer);
+    const current = capturePosition();
+    rememberBodyPosition(current);
+    const position = current.atStart ? bodyPositionForLayout() || current : current;
+    try {
+      localStorage.setItem(storageKey, JSON.stringify({
+        version: 1, ...position, fontSize: size, entryHash, updatedAt: Date.now()
+      }));
+    } catch (error) {}
+  }
+
+  function updatePosition() {
+    setActive(currentIndex());
+    refreshHighlights();
+    readingPosition = capturePosition();
+    rememberBodyPosition(readingPosition);
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(savePosition, 160);
+  }
+
+  function updateInset() {
+    document.documentElement.style.scrollPaddingTop = readingInset() + 'px';
+  }
+
+  function navigateTo(id) {
+    if (!indexById.has(id)) return;
+    userInteracted = true;
+    navigationVersion++;
+    restorePosition({sectionId: id, offset: 0, ratio: 0});
+    savePosition();
+  }
+
+  function applyFont() {
+    document.documentElement.style.setProperty('--size', size + 'px');
+    document.getElementById('smaller').disabled = size <= 15;
+    document.getElementById('larger').disabled = size >= 27;
+  }
+
+  jump.addEventListener('change', event => navigateTo(event.target.value));
+  returnReading.addEventListener('click', () => {
+    const position = bodyPositionForLayout();
+    if (!position) return;
+    userInteracted = true;
+    navigationVersion++;
+    restorePosition(position);
+    sections[indexById.get(position.sectionId)].focus({preventScroll: true});
+    savePosition();
+  });
+  document.getElementById('skip-reading').addEventListener('click', event => {
+    event.preventDefault();
+    const index = currentIndex();
+    navigateTo(sections[index].id);
+    sections[index].focus({preventScroll: true});
+  });
+  directory.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#section-"]');
+    if (!link) return;
+    event.preventDefault();
+    history.replaceState(null, '', link.hash);
+    entryHash = location.hash;
+    navigateTo(link.hash.slice(1));
+  });
+  addEventListener('hashchange', () => {
+    entryHash = location.hash;
+    if (indexById.has(location.hash.slice(1))) navigateTo(location.hash.slice(1));
+    else if (location.hash === '#top') savePosition();
+  });
+  addEventListener('scroll', () => {
+    if (scrollFrame) return;
+    scrollFrame = requestAnimationFrame(() => { scrollFrame = null; updatePosition(); });
+  }, {passive: true});
+  for (const event of ['pointerdown', 'keydown', 'touchstart', 'wheel']) {
+    addEventListener(event, () => { userInteracted = true; }, {passive: true, capture: true});
+  }
+  addEventListener('pagehide', savePosition);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') savePosition();
+  });
+  new ResizeObserver(updateInset).observe(toolbar);
+  // Browsers may scroll a newly focused sticky control to the root's anchor
+  // padding. Keep the reading line still, unless that action chose a new chapter.
+  addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    // Native Tab scrolling happens before focusin, so capture before its default
+    // action. A focus event that leaves the toolbar will simply discard this.
+    keyboardFocusPosition = {position: capturePosition(), version: navigationVersion};
+    requestAnimationFrame(() => { keyboardFocusPosition = null; });
+  }, {capture: true});
+  toolbar.addEventListener('focusin', () => {
+    const version = navigationVersion;
+    const position = keyboardFocusPosition?.version === version ? keyboardFocusPosition.position : capturePosition();
+    keyboardFocusPosition = null;
+    focusPosition = position;
+    requestAnimationFrame(() => {
+      if (version === navigationVersion && toolbar.contains(document.activeElement)) restorePosition(position);
+      focusPosition = null;
+    });
+  });
+
+  for (const [id, delta] of [['smaller', -2], ['larger', 2]]) {
+    document.getElementById(id).addEventListener('click', () => {
+      const position = capturePosition();
+      navigationVersion++;
+      size = Math.min(27, Math.max(15, size + delta));
+      applyFont();
+      restorePosition(position, true);
+      savePosition();
+    });
+  }
+
+  // Keep the complete book in the document, but decorate only the paragraphs
+  // currently on screen. A common single character must not create 50,000 marks.
+  function refreshHighlights(extraIndex) {
+    const wanted = new Set();
+    if (EarthTextSearch.fold(searchedQuery,searchedMode)) {
+      for (let index = currentIndex(); index < sections.length; index++) {
+        if (sections[index].getBoundingClientRect().top > innerHeight) break;
+        wanted.add(index);
+      }
+      if (Number.isInteger(extraIndex)) wanted.add(extraIndex);
+    }
+    for (const [index, query] of highlighted) {
+      if (!wanted.has(index) || query !== searchedMode+':'+searchedQuery) {
+        paragraphs[index].textContent = texts[index];
+        highlighted.delete(index);
+      }
+    }
+    for (const index of wanted) {
+      if (highlighted.has(index)) continue;
+      const text=texts[index],ranges=EarthTextSearch.ranges(text,searchedQuery,searchedMode,100);if(!ranges.length)continue;
+      const fragment=document.createDocumentFragment();let cursor=0;
+      for(const range of ranges){fragment.append(document.createTextNode(text.slice(cursor,range.start)));const mark=document.createElement('mark');mark.textContent=text.slice(range.start,range.end);fragment.append(mark);cursor=range.end;}
+      fragment.append(document.createTextNode(text.slice(cursor)));paragraphs[index].replaceChildren(fragment);highlighted.set(index,searchedMode+':'+searchedQuery);
+    }
+  }
+
+  async function moveMatch(delta) {
+    if (composing) return;
+    clearTimeout(searchTimer);
+    if (queryInput.value.trim() !== searchedQuery||searchMode.value!==searchedMode) await searchBook();
+    if (composing||queryInput.value.trim()!==searchedQuery||searchMode.value!==searchedMode||!matches.length) return;
+    currentMatch = currentMatch < 0 ? (delta < 0 ? matches.length - 1 : 0) : (currentMatch + delta + matches.length) % matches.length;
+    searchState.textContent = '第 ' + (currentMatch + 1) + ' / ' + matches.length + ' 节匹配';
+    updateInset();
+    const index = matches[currentMatch];
+    navigateTo(sections[index].id);
+    refreshHighlights(index);
+    const mark = paragraphs[index].querySelector('mark');
+    if (mark) scrollTo(0, scrollY + mark.getBoundingClientRect().top - readingInset() - 12);
+    sections[index].focus({preventScroll: true});
+    readingPosition = capturePosition();
+    savePosition();
+  }
+
+  async function searchBook() {
+    const version=++searchVersion,query=queryInput.value.trim(),mode=searchMode.value,needle=EarthTextSearch.fold(query,mode);
+    if(needle&&!searchIndex.peek(mode)){searchState.textContent='正在准备离线检索…';document.getElementById('prev-match').disabled=document.getElementById('next-match').disabled=true;}
+    const indexed=needle?await searchIndex.ensure(mode):[];
+    if(version!==searchVersion||composing||query!==queryInput.value.trim()||mode!==searchMode.value)return;
+    const position=capturePosition(),previousMatches=matches;
+    matches=needle?indexed.flatMap((entry,index)=>entry.title.includes(needle)||entry.text.includes(needle)?[index]:[]):[];
+    const nextMatches=new Set(matches);
+    for(const index of previousMatches)if(!nextMatches.has(index))sections[index].classList.remove('match');
+    for(const index of matches)sections[index].classList.add('match');
+    searchedQuery=query;searchedMode=mode;currentMatch=-1;refreshHighlights();
+    document.getElementById('prev-match').disabled=document.getElementById('next-match').disabled=!matches.length;clearSearch.disabled=!queryInput.value;
+    searchState.textContent=query?(!needle?'请输入文字或数字；兼容检索会忽略标点和空白。':matches.length?'找到 '+matches.length+' 节匹配，点“下处”前往。':'未找到，请尝试更短的原文词句。'):'连续阅读全部内容，或用目录跳转。';
+    updateInset();restorePosition(position);savePosition();
+  }
+  function scheduleSearch(event) {
+    searchVersion++;
+    clearSearch.disabled = !queryInput.value;
+    if (focusPosition || readingPosition) restorePosition(focusPosition || readingPosition);
+    focusPosition = null;
+    clearTimeout(searchTimer);
+    if (!composing && !event?.isComposing) searchTimer = setTimeout(searchBook, 200);
+  }
+  searchMode.addEventListener('change',()=>{clearTimeout(searchTimer);searchVersion++;if(!composing)searchBook();});
+  queryInput.addEventListener('compositionstart', () => { composing = true; searchVersion++;clearTimeout(searchTimer); });
+  queryInput.addEventListener('compositionend', () => { composing = false; scheduleSearch(); });
+  queryInput.addEventListener('input', scheduleSearch);
+  queryInput.addEventListener('keydown', event => {
+    if (event.key === 'Enter' && !composing && !event.isComposing) {
+      event.preventDefault();
+      moveMatch(event.shiftKey ? -1 : 1);
+    }
+  });
+  clearSearch.addEventListener('click', () => {
+    if (focusPosition || readingPosition) restorePosition(focusPosition || readingPosition);
+    focusPosition = null;
+    clearTimeout(searchTimer);
+    composing = false;
+    queryInput.value = '';
+    searchBook();
+    queryInput.focus({preventScroll: true});
+  });
+  document.getElementById('prev-match').addEventListener('click', () => moveMatch(-1));
+  document.getElementById('next-match').addEventListener('click', () => moveMatch(1));
+
+  const saved = readStoredState();
+  if (saved) { size = saved.fontSize; applyFont(); }
+  const initialHash = entryHash.slice(1);
+  const navigationType = performance.getEntriesByType('navigation')[0]?.type;
+  const returning = navigationType === 'reload' || navigationType === 'back_forward';
+  // A newly opened deep link always wins. Reloading that already-read document
+  // or returning through browser history resumes its later reading position,
+  // rather than reapplying the entry anchor.
+  const explicitAnchor = indexById.has(initialHash) || initialHash === 'top';
+  const resume = saved && (!explicitAnchor || (returning && saved.entryHash === entryHash));
+  let resumedSavedPosition = false;
+  function initializePosition() {
+    updateInset();
+    if (!userInteracted) {
+      if (resume) {
+        restorePosition(saved, saved.viewportWidth !== undefined && saved.viewportWidth !== innerWidth);
+        resumedSavedPosition = true;
+      }
+      else if (indexById.has(initialHash)) restorePosition({sectionId: initialHash, offset: 0, ratio: 0});
+      else { scrollTo(0, 0); setActive(0); }
+    }
+    initialized = true;
+    updatePosition();
+  }
+  initializePosition();
+  if (document.readyState !== 'complete') addEventListener('load', initializePosition, {once: true});
+  document.fonts.ready.then(() => {
+    if (!userInteracted) initializePosition();
+  });
+  const originalPageBook={id:bookId,volumes:pageJumpVolumes,sections:sections.map(section=>({volumeId:section.dataset.volume,pageStart:Number(section.dataset.pageStart),pageEnd:Number(section.dataset.pageEnd)}))};
+  mountOriginalPageJump({book:()=>originalPageBook,current:currentIndex,open:index=>{navigateTo(sections[index].id);sections[index].focus({preventScroll:true});}});
+  mountEarthBookmarks({
+    books:bookmarkBooks,
+    shouldOpenInitialBookmark:()=>!resumedSavedPosition,
+    current:()=>{const index=currentIndex();return {bookId,section:index,title:sections[index].querySelector('h2').textContent,element:paragraphs[index]};},
+    line:()=>readingInset()+12,
+    scrollBy:delta=>scrollBy(0,delta),
+    focus:()=>sections[currentIndex()].focus({preventScroll:true}),
+    save:savePosition,
+    open:entry=>{
+      if(entry.bookId!==bookId){const target=new URL(entry.bookId+'.html',location.href);target.searchParams.set('bookmark',entry.section);target.hash='section-'+entry.section;location.href=target.href;return false;}
+      navigateTo('section-'+entry.section);
+    }
+  });
+})();
+</script></body></html>

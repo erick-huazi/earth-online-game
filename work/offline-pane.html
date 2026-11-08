@@ -1,0 +1,22 @@
+<section class="local-pane" id="local-pane" aria-label="HTML 全文阅读">
+  <p class="local-description" id="local-description"></p>
+  <div class="local-files" id="local-downloads"></div>
+  <div id="text-book-view">
+    <details id="reading-tools" class="reading-tools" open><summary><strong>目录与搜索</strong><span id="tools-current"></span></summary><div class="reading-tools-body">
+    <div data-reading-appearance></div><div data-original-page-jump></div>
+    <div class="chapter-field volume-field" id="volume-field" hidden><label for="volume-select">选择卷册</label><select id="volume-select"></select></div>
+    <div class="local-toolbar">
+      <div class="chapter-field"><label for="chapter-select">篇章 / 页码目录</label><select id="chapter-select"></select></div>
+      <div class="reader-tools"><span class="font-label" id="font-value" aria-live="polite">字号 18</span><button type="button" class="reader-tool" id="font-smaller" aria-label="缩小字号">A−</button><button type="button" class="reader-tool" id="font-larger" aria-label="放大字号">A＋</button></div>
+    </div>
+    <div class="search-options"><label for="book-search-mode">查找方式<select id="book-search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div>
+    <div class="text-controls"><div class="book-search"><div class="search-label-row"><label for="book-search">搜索原文词句</label><label class="search-scope-label" for="book-search-scope">范围<select id="book-search-scope"><option value="current">当前书 · 全部卷册</option><option value="all">全部 10 本书</option></select></label></div><div class="search-box"><input type="search" id="book-search" placeholder="输入想查找的词句" maxlength="100"><button type="button" class="reader-tool search-clear" id="search-clear">清除</button></div></div></div>
+    <div class="search-results" id="search-results" hidden></div>
+    </div></details><button id="return-search" class="return-search" type="button" hidden>← 返回搜索结果</button>
+    <div class="text-reading" id="text-reading" tabindex="0" role="region" aria-label="原文阅读区"><p class="section-origin" id="section-origin"></p><h4 id="section-title"></h4><p id="section-source" class="section-origin" hidden></p><div id="fulltext-content" class="fulltext-content"></div><p id="empty-page" class="reading-position" hidden></p><div id="section-images" class="section-images"></div></div>
+    <div class="local-chapter-nav"><button class="reader-tool" type="button" id="prev-section">← 上一节</button><span id="section-position"></span><button class="reader-tool" type="button" id="next-section">下一节 →</button></div>
+    <div class="bookmark-toolbar"><details class="bookmark-panel" data-bookmark-panel><summary>我的书签<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>保存在当前浏览器，可随完整备份导出。</p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><button class="bookmark-add" data-bookmark-add type="button">存书签</button></div>
+    <p class="reading-position" id="reading-position">本机记住读到的位置。展开全书，可接着当前章节连续阅读。</p>
+  </div>
+</section>
+<details class="source-credits"><summary>原书来源与转换说明</summary><p id="local-provenance"></p><div class="original-sources" id="original-sources"></div></details>

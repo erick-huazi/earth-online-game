@@ -1,0 +1,134 @@
+[
+  {
+    "id": "yijing",
+    "title": "易经",
+    "subtitle": "新手指南 · 观察变化",
+    "category": "认知",
+    "intro": "把世界看成不断变化的局面：练习辨认处境、转折与行动时机，给判断保留余地。",
+    "learn": ["变化与处境", "关系与位置", "时机与边界"],
+    "quest": "选一件正在变化的事，分别写下已知事实、仍不确定的部分，以及一个可逆的小行动。",
+    "note": "链接为《周易》繁体文字资料。此处借其变化观念开展阅读，不把卦象用于预测或替代现实判断。",
+    "links": [
+      {"label": "打开《周易》原文", "url": "https://github.com/kanripo/KR1a0001"}
+    ]
+  },
+  {
+    "id": "daodejing",
+    "title": "道德经",
+    "subtitle": "玩家说明书 · 简化行动",
+    "category": "心法",
+    "intro": "从欲望、节制与柔弱的讨论出发，重新检查习以为常的用力方式，寻找适合自己的节奏。",
+    "learn": ["节制与知足", "柔弱与韧性", "行动与留白"],
+    "quest": "写下最近最费力的一件事，区分必要行动与重复消耗，尝试减少一个无助于目标的步骤。",
+    "note": "链接为 81 章 Markdown 文字版。各版本的断句与解释可能不同，可把分歧当作比较阅读的入口。",
+    "links": [
+      {"label": "打开 81 章全文", "url": "https://github.com/kwezdj123/DAODEJING/blob/master/道德经.md"}
+    ]
+  },
+  {
+    "id": "zhuangzi",
+    "title": "庄子",
+    "subtitle": "体验日志 · 切换视角",
+    "category": "心法",
+    "intro": "跟随寓言松动固有视角，分辨外在评价与自身感受，看看生活是否还有别的理解方式。",
+    "learn": ["视角与成见", "有用与无用", "自由与处境"],
+    "quest": "挑一句让你困扰的评价，分别从自己、对方和旁观者的角度解释它，保留至少两种可能。",
+    "note": "链接为《庄子》33 篇繁体文字资料。寓言适合引发思考，具体解读可与不同注本相互参照。",
+    "links": [
+      {"label": "打开《庄子》原文", "url": "https://github.com/kanripo/KR5c0126"}
+    ]
+  },
+  {
+    "id": "bazi",
+    "title": "四柱八字",
+    "subtitle": "文化支线 · 理解传统分类",
+    "category": "文化",
+    "intro": "认识传统命理如何组织时间与人生叙事，练习区分一种文化解释与可以检验的事实。",
+    "learn": ["干支与历法", "传统命理术语", "解释与证据"],
+    "quest": "遇到一个关于性格或命运的判断时，写下它需要哪些证据，以及什么事实可能推翻它。",
+    "note": "“四柱八字”在图片中未注明作者或版本。此处匹配相关原典《子平真诠评注》，并非已确定的同名著作；不用于算命预测。",
+    "links": [
+      {"label": "打开相关原典", "url": "https://github.com/Carl-Tsoi/Lucky/blob/main/books/子平真诠.txt"}
+    ]
+  },
+  {
+    "id": "neijing",
+    "title": "黄帝内经",
+    "subtitle": "身心档案 · 阅读古代医学",
+    "category": "身心",
+    "intro": "从古代医学的视角认识身体、生活与环境之间的联系，同时保留历史语境与现代证据的边界。",
+    "learn": ["古代身体观", "生活与环境", "医学思想史"],
+    "quest": "用一周时间记录睡眠、活动与主观精力，只观察变化，不凭记录或古籍给自己诊断。",
+    "note": "链接分别为《素问》与《灵枢经》文字资料。古代医学文献用于历史与文化阅读，不能替代现代诊疗。",
+    "links": [
+      {"label": "阅读《素问》", "url": "https://github.com/xiaopangxia/TCM-Ancient-Books/blob/master/437-黄帝内经素问.txt"},
+      {"label": "阅读《灵枢经》", "url": "https://gist.github.com/newrerio/d21e734ac435890620283f29560c79a3"}
+    ]
+  },
+  {
+    "id": "yunqi",
+    "title": "五运六气",
+    "subtitle": "环境档案 · 认识古代时序观",
+    "category": "文化",
+    "intro": "了解古人如何用周期与分类联系气候、时间和身体，比较传统解释框架与实际观察。",
+    "learn": ["运气学说", "周期与分类", "观察与解释"],
+    "quest": "连续几天记录天气与日常状态，把观察写在一栏、自己的解释写在另一栏，避免直接推断因果。",
+    "note": "“五运六气”未确定具体同名著作。此处匹配《素问》运气七篇的相关原典资料，不据此预测疾病或安排治疗。",
+    "links": [
+      {"label": "打开运气七篇资料", "url": "https://github.com/dhicoc/wuyun-liuqi-skills/tree/master/rag-knowledge-base/literature"}
+    ]
+  },
+  {
+    "id": "mao",
+    "title": "毛泽东选集",
+    "subtitle": "实践指南 · 调查与复盘",
+    "category": "行动",
+    "intro": "围绕调查、实践与矛盾阅读相关篇目，把判断放回具体条件，在行动之后重新检验认识。",
+    "learn": ["调查与事实", "实践与认识", "矛盾与条件"],
+    "quest": "选择一个工作或学习问题，先列三条可核实事实，再做一个小实验，最后记录结果与原先判断的差别。",
+    "note": "仓库提供第一至第五卷 PDF。建议结合篇目写作年代与历史背景阅读，避免直接照搬具体政治或军事情境。",
+    "links": [
+      {"label": "打开五卷 PDF 仓库", "url": "https://github.com/OriginZero/TheGreatLeaderChairmanMAO"}
+    ]
+  },
+  {
+    "id": "sunzi",
+    "title": "孙子兵法",
+    "subtitle": "策略手册 · 判断成本与条件",
+    "category": "行动",
+    "intro": "在具体条件下衡量目标、成本和信息，练习选择行动与退出时机，也为合作留下空间。",
+    "learn": ["信息与判断", "成本与资源", "行动与退出"],
+    "quest": "面对一个竞争性目标，写出可投入资源、可以接受的成本和退出条件，再补充一个合作方案。",
+    "note": "链接为含十三篇正文的 JSON 文字版。军事语境下的论述用于比较思考，日常人际关系无需一律视为对抗。",
+    "links": [
+      {"label": "打开十三篇原文", "url": "https://github.com/hanzhaodeng/chinese-ancient-text/blob/master/孙子兵法.json"}
+    ]
+  },
+  {
+    "id": "yinfu",
+    "title": "阴符经",
+    "subtitle": "观察笔记 · 阅读天人观念",
+    "category": "文化",
+    "intro": "从篇幅短小而语义凝练的文本入手，认识传统天人观念，并练习分开原文、注释与推论。",
+    "learn": ["天人与变化", "语言与解释", "文本与注疏"],
+    "quest": "选择一句感兴趣的古文，分别写下字面意思、自己的理解和仍需查证的地方。",
+    "note": "链接为《黄帝阴符经》上、中、下三章文字版。文本解释存在差异，本手册不将其视作可验证的预测工具。",
+    "links": [
+      {"label": "打开三章原文", "url": "https://github.com/wenyuange/dao/blob/master/正统道藏洞真部/本文类/黄帝阴符经.txt"}
+    ]
+  },
+  {
+    "id": "qiti",
+    "title": "炁体源流",
+    "subtitle": "探索支线 · 了解修炼文化",
+    "category": "文化",
+    "intro": "把它作为传统修炼文化的阅读材料，认识相关术语与叙事，对具体功效保持证据意识。",
+    "learn": ["传统修炼术语", "经验与叙事", "主张与证据"],
+    "quest": "读到一项功效主张时，记下主张是什么、依据是什么，以及还有哪些解释；无需进行身体实验。",
+    "note": "上下册 PDF 文件已确认存在，尚未逐页校验扫描完整性。图片中的“人生外挂”是比喻，不代表功效保证。",
+    "links": [
+      {"label": "打开上册 PDF", "url": "https://github.com/ynhugo/ynhugo.github.io_old/blob/master/post/book/米晶子/resources/炁體源流（上）.pdf"},
+      {"label": "打开下册 PDF", "url": "https://github.com/ynhugo/ynhugo.github.io_old/blob/master/post/book/米晶子/resources/炁體源流（下）.pdf"}
+    ]
+  }
+]

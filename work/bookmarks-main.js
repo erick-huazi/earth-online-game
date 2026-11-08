@@ -1,0 +1,10 @@
+mountEarthBookmarks({
+ books:__BOOKMARK_BOOKS__,
+ current:()=>({bookId:state.selected,section:sectionIndex(),title:localItem().sections[sectionIndex()].title,element:$('fulltext-content')}),
+ line:()=>$('text-reading').getBoundingClientRect().top+25,
+ scrollBy:delta=>{$('text-reading').scrollTop+=delta;},
+ focus:()=>{$('text-reading').scrollIntoView({block:'start',behavior:'instant'});$('text-reading').focus({preventScroll:true});},
+ save:()=>{rememberReadingPosition();saveReading();},
+ open:entry=>{selectBook(entry.bookId,false);readingState.mode='full';updateReadingMode();goSection(entry.section);}
+});
+mountOriginalPageJump({book:localItem,current:sectionIndex,announce,open:index=>{goSection(index);if(matchMedia('(max-width:760px)').matches)$('reading-tools').open=false;requestAnimationFrame(()=>{$('text-reading').scrollIntoView({block:'start',behavior:'instant'});$('text-reading').focus({preventScroll:true});});}});

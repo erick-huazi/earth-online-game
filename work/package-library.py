@@ -1,0 +1,79 @@
+from pathlib import Path
+import zipfile
+import json
+
+root = Path(__file__).resolve().parents[1]
+out = root / 'outputs'
+readme = '''地球 Online · 通关手册 / 全书 HTML 版
+
+使用方法
+1. 完整解压此压缩包。
+2. 用 Chrome、Edge 或其他现代浏览器打开 earth-online-manual.html。
+3. 选择典籍，在“阅读原文”中选篇章或卷册；“导读与心得”保留阅读任务和笔记。
+4. 所有书目的收录文字均已转换并内置到 HTML。阅读正文不需要 PDF 阅读器。
+5. 点“展开全书 HTML”可从当前章节开始连续阅读整本书。html/ 文件夹也提供十本书各自的完整 HTML，支持目录跳转、全文搜索、字号调整与自动续读；目录随阅读位置更新。
+6. 请保留 earth-online-manual.html、html/ 和 books/ 的相对位置。books/ 中保存原页图、原始文件和校验记录；原页图用于查看图示或核对识别文字。
+7. “目录与搜索”可选择当前书或全部十本书；跨书搜索后可回到同组结果。全书页支持键盘跳过目录，中文输入法提交文字后才检索。
+8. 页尾“备份与恢复阅读记录”可下载 JSON，换浏览器后选择文件预览，再合并恢复。现有心得、阅读位置及同节书签优先保留；完整备份还包含书签与配色，原 Markdown 导出仍可用。
+9. 阅读中点“存书签”，可在“我的书签”回到具体词句；同一节再次保存会更新位置，删除可撤销。可按书籍筛选，用书名、章节或摘录词句查找；每批显示40枚，清除可恢复全部。筛选不会改变导出范围。全书页也可导出书签 JSON，在主手册合并恢复。
+10. 在主手册“目录与搜索”或全书页书首“阅读配色”中选择纸色、夜读或素白；切色保留阅读位置。
+11. github-optimization-report.html 提供本轮 11 项 GitHub 项目、Agent、Skills 评分及实测依据，成品阅读不依赖这些项目的远程服务。
+12. 《毛选》《炁体源流》支持“按原文件页码定位”：先选卷册，再输入 PDF 文件中的页序。它可能与书上印刷页码不同；合并页会进入覆盖该页的阅读节。
+13. 全书页书首增加“返回刚才阅读处”。阅读后回到书首查看配色、书签等工具，不会把正文续读位置改成书首。
+14. 多窗口交替编辑不同书籍时，心得和探索标记会合并。同一本书出现不同稿件时，在“导读与心得”下展开“其他窗口的心得副本”查看；JSON 和 Markdown 导出都保留副本。编辑框中的本页草稿不会被另一窗口的新稿直接替换。
+15. deep-optimization-checklist.html 列出 2026-09-17 本轮优化点、完成情况和验证范围；另有 Markdown 版本。GitHub 选型证据的核查日期仍为 2026-09-16。
+
+16. 搜索默认兼容简繁字形、标点和空白。“北冥有鱼”可匹配“北冥有魚”，“道可道非常道”可匹配带逗号的原文。高亮和正文保留原字形；如需原样查找，可选择“按原文精确匹配”。字表内嵌，各种匹配方式都可离线使用。
+17. 心得副本可复制，或“作为当前心得继续整理”；操作会先保留当前稿件。浏览器不允许自动复制时会选中文字并提示手动复制。
+
+收录范围
+10 项书目的全书 HTML，含《毛泽东选集》五卷与《炁体源流》上下册全部原文件页序。
+“四柱八字”对应《子平真诠评注》，“五运六气”对应《素问》运气七篇，均为相关原典匹配。
+文本原始文件、合并 TXT、PDF、下载来源、文件哈希与页数记录都在 books/ 内。
+《炁体源流》为扫描文字识别，未逐字校订；每页可展开原图。不能把识别文字视为无误的校勘本。
+《毛选》第三卷源PDF第151–153页存在损坏，文字补全及来源见对应书的转换说明。
+文字内容保持来源版本，未声称逐字校勘；章节整理情况见每本书的版本说明。
+
+本机记录
+阅读进度、章节内位置、字号和心得保存在当前浏览器。主手册与独立全书页各自保存续读位置；不同浏览器或打开方式可能有各自的记录。
+同一网址来源下，主手册和全书页共享书签与配色。直接双击 HTML 时，浏览器可能按文件分别保存；请在全书页“我的书签”中导出，再到主手册合并恢复。每节保留一个书签，最多保存 500 枚。多页面临时记录合并超上限时，现有磁盘记录保持原样；页面与导出保留全部合并记录，请先导出，再删除不再需要的书签。导入超过可用容量时会显示未合并数量，请保留原备份。
+手机默认收起“目录与搜索”，展开后可换篇章或搜索；搜索结果直接定位到命中的文字。调整字号或清除搜索会尽量保持正在阅读的位置。
+重要心得请使用页面“导出我的阅读存档”另行保存。离线包不包含你的个人阅读记录。
+
+版本：2026-09-17
+'''
+readme = '''地球 Online · 入世之旅 / 游戏与完整典籍手册
+
+游戏入口
+1. 完整解压后打开 index.html 或 earth-online-game.html。
+2. 点击“开始我的旅程”，探索十处地域，每关有三次原创情境选择；达到4/6点领悟即可点亮本境并开放下一境。
+3. 每关都可查看锦囊、打开对应完整原典。通关收集信物，点亮十境后开启归途终章；共33场情境、99个选项。
+4. 重试保留最佳成绩。刷新会恢复当前场景；游戏存档独立于典籍手册的心得、书签和阅读进度。
+5. “我的营地”可导出JSON，导入时合并较好成绩；浏览器无法保存时请在关闭页面前导出。重新启程只清空游戏存档。
+6. 原创剧情、锦囊和评分不等同于原典结论，不用于医学诊断、命运预测或现实人生评价。
+7. 游戏、原文均可离线运行；完整原页图需要保留配套books文件夹。上线网址与file://离线文件的存档可能各自独立，请用导出/导入转移。
+
+游戏版本：2026-11-08
+
+以下为完整典籍手册说明：
+
+''' + readme
+(out / '使用说明.txt').write_text(readme, encoding='utf-8')
+archive = out / 'earth-online-offline-library.zip'
+files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt'] + sorted((out / 'books').rglob('*')) + sorted((out / 'html').rglob('*.html'))
+files = [p for p in files if p.is_file() and not p.name.endswith('.part')]
+with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=5, allowZip64=True) as z:
+    for p in files:
+        z.write(p, p.relative_to(out).as_posix())
+with zipfile.ZipFile(archive) as z:
+    corrupt = z.testzip()
+    if corrupt:
+        raise RuntimeError('Archive integrity error: ' + corrupt)
+    names = set(z.namelist())
+    assert 'earth-online-manual.html' in names
+    catalog = json.loads((out / 'books' / 'download-catalog.json').read_text(encoding='utf-8'))
+    for b in catalog['books']:
+        assert b['htmlPath'] in names, b['htmlPath']
+        for f in b['files']:
+            assert f['path'] in names, f['path']
+print(json.dumps({'archive': str(archive), 'bytes': archive.stat().st_size, 'files': len(files), 'integrity': 'passed'},ensure_ascii=False))

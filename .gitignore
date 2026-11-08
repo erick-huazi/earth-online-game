@@ -1,0 +1,13 @@
+node_modules/
+*.zip
+.env
+.env.*
+*.pem
+*.key
+work/deploy*
+work/*-qa.json
+work/*.png
+work/qa-results/
+*.log
+.DS_Store
+Thumbs.db

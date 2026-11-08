@@ -1,0 +1,1599 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>四柱八字 · 全书 HTML</title><style>
+:root{--bg:#181e15;--paper:#ebe7d8;--ink:#273020;--line:#bbc0aa;--gold:#d9bc76;--muted:#616b55;--serif:'Noto Serif SC','Songti SC','SimSun',serif;--sans:'Microsoft YaHei','PingFang SC',sans-serif}*{box-sizing:border-box}html{scroll-padding-top:150px}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.8 var(--sans)}a{color:inherit;text-underline-offset:4px}button,input,select{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #796337;outline-offset:3px}[hidden]{display:none!important}.top{background:var(--bg);color:var(--paper);padding:13px 5vw;display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{color:var(--gold);text-decoration:none}.top a{font-size:12px}.layout{max-width:1390px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr)}nav{border-right:1px solid var(--line);padding:35px 20px;position:sticky;top:0;height:100vh;overflow:auto;font-size:12px}nav h2{font-size:14px;margin:0 0 15px}nav summary{cursor:pointer;padding:10px 0;font-weight:600}nav ol{list-style:none;padding:0;margin:0}nav li a{display:block;padding:7px 6px;border-bottom:1px solid #d4d7c8;text-decoration:none}nav li a:hover{background:#d8ddc8}nav li a[aria-current="location"]{background:#d8ddc8;font-weight:700}nav li span{color:var(--muted);display:inline-block;min-width:24px}main{min-width:0;padding:38px 6vw 80px}.book-head h1{font:400 clamp(32px,4vw,52px)/1.3 var(--serif);margin:0 0 18px}.book-head p{font-size:12px;color:var(--muted);max-width:75ch}.conversion{border-top:1px solid var(--line);padding-top:12px;margin:18px 0 25px;font-size:11px;color:var(--muted)}.conversion summary{cursor:pointer}.toolbar{position:sticky;top:0;z-index:2;background:var(--paper);padding:13px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap;align-items:center}.toolbar select{flex:1 1 240px;width:100%;min-width:0}.toolbar input{flex:1 1 130px;width:130px;min-width:0}.toolbar button{flex:0 0 auto}.toolbar input,.toolbar select,.toolbar button{height:38px;background:#f4f0e5;color:var(--ink);border:1px solid var(--line);padding:5px 9px;border-radius:2px}.toolbar label{font-size:11px;color:var(--muted)}.search-state{font-size:11px;color:var(--muted);flex-basis:100%}.book-section{padding:36px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.origin{font-size:11px;color:var(--muted);margin:0 0 10px}.book-section h2{font:400 26px/1.5 var(--serif);margin:0 0 23px}.prose{font:var(--size,19px)/2.05 var(--serif);white-space:pre-wrap;max-width:70ch}.prose mark{background:#dfbd6f;color:#232c1c}.book-section.match{border-bottom-color:#897044}.facsimile{margin:25px 0 0;font-size:12px}.facsimile summary{cursor:pointer;padding:8px 0}figure{margin:20px 0}figure img{display:block;max-width:100%;height:auto;margin:auto;background:white}figcaption,.empty{color:var(--muted);font-size:11px}footer{padding-top:35px;font-size:12px;color:var(--muted)}footer a{display:inline-block;margin:6px 12px 6px 0}button:disabled{opacity:.5;cursor:default}.mobile-index{display:none}
+@media(max-width:850px){.layout{grid-template-columns:1fr}nav{display:none}main{padding:30px 22px 65px}.top{padding:13px 22px}.mobile-index{display:block}.toolbar select{flex-basis:100%}.toolbar input,.toolbar select{font-size:16px}.toolbar button{min-height:42px}.toolbar{gap:6px}.prose{font-size:var(--size,18px)}.book-section h2{font-size:24px}.book-section{padding:28px 0}html{scroll-padding-top:175px}}
+@media(max-width:850px){.mobile-index{display:none}.toolbar{display:grid;grid-template-columns:40px 40px minmax(0,1fr) 48px}.toolbar select{grid-column:1/-1}.toolbar input{width:100%}.toolbar button{padding:5px 4px}.search-state{grid-column:3/-1;align-self:center;line-height:1.6}}
+.skip-link{position:fixed;top:8px;left:12px;z-index:20;padding:10px 16px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);transform:translateY(-180%)}.skip-link:focus{transform:translateY(0)}.toolbar input,.toolbar select,.toolbar button{min-height:44px;min-width:44px}.book-section:focus{outline:none}.book-section:focus-visible{outline:2px solid #796337;outline-offset:6px}
+@media(max-width:850px){.toolbar{grid-template-columns:44px 44px minmax(0,1fr) 48px}}
+@media print{nav,.top,.toolbar,.facsimile,footer,.skip-link{display:none}.layout{display:block}main{padding:0}.book-section{break-inside:auto}.prose{font-size:11pt}h2{break-after:avoid}}
+.bookmark-panel{font:12px/1.8 var(--sans);border-top:1px solid var(--paper-line,var(--line));margin:12px 0 0;color:var(--paper-ink,var(--ink))}.bookmark-panel>summary{cursor:pointer;min-height:44px;padding:10px 0}.bookmark-list{max-height:300px;overflow:auto}.bookmark-row{display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--paper-line,var(--line));padding:9px 0}.bookmark-row button,.bookmark-add,.bookmark-undo{font:12px/1.7 var(--sans);color:inherit;background:transparent;border:1px solid var(--paper-line,var(--line));min-height:44px;border-radius:2px;cursor:pointer;padding:8px 10px}.bookmark-open{flex:1;min-width:0;text-align:left;border:0!important}.bookmark-open strong,.bookmark-open span{display:block;overflow-wrap:anywhere}.bookmark-open strong{font-weight:500}.bookmark-open span,.bookmark-empty,.bookmark-status{color:var(--paper-muted,var(--muted));font-size:11px}.bookmark-remove{flex:0 0 auto}.bookmark-panel button:hover,.bookmark-add:hover{background:var(--bookmark-hover,#d8ddc8)}.bookmark-panel :focus-visible,.bookmark-add:focus-visible{outline:2px solid var(--bookmark-focus,#796337);outline-offset:3px}.bookmark-status{margin:10px 0;line-height:1.8}.bookmark-toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:14px 0}.bookmark-toolbar .bookmark-panel{border:0;margin:0;flex:1}.bookmark-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:30;max-width:min(520px,calc(100vw - 32px));width:max-content;margin:0;padding:11px 18px;background:#263020;color:#f4f0e5;font:13px/1.8 'Microsoft YaHei',sans-serif;border:1px solid #98a18c;border-radius:2px;overflow-wrap:anywhere}.earth-full-book .bookmark-panel{--paper-ink:var(--ink);--paper-muted:var(--muted);--paper-line:var(--line)}.toolbar .bookmark-add{font-size:11px;padding:6px;min-width:54px}.earth-full-book .bookmark-panel{margin-bottom:18px}.earth-full-book .bookmark-status{max-width:75ch}.earth-full-book .search-state{flex:1 1 60%}
+@media(max-width:850px){.earth-full-book .toolbar .search-state{grid-column:3;grid-row:3}.earth-full-book .toolbar .bookmark-add{grid-column:4;grid-row:3;min-width:44px;padding:3px 0;font-size:10px}}
+@media print{.bookmark-panel,.bookmark-add,.bookmark-toolbar,.bookmark-toast{display:none!important}}
+@media(max-width:550px){.bookmark-toolbar{display:block;position:relative}.bookmark-toolbar>.bookmark-add{position:absolute;right:0;top:0;margin-top:0}.bookmark-toolbar .bookmark-panel>summary{padding-right:85px}}
+.bookmark-toolbar{align-items:flex-start}.bookmark-toolbar .bookmark-panel{min-width:0}.bookmark-toolbar>.bookmark-add{margin-top:5px}.bookmark-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,.6fr);gap:5px 12px;margin:5px 0 12px}.bookmark-filters>label:first-child{grid-column:1}.bookmark-search-row{display:flex;gap:6px;grid-column:1;grid-row:2}.bookmark-scope-field{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;gap:5px}.bookmark-filters :is(input,select,button),.bookmark-more{min-width:0;min-height:44px;border:1px solid var(--paper-line,var(--line));border-radius:2px;background:var(--appearance-control,var(--paper));color:inherit;font:12px/1.6 var(--sans);padding:8px}.bookmark-filters input{width:100%;flex:1}.bookmark-filters input::placeholder{color:var(--paper-muted,var(--muted));opacity:1}.bookmark-filters button{flex:0 0 auto;min-width:44px}.bookmark-filters button:disabled{opacity:.5;cursor:default}.bookmark-more{width:100%;margin-top:8px}.bookmark-scope-field select{width:100%}@media(max-width:550px){.bookmark-filters{grid-template-columns:minmax(0,1fr)}.bookmark-scope-field{grid-column:1;grid-row:3}.bookmark-filters :is(input,select){font-size:16px}}
+
+/* Optional reader palettes. Paper intentionally inherits the existing design. */
+body.earth-manual [data-reading-appearance],body.earth-full-book [data-reading-appearance]{margin:8px 0 16px;max-width:100%}
+.appearance-field{display:flex;align-items:center;gap:14px;max-width:100%;font-size:12px}
+.appearance-field>label{flex:0 0 auto}
+.appearance-field select{min-height:44px;min-width:130px;max-width:100%;padding:7px 32px 7px 10px;background:var(--paper,#ebe7d8);color:var(--paper-ink,var(--ink,#273020));border:1px solid var(--paper-line,var(--line,#bbc0aa));border-radius:2px;font:inherit}
+.appearance-field select:focus-visible,.appearance-settings>summary:focus-visible{outline:2px solid #796337;outline-offset:3px}
+.appearance-notice{font-size:11px;line-height:1.7;margin:6px 0 0;color:var(--paper-muted,var(--muted,#616b55))}
+.appearance-settings{border-top:1px solid var(--line);margin:14px 0 20px;font-size:12px}
+.appearance-settings>summary{min-height:44px;display:list-item;align-content:center;cursor:pointer;padding:9px 0}
+html[data-reading-theme="night"] body.earth-manual .reader,html[data-reading-theme="night"] body.earth-full-book{
+ --appearance-paper:#20261f;--appearance-reading:#20261f;--appearance-ink:#e7e6db;--appearance-muted:#bbc4b2;--appearance-line:#61725b;--appearance-control:#2b3428;--appearance-hover:#3b4935;--appearance-accent:#ead097;--appearance-selected:#d9bd7a;--appearance-on-selected:#20261f;--appearance-mark:#e0c17e;--appearance-mark-ink:#202818;
+}
+html[data-reading-theme="white"] body.earth-manual .reader,html[data-reading-theme="white"] body.earth-full-book{
+ --appearance-paper:#fff;--appearance-reading:#fff;--appearance-ink:#263020;--appearance-muted:#56614d;--appearance-line:#a5ad9c;--appearance-control:#f4f6ef;--appearance-hover:#e6ecdf;--appearance-accent:#695627;--appearance-selected:#34472b;--appearance-on-selected:#fff;--appearance-mark:#f0cf83;--appearance-mark-ink:#232c1c;
+}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader{
+ --paper:var(--appearance-paper);--paper-ink:var(--appearance-ink);--paper-muted:var(--appearance-muted);--paper-line:var(--appearance-line);--bookmark-hover:var(--appearance-hover);--bookmark-focus:var(--appearance-accent);background:var(--paper);color:var(--paper-ink);color-scheme:light;
+}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book{
+ --paper:var(--appearance-paper);--ink:var(--appearance-ink);--muted:var(--appearance-muted);--line:var(--appearance-line);--bookmark-hover:var(--appearance-hover);--bookmark-focus:var(--appearance-accent);background:var(--paper);color:var(--ink);color-scheme:light;
+}
+html[data-reading-theme="night"] body.earth-manual .reader,html[data-reading-theme="night"] body.earth-full-book{color-scheme:dark}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(input,select,textarea){background:var(--appearance-control);color:var(--paper-ink);border-color:var(--paper-line)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(input,textarea)::placeholder{color:var(--paper-muted);opacity:1}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .text-reading{background:var(--appearance-reading);scrollbar-color:var(--appearance-muted) var(--appearance-paper)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .fulltext-content{color:var(--paper-ink)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.reader-tool,.search-result):hover{background:var(--appearance-hover)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.reader-tab[aria-pressed="true"],.complete-btn,#local-downloads .open-book){background:var(--appearance-selected);color:var(--appearance-on-selected);border-color:var(--appearance-selected)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.complete-btn,.open-book):hover{background:var(--appearance-selected);color:var(--appearance-on-selected);filter:brightness(1.08)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.seal,.theme-item span,.source-links a:hover,.chapter-control:hover){color:var(--appearance-accent);border-color:var(--appearance-accent)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader :is(.local-files a,.source-links a){border-color:var(--paper-line)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book .top{color:#ebe7d8}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book nav li a{border-color:var(--line)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book nav li a:is(:hover,[aria-current="location"]){background:var(--appearance-hover);color:var(--ink)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book :is(.toolbar input,.toolbar select,.toolbar button,.appearance-field select){background:var(--appearance-control);color:var(--ink);border-color:var(--line)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book .toolbar input::placeholder{color:var(--muted);opacity:1}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book .toolbar button:not(:disabled):hover{background:var(--appearance-hover)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book .book-section.match{border-bottom-color:var(--appearance-accent)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.earth-manual .reader,body.earth-full-book) mark{background:var(--appearance-mark);color:var(--appearance-mark-ink)}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.earth-manual .reader,body.earth-full-book) :focus-visible{outline:2px solid var(--appearance-accent);outline-offset:3px}
+html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.earth-manual .reader,body.earth-full-book) ::selection{background:var(--appearance-selected);color:var(--appearance-on-selected)}
+@media(max-width:850px){.appearance-field select{font-size:16px}.appearance-settings{margin-bottom:14px}}
+@media print{
+ [data-reading-appearance],.appearance-settings{display:none!important}
+ html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-manual .reader,html:is([data-reading-theme="night"],[data-reading-theme="white"]) body.earth-full-book{--appearance-paper:#fff;--appearance-reading:#fff;--appearance-ink:#000;--appearance-muted:#333;--appearance-line:#aaa;--appearance-control:#fff;--appearance-mark:#eee;--appearance-mark-ink:#000;color-scheme:light}
+}
+
+.page-jump{border-top:1px solid var(--paper-line,var(--line));margin:15px 0;font:12px/1.8 var(--sans);color:var(--paper-ink,var(--ink))}.page-jump summary{min-height:44px;padding:10px 0;cursor:pointer}.page-jump-help,.page-jump-status{font-size:11px;color:var(--paper-muted,var(--muted));line-height:1.8}.page-jump-status:empty{display:none}.page-jump-fields{display:grid;grid-template-columns:minmax(120px,1fr) minmax(90px,.65fr) auto;gap:10px;align-items:end}.page-jump-fields label{display:flex;flex-direction:column;gap:5px;min-width:0}.page-jump-fields :is(input,select,button),.return-reading{font:12px/1.8 var(--sans);color:var(--paper-ink,var(--ink));background:var(--appearance-control,var(--paper));border:1px solid var(--paper-line,var(--line));border-radius:2px;min-height:44px;min-width:44px;padding:8px 10px;max-width:100%}.page-jump-fields :is(input,select){width:100%}.page-jump-fields button,.return-reading{cursor:pointer}.page-jump-fields [aria-invalid="true"]{border-color:currentColor;border-width:2px}.page-jump :focus-visible,.return-reading:focus-visible{outline:2px solid var(--bookmark-focus,#796337);outline-offset:3px}.return-reading{margin:0 0 18px}.return-reading:disabled{opacity:.55;cursor:default}@media(max-width:550px){.page-jump-fields{grid-template-columns:minmax(0,1fr) auto}.page-jump-fields label:first-child{grid-column:1/-1}.page-jump-fields :is(input,select){font-size:16px}}@media print{[data-original-page-jump],.return-reading{display:none!important}}
+
+.search-options{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0;color:var(--paper-muted,var(--muted));font:12px/1.8 var(--sans)}
+.search-options label{display:flex;align-items:center;gap:10px;min-width:0}
+.search-options select{min-height:44px;max-width:100%;padding:7px 28px 7px 10px;background:var(--appearance-control,var(--paper));color:var(--paper-ink,var(--ink));border:1px solid var(--paper-line,var(--line));border-radius:2px;font:inherit}
+.search-options select:focus-visible{outline:2px solid var(--bookmark-focus,#796337);outline-offset:3px}
+.search-options>span{font-size:11px}.note-copy-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.note-copy-actions button{min-height:44px;max-width:100%;padding:8px 12px;font:12px/1.8 var(--sans);color:var(--paper-ink);background:transparent;border:1px solid var(--paper-line);border-radius:2px}
+.note-copy-actions button:hover{background:var(--appearance-hover,#d8ddc8)}.note-copy-actions button:focus-visible{outline:2px solid var(--paper-muted);outline-offset:3px}
+@media(max-width:850px){.search-options select{font-size:16px}.search-options{gap:5px}.search-options>span{flex-basis:100%}}
+@media print{.search-options,.note-copy-actions{display:none!important}}
+</style></head><body class="earth-full-book"><a class="skip-link" id="skip-reading" href="#section-0">跳到正文</a><a class="skip-link" href="#reading-controls">跳到目录与搜索</a><header class="top"><a class="brand" href="../earth-online-manual.html#library">地球 ONLINE · 典籍手册</a><a href="#top">返回书首 ↑</a></header><div class="layout"><nav aria-label="全书目录"><h2>四柱八字 · 全书目录</h2><details open><summary>四柱八字 · 子平真诠评注 · 14 节</summary><ol><li><a href="#section-0">原目录与序</a></li><li><a href="#section-1">连续正文 · 阅读段 01</a></li><li><a href="#section-2">连续正文 · 阅读段 02</a></li><li><a href="#section-3">连续正文 · 阅读段 03</a></li><li><a href="#section-4">连续正文 · 阅读段 04</a></li><li><a href="#section-5">连续正文 · 阅读段 05</a></li><li><a href="#section-6">连续正文 · 阅读段 06</a></li><li><a href="#section-7">连续正文 · 阅读段 07</a></li><li><a href="#section-8">连续正文 · 阅读段 08</a></li><li><a href="#section-9">连续正文 · 阅读段 09</a></li><li><a href="#section-10">连续正文 · 阅读段 10</a></li><li><a href="#section-11">连续正文 · 阅读段 11</a></li><li><a href="#section-12">连续正文 · 阅读段 12</a></li><li><a href="#section-13">连续正文 · 阅读段 13</a></li></ol></details></nav><main id="top"><header class="book-head"><h1>四柱八字</h1><p>四柱八字 · 子平真诠评注 · 14 个阅读节 · 全部收录文字均在本页</p><p>图片未注明作者或版本。此处提供相关原典《子平真诠评注》，尚不能确定为图片中的某一本同名书。</p><details class="conversion"><summary>版本与转换说明</summary><p>“四柱八字”为图片中的主题，未确定同名书的作者或版本。本地收录相关典籍《子平真诠评注》的GitHub原文件全部内容；目录列48篇，正文第2–47篇缺少章标题，因此保留原文并按自然段分为连续阅读段，未据目录伪造正文分章。原文件为GB18030，阅读副本为UTF-8；原目录还存在“四十二”重复编号等讹误，均保留。</p><p>页码指原文件中的位置；可使用浏览器查找在全文中定位。原页图保存在配套 books 文件夹。</p></details><div data-original-page-jump></div><details class="appearance-settings"><summary>阅读配色</summary><div data-reading-appearance></div></details><details class="bookmark-panel" data-bookmark-panel><summary>我的书签<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>书签保存在当前浏览器。导出后可在主手册合并恢复。</p><button class="bookmark-undo" data-bookmark-export type="button">导出本页书签 ↓</button><p class="bookmark-status" data-bookmark-export-status role="status"></p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><div class="search-options"><label for="search-mode">查找方式<select id="search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div></header><div class="toolbar" id="reading-controls" tabindex="-1" role="search" aria-label="全书目录与搜索"><label class="mobile-index" for="jump">目录</label><select id="jump" aria-label="全书章节目录"><option value="section-0">原目录与序</option><option value="section-1">连续正文 · 阅读段 01</option><option value="section-2">连续正文 · 阅读段 02</option><option value="section-3">连续正文 · 阅读段 03</option><option value="section-4">连续正文 · 阅读段 04</option><option value="section-5">连续正文 · 阅读段 05</option><option value="section-6">连续正文 · 阅读段 06</option><option value="section-7">连续正文 · 阅读段 07</option><option value="section-8">连续正文 · 阅读段 08</option><option value="section-9">连续正文 · 阅读段 09</option><option value="section-10">连续正文 · 阅读段 10</option><option value="section-11">连续正文 · 阅读段 11</option><option value="section-12">连续正文 · 阅读段 12</option><option value="section-13">连续正文 · 阅读段 13</option></select><button id="smaller" aria-label="缩小字号">A−</button><button id="larger" aria-label="放大字号">A＋</button><input id="query" type="search" placeholder="搜索全书文字" aria-label="搜索全书文字"><button id="clear-search" type="button" disabled>清除</button><button id="prev-match" disabled>上处</button><button id="next-match" disabled>下处</button><button class="bookmark-add" data-bookmark-add type="button">存书签</button><span id="search-state" class="search-state" aria-live="polite">连续阅读全部内容，或用目录跳转。</span></div><section class="book-section" tabindex="-1" id="section-0" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>原目录与序</h2><div class="prose">《子平真诠评注》 清 沈孝瞻 原著
+序 
+一．论十干十二支 
+二．论阴阳生克 
+三．论阴阳生死（附支藏人元司令图表）
+四．论十干配合性情 
+五．论十干合而不合 
+六．论十干得时不旺失时不弱 
+七．论刑冲会合解法 
+八．论用神 
+九．论用神成败救应 
+十．论用神变化 
+十一．论用神纯杂 
+十二．论用神格局高低 
+十三．论用神因成得败因败得成 
+十四．论用神配气候得失 
+十五．论相神紧要 
+十六．论杂气如何取用 
+十七．论墓库刑冲之说 
+十八．论四吉神能破格 
+十九．论四凶神能成格 
+二十．论生克先后分吉凶 
+二十一．论星辰无关格局 
+二十二．论外格用舍 
+二十三．论宫分用神配六亲 
+二十四．论妻子 
+二十五．论行运 
+二十六．论行运成格变格 
+二十七．论喜忌干支有别 
+二十八．论支中喜忌逢运透清 
+二十九．论时说拘泥格局 
+三十．论时说以讹传讹 
+三十一．论正官 
+三十二．论正官取运 
+三十三 论财 
+三十四．论财取运 
+三十五．论印绶 
+三十六．论绶印取运 
+三十七．论食神 
+三十八．论食神取运 
+三十九．论偏官 
+四十．论偏官取运 
+四十二．论伤官 
+四十二．论伤官取运 
+四十三．论阳刃 
+四十四．论阳刃取运 
+四十五．论建禄月劫 
+四十六．论建禄月劫取运 
+四十七．论杂格 
+四十八．论杂格取运 
+
+
+序 
+予自束发就传，即喜读子史诸集，暇则子平《渊海》、《大全》略为流览，亦颇晓其意。然无师授，而于五行生克之理，终若有所未得者。后复购得《三命通会》、《星学大成》诸书，悉心参究，昼夜思维，乃恍然于命之不可不信，而知命之君子当有以顺受其正。 
+戊子岁予由副贡充补官学教习，馆舍在阜城门右，得交同里章公君安，欢若生平，相得无间，每值馆课暇，即诣君安寓谈《三命》，彼此辩难，阐民无余蕴。已而三年期满，僦居宛平沈明府署，得山阴沈孝瞻先生所著子平手录三十九篇，不觉爽然自失，悔前次之揣摩未至。遂携其书示君安，君安慨然叹曰：&quot;此谈子平家真诠也！&quot; 
+先生讳燡燔，成乾隆己未进士，天资颖悟，学业渊邃，其于造化精微，固神而明之，变化从心者矣。观其论用神之成败得失，又用神之因成得败、因败得成，用神之必兼看于忌神，与用神先后生克之别，并用神之透与全、有情无情、无力无力之辨，疑似毫芒，至详且悉。是先生一生心血，生注于是，是安可以淹没哉！ 
+君安爰谋付剞劂，为天下谈命者，立至当不易之准，而一切影响游移管窥蠡测之智，俱可以不惑。此亦谈命家之幸也；且不谈命家之幸，抑亦天下士君子之幸，何则？人能知命，则营竞之可以息，非分之想可以屏，凡一切富贵穷通寿夭之遭，皆听之于天，而循循焉各安于义命，以共勉于圣贤之路，岂非士君子厚幸哉！ 
+观于此而君安之不没人善，公诸同好，其功不亦多乎哉？爱乐序其缘起。 
+乾隆四十一年岁丙申初夏同后学胡焜倬空甫谨识 
+
+。</div></section>
+<section class="book-section" tabindex="-1" id="section-1" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 01</h2><div class="prose">一、论十干十二支 
+天地之间，一气而已。惟有动静，遂分阴阳。有老少，遂分四象。老者极动静之时，是为太阳太阴；少者初动初静之际，是为少阴少阳。有是四象，而五行具于其中矣。水者，太阴也；火者，太阳也；木者，少阳也；金者，少阴也；土者，阴阳老少、木火金水冲气所结也。 
+
+有是五行，何以又有十干十二支乎？盖有阴阳，因生五行，而五行之中，各有阴阳。即以木论，甲乙者，木之阴阳也。甲者，乙之气；乙者，甲之质。在天为生气，而流行于万物者，甲也；在地为万物，而承兹生气者，乙也。又细分之，生气之散布者，甲之甲，而生气之凝成者，甲之乙；万木之所以有枝叶者，乙之甲，而万木之枝枝叶叶者，乙之乙也。方其为甲，而乙之气已备；及其为乙，而甲之质乃坚。有是甲乙，而木之阴阳具矣。
+
+何以复有寅卯者，又与甲乙分阴阳天地而言之者也。以甲乙而分阴阳，则甲为阳，乙为阴，木之行于天而为阴阳者也。以寅卯而阴阳，则寅为阳，卯为阴，木之存乎地而为阴阳者也。以甲乙寅卯而统分阴阳，则甲乙为阳寅卯为阴，木之在天成象而在地成形者也。甲乙行乎天，而寅卯受之；寅卯存乎地，而甲乙施焉。是故甲乙如官长，寅卯如该管地方。甲禄于寅，乙禄于卯，如府官之在郡，县官之在邑，而各司一月之令也。 
+
+甲乙在天，故动而不居。建寅之月，岂必当甲？建卯之月，岂必当乙？寅卯在地，故止而不迁。甲虽递易，月必建寅；乙虽递易，月必建卯。以气而论，甲旺于乙；以质而论，乙坚于甲。而俗书谬论，以甲为大林，盛而宜斩，乙为微苗，脆而莫伤，可为不知阴阳之理者矣。以木类推，余者可知，惟土为木火金水冲气，故寄旺于四时，而阴阳气质之理，亦同此论。欲学命者，必须先知干支之说，然后可以入门。 
+
+四时之运，相生而成，故木生火，火生土，土生金，金生水，水复生木，即相生之序，循环迭运，而时行不匮。然而有生又必有克，生而不克，则四时亦不成矣。克者，所以节而止之，使之收敛，以为发泄之机，故曰&quot;天地节而四时成&quot;。即以木论，木盛于夏，杀于秋，杀者，使发泄于外者藏收内，是杀正所以为生，大易以收敛为性情之实，以兑为万物所说，至哉言乎！譬如人之养生，固以饮食为生，然使时时饮食，而不使稍饥以待将来，人寿其能久乎？是以四时之运，生与克同用，克与生同功。 
+
+然以五行而统论之，则水木相生，金木相克。以五行之阴阳而分配之，则生克之中，又有异同。此所以水同生木，而印有偏正；金同克木，而局有官煞也。印绶之中，偏正相似，生克之殊，可置勿论；而相克之内，一官一煞，淑慝判然，其理不可不细详也。 
+
+即以甲乙庚辛言之。甲者，阳木也，木之生气也；乙者，阴木也，木之形质也。庚者，阳金也，秋天肃杀之气也；辛者，阴金也，人间五金之质也。木之生气，寄于木而行于天，故逢秋天为官，而乙则反是，庚官而辛杀也。又以丙丁庚辛言之。丙者，阳火也，融和之气也；丁者，阴火也，薪传之火也。秋天肃杀之气，逢阳和而克去，而人间之金，不畏阳和，此庚以丙为杀，而辛以丙为官也。人间金铁之质，逢薪传之火而立化，而肃杀之气，不畏薪传之火。此所以辛以丁为杀，而庚以丁为官也。即此以推，而余者以相克可知矣。 
+
+五行干支之说，已详论于干支篇。干动而不息，支静而有常。以每干流行于十二支之月，而生旺墓绝系焉。 
+
+阳主聚，以进为进，故主顺；阴主散，以退为退，故主逆。长生沐浴等项，所以有阳顺阴逆之殊也。四时之运，功成者去，等用者进，故每流行于十二支之月，而生旺墓绝，又有一定。阳之所生，即阴之所死，彼此互换，自然之运也。即以甲乙论，甲为木之阳，木之枝枝叶叶，受天生气，已经收藏饱足，可以为来克发泄之机，此其所以生于亥也。木当午月，正枝叶繁盛之候，而甲何以死？却不是外虽繁盛，而内之生气发泄已尽，此其所以死于午也。乙木反是，午月枝叶繁盛，即为之生，亥月枝叶剥落，即为之死。以质而论，自与气殊也。以甲乙为例，余可知矣。 
+
+支有十二月，故每干长生至胎养，亦分十二位。气之由盛而衰，衰而复盛，逐节细分，遂成十二。而长生沐浴等名，则假借形容之词也。长生者，犹人之初生也。沐浴者，犹人既生之后，而沐浴以去垢；如果核既为苗，则前之青壳，洗而去之矣。冠带者，形气渐长，犹人之年长而冠带也。临官者，由长而壮，犹人之可以出仕也。帝旺者，壮盛之极，犹人之可以辅帝而大有为也。衰者，盛极而衰，物之初变也。病者，衰之甚也。死者，气之尽而无余也。墓者，造化收藏，犹人之埋于土者也。绝者，前之气已绝，后之气将续也。胎者，后之气续而结聚成胎也。养者，如人养母腹也。自是而后，长生循环无端矣。 
+
+人之日主，不必生逢禄旺，即月令休囚，而年日时中, 得长禄旺，便不为弱，就使逢库，亦为有根。时产谓投库而必冲者，俗书之谬也，但阳长生有力，而阴长生不甚有力，然亦不弱。若是逢库，则阳为有根，而阴为无用。盖阳大阴小，阳得兼阴，阴不能兼阳，自然之理也。 
+
+合化之义，以十干阴阳相配而成。河图之数，以一二三四五配六七八九十，先天之道也。故始于太阴之水，而终于冲气之土，以气而语其生之序也。盖未有五行之先，必先有阴阳老少，而后冲气，故生以土。终之既有五行，则万物又生于土，而水火木金，亦寄质焉，故以土先之。是以甲己相合之始，则化为土；土则生金，故乙庚化金次之；金生水，故丙辛化水又次之；水生木，故丁壬化木又次之；木生火，故戊癸化火又次之，而五行遍焉。先之以土，相生之序，自然如此。此十干合化之义也。</div></section>
+<section class="book-section" tabindex="-1" id="section-2" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 02</h2><div class="prose">其性情何也？盖既有配合，必有向背。如甲用辛官，透丙作合，而官非其官；甲用癸印，透戊作合，而印非其印；甲用己财，己与别位之甲作合，而财非其财。如年己月甲，年上之财，被月合去，而日主之甲乙无分；年甲月己，月上之财，被年合去，而日主之甲乙不与是也。甲用丙食与辛作合，而非其食，此四喜神因合而无用者也。 
+
+盖有所合则有所忌，逢吉不为吉，逢凶不为凶。即以六亲言之，如男以财为妻，而被别干合去，财妻岂能亲其夫乎？女以官为夫，而被他干合去，官夫岂能爱其妻乎？此谓配合之性情，因向背而殊也。
+
+十干化合之义，前篇既明之矣，然而亦有合而不合者，何也？
+
+盖隔于有所间也，譬如人彼此相好，而有人从中间之，则交必不能成。譬如甲与己合，而甲己中间，以庚间隔之，则甲岂能越克我之庚而合己？此制于势然也，合而不敢合也，有若无也。 
+又有隔位太远，如甲在年干，己在时上，心虽相契，地则相远，如人天南地北，不能相合一般。然于有所制而不敢合者，亦稍有差，合而不能合也，半合也，其为祸福得十之二三而已。
+
+又有合而无伤于合者，何也？如甲生寅卯，月时两透辛官，以年丙合月辛，是为合一留一，官星反轻。甲逢月刃，庚辛并透，丙与辛合，是为合官留煞，而煞刃依然成格，皆无伤于合也。
+
+又有合而不以合论者，何也？本身之合也。盖五阳逢财，五阴遇官，俱是作合，惟是本身十干合之，不为合去。假如乙用庚官，日干之乙，与庚作合，是我之官，是我合之。何为合去？若庚在年上，乙在月上，则月上之乙，先去合庚，而日干反不能合，是为合去也。又如女以官为夫，丁日逢壬，是我之夫，是我合之，正如夫妻相亲，其情愈密。惟壬在月上，而年丁合之，日干之丁，反不能合，是以己之夫星，被姊妹合去，夫星透而不透矣。
+
+用神之情，不向日主，或日主之情，不向用神，皆非美朕也。
+然又有争合妒合之说，何也？如两辛合丙，两丁合壬之类，一夫不娶二妻，一女不配二夫，所以有争合妒合之说。然到底终有合意，但情不专耳。若以两合一而隔位，则全无争妒。如庚午、乙酉、甲子、乙亥，两乙合庚，甲日隔之，此高太尉命，仍作合煞留官，无减福也。 
+今人不知命理，动以本身之合，妄论得失；更有可笑者，书云&quot;合官非为贵取&quot;，本是至论，而或以本身之合为合，甚或以他支之合为合，如辰与酉合、卯与戌合之类，皆作合官。一谬至此子平之传扫地矣！
+
+书云，得时俱为旺论，失时便作衰看，虽是至理，亦死法也。然亦可活看。夫五行之气，流行四时，虽日干各有专令，而其实专令之中，亦有并存者在。假若春木司令，甲乙虽旺，而此时休囚之戊己，亦未尝绝于天地也。特时当退避，不能争先，而其实春土何尝不生万物，冬日何尝不照万国乎？ 
+
+旺衰强弱四字，昔人论命，每笼统互用，不知须分别看也。大致得时为旺，失时为衰；党众为强，助寡为弱。故有虽旺而弱者，亦有虽衰而强者，分别观之，其理自明。春木夏火秋金冬水为得时，比劫印绶通根扶助为党众。甲乙木生于寅卯月，为得时者旺；干庚辛而支酉丑，则金之党众，而木之助寡 。干丙丁而支巳午，则火之党众，木泄气太重，虽秉令而不强也。甲乙木生于申酉月，为失时则衰，若比印重叠，年日时支，又通根比印，即为党众，虽失时而不弱也。不特日主如此，喜用忌神皆同此论。 
+是故十干不论月令休囚，只要四柱有根，便能受财官食神而当伤官七煞。长生禄旺，根之重者也；墓库余气，根之轻者也。天干得一比肩，不如得支中一墓库，如甲逢未、丙逢戌之类。乙逢戌、丁逢丑、不作此论，以戌中无藏木，丑中无藏火也。得二比肩，不如得一余气，如乙逢辰、丁逢未之类。得三比肩，不如得一长生禄刃，如甲逢亥子寅卯之类。阴长生不作此论，如乙逢午、丁逢酉之类，然亦为明根，可比得一余气。盖比劫如朋友之相扶，通根如室家之可住；干多不如根重，理固然也。 
+
+刑者，三刑也，子卯巳申之类是也。冲者，六冲也，子午卯酉之类是也。会者，三会也，申子辰之类是也。合者，六合也，子与丑合之类是也。此皆以地支宫分而言，系对射之意也。三方为会，朋友之意也。并对为合，比邻之意也。至于三刑取庑，姑且阙疑，虽不知其所以然，于命理亦无害也。 
+
+八字支中，刑冲俱非美事，而三合六合，可以解之。假如甲生酉月，逢卯则冲，而或支中有戌，则卯与戌合而不冲；有辰，则酉与辰合而不冲；有亥与未，则卯与亥未会而不冲；有巳与丑，则酉与巳丑会而不冲。是会合可以解冲也。又如丙生子月，逢卯则刑，而或支中有戌，则与戌合而不刑；有丑，则子与丑合而不刑；有亥与未，则卯与亥未会而不刑；有申与辰，则子与申辰会而不刑。是会合可以解刑也。 
+
+又有因解而反得刑冲者，何也？假如甲生子月，支逢二卯相并，二卯不刑一子，而支又逢戌，戌与卯合，本为解刑，而合去其一，则一合而一刑，是因解而反得刑冲也。 
+
+又有刑冲而会合不能解者，何也？假如子年午月，日坐丑位，丑与子合，可以解冲，而时逢巳酉，则丑与巳酉会，而子复冲午；子年卯月，日坐戌位，戌与卯合，可以解刑，而或时逢寅午，则戌与寅午会，而卯复刑子。是会合而不能解刑冲也。
+
+更有刑冲而可以解刑者，何也？盖四柱之中，刑冲俱不为美，而刑冲用神，尤为破格，不如以另位之刑冲，解月令之刑冲矣。假如丙生子月，卯以刑子，而支又逢酉，则又与酉冲不刑月令之官。甲生酉月，卯日冲之，而时逢子立，则卯与子刑，而月令官星，冲之无力，虽于别宫刑冲，六亲不无刑克，而月官犹在，其格不破。是所谓以刑冲而解刑冲也。 
+
+如此之类，在人之变化而己。 
+
+八字用神，专求月令，以日干配月令地支，而生克不同，格局分焉。财官印食，此用神之善而顺用之者也；煞伤劫刃，用神之不善而逆用之者也。当顺而顺，当逆而逆，配合得宜，皆为贵格。 </div></section>
+<section class="book-section" tabindex="-1" id="section-3" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 03</h2><div class="prose">取用之法不一，约略归纳，可分为下列五种： 
+（一）扶抑。日元强者抑之，日元弱者扶之，此以扶抑为用神也。月令之神太强则抑之，月令之神太弱则扶之，此以扶抑月令为用神也。 
+（二）病药。以扶为喜，则以伤其扶者为病；以抑为喜，则以去其抑者为病。除其病神，即谓之药。此以病药取用神也。 
+（三）调候。金水生于冬令，木火生于夏令，气候太寒太燥，以调和气候为急。此以调候为用神也。 
+（四）专旺。四柱之气势，偏于一方其势不可逆，惟有顺其气势为用，或从或化，及一方专旺等格局皆是也。 
+（五）通关。两神对峙，强弱均平，各不相下，须调和之为美，此以通关为用也。 
+
+是以善而顺用之，则财喜食神以相生，生官以护财；官喜透财以相生，生印以护官；印喜官煞以相生，劫财以护印；食喜身旺以相生，生财以护食。不善而逆用之，则七煞喜食神以制伏，忌财印以资扶；伤官喜佩印以制伏，生财以化伤；阳刃喜官煞以制伏，忌官煞之俱无；月劫喜透官以制伏，利用财而透食以化劫。此顺逆之大路也。 
+
+今人不知专主提纲，然后将四柱干支，字字统归月令，以观喜忌，甚至见正官佩印，则以为官印双全，与印绶用官者同论；见财透食神，不以为财逢食生，而以为食神生财，与食神生财同论；见偏印透食，不以为泄身之秀，而以为枭神夺食，宜用财制，与食神逢枭同论；见煞逢食制而露印者，不以为去食护煞，而以为煞印相生，与印绶逢煞者同论；更有煞格逢刃，不以为刃可帮身制煞，而以为七煞制刃，与阳刃露煞者同论。此皆由不知月令而妄论之故也。 
+
+然亦有月令无用神者，将若之何？如木生寅卯，日与月同，本身不可为用，必看四柱有无财官煞食透干会支，另取用神；然终以月令为主，然后寻用，是建禄月劫之格，非用而即用神也。 
+
+用神专寻月令，以四柱配之，必有成败。何谓成？如官逢财印，又无刑冲破害，官格成也。财生官旺，或财逢食生而身强带比，或财格透印而位置妥贴，两不相克，财格成也。印轻逢煞，或官印双全，或身印两旺而用食伤泄气，或印多逢财而财透根轻，印格成也。食神生财，或食带煞而无财，弃食就煞而透印，食格成也。身强七煞逢制，煞格成也。伤官生财，或伤官佩印而伤官旺，印有根，或伤官旺、身主弱而透煞印，或伤官带煞而无财，伤官格成也。阳刃透官煞而露财印，不见伤官，阳刃格成也。建禄月劫，透官而逢财印，透财而逢食伤，透煞而遇制伏，建禄月劫之格成也。 
+
+财旺生官者，月令星旺，四柱有官，则财旺自生官；或月令财星而透食神，身强则食神泄秀，转而生财。财本忌比劫，有食神则不忌而喜，盖有食神化之也。或透印而位置妥贴者，财印不相碍也（参观财格佩印节）。如年干透印，时干透财，中隔比劫，则不相碍；隔官星则为财旺生官，亦不相碍，是为财格成也。 
+
+何谓败？官逢伤克刑冲，官格败也；财轻比重，财透七煞，财格败也；印轻逢财，或身强印重而透煞，印格败也；食神逢枭，或生财露煞，食神格败也；七煞逢财无制，七煞格败也；伤官非金水而见官，或生财而带煞，或佩印而伤轻身旺，伤官格败也；阳刃无官煞，刃格败也；建禄月劫，无财官，透煞印，建禄月劫之格败也。 
+
+成中有败，必是带忌；败中有成，全凭救应。何谓带忌？如正官逢财而又逢伤；透官而又逢合；财旺生官而又逢伤逢合；印透食以泄气，而又遇财露；透煞以生印，而又透财，以去印存煞；食神带煞印而又逢财；七煞逢食制而又逢印；伤官生财而财又逢合；佩印而印又遭伤，透财而逢煞，是皆谓之带忌也。 
+
+成中之败，亦变化万端，此不过其大概也。如财旺生官，美格也，身弱透官，即为破格。伤官见官，为格之忌，透财而地位配置合宜，则伤官生财来生官，反可以解，种种变化，非言说所能尽，在于熟习者之妙悟耳。 
+
+何谓救应？如官逢伤而透印以解之，杂煞而合煞以清之，刑冲而会合以解之；财逢劫而透食以化之，生官以制之，逢煞而食神制煞以生财，或存财而合煞；印逢财而劫财以解之，或合财而存印；食逢枭而就煞以成格，或生财以护食；煞逢食制，印来护煞，而逢财以去印存食；伤官生财透煞而煞逢合；阳刃用官煞带伤食，而重印以护之；建禄月劫用官，遇伤而伤被合，用财带煞而煞被合，是谓之救应也。 
+
+八字妙用，全在成败救应，其中权轻权重，甚是活泼。学者从此留心，能于万变中融以一理，则于命之一道，其庶几乎！ 
+
+用神既主月令矣，然月令所藏不一，而用神遂有变化。如十二支中，除子午卯酉外，余皆有藏，不必四库也。即以寅论，甲为本主，如郡之有府，丙其长生，如郡之有同知，戊亦长生，如郡之有通判；假使寅月为提，不透甲而透丙，则如知府不临郡，而同知得以作主。此变化之由也。 
+
+故若丁生亥月，本为正官，支全卯未，则化为印。己生申月，本属伤官。藏庚透壬，则化为财。凡此之类皆用神之变化也。 
+
+变之而善，其格愈美；变之不善，其格遂坏，何谓变之而善？如辛生寅月，逢丙而化财为官；壬生戌月逢辛而化煞为印。癸生寅月，不专以煞论。此二者以透出而变化者也。癸生寅月，月令伤官秉令，藏甲透丙，会午会戌，则寅午戌三合，伤化为财；加以丙火透出，完全作为财论，即使不透丙而透戊土，亦作财旺生官论。盖寅午戌三合变化在前，不作伤官见官论也。乙生寅月，月劫秉令，会午会戌，则劫化为食伤，透戊则为食伤生财，不作比劫争财论。此二者因会合而变化者。因变化而忌化为喜，为变之善者。 </div></section>
+<section class="book-section" tabindex="-1" id="section-4" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 04</h2><div class="prose">何谓变之而不善？如丙生寅月，本为印绶，甲不透干而会午会戌，则化为劫。丙生申月，本属偏财，藏庚透壬，会子会辰，则化为煞。如此之类亦多，皆变之不善者也。 
+又有变之而不失本格者。如辛生寅月，透丙化官，而又透甲，格成正财，正官乃其兼格也。乙生申月，透壬化印，而又透戊，则财能生官，印逢财而退位，虽通月令，格成伤官，戊官忌见。丙生寅月，午戌会劫，而又或透甲，或透壬，则仍为印而格不破。丙生申月，逢壬化煞，而又透戊，则食神能制煞生财，仍为财格，不失富贵。如此之类甚多，是皆变而不失本格者也。 
+
+是故八字非用神不立，用神非变化不灵，善观命者，必于此细详之。 
+
+用神既有变化，则变化之中，遂分纯、杂。纯者吉，杂者凶。 
+
+何谓纯？互用而两相得者是也。如辛生寅月，甲丙并透，财与官相生，两相得也。戊生申月，庚壬并透，财与食相生，两相得也。癸生未月，乙己并透，煞与食相克，相克而得其当，亦两相得也。如此之类，皆用神之纯者。 
+
+何谓杂？互用而两不相谋者是也。如壬生未月，乙己并透，官与伤相克，两不相谋也。甲生辰月，戊壬并透，印与财相克，亦两不相谋也。如此之类，皆用之杂者也。 
+
+纯杂之理，不出变化，分而疏之，其理愈明，学命者不可不知也。 
+
+八字既有用神，必有格局，有格局必有高低，财官印食煞伤劫刃，何格无贵？何格无贱？由极贵而至极贱，万有不齐，其变千状，岂可言传？然其理之大纲，亦在有情无情、有力无力之间而已。 
+
+如正官佩印，不如透财，而四柱带伤，反推佩印。故甲透酉官，透丁合壬，是谓合伤存官，遂成贵格，以其有情也。财忌比劫，而与煞作合，劫反为用。故甲生辰月，透戊成格，遇乙为劫，逢庚为煞，二者相合，皆得其用，遂成贵格，亦以其有情也。 
+
+身强煞露而食神又旺，如乙生酉月，辛金透，丁火刚，秋木盛，三者皆备，极等之贵，以其有力也。官强财透，身逢禄刃，如丙生子月，癸水透，庚金露，而坐寅午，三者皆均，遂成大贵，亦以其有力也。 
+
+又有有情而兼有力，有力而兼有情者。如甲用酉官，壬合丁以清官，而壬水根深，是有情而兼有力者也。乙用酉煞，辛逢丁制，而辛之禄即丁之长生，同根月令，是有力而兼有情者也。是皆格之最高者也。 
+
+如甲用酉官，透丁逢癸，癸克不如壬合，是有情而非情之至。乙逢酉逢煞，透丁以制，而或煞强而丁稍弱，丁旺而煞不昂，又或辛丁并旺而乙根不甚深，是有力而非力之全，格之高而次者也。 
+
+至如印用七煞，本为贵格，而身强印旺，透煞孤贫，盖身旺不劳印生，印旺何劳煞助？偏之又偏，以其无情也。伤官佩印，本秀而贵，而身主甚旺，伤官甚浅，印又太重，不贵不秀，盖欲助身则身强，制伤则伤浅，要此重印何用？是亦无情也。又如煞强食旺而身无根，身强比重而财无气，或夭或贫，以其无力也。是皆格之低而无用者也。 
+
+然其中高低之故，变化甚微，或一字而有千钧之力，或半字而败全局之美，随时观理，难以拟议，此特大略而已。 
+
+八字之中，变化不一，遂分成败；而成败之中，又变化不测，遂有因成得败，因败得成之奇。 
+
+是故化伤为财，格之成也，然辛生亥月，透丁为用，卯未会财，乃以党煞，因成得败矣。印用七煞，格之成也，然癸生申月，秋金重重，略带财以损太过，逢煞则煞印忌财，因成得败也。如此之类，不可胜数，皆因成得败之例也。 
+
+官印逢伤，格之败也，然辛生戊月，年丙时壬，壬不能越戊克丙，而反能泄身为秀，是因败得成矣。煞刃逢食，格之败也，然庚生酉月，年丙月丁，时上逢壬，则食神合官留煞，而官煞不杂，煞刃局清，是因败得成矣。如此之类，亦不可胜数，皆因败得成之例也。 
+
+其间奇奇怪怪，变幼无穷，惟以理权衡之，随在观理，因时运化，由他奇奇怪怪，自有一种至当不易不论。观命者毋眩而无主、执而不化也。 
+
+论命惟以月令用神为主，然亦须配气候而互参之。譬如英雄豪杰，生得其时，自然事半功倍；遭时不顺，虽有奇才，成功不易。 
+
+是以印绶遇官，此谓官印双全，无人不贵。而冬木逢水，虽透官星，亦难必贵，盖金寒而水益冻，冻水不能生木，其理然也。身印两旺，透食则贵，凡印格皆然。而用之冬木，尤为秀气，以冬木逢火，不惟可以泄身，而即可以调候也。 
+
+伤官见官，为祸百端，而金水见之，反为秀气。非官之不畏夫伤，而调候为急，权而用之也。伤官带煞，随时可用，而用之冬金，其秀百倍。 
+
+伤官佩印，随时可用，而用之夏木，其秀百倍，火济水，水济火也。 
+
+伤官用财，本为贵格，而用之冬水，即使小富，亦多不贵，冻水不能生木也。 
+
+伤官用财，即为秀气，而用之夏木，贵而不甚秀，燥土不甚灵秀也。 
+
+春木逢火，则为木为通明，而夏木不作此论；秋金遇水，则为金水相涵，而冬金不作此论。气有衰旺，取用不同也。春木逢火，木火通明，不利见官；而秋金遇水，金水相涵，见官无碍。假如庚生申月，而支中或子或辰，会成水局，天干透丁，以为官星，只要壬癸不透露干头，便为贵格，与食神伤官喜见官之说同论，亦调候之道也。 
+
+食神虽逢正印，亦谓夺食，而夏木火盛，轻用之亦秀而贵，与木火伤官喜见水同论，亦调候之谓也。 
+
+此类甚多，不能悉述，在学者引伸触类，神而明之而已。 
+
+月令既得用神，则别位亦必有相，若君之有相，辅者是也。如官逢财生，则官为用，财为相；财旺生官，则财为用，官为相；煞逢食制，则煞为用，食为相。然此乃一定之法，非通变之妙。要而言之，凡全局之格，赖此一字而成者，均谓之相也。 
+
+伤用神甚于伤身，伤相甚于伤用。如甲用酉官，透丁逢壬，则合伤存官以成格者，全赖壬之相；戊用子财，透甲并己，则合煞存财以成格者，全赖己之相；乙用酉煞，年丁月癸，时上逢戊，则合去癸印以使丁得制煞者，全赖戊之相。 </div></section>
+<section class="book-section" tabindex="-1" id="section-5" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 05</h2><div class="prose">癸生亥月，透丙为财，财逢月劫，而卯未来会，则化水为木而转劫以生财者，全赖于卯未之相。庚生申月，透癸泄气，不通月令而金气不甚灵，子辰会局，则化金为水而成金水相涵者，全赖于子辰之相。如此之类，皆相神之紧要也。 
+
+相神无破，贵格已成；相神相伤，立败其格。如甲用酉官，透丁逢癸印，制伤以护官矣，而又逢戊，癸合戊而不制丁，癸水之相伤矣；丁用酉财，透癸逢己，食制煞以生财矣，而又透甲，己合甲而不制癸，己土之相伤矣。是皆有情而化无情，有用而成无用之格也。 
+
+凡八字排定，必有一种议论，一种作用，一种弃取，随地换形，难以虚拟，学命者其可忽诸？ 
+
+四墓者，杂气也，何以谓之杂气？以其所藏者多，用神不一，故谓之杂气也。如辰本藏戊，而又为水库，为乙余气，三者俱有，于何取用？然而甚易也，透干会取其清者用之，杂而不杂也。 
+
+何谓透干？如甲生辰月，透戊则用偏财，透癸则用正印，透乙则用月劫是也。何谓会支？如甲生辰月，逢申与子会局，则用水印是也。一透则一用，兼透则兼用，透而又会，则透与会并用。其合而有情者吉，其合而无情者则不吉。
+
+何谓有情？顺而相成者是也。如甲生辰月，透癸为印，而又会子会申以成局，印绶之格，清而不杂，是透干与会支，合而有情也。又如丙生辰月，透癸为官，而又逢乙以为印，官与印相生，而印又能去辰中暗土以清官，是两干并透，合而情也。又如甲生丑月，辛透为官，或巳酉会成金局，而又透己财以生官，是两干并透，与会支合而有情也。 
+
+何谓无情？逆而相背者是也。如壬生未月，透己为官，而地支会亥卯以成伤官之局，是透官与会支，合而无情者也。又如甲生辰月，透戊为财，又或透壬癸以为印，透癸则戊癸作合，财印两失，透壬则财印两伤，又以贪财坏印，是两干并透，合而无情也。又如甲生戌月，透辛为官，而又透丁以伤官，月支又会寅会午以成伤官之局，是两干并透，与会支合而无情也。 
+
+又有有情而卒成无情者，何也？如甲生辰月，逢壬为印，而又逢丙，印绶本喜泄身为秀，似成格矣，而火能生土，似又助辰中之戊，印格不清，是必壬干透而支又会申会子，则透丙亦无所碍。又有甲生辰月，透壬为印，虽不露丙而支逢戌位，戌与辰冲，二者为月冲而土动，干头之壬难通月令，印格不成，是皆有情而卒无情，富而不贵者也。 
+
+又有无情而终有情者，何也？如癸生辰月，透戊为官，又有会申会子以成水局，透干与会支相克矣。然所克者乃是劫财，譬如月劫用官，何伤之有？又如丙生辰月，透戊为食，而又透壬为煞，是两干并透，而相克也。然所克者乃是偏官，譬如食神带煞，煞逢食制，二者皆是美格，其局愈贵。是皆无情而终为有情也。 
+
+辰戌丑未，最喜刑冲，财官入库不冲不发--此说虽俗书盛称之，然子平先生造命，无是说也。夫杂气透干会支，岂不甚美？又何劳刑冲乎？假如甲生辰月，戊土透岂非偏财？申子会岂非印绶？若戊土不透，即辰戌相冲，财格犹不甚清也。至于透壬为印，辰戌相冲，将以累印，谓之冲开印库可乎？ 
+
+况四库之中，虽五行俱有，而终以土为主。土冲则灵，金木水火，岂取胜以四库之冲而动乎？故财官属土，冲则库启，如甲用戊财而辰戌冲，壬用己官而丑未冲之类是也。然终以戊己干头为清用，干既透，即不冲而亦得也。至于财官为水，冲则反累，如己生辰月，壬透为财，戌冲则劫动，何益之有？丁生辰月，透壬为官，戌冲则伤官，岂能无害？其可谓之逢冲而壬水之财库官库开乎？ 
+
+今人不知此理，甚有以出库为投库。如丁生辰月，壬官透干，不以为库内之壬，干头透出，而反为干头之壬，逢辰入库，求戌以冲土，不顾其官之伤。更有可笑者，月令本非四墓，别有用神，年月日时中一带四墓，便求刑冲；日临四库不以为身坐库根，而以为身主入库，求冲以解。种种谬论，令人掩耳。 
+
+然亦有逢冲而发者，何也？如官最忌冲，而癸生辰月，透戊为官，与戌相冲，不见破格，四库喜冲，不为不足。却不知子午卯酉之类，二者相仇，乃冲克之冲，而四墓土自为冲，乃冲动之冲，非冲克之冲也。然既以土为官，何害于事乎？ 
+
+是故四墓不忌刑冲，刑冲未必成格。其理甚明，人自不察耳。 
+
+财官印食，四吉神也，然用之不当，亦能破格。 
+
+如食神带煞，透财为害，财能破格也；春木火旺，见官则忌，官能破格也；煞逢食制，透印无功，印能破格也；财旺生官，露食则杂，食能破格也。 
+
+煞伤枭刃，四凶神也，然施之得宜，亦能成格。如印绶根轻，透煞为助，煞能成格也。财逢比劫，伤官可解，伤能成格也。食神带煞，灵枭得用，枭能成格也。财逢七煞，刃可解厄，刃能成格也。 
+
+是故财不忌伤，官不忌枭，煞不忌刃，如治国长抢大戟，本非美具，而施之得宜，可以戡乱。 
+
+月令用神，配以四柱，固有每字之生克以分吉凶，然有同此生克，而先后之间，遂分吉凶者，尤谈命之奥也。 
+
+如正官同是财伤并透，而先后有殊。假如甲用酉官，丁先戊后，则以财为解伤，即不能贵，后运必有结局。若戊先而丁后时，则为官遇财生，而后因伤破，即使上运稍顺，终无结局，子嗣亦难矣。 
+
+印格同是贪财坏印，而先后有殊。如甲用子印，己先癸后，即使不富，稍顺晚境；若癸先而己在时，晚景亦悴矣。
+
+食神同是财枭并透，而先后有殊。如壬用甲食，庚先丙后，晚运必亨，格亦富而望贵。若丙先而庚在时，晚运必淡，富贵两空矣。 
+
+七煞同是财食并透，而先后大殊。如己生卯月，癸先辛后，则为财以助用，而后煞用食制，不失大贵。若辛先而癸在时，则煞逢食制，而财转食党煞，非特不贵，后运萧索，兼难永寿矣。 
+
+丙生辛酉，年癸时己，伤因财间，伤之无力，间有小贵。假如癸己产并而中无辛隔，格尽破矣。 
+
+辛生申月，年壬月戊，时上丙官，不愁隔戊之壬，格亦许贵。假使年丙月壬而时戊，或年戊月丙而时壬，则壬能克丙，无望其贵矣。 </div></section>
+<section class="book-section" tabindex="-1" id="section-6" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 06</h2><div class="prose">以上举官星为例，余如印畏财破，财惧比劫，食伤忌枭印，意义相同。救应之法，亦可例推矣。 
+
+八字格局，专以月令配四柱，至于星辰好歹，既不能为生克之用，又何以操成败之权？况于局有碍，即财官美物，尚不能济，何论吉星？于局有用，即七煞伤官，何谓凶神乎？是以格局既成，即使满盘孤辰入煞，何损其贵？格局既破，即使満盘天德贵人，何以为功？今人不知轻重，见是吉星，遂致拋却用神，不管四柱，妄论贵贱，谬谈祸福，甚可笑也。 
+
+况书中所云禄贵，往往指正官而言，不是禄堂贵人。如正财得伤贵为奇，伤贵也，伤官乃生财之具，正财得之，所以为奇，若指贵人，则伤贵为何物乎？又若因得禄而避位，得禄者，得官也，运得官乡，宜乎进爵，然如财用伤官食神，运透官则格条，正官运又遇官则重，凡此之类，只可避位也。若作禄堂，不独无是理，抑且得禄避位，文法上下相顾。古人作书，何至不通若是！ 
+
+又若女命，有云&quot;贵众则舞裙歌扇&quot;。贵众者，官众也，女以官为夫，正夫岂可叠出乎？一女众夫，舞裙歌扇，理固然也。若作贵人，乃是天星，并非夫主，何碍于众，而必为娼妓乎？ 
+
+然星辰命书，亦有谈及，不善看书者执之也。如&quot;贵人头上带财官，门充驷马&quot;，盖财官如人美貌，贵人如人衣服，貌之美者，衣服美则现。其实财官成格，即非贵人头上，怕不门充驷马！又局清贵，又带二德，必受荣封。若专主二德，则何不竟云带二德受两国之封，而必先曰无煞乎？若云命逢险格，柱有二德，逢凶有救，有免于危，则亦有之，然终无关于格局之贵贱也。 
+
+八字用神既专主月令，何以又有外格乎？外格者，盖因月令无用，权而用之，故曰外格也。 
+
+如春木冬水、土生四季之类，日与月同，难以作用，类象、属象、冲财、会禄、刑合、遥迎、井栏、朝阳诸格，皆可用也。若月令自有用神，岂可另寻外格？又或春木冬水，干头已有财官七煞，而弃之以就外格，亦太谬矣。是故干头有财，何用冲财？干头有官，何用合禄？书云&quot;提纲有用提纲重&quot;，又曰&quot;有官莫寻格局&quot;，不易之论也。 
+
+然所谓月令无用者，原是月令本无用神，而今人不知，往往以财被劫官被伤之类。用神已破，皆以为月令无取，而弃之以就外格，则谬之又谬矣。 
+
+人有六亲，配之八字，亦存于命。 
+
+其由宫分配之者，则年月日时，自上而下，祖父妻子，亦自上而下。以地相配，适得其宜，不易之位也。 
+
+其由用神配之者，则正印也母，身所自出，取其生我也。若偏财受我克制，何反为父？偏财者，母之正夫也，正印为母，则偏财为父矣。正财为妻，受我克制，夫为妻纲，妻则从夫。若官煞则克制乎我，何以反为子女也？官煞者，财所生也，财为妻妾，则官煞为子女矣。至于比肩为兄弟，又理之显然者。 
+
+其间有无得力，或吉或凶，则以四柱所存或年月或日时财官伤刃，系是何物，然后以六亲配之用神。局中作何喜忌，参而配之，可以了然矣。 
+
+大凡命中吉凶，于人愈近，其验益灵。富贵贫贱，本身之事，无论矣，至于六亲，妻以配身，子为后嗣，亦是切身之事。故看命者，妻财子提纲得力，或年干有用，皆主父母身所自出，亦自有验。所以提纲得力，或年干有用，皆主父母双全得力。至于祖宗兄弟，不甚验矣。 
+
+以妻论之，坐下财官，妻当贤贵；然亦有坐财官而妻不利，逢伤刃而妻反吉者，何也？此盖月令用神，配成喜忌。如妻宫坐财，吉也，而印格逢之，反为不美。妻坐官，吉也，而伤官逢之，岂能顺意？妻坐伤官，凶也，而财格逢之，可以生财，煞格逢之，可以制煞，反主妻能内助。妻坐阳刃，凶也，而或财官煞伤等格，四柱已成格局，而日主无气，全凭日刃帮身，则妻必能相关。其理不可执一。 
+
+既看妻宫，又看妻星。妻星者，干头之财也。妻透而成局，若官格透财、印多逢财、食伤透财为用之类，即坐下无用，亦主内助。妻透而破格，若印轻财露、食神伤官、透煞逢财之类，即坐下有用，亦防刑克。又有妻透成格，或妻宫有用而坐下刑冲，未免得美妻而难偕老。又若妻星两透，偏正杂出，何一夫而多妻？亦防刑克之道也。 
+
+至于子息，其看宫分与星所透喜忌，理与论妻略同。但看子息，长生沐浴之歌，亦当熟读，如&quot;长生四子中旬半，沐浴一双保吉祥，冠带临官三子位，旺中五子自成行，衰中二子病中一，死中至老没儿郞，除非养取他之子，入墓之时命夭亡，受气为绝一个子，胎中头产养姑娘，养中三子只留一，男子宫中子细详&quot;是也。 
+
+然长生论法，用阳而不用阴。如甲乙日只用庚金长生，巳酉丑顺数之局，而不用辛金逆数之子申辰。虽书有官为女煞为男之说，然终不可以甲用庚男而用阳局，乙用辛男而阴局。盖木为日主，不问甲乙，总以庚为男辛为女，其理为然，拘于官煞，其能验乎？ 
+
+所以八字到手，要看子息，先看时支。如甲乙生日，其时果系庚金何宫？或生旺，或死绝，其多寡已有定数，然后以时干子星配之。如财格而时干透食，官格而时干透财之类，皆谓时干有用，即使时逢死绝，亦主子贵，但不甚繁耳。若又逢生旺，则麟儿绕膝，岂可量乎？若时干不好，子透破局，即逢生旺，难为子息。若又死绝，无所望矣。此论妻子之大略也。 
+
+论运与看命无二法也。看命以四柱干支，配月令之喜忌，而取运则又以运之干，配八字之喜忌。故运中每运行一字，即必以此一字，配命中干支而统观之，为喜为忌，吉凶判然矣。 
+
+何为喜？命中所喜之神，我得而助之者是也。如官用印以制伤，而运助印；财生官而身轻，而运助身；印带财以为忌，而运劫财；食带煞以成格，身轻而运逢印，煞重而运助食；伤官佩印，而运行官煞；阳刃用官，而运助财乡；月劫用财，而运行伤食。如此之类，皆美运也。 </div></section>
+<section class="book-section" tabindex="-1" id="section-7" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 07</h2><div class="prose">何谓忌？命中所忌，我逆而施之者是也。如正官无印，而运行伤；财不透食，而运行煞；印绶用官，而运合官；食神带煞，而运行财；七煞食制，而运逢枭；伤官佩印，而运行财；阳刃用煞，而运逢食；建禄用官，而运逢伤。如此之类，皆败运也。 
+
+其有似喜而实忌者，何也？如官逢印运，而本命有合，印逢官运，而本命用煞之类是也。 
+
+有似忌而实喜者，何也？如官逢伤运，而命透印，财行煞运，而命透食之类是也。 
+
+又有行干而不行支者，何也？如丙生子月亥年，逢丙丁则帮身，逢巳午则相冲是也。 
+
+又有行支而不行干者，何也？如甲生酉月，辛金透而官犹弱，逢申酉则官植根，逢庚辛则混煞重官之类是也。 
+
+又有干同一类而不两行者，何也？如丁生亥月，而年透壬官，逢丙则帮身，逢丁则合官之类是也。 
+
+又有支同一类而不两行者，何也？如戊生卯月，丑年，逢申则自坐长生，逢酉则会丑以伤官之类是也。 
+
+又有同是相冲而分缓急者，何也？冲年月则急，冲日时则缓也。 
+
+又有同是相冲而分轻重者，何也？运本美而逢冲则轻，运既忌而又冲则重也。 
+
+又有逢冲而不冲，何也？如甲用酉官，行卯则冲，而本命巳酉相会，则冲无力；年支亥未，则卯逢年会而不冲月官之类是也。 
+
+又有一冲而得两冲者，何也？如乙用申官，两申并而不冲一寅，运又逢寅，则运与本命，合成二寅，以冲二申之类是也。 
+
+命之格局，成于八字，然配之以运，亦有成格变格之要权。其成格变格，较之喜忌祸福尤重。 
+
+何为成格？本命用神，成而未全，从而就之者是也。如丁生辰月，透壬为官，而运逢申子以会之；乙生辰月，或申或子会印成局，而运逢壬癸以透之。如此之类，皆成格也。 
+
+何为变格？如丁生辰月，透壬为官，而运逢戌，透出辰中伤官；壬生戌月，丁己并透，而支又会寅会午，作财旺生官矣，而运逢戊土，透出戌中七煞；壬生亥月，透己为用，作建禄用官矣，而运逢卯未，会亥成本，又化建禄为伤。如此之类，皆变格也。 
+
+然亦有逢成格而不喜者，何也？如壬生午月，运透己官，而本命有甲乙之类是也。 
+
+又有逢变格而不忌者，何也？如丁生辰月，透壬用官，逢戊而命有甲；壬生亥月，透己用官，运逢卯未，而命有庚辛之类是也。 
+
+成格变格，关系甚大，取运者其细详之。 
+
+命中喜忌，虽支干俱有，而干主天，动而有为，支主地，静以待用，且干主一而支藏多，为福为祸，安不得殊？ 
+
+譬如甲用酉官，逢庚辛则官煞杂，而申酉不作此例。申亦辛之旺地，辛坐申酉，如府官又掌道印也。逢二辛则官犯重，而二酉不作此例。辛坐二酉，如一府而摄二郡也，透丁则伤官，而逢午不作此例。丁动而午静，且丁己并藏，安知其为财也？ 
+
+然亦有支而能作祸福者，何也？如甲用酉官，逢午酉未能伤，而又遇寅遇戌，不隔二位，二者合而火动，亦能伤矣。即此反观，如甲生申月，午不制煞，会寅会戌，二者清局而火动，亦能伤矣。然必会有动，是正与干有别也。即此一端，余者可知。 
+
+支中喜忌，固与干有别矣，而运逢透清，则静而待用者，正得其用，而喜忌之验，于此乃见。何谓透清？如甲用酉官，逢辰未即为财，而运透戊，逢午未即为伤，而运透丁之类是也。 
+
+故凡一八字到手，必须逐干逐支，上下统看。支为干之生地，干为支之发用。如命中有一甲字，则统观四支，有寅亥卯未等字否，有一字，皆甲木之根也。有一亥字，则统观四支，有壬甲二字否。有壬，则亥为壬禄，以壬水用；用甲，则亥为甲长生，以甲木用；用壬甲俱全，则一以禄为根，一以长生为根，二者并用。取运亦用此术，将本命八字，逐干支配之而已。 
+
+八字用神专凭月令，月无用神，徐寻格局。月令，本也；外格，末也。今人不知轻重，拘泥格局，执假失真。 
+
+故戊生甲寅之月，时上庚甲，不以为明煞有制，而以为专食之格，逢甲减福。 
+
+丙生子月，时逢巳禄，不以为正官之格，归禄帮身，而以为日禄归时，逢官破局。 
+
+辛日透丙，时遇戊子，不以为辛日得官逢印，而以为朝阳之格，因丙无成。 
+
+财逢时煞，不以为生煞攻身，而以为时上偏官。 
+
+癸生巳月，时遇甲寅，不以为暗官受破，而以为刑合成格。 
+
+癸生冬月，酉日亥时，透戊坐戌，不以为月劫建禄，用官通根，而以为拱戌之格，填实不利。辛日坐丑，寅年，亥月，卯时，不以为正财之格，而以为填实拱贵。 
+
+乙逢寅月，时遇丙子，不以为木火通明，而以为格成鼠贵。 
+
+八字本有定理，理之不明，遂生异端，妄言妄听，牢不可破。如论干支，则不知阴阳之理，而以俗书体象歌诀为确论；论格局，则不知专寻月令，而以拘泥外格为活变；论生克，则不察喜忌，而以伤旺扶弱为定法；论行运，则不问同中有导，而以干支相类为一例。 
+
+究其缘由，一则书中用字轻重，不知其意，而谬生偏见；一则以鹆书无知妄作，误会其说，而深入迷途；一则论命取运，偶然湊合，而遂以己见为不易，一则以古人命式，亦有误收，即收之不误，又以己意入外格，尤为害人不浅。 
+
+如壬申、癸丑、己丑、甲戌，本杂气财旺生官也，而以为乙亥时，作时上偏官论，岂知旺财生煞，将救死之不暇，于何取贵？此类甚多，皆误收格局也。如己未、壬申、戊子、庚申，本食神生财也，而欲弃月令，以为戊日庚申合禄之格，岂知本身自有财食，岂不甚美？又何劳以庚合乙，求局外之官乎，此类甚多，皆硬入外格也。 
+
+人苟中无定见，察理不精，睹此谬论，岂能无惑？何况近日贵格不可解者，亦往往有之乎？岂知行术之人，必以贵命为指归，或将风闻为实据，或探其生日，而即以己意加之生时，谬造贵格，其人之八字，时多未确，即彼本身，亦不自知。若看命者不究其本，而徒以彼既富贵迁就其说以相从，无惑乎终身无解日矣！ 
+
+官以克身，虽与七煞有别，终受彼制，何以切忌刑冲破害，尊之若是乎？岂知人生天地间，必无矫焉自尊之理，虽贵极天子，亦有天祖临之。正官者分所当尊，如在国有君，在家有亲，刑冲破害，以下犯上，乌乎可乎？ </div></section>
+<section class="book-section" tabindex="-1" id="section-8" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 08</h2><div class="prose">以刑冲破害为忌，则以生之护之为喜矣。存其喜而去其忌则贵，而贵之中又有高低者，何也？以财印并透者论之，两不相碍，其贵也大。如薛相公命，甲申、壬申、乙巳，戊寅，壬印戊财，以乙隔之，水与土不相碍，故为大贵。若壬戌、丁未、戊甲、乙卯，杂气正官，透干会支，最为贵格，而壬财丁印，二者相合，仍以孤官无辅论，所以不上七品。 
+
+若财印不以两用，则单用印不若单用财，以印能护官，亦能泄官，而财生官也。若化官为印而透财，则又为甚秀，大贵之格也。如金状元命，乙卯、丁亥、丁未、庚戌，此并用财印，无伤官而不杂煞，所谓去其忌而存其喜者也。 
+
+然而遇伤在于佩印，混煞贵乎取清。如宣参国命，己卯、辛未、壬寅、辛亥，未中己官透干用清，支会木局，两辛解之，是遇伤而佩印也。李参政命，庚寅、乙酉、甲子、戊辰，甲用酉官，庚金混杂，乙以合之，合煞留官，是杂煞而取清也。 
+
+至于官格透伤用印者，又忌见财，以财能去印，未能生官，而适以护伤故也。然亦有逢财而反大贵者，如范太傅命，丁丑、壬寅、己巳、丙寅，支具巳丑，会金伤官，丙丁解之，透壬岂非破格？却不知丙丁并透，用一而足，以丁合壬而财去，以丙制伤而官清，无情而愈有情。此正造化之妙，变幻无穷，焉得不贵？ 
+
+取运之道，一八字则有一八字之论，其理甚精，其法甚活，只可大略言之。变化在人，不可泥也。 
+
+如正官取运，即以正官所统之格分而配之。正官而用财印，身稍轻则取助身，官稍轻则助官。若官露而不可逢合，不可杂煞，不可重官。与地支刑冲，不问所就何局，皆不利也。 
+
+正官用财，运喜印绶身旺之地，切忌食伤。若身旺而财轻官弱，即仍取财官运可也。 
+
+正官佩印，运喜财乡，伤食反吉。若官重身轻而佩印，则身旺为宜，不必财运也。 
+
+正官带伤食而用印制，运喜官旺印旺之乡，财运切忌。若印绶叠出，财运亦无害矣。 
+
+正官而带煞，伤食反为不碍。其命中用劫合煞，则财运可行，伤食可行，身旺，印绶亦可行，只不过复露七煞。若命用伤官合煞，则伤食与财俱可行，而不宜逢印矣。 
+
+此皆大略言之，其八字各有议论。运中每遇一字，各有研究，随时取用，不可言形。凡格皆然，不独正官也。 
+
+财为我克，使用之物也，以能生官，所以为美。为财帛，为妻妾，为才能，为驿马，皆财类也。 
+
+财喜根深，不宜太露，然透一位以清用，格所最喜，不为之露。即非月令用神，若寅透乙、卯透甲之类， 一亦不为过，太多则露矣。然而财旺生官，露亦不忌，盖露不忌，盖露以防劫，生官则劫退，譬如府库钱粮，有官守护，即使露白，谁敢劫之？如葛参政命，壬申、壬子、戊午、乙卯，岂非财露？唯其生官，所以不忌也。 
+
+财格之贵局不一，有财旺生官者，身强而不透伤官，不混七煞，贵格也。 
+
+有财用食生者，身强而不露官，略带一位比劫，益觉有情，如壬寅、壬寅、庚辰、辛巳，杨待郎之命是也。透官身弱，则格坏矣。 
+
+有财格佩印者，盖孤财不贵，佩印帮身，即印取贵。如乙未、甲申、丙申、庚寅，曾参政之命是也，然财印宜相并，如乙未、己卯、庚寅、辛巳，乙与己两不相能，即有好处，小富而已。 
+
+有用食而兼用印者，食与印两不相碍，或有暗官而去食护官，皆贵格也。如吴榜
+眼命，庚戌、戊子、戊子、丙辰，庚与丙隔两戊而不相克，是食与印不相碍也。如平江伯命，壬辰、乙巳、癸巳、辛酉，虽食印相克，而欲存巳戊官，是去食护官也。反是则减福矣。 
+
+有财用伤官者，财不甚旺而比强，辂露一位伤官以化之，如甲子、辛未、辛酉、壬辰，甲透未库，逢辛为劫，壬以化劫生财，汪学士命是也，财旺无劫而透伤，反为不利，盖伤官本非美物，财轻透劫，不得已而用之。旺而露伤，何苦用彼？徒使财遇伤而死生官之具，安望富贵乎？ 
+
+有财带七煞者，或合煞存财，或制煞生财，皆贵格也，如毛状元命，乙酉、庚辰、甲午、戊辰，合煞存财也；李御史命，庚辰、戊子、戊寅、甲寅，制煞生财也。 
+
+有财用煞印者，党煞为忌，印以化之，格成富局，若冬土逢之亦贵格。如赵侍郎命，乙丑、丁亥、乙亥，化煞而即以解冻，又不露财以杂其印，所以贵也。若财用煞印而印独，财煞并透，非特不贵，亦不富也。 
+
+至于壬生午月，癸生巳月，单透财而亦贵，又月令有暗官也。如丙寅、癸巳、癸未、壬戌，林尚书命是也。又壬生巳月，单透财而亦贵，以其透丙藏戊，弃煞就财，美者存在赠者弃也。如丙辰、癸巳、壬戌、壬寅，王太仆命是也。 
+
+至于劫刃太重，弃财就煞，如一尚书命，丙辰、丙申、丙午、壬辰，此变之又变者也。 
+
+财格取运，即以财格所就之局，分而配之。其财旺生官者，运喜身旺印绶，不利七煞伤官；若生官而后透印，伤官之地 ，不甚有害。至于生官而带食破局，则运喜印绶，而逢煞反吉矣。 
+
+财用食生，财食重而身轻，则喜助身；财食轻而身重，则仍行财食。煞运不忌，官印反晦矣。 
+
+财格佩印，运喜官乡，身弱逢之，最喜印旺。 
+
+财用食印，财轻则喜财食，身轻则喜比印，官运有碍，煞反不忌也。 
+
+财带伤官，财运则亨，煞运不利，运行官印，未见其美矣。 
+
+财带七煞。不论合煞制煞，运喜食伤身旺之方。 
+
+财用煞印，印旺最宜，逢财必忌。伤食之方，亦任意矣。 
+
+印绶喜其生身，正偏同为美格，故财与印不分偏正，同为一格而论之。印绶之格局亦不一，有印而透官者，正官不独取其生印，而即可以为用，与用煞者不同。故身旺印强，不愁太过，只要官星清纯，如丙寅、戊戌、辛酉、戊子，张参政之命是也。 
+
+然亦有带伤食而贵者，则如朱尚书命，丙戌、戊戌、辛未、壬辰，壬为戊制，不伤官也。又如临淮侯命，乙亥、己卯、丁酉、壬寅，己为乙制，己不碍官也。 
+
+有印而用伤食者，身强印旺，恐其太过，泄身以为秀气。如戊戌、乙卯、丙午、乙亥，李状元命也，若印浅身轻，而用层层伤食，则寒贫之局矣。 </div></section>
+<section class="book-section" tabindex="-1" id="section-9" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 09</h2><div class="prose">有用偏官者，偏官本非美物，藉其生印，不得已而用之。故必身重印轻，或身轻印重，有所不足，始为有性。如茅状元命，己巳、癸酉、癸未、庚申，此身轻印重也。马参政命，壬寅、戊申、壬辰、壬寅，此身重印轻也。若身印并重而用七煞，非孤则贫矣。 
+
+有用煞而兼带伤食者，则用煞而有制，生身而有泄，不论身旺印重，皆为贵格。 
+
+有印多而用财者，印重身强，透财以抑太过，权而用之，只要根深，无防财破。如辛酉、丙申、壬申、辛亥，汪侍郎命是也。若印轻财重，又无劫财以救，则为贪财破印，贫贱之局也。 
+
+即或印重财轻而兼露伤食，财与食相生，轻而不轻，即可就富，亦不贵矣。然亦有带食而贵者，何也？如庚寅、乙酉、癸亥、丙辰，此牛监薄命，乙合庚而不生癸，所以为贵，若合财存食，又可类推矣。如己未、甲戌、辛未、癸巳，此合财存食之贵也。 
+
+又有印而兼透官煞者，或合煞，或有制，皆为贵格。如辛亥、庚子、甲辰、乙亥，此合煞留官也；壬子、癸卯、丙子、己亥、此官煞有制也。 
+
+至于化印为劫；弃之以就财官，如赵知府命，丙午、庚寅、丙午、癸已，则变之又变者矣。 
+
+更有印透七煞，而劫财以存煞印，亦有贵格，如庚戌、戊子、甲戌、乙亥是也。然此格毕竟难看，宜细详之。 
+
+印格取运，即以印格所成之局，分而配之。其印绶用官者，官露印重，财运反吉，伤食之方，亦为最利。 
+
+若用官而带伤食，运喜官旺印绶之乡，伤食为害，逢煞不忌矣。
+
+印绶而用伤食，财运反吉，伤食亦利，若行官运，反见其灾，煞运则反能为福矣。 
+
+印用七煞，运喜伤食，身旺之方，亦为美地，一见财乡，其凶立至。 
+
+若用煞而兼带伤食，运喜身旺印绶之方，伤食亦美，逢官遇财，皆不吉也。 
+
+印绶遇财，运喜劫地，官印亦亨，财乡则忌。 
+
+印格而官煞竞透，运喜食神伤官，印旺身旺，行之亦利。若再透官煞，行财运，立见其灾矣。 
+
+印用食伤，印轻者亦不利见财也。 
+
+食神本属泄气，以其能生正财，所以喜之。故食神生财，美格也。财要有根，不必偏正叠出，如身强食旺而财透，大贵之格。若丁未、癸卯、癸亥、癸丑，梁丞相之命是也；己未、壬申、戊子、庚申，谢阁老之命是也。 
+
+藏食露伤，主人性刚，如丁亥、癸卯、癸卯、甲寅，沈路分命是也。偏正叠出，富贵不巨，职甲午、丁卯、癸丑、丙辰，龚知县命是也。 
+
+夏木用财，火炎土燥，贵多就武。如己未、已巳、甲寅、丙寅，黄都督之命是也。 
+
+若不用财而就煞印，最为威权显赫。如辛卯、辛卯、癸酉、己未，常国公命是也。若无印绶而单露偏官，只要无财，亦为贵格，如戊戌、壬戌、丙子、戊戌，胡会元命是也。 
+
+若金水食神而用煞，贵而且秀，如丁亥、壬子、辛巳、丁酉，舒尚书命是也。至于食神忌印，夏火太炎而木焦，透印不碍，如丙午、癸巳、甲子、丙寅，钱参政命是也。食神忌官，金水不忌，即金水伤官可见官之谓。 
+
+至若单用食神，作食神有气，有财运则富，无财运则贫。 
+
+更有印来夺食，透财以解，亦有富贵，须就其全局之势而断之。至于食神而官煞竞出，亦可成局，但不甚贵耳。 
+
+更有食神合煞存财，最为贵格。 
+
+至若食神透煞。本忌见财，而财先煞后，食以间之，而财不能党煞，亦可就贵。如刘提台命，癸酉、辛酉、己卯、乙亥是也。其余变化，不能尽述，类而推之可也。 
+
+食神取运，即以食神所成之局，分而配之。食神生财，财食轻，则行财食，财食重则喜帮身。官煞之方，俱为不美。 
+
+食用煞印，运喜印旺，切忌财乡。身旺，食伤亦为福运，行官行煞，亦为吉也。 
+
+食伤带煞，喜行印绶，身旺，食伤亦为美运，财则最忌。若食太重而煞轻，印运最利，逢财反吉矣。 
+
+食神太旺而带印，运最利财，食伤亦吉，印则最忌，官煞皆不吉也。 
+
+若食神带印，透财以解，运喜财旺，食伤亦吉，印与官煞皆忌也。 
+
+煞以攻身，似非美物，而大贵之格，多存七煞。盖控制得宜，煞为我用，如大英雄大豪杰，似难驾驭，而处之有方，则惊天动地之功，忽焉而就。此王侯将相所以多存七煞也。 
+
+七煞之格局亦不一：煞用食制者，上也，煞旺食强而身健，极为贵格。如乙亥、乙酉、乙卯、丁丑，极等之贵也。 
+
+煞用食制，不要露财透印，以财能转食生煞，而印能去食护煞也。然而财先食后，财生煞而食以制之，或印先食后，食太旺而印制，则格成大贵。如脱丞相命，壬辰、甲辰、丙戌、戊戌，辰中暗煞，壬以透之，戊坐四支，食太重而透甲印，以损太过，岂非贵格？若煞强食泄而印露，则破局矣。 
+
+有七煞用印者，印能护煞，本非所宜，而印有情，便为贵格。如何参政命，丙寅、戊戌、壬戌、辛丑，戊与辛同通月令，是煞印有情也。 
+
+亦有煞重身轻，用食则身不能当，不若转而就印，虽不通根月令，亦为无情而有情。格亦许贵，但不大耳。 
+
+有煞而用财者，财以党煞，本非所喜，而或食被制，不能伏煞，而财以去印存食，便为贵格。如周丞相命，戊戌、甲子，丁未、庚戌，戊被制不能伏煞，时透庚财，即以清食者，生不足之煞。生煞即以制煞，两得其用，尤为大贵。 
+
+又有身重煞轻，煞又化印，用神不清，而借财以清格，亦为贵格。如甲申、乙亥、丙戌、庚寅，刘运使命是也。 
+
+更有杂气七煞，干头不透财以清用，亦可取贵。 
+
+有煞而杂官者，或去官，或去煞，取清则贵。如岳统制命，癸卯、丁巳、庚寅、庚辰，去官留煞也。夫官为贵气，去官何如去煞？岂知月令偏官，煞为用而官非用，各从其重。若官格杂煞而去官留煞，不能如是之清矣。如沈郎中命，丙子、甲午、辛亥、辛卯，子冲午而克煞，是去煞留官也。 
+
+有煞无食制而用印当者，如戊辰、甲寅、戊寅、戊午、赵员外命是也。 
+
+至书有制煞不可太过之说，虽亦有理，然运行财印，亦能发福，不可执一也，乃若弃命从煞，则于外格详之。 
+
+偏官取运，即以偏官所成之局分而配之。煞用食制，煞重食轻则助食，煞轻食重则助煞，煞食均而日主根轻则助身。忌正官之混杂，畏印绶之夺食。 </div></section>
+<section class="book-section" tabindex="-1" id="section-10" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 10</h2><div class="prose">煞用印绶，不利财乡，伤官为美，印绶身旺，俱为福地。 
+
+七煞用财，其以财而去印存食者，不利劫财，伤食皆吉，喜财怕印，透煞亦顺。 
+
+其以财而助煞不及者，财已足，则喜食印与帮身；财未足，则喜财旺而露煞。 
+
+煞带正官，不论去官留煞，去煞留官，身轻则喜助身，食轻则喜助食。莫去取清之物，无伤制煞之神。 
+
+煞无食制而用刃当煞，煞轻刃重则喜助煞，刃轻煞重，则宜制伏，无食可夺，印运何伤？七煞既纯，杂官不利。 
+
+伤官虽非吉神，实为秀气，故文人学士，多于伤官格内得之。而夏木见水，冬金见火，则又为秀之尤秀者也。其中格局比他格多，变化尤多，在查其气候，量其强弱，审其喜忌，观其纯杂，微之又微，不可执也。 
+
+故有伤官用财者，盖伤不利于民，所以为凶，伤官生财，则以伤官为生官之具，转凶为吉，故最利。只要身强而有根，便为贵格，如壬午、己酉、戊午、庚申，史春芳命也。 
+
+至于化伤为财，大为秀气，如罗状元命，甲子、乙亥、辛未、戊子，干头之甲，通根于亥，然又会未成局，化水为木，化之生财，尤为有情，所以伤官生财，冬金不贵，以冻水不能生木。若乃化木，不待于生，安得不为殿元乎？ 
+
+至于财伤有情，与化伤为财者，其秀气不相上下，如秦龙图命，己卯、丁丑、丙寅、庚寅，己与庚同根月令是也。 
+
+有伤官佩印者，印能制伤，所以为贵，反要伤官旺，身稍弱，始为秀气。如孛罗平章命，壬申、丙午、甲午、壬申、伤官旺，印根深，身又弱，又是夏木逢润，其秀百倍，所以一品之贵。然印旺极深，不必多见，偏正叠出，反为不秀，故伤轻身重而印绶多见，贫穷之格也。 
+
+有伤官兼用财印者，财印相克，本不并用，只要干头两清而不相碍；又必生财者，财太旺而带印，佩印者印太重而带财，调停中和，遂为贵格。如丁酉、己酉、戊子、壬子，财太重而带印，而丁与壬隔以戊已，两不碍，且金水多而觉寒，得火融和，都统制命也。又如壬戌、己酉、戊午、丁巳，印太重而隔戊已，而丁与壬不相碍，一丞相命也。反是则财印不并用而不秀矣。 
+
+有伤官用煞印者，伤多身弱，赖煞生印以帮身而制伤，如己未、丙子、庚子、丙子，蔡贵妃也。煞因伤而有制，两得其宜，只要无财，便为贵格，如壬寅、丁未、丙寅，夏阁老命是也。 
+
+有伤官用官者，他格不用，金水独宜，然要财印为辅，不可伤官并透。如戊申、甲子、庚午、丁丑，藏癸露丁，戊甲为辅，官又得禄，所以为丞相之格。若孤官无辅，或官伤并透，则发福不大矣。 
+
+若冬金用官，而又化伤为财，则尤为极秀极贵。如丙申、己亥、辛未、己亥，郑丞相命是也。 
+
+然亦有非金水而见官，何也？化伤为财，伤非其伤，作财旺生官而不作伤官见官，如甲子、壬申、己亥、辛未，章丞相命也。 
+
+至于伤官而官煞并透，只要干头取清，金水得之亦清，不然则空结构而已。 
+
+伤官取运，即以伤官所成之局，分而配之。伤官用财，财旺身轻，则利印比；身强财浅，则喜财运，伤官亦宜。 
+
+伤官佩印，运行官煞为宜，印运亦吉，伤食不碍，财地则凶。 
+
+伤官而兼用财印，其财多而带印者，运喜助印，印多而带财者，运喜助财。 
+
+伤官而用煞印，印运最利，伤食亦亨，杂官非吉，逢财即危。 
+
+伤官带煞，喜印忌财，然伤重煞轻，运喜印而财亦吉。惟七煞根重，则运喜伤食，印绶身旺亦吉，而逢财为凶矣。 
+
+伤官用官，运喜财印，不利食伤，若局中官露而财印两旺，则比劫伤官，未绐非吉矣。 
+
+阳刃者，劫我正财之神，乃正财之七煞也。禄前一位，惟五阳有之，故为阳刃。不曰劫而曰刃，劫之甚也。刃宜伏制，官煞皆宜，财印相随，尤为贵显。夫正官而财印相随美矣，七煞得之，夫乃甚乎？岂知他格以煞能伤身，故喜制伏，忌财印；阳刃用之，则赖以制刃，不怕伤身，故反喜财印，忌制伏也。 
+
+阳刃用官，透刃不虑；阳刃露煞，透刃无成。盖官能制刃，透而不为害；刃能合煞，则有何功？如丙生午月，透壬制刃，而又露丁，丁与壬合，则七煞有贪合忘克之意，如何制刃？故无功也。 
+
+然同是官煞制刃，而格亦有高低，如官煞露而根深，其贵也大；官煞藏而不露，或露而根浅，其贵也小。若己酉、丙子、壬寅、丙午，官透有力，旺财生之，丞相命也。又辛酉、甲午、丙申、壬辰，透煞根浅，财印助之，亦丞相命也。 
+
+然亦有官煞制刃带伤食而贵者，何也？或是印护，或是煞太重而裁损之，官煞轻而取清之，如穆同知命，甲午、癸酉、庚寅、戊寅，癸水伤寅午之官，而戊以合之，所谓印护也，如贾平章命，甲寅、庚午、戊申、甲寅，煞两透而根太重，食以制之，所谓裁损也。如丙戌、丁酉、庚申、壬午，官煞竞出 ，而壬合丁官，煞纯而不杂。况阳刃之格，利于留煞，所谓取清也。 
+
+其于丙生午月，内藏己土，可以克水，尤宜带财佩印，若戊生午月，干透丙火，支会火局，则化刃为印，或官或煞，透则去刃存印其格愈清。倘或财煞并透露，则犯去印存煞之忌，不作生煞制煞之例，富贵两空矣。 
+
+更若阳刃用财，格所不喜，然财根深而用伤食，以转刃生财，虽不比建禄月劫，可以取贵，亦可就富。不然，则刃与财相搏，不成局矣。 
+
+阳刃用官，则运喜助官，然命中官星根深，则印绶比劫之方，反为美运，但不喜伤食合官耳。 
+
+阳刃用煞，煞不甚旺，则运喜助煞；煞若太重，则运喜身旺印绶，伤食亦不为忌。 
+
+阳刃而官煞并出，不论去官去煞，运喜制伏，身旺亦利，财地官乡反为不吉也。 
+
+建禄者，月建逢禄堂也，禄即是劫。或以禄堂透出，即可依以用者，非也。故建禄与月劫，可同一格，不必加分，皆以透干支，别取财官煞食为用。 
+
+禄格用官，干头透出为奇，又要财印相随，不可孤官无辅。有用官而印护者，如庚戌、戊子、癸酉、癸亥，金丞相命是也。有用官而财助者，如丁酉、丙午、丁巳、壬寅，李知府命是也。 </div></section>
+<section class="book-section" tabindex="-1" id="section-11" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 11</h2><div class="prose">有官而兼带财印者，所谓身强值三奇，尤为贵气。三奇者，财官印也，只要以官隔之，使财印两不相伤，其格便大，如庚午、戊子、癸卯、丁巳，王少师命是也。 
+
+禄劫用财，须带食伤，盖月令为劫而以财作用，二物相克，必以伤食化之，始可转劫生财，如甲子、丙子、癸丑、壬辰，张都统命是也。 
+
+至于化劫为财，与化劫为生，尤为秀气。如己未、己巳、丁未、辛丑，丑与巳会，即以劫财之火为金局之财，安得不为大贵？所谓化劫为财也。如高尚书命，庚子、甲申、庚子、甲申，即以劫财之金，化为生财之水，所谓化劫为生也。 
+
+禄劫用煞，必须制伏，如娄参政命，丁巳、壬子、癸卯、己未，壬合丁财以去其党煞，卯未会局以制伏是也。 
+
+至用煞而又逢财，本为不美，然能去煞存财，又成贵格。戊辰、癸亥、壬午、丙午，合煞存财，袁内阁命是也。 
+
+其禄劫之格，无财官而用伤食，泄其太过，亦为秀气。唯春木秋金，用之则贵，盖木逢火则明，金生水则灵。如张状元命，甲子、丙寅、甲子、丙寅，木火通明也；又癸卯、庚申、庚子、庚辰，金水相涵也。 
+
+更有禄劫而官煞竞出，必取清方为贵格。如一平章命，辛丑、庚寅、甲辰、乙亥、合煞留这也；如辛亥、庚寅、甲申、丙寅，制煞留官也。 
+
+倘或两官竞出，亦须制伏，所谓争正官不可无伤也。 
+
+若夫用官而孤官无辅，格局更小，难于取贵，若透伤食便不破格。然亦有官伤并透而贵者，何也？如己酉、乙亥、壬戌、庚子，庚合乙而去伤存官，王总兵命也。 
+
+用财而不透伤食，便难于发端，然干头透一位而不杂，地支根多，亦可取富，但不贵耳。 
+
+用官煞重而无制伏，运行制伏，亦可发财，但不可官煞太重，致令身危也。 
+
+禄劫取运，即以禄劫所成之局，分而配之。禄劫用官，印护者喜财，怕官星之逢合，畏七煞之相乘。伤食不能为害，劫比未即为凶。 
+
+财生喜印，宜官星之植根，畏伤食之相侮，逢财愈见其功，杂煞岂能无碍？ 
+
+禄劫用财而带伤食，财食重则喜印绶，而不忌比肩；财食轻则宜助财，而不喜印比。逢煞无伤，遇官非福。 
+
+禄劫用煞食制，食重煞轻，则运宜助煞；食轻煞重，则运喜助食。 
+
+若用煞而带财，命中合煞存财，则伤食为宜，财运不忌，透官无虑，身旺亦亨。若命中合财存煞，而用食制，煞轻则助煞，食轻则助食则已。 
+
+禄劫而用伤食，财运最宜，煞亦不忌，行印非吉，透官不美。若命中伤食太重，则财运固利，而印亦不忌矣。 
+
+禄劫而官煞并出，不论合煞留官，存官制煞，运喜伤食，比肩亦宜，印绶未为良图，财官亦非福运。 
+
+杂格者，月令无用，以外格而用之，其格甚多，故谓之杂。大约要干头无官无煞，方成格，如有官煞，则自有官煞为用，列外格矣。若透财尚可取格，然财根深，或财透两位，则亦以财为重，不取外格也。
+
+试以诸格论之，有取五行一方秀气者，取甲乙全亥卯未、寅卯辰，又生春月之类，本是一派劫财，以五行各得其全体，所以成格，喜印露而体纯。如癸亥、乙卯、乙未、壬午，吴相公命是也。运亦喜印绶比劫之乡，财食亦吉，官煞则忌矣。 
+
+有从化取格者，要化出之物，得时乘令，四支局全。如丁壬化木，地支全亥卯未、寅卯辰，而又生于春月，方为大贵。否则，亥未之月亦是木地，次等之贵，如甲戌、丁卯、壬寅、甲辰，一品贵格命也。运喜所化之物，与所化之印绶，财伤亦可，不利官煞。 
+
+有倒冲成格者，以四柱列财官而对面以冲之，要支中字多，方冲得动。譬如以弱主邀强官，主不众则宾不从。如戊午、戊午、戊午、戊午，是冲子财也；甲寅、庚午、丙午、甲午，是冲子官也。运忌填实，余俱可行。 
+
+有朝阳成格者，戊去朝丙，辛日得官，以丙戊同禄于巳，即以引汲之意。要干头无木火，方成其格，盖有火则无待于朝，有木财触戊之怒，而不为我朝。如戊辰、辛酉、戊子，张知县命是也。运喜土金水，木运平平，火则忌矣。 
+
+有合禄成格者，命无官星，借干支以合之。戊日庚申，以庚合乙，因其主而得其偶。如己未、戊辰、戊辰、庚申，蜀王命是也。癸日庚申，以申合巳，因其主而得其朋，如己酉、癸未、癸未、庚申，赵丞相命是也。运亦忌填实，不利官煞，理会不宜以火克金，使彼受制而不能合，余则吉矣。
+
+有弃命保财者，四柱皆财而身无气，舍而从之，格成大贵。若透印则身赖印生而不从，有官煞则亦无从财兼从煞之理，其格不成。如庚申、乙酉、丙申、乙丑，王十万命造也。运喜伤食财乡，不宜身旺。有弃命从煞者，四柱皆煞，而日主无根，舍而从之，格成大贵。若有伤食，则煞受制而不从，有印则印以化煞而不从。如乙酉、乙酉、乙酉、甲申，李侍郎命是也。运喜财官，不宜身旺，食伤则尤忌矣。 
+
+有井栏成格者，庚金生三七月，方用此格。以申子辰冲寅午戌，财官印绶，合而冲之，若透丙丁，有巳午，以现有财官，而无待于冲，乃非井拦之格矣。如戊子、庚申、庚申、庚申，郭统制命也。运喜财，不利填实，余亦吉也。 
+有刑合成格者，癸日甲寅时，寅刑巳而得财官，格与合禄相似，但合禄则喜以合之，而刑合则硬以致之也。命有庚申，则木被冲克而不能刑；有戊己字，则现透官煞而无待于刑，非此格矣。如乙未、癸卯、癸卯、甲寅，十二节度使命是也。运忌填实，不利金乡，余则吉矣。</div></section>
+<section class="book-section" tabindex="-1" id="section-12" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 12</h2><div class="prose">有遥合成格者，巳与丑会，本同一局，丑多则会巳而辛丑处官，亦合禄之意也。如辛丑、辛丑、辛丑、庚寅，章统制命是也。若命是有子字，则丑与子合而不遥，有丙丁戊己，则辛癸之官煞已透，而无待于遥，另有取用，非此格矣。至于甲子遥已，转辗求俣，似觉无情，此格可废，因罗御史命，聊复存之。为甲申、甲戌、甲子、甲子，罗御史命是也。 
+若夫拱禄、拱贵、趋乾、归禄、夹戌、鼠贵、骑龙、日贵、日德、富禄、魁罡、金神、时墓、两干不杂、干支一气、五行俱足之类，一切无理之格，既置勿取。即古人格内，亦有成式，总之意为牵就，硬填入格，百无一是，徒误后学而已。乃若天地双飞，虽富贵亦有自有格，不全赖此。而亦能增重基格，即用神不甚有用，偶有依以为用，亦成美格。然而有用神不吉，即以为凶，不可执也。 </div></section>
+<section class="book-section" tabindex="-1" id="section-13" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">四柱八字 · 子平真诠评注</p><h2>连续正文 · 阅读段 13</h2><div class="prose">其于伤官伤尽，谓是伤尽，不宜一见官，必尽力以伤之，使之无地容身，现行伤运，便能富贵，不知官有何罪，而恶之如此？况见官而伤，则以官非美物，而伤以制之，又何伤官之谓凶神，而见官之为祸百端乎？予用是术以历试，但有贫贱，并无富贵，未轻信也，近亦见有大贵者，不知何故。然要之极贱者多，不得不观其人物以衡之。 
+徐注：用伤官之忌见官星，亦犹用官之忌伤，用印之忌财，用财之忌劫也。何格无喜忌，岂独伤官？况官星有喜见不喜见之别乎？至于格局之不可解者甚多。我人学识不足，未穷奥妙，知之为知之，不知为不知，正不必曲为讳饰也。 
+四十八、附论杂格取运 
+徐注：杂格不一，大都气势偏旺，出于五行常理之外。昔人评命，泥于财官之说，四柱无财可取，则不惜遥合倒冲，牵强附会，以期合于财官，未免可嗤。命理不外乎五行，气势虽为偏旺，而偏旺之中，仍有正理可取，详《滴天髓征义》。偏旺之格，取运大都须顺其气势，虽干支喜忌，须察四柱之配合，而顺势取运，大致有定。兹就本篇所引各造。约略言之： 
+曲直仁寿格 
+癸亥 乙卯 乙未 壬午
+甲寅 癸丑 壬子 辛亥 庚戌 己酉
+甲乙日主，支全亥卯未或寅卯辰，乃曲直仁寿格也。气势偏旺于木，宜行水木火运，官煞运最忌，财运亦不宜。丙丁日主，支全寅午戌、或巳午未，为炎上格。戊已日主，支全辰戌丑未为稼穑格。庚辛日主，支全巳酉丑或申酉戌，为从革格。壬癸日主支全甲子辰或亥子丑，为润下格。五种意义相同。 
+化气格： 
+甲戌 丁卯 壬寅 甲辰
+戊辰 己巳 庚午 辛未 壬申 癸酉
+丁壬化木，生于春月，时逢甲辰，木之元神透出，乃化木格。气势偏于木也。化神喜行旺地，最宜东方寅卯辰比劫乡，而忌官煞，日主还原之地亦忌，其中略分别，如丁壬化木，日元壬水，行亥子丑印地，生起化神亦吉；若甲已化土，而行寅卯辰，克我化神，为大忌也。化气格有甲己化土、乙庚化金、丙辛化水、丁壬化木、戊癸化火五种，意义略同。 
+倒冲格： 
+戊午 戊午 戊午 戊午
+己未 庚申 辛酉 壬戌 癸亥 甲子
+两神成象，而气势偏于火土，为从旺格。最宜金运，泄土之气，但火炎土燥，究嫌偏枯，宜带水之土以护之。如庚辰辛丑等运为最佳，若见水运，如以一杯水救车薪之火。立见其灾。所谓倒冲最忌填实，即此意也。木运逆土之性，增火之焰，亦不相宜。 
+甲寅 庚午 丙午 甲午
+辛未 壬申 癸酉 甲戌 乙亥 丙子
+庚金无根，置之不论，气偏木火，格成炎上，最宜土运泄火之气。说见前仁寿格。 
+以上两造皆俗所谓倒冲格也。 
+朝阳格： 
+戊辰 辛酉 辛酉 戊子
+壬戌 癸亥 甲子 乙丑 丙寅 丁卯
+此金水伤官，原无官星，气势偏于金水，以顺其性。行土金水运为美，火运为忌。带水之木尚可行，而带火之木则不宜见。此俗所谓朝阳格也。 
+合禄格： 
+己未 戊辰 戊辰 庚申
+丁卯 丙寅 乙丑 甲子 癸亥 壬戌
+此土金食神也。比劫重重，气势偏于土金，以金运泄土之秀为最吉，水运亦美，火运为忌，木亦不美，所谓土盛木折也。俗以庚合乙为官星，称为合禄格，又不要明见，喜财以生之。取运略同。 
+合禄格： 
+己酉 辛未 癸未 庚申
+庚午 己巳 戊辰 丁卯 丙寅 乙丑
+俗亦名之为合禄格，以申合巳中戊土为官星也。月令偏官，年上透出，时上庚印化煞为用（见论偏官篇），格正局清，有何不美？若取巳中戊土官星，岂非官煞混杂耶？ 
+从财格： 
+庚申 乙酉 丙申 己丑
+丙戌 丁亥 戊子 己丑 庚寅 辛卯
+乙从庚化，不作印论，丙火临申，坐于病地，四柱无根，时上己丑又来生金，气势偏于金旺，为弃命从财格也。运宜行土金水，南方火乡最忌，木亦不利。 
+从煞格： 
+乙酉 乙酉 乙酉 甲申
+甲申 癸未 壬午 辛巳 庚辰 己卯
+乙木无根，气势偏于金，为弃命从煞格。金运最美，水土亦吉。木运为乙木逢根，火运逆其旺势，皆忌见。与上从财格大致相同。 
+井栏叉格： 
+戊子 庚申 庚申 庚辰
+辛酉 壬戌 癸亥 甲子 乙丑 丙寅
+此俗所谓井栏叉格。庚金乘旺泄秀，支全申子辰水局。气势偏于金水，当顺其势以取运。土金水运均美，木运亦可，行火运逆其旺势不利。 
+遥合格： 
+辛丑 辛丑 辛丑 庚寅
+庚子 己亥 戊戌 丁酉 丙申 乙未
+此俗所谓丑遥巳格。土金成局，生于十二月，时上寅木无气，不能为用。势象偏于土金，宜土金水运，木火逆其旺势为不宜。与遥巳格取运相同也。 
+丑遥巳禄格（又名刑合）： 
+乙未 癸卯 癸卯 甲寅
+壬寅 辛丑 庚子 己亥 戊戌 丁酉 
+《喜忌篇》云，&quot;癸日进逢寅位，岁月怕戊已二方&quot;，以寅刑出巳中戊土为格，其实乃从儿格也。气势偏于木，行运最喜木火。从格忌见比劫，而从儿有食伤引化，不忌比劫，此为不同之点。官煞大忌，印运亦忌。 
+子遥巳禄格（又名遥合格）： 
+甲申 甲戌 甲子 甲子
+乙亥 丙子 丁丑 戊寅 己卯 庚辰
+《喜忌篇》云，&quot;甲子日再遇子时，畏庚辛申酉丑午，以子遥合巳为格&quot;，其实月令偏财，用财损印，何必另取格局？戌藏丁火，生起财星，遇运透清为美，庚辛申酉官煞生印为忌，午冲子、丑刑戌均为忌也。
+</div></section><footer><p>来源与原件</p><a href="https://github.com/Carl-Tsoi/Lucky/blob/main/books/子平真诠.txt" target="_blank" rel="noopener">打开相关原典 ↗</a><p><a href="../earth-online-manual.html#library">返回地球 Online 通关手册</a></p></footer></main></div><script>/*
+ * Character data derived from OpenCC TSCharacters.txt (Apache-2.0).
+ * Upstream: BYVoid/OpenCC, commit c363a7ba51d487950982bd8a589211ffbfd95ba1.
+ * Modified 2026-09-17: follow first-candidate chains to a stable character,
+ * omit identity mappings, and embed the character-only lookup for offline search.
+ * This is not the OpenCC conversion engine or a phrase/semantic converter.
+ * Full upstream license and AUTHORS: 第三方许可-检索字表.txt in the output pack.
+ */
+(function(root){
+ 'use strict';
+ const characters={"㑯":"㑔","㑳":"㑇","㑶":"㐹","㓨":"刾","㗲":"𠵾","㘚":"㘎","㜄":"㚯","㜏":"㛣","㜢":"𡞱","㠏":"㟆","㠣":"𫵷","㥮":"㤘","㩜":"㨫","㩳":"㧐","㩵":"擜","㺏":"𤠋","䁪":"𥇢","䁻":"䀥","䃮":"鿎","䊷":"䌶","䋙":"䌺","䋚":"䌻","䋹":"䌿","䋻":"䌾","䍦":"䍠","䎱":"䎬","䓣":"𬜯","䙡":"䙌","䜀":"䜧","䝼":"䞍","䡵":"𫟦","䥇":"䦂","䥑":"鿏","䥕":"𬭯","䥱":"䥾","䦛":"䦶","䦟":"䦷","䧢":"𨸟","䮄":"𫠊","䯀":"䯅","䰾":"鲃","䱷":"䲣","䱽":"䲝","䲁":"鳚","䲘":"鳤","䴉":"鹮","丟":"丢","並":"并","乾":"干","亂":"乱","亙":"亘","亞":"亚","佇":"伫","佈":"布","佔":"占","併":"并","來":"来","侖":"仑","侶":"侣","侷":"局","俁":"俣","係":"系","俔":"伣","俠":"侠","俥":"伡","俬":"私","倀":"伥","倆":"俩","倈":"俫","倉":"仓","個":"个","們":"们","倖":"幸","倫":"伦","倲":"㑈","偉":"伟","偑":"㐽","側":"侧","偵":"侦","偽":"伪","傌":"㐷","傑":"杰","傖":"伧","傘":"伞","備":"备","傢":"家","傭":"佣","傯":"偬","傳":"传","傴":"伛","債":"债","傷":"伤","傾":"倾","僂":"偻","僅":"仅","僉":"佥","僑":"侨","僕":"仆","僞":"伪","僤":"𫢸","僥":"侥","僨":"偾","僱":"雇","價":"价","儀":"仪","儁":"俊","儂":"侬","億":"亿","儈":"侩","儉":"俭","儎":"傤","儐":"傧","儔":"俦","儕":"侪","儘":"尽","償":"偿","優":"优","儲":"储","儷":"俪","儸":"㑩","儺":"傩","儻":"傥","儼":"俨","兇":"凶","兌":"兑","兒":"儿","兗":"兖","內":"内","兩":"两","冊":"册","冑":"胄","冪":"幂","凈":"净","凍":"冻","凜":"凛","凱":"凯","別":"别","刪":"删","剄":"刭","則":"则","剋":"克","剎":"刹","剗":"刬","剛":"刚","剝":"剥","剮":"剐","剴":"剀","創":"创","剷":"铲","劃":"划","劄":"札","劇":"剧","劉":"刘","劊":"刽","劌":"刿","劍":"剑","劏":"㓥","劑":"剂","劚":"㔉","勁":"劲","動":"动","務":"务","勛":"勋","勝":"胜","勞":"劳","勢":"势","勣":"𪟝","勩":"勚","勱":"劢","勳":"勋","勵":"励","勸":"劝","勻":"匀","匭":"匦","匯":"汇","匱":"匮","區":"区","協":"协","卹":"恤","卻":"却","卽":"即","厙":"厍","厠":"厕","厤":"历","厭":"厌","厲":"厉","厴":"厣","參":"参","叄":"叁","叢":"丛","吒":"咤","吳":"吴","吶":"呐","呂":"吕","咼":"呙","員":"员","唄":"呗","唸":"念","問":"问","啓":"启","啞":"哑","啟":"启","啢":"唡","喎":"㖞","喚":"唤","喪":"丧","喫":"吃","喬":"乔","單":"单","喲":"哟","嗆":"呛","嗇":"啬","嗊":"唝","嗎":"吗","嗚":"呜","嗩":"唢","嗰":"𠮶","嗶":"哔","嘆":"叹","嘍":"喽","嘓":"啯","嘔":"呕","嘖":"啧","嘗":"尝","嘜":"唛","嘩":"哗","嘮":"唠","嘯":"啸","嘰":"叽","嘵":"哓","嘸":"呒","嘽":"啴","噁":"恶","噓":"嘘","噚":"㖊","噝":"咝","噠":"哒","噥":"哝","噦":"哕","噯":"嗳","噲":"哙","噴":"喷","噸":"吨","噹":"当","嚀":"咛","嚇":"吓","嚌":"哜","嚐":"尝","嚕":"噜","嚙":"啮","嚥":"咽","嚦":"呖","嚧":"𠰷","嚨":"咙","嚮":"向","嚲":"亸","嚳":"喾","嚴":"严","嚶":"嘤","囀":"啭","囁":"嗫","囂":"嚣","囅":"冁","囈":"呓","囉":"啰","囌":"苏","囑":"嘱","囪":"囱","圇":"囵","國":"国","圍":"围","園":"园","圓":"圆","圖":"图","團":"团","垻":"坝","埡":"垭","埨":"𫭢","埰":"采","執":"执","堅":"坚","堊":"垩","堖":"垴","堝":"埚","堯":"尧","報":"报","場":"场","塊":"块","塋":"茔","塏":"垲","塒":"埘","塗":"涂","塚":"冢","塢":"坞","塤":"埙","塵":"尘","塸":"𫭟","塹":"堑","塿":"𪣻","墊":"垫","墜":"坠","墠":"𫮃","墮":"堕","墰":"坛","墳":"坟","墶":"垯","墻":"墙","墾":"垦","壇":"坛","壋":"垱","壎":"埙","壓":"压","壗":"𡋤","壘":"垒","壙":"圹","壚":"垆","壜":"坛","壞":"坏","壟":"垄","壠":"垅","壢":"坜","壩":"坝","壪":"塆","壯":"壮","壺":"壶","壼":"壸","壽":"寿","夠":"够","夢":"梦","夥":"伙","夾":"夹","奐":"奂","奧":"奥","奩":"奁","奪":"夺","奬":"奖","奮":"奋","奼":"姹","妝":"妆","姍":"姗","姦":"奸","娙":"𫰛","娛":"娱","婁":"娄","婦":"妇","婭":"娅","媧":"娲","媯":"妫","媰":"㛀","媼":"媪","媽":"妈","嫋":"袅","嫗":"妪","嫵":"妩","嫺":"娴","嫻":"娴","嫿":"婳","嬀":"妫","嬃":"媭","嬈":"娆","嬋":"婵","嬌":"娇","嬙":"嫱","嬡":"嫒","嬤":"嬷","嬪":"嫔","嬰":"婴","嬸":"婶","孃":"娘","孋":"㛤","孌":"娈","孫":"孙","學":"学","孻":"𡥧","孿":"孪","宮":"宫","寀":"采","寢":"寝","實":"实","寧":"宁","審":"审","寫":"写","寬":"宽","寵":"宠","寶":"宝","將":"将","專":"专","尋":"寻","對":"对","導":"导","尷":"尴","屆":"届","屍":"尸","屓":"屃","屜":"屉","屢":"屡","層":"层","屨":"屦","屬":"属","岡":"冈","峯":"峰","峴":"岘","島":"岛","峽":"峡","崍":"崃","崑":"昆","崗":"岗","崙":"仑","崢":"峥","崬":"岽","嵐":"岚","嵗":"岁","嵽":"𫶇","嵾":"㟥","嶁":"嵝","嶄":"崭","嶇":"岖","嶔":"嵚","嶗":"崂","嶠":"峤","嶢":"峣","嶧":"峄","嶨":"峃","嶮":"崄","嶸":"嵘","嶺":"岭","嶼":"屿","嶽":"岳","巋":"岿","巒":"峦","巔":"巅","巖":"岩","巘":"𪩘","巰":"巯","巹":"卺","帥":"帅","師":"师","帳":"帐","帶":"带","幀":"帧","幃":"帏","幓":"㡎","幗":"帼","幘":"帻","幟":"帜","幣":"币","幫":"帮","幬":"帱","幷":"并","幹":"干","幾":"几","庫":"库","廁":"厕","廂":"厢","廄":"厩","廈":"厦","廎":"庼","廕":"荫","廚":"厨","廝":"厮","廞":"𫷷","廟":"庙","廠":"厂","廡":"庑","廢":"废","廣":"广","廩":"廪","廬":"庐","廳":"厅","弒":"弑","弔":"吊","弳":"弪","張":"张","強":"强","彄":"𫸩","彆":"别","彈":"弹","彌":"弥","彎":"弯","彔":"录","彙":"汇","彠":"彟","彥":"彦","彫":"雕","彲":"彨","彿":"佛","後":"后","徑":"径","從":"从","徠":"徕","復":"复","徵":"征","徹":"彻","恆":"恒","恥":"耻","悅":"悦","悞":"悮","悵":"怅","悶":"闷","悽":"凄","惡":"恶","惱":"恼","惲":"恽","惻":"恻","愛":"爱","愜":"惬","愨":"悫","愴":"怆","愷":"恺","愾":"忾","慄":"栗","態":"态","慍":"愠","慘":"惨","慚":"惭","慟":"恸","慣":"惯","慤":"悫","慪":"怄","慫":"怂","慮":"虑","慳":"悭","慶":"庆","慺":"㥪","慼":"戚","慾":"欲","憂":"忧","憊":"惫","憐":"怜","憑":"凭","憒":"愦","憖":"慭","憚":"惮","憤":"愤","憫":"悯","憮":"怃","憲":"宪","憶":"忆","懇":"恳","應":"应","懌":"怿","懍":"懔","懞":"蒙","懟":"怼","懣":"懑","懤":"㤽","懨":"恹","懲":"惩","懶":"懒","懷":"怀","懸":"悬","懺":"忏","懼":"惧","懾":"慑","戀":"恋","戇":"戆","戔":"戋","戧":"戗","戩":"戬","戰":"战","戱":"戯","戲":"戏","戶":"户","扞":"捍","拋":"抛","拚":"拼","挩":"捝","挱":"挲","挾":"挟","捨":"舍","捫":"扪","捱":"挨","捲":"卷","掃":"扫","掄":"抡","掆":"㧏","掗":"挜","掙":"挣","掛":"挂","採":"采","揀":"拣","揚":"扬","換":"换","揮":"挥","揯":"搄","損":"损","搖":"摇","搗":"捣","搧":"扇","搵":"揾","搶":"抢","摑":"掴","摜":"掼","摟":"搂","摯":"挚","摳":"抠","摶":"抟","摺":"折","摻":"掺","撈":"捞","撏":"挦","撐":"撑","撓":"挠","撝":"㧑","撟":"挢","撣":"掸","撥":"拨","撫":"抚","撲":"扑","撳":"揿","撻":"挞","撾":"挝","撿":"捡","擁":"拥","擄":"掳","擇":"择","擊":"击","擋":"挡","擓":"㧟","擔":"担","據":"据","擠":"挤","擡":"抬","擣":"捣","擬":"拟","擯":"摈","擰":"拧","擱":"搁","擲":"掷","擴":"扩","擷":"撷","擺":"摆","擻":"擞","擼":"撸","擽":"㧰","擾":"扰","攄":"摅","攆":"撵","攏":"拢","攔":"拦","攖":"撄","攙":"搀","攛":"撺","攜":"携","攝":"摄","攢":"攒","攣":"挛","攤":"摊","攪":"搅","攬":"揽","敎":"教","敓":"敚","敗":"败","敘":"叙","敵":"敌","數":"数","斂":"敛","斃":"毙","斆":"敩","斕":"斓","斬":"斩","斷":"断","於":"于","旂":"旗","旣":"既","昇":"升","時":"时","晉":"晋","晛":"𬀪","晝":"昼","暈":"晕","暉":"晖","暐":"𬀩","暘":"旸","暢":"畅","暫":"暂","曄":"晔","曆":"历","曇":"昙","曉":"晓","曏":"向","曖":"暧","曠":"旷","曥":"𣆐","曨":"昽","曬":"晒","書":"书","會":"会","朥":"𦛨","朧":"胧","朮":"术","東":"东","枴":"拐","柵":"栅","柺":"拐","査":"查","桱":"𣐕","桿":"杆","梔":"栀","梘":"枧","梜":"𬂩","條":"条","梟":"枭","梲":"棁","棄":"弃","棊":"棋","棖":"枨","棗":"枣","棟":"栋","棡":"㭎","棧":"栈","棲":"栖","棶":"梾","椏":"桠","椲":"㭏","楊":"杨","楓":"枫","楨":"桢","業":"业","極":"极","榘":"矩","榦":"干","榪":"杩","榮":"荣","榲":"榅","榿":"桤","構":"构","槍":"枪","槓":"杠","槤":"梿","槧":"椠","槨":"椁","槮":"椮","槳":"桨","槶":"椢","槼":"椝","樁":"桩","樂":"乐","樅":"枞","樑":"梁","樓":"楼","標":"标","樞":"枢","樢":"㭤","樣":"样","樧":"榝","樫":"㭴","樳":"桪","樸":"朴","樹":"树","樺":"桦","樿":"椫","橈":"桡","橋":"桥","機":"机","橢":"椭","橫":"横","橯":"𣓿","檁":"檩","檉":"柽","檔":"档","檜":"桧","檟":"槚","檢":"检","檣":"樯","檮":"梼","檯":"台","檳":"槟","檸":"柠","檻":"槛","櫃":"柜","櫍":"𬃊","櫓":"橹","櫚":"榈","櫛":"栉","櫝":"椟","櫞":"橼","櫟":"栎","櫥":"橱","櫧":"槠","櫨":"栌","櫪":"枥","櫫":"橥","櫬":"榇","櫱":"蘖","櫳":"栊","櫸":"榉","櫻":"樱","欄":"栏","欅":"榉","權":"权","欏":"椤","欒":"栾","欓":"𣗋","欖":"榄","欞":"棂","欽":"钦","歎":"叹","歐":"欧","歟":"欤","歡":"欢","歲":"岁","歷":"历","歸":"归","歿":"殁","殘":"残","殞":"殒","殤":"殇","殨":"㱮","殫":"殚","殭":"僵","殮":"殓","殯":"殡","殰":"㱩","殲":"歼","殺":"杀","殻":"壳","殼":"壳","毀":"毁","毆":"殴","毿":"毵","氂":"牦","氈":"毡","氌":"氇","氣":"气","氫":"氢","氬":"氩","氳":"氲","氾":"泛","汎":"泛","汙":"污","決":"决","沒":"没","沖":"冲","況":"况","泝":"溯","洩":"泄","洶":"汹","浹":"浃","浿":"𬇙","涇":"泾","涗":"涚","涼":"凉","淒":"凄","淚":"泪","淥":"渌","淨":"净","淩":"凌","淪":"沦","淵":"渊","淶":"涞","淺":"浅","渙":"涣","減":"减","渢":"沨","渦":"涡","測":"测","渾":"浑","湊":"凑","湋":"𣲗","湞":"浈","湧":"涌","湯":"汤","溈":"沩","準":"准","溝":"沟","溫":"温","溮":"浉","溳":"涢","溼":"湿","滄":"沧","滅":"灭","滌":"涤","滎":"荥","滙":"汇","滬":"沪","滯":"滞","滲":"渗","滷":"卤","滸":"浒","滻":"浐","滾":"滚","滿":"满","漁":"渔","漊":"溇","漍":"𬇹","漚":"沤","漢":"汉","漣":"涟","漬":"渍","漲":"涨","漵":"溆","漸":"渐","漿":"浆","潁":"颍","潑":"泼","潔":"洁","潕":"𣲘","潙":"沩","潚":"㴋","潛":"潜","潤":"润","潯":"浔","潰":"溃","潷":"滗","潿":"涠","澀":"涩","澆":"浇","澇":"涝","澐":"沄","澗":"涧","澠":"渑","澤":"泽","澦":"滪","澩":"泶","澫":"𬇕","澮":"浍","澱":"淀","澾":"㳠","濁":"浊","濃":"浓","濄":"㳡","濆":"𣸣","濕":"湿","濘":"泞","濚":"溁","濛":"蒙","濜":"浕","濟":"济","濤":"涛","濧":"㳔","濫":"滥","濰":"潍","濱":"滨","濺":"溅","濼":"泺","濾":"滤","瀂":"澛","瀅":"滢","瀆":"渎","瀇":"㲿","瀉":"泻","瀋":"沈","瀏":"浏","瀕":"濒","瀘":"泸","瀝":"沥","瀟":"潇","瀠":"潆","瀦":"潴","瀧":"泷","瀨":"濑","瀰":"弥","瀲":"潋","瀾":"澜","灃":"沣","灄":"滠","灑":"洒","灒":"𪷽","灕":"漓","灘":"滩","灙":"𣺼","灝":"灏","灡":"㳕","灣":"湾","灤":"滦","灧":"滟","灩":"滟","災":"灾","為":"为","烏":"乌","烴":"烃","無":"无","煉":"炼","煒":"炜","煙":"烟","煢":"茕","煥":"焕","煩":"烦","煬":"炀","煱":"㶽","熅":"煴","熒":"荧","熗":"炝","熰":"𬉼","熱":"热","熲":"颎","熾":"炽","燀":"𬊤","燁":"烨","燈":"灯","燉":"炖","燒":"烧","燖":"𬊈","燙":"烫","燜":"焖","營":"营","燦":"灿","燬":"毁","燭":"烛","燴":"烩","燶":"㶶","燻":"熏","燼":"烬","燾":"焘","爍":"烁","爐":"炉","爛":"烂","爭":"争","爲":"为","爺":"爷","爾":"尔","牀":"床","牆":"墙","牘":"牍","牴":"抵","牽":"牵","犖":"荦","犛":"牦","犢":"犊","犧":"牺","狀":"状","狹":"狭","狽":"狈","猙":"狰","猶":"犹","猻":"狲","獁":"犸","獃":"呆","獄":"狱","獅":"狮","獎":"奖","獨":"独","獪":"狯","獫":"猃","獮":"狝","獰":"狞","獱":"㺍","獲":"获","獵":"猎","獷":"犷","獸":"兽","獺":"獭","獻":"献","獼":"猕","玀":"猡","現":"现","琱":"雕","琺":"珐","琿":"珲","瑋":"玮","瑒":"玚","瑣":"琐","瑤":"瑶","瑩":"莹","瑪":"玛","瑲":"玱","璉":"琏","璊":"𫞩","璕":"𬍤","璗":"𬍡","璡":"琎","璣":"玑","璦":"瑷","璫":"珰","璯":"㻅","環":"环","璵":"玙","璸":"瑸","璽":"玺","璿":"璇","瓅":"𬍛","瓊":"琼","瓏":"珑","瓔":"璎","瓚":"瓒","瓛":"𤩽","甌":"瓯","甕":"瓮","產":"产","産":"产","畝":"亩","畢":"毕","畫":"画","異":"异","畵":"画","當":"当","疇":"畴","疊":"叠","痙":"痉","痠":"酸","痾":"疴","瘂":"痖","瘋":"疯","瘍":"疡","瘓":"痪","瘞":"瘗","瘡":"疮","瘧":"疟","瘮":"瘆","瘲":"疭","瘺":"瘘","瘻":"瘘","療":"疗","癆":"痨","癇":"痫","癉":"瘅","癒":"愈","癘":"疠","癟":"瘪","癡":"痴","癢":"痒","癤":"疖","癥":"症","癧":"疬","癩":"癞","癬":"癣","癭":"瘿","癮":"瘾","癰":"痈","癱":"瘫","癲":"癫","發":"发","皁":"皂","皚":"皑","皰":"疱","皸":"皲","皺":"皱","盃":"杯","盜":"盗","盞":"盏","盡":"尽","監":"监","盤":"盘","盧":"卢","盪":"荡","眞":"真","眥":"眦","眾":"众","睍":"𪾢","睏":"困","睜":"睁","睞":"睐","瞘":"眍","瞜":"䁖","瞞":"瞒","瞶":"瞆","瞼":"睑","矇":"蒙","矓":"眬","矚":"瞩","矯":"矫","硃":"朱","硜":"硁","硤":"硖","硨":"砗","硯":"砚","碕":"埼","碩":"硕","碭":"砀","碸":"砜","確":"确","碼":"码","碽":"䂵","磑":"硙","磚":"砖","磠":"硵","磣":"碜","磧":"碛","磯":"矶","磽":"硗","磾":"䃅","礄":"硚","礎":"础","礐":"𬒈","礙":"碍","礦":"矿","礪":"砺","礫":"砾","礬":"矾","礱":"砻","祕":"秘","祿":"禄","禍":"祸","禎":"祯","禕":"祎","禡":"祃","禦":"御","禪":"禅","禮":"礼","禰":"祢","禱":"祷","禿":"秃","秈":"籼","稅":"税","稈":"秆","稏":"䅉","稜":"棱","稟":"禀","種":"种","稱":"称","穀":"谷","穇":"䅟","穌":"稣","積":"积","穎":"颖","穠":"秾","穡":"穑","穢":"秽","穩":"稳","穫":"获","穭":"穞","窩":"窝","窪":"洼","窮":"穷","窯":"窑","窵":"窎","窶":"窭","窺":"窥","竄":"窜","竅":"窍","竇":"窦","竈":"灶","竊":"窃","竪":"竖","競":"竞","筆":"笔","筍":"笋","筧":"笕","筴":"䇲","箇":"个","箋":"笺","箏":"筝","箚":"札","節":"节","範":"范","築":"筑","篋":"箧","篔":"筼","篠":"筿","篢":"𬕂","篤":"笃","篩":"筛","篳":"筚","篸":"𥮾","簀":"箦","簍":"篓","簑":"蓑","簞":"箪","簡":"简","簣":"篑","簫":"箫","簹":"筜","簽":"签","簾":"帘","籃":"篮","籅":"𥫣","籌":"筹","籔":"䉤","籙":"箓","籛":"篯","籜":"箨","籟":"籁","籠":"笼","籤":"签","籩":"笾","籪":"簖","籬":"篱","籮":"箩","籲":"吁","粵":"粤","糉":"粽","糝":"糁","糞":"粪","糧":"粮","糰":"团","糲":"粝","糴":"籴","糶":"粜","糹":"纟","糾":"纠","紀":"纪","紂":"纣","紃":"𬘓","約":"约","紅":"红","紆":"纡","紇":"纥","紈":"纨","紉":"纫","紋":"纹","納":"纳","紐":"纽","紓":"纾","純":"纯","紕":"纰","紖":"纼","紗":"纱","紘":"纮","紙":"纸","級":"级","紛":"纷","紜":"纭","紝":"纴","紞":"𬘘","紡":"纺","紬":"䌷","紮":"扎","細":"细","紱":"绂","紲":"绁","紳":"绅","紵":"纻","紹":"绍","紺":"绀","紼":"绋","紿":"绐","絀":"绌","終":"终","絃":"弦","組":"组","絅":"䌹","絆":"绊","絎":"绗","結":"结","絕":"绝","絛":"绦","絝":"绔","絞":"绞","絡":"络","絢":"绚","給":"给","絨":"绒","絪":"𬘡","絰":"绖","統":"统","絲":"丝","絳":"绛","絶":"绝","絹":"绢","絺":"𫄨","綁":"绑","綃":"绡","綄":"𬘫","綆":"绠","綈":"绨","綉":"绣","綌":"绤","綎":"𬘩","綏":"绥","綐":"䌼","綑":"捆","經":"经","綖":"𫄧","綜":"综","綝":"𬘭","綞":"缍","綠":"绿","綡":"𫟅","綢":"绸","綣":"绻","綧":"𬘯","綪":"𬘬","綫":"线","綬":"绶","維":"维","綯":"绹","綰":"绾","綱":"纲","網":"网","綳":"绷","綴":"缀","綵":"彩","綸":"纶","綹":"绺","綺":"绮","綻":"绽","綽":"绰","綾":"绫","綿":"绵","緄":"绲","緇":"缁","緊":"紧","緋":"绯","緑":"绿","緒":"绪","緓":"绬","緔":"绱","緗":"缃","緘":"缄","緙":"缂","線":"线","緝":"缉","緞":"缎","締":"缔","緡":"缗","緣":"缘","緦":"缌","編":"编","緩":"缓","緬":"缅","緯":"纬","緱":"缑","緲":"缈","練":"练","緶":"缏","緹":"缇","緻":"致","緼":"缊","縈":"萦","縉":"缙","縊":"缢","縋":"缒","縐":"绉","縑":"缣","縕":"缊","縗":"缞","縛":"缚","縝":"缜","縞":"缟","縟":"缛","縣":"县","縧":"绦","縫":"缝","縭":"缡","縮":"缩","縯":"𬙂","縱":"纵","縲":"缧","縳":"䌸","縴":"纤","縵":"缦","縶":"絷","縷":"缕","縹":"缥","總":"总","績":"绩","繃":"绷","繅":"缫","繆":"缪","繒":"缯","織":"织","繕":"缮","繚":"缭","繞":"绕","繡":"绣","繢":"缋","繩":"绳","繪":"绘","繫":"系","繭":"茧","繮":"缰","繯":"缳","繰":"缲","繳":"缴","繶":"𫄷","繸":"䍁","繹":"绎","繻":"𦈡","繼":"继","繽":"缤","繾":"缱","繿":"䍀","纁":"𫄸","纆":"𬙊","纇":"颣","纈":"缬","纊":"纩","續":"续","纍":"累","纏":"缠","纓":"缨","纔":"才","纕":"𬙋","纖":"纤","纘":"缵","纜":"缆","缽":"钵","罃":"䓨","罈":"坛","罌":"罂","罎":"坛","罰":"罚","罵":"骂","罷":"罢","羅":"罗","羆":"罴","羈":"羁","羋":"芈","羣":"群","羥":"羟","羨":"羡","義":"义","羶":"膻","習":"习","翫":"玩","翬":"翚","翹":"翘","翽":"翙","耬":"耧","耮":"耢","聖":"圣","聞":"闻","聯":"联","聰":"聪","聲":"声","聳":"耸","聵":"聩","聶":"聂","職":"职","聹":"聍","聽":"听","聾":"聋","肅":"肃","脅":"胁","脈":"脉","脛":"胫","脣":"唇","脩":"修","脫":"脱","脹":"胀","腎":"肾","腖":"胨","腡":"脶","腦":"脑","腫":"肿","腳":"脚","腸":"肠","膃":"腽","膕":"腘","膚":"肤","膞":"䏝","膠":"胶","膢":"𦝼","膩":"腻","膽":"胆","膾":"脍","膿":"脓","臉":"脸","臍":"脐","臏":"膑","臘":"腊","臚":"胪","臟":"脏","臠":"脔","臢":"臜","臥":"卧","臨":"临","臺":"台","與":"与","興":"兴","舉":"举","舊":"旧","舖":"铺","舘":"馆","艙":"舱","艤":"舣","艦":"舰","艫":"舻","艱":"艰","艷":"艳","芻":"刍","苧":"苎","茲":"兹","荊":"荆","莊":"庄","莖":"茎","莢":"荚","莧":"苋","華":"华","菴":"庵","菸":"烟","萇":"苌","萊":"莱","萬":"万","萴":"荝","萵":"莴","葉":"叶","葒":"荭","葤":"荮","葦":"苇","葯":"药","葷":"荤","蒍":"𫇭","蒐":"搜","蒓":"莼","蒔":"莳","蒕":"蒀","蒞":"莅","蒼":"苍","蓀":"荪","蓆":"席","蓋":"盖","蓮":"莲","蓯":"苁","蓴":"莼","蓽":"荜","蔄":"𬜬","蔔":"卜","蔘":"参","蔞":"蒌","蔣":"蒋","蔥":"葱","蔦":"茑","蔭":"荫","蔯":"𫈟","蔿":"𫇭","蕁":"荨","蕆":"蒇","蕎":"荞","蕒":"荬","蕓":"芸","蕕":"莸","蕘":"荛","蕢":"蒉","蕩":"荡","蕪":"芜","蕭":"萧","蕷":"蓣","薀":"蕰","薈":"荟","薊":"蓟","薌":"芗","薑":"姜","薔":"蔷","薘":"荙","薟":"莶","薦":"荐","薩":"萨","薳":"䓕","薴":"苎","薵":"䓓","薹":"苔","薺":"荠","藍":"蓝","藎":"荩","藝":"艺","藥":"药","藪":"薮","藭":"䓖","藴":"蕴","藶":"苈","藹":"蔼","藺":"蔺","蘀":"萚","蘄":"蕲","蘆":"芦","蘇":"苏","蘊":"蕴","蘋":"苹","蘚":"藓","蘞":"蔹","蘟":"𦻕","蘢":"茏","蘭":"兰","蘺":"蓠","蘿":"萝","虆":"蔂","虉":"𬟁","處":"处","虛":"虚","虜":"虏","號":"号","虧":"亏","虯":"虬","蛺":"蛱","蛻":"蜕","蜆":"蚬","蝀":"𬟽","蝕":"蚀","蝟":"猬","蝦":"虾","蝨":"虱","蝸":"蜗","螄":"蛳","螞":"蚂","螢":"萤","螮":"䗖","螻":"蝼","螿":"螀","蟄":"蛰","蟈":"蝈","蟎":"螨","蟣":"虮","蟬":"蝉","蟯":"蛲","蟲":"虫","蟳":"𫊻","蟶":"蛏","蟻":"蚁","蠁":"蚃","蠅":"蝇","蠆":"虿","蠍":"蝎","蠐":"蛴","蠑":"蝾","蠔":"蚝","蠟":"蜡","蠣":"蛎","蠨":"蟏","蠱":"蛊","蠶":"蚕","蠻":"蛮","衆":"众","衊":"蔑","術":"术","衕":"同","衚":"胡","衛":"卫","衝":"冲","袞":"衮","袷":"夹","裊":"袅","裏":"里","補":"补","裝":"装","裡":"里","製":"制","複":"复","褌":"裈","褘":"袆","褲":"裤","褳":"裢","褸":"褛","褻":"亵","襀":"𫌀","襇":"裥","襉":"裥","襏":"袯","襖":"袄","襝":"裣","襠":"裆","襤":"褴","襪":"袜","襬":"摆","襯":"衬","襲":"袭","襴":"襕","覈":"核","見":"见","覎":"觃","規":"规","覓":"觅","視":"视","覘":"觇","覡":"觋","覥":"觍","覦":"觎","親":"亲","覬":"觊","覯":"觏","覲":"觐","覷":"觑","覺":"觉","覽":"览","覿":"觌","觀":"观","觴":"觞","觶":"觯","觸":"触","訁":"讠","訂":"订","訃":"讣","計":"计","訊":"讯","訌":"讧","討":"讨","訏":"𬣙","訐":"讦","訒":"讱","訓":"训","訕":"讪","訖":"讫","託":"托","記":"记","訛":"讹","訝":"讶","訟":"讼","訢":"䜣","訣":"诀","訥":"讷","訩":"讻","訪":"访","設":"设","許":"许","訴":"诉","訶":"诃","診":"诊","註":"注","証":"证","詀":"𧮪","詁":"诂","詆":"诋","詎":"讵","詐":"诈","詒":"诒","詔":"诏","評":"评","詖":"诐","詗":"诇","詘":"诎","詛":"诅","詝":"𬣞","詞":"词","詠":"咏","詡":"诩","詢":"询","詣":"诣","試":"试","詩":"诗","詪":"𬣳","詫":"诧","詬":"诟","詭":"诡","詮":"诠","詰":"诘","話":"话","該":"该","詳":"详","詵":"诜","詷":"𫍣","詼":"诙","詿":"诖","誄":"诔","誅":"诛","誆":"诓","誇":"夸","誌":"志","認":"认","誑":"诳","誒":"诶","誕":"诞","誘":"诱","誚":"诮","語":"语","誠":"诚","誡":"诫","誣":"诬","誤":"误","誥":"诰","誦":"诵","誨":"诲","說":"说","説":"说","誰":"谁","課":"课","誶":"谇","誹":"诽","誼":"谊","誾":"訚","調":"调","諂":"谄","諄":"谆","談":"谈","諉":"诿","請":"请","諍":"诤","諏":"诹","諑":"诼","諒":"谅","諓":"𬣡","論":"论","諗":"谂","諛":"谀","諜":"谍","諝":"谞","諞":"谝","諟":"𬤊","諡":"谥","諢":"诨","諤":"谔","諦":"谛","諧":"谐","諫":"谏","諭":"谕","諮":"咨","諱":"讳","諲":"𬤇","諳":"谙","諴":"𫍯","諶":"谌","諷":"讽","諸":"诸","諺":"谚","諼":"谖","諾":"诺","謀":"谋","謁":"谒","謂":"谓","謄":"誊","謅":"诌","謊":"谎","謎":"谜","謏":"𫍲","謐":"谧","謔":"谑","謖":"谡","謗":"谤","謙":"谦","謚":"谥","講":"讲","謝":"谢","謠":"谣","謡":"谣","謨":"谟","謫":"谪","謬":"谬","謭":"谫","謳":"讴","謹":"谨","謾":"谩","譁":"哗","證":"证","譎":"谲","譏":"讥","譓":"𬤝","譖":"谮","識":"识","譙":"谯","譚":"谭","譜":"谱","譞":"𫍽","譟":"噪","譫":"谵","譭":"毁","譯":"译","議":"议","譴":"谴","護":"护","譸":"诪","譽":"誉","譾":"谫","讀":"读","讅":"谉","變":"变","讋":"詟","讌":"䜩","讎":"雠","讒":"谗","讓":"让","讕":"谰","讖":"谶","讚":"赞","讜":"谠","讞":"谳","谿":"溪","豈":"岂","豎":"竖","豐":"丰","豔":"艳","豬":"猪","豶":"豮","貍":"狸","貓":"猫","貙":"䝙","貝":"贝","貞":"贞","貟":"贠","負":"负","財":"财","貢":"贡","貧":"贫","貨":"货","販":"贩","貪":"贪","貫":"贯","責":"责","貯":"贮","貰":"贳","貲":"赀","貳":"贰","貴":"贵","貶":"贬","買":"买","貸":"贷","貺":"贶","費":"费","貼":"贴","貽":"贻","貿":"贸","賀":"贺","賁":"贲","賂":"赂","賃":"赁","賄":"贿","賅":"赅","資":"资","賈":"贾","賊":"贼","賑":"赈","賒":"赊","賓":"宾","賕":"赇","賙":"赒","賚":"赉","賜":"赐","賞":"赏","賠":"赔","賡":"赓","賢":"贤","賣":"卖","賤":"贱","賦":"赋","賧":"赕","質":"质","賫":"赍","賬":"账","賭":"赌","賰":"䞐","賴":"赖","賵":"赗","賺":"赚","賻":"赙","購":"购","賽":"赛","賾":"赜","贄":"贽","贅":"赘","贇":"赟","贈":"赠","贊":"赞","贋":"赝","贍":"赡","贏":"赢","贐":"赆","贓":"赃","贔":"赑","贖":"赎","贗":"赝","贛":"赣","贜":"赃","赬":"赪","趕":"赶","趙":"赵","趨":"趋","趲":"趱","跡":"迹","踐":"践","踰":"逾","踴":"踊","蹌":"跄","蹕":"跸","蹟":"迹","蹠":"跖","蹣":"蹒","蹤":"踪","蹺":"跷","躂":"跶","躉":"趸","躊":"踌","躋":"跻","躍":"跃","躎":"䟢","躑":"踯","躒":"跞","躓":"踬","躕":"蹰","躚":"跹","躡":"蹑","躥":"蹿","躦":"躜","躪":"躏","軀":"躯","車":"车","軋":"轧","軌":"轨","軍":"军","軏":"𫐄","軑":"轪","軒":"轩","軔":"轫","軛":"轭","軝":"𬨂","軟":"软","軤":"轷","軫":"轸","軲":"轱","軸":"轴","軹":"轵","軺":"轺","軻":"轲","軼":"轶","軾":"轼","較":"较","輄":"𨐈","輅":"辂","輇":"辁","輈":"辀","載":"载","輊":"轾","輋":"𪨶","輒":"辄","輓":"挽","輔":"辅","輕":"轻","輗":"𫐐","輛":"辆","輜":"辎","輝":"辉","輞":"辋","輟":"辍","輥":"辊","輦":"辇","輩":"辈","輪":"轮","輬":"辌","輮":"𫐓","輯":"辑","輳":"辏","輶":"𬨎","輸":"输","輻":"辐","輼":"辒","輾":"辗","輿":"舆","轀":"辒","轂":"毂","轄":"辖","轅":"辕","轆":"辘","轉":"转","轍":"辙","轎":"轿","轔":"辚","轟":"轰","轡":"辔","轢":"轹","轤":"轳","辦":"办","辭":"辞","辮":"辫","辯":"辩","農":"农","迴":"回","逕":"径","這":"这","連":"连","週":"周","進":"进","遊":"游","運":"运","過":"过","達":"达","違":"违","遙":"遥","遜":"逊","遞":"递","遠":"远","遡":"溯","適":"适","遲":"迟","遶":"绕","遷":"迁","選":"选","遺":"遗","遼":"辽","邁":"迈","還":"还","邇":"迩","邊":"边","邏":"逻","邐":"逦","郟":"郏","郵":"邮","鄆":"郓","鄉":"乡","鄒":"邹","鄔":"邬","鄖":"郧","鄧":"邓","鄩":"𬩽","鄭":"郑","鄰":"邻","鄲":"郸","鄳":"𫑡","鄴":"邺","鄶":"郐","鄺":"邝","酇":"酂","酈":"郦","醃":"腌","醖":"酝","醜":"丑","醞":"酝","醟":"蒏","醣":"糖","醫":"医","醬":"酱","醱":"酦","醲":"𬪩","釀":"酿","釁":"衅","釃":"酾","釅":"酽","釋":"释","釐":"厘","釒":"钅","釓":"钆","釔":"钇","釕":"钌","釗":"钊","釘":"钉","釙":"钋","針":"针","釣":"钓","釤":"钐","釦":"扣","釧":"钏","釩":"钒","釴":"𬬩","釵":"钗","釷":"钍","釹":"钕","釺":"钎","釾":"䥺","釿":"𬬱","鈀":"钯","鈁":"钫","鈃":"钘","鈄":"钭","鈅":"钥","鈇":"𫓧","鈈":"钚","鈉":"钠","鈍":"钝","鈎":"钩","鈐":"钤","鈑":"钣","鈒":"钑","鈔":"钞","鈕":"钮","鈞":"钧","鈡":"钟","鈣":"钙","鈥":"钬","鈦":"钛","鈧":"钪","鈮":"铌","鈰":"铈","鈳":"钶","鈴":"铃","鈷":"钴","鈸":"钹","鈹":"铍","鈺":"钰","鈽":"钸","鈾":"铀","鈿":"钿","鉀":"钾","鉅":"巨","鉆":"钻","鉈":"铊","鉉":"铉","鉊":"𬬿","鉋":"铇","鉍":"铋","鉑":"铂","鉕":"钷","鉗":"钳","鉚":"铆","鉛":"铅","鉝":"𫟷","鉞":"钺","鉢":"钵","鉤":"钩","鉥":"𬬸","鉦":"钲","鉧":"𬭁","鉬":"钼","鉭":"钽","鉮":"𬬹","鉳":"锫","鉶":"铏","鉷":"𫟹","鉸":"铰","鉺":"铒","鉻":"铬","鉿":"铪","銀":"银","銃":"铳","銅":"铜","銈":"𫓯","銍":"铚","銑":"铣","銓":"铨","銖":"铢","銘":"铭","銚":"铫","銛":"铦","銜":"衔","銠":"铑","銣":"铷","銥":"铱","銦":"铟","銨":"铵","銩":"铥","銪":"铕","銫":"铯","銬":"铐","銱":"铞","銳":"锐","銶":"𨱇","銷":"销","銹":"锈","銻":"锑","銼":"锉","鋁":"铝","鋃":"锒","鋅":"锌","鋇":"钡","鋌":"铤","鋏":"铗","鋐":"𬭎","鋒":"锋","鋗":"𫓶","鋙":"铻","鋝":"锊","鋟":"锓","鋣":"铘","鋤":"锄","鋥":"锃","鋦":"锔","鋨":"锇","鋩":"铓","鋪":"铺","鋭":"锐","鋮":"铖","鋯":"锆","鋰":"锂","鋱":"铽","鋶":"锍","鋸":"锯","鋹":"𬬮","鋼":"钢","錀":"𬬭","錁":"锞","錄":"录","錆":"锖","錇":"锫","錈":"锩","錏":"铔","錐":"锥","錒":"锕","錕":"锟","錘":"锤","錙":"锱","錚":"铮","錛":"锛","錞":"𬭚","錟":"锬","錠":"锭","錡":"锜","錢":"钱","錤":"𫓹","錦":"锦","錨":"锚","錩":"锠","錫":"锡","錮":"锢","錯":"错","録":"录","錳":"锰","錶":"表","錸":"铼","錼":"镎","鍀":"锝","鍁":"锨","鍃":"锪","鍅":"钫","鍆":"钔","鍇":"锴","鍈":"锳","鍊":"炼","鍋":"锅","鍍":"镀","鍔":"锷","鍘":"铡","鍚":"钖","鍛":"锻","鍠":"锽","鍤":"锸","鍥":"锲","鍩":"锘","鍬":"锹","鍭":"𬭤","鍰":"锾","鍵":"键","鍶":"锶","鍺":"锗","鍼":"针","鍾":"钟","鎂":"镁","鎄":"锿","鎇":"镅","鎊":"镑","鎌":"镰","鎓":"𬭩","鎔":"镕","鎖":"锁","鎘":"镉","鎚":"锤","鎛":"镈","鎝":"𨱏","鎡":"镃","鎢":"钨","鎣":"蓥","鎦":"镏","鎧":"铠","鎩":"铩","鎪":"锼","鎬":"镐","鎭":"镇","鎮":"镇","鎰":"镒","鎲":"镋","鎳":"镍","鎵":"镓","鎶":"鿔","鎸":"镌","鎿":"镎","鏃":"镞","鏇":"旋","鏈":"链","鏌":"镆","鏍":"镙","鏏":"𬭬","鏐":"镠","鏑":"镝","鏗":"铿","鏘":"锵","鏜":"镗","鏝":"镘","鏞":"镛","鏟":"铲","鏡":"镜","鏢":"镖","鏤":"镂","鏨":"錾","鏰":"镚","鏵":"铧","鏷":"镤","鏹":"镪","鏺":"䥽","鏻":"𬭸","鏽":"锈","鐃":"铙","鐄":"𨱑","鐇":"𫔍","鐋":"铴","鐍":"𫔎","鐏":"𨱔","鐐":"镣","鐒":"铹","鐓":"镦","鐔":"镡","鐘":"钟","鐙":"镫","鐝":"镢","鐠":"镨","鐥":"䦅","鐦":"锎","鐧":"锏","鐨":"镄","鐩":"𬭼","鐫":"镌","鐮":"镰","鐯":"䦃","鐲":"镯","鐳":"镭","鐵":"铁","鐶":"镮","鐸":"铎","鐺":"铛","鐽":"𫟼","鐿":"镱","鑄":"铸","鑊":"镬","鑌":"镔","鑑":"鉴","鑒":"鉴","鑔":"镲","鑕":"锧","鑞":"镴","鑠":"铄","鑣":"镳","鑥":"镥","鑪":"𬬻","鑭":"镧","鑰":"钥","鑱":"镵","鑲":"镶","鑷":"镊","鑹":"镩","鑼":"锣","鑽":"钻","鑾":"銮","鑿":"凿","钁":"镢","钂":"镋","長":"长","門":"门","閂":"闩","閃":"闪","閆":"闫","閈":"闬","閉":"闭","開":"开","閌":"闶","閎":"闳","閏":"闰","閑":"闲","閒":"闲","間":"间","閔":"闵","閘":"闸","閡":"阂","閣":"阁","閤":"合","閥":"阀","閨":"闺","閩":"闽","閫":"阃","閬":"阆","閭":"闾","閱":"阅","閲":"阅","閶":"阊","閹":"阉","閻":"阎","閼":"阏","閽":"阍","閾":"阈","閿":"阌","闃":"阒","闆":"板","闇":"暗","闈":"闱","闉":"𬮱","闊":"阔","闋":"阕","闌":"阑","闍":"阇","闐":"阗","闑":"𫔶","闒":"阘","闓":"闿","闔":"阖","闕":"阙","闖":"闯","關":"关","闞":"阚","闠":"阓","闡":"阐","闢":"辟","闤":"阛","闥":"闼","陘":"陉","陝":"陕","陞":"升","陣":"阵","陰":"阴","陳":"陈","陸":"陆","陽":"阳","隉":"陧","隊":"队","階":"阶","隑":"𬮿","隕":"陨","際":"际","隤":"𬯎","隨":"随","險":"险","隮":"𬯀","隯":"陦","隱":"隐","隴":"陇","隸":"隶","隻":"只","雋":"隽","雖":"虽","雙":"双","雛":"雏","雜":"杂","雞":"鸡","離":"离","難":"难","雲":"云","電":"电","霑":"沾","霢":"霡","霧":"雾","霽":"霁","靂":"雳","靄":"霭","靆":"叇","靈":"灵","靉":"叆","靚":"靓","靜":"静","靝":"靔","靦":"腼","靨":"靥","鞏":"巩","鞝":"绱","鞦":"秋","鞽":"鞒","韁":"缰","韃":"鞑","韆":"千","韉":"鞯","韋":"韦","韌":"韧","韍":"韨","韓":"韩","韙":"韪","韜":"韬","韝":"鞲","韞":"韫","韻":"韵","響":"响","頁":"页","頂":"顶","頃":"顷","項":"项","順":"顺","頇":"顸","須":"须","頊":"顼","頌":"颂","頍":"𫠆","頎":"颀","頏":"颃","預":"预","頑":"顽","頒":"颁","頓":"顿","頔":"𬱖","頗":"颇","領":"领","頜":"颌","頠":"𬱟","頡":"颉","頤":"颐","頦":"颏","頫":"𫖯","頭":"头","頮":"颒","頰":"颊","頲":"颋","頴":"颕","頵":"𫖳","頷":"颔","頸":"颈","頹":"颓","頻":"频","頽":"颓","顆":"颗","題":"题","額":"额","顎":"颚","顏":"颜","顒":"颙","顓":"颛","顔":"颜","顗":"𫖮","願":"愿","顙":"颡","顛":"颠","類":"类","顢":"颟","顥":"颢","顧":"顾","顫":"颤","顬":"颥","顯":"显","顰":"颦","顱":"颅","顳":"颞","顴":"颧","風":"风","颭":"飐","颮":"飑","颯":"飒","颱":"台","颳":"刮","颶":"飓","颸":"飔","颺":"飏","颻":"飖","颼":"飕","飀":"飗","飄":"飘","飆":"飙","飈":"飚","飛":"飞","飠":"饣","飢":"饥","飣":"饤","飥":"饦","飩":"饨","飪":"饪","飫":"饫","飭":"饬","飯":"饭","飱":"飧","飲":"饮","飴":"饴","飼":"饲","飽":"饱","飾":"饰","飿":"饳","餃":"饺","餄":"饸","餅":"饼","餈":"糍","餉":"饷","養":"养","餌":"饵","餎":"饹","餏":"饻","餑":"饽","餒":"馁","餓":"饿","餕":"馂","餖":"饾","餗":"𫗧","餘":"余","餚":"肴","餛":"馄","餜":"馃","餞":"饯","餡":"馅","館":"馆","餬":"糊","餱":"糇","餳":"饧","餵":"喂","餶":"馉","餷":"馇","餸":"𩠌","餺":"馎","餼":"饩","餾":"馏","餿":"馊","饁":"馌","饃":"馍","饅":"馒","饈":"馐","饉":"馑","饊":"馓","饋":"馈","饌":"馔","饑":"饥","饒":"饶","饗":"飨","饘":"𫗴","饜":"餍","饞":"馋","饢":"馕","馬":"马","馭":"驭","馮":"冯","馱":"驮","馳":"驰","馴":"驯","馹":"驲","馼":"𫘜","駁":"驳","駃":"𫘝","駉":"𬳶","駐":"驻","駑":"驽","駒":"驹","駓":"𬳵","駔":"驵","駕":"驾","駘":"骀","駙":"驸","駛":"驶","駝":"驼","駟":"驷","駡":"骂","駢":"骈","駪":"𬳽","駭":"骇","駰":"骃","駱":"骆","駸":"骎","駼":"𬳿","駿":"骏","騁":"骋","騂":"骍","騄":"𫘧","騅":"骓","騊":"𫘦","騌":"骔","騍":"骒","騎":"骑","騏":"骐","騑":"𬴂","騖":"骛","騙":"骗","騞":"𬴃","騠":"𫘨","騤":"骙","騧":"䯄","騫":"骞","騭":"骘","騮":"骝","騰":"腾","騱":"𫘬","騵":"𫘪","騶":"驺","騷":"骚","騸":"骟","騾":"骡","驀":"蓦","驁":"骜","驂":"骖","驃":"骠","驄":"骢","驅":"驱","驊":"骅","驌":"骕","驍":"骁","驎":"𬴊","驏":"骣","驕":"骄","驗":"验","驚":"惊","驛":"驿","驟":"骤","驢":"驴","驤":"骧","驥":"骥","驦":"骦","驪":"骊","驫":"骉","骯":"肮","髏":"髅","髒":"脏","體":"体","髕":"髌","髖":"髋","髮":"发","鬆":"松","鬍":"胡","鬚":"须","鬢":"鬓","鬥":"斗","鬧":"闹","鬨":"哄","鬩":"阋","鬮":"阄","鬱":"郁","鬹":"鬶","魎":"魉","魘":"魇","魚":"鱼","魛":"鱽","魟":"𫚉","魢":"鱾","魨":"鲀","魯":"鲁","魴":"鲂","魷":"鱿","魺":"鲄","鮀":"𬶍","鮁":"鲅","鮃":"鲆","鮆":"𫚖","鮈":"𬶋","鮊":"鲌","鮋":"鲉","鮍":"鲏","鮎":"鲇","鮐":"鲐","鮑":"鲍","鮒":"鲋","鮓":"鲊","鮚":"鲒","鮜":"鲘","鮝":"鲞","鮞":"鲕","鮟":"𩽾","鮠":"𬶏","鮡":"𬶐","鮣":"䲟","鮦":"鲖","鮪":"鲔","鮫":"鲛","鮭":"鲑","鮮":"鲜","鮳":"鲓","鮶":"鲪","鮸":"𩾃","鮺":"鲝","鯀":"鲧","鯁":"鲠","鯇":"鲩","鯉":"鲤","鯊":"鲨","鯒":"鲬","鯔":"鲻","鯕":"鲯","鯖":"鲭","鯗":"鲞","鯛":"鲷","鯝":"鲴","鯡":"鲱","鯢":"鲵","鯤":"鲲","鯧":"鲳","鯨":"鲸","鯪":"鲮","鯫":"鲰","鯰":"鲶","鯴":"鲺","鯷":"鳀","鯻":"𬶟","鯽":"鲫","鯿":"鳊","鰁":"鳈","鰂":"鲗","鰃":"鳂","鰆":"䲠","鰈":"鲽","鰉":"鳇","鰊":"𬶠","鰌":"䲡","鰍":"鳅","鰏":"鲾","鰐":"鳄","鰒":"鳆","鰓":"鳃","鰛":"鳁","鰜":"鳒","鰟":"鳑","鰠":"鳋","鰣":"鲥","鰤":"𫚕","鰥":"鳏","鰧":"䲢","鰨":"鳎","鰩":"鳐","鰭":"鳍","鰮":"鳁","鰱":"鲢","鰲":"鳌","鰳":"鳓","鰵":"鳘","鰶":"𬶭","鰷":"鲦","鰹":"鲣","鰺":"鲹","鰻":"鳗","鰼":"鳛","鰾":"鳔","鱀":"𬶨","鱂":"鳉","鱅":"鳙","鱇":"𩾌","鱈":"鳕","鱉":"鳖","鱒":"鳟","鱔":"鳝","鱖":"鳜","鱗":"鳞","鱘":"鲟","鱚":"𬶮","鱝":"鲼","鱟":"鲎","鱠":"鲙","鱣":"鳣","鱤":"鳡","鱧":"鳢","鱨":"鲿","鱭":"鲚","鱯":"鳠","鱲":"𫚭","鱷":"鳄","鱸":"鲈","鱺":"鲡","鳥":"鸟","鳧":"凫","鳩":"鸠","鳬":"凫","鳲":"鸤","鳳":"凤","鳴":"鸣","鳶":"鸢","鳾":"䴓","鴆":"鸩","鴇":"鸨","鴉":"鸦","鴒":"鸰","鴕":"鸵","鴛":"鸳","鴝":"鸲","鴞":"鸮","鴟":"鸱","鴣":"鸪","鴦":"鸯","鴨":"鸭","鴯":"鸸","鴰":"鸹","鴴":"鸻","鴷":"䴕","鴻":"鸿","鴿":"鸽","鵁":"䴔","鵂":"鸺","鵃":"鸼","鵏":"𬷕","鵐":"鹀","鵑":"鹃","鵒":"鹆","鵓":"鹁","鵜":"鹈","鵝":"鹅","鵟":"𫛭","鵠":"鹄","鵡":"鹉","鵪":"鹌","鵬":"鹏","鵮":"鹐","鵯":"鹎","鵰":"雕","鵲":"鹊","鵷":"鹓","鵾":"鹍","鶄":"䴖","鶇":"鸫","鶉":"鹑","鶊":"鹒","鶓":"鹋","鶖":"鹙","鶘":"鹕","鶚":"鹗","鶠":"𬸘","鶡":"鹖","鶥":"鹛","鶩":"鹜","鶪":"䴗","鶬":"鸧","鶯":"莺","鶱":"𬸣","鶲":"鹟","鶴":"鹤","鶹":"鹠","鶺":"鹡","鶻":"鹘","鶼":"鹣","鶿":"鹚","鷀":"鹚","鷁":"鹢","鷂":"鹞","鷄":"鸡","鷉":"䴘","鷊":"鹝","鷓":"鹧","鷖":"鹥","鷗":"鸥","鷙":"鸷","鷚":"鹨","鷟":"𬸦","鷥":"鸶","鷦":"鹪","鷫":"鹔","鷭":"𬸪","鷯":"鹩","鷲":"鹫","鷳":"鹇","鷴":"鹇","鷸":"鹬","鷹":"鹰","鷺":"鹭","鷽":"鸴","鸂":"㶉","鸇":"鹯","鸊":"䴙","鸌":"鹱","鸏":"鹲","鸑":"𬸚","鸕":"鸬","鸘":"鹴","鸚":"鹦","鸛":"鹳","鸝":"鹂","鸞":"鸾","鹵":"卤","鹹":"咸","鹺":"鹾","鹼":"碱","鹽":"盐","麗":"丽","麥":"麦","麩":"麸","麪":"面","麫":"面","麬":"𤿲","麯":"曲","麳":"𪎌","麴":"曲","麵":"面","麼":"么","麽":"么","黃":"黄","黌":"黉","點":"点","黨":"党","黲":"黪","黴":"霉","黶":"黡","黷":"黩","黽":"黾","黿":"鼋","鼂":"鼌","鼉":"鼍","鼕":"冬","鼴":"鼹","齊":"齐","齋":"斋","齎":"赍","齏":"齑","齒":"齿","齔":"龀","齕":"龁","齗":"龂","齘":"𬹼","齙":"龅","齜":"龇","齟":"龃","齠":"龆","齡":"龄","齣":"出","齦":"龈","齧":"啮","齪":"龊","齬":"龉","齮":"𬺈","齯":"𫠜","齲":"龋","齶":"腭","齷":"龌","齼":"𬺓","龍":"龙","龎":"厐","龐":"庞","龑":"䶮","龔":"龚","龕":"龛","龜":"龟","鿁":"䜤","鿓":"鿒","𠁞":"𠀾","𠗣":"㓆","𡃕":"𠴛","𡅏":"𠲥","𡑍":"𫭼","𡑭":"𡋗","𡓾":"𡋀","𡔖":"𡍣","𡞵":"㛟","𡠹":"㛿","𡢃":"㛠","𡮉":"𡭜","𡮣":"𡭬","𡳳":"𡳃","𡻕":"岁","𡾱":"㟜","𢣚":"𢘝","𢶫":"𢫞","𢹿":"𢬦","𣈶":"暅","𣙎":"㭣","𣞻":"𣘓","𣠩":"𣞎","𣠲":"𣑶","𣯶":"毶","𣾷":"㳢","𤁣":"𣺽","𤅶":"𣷷","𤓩":"𤊰","𤪺":"㻘","𤫩":"㻏","𤳸":"𤳄","𥊝":"𥅿","𥌃":"𥅘","𥕥":"𥐰","𥖅":"𥐯","𥗽":"𬒗","𥢢":"䅪","𥸠":"𥮋","𥼽":"𥹥","𦘧":"𡳒","𦣎":"𦟗","𦪙":"䑽","𧜗":"䘞","𧜵":"䙊","𧝞":"䘛","𧟀":"𧝧","𧩙":"䜥","𧵳":"䞌","𧶧":"䞎","𨊰":"䢀","𨊸":"䢁","𨋢":"䢂","𨤻":"𨤰","𨦫":"䦀","𨧀":"𬭊","𨧜":"䦁","𨨏":"𬭛","𨭆":"𬭶","𨭎":"𬭳","𨯅":"䥿","𩞯":"䭪","𩠴":"𩠠","𩣑":"䯃","𩶘":"䲞","𰻞":"𰻝"};
+ const mappingPattern=new RegExp('['+Object.keys(characters).join('')+']','gu');
+ const ignored=/[\p{White_Space}\p{P}\uFEFF]+/gu;
+ const ignoredCharacter=/[\p{White_Space}\p{P}\uFEFF]/u;
+ function checkMode(mode){if(mode!=='exact'&&mode!=='flexible')throw new RangeError('Unknown search mode: '+mode);}
+ function checkText(text){if(typeof text!=='string')throw new TypeError('Search text must be a string');}
+ function fold(text,mode='flexible'){
+  checkMode(mode);checkText(text);
+  const lower=text.toLowerCase();
+  return mode==='exact'?lower:lower.replace(mappingPattern,character=>characters[character]).replace(ignored,'');
+ }
+ function ranges(text,query,mode='flexible',limit=100){
+  checkMode(mode);checkText(text);checkText(query);
+  if(!Number.isFinite(limit)||limit<=0)return [];
+  const maximum=Math.floor(limit),needle=fold(query,mode);
+  if(!maximum||!needle||!text)return [];
+  // The full-library fold never allocates this position map. Only a requested
+  // section builds it, in original UTF-16 units for text slicing/DOM ranges.
+  const lower=text.toLowerCase(),pieces=[],starts=[],ends=[];
+  let originalOffset=0,lowerOffset=0;
+  for(const originalCharacter of text){
+   const originalEnd=originalOffset+originalCharacter.length;
+   // Default Unicode lowercase can expand one character (e.g. İ -> i + dot).
+   // Read the actual whole-string lowercase to preserve contextual mappings.
+   const lowerLength=originalCharacter.toLowerCase().length;
+   const lowerPiece=lower.slice(lowerOffset,lowerOffset+lowerLength);
+   lowerOffset+=lowerLength;
+   for(const character of lowerPiece){
+    if(mode==='flexible'&&ignoredCharacter.test(character))continue;
+    const output=mode==='flexible'?(characters[character]||character):character;
+    pieces.push(output);
+    for(let unit=0;unit<output.length;unit++){starts.push(originalOffset);ends.push(originalEnd);}
+   }
+   originalOffset=originalEnd;
+  }
+  const normalized=pieces.join(''),found=[];
+  let from=0,previousEnd=-1;
+  while(found.length<maximum){
+   const position=normalized.indexOf(needle,from);if(position===-1)break;
+   const start=starts[position],end=ends[position+needle.length-1];
+   if(start>=previousEnd){found.push({start,end});previousEnd=end;}
+   from=position+needle.length;
+  }
+  return found;
+ }
+ const api=Object.freeze({fold,ranges});root.EarthTextSearch=api;
+ if(typeof module==='object'&&module.exports)module.exports=api;
+})(typeof window==='object'?window:globalThis);
+
+(function(root){
+ 'use strict';
+ function checkMode(mode){if(mode!=='exact'&&mode!=='flexible')throw new RangeError('Unknown search mode: '+mode);}
+ function create(rows){
+  if(!Array.isArray(rows))throw new TypeError('Search rows must be an array');
+  const source=rows.slice(),ready=Object.create(null),inflight=Object.create(null);
+  const now=root.performance&&typeof root.performance.now==='function'?()=>root.performance.now():()=>Date.now();
+  function peek(mode){checkMode(mode);return ready[mode]||null;}
+  function ensure(mode){
+   checkMode(mode);if(inflight[mode])return inflight[mode];
+   let resolve,reject;
+   const task=new Promise((done,failed)=>{resolve=done;reject=failed;});inflight[mode]=task;
+   const folded=new Array(source.length);let offset=0;
+   function batch(){
+    try{
+     if(!root.EarthTextSearch)throw new Error('Load search-normalizer.js before building a search index');
+     const started=now();let processed=0;
+     while(offset<source.length&&processed<32&&(processed===0||now()-started<8)){
+      const row=source[offset];
+      folded[offset]={title:root.EarthTextSearch.fold(row.title,mode),text:root.EarthTextSearch.fold(row.text,mode)};
+      offset++;processed++;
+     }
+     if(offset<source.length)setTimeout(batch,0);
+     else{ready[mode]=folded;resolve(folded);}
+    }catch(error){delete inflight[mode];reject(error);}
+   }
+   // Yield before the first batch too, so the caller can show a waiting state.
+   setTimeout(batch,0);return task;
+  }
+  return Object.freeze({peek,ensure});
+ }
+ const api=Object.freeze({create});root.EarthSearchIndex=api;
+ if(typeof module==='object'&&module.exports)module.exports=api;
+})(typeof window==='object'?window:globalThis);
+
+(function (root, factory) {
+  'use strict';
+  var createBookmarkStore = factory(root);
+  root.createBookmarkStore = createBookmarkStore;
+  if (typeof module === 'object' && module.exports) module.exports = createBookmarkStore;
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
+  'use strict';
+  var STORAGE_KEY = 'earth-online-bookmarks-v1';
+  var LIMIT = 500;
+  var own = function (object, key) { return Object.prototype.hasOwnProperty.call(object, key); };
+  var clone = function (entries) { return entries.map(function (entry) { return Object.assign({}, entry); }); };
+  var keyOf = function (entry) { return JSON.stringify([entry.bookId, entry.section]); };
+
+  return function createBookmarkStore(options) {
+    var bookSections = new Map();
+    if (options && Array.isArray(options.books)) options.books.forEach(function (book) {
+      if (book && typeof book.id === 'string' && book.id && Number.isSafeInteger(book.sectionCount) && book.sectionCount > 0) {
+        bookSections.set(book.id, book.sectionCount);
+      }
+    });
+    var snapshot = [];
+    // This overlay only contains changes whose last write failed. Null is a
+    // deletion marker, so refreshing another tab cannot resurrect a deletion.
+    var pending = new Map();
+
+    function validReference(bookId, section) {
+      return typeof bookId === 'string' && bookSections.has(bookId) && Number.isSafeInteger(section) && section >= 0 && section < bookSections.get(bookId);
+    }
+    function sanitize(entry) {
+      if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return null;
+      var fields = ['bookId', 'section', 'textOffset', 'title', 'excerpt', 'createdAt', 'updatedAt'];
+      if (!fields.every(function (field) { return own(entry, field); })) return null;
+      if (!validReference(entry.bookId, entry.section) || !Number.isSafeInteger(entry.textOffset) || entry.textOffset < 0 || entry.textOffset > 5000000) return null;
+      if (typeof entry.title !== 'string' || entry.title.length > 240 || typeof entry.excerpt !== 'string' || entry.excerpt.length > 160) return null;
+      if (typeof entry.createdAt !== 'number' || !Number.isFinite(entry.createdAt) || entry.createdAt <= 0 || typeof entry.updatedAt !== 'number' || !Number.isFinite(entry.updatedAt) || entry.updatedAt <= 0) return null;
+      return { bookId: entry.bookId, section: entry.section, textOffset: entry.textOffset, title: entry.title, excerpt: entry.excerpt, createdAt: entry.createdAt, updatedAt: entry.updatedAt };
+    }
+    function validate(entries) {
+      var result = [];
+      var seen = new Set();
+      if (!Array.isArray(entries)) return result;
+      for (var i = 0; i < entries.length && result.length < LIMIT; i++) {
+        var entry = sanitize(entries[i]);
+        if (!entry) continue;
+        var key = keyOf(entry);
+        if (seen.has(key)) continue;
+        seen.add(key);
+        result.push(entry);
+      }
+      return result;
+    }
+    function current() {
+      // Reading each time also observes storage events without a listener or a
+      // lifecycle API. If access is denied, retain the last readable snapshot.
+      try {
+        var storage = root.localStorage;
+        if (storage && typeof storage.getItem === 'function') {
+          var raw = storage.getItem(STORAGE_KEY);
+          var saved;
+          try { saved = raw === null ? null : JSON.parse(raw); } catch (error) { saved = null; }
+          snapshot = saved && saved.version === 1 ? validate(saved.entries) : [];
+        }
+      } catch (error) { /* Session use remains available. */ }
+      var combined = new Map(snapshot.map(function (entry) { return [keyOf(entry), entry]; }));
+      pending.forEach(function (entry, key) { if (entry === null) combined.delete(key); else combined.set(key, entry); });
+      // Keep the complete merged state internally. A bounded display must never
+      // become the source of a write that silently drops another tab's entries.
+      return Array.from(combined.values());
+    }
+    function visible(entries) {
+      if (entries.length <= LIMIT) return clone(entries);
+      // While capacity conflicts are unresolved, show this session's pending
+      // entries first. Other saved entries remain untouched in localStorage.
+      var combined = new Map(entries.map(function (entry) { return [keyOf(entry), entry]; }));
+      var bounded = new Map();
+      pending.forEach(function (entry, key) { if (entry !== null && combined.has(key) && bounded.size < LIMIT) bounded.set(key, combined.get(key)); });
+      combined.forEach(function (entry, key) { if (!bounded.has(key) && bounded.size < LIMIT) bounded.set(key, entry); });
+      return clone(Array.from(bounded.values()));
+    }
+    function commit(entries, changes) {
+      if (entries.length > LIMIT) {
+        changes.forEach(function (entry, key) { pending.set(key, entry); });
+        return { entries: visible(entries), persisted: false, reason: 'capacity' };
+      }
+      try {
+        var storage = root.localStorage;
+        if (!storage || typeof storage.setItem !== 'function') throw new Error('Storage unavailable');
+        storage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, entries: entries }));
+        // Do not expose a successful write before storage has accepted it.
+        snapshot = clone(entries);
+        pending.clear();
+        return { entries: clone(entries), persisted: true };
+      } catch (error) {
+        changes.forEach(function (entry, key) { pending.set(key, entry); });
+        return { entries: clone(entries), persisted: false };
+      }
+    }
+    function upsert(input) {
+      var entries = current();
+      var reference = input && typeof input === 'object' && !Array.isArray(input) ? input : {};
+      var index = entries.findIndex(function (entry) { return entry.bookId === reference.bookId && entry.section === reference.section; });
+      var previous = index >= 0 ? entries[index] : null;
+      var now = Math.max(Date.now(), previous ? previous.updatedAt : 1);
+      var entry = sanitize({ bookId: reference.bookId, section: reference.section, textOffset: reference.textOffset, title: reference.title, excerpt: reference.excerpt, createdAt: previous ? previous.createdAt : now, updatedAt: now });
+      if (!entry) throw new TypeError('Invalid bookmark');
+      if (index < 0 && entries.length >= LIMIT) throw new RangeError('Bookmark limit reached');
+      if (index >= 0) entries[index] = entry;
+      else entries.push(entry);
+      return commit(entries, new Map([[keyOf(entry), entry]]));
+    }
+    function remove(bookId, section) {
+      if (!validReference(bookId, section)) throw new TypeError('Invalid bookmark reference');
+      var key = keyOf({ bookId: bookId, section: section });
+      var entries = current().filter(function (entry) { return keyOf(entry) !== key; });
+      return commit(entries, new Map([[key, null]]));
+    }
+    function merge(imported) {
+      var entries = current();
+      var existing = new Set(entries.map(keyOf));
+      var changes = new Map();
+      validate(imported).forEach(function (entry) {
+        var key = keyOf(entry);
+        if (existing.has(key) || entries.length >= LIMIT) return;
+        existing.add(key);
+        entries.push(entry);
+        changes.set(key, entry);
+      });
+      return commit(entries, changes);
+    }
+    return {
+      read: function () { return visible(current()); },
+      // Backups must retain external entries hidden by the display limit while
+      // a session has pending additions. This method never attempts a write.
+      readForExport: function () { return clone(current()); },
+      validate: validate, upsert: upsert, remove: remove, merge: merge
+    };
+  };
+}));
+
+(() => {
+ 'use strict';
+ // Text offsets survive reflow, changed fonts and a different reader layout.
+ function textRange(element,offset){
+  const walk=document.createTreeWalker(element,NodeFilter.SHOW_TEXT);let node,left=Math.max(0,offset),last=null;
+  while(node=walk.nextNode()){last=node;if(left<node.length){const r=document.createRange();r.setStart(node,left);r.setEnd(node,Math.min(node.length,left+1));return r;}left-=node.length;}
+  if(last&&last.length){const r=document.createRange();r.setStart(last,last.length-1);r.setEnd(last,last.length);return r;}return null;
+ }
+ function captureTextOffset(element,line){
+  const length=element.textContent.length;if(!length||element.getBoundingClientRect().top>=line)return 0;
+  let low=0,high=length-1;
+  while(low<high){const middle=(low+high)>>1,rect=textRange(element,middle)?.getBoundingClientRect();if(rect&&rect.bottom<=line)low=middle+1;else high=middle;}
+  return low;
+ }
+ window.mountEarthBookmarks=function(adapter){
+  const store=createBookmarkStore({books:adapter.books});window.earthBookmarkStore=store;
+  const panel=document.querySelector('[data-bookmark-panel]'),list=panel.querySelector('[data-bookmark-list]'),status=panel.querySelector('[data-bookmark-status]'),undo=panel.querySelector('[data-bookmark-undo]'),add=document.querySelector('[data-bookmark-add]');
+  const toast=document.createElement('p');toast.className='bookmark-toast';toast.hidden=true;toast.setAttribute('role','status');document.body.append(toast);
+  const controls=document.createElement('div');controls.className='bookmark-filters';
+  controls.innerHTML='<label for="bookmark-search">查找书签</label><div class="bookmark-search-row"><input id="bookmark-search" data-bookmark-search type="search" maxlength="160" placeholder="书名、章节或摘录词句"><button type="button" data-bookmark-clear aria-label="清除书签筛选">清除</button></div><label class="bookmark-scope-field" for="bookmark-scope">书籍<select id="bookmark-scope" data-bookmark-scope><option value="all">全部典籍</option></select></label>';
+  const search=controls.querySelector('[data-bookmark-search]'),scope=controls.querySelector('[data-bookmark-scope]'),clear=controls.querySelector('[data-bookmark-clear]');
+  for(const book of adapter.books){const option=document.createElement('option');option.value=book.id;option.textContent=book.title;scope.append(option);}
+  const resultCount=document.createElement('p');resultCount.className='bookmark-status';resultCount.dataset.bookmarkResultCount='';resultCount.setAttribute('role','status');
+  const capacity=document.createElement('p');capacity.className='bookmark-status';capacity.hidden=true;capacity.setAttribute('role','status');
+  const more=document.createElement('button');more.className='bookmark-more';more.dataset.bookmarkMore='';more.type='button';more.hidden=true;
+  list.before(controls,capacity,resultCount);list.after(more);
+  let removed=null,toastTimer,signature='',query='',visibleLimit=40,composing=false;
+  const allEntries=()=>store.readForExport();
+  const matches=entry=>(scope.value==='all'||entry.bookId===scope.value)&&(!query||(adapter.books.find(b=>b.id===entry.bookId).title+' '+entry.title+' '+entry.excerpt).toLocaleLowerCase().includes(query));
+  const capacityMessage='合并后的书签超过 500 枚，操作暂存在本页，已有书签保持原样。请先导出备份，再删除不再需要的书签。';
+  function message(text){status.textContent=text;toast.textContent=text;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{toast.hidden=true},4200);}
+  function syncButton(entries){const current=adapter.current(),found=entries.some(e=>e.bookId===current.bookId&&e.section===current.section);add.textContent=found?'更新书签':'存书签';add.title=found?'更新本节书签到当前位置':'保存当前位置为书签';add.setAttribute('aria-label',add.title);}
+  function render(){
+   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit]);if(next===signature)return;signature=next;
+   const previousScroll=list.scrollTop;panel.querySelector('[data-bookmark-count]').textContent=entries.length?' · '+entries.length:'';list.replaceChildren();
+   controls.hidden=!entries.length&&!query&&scope.value==='all';resultCount.hidden=controls.hidden;
+   clear.disabled=!query&&scope.value==='all'&&!search.value;
+   capacity.hidden=entries.length<=500;capacity.textContent=capacity.hidden?'':capacityMessage;
+   const found=entries.filter(matches).sort((a,b)=>b.updatedAt-a.updatedAt),shown=found.slice(0,visibleLimit);
+   resultCount.textContent='显示 '+shown.length+' / '+found.length+' 枚匹配书签，共 '+entries.length+' 枚。';
+   more.hidden=shown.length>=found.length;more.textContent='再显示 '+Math.min(40,found.length-shown.length)+' 枚';
+   if(!found.length){const empty=document.createElement('p');empty.className='bookmark-empty';empty.textContent=!entries.length?'还没有书签。读到想回看的地方，点“存书签”。':'没有匹配的书签。可换个词句，或清除筛选查看全部。';list.append(empty);return;}
+   for(const entry of shown){
+    const row=document.createElement('div');row.className='bookmark-row';
+    const open=document.createElement('button');open.type='button';open.dataset.bookmarkOpen='';open.className='bookmark-open';
+    const title=document.createElement('strong'),excerpt=document.createElement('span');const book=adapter.books.find(b=>b.id===entry.bookId);
+    title.textContent='《'+book.title+'》 · '+entry.title;excerpt.textContent=entry.excerpt||'本节开头';open.append(title,excerpt);open.addEventListener('click',()=>openEntry(entry));
+    const remove=document.createElement('button');remove.type='button';remove.dataset.bookmarkRemove='';remove.className='bookmark-remove';remove.textContent='删除';remove.setAttribute('aria-label','删除《'+book.title+'》'+entry.title+'书签');
+    remove.addEventListener('click',()=>{const result=store.remove(entry.bookId,entry.section);removed=entry;undo.hidden=false;render();message(result.reason==='capacity'?capacityMessage:result.persisted?'书签已删除，可撤销。':'书签已临时删除；浏览器存储不可用。');undo.focus({preventScroll:true});});
+    row.append(open,remove);list.append(row);
+   }
+   list.scrollTop=previousScroll;
+  }
+  function filter(){query=search.value.trim().toLocaleLowerCase();visibleLimit=40;list.scrollTop=0;render();}
+  search.addEventListener('compositionstart',()=>{composing=true;});
+  search.addEventListener('compositionend',()=>{composing=false;filter();});
+  search.addEventListener('input',event=>{if(!composing&&!event.isComposing)filter();});
+  scope.addEventListener('change',filter);
+  clear.addEventListener('click',()=>{search.value='';scope.value='all';composing=false;filter();search.focus({preventScroll:true});});
+  more.addEventListener('click',()=>{const previous=list.querySelectorAll('[data-bookmark-open]').length;visibleLimit+=40;render();const next=list.querySelectorAll('[data-bookmark-open]')[previous];if(next){list.scrollTop+=next.getBoundingClientRect().top-list.getBoundingClientRect().top;next.focus({preventScroll:true});}});
+  function openEntry(entry){
+   if(adapter.open(entry)===false)return;
+   requestAnimationFrame(()=>{
+    const current=adapter.current();if(current.bookId!==entry.bookId||current.section!==entry.section)return;
+    const range=textRange(current.element,entry.textOffset);if(range){const delta=range.getBoundingClientRect().top-adapter.line();adapter.scrollBy(delta);}
+    adapter.focus();adapter.save();message('已回到书签中的词句。');render();
+   });
+  }
+  add.addEventListener('click',()=>{
+   const current=adapter.current(),text=current.element.textContent,textOffset=captureTextOffset(current.element,adapter.line()),now=Date.now();
+   try{const result=store.upsert({bookId:current.bookId,section:current.section,textOffset,title:current.title.slice(0,240),excerpt:text.slice(textOffset,textOffset+90).replace(/\s+/g,' '),createdAt:now,updatedAt:now});
+   render();message(result.reason==='capacity'?capacityMessage:result.persisted?'书签已保存，可在“我的书签”中回看。':document.body.classList.contains('earth-full-book')?'书签仅临时保存在当前页，请在“我的书签”中导出。':'书签仅临时保存在当前页，请及时下载完整备份。');}catch(e){message('未能添加书签。最多可保留 500 枚，请先删除不再需要的书签。');}
+  });
+  undo.addEventListener('click',()=>{
+   if(!removed)return;
+   const sameEntry=entry=>entry.bookId===removed.bookId&&entry.section===removed.section;
+   const existed=allEntries().some(sameEntry),result=store.merge([removed]),restored=allEntries().find(sameEntry);
+   if(!restored){render();message('未能恢复：书签已达到 500 枚，已保留撤销入口；名额腾出后可重试。');undo.focus({preventScroll:true});return;}
+   const keptExisting=existed||['textOffset','title','excerpt','createdAt','updatedAt'].some(key=>restored[key]!==removed[key]);
+   removed=null;undo.hidden=true;render();
+   message(result.reason==='capacity'?capacityMessage:(keptExisting?(result.persisted?'本节已有新书签，已保留现有书签。':'本节已有新书签，已临时保留，请及时备份。'):(result.persisted?'已恢复删除的书签。':'书签已临时恢复，请及时备份。'))+(!matches(restored)?'当前筛选未显示这枚书签，可清除筛选查看。':''));
+   list.querySelector('button')?.focus({preventScroll:true});
+  });
+  addEventListener('storage',event=>{if(event.key==='earth-online-bookmarks-v1'||event.key===null)render();});
+  window.earthBookmarkUI={refresh:render,open:openEntry};render();
+  const requested=new URL(location.href).searchParams.get('bookmark');
+  if(requested!==null&&/^\d+$/.test(requested)&&adapter.shouldOpenInitialBookmark?.()!==false){const current=adapter.current(),entry=allEntries().find(e=>e.bookId===current.bookId&&e.section===Number(requested));if(entry)requestAnimationFrame(()=>openEntry(entry));}
+  return window.earthBookmarkUI;
+ };
+})();
+
+(() => {
+  'use strict';
+  if (!document.body.matches('.earth-manual, .earth-full-book')) return;
+  const containers = [...document.querySelectorAll('[data-reading-appearance]')];
+  if (!containers.length || containers.every(el => el.dataset.appearanceReady)) return;
+  const key = 'earth-online-appearance-v1';
+  const choices = [['paper', '纸色'], ['night', '夜读'], ['white', '素白']];
+  const validThemes = new Set(choices.map(([value]) => value));
+  const decode = raw => {
+    try {
+      const value = JSON.parse(raw);
+      return value && typeof value === 'object' && !Array.isArray(value) &&
+        Object.keys(value).length === 1 && validThemes.has(value.theme) ? value.theme : 'paper';
+    } catch { return 'paper'; }
+  };
+  let theme = 'paper', canSave = true;
+  try { theme = decode(localStorage.getItem(key)); } catch { canSave = false; }
+  const controls = [], notices = [];
+  const paint = () => {
+    document.documentElement.dataset.readingTheme = theme;
+    controls.forEach(select => { select.value = theme; });
+    notices.forEach(notice => { notice.hidden = canSave; });
+  };
+  const apply = value => {
+    if (!validThemes.has(value)) return false;
+    theme = value;
+    try { localStorage.setItem(key, JSON.stringify({theme})); canSave = true; }
+    catch { canSave = false; }
+    paint();
+    return true;
+  };
+  const refresh = () => {
+    try { theme = decode(localStorage.getItem(key)); canSave = true; }
+    catch { canSave = false; }
+    paint();
+  };
+  containers.forEach((container, index) => {
+    if (container.dataset.appearanceReady) return;
+    const field = document.createElement('div');
+    field.className = 'appearance-field';
+    const text = document.createElement('label');
+    text.textContent = '阅读配色';
+    const select = document.createElement('select');
+    select.id = 'reading-appearance-' + (index + 1);
+    text.htmlFor = select.id;
+    choices.forEach(([value, title]) => {
+      const option = document.createElement('option');
+      option.value = value; option.textContent = title; select.append(option);
+    });
+    select.addEventListener('change', () => {
+      apply(select.value);
+    });
+    field.append(text, select);
+    const notice = document.createElement('p');
+    notice.className = 'appearance-notice';
+    notice.setAttribute('role', 'status');
+    notice.textContent = '仅本页生效，浏览器未开放保存。';
+    controls.push(select); notices.push(notice);
+    container.append(field, notice);
+    container.dataset.appearanceReady = 'true';
+  });
+  window.EarthReadingAppearance = Object.freeze({apply, refresh});
+  paint();
+  window.addEventListener('storage', event => {
+    if (event.key === key || event.key === null) { theme = decode(event.newValue); paint(); }
+  });
+})();
+
+(() => {
+ 'use strict';
+ const button=document.querySelector('[data-bookmark-export]');if(!button)return;
+ button.addEventListener('click',()=>{
+  const data={format:'earth-online-backup',version:1,manual:{completed:[],notes:{}},reading:{},fullBooks:{},bookmarks:window.earthBookmarkStore.readForExport(),appearance:{theme:document.documentElement.dataset.readingTheme||'paper'},exportedAt:new Date().toISOString()};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'})),link=document.createElement('a');
+  link.href=url;link.download='地球Online-书签备份-'+new Date().toISOString().slice(0,10)+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  document.querySelector('[data-bookmark-export-status]').textContent='书签备份已下载，可在主手册“备份与恢复”中合并。';
+ });
+})();
+
+(() => {
+ 'use strict';
+ window.mountOriginalPageJump=function(adapter){
+  const host=document.querySelector('[data-original-page-jump]');if(!host)return;
+  host.innerHTML='<details class="page-jump" data-page-jump><summary>按原文件页码定位</summary><p class="page-jump-help">使用 PDF 文件中的页序，与书上印刷的页码可能不同。</p><div class="page-jump-fields"><label for="page-jump-volume">卷册<select id="page-jump-volume" data-page-jump-volume></select></label><label for="page-jump-number">原文件页码<input id="page-jump-number" data-page-jump-number type="text" inputmode="numeric" maxlength="6" aria-describedby="page-jump-status"></label><button type="button" data-page-jump-go>跳转</button></div></details><p id="page-jump-status" class="page-jump-status" data-page-jump-status role="status"></p>';
+  const panel=host.querySelector('details'),volume=host.querySelector('select'),input=host.querySelector('input'),button=host.querySelector('button'),status=host.querySelector('[data-page-jump-status]');
+  let bookId=null,book,volumes=[];
+  function clearError(){input.removeAttribute('aria-invalid');status.textContent='';}
+  function refresh(){
+   book=adapter.book();const changed=book.id!==bookId;bookId=book.id;
+   volumes=book.volumes.map(v=>({...v,pages:Math.max(0,...book.sections.filter(s=>s.volumeId===v.id).map(s=>s.pageEnd||s.pageStart||0))})).filter(v=>v.pages>0);
+   host.hidden=!volumes.length;if(host.hidden){panel.open=false;return;}
+   if(changed){volume.replaceChildren();for(const v of volumes){const option=document.createElement('option');option.value=v.id;option.textContent=v.label+' · '+v.pages+' 页';volume.append(option);}panel.open=false;clearError();}
+   const current=book.sections[adapter.current()];
+   if(current&&(changed||!host.contains(document.activeElement))){volume.value=current.volumeId;input.value=String(current.pageStart||1);}
+  }
+  volume.addEventListener('change',()=>{clearError();input.value='';input.focus({preventScroll:true});});
+  input.addEventListener('input',clearError);
+  function go(){
+   const v=volumes.find(v=>v.id===volume.value),raw=input.value.trim(),page=Number(raw);
+   if(!v||!/^\d+$/.test(raw)||!Number.isSafeInteger(page)||page<1||page>v.pages){input.setAttribute('aria-invalid','true');status.textContent='请输入 1—'+(v?.pages||1)+' 之间的整数页码。';input.focus({preventScroll:true});return;}
+   const index=book.sections.findIndex(s=>s.volumeId===v.id&&s.pageStart<=page&&(s.pageEnd||s.pageStart)>=page);
+   if(index<0){input.setAttribute('aria-invalid','true');status.textContent='这一页没有对应的阅读节，请使用篇章目录。';return;}
+   clearError();panel.open=false;adapter.open(index);
+   const s=book.sections[index],message='已打开 '+v.label+' · 原文件第 '+page+' 页。'+(s.pageEnd>s.pageStart?'此阅读节覆盖第 '+s.pageStart+'—'+s.pageEnd+' 页。':'');status.textContent=message;adapter.announce?.(message);
+  }
+  button.addEventListener('click',go);input.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.isComposing){event.preventDefault();go();}});
+  window.earthPageJump={refresh};refresh();return window.earthPageJump;
+ };
+})();
+
+const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath":"html/yijing.html"},{"id":"daodejing","title":"道德经","sectionCount":81,"htmlPath":"html/daodejing.html"},{"id":"zhuangzi","title":"庄子","sectionCount":33,"htmlPath":"html/zhuangzi.html"},{"id":"bazi","title":"四柱八字","sectionCount":14,"htmlPath":"html/bazi.html"},{"id":"neijing","title":"黄帝内经","sectionCount":166,"htmlPath":"html/neijing.html"},{"id":"yunqi","title":"五运六气","sectionCount":7,"htmlPath":"html/yunqi.html"},{"id":"mao","title":"毛泽东选集","sectionCount":1960,"htmlPath":"html/mao.html"},{"id":"sunzi","title":"孙子兵法","sectionCount":13,"htmlPath":"html/sunzi.html"},{"id":"yinfu","title":"阴符经","sectionCount":4,"htmlPath":"html/yinfu.html"},{"id":"qiti","title":"炁体源流","sectionCount":512,"htmlPath":"html/qiti.html"}];const pageJumpVolumes=[{"id":"full","label":"四柱八字 · 子平真诠评注","sectionCount":14,"pages":null}];
+(() => {
+  'use strict';
+  const bookId = "bazi";
+  const storageKey = 'earth-online-full-book-v1:' + bookId;
+  const sections = Array.from(document.querySelectorAll('.book-section'));
+  const paragraphs = sections.map(section => section.querySelector('.prose'));
+  const texts = paragraphs.map(paragraph => paragraph.textContent);
+  const searchIndex=EarthSearchIndex.create(sections.map((section,index)=>({title:section.querySelector('h2').textContent,text:texts[index]})));
+  const indexById = new Map(sections.map((section, index) => [section.id, index]));
+  const directory = document.querySelector('nav');
+  const directoryLinks = Array.from(directory.querySelectorAll('a[href^="#section-"]'));
+  const jump = document.getElementById('jump');
+  const toolbar = document.querySelector('.toolbar');
+  const queryInput = document.getElementById('query');
+  const searchMode=document.getElementById('search-mode');let searchVersion=0;
+  let searchedMode=searchMode.value;
+  const clearSearch = document.getElementById('clear-search');
+  const searchState = document.getElementById('search-state');
+  const returnReading = document.createElement('button');
+  returnReading.id = 'return-reading-position';
+  returnReading.className = 'reader-tool return-reading';
+  returnReading.type = 'button';
+  returnReading.textContent = '返回刚才阅读处';
+  returnReading.disabled = true;
+  document.querySelector('.book-head h1').after(returnReading);
+  let size = parseInt(getComputedStyle(sections[0].querySelector('.prose')).fontSize, 10) || 19;
+  let activeIndex = -1, matches = [], currentMatch = -1;
+  let searchTimer, saveTimer, scrollFrame;
+  let userInteracted = false, initialized = false;
+  let navigationVersion = 0;
+  let readingPosition = null, focusPosition = null;
+  let lastBodyPosition = null;
+  let keyboardFocusPosition = null;
+  let clampedPosition = null;
+  let entryHash = location.hash;
+  let searchedQuery = '', composing = false;
+  const highlighted = new Map();
+  try { history.scrollRestoration = 'manual'; } catch (error) {}
+
+  function readStoredState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+      if (saved && saved.version === 1 && indexById.has(saved.sectionId)) {
+        return {
+          ...saved,
+          offset: Number.isFinite(saved.offset) ? Math.max(0, saved.offset) : 0,
+          ratio: Number.isFinite(saved.ratio) ? Math.min(1, Math.max(0, saved.ratio)) : 0,
+          fontSize: Number.isFinite(saved.fontSize) ? Math.min(27, Math.max(15, saved.fontSize)) : size
+        };
+      }
+    } catch (error) {}
+    // The previous manual stored chapter indices only. Read it once as a fallback;
+    // independent-book progress never writes to or replaces that older record.
+    try {
+      const previous = JSON.parse(localStorage.getItem('earth-online-reading-v1') || 'null');
+      const index = previous?.positions?.[bookId];
+      const validChapter = Number.isInteger(index) && index >= 0 && index < sections.length;
+      const validFont = Number.isFinite(previous?.fontSize);
+      if (validChapter || validFont) return {
+        sectionId: sections[validChapter ? index : 0].id,
+        offset: 0, ratio: 0, atStart: !validChapter,
+        fontSize: validFont ? Math.min(27, Math.max(15, previous.fontSize)) : size
+      };
+    } catch (error) {}
+    return null;
+  }
+
+  function readingInset() {
+    return toolbar.getBoundingClientRect().height + 12;
+  }
+
+  function currentIndex() {
+    // A short selected section near the end cannot always reach the reading
+    // line. Preserve that explicit choice until the reader actually scrolls.
+    if (clampedPosition) {
+      if (Math.abs(scrollY - clampedPosition.scrollY) < 2) return clampedPosition.index;
+      clampedPosition = null;
+    }
+    const line = readingInset() + 1;
+    let low = 0, high = sections.length - 1, found = 0;
+    while (low <= high) {
+      const middle = (low + high) >> 1;
+      if (sections[middle].getBoundingClientRect().top <= line) {
+        found = middle;
+        low = middle + 1;
+      } else high = middle - 1;
+    }
+    return found;
+  }
+
+  function capturePosition() {
+    const index = currentIndex();
+    const rect = sections[index].getBoundingClientRect();
+    const offset = Math.max(0, readingInset() - rect.top);
+    return {
+      sectionId: sections[index].id,
+      offset,
+      ratio: Math.min(1, offset / Math.max(1, rect.height)),
+      viewportWidth: innerWidth,
+      atStart: index === 0 && rect.top > readingInset() + 4,
+      startOffset: scrollY
+    };
+  }
+
+  function rememberBodyPosition(position) {
+    // The header contains settings and bookmark search, not chapter zero.
+    // Keep its browsing scroll separate from the last actual reading line.
+    if (!position.atStart) {
+      lastBodyPosition = {...position, fontSize: size};
+      returnReading.disabled = false;
+    }
+  }
+
+  function bodyPositionForLayout() {
+    if (!lastBodyPosition) return null;
+    if (lastBodyPosition.viewportWidth !== innerWidth || lastBodyPosition.fontSize !== size) {
+      const index = indexById.get(lastBodyPosition.sectionId);
+      lastBodyPosition = {...lastBodyPosition,
+        offset: lastBodyPosition.ratio * sections[index].getBoundingClientRect().height,
+        viewportWidth: innerWidth, fontSize: size};
+    }
+    return lastBodyPosition;
+  }
+
+  function setActive(index) {
+    jump.value = sections[index].id;
+    if (activeIndex === index) return;
+    if (activeIndex >= 0) directoryLinks[activeIndex].removeAttribute('aria-current');
+    activeIndex = index;
+    window.earthBookmarkUI?.refresh();
+    const link = directoryLinks[index];
+    link.setAttribute('aria-current', 'location');
+    link.closest('details').open = true;
+    // Scroll only the directory, never the document, to expose the selected item.
+    if (directory.getClientRects().length) {
+      const box = directory.getBoundingClientRect(), item = link.getBoundingClientRect();
+      if (item.top < box.top + 12) directory.scrollTop += item.top - box.top - 12;
+      else if (item.bottom > box.bottom - 12) directory.scrollTop += item.bottom - box.bottom + 12;
+    }
+  }
+
+  function restorePosition(position, proportional = false) {
+    const index = indexById.get(position.sectionId);
+    if (index === undefined) return;
+    clampedPosition = null;
+    if (position.atStart) scrollTo(0, Math.max(0, position.startOffset || 0));
+    else {
+      const rect = sections[index].getBoundingClientRect();
+      const offset = proportional ? position.ratio * rect.height : position.offset;
+      scrollTo(0, scrollY + rect.top + Math.min(Math.max(0, offset || 0), Math.max(0, rect.height - 1)) - readingInset());
+    }
+    const top = sections[index].getBoundingClientRect().top;
+    if (!position.atStart && top > readingInset() + 2 && top < innerHeight &&
+        scrollY >= document.documentElement.scrollHeight - innerHeight - 1) {
+      clampedPosition = {index, scrollY};
+    }
+    setActive(index);
+    readingPosition = capturePosition();
+    rememberBodyPosition(readingPosition);
+  }
+
+  function savePosition() {
+    if (!initialized) return;
+    clearTimeout(saveTimer);
+    const current = capturePosition();
+    rememberBodyPosition(current);
+    const position = current.atStart ? bodyPositionForLayout() || current : current;
+    try {
+      localStorage.setItem(storageKey, JSON.stringify({
+        version: 1, ...position, fontSize: size, entryHash, updatedAt: Date.now()
+      }));
+    } catch (error) {}
+  }
+
+  function updatePosition() {
+    setActive(currentIndex());
+    refreshHighlights();
+    readingPosition = capturePosition();
+    rememberBodyPosition(readingPosition);
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(savePosition, 160);
+  }
+
+  function updateInset() {
+    document.documentElement.style.scrollPaddingTop = readingInset() + 'px';
+  }
+
+  function navigateTo(id) {
+    if (!indexById.has(id)) return;
+    userInteracted = true;
+    navigationVersion++;
+    restorePosition({sectionId: id, offset: 0, ratio: 0});
+    savePosition();
+  }
+
+  function applyFont() {
+    document.documentElement.style.setProperty('--size', size + 'px');
+    document.getElementById('smaller').disabled = size <= 15;
+    document.getElementById('larger').disabled = size >= 27;
+  }
+
+  jump.addEventListener('change', event => navigateTo(event.target.value));
+  returnReading.addEventListener('click', () => {
+    const position = bodyPositionForLayout();
+    if (!position) return;
+    userInteracted = true;
+    navigationVersion++;
+    restorePosition(position);
+    sections[indexById.get(position.sectionId)].focus({preventScroll: true});
+    savePosition();
+  });
+  document.getElementById('skip-reading').addEventListener('click', event => {
+    event.preventDefault();
+    const index = currentIndex();
+    navigateTo(sections[index].id);
+    sections[index].focus({preventScroll: true});
+  });
+  directory.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#section-"]');
+    if (!link) return;
+    event.preventDefault();
+    history.replaceState(null, '', link.hash);
+    entryHash = location.hash;
+    navigateTo(link.hash.slice(1));
+  });
+  addEventListener('hashchange', () => {
+    entryHash = location.hash;
+    if (indexById.has(location.hash.slice(1))) navigateTo(location.hash.slice(1));
+    else if (location.hash === '#top') savePosition();
+  });
+  addEventListener('scroll', () => {
+    if (scrollFrame) return;
+    scrollFrame = requestAnimationFrame(() => { scrollFrame = null; updatePosition(); });
+  }, {passive: true});
+  for (const event of ['pointerdown', 'keydown', 'touchstart', 'wheel']) {
+    addEventListener(event, () => { userInteracted = true; }, {passive: true, capture: true});
+  }
+  addEventListener('pagehide', savePosition);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') savePosition();
+  });
+  new ResizeObserver(updateInset).observe(toolbar);
+  // Browsers may scroll a newly focused sticky control to the root's anchor
+  // padding. Keep the reading line still, unless that action chose a new chapter.
+  addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    // Native Tab scrolling happens before focusin, so capture before its default
+    // action. A focus event that leaves the toolbar will simply discard this.
+    keyboardFocusPosition = {position: capturePosition(), version: navigationVersion};
+    requestAnimationFrame(() => { keyboardFocusPosition = null; });
+  }, {capture: true});
+  toolbar.addEventListener('focusin', () => {
+    const version = navigationVersion;
+    const position = keyboardFocusPosition?.version === version ? keyboardFocusPosition.position : capturePosition();
+    keyboardFocusPosition = null;
+    focusPosition = position;
+    requestAnimationFrame(() => {
+      if (version === navigationVersion && toolbar.contains(document.activeElement)) restorePosition(position);
+      focusPosition = null;
+    });
+  });
+
+  for (const [id, delta] of [['smaller', -2], ['larger', 2]]) {
+    document.getElementById(id).addEventListener('click', () => {
+      const position = capturePosition();
+      navigationVersion++;
+      size = Math.min(27, Math.max(15, size + delta));
+      applyFont();
+      restorePosition(position, true);
+      savePosition();
+    });
+  }
+
+  // Keep the complete book in the document, but decorate only the paragraphs
+  // currently on screen. A common single character must not create 50,000 marks.
+  function refreshHighlights(extraIndex) {
+    const wanted = new Set();
+    if (EarthTextSearch.fold(searchedQuery,searchedMode)) {
+      for (let index = currentIndex(); index < sections.length; index++) {
+        if (sections[index].getBoundingClientRect().top > innerHeight) break;
+        wanted.add(index);
+      }
+      if (Number.isInteger(extraIndex)) wanted.add(extraIndex);
+    }
+    for (const [index, query] of highlighted) {
+      if (!wanted.has(index) || query !== searchedMode+':'+searchedQuery) {
+        paragraphs[index].textContent = texts[index];
+        highlighted.delete(index);
+      }
+    }
+    for (const index of wanted) {
+      if (highlighted.has(index)) continue;
+      const text=texts[index],ranges=EarthTextSearch.ranges(text,searchedQuery,searchedMode,100);if(!ranges.length)continue;
+      const fragment=document.createDocumentFragment();let cursor=0;
+      for(const range of ranges){fragment.append(document.createTextNode(text.slice(cursor,range.start)));const mark=document.createElement('mark');mark.textContent=text.slice(range.start,range.end);fragment.append(mark);cursor=range.end;}
+      fragment.append(document.createTextNode(text.slice(cursor)));paragraphs[index].replaceChildren(fragment);highlighted.set(index,searchedMode+':'+searchedQuery);
+    }
+  }
+
+  async function moveMatch(delta) {
+    if (composing) return;
+    clearTimeout(searchTimer);
+    if (queryInput.value.trim() !== searchedQuery||searchMode.value!==searchedMode) await searchBook();
+    if (composing||queryInput.value.trim()!==searchedQuery||searchMode.value!==searchedMode||!matches.length) return;
+    currentMatch = currentMatch < 0 ? (delta < 0 ? matches.length - 1 : 0) : (currentMatch + delta + matches.length) % matches.length;
+    searchState.textContent = '第 ' + (currentMatch + 1) + ' / ' + matches.length + ' 节匹配';
+    updateInset();
+    const index = matches[currentMatch];
+    navigateTo(sections[index].id);
+    refreshHighlights(index);
+    const mark = paragraphs[index].querySelector('mark');
+    if (mark) scrollTo(0, scrollY + mark.getBoundingClientRect().top - readingInset() - 12);
+    sections[index].focus({preventScroll: true});
+    readingPosition = capturePosition();
+    savePosition();
+  }
+
+  async function searchBook() {
+    const version=++searchVersion,query=queryInput.value.trim(),mode=searchMode.value,needle=EarthTextSearch.fold(query,mode);
+    if(needle&&!searchIndex.peek(mode)){searchState.textContent='正在准备离线检索…';document.getElementById('prev-match').disabled=document.getElementById('next-match').disabled=true;}
+    const indexed=needle?await searchIndex.ensure(mode):[];
+    if(version!==searchVersion||composing||query!==queryInput.value.trim()||mode!==searchMode.value)return;
+    const position=capturePosition(),previousMatches=matches;
+    matches=needle?indexed.flatMap((entry,index)=>entry.title.includes(needle)||entry.text.includes(needle)?[index]:[]):[];
+    const nextMatches=new Set(matches);
+    for(const index of previousMatches)if(!nextMatches.has(index))sections[index].classList.remove('match');
+    for(const index of matches)sections[index].classList.add('match');
+    searchedQuery=query;searchedMode=mode;currentMatch=-1;refreshHighlights();
+    document.getElementById('prev-match').disabled=document.getElementById('next-match').disabled=!matches.length;clearSearch.disabled=!queryInput.value;
+    searchState.textContent=query?(!needle?'请输入文字或数字；兼容检索会忽略标点和空白。':matches.length?'找到 '+matches.length+' 节匹配，点“下处”前往。':'未找到，请尝试更短的原文词句。'):'连续阅读全部内容，或用目录跳转。';
+    updateInset();restorePosition(position);savePosition();
+  }
+  function scheduleSearch(event) {
+    searchVersion++;
+    clearSearch.disabled = !queryInput.value;
+    if (focusPosition || readingPosition) restorePosition(focusPosition || readingPosition);
+    focusPosition = null;
+    clearTimeout(searchTimer);
+    if (!composing && !event?.isComposing) searchTimer = setTimeout(searchBook, 200);
+  }
+  searchMode.addEventListener('change',()=>{clearTimeout(searchTimer);searchVersion++;if(!composing)searchBook();});
+  queryInput.addEventListener('compositionstart', () => { composing = true; searchVersion++;clearTimeout(searchTimer); });
+  queryInput.addEventListener('compositionend', () => { composing = false; scheduleSearch(); });
+  queryInput.addEventListener('input', scheduleSearch);
+  queryInput.addEventListener('keydown', event => {
+    if (event.key === 'Enter' && !composing && !event.isComposing) {
+      event.preventDefault();
+      moveMatch(event.shiftKey ? -1 : 1);
+    }
+  });
+  clearSearch.addEventListener('click', () => {
+    if (focusPosition || readingPosition) restorePosition(focusPosition || readingPosition);
+    focusPosition = null;
+    clearTimeout(searchTimer);
+    composing = false;
+    queryInput.value = '';
+    searchBook();
+    queryInput.focus({preventScroll: true});
+  });
+  document.getElementById('prev-match').addEventListener('click', () => moveMatch(-1));
+  document.getElementById('next-match').addEventListener('click', () => moveMatch(1));
+
+  const saved = readStoredState();
+  if (saved) { size = saved.fontSize; applyFont(); }
+  const initialHash = entryHash.slice(1);
+  const navigationType = performance.getEntriesByType('navigation')[0]?.type;
+  const returning = navigationType === 'reload' || navigationType === 'back_forward';
+  // A newly opened deep link always wins. Reloading that already-read document
+  // or returning through browser history resumes its later reading position,
+  // rather than reapplying the entry anchor.
+  const explicitAnchor = indexById.has(initialHash) || initialHash === 'top';
+  const resume = saved && (!explicitAnchor || (returning && saved.entryHash === entryHash));
+  let resumedSavedPosition = false;
+  function initializePosition() {
+    updateInset();
+    if (!userInteracted) {
+      if (resume) {
+        restorePosition(saved, saved.viewportWidth !== undefined && saved.viewportWidth !== innerWidth);
+        resumedSavedPosition = true;
+      }
+      else if (indexById.has(initialHash)) restorePosition({sectionId: initialHash, offset: 0, ratio: 0});
+      else { scrollTo(0, 0); setActive(0); }
+    }
+    initialized = true;
+    updatePosition();
+  }
+  initializePosition();
+  if (document.readyState !== 'complete') addEventListener('load', initializePosition, {once: true});
+  document.fonts.ready.then(() => {
+    if (!userInteracted) initializePosition();
+  });
+  const originalPageBook={id:bookId,volumes:pageJumpVolumes,sections:sections.map(section=>({volumeId:section.dataset.volume,pageStart:Number(section.dataset.pageStart),pageEnd:Number(section.dataset.pageEnd)}))};
+  mountOriginalPageJump({book:()=>originalPageBook,current:currentIndex,open:index=>{navigateTo(sections[index].id);sections[index].focus({preventScroll:true});}});
+  mountEarthBookmarks({
+    books:bookmarkBooks,
+    shouldOpenInitialBookmark:()=>!resumedSavedPosition,
+    current:()=>{const index=currentIndex();return {bookId,section:index,title:sections[index].querySelector('h2').textContent,element:paragraphs[index]};},
+    line:()=>readingInset()+12,
+    scrollBy:delta=>scrollBy(0,delta),
+    focus:()=>sections[currentIndex()].focus({preventScroll:true}),
+    save:savePosition,
+    open:entry=>{
+      if(entry.bookId!==bookId){const target=new URL(entry.bookId+'.html',location.href);target.searchParams.set('bookmark',entry.section);target.hash='section-'+entry.section;location.href=target.href;return false;}
+      navigateTo('section-'+entry.section);
+    }
+  });
+})();
+</script></body></html>

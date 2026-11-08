@@ -1,0 +1,63 @@
+{
+  "repository": "https://github.com/BYVoid/OpenCC",
+  "commit": "c363a7ba51d487950982bd8a589211ffbfd95ba1",
+  "commitDate": "2026-09-09T19:41:04Z",
+  "retrievedAt": "2026-09-16T17:42:55.239696+00:00",
+  "files": [
+    {
+      "sourcePath": "data/dictionary/TSCharacters.txt",
+      "localFile": "TSCharacters.txt",
+      "url": "https://raw.githubusercontent.com/BYVoid/OpenCC/c363a7ba51d487950982bd8a589211ffbfd95ba1/data/dictionary/TSCharacters.txt",
+      "bytes": 104516,
+      "sha256": "737c21c66f55a419dd6956cb3089476cdefc5a36877452631617696df1e5d925"
+    },
+    {
+      "sourcePath": "LICENSE",
+      "localFile": "LICENSE-OpenCC.txt",
+      "url": "https://raw.githubusercontent.com/BYVoid/OpenCC/c363a7ba51d487950982bd8a589211ffbfd95ba1/LICENSE",
+      "bytes": 9165,
+      "sha256": "b534e465949558eec2597b04f5092b5e161236a68dfbfd04d547592ac3964308"
+    },
+    {
+      "sourcePath": "AUTHORS",
+      "localFile": "AUTHORS-OpenCC.txt",
+      "url": "https://raw.githubusercontent.com/BYVoid/OpenCC/c363a7ba51d487950982bd8a589211ffbfd95ba1/AUTHORS",
+      "bytes": 310,
+      "sha256": "c9c94437ca9b62a1eb2a5c15b08f833964dc7489855fbc87d37168150dd7912a"
+    }
+  ],
+  "notice": "not present at repository root",
+  "license": "Apache-2.0",
+  "attribution": "OpenCC / Carbo Kuo (BYVoid) and contributors; upstream AUTHORS reproduced in the companion notice.",
+  "derived": {
+    "module": "search-normalizer.js (inlined into reader HTML)",
+    "sourceEntries": 4148,
+    "firstCandidateMappings": 3222,
+    "identityMappingsOmitted": 926,
+    "multiCandidateEntries": 996,
+    "mapSha256": "804572f3006b58815fc2685750af03ee093bf0cc8e57469c282e1775f5e04d4a",
+    "moduleSha256": "58f38959130f2885f7579ac314d936947e710689a5791edd2371c70ee6e8429a",
+    "moduleBytes": 42018,
+    "firstCandidateChainsCollapsed": [
+      {
+        "source": "薴",
+        "first": "苧",
+        "canonical": "苎"
+      }
+    ]
+  },
+  "rules": {
+    "exact": "Locale-neutral JavaScript toLowerCase; original punctuation and whitespace are retained. No Chinese character mapping.",
+    "flexible": "Apply locale-neutral toLowerCase; map each TSCharacters key to the stable endpoint of its first-candidate chain; discard Unicode White_Space, General_Category Punctuation, and U+FEFF. Symbols, emoji, zero-width format characters and unlisted characters remain.",
+    "offsets": "ranges returns non-overlapping half-open UTF-16 offsets into the original string, including ignored punctuation/whitespace between matched characters. Positions are constructed per ranges call, not retained by fold.",
+    "defaultRangeLimit": 100,
+    "limits": "Character-equivalence search only. Not the full OpenCC converter, phrase disambiguation, regional vocabulary translation, semantic search, NFKC normalization, or full Unicode case folding."
+  },
+  "modifications": [
+    "Selected only first candidate from each upstream TSCharacters entry.",
+    "Omitted identity mappings and all alternative candidates; remaining dictionary compiled into a JavaScript lookup.",
+    "No TSCharactersExt or other phrase/variant dictionary is incorporated.",
+    "Search normalization never changes the displayed or downloadable original book text.",
+    "Collapse the one first-candidate chain (薴→苧→苎) to its stable endpoint so repeated normalization is idempotent; no alternative candidates are used."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "mao",
+  "title": "毛泽东选集",
+  "kind": "pdf",
+  "files": [
+    {
+      "label": "第一卷",
+      "path": "books/mao/vol-1.pdf",
+      "bytes": 20953518,
+      "sha256": "c96f5d9a4b736b08f93b1cd14cbb5dc709935f8132126ac045ddbe0618f214ce",
+      "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第一卷].pdf",
+      "pages": 352
+    },
+    {
+      "label": "第二卷",
+      "path": "books/mao/vol-2.pdf",
+      "bytes": 25914549,
+      "sha256": "f8a0b818e0336a85025b3e7aeaa676d4b0b487e872bdbbebb3c26474204dfe64",
+      "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第二卷].pdf",
+      "pages": 458
+    },
+    {
+      "label": "第三卷",
+      "path": "books/mao/vol-3.pdf",
+      "bytes": 19010991,
+      "sha256": "3ff7bbc665fa8da32d54c2626cbc552ce3569487e064938b9d869725835acada",
+      "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第三卷].pdf",
+      "pages": 342
+    },
+    {
+      "label": "第四卷",
+      "path": "books/mao/vol-4.pdf",
+      "bytes": 15092634,
+      "sha256": "7354569ca9da1055c49ff6194eb9714bfbfcb2b99633441b12a35439b8f55b94",
+      "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第四卷].pdf",
+      "pages": 407
+    },
+    {
+      "label": "第五卷",
+      "path": "books/mao/vol-5.pdf",
+      "bytes": 1641026,
+      "sha256": "3d15c0c3b38817cd328a367e3feaa5b43a4a279a8bff1f898f505e430b77b611",
+      "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第五卷].pdf",
+      "pages": 403
+    }
+  ],
+  "sections": [],
+  "sourceNote": "第一至第五卷 PDF。已从公开 GitHub 仓库下载；已核验 PDF 文件头、大小、页数，使用 PyMuPDF 抽验首尾页可正常显示，未逐字校勘。"
+}

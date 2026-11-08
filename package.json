@@ -1,0 +1,17 @@
+{
+  "name": "earth-online-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "地球 Online · 入世之旅：原创情境闯关与完整典籍阅读",
+  "scripts": {
+    "build": "node work/build.cjs && node work/build-game.cjs",
+    "build:game": "node work/build-game.cjs",
+    "test": "node work/qa-earth-game.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

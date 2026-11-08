@@ -1,0 +1,1381 @@
+{
+  "continuation": {
+    "features": [
+      "书签记录原文词句位置；换字号与跨阅读布局后仍可定位。同节更新、最多500枚、删除可撤销；满额和已有新书签时给出准确反馈。",
+      "纸色、夜读、素白可选，默认保持纸色；切色保留阅读位置，配色随完整备份带走。",
+      "主手册完整备份包含书签，全书页另有书签导出，可解决直接双击HTML时各文件记录分离的问题。浏览器禁止保存时仍可导出临时书签。",
+      "书签按书籍、章节名和摘录词句筛选，每批显示40枚。删除撤销保持筛选，导出仍包含完整书签集合。",
+      "多页面暂存合并超过500枚时，不把截断列表写回磁盘；完整导出保留合并集合，导入预览明确未合并数量。",
+      "从跨书书签进入后继续阅读，刷新和返回保留最新位置；新打开原书签链接仍回原句。",
+      "修复末尾短章节的目录误判、浏览器返回时的续读偏移和键盘切换工具栏时正文被意外滚动的问题；新打开的明确章节链接保持优先。"
+    ],
+    "tests": [
+      {
+        "file": "bookmark-store-qa.json",
+        "checks": [
+          {
+            "name": "valid saved bookmarks survive construction and reload",
+            "pass": true
+          },
+          {
+            "name": "validation strips extra properties without modifying its input",
+            "pass": true
+          },
+          {
+            "name": "validation rejects unknown books, impossible chapters, offsets and timestamps",
+            "pass": true
+          },
+          {
+            "name": "validation deduplicates by book and chapter and bounds imported data",
+            "pass": true
+          },
+          {
+            "name": "corrupt or unsupported storage cannot become bookmarks",
+            "pass": true
+          },
+          {
+            "name": "upsert persists a new bookmark and generates its timestamps",
+            "pass": true
+          },
+          {
+            "name": "upsert keeps creation time and other books when moving one bookmark",
+            "pass": true
+          },
+          {
+            "name": "invalid upsert throws without deleting any existing bookmark",
+            "pass": true
+          },
+          {
+            "name": "merge keeps local conflicts and adds valid missing bookmarks",
+            "pass": true
+          },
+          {
+            "name": "remove deletes only the selected book and chapter durably",
+            "pass": true
+          },
+          {
+            "name": "caller mutation cannot change in-memory or persisted bookmarks",
+            "pass": true
+          },
+          {
+            "name": "read sees external storage changes without recreating the store",
+            "pass": true
+          },
+          {
+            "name": "quota failures report session-only work and preserve external unrelated changes",
+            "pass": true
+          },
+          {
+            "name": "failed deletions are not resurrected by later external storage updates",
+            "pass": true
+          },
+          {
+            "name": "denied storage getter still permits session reading and editing",
+            "pass": true
+          },
+          {
+            "name": "storage is written before successful state becomes visible",
+            "pass": true
+          },
+          {
+            "name": "a full library rejects a new upsert without losing existing bookmarks",
+            "pass": true
+          },
+          {
+            "name": "browser script exposes the same usable store without Node dependencies",
+            "pass": true
+          },
+          {
+            "name": "a browser with CommonJS still receives the public browser factory",
+            "pass": true
+          },
+          {
+            "name": "temporary storage denial retains the last readable bookmarks",
+            "pass": true
+          },
+          {
+            "name": "capacity conflicts keep pending bookmarks without overwriting external saved bookmarks",
+            "pass": true
+          },
+          {
+            "name": "upsert during capacity conflict preserves all externally saved data and session changes",
+            "pass": true
+          },
+          {
+            "name": "deleting an absent bookmark cannot flush a truncated capacity-conflict view",
+            "pass": true
+          },
+          {
+            "name": "removing a saved bookmark can resolve capacity without deleting unrelated entries",
+            "pass": true
+          },
+          {
+            "name": "external capacity release lets a later merge save all pending and external bookmarks",
+            "pass": true
+          },
+          {
+            "name": "export includes pending and all external bookmarks during capacity conflicts without writing",
+            "pass": true
+          },
+          {
+            "name": "export can preserve two distinct full libraries while validation and display remain capped",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "file": "bookmark-ui-qa.json",
+        "checks": [
+          {
+            "name": "导入有冲突的书签和配色时保留本机选择",
+            "pass": true
+          },
+          {
+            "name": "首次打开且存储禁用时正文不承诺已记住位置",
+            "pass": true
+          },
+          {
+            "name": "书签记录词句位置并可在换字号后重开",
+            "pass": true
+          },
+          {
+            "name": "同一章节更新书签且删除可以撤销",
+            "pass": true
+          },
+          {
+            "name": "同浏览器全书页能读取主手册书签并定位原句",
+            "pass": true
+          },
+          {
+            "name": "书签和配色可随JSON备份恢复，保留原有书签",
+            "pass": true
+          },
+          {
+            "name": "本地文件断网可添加并使用书签",
+            "pass": true
+          },
+          {
+            "name": "浏览器禁用存储仍可临时使用书签且明确提示",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "file": "reading-appearance-test-report.json",
+        "checks": [
+          {
+            "name": "主手册配色切换保持节内位置与外层品牌",
+            "status": "PASS"
+          },
+          {
+            "name": "全书配色切换保持当前正文位置",
+            "status": "PASS"
+          },
+          {
+            "name": "重新打开恢复夜读配色",
+            "status": "PASS"
+          },
+          {
+            "name": "损坏存档回退默认纸色",
+            "status": "PASS"
+          },
+          {
+            "name": "不完整数据回退纸色",
+            "status": "PASS"
+          },
+          {
+            "name": "存储被禁用仍可在本页切换",
+            "status": "PASS"
+          },
+          {
+            "name": "断网仍可切换夜读且文字对比充足",
+            "status": "PASS"
+          },
+          {
+            "name": "全书夜读正文及辅助文字对比充足",
+            "status": "PASS"
+          },
+          {
+            "name": "手机配色默认折叠且没有水平溢出",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "file": "reading-boundaries-test-report.json",
+        "checks": [
+          {
+            "name": "short final section stays selected and saved when it cannot reach the reading line",
+            "pass": true
+          },
+          {
+            "name": "last search match agrees with the directory and persisted section",
+            "pass": true
+          },
+          {
+            "name": "choosing a preceding short section is not forced to the last section at the document bottom",
+            "pass": true
+          },
+          {
+            "name": "manual scrolling away from a selected short last section updates the directory again",
+            "pass": true
+          },
+          {
+            "name": "browser back resumes the reading line left behind an entry deep link",
+            "pass": true
+          },
+          {
+            "name": "a new explicit deep link still wins over stored progress",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "file": "bookmark-undo-qa.json",
+        "checks": [
+          {
+            "name": "当前页补满名额后撤销明确失败并保留重试机会",
+            "pass": true
+          },
+          {
+            "name": "另一页补满名额不会让撤销虚报恢复",
+            "pass": true
+          },
+          {
+            "name": "另一页已新增同节书签时保留新位置并准确说明",
+            "pass": true
+          },
+          {
+            "name": "全书页暂存书签提示引导本页可用的导出操作",
+            "pass": true
+          },
+          {
+            "name": "主手册暂存书签仍引导完整备份",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "file": "bookmark-transfer-qa.json",
+        "checks": [
+          {
+            "name": "断网全书页书签可导出并跨文件恢复",
+            "pass": true
+          },
+          {
+            "name": "断网且存储禁用的全书临时书签可导出并在主手册恢复",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "file": "native-bookmark-click-qa.json",
+        "checks": [
+          {
+            "width": 1280,
+            "method": "pointer",
+            "pass": true,
+            "section": 73,
+            "before": 144913,
+            "after": 144913
+          },
+          {
+            "width": 1280,
+            "method": "keyboard",
+            "pass": true,
+            "section": 73,
+            "before": 144913,
+            "after": 144913
+          },
+          {
+            "width": 1440,
+            "method": "pointer",
+            "pass": true,
+            "section": 73,
+            "before": 144914,
+            "after": 144914
+          },
+          {
+            "width": 1440,
+            "method": "keyboard",
+            "pass": true,
+            "section": 73,
+            "before": 144914,
+            "after": 144914
+          },
+          {
+            "width": 390,
+            "method": "pointer",
+            "pass": true,
+            "section": 73,
+            "before": 199628,
+            "after": 199628
+          },
+          {
+            "width": 390,
+            "method": "keyboard",
+            "pass": true,
+            "section": 73,
+            "before": 199628,
+            "after": 199628
+          }
+        ]
+      },
+      {
+        "file": "bookmark-discovery-qa.json",
+        "checks": [
+          {
+            "name": "主手册按书名、标题、片段及符号进行字面检索",
+            "pass": true
+          },
+          {
+            "name": "书籍范围与关键词同时生效",
+            "pass": true
+          },
+          {
+            "name": "离线全书页无结果可清除恢复完整列表",
+            "pass": true
+          },
+          {
+            "name": "中文输入法在组合完成后才更新检索",
+            "pass": true
+          },
+          {
+            "name": "筛选后删除与撤销保留关键词和书籍范围",
+            "pass": true
+          },
+          {
+            "name": "85枚书签按40条加载且筛选后重置批次",
+            "pass": true
+          },
+          {
+            "name": "筛选与分批不截断主手册及全书的书签备份",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "file": "bookmark-capacity-archive-qa.json",
+        "checks": [
+          {
+            "name": "超500条导入明确告知未合并数量且保护原备份",
+            "pass": true
+          },
+          {
+            "name": "主手册完整导出同时保留暂存及外部已存501枚",
+            "pass": true
+          },
+          {
+            "name": "全书页导出在容量冲突时不漏暂存和原有书签",
+            "pass": true
+          },
+          {
+            "name": "容量冲突时恢复备份不得把原有磁盘书签挤掉",
+            "pass": true
+          }
+        ]
+      },
+      {
+        "file": "bookmark-deep-link-resume-qa.json",
+        "checks": [
+          {
+            "name": "跨书书签后继续阅读，刷新保持最新章节与节内位置",
+            "pass": true
+          },
+          {
+            "name": "跨书书签后继续阅读，浏览器返回保持最新章节与节内位置",
+            "pass": true
+          },
+          {
+            "name": "新打开原书签深链接仍定位原章节中的词句",
+            "pass": true
+          }
+        ]
+      }
+    ],
+    "visual": [
+      {
+        "name": "bookmark-discovery-main-paper-1440",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "count": 3
+          },
+          {
+            "id": "color-contrast",
+            "count": 101
+          }
+        ],
+        "overflow": false,
+        "errors": []
+      },
+      {
+        "name": "bookmark-discovery-book-white-320-empty",
+        "violations": [],
+        "incomplete": [],
+        "overflow": false,
+        "errors": []
+      },
+      {
+        "name": "bookmark-discovery-book-paper-1440",
+        "violations": [],
+        "incomplete": [],
+        "overflow": false,
+        "errors": []
+      },
+      {
+        "name": "bookmark-discovery-main-night-320-confirmed",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "count": 3
+          },
+          {
+            "id": "color-contrast",
+            "count": 100
+          }
+        ],
+        "overflow": false,
+        "errors": []
+      }
+    ]
+  },
+  "title": "地球 Online · GitHub 选型与深度优化",
+  "date": "2026-09-16",
+  "scoreNotice": "项目适配评分是本轮判断，不是官方评级或通用质量榜。需求契合35、工程证据20、采用成本20、维护状态15、许可清晰10；低采用成本得高分，Stars不计分。",
+  "performanceMethod": "以下为上一轮搜索优化的对照基线；本轮新增书签和配色后未重测绝对耗时。Isolated headless installed Chrome; local HTTP; 1440x1000/320x844; no CPU throttling. Input-to-two-render-frames includes product debounce. Long tasks are browser PerformanceObserver entries, not Lighthouse.",
+  "candidates": [
+    {
+      "name": "axe-core",
+      "category": "项目",
+      "score": 94,
+      "dimensions": [
+        {
+          "label": "需求契合",
+          "score": 33,
+          "reason": "现有产品已用浏览器行为测试，缺少系统性的 HTML 语义、名称、对比度检查；可在现有静态页面直接运行。"
+        },
+        {
+          "label": "工程证据",
+          "score": 19,
+          "reason": "官方 API、规则说明、测试目录、发行记录可查；README 明示只能自动发现部分问题、incomplete 需人工判断。未独立运行其自身测试。"
+        },
+        {
+          "label": "采用成本",
+          "score": 18,
+          "reason": "开发阶段注入已有浏览器测试即可，不必增加成品运行依赖；仍需人工逐条判断严重性与修复。"
+        },
+        {
+          "label": "维护状态",
+          "score": 14,
+          "reason": "默认分支最近提交为 2026-09-15；v4.13.0 发布于 2026-08-05；仓库未归档。"
+        },
+        {
+          "label": "许可清晰",
+          "score": 10,
+          "reason": "根目录 MPL-2.0 许可证和第三方许可清单均可查；本轮适合仅作测试工具。"
+        }
+      ],
+      "url": "https://github.com/dequelabs/axe-core",
+      "source": "https://github.com/dequelabs/axe-core",
+      "license": "MPL-2.0；附带依赖另有 LICENSE-3RD-PARTY.txt",
+      "licenseUrl": "https://github.com/dequelabs/axe-core/blob/2d4718219f7db134de4f7cf3d741a8ce702e37d6/LICENSE",
+      "updated": "2026-09-15",
+      "commit": "https://github.com/dequelabs/axe-core/commit/2d4718219f7db134de4f7cf3d741a8ce702e37d6",
+      "summary": "自动化无障碍测试引擎",
+      "decision": "优先采用为开发时验收工具；不嵌入读者页面。",
+      "boundaries": [
+        "不判断古籍文本/OCR准确性、读者是否理解文案或所有键盘体验。",
+        "它不是完整审计；结果必须与人工键盘、缩放及阅读流程检查结合。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/dequelabs/axe-core",
+          "supports": "HTML UI 自动测试、已声明的能力范围与局限、许可。"
+        },
+        {
+          "url": "https://github.com/dequelabs/axe-core/blob/develop/doc/API.md",
+          "supports": "本地运行、可融入现有测试、只检查已呈现内容，隐藏的交互需先展开再扫描。"
+        },
+        {
+          "url": "https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md",
+          "supports": "规则与 WCAG 标签映射，可追溯每类报错。"
+        }
+      ],
+      "adopt": [
+        "在桌面与 320px 手机宽度扫描主手册、独立全书以及展开目录/搜索结果等不同状态。",
+        "修复真实的可访问名称、焦点、语义和对比度问题，再运行键盘操作验证。",
+        "保存 violations 与 incomplete，不能把零自动报错写成完全符合 WCAG。"
+      ]
+    },
+    {
+      "name": "MiniSearch",
+      "category": "项目",
+      "score": 86,
+      "dimensions": [
+        {
+          "label": "需求契合",
+          "score": 31,
+          "reason": "本地内存索引、离线查询、字段加权适合十本书；中文连续句子需专门分词与短语语义。"
+        },
+        {
+          "label": "工程证据",
+          "score": 18,
+          "reason": "源码、MiniSearch.test.js、基准目录、API、变更记录可查；有序列化/反序列化与异步加载接口。未运行上游基准。"
+        },
+        {
+          "label": "采用成本",
+          "score": 18,
+          "reason": "零外部运行依赖且提供 UMD 构建，可离线内嵌；需要中文词法策略和内存实测，当前简单全文扫描未必需要立即替换。"
+        },
+        {
+          "label": "维护状态",
+          "score": 9,
+          "reason": "默认分支最新提交为 2025-09-16 的 v7.2.0；GitHub releases/latest 返回 404，不能把它写为无版本或已弃用。"
+        },
+        {
+          "label": "许可清晰",
+          "score": 10,
+          "reason": "根目录 LICENSE.txt 明确 MIT。"
+        }
+      ],
+      "url": "https://github.com/lucaong/minisearch",
+      "source": "https://github.com/lucaong/minisearch",
+      "license": "MIT",
+      "licenseUrl": "https://github.com/lucaong/minisearch/blob/3d239d1c3ae7aef1bf5d8945dd7b5f0709f646f5/LICENSE.txt",
+      "updated": "2025-09-16",
+      "commit": "https://github.com/lucaong/minisearch/commit/3d239d1c3ae7aef1bf5d8945dd7b5f0709f646f5",
+      "summary": "浏览器内全文索引",
+      "decision": "采用离线检索设计；暂不为换库而换库。",
+      "boundaries": [
+        "其默认 tokenizer 不是中文分词器；默认 OR 合并也不是严格短语匹配。",
+        "‘零依赖’不代表零成本；186万字本地数据需实测，不能引用 README 的性能形容词当本项目数据。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/lucaong/minisearch",
+          "supports": "离线内存索引、字段加权、前缀/模糊检索、自定义 tokenizer、UMD 使用方式。"
+        },
+        {
+          "url": "https://github.com/lucaong/minisearch/blob/3d239d1c3ae7aef1bf5d8945dd7b5f0709f646f5/src/MiniSearch.ts#L2180",
+          "supports": "默认 tokenizer 按空白/标点切分，不能直接假设适合无空格中文古文。"
+        },
+        {
+          "url": "https://github.com/lucaong/minisearch/blob/3d239d1c3ae7aef1bf5d8945dd7b5f0709f646f5/src/MiniSearch.test.js",
+          "supports": "测试文件存在，可查检索行为覆盖。"
+        },
+        {
+          "url": "https://github.com/lucaong/minisearch/blob/3d239d1c3ae7aef1bf5d8945dd7b5f0709f646f5/CHANGELOG.md",
+          "supports": "版本变更记录。"
+        }
+      ],
+      "adopt": [
+        "先借鉴书名/章名优先、正文其次的可解释排序和全库搜索组织。",
+        "中文古文保留精确片段匹配；若再加词索引，需使用中文分词或 n-gram，并把模糊检索作为明确选项。",
+        "用本项目真实语料测输入到结果的耗时、索引体积和移动端内存，再决定是否引入库。"
+      ]
+    },
+    {
+      "name": "foliate-js",
+      "category": "项目",
+      "score": 80,
+      "dimensions": [
+        {
+          "label": "需求契合",
+          "score": 29,
+          "reason": "阅读进度、目录定位、搜索上下文与本项目相关；本项目已是静态 HTML，不需要 EPUB/MOBI 解析器。"
+        },
+        {
+          "label": "工程证据",
+          "score": 15,
+          "reason": "progress.js、search.js、阅读示例及 EPUB CFI 测试可查；README 明示 API 不稳定且 demo 不完整。"
+        },
+        {
+          "label": "采用成本",
+          "score": 15,
+          "reason": "独立思想可轻量实现，整套接入需要 book/renderer 接口、ES modules 和服务环境适配。"
+        },
+        {
+          "label": "维护状态",
+          "score": 11,
+          "reason": "默认分支最近提交为 2026-05-01；未归档；上游 README 写明尚无发行版。"
+        },
+        {
+          "label": "许可清晰",
+          "score": 10,
+          "reason": "MIT 与 vendored 依赖许可在 README 明列。若复用源码需保留许可。"
+        }
+      ],
+      "url": "https://github.com/johnfactotum/foliate-js",
+      "source": "https://github.com/johnfactotum/foliate-js/blob/main/README.md",
+      "license": "MIT；内置 zip.js、fflate、PDF.js 分别有各自许可",
+      "licenseUrl": "https://github.com/johnfactotum/foliate-js/blob/78914aef4466eb960965702401634c2cb348e9b1/LICENSE",
+      "updated": "2026-05-01",
+      "commit": "https://github.com/johnfactotum/foliate-js/commit/78914aef4466eb960965702401634c2cb348e9b1",
+      "summary": "模块化电子书阅读内核",
+      "decision": "借鉴进度模型和摘要/位置分离；不引入阅读内核。",
+      "boundaries": [
+        "现有手册不需要电子书解析/分页框架迁移。",
+        "原生模块 demo 及上游未稳定 API 不适合作为本轮 file:// 全书的直接替换。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/johnfactotum/foliate-js/blob/main/README.md",
+          "supports": "模块边界、原生 ES modules、API 状态、demo 要求通过 server 打开。"
+        },
+        {
+          "url": "https://github.com/johnfactotum/foliate-js/blob/78914aef4466eb960965702401634c2cb348e9b1/progress.js",
+          "supports": "SectionProgress 按 section size 累加，再加节内 fraction；目录定位单独处理。"
+        },
+        {
+          "url": "https://github.com/johnfactotum/foliate-js/blob/78914aef4466eb960965702401634c2cb348e9b1/search.js",
+          "supports": "命中前后上下文、精确匹配与 Intl.Segmenter 路径、range 与 excerpt 分开。"
+        },
+        {
+          "url": "https://github.com/johnfactotum/foliate-js/tree/78914aef4466eb960965702401634c2cb348e9b1/tests",
+          "supports": "测试目录可查。"
+        }
+      ],
+      "adopt": [
+        "按正文长度计算已读比例，防止短章与万字长章权重完全相同；明确显示是阅读位置而不是学习掌握程度。",
+        "书签保留书籍 ID、章节 ID、节内位置及短摘录，避免只记录章节序号。",
+        "检索结果让命中词始终出现在可见摘要中，并保留到具体位置的定位信息。"
+      ]
+    },
+    {
+      "name": "Readest",
+      "category": "项目",
+      "score": 78,
+      "dimensions": [
+        {
+          "label": "需求契合",
+          "score": 29,
+          "reason": "全书/书架检索、批注、书签与续读体验高度相关；多端同步、账户和多格式管理超出范围。"
+        },
+        {
+          "label": "工程证据",
+          "score": 19,
+          "reason": "真实 E2E 阅读/批注测试、专门进度自动保存 hook、检索结果组件和测试指南可查。未独立运行上游套件。"
+        },
+        {
+          "label": "采用成本",
+          "score": 5,
+          "reason": "Next.js 16 与 Tauri v2 的完整应用；直接迁移会改变当前单文件/file://交付与技术边界，复制源码还需处理 AGPL 条款。"
+        },
+        {
+          "label": "维护状态",
+          "score": 15,
+          "reason": "默认分支提交 2026-09-15，v0.12.8 发布 2026-09-07，仓库未归档。"
+        },
+        {
+          "label": "许可清晰",
+          "score": 10,
+          "reason": "根许可证为 AGPL-3.0，清晰但不等于适合直接嵌入现有产物。"
+        }
+      ],
+      "url": "https://github.com/readest/readest",
+      "source": "https://github.com/readest/readest/blob/main/README.md",
+      "license": "AGPL-3.0",
+      "licenseUrl": "https://github.com/readest/readest/blob/1e2996a581af0e5e538eef98a458a2ae12b58a23/LICENSE",
+      "updated": "2026-09-15",
+      "commit": "https://github.com/readest/readest/commit/1e2996a581af0e5e538eef98a458a2ae12b58a23",
+      "summary": "完整多平台电子书阅读器",
+      "decision": "作为阅读流程与保存策略标杆，保留现有静态实现。",
+      "boundaries": [
+        "借鉴交互和验收方式；不复制 React/Tauri 应用壳，也不引入同步账户。",
+        "只看可见 README 功能不等于每个平台和版本都已由我们实测。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/readest/readest/blob/main/README.md",
+          "supports": "技术栈、书内/书架检索、批注等官方功能说明。"
+        },
+        {
+          "url": "https://github.com/readest/readest/blob/1e2996a581af0e5e538eef98a458a2ae12b58a23/apps/readest-app/src/app/reader/hooks/useProgressAutoSave.ts",
+          "supports": "跳过初始/无变化保存；visibilitychange 与 pagehide 时立即持久化；避免临时预览覆盖续读位置。"
+        },
+        {
+          "url": "https://github.com/readest/readest/blob/1e2996a581af0e5e538eef98a458a2ae12b58a23/apps/readest-app/src/app/reader/components/sidebar/SearchResults.tsx",
+          "supports": "按章节分组、可见命中摘要、结果选中状态、匹配计数和无结果反馈。"
+        },
+        {
+          "url": "https://github.com/readest/readest/blob/1e2996a581af0e5e538eef98a458a2ae12b58a23/apps/readest-app/e2e/tests/annotation.spec.ts",
+          "supports": "批注与返回选择状态的端到端行为验证。"
+        }
+      ],
+      "adopt": [
+        "主手册也在 visibilitychange hidden 时立即保存位置，减少手机切后台丢最近滚动的概率。",
+        "搜索按书籍/章节组织，保留清楚的命中片段和总数。",
+        "做可导出/导入的本地阅读数据备份，恢复时校验版本、类型和文本长度；先预览再执行合并。"
+      ]
+    },
+    {
+      "name": "Pagefind",
+      "category": "项目",
+      "score": 77,
+      "dimensions": [
+        {
+          "label": "需求契合",
+          "score": 26,
+          "reason": "静态站点全库索引、子章节结果、中文分词适配相关；双击 file:// 的约束影响直接采用。"
+        },
+        {
+          "label": "工程证据",
+          "score": 19,
+          "reason": "官方中文分词说明、搜索 API、WASM/worker 配置与大量 integration_tests 可查。未运行上游测试。"
+        },
+        {
+          "label": "采用成本",
+          "score": 8,
+          "reason": "需新增构建索引、索引碎片和运行时加载；源码 fetch 索引与 WASM，不能直接视为本项目 file:// 唯一检索方案。"
+        },
+        {
+          "label": "维护状态",
+          "score": 14,
+          "reason": "默认分支提交 2026-09-13，v1.5.2 发布 2026-04-12，未归档。"
+        },
+        {
+          "label": "许可清晰",
+          "score": 10,
+          "reason": "根目录 MIT 许可证可查。"
+        }
+      ],
+      "url": "https://github.com/Pagefind/pagefind",
+      "source": "https://pagefind.app/docs/multilingual/",
+      "license": "MIT",
+      "licenseUrl": "https://github.com/Pagefind/pagefind/blob/10ebe24a712f7a68f1df7e482739f4fcbce5459e/LICENSE",
+      "updated": "2026-09-13",
+      "commit": "https://github.com/Pagefind/pagefind/commit/10ebe24a712f7a68f1df7e482739f4fcbce5459e",
+      "summary": "静态站点搜索",
+      "decision": "本轮借鉴搜索结构；HTTP 发布版本再考虑直接接入。",
+      "boundaries": [
+        "本轮不替换成需要运行时 fetch 的单一路径；未实际测试 Pagefind file:// 兼容性，限制判断来自源码机制。",
+        "中文分词不能等同于古文精确片段检索，仍需用书中原句验证。"
+      ],
+      "evidence": [
+        {
+          "url": "https://pagefind.app/docs/multilingual/",
+          "supports": "中文由 extended 版本提供无空格分词，查询分词和带引号短语有不同语义。"
+        },
+        {
+          "url": "https://pagefind.app/docs/running-pagefind/",
+          "supports": "在 HTML 构建后创建 pagefind 搜索包与索引文件。"
+        },
+        {
+          "url": "https://pagefind.app/docs/hosting/",
+          "supports": "WebAssembly、默认 Web Worker 及 CSP 配置边界。"
+        },
+        {
+          "url": "https://github.com/Pagefind/pagefind/blob/10ebe24a712f7a68f1df7e482739f4fcbce5459e/pagefind_web_js/lib/coupled_search.ts#L132",
+          "supports": "运行时 fetch 加载；file:// 风险是据源码机制作出的工程判断，而非声称官方已保证或禁止。"
+        },
+        {
+          "url": "https://github.com/Pagefind/pagefind/tree/10ebe24a712f7a68f1df7e482739f4fcbce5459e/pagefind/integration_tests",
+          "supports": "章节锚点、输入防抖、结果加载、worker 回退等集成测试可查。"
+        }
+      ],
+      "adopt": [
+        "借鉴按章节返回多处子结果与清晰的书籍过滤。",
+        "采用输入防抖、结果限量渲染和逐步展示，保证检索时正文仍可操作。",
+        "若以后部署成 HTTP 静态站，再以真实中文语料评估 Pagefind；离线 HTML 保留独立可用的检索路径。"
+      ]
+    },
+    {
+      "name": "Playwright Test Agents（planner / generator / healer）",
+      "category": "Agent",
+      "score": 92,
+      "dimensions": [
+        {
+          "score": 34,
+          "max": 35,
+          "label": "需求契合",
+          "reason": "测试规划、浏览器实操、代码生成直接覆盖离线阅读和续读；无中文语料搜索算法。"
+        },
+        {
+          "score": 19,
+          "max": 20,
+          "label": "工程证据",
+          "reason": "微软官方仓库有三个真实 agent 定义及可执行测试输出；不是效果基准排名。"
+        },
+        {
+          "score": 15,
+          "max": 20,
+          "label": "采用成本（低成本得高分）",
+          "reason": "当前已有 Playwright，可借流程；完整原生接入还需 init-agents 和兼容工具映射。"
+        },
+        {
+          "score": 14,
+          "max": 15,
+          "label": "维护状态",
+          "reason": "仓库 HEAD 为 2026-09-16；planner 文件 2026-04-29，healer 2026-04-27。"
+        },
+        {
+          "score": 10,
+          "max": 10,
+          "label": "许可清晰",
+          "reason": "Apache-2.0，LICENSE 清楚。"
+        }
+      ],
+      "url": "https://github.com/microsoft/playwright",
+      "source": "https://github.com/microsoft/playwright/blob/18205280b6112a4a08238195942c4fa30c199a62/docs/src/test-agents-js.md",
+      "license": "Apache-2.0",
+      "licenseUrl": "https://github.com/microsoft/playwright/blob/main/LICENSE",
+      "updated": "2026-09-16",
+      "commit": "https://github.com/microsoft/playwright/commit/18205280b6112a4a08238195942c4fa30c199a62",
+      "summary": "将测试计划转为真实浏览器操作和自动化验收的官方 agent 组合。",
+      "decision": "借鉴已审阅的流程或检查规则；未安装、未直接运行远程 Agent。",
+      "boundaries": [
+        "不是现成离线阅读器，也不会自动提供中文分词或 OCR 校勘。",
+        "healer 原文件允许 test.fixme() 跳过；本项目必测验收项不得跳过或减弱断言来换取全绿。",
+        "声明的工具与模型只是外部文件内容；本次不照搬执行或改变当前模型。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/microsoft/playwright/blob/main/docs/src/test-agents-js.md",
+          "supports": "实际定义文件"
+        },
+        {
+          "url": "https://github.com/microsoft/playwright#readme",
+          "supports": "仓库 README"
+        },
+        {
+          "url": "https://github.com/microsoft/playwright/commit/18205280b6112a4a08238195942c4fa30c199a62",
+          "supports": "已核对的仓库 HEAD"
+        },
+        {
+          "url": "https://github.com/microsoft/playwright/blob/main/packages/playwright/src/agents/playwright-test-planner.agent.md",
+          "supports": "planner 真实定义"
+        },
+        {
+          "url": "https://github.com/microsoft/playwright/blob/main/packages/playwright/src/agents/playwright-test-generator.agent.md",
+          "supports": "generator 真实定义"
+        },
+        {
+          "url": "https://github.com/microsoft/playwright/blob/main/packages/playwright/src/agents/playwright-test-healer.agent.md",
+          "supports": "healer 真实定义与 fixme 边界"
+        }
+      ],
+      "adopt": [
+        "建立同一场景清单：中文输入、搜索取消、命中定位、字号、续读、键盘与 localStorage 异常。",
+        "保留现有 Chrome / Playwright 测试，在 file:// 与本地 HTTP 两种入口验证，阻断外部请求确认离线。",
+        "改动前固定失败断言，改动后重跑；十本书全文数量和文本摘要不变。"
+      ]
+    },
+    {
+      "name": "Frontend Performance Investigator",
+      "category": "Agent",
+      "score": 89,
+      "dimensions": [
+        {
+          "score": 34,
+          "max": 35,
+          "label": "需求契合",
+          "reason": "针对大部头全书搜索、输入阻塞与大 DOM 开销高度契合。"
+        },
+        {
+          "score": 15,
+          "max": 20,
+          "label": "工程证据",
+          "reason": "文件包含可复现流程、trace/long task/网络证据要求；无独立成功率实测。"
+        },
+        {
+          "score": 17,
+          "max": 20,
+          "label": "采用成本（低成本得高分）",
+          "reason": "可把调查流程交给现有 agent；完整工具声明偏 Chrome DevTools MCP，需要适配。"
+        },
+        {
+          "score": 13,
+          "max": 15,
+          "label": "维护状态",
+          "reason": "仓库当日活跃且未归档；未取得定义文件的最后修改日期。"
+        },
+        {
+          "score": 10,
+          "max": 10,
+          "label": "许可清晰",
+          "reason": "仓库 MIT。"
+        }
+      ],
+      "url": "https://github.com/github/awesome-copilot",
+      "source": "https://github.com/github/awesome-copilot/blob/9ce814859eaa473178a1463ee3aa0c54a8860b86/agents/frontend-performance-investigator.agent.md",
+      "license": "MIT",
+      "licenseUrl": "https://github.com/github/awesome-copilot/blob/main/LICENSE",
+      "updated": "2026-09-16",
+      "commit": "https://github.com/github/awesome-copilot/commit/9ce814859eaa473178a1463ee3aa0c54a8860b86",
+      "summary": "先量测真实慢操作，再把瓶颈映射到代码的浏览器性能调查 agent。",
+      "decision": "借鉴已审阅的流程或检查规则；未安装、未直接运行远程 Agent。",
+      "boundaries": [
+        "它是提示词定义，不是独立性能分析引擎。",
+        "不把本机 headless 的一次耗时当真实用户 INP 或全设备保证。",
+        "不为追求分数上框架、引入远程 CDN 或牺牲全文/深链接。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/github/awesome-copilot/blob/main/agents/frontend-performance-investigator.agent.md",
+          "supports": "实际定义文件"
+        },
+        {
+          "url": "https://github.com/github/awesome-copilot#readme",
+          "supports": "仓库 README"
+        },
+        {
+          "url": "https://github.com/github/awesome-copilot/commit/9ce814859eaa473178a1463ee3aa0c54a8860b86",
+          "supports": "已核对的仓库 HEAD"
+        }
+      ],
+      "adopt": [
+        "以《毛选》输入常见单字、长词、清除搜索为固定基准，记录输入到结果时间及超过 50 ms 的长任务。",
+        "比较预处理搜索文本、分批检索、取消过期任务、只改命中章节 DOM 的前后效果。",
+        "保留全文静态 HTML 与离线约束；先定位实际耗时，再决定是否引入索引库。"
+      ]
+    },
+    {
+      "name": "Accessibility Runtime Tester",
+      "category": "Agent",
+      "score": 88,
+      "dimensions": [
+        {
+          "score": 33,
+          "max": 35,
+          "label": "需求契合",
+          "reason": "目录、搜索、折叠工具栏、阅读焦点和动态状态均是核心审查项。"
+        },
+        {
+          "score": 14,
+          "max": 20,
+          "label": "工程证据",
+          "reason": "定义要求运行键盘路径并提供证据；并非辅助技术兼容认证。"
+        },
+        {
+          "score": 18,
+          "max": 20,
+          "label": "采用成本（低成本得高分）",
+          "reason": "本地浏览器和 Playwright 已可执行主要流程；实际读屏器仍需单独实测。"
+        },
+        {
+          "score": 13,
+          "max": 15,
+          "label": "维护状态",
+          "reason": "仓库当日活跃且未归档；未取得定义文件的最后修改日期。"
+        },
+        {
+          "score": 10,
+          "max": 10,
+          "label": "许可清晰",
+          "reason": "仓库 MIT。"
+        }
+      ],
+      "url": "https://github.com/github/awesome-copilot",
+      "source": "https://github.com/github/awesome-copilot/blob/9ce814859eaa473178a1463ee3aa0c54a8860b86/agents/accessibility-runtime-tester.agent.md",
+      "license": "MIT",
+      "licenseUrl": "https://github.com/github/awesome-copilot/blob/main/LICENSE",
+      "updated": "2026-09-16",
+      "commit": "https://github.com/github/awesome-copilot/commit/9ce814859eaa473178a1463ee3aa0c54a8860b86",
+      "summary": "围绕真实键盘与焦点行为，而非只检查静态标签的无障碍 agent。",
+      "decision": "借鉴已审阅的流程或检查规则；未安装、未直接运行远程 Agent。",
+      "boundaries": [
+        "自动扫描通过不等于无障碍合规；未实测的读屏器行为不声称已通过。",
+        "不因宽泛模板要求随意给原生控件加 ARIA 或多余键盘处理。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/github/awesome-copilot/blob/main/agents/accessibility-runtime-tester.agent.md",
+          "supports": "实际定义文件"
+        },
+        {
+          "url": "https://github.com/github/awesome-copilot#readme",
+          "supports": "仓库 README"
+        },
+        {
+          "url": "https://github.com/github/awesome-copilot/commit/9ce814859eaa473178a1463ee3aa0c54a8860b86",
+          "supports": "已核对的仓库 HEAD"
+        }
+      ],
+      "adopt": [
+        "仅用 Tab / Shift+Tab / Enter / Space 完成选书、展开工具、搜索、进入命中、返回结果与翻章。",
+        "检查搜索后焦点是否落到正文、折叠区域是否有不可见焦点、粘性栏是否遮住目标。",
+        "检查中文状态文案、aria-current / aria-expanded / 状态播报，320 px 下仍能完成流程。"
+      ]
+    },
+    {
+      "name": "Impeccable",
+      "category": "Skill",
+      "score": 92,
+      "dimensions": [
+        {
+          "score": 34,
+          "max": 35,
+          "label": "需求契合",
+          "reason": "覆盖 Read 场景、响应式、排版、精简控件与已有视觉风格，最贴合本手册。"
+        },
+        {
+          "score": 17,
+          "max": 20,
+          "label": "工程证据",
+          "reason": "真实 SKILL.md 有命令分流、设计上下文和有限轮次验证；视觉判断仍需人工/浏览器证据。"
+        },
+        {
+          "score": 17,
+          "max": 20,
+          "label": "采用成本（低成本得高分）",
+          "reason": "本地已安装并已有 PRODUCT / DESIGN；只读适用参考即可，无须重复安装完整 CLI。"
+        },
+        {
+          "score": 14,
+          "max": 15,
+          "label": "维护状态",
+          "reason": "仓库 HEAD 为 2026-09-16，未归档；当前定义 version 4.3.1。"
+        },
+        {
+          "score": 10,
+          "max": 10,
+          "label": "许可清晰",
+          "reason": "Apache-2.0，明确 LICENSE。"
+        }
+      ],
+      "url": "https://github.com/pbakaus/impeccable",
+      "source": "https://github.com/pbakaus/impeccable/blob/f2c7051853848826aac2f4646581d62a732155ad/.agents/skills/impeccable/SKILL.md",
+      "license": "Apache-2.0",
+      "licenseUrl": "https://github.com/pbakaus/impeccable/blob/main/LICENSE",
+      "updated": "2026-09-16",
+      "commit": "https://github.com/pbakaus/impeccable/commit/f2c7051853848826aac2f4646581d62a732155ad",
+      "summary": "适合在既有墨绿、纸色、黄铜视觉下改善阅读层级与细节。",
+      "decision": "使用本机现有技能，保留既有视觉；未安装远程版本。",
+      "boundaries": [
+        "其远程脚本或二进制会改变安装与 hooks；本次仅参考现有本地技能，不自动升级安装。",
+        "视觉评分不是正确性证明，必须配合全文完整性、离线与行为测试。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/pbakaus/impeccable/blob/main/.agents/skills/impeccable/SKILL.md",
+          "supports": "实际定义文件"
+        },
+        {
+          "url": "https://github.com/pbakaus/impeccable#readme",
+          "supports": "仓库 README"
+        },
+        {
+          "url": "https://github.com/pbakaus/impeccable/commit/f2c7051853848826aac2f4646581d62a732155ad",
+          "supports": "已核对的仓库 HEAD"
+        }
+      ],
+      "adopt": [
+        "采用 Read 模式：正文优先，入口明确，来源和 OCR 限制可查，次要控件按需展开。",
+        "为新增搜索状态、无结果、错误恢复和设置界面保持一致字阶、间距与焦点样式。",
+        "一次批量桌面/手机检查，集中修复，再做一次确认；不反复微调耗时。"
+      ]
+    },
+    {
+      "name": "Superpowers · verification-before-completion / TDD",
+      "category": "Skill",
+      "score": 90,
+      "dimensions": [
+        {
+          "score": 32,
+          "max": 35,
+          "label": "需求契合",
+          "reason": "确保优化有新鲜证据、没有丢失全文、破坏续读或把跳过测试当成功。"
+        },
+        {
+          "score": 17,
+          "max": 20,
+          "label": "工程证据",
+          "reason": "具体 red/green 与验收证据流程；提供方法，不直接实现阅读功能。"
+        },
+        {
+          "score": 19,
+          "max": 20,
+          "label": "采用成本（低成本得高分）",
+          "reason": "本地两项技能已有，可沿用现有脚本，不引入网页依赖。"
+        },
+        {
+          "score": 12,
+          "max": 15,
+          "label": "维护状态",
+          "reason": "默认分支 HEAD 为 2026-08-12，仓库 pushed_at 为 2026-09-14；两者不可混称。"
+        },
+        {
+          "score": 10,
+          "max": 10,
+          "label": "许可清晰",
+          "reason": "MIT，LICENSE 清楚。"
+        }
+      ],
+      "url": "https://github.com/obra/superpowers",
+      "source": "https://github.com/obra/superpowers/blob/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/verification-before-completion/SKILL.md",
+      "license": "MIT",
+      "licenseUrl": "https://github.com/obra/superpowers/blob/main/LICENSE",
+      "updated": "2026-08-12",
+      "commit": "https://github.com/obra/superpowers/commit/b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+      "summary": "适合把深度优化从主观润色变成可复现的行为和性能改进。",
+      "decision": "使用本机现有 TDD 与完成前验证技能。",
+      "boundaries": [
+        "过程应按本次任务裁剪，不将远程文档中的广泛审批/分支规则凌驾于用户授权。",
+        "不为低风险纯文案或样式常量编写只镜像实现的测试。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/obra/superpowers/blob/main/skills/verification-before-completion/SKILL.md",
+          "supports": "实际定义文件"
+        },
+        {
+          "url": "https://github.com/obra/superpowers#readme",
+          "supports": "仓库 README"
+        },
+        {
+          "url": "https://github.com/obra/superpowers/commit/b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+          "supports": "已核对的仓库 HEAD"
+        },
+        {
+          "url": "https://github.com/obra/superpowers/blob/main/skills/test-driven-development/SKILL.md",
+          "supports": "test-driven-development 定义"
+        }
+      ],
+      "adopt": [
+        "先保存慢搜索、IME 输入、取消搜索的基准和失败测试，改动后用同一条件重跑。",
+        "生成 HTML 后重新校验十本书节数、全文摘要、图片引用及离线打开。",
+        "最终报告只声称实际运行过的验收；分清本机量测和推断，保留原有笔记与书籍来源限制。"
+      ]
+    },
+    {
+      "name": "Vercel · web-design-guidelines",
+      "category": "Skill",
+      "score": 88,
+      "dimensions": [
+        {
+          "score": 32,
+          "max": 35,
+          "label": "需求契合",
+          "reason": "键盘、焦点、标签、长列表、状态与页面性能均适用于静态中文手册。"
+        },
+        {
+          "score": 15,
+          "max": 20,
+          "label": "工程证据",
+          "reason": "SKILL 指向实际维护的审查规则；主要为检查表，需实测补足。"
+        },
+        {
+          "score": 20,
+          "max": 20,
+          "label": "采用成本（低成本得高分）",
+          "reason": "可以逐条映射现有 HTML / CSS，无需 React / Next 或运行时依赖。"
+        },
+        {
+          "score": 13,
+          "max": 15,
+          "label": "维护状态",
+          "reason": "skill 仓库 HEAD 2026-08-28；规则源 HEAD 2026-08-18，均未归档。"
+        },
+        {
+          "score": 8,
+          "max": 10,
+          "label": "许可清晰",
+          "reason": "README 声明 MIT，但 GitHub API license=null；规则源另有 MIT LICENSE。"
+        }
+      ],
+      "url": "https://github.com/vercel-labs/agent-skills",
+      "source": "https://github.com/vercel-labs/agent-skills/blob/063bee94c3f4df8453406c830b0a7df0f2860278/skills/web-design-guidelines/SKILL.md",
+      "license": "MIT (README declaration)",
+      "licenseUrl": "https://github.com/vercel-labs/agent-skills/blob/main/README.md#license",
+      "updated": "2026-08-28",
+      "commit": "https://github.com/vercel-labs/agent-skills/commit/063bee94c3f4df8453406c830b0a7df0f2860278",
+      "summary": "作为薄层审查清单，补足搜索与长文界面的语义、焦点和性能细节。",
+      "decision": "借鉴已审阅的流程或检查规则；未安装、未直接运行远程 Agent。",
+      "boundaries": [
+        "规则中存在 React 等场景建议，应只采用适合原生静态 HTML 的部分。",
+        "参考规则需联网获取，但生成的手册不得因此增加网络依赖。",
+        "不把一条通用“长列表虚拟化”建议直接用于删除离线全文或破坏浏览器查找/打印。"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/vercel-labs/agent-skills/blob/main/skills/web-design-guidelines/SKILL.md",
+          "supports": "实际定义文件"
+        },
+        {
+          "url": "https://github.com/vercel-labs/agent-skills#readme",
+          "supports": "仓库 README"
+        },
+        {
+          "url": "https://github.com/vercel-labs/agent-skills/commit/063bee94c3f4df8453406c830b0a7df0f2860278",
+          "supports": "已核对的仓库 HEAD"
+        },
+        {
+          "url": "https://github.com/vercel-labs/web-interface-guidelines/blob/main/command.md",
+          "supports": "实际规则源"
+        },
+        {
+          "url": "https://github.com/vercel-labs/web-interface-guidelines/blob/main/LICENSE",
+          "supports": "规则源 MIT LICENSE"
+        }
+      ],
+      "adopt": [
+        "审查输入控件标签、按钮语义、搜索状态、焦点可见及 heading anchor 的滚动留白。",
+        "检查长列表与正文的大量 DOM 更新、批量读写布局、原图尺寸和延迟加载。",
+        "将默认英文规则本地化为中文文案，保留纸色阅读主题和原生控件。"
+      ]
+    }
+  ],
+  "performance": [
+    {
+      "query": "的",
+      "beforeMs": 773,
+      "afterMs": 236,
+      "beforeMarks": 52376,
+      "afterMarks": 0,
+      "beforeMutations": 1961,
+      "afterMutations": 1,
+      "beforeLongMs": 482,
+      "afterLongMs": 0
+    },
+    {
+      "query": "实事求是",
+      "beforeMs": 586,
+      "afterMs": 225,
+      "beforeMarks": 19,
+      "afterMarks": 0,
+      "beforeMutations": 1961,
+      "afterMutations": 1,
+      "beforeLongMs": 333,
+      "afterLongMs": 0
+    },
+    {
+      "query": "清除搜索",
+      "beforeMs": 465,
+      "afterMs": 223,
+      "beforeMarks": 0,
+      "afterMarks": 0,
+      "beforeMutations": 1961,
+      "afterMutations": 1,
+      "beforeLongMs": 206,
+      "afterLongMs": 0
+    }
+  ],
+  "acceptance": {
+    "method": "自定义功能验收清单，20项等权各5分。前后均按同一项判断；不是第三方评级或美学评分。",
+    "checks": [
+      {
+        "name": "十本书均有完整收录HTML",
+        "before": true,
+        "after": true,
+        "evidence": "十书静态正文与章节数量检查"
+      },
+      {
+        "name": "正文与转换数据逐节一致",
+        "before": true,
+        "after": true,
+        "evidence": "逐节DOM文本比对，未删除正文以换性能"
+      },
+      {
+        "name": "原PDF页序覆盖且原图可用",
+        "before": true,
+        "after": true,
+        "evidence": "1962页毛选、512页炁体各覆盖一次；图像路径存在"
+      },
+      {
+        "name": "原始来源与文件可追溯",
+        "before": true,
+        "after": true,
+        "evidence": "来源说明保留，文件SHA-256一致"
+      },
+      {
+        "name": "OCR全文已逐字校勘",
+        "before": false,
+        "after": false,
+        "evidence": "未完成；仍保留原图核对与识别局限说明"
+      },
+      {
+        "name": "本书中文词句精确搜索",
+        "before": true,
+        "after": true,
+        "evidence": "本书搜索及匹配高亮行为检查"
+      },
+      {
+        "name": "跨十本书搜索并返回同组结果",
+        "before": false,
+        "after": true,
+        "evidence": "新增全库搜索回归，跨书跳转与返回"
+      },
+      {
+        "name": "大书三种搜索场景未见50ms长任务",
+        "before": false,
+        "after": true,
+        "evidence": "毛选单字、长词、清除；本机隔离Chrome单次前后对比"
+      },
+      {
+        "name": "中文输入法组词期间不提前检索",
+        "before": false,
+        "after": true,
+        "evidence": "主手册与全书页的composition事件回归"
+      },
+      {
+        "name": "主手册搜索结果直达命中句子",
+        "before": true,
+        "after": true,
+        "evidence": "内经长章节深处命中可见且焦点在阅读区"
+      },
+      {
+        "name": "全书键盘可跳过长目录",
+        "before": false,
+        "after": true,
+        "evidence": "新增skip链接，真实Tab/Enter焦点检查"
+      },
+      {
+        "name": "重新打开保留节内阅读位置",
+        "before": true,
+        "after": true,
+        "evidence": "主手册与独立全书续读/深链接回归"
+      },
+      {
+        "name": "调整字号不重置阅读位置",
+        "before": true,
+        "after": true,
+        "evidence": "滚动比例与节内位置行为回归"
+      },
+      {
+        "name": "320/390px阅读无横向溢出",
+        "before": true,
+        "after": true,
+        "evidence": "浏览器布局检查和批量截图"
+      },
+      {
+        "name": "心得可导出为可读文字",
+        "before": true,
+        "after": true,
+        "evidence": "Markdown下载含原样心得"
+      },
+      {
+        "name": "JSON可备份心得及两种阅读位置",
+        "before": false,
+        "after": true,
+        "evidence": "下载内容与新浏览器恢复行为检查"
+      },
+      {
+        "name": "导入预览与合并保留现有记录",
+        "before": false,
+        "after": true,
+        "evidence": "冲突心得、首节半读位置和默认新浏览器边界"
+      },
+      {
+        "name": "错误备份与存储异常有可恢复反馈",
+        "before": false,
+        "after": true,
+        "evidence": "错误格式、HTML纯文字、写入失败保留原记录"
+      },
+      {
+        "name": "完整包可用file协议断网阅读",
+        "before": true,
+        "after": true,
+        "evidence": "浏览器离线模式、本地文件读取与全库搜索"
+      },
+      {
+        "name": "成品不依赖远程脚本或服务",
+        "before": true,
+        "after": true,
+        "evidence": "运行时网络请求检查；开发测试库不进入页面"
+      }
+    ]
+  }
+}

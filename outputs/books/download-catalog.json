@@ -1,0 +1,1207 @@
+{
+  "title": "地球 Online 本地书库",
+  "downloaded": "2026-09-16",
+  "books": [
+    {
+      "id": "yijing",
+      "title": "易经",
+      "kind": "text",
+      "files": [
+        {
+          "label": "《易经》合并全文 TXT",
+          "path": "books/yijing/yijing-complete.txt",
+          "bytes": 101044,
+          "sha256": "246abca25e6a7f38a35643678163fd4a84bc0efe1a10f7eed7cdccd28cdb60be",
+          "sourceUrl": "https://github.com/kanripo/KR1a0001"
+        },
+        {
+          "label": "来源仓库目录与版本说明",
+          "path": "books/yijing/Readme.org",
+          "bytes": 3364,
+          "sha256": "3f24641163c17d8e5758d3dafd0973a6fede76c51d097530159715b7717cfeb3",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/Readme.org"
+        },
+        {
+          "label": "〈乾〉第一 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_001.txt",
+          "bytes": 5771,
+          "sha256": "ce3b0074441a31f2756d7b7c8687e7d25d2cdecb6c97a7c744d2879d7bcc430f",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_001.txt"
+        },
+        {
+          "label": "〈坤〉第二 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_002.txt",
+          "bytes": 3548,
+          "sha256": "aecc28f8cd433f983b5e180f7fbc47afd6a95753df2e0b76bfae3b37c1847b8e",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_002.txt"
+        },
+        {
+          "label": "〈屯〉第三 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_003.txt",
+          "bytes": 1865,
+          "sha256": "beb830994a19507d9b344d686bc5c627861b7956c3a49f57473204964edc7f2b",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_003.txt"
+        },
+        {
+          "label": "〈蒙〉第四 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_004.txt",
+          "bytes": 1895,
+          "sha256": "5311e2c1b0256a844504c73d3ee39fbbed30f0e1a59bec846b12ea53e0585067",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_004.txt"
+        },
+        {
+          "label": "〈需〉第五 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_005.txt",
+          "bytes": 1892,
+          "sha256": "c4ed7071cbddfae5ef7b9d233a5d794bb22f37ba599f227b7d941e9df6fbedfe",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_005.txt"
+        },
+        {
+          "label": "〈訟〉第六 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_006.txt",
+          "bytes": 1931,
+          "sha256": "2f46d13c523df456809377b2a10359fe4db7c10cbed983ed07112431733da050",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_006.txt"
+        },
+        {
+          "label": "〈師〉第七 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_007.txt",
+          "bytes": 1832,
+          "sha256": "779e5924ebc6c53707dc610eac68ffe8d1a7b18ac4f5f98d8a88a9b066f532c7",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_007.txt"
+        },
+        {
+          "label": "〈比〉第八 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_008.txt",
+          "bytes": 1892,
+          "sha256": "9ddc182af90558e3b957e7728a24102905a84bce7ea9ee8ba9b05d66400d8438",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_008.txt"
+        },
+        {
+          "label": "〈小畜〉第九 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_009.txt",
+          "bytes": 1775,
+          "sha256": "fa269d162868f183d4744fcf8a6f249a57312bef5764bb005c22046610144948",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_009.txt"
+        },
+        {
+          "label": "〈履〉第十 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_010.txt",
+          "bytes": 1805,
+          "sha256": "d6c93349b6011e243843d82ea0de1d32181d85ad24892d0092d2435a9d1a31a6",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_010.txt"
+        },
+        {
+          "label": "〈泰〉第十一 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_011.txt",
+          "bytes": 1920,
+          "sha256": "851c2b2320f0069c9a7cd71e3a5201432a51ff3d0f6dbbb25ec4c9cb5c201f56",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_011.txt"
+        },
+        {
+          "label": "〈否〉第十二 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_012.txt",
+          "bytes": 1776,
+          "sha256": "db30ab2d6eb8db39953a12df5649eea7acac527be556cbe2ebb88e00c97be915",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_012.txt"
+        },
+        {
+          "label": "〈同人〉第十三 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_013.txt",
+          "bytes": 1914,
+          "sha256": "509bcc32c50aecdee4909b071c511aab709f263e12ba59ce6057afc4017e4ffe",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_013.txt"
+        },
+        {
+          "label": "〈大有〉第十四 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_014.txt",
+          "bytes": 1716,
+          "sha256": "31de6184aa4d3bcb6fd57f7d96c5019eb50a0c4759dda52961a689c84f6fb658",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_014.txt"
+        },
+        {
+          "label": "〈謙〉第十五 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_015.txt",
+          "bytes": 1797,
+          "sha256": "492b3272e9a266c2ff8d8045d03ac5abd0576e79e26fef8d4c5de85786be46e6",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_015.txt"
+        },
+        {
+          "label": "〈豫〉第十六 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_016.txt",
+          "bytes": 1815,
+          "sha256": "318d2af66d1c42d5372b691f57953045be7317af5b939b9a13460573e95e6d4d",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_016.txt"
+        },
+        {
+          "label": "〈隨〉第十七 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_017.txt",
+          "bytes": 1773,
+          "sha256": "0fb0ebf371f1299949266fda19927e273e7e1e024307f5bb070330cf61271891",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_017.txt"
+        },
+        {
+          "label": "〈蠱〉第十八 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_018.txt",
+          "bytes": 1770,
+          "sha256": "43fd6d5cd8f324ee3f606f503af4782896fa75a6ee5696f22d0595826b362945",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_018.txt"
+        },
+        {
+          "label": "〈臨〉第十九 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_019.txt",
+          "bytes": 1683,
+          "sha256": "211a66d87eaa83ac3cfcfc96e8b0e5d46c18bb16d2daf8a5e47f46d5265deab7",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_019.txt"
+        },
+        {
+          "label": "〈觀〉第二十 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_020.txt",
+          "bytes": 1659,
+          "sha256": "4b06c9b29dcbf244ffe466f7684035f7a7deb6c8ec8b8f569bf2e069e464229d",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_020.txt"
+        },
+        {
+          "label": "〈噬嗑〉第二十一 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_021.txt",
+          "bytes": 1620,
+          "sha256": "67381d9f634a844e77de7affda8aacc5e1a9b97267f625f5dfa04c77c2a365f4",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_021.txt"
+        },
+        {
+          "label": "〈賁〉第二十二 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_022.txt",
+          "bytes": 1770,
+          "sha256": "386d3f18809d56c0b8281cc1887cad04e9036f920ecc0fdbfb64c8361bdd601f",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_022.txt"
+        },
+        {
+          "label": "〈剝〉第二十三 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_023.txt",
+          "bytes": 1629,
+          "sha256": "05fdfcdd667a280767841d5067e5e10d0e6ba9ac2eae1c377fd692dcc18c9cfe",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_023.txt"
+        },
+        {
+          "label": "〈復〉第二十四 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_024.txt",
+          "bytes": 1887,
+          "sha256": "3770fd411b38de5c8e885b9fd3251d003cb8875051d8748f50a3e7189c5db360",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_024.txt"
+        },
+        {
+          "label": "〈无妄〉第二十五 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_025.txt",
+          "bytes": 1812,
+          "sha256": "bd3c37f6cf5789c982cc08060040a0dd9645a3437faacbfe001585585f5d1825",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_025.txt"
+        },
+        {
+          "label": "〈大畜〉第二十六 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_026.txt",
+          "bytes": 1656,
+          "sha256": "29b2c0ca681a6045727b02dc831a3644ff31ddbe5dd5f2e286bb0ea58681c503",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_026.txt"
+        },
+        {
+          "label": "〈頤〉第二十七 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_027.txt",
+          "bytes": 1806,
+          "sha256": "86798a930c4a92658a39f87447a5edcd3636a3a10883d3d6b7b192c8b3060cf5",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_027.txt"
+        },
+        {
+          "label": "〈大過〉第二十八 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_028.txt",
+          "bytes": 1782,
+          "sha256": "70bb9bd33de55b6ae4e7b1f69427a0dd3768ae9213260d2ccb77c9296a90d411",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_028.txt"
+        },
+        {
+          "label": "〈習坎〉第二十九 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_029.txt",
+          "bytes": 1887,
+          "sha256": "66bfb74fae11951975f877f6ce5008fb46851bfb74dfba1074dcca673d3df592",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_029.txt"
+        },
+        {
+          "label": "〈離〉第三十 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_030.txt",
+          "bytes": 1758,
+          "sha256": "f75752d317ee50f0bbf2b99875d4a9745901a3c7d960a5620efb3d83e582a391",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_030.txt"
+        },
+        {
+          "label": "〈咸〉第三十一 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_031.txt",
+          "bytes": 1815,
+          "sha256": "58c8b16f8b7e94101a6db3313a8421519f117057d5b447cd21bfee1c4378afb8",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_031.txt"
+        },
+        {
+          "label": "〈恆〉第三十二 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_032.txt",
+          "bytes": 1896,
+          "sha256": "ce5de9f1e18a64fecfd0f930a879835d9c04302776a1c600b8f92fed077dcb29",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_032.txt"
+        },
+        {
+          "label": "〈遯〉第三十三 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_033.txt",
+          "bytes": 1695,
+          "sha256": "23ec703f5c542f5f4e97ab4005a2be9bb65d5aede160ca4ef975353b7127cc37",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_033.txt"
+        },
+        {
+          "label": "〈大壯〉第三十四 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_034.txt",
+          "bytes": 1731,
+          "sha256": "06abd563a6a498675d191db459ef115f14283d6c347fa25b4b80fef288ace98d",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_034.txt"
+        },
+        {
+          "label": "〈晉〉第三十五 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_035.txt",
+          "bytes": 1743,
+          "sha256": "719356fec0d980622ebaef28ff0d4cff715f067b04f2686100cd688f528b2ee2",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_035.txt"
+        },
+        {
+          "label": "〈明夷〉第三十六 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_036.txt",
+          "bytes": 1854,
+          "sha256": "33380905a0ec3b463e1c1b5f2054317424ad61e2bc479a03ba58b854b3c6c3c9",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_036.txt"
+        },
+        {
+          "label": "〈家人〉第三十七 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_037.txt",
+          "bytes": 1776,
+          "sha256": "a087e2001406ef31b51627e570770cc887e810add4dd50677fe951a5e987c806",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_037.txt"
+        },
+        {
+          "label": "〈睽〉第三十八 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_038.txt",
+          "bytes": 1971,
+          "sha256": "900637af3ec7bad7d84ffa83ac744a78f9eda81592ad8fde613c94b4fd00722d",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_038.txt"
+        },
+        {
+          "label": "〈蹇〉第三十九 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_039.txt",
+          "bytes": 1770,
+          "sha256": "8cdf1e207a2937cec71f88a77ebfcce7191677087d0e307f7a72ba40cb0b596e",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_039.txt"
+        },
+        {
+          "label": "〈解〉第四十 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_040.txt",
+          "bytes": 1860,
+          "sha256": "4cfe0b5587c84098786ca89467b8b2444a10a43672f109400313bb9e8fe65bae",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_040.txt"
+        },
+        {
+          "label": "〈損〉第四十一 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_041.txt",
+          "bytes": 1911,
+          "sha256": "2a0f76a66fc957bf7802c7fe552a066b91537ce7275e58e79b694138b4ba656a",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_041.txt"
+        },
+        {
+          "label": "〈益〉第四十二 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_042.txt",
+          "bytes": 1977,
+          "sha256": "569f7482f545e496a4573ee1aa076817de7fa865bc46e96e337f44e1a1a47740",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_042.txt"
+        },
+        {
+          "label": "〈夬〉第四十三 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_043.txt",
+          "bytes": 1962,
+          "sha256": "d90f43ed6a79e987d5939a3734fd8ae1d6d707ef01704e78964a8796cd4873e2",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_043.txt"
+        },
+        {
+          "label": "〈姤〉第四十四 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_044.txt",
+          "bytes": 1791,
+          "sha256": "f8927962081486249097b501e8a1f9073bd931697a4634b03038490b578a503e",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_044.txt"
+        },
+        {
+          "label": "〈萃〉第四十五 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_045.txt",
+          "bytes": 1872,
+          "sha256": "b7001ef04b281df6caa6fd286134d5d1613e4e783f9b0e6bb12baddbf61ae947",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_045.txt"
+        },
+        {
+          "label": "〈升〉第四十六 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_046.txt",
+          "bytes": 1605,
+          "sha256": "7cfed37b07ec5be8ff80193efa5e7fdd773bf1e38157d0df53d0af9604b56a05",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_046.txt"
+        },
+        {
+          "label": "〈困〉第四十七 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_047.txt",
+          "bytes": 2025,
+          "sha256": "208db8c3050409db56b8ca052e0277ec7fdd30ec07ec0da70b0c01aca53d4033",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_047.txt"
+        },
+        {
+          "label": "〈井〉第四十八 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_048.txt",
+          "bytes": 1866,
+          "sha256": "0010631a92d70ad1796ed76f97cd384f6a0159de44777d567bc0e50f05c14f67",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_048.txt"
+        },
+        {
+          "label": "〈革〉第四十九 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_049.txt",
+          "bytes": 1884,
+          "sha256": "261c9bedf9557403ca68ebe29df88bc27f3efb7f656dc49d8d024aa09987a49f",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_049.txt"
+        },
+        {
+          "label": "〈鼎〉第五十 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_050.txt",
+          "bytes": 1833,
+          "sha256": "3f7d56da704908ccebec0a8eb2ecc02cc2413fd47c0623e2acd19d3386e2bb90",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_050.txt"
+        },
+        {
+          "label": "〈震〉第五十一 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_051.txt",
+          "bytes": 1965,
+          "sha256": "16d65107e0f76c0dabd60638505ffece6cfd2fd87112fcb516c390a197ec629d",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_051.txt"
+        },
+        {
+          "label": "〈艮〉第五十二 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_052.txt",
+          "bytes": 1749,
+          "sha256": "f5885b954e3cee6b02ebd6d609a8a18080de07912c83a230c9b911f67af27a52",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_052.txt"
+        },
+        {
+          "label": "〈漸〉第五十三 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_053.txt",
+          "bytes": 1863,
+          "sha256": "fba1ec193608148a16f6c11581675e35ef866451b8286c0403bf68e256e207cb",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_053.txt"
+        },
+        {
+          "label": "〈歸妹〉第五十四 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_054.txt",
+          "bytes": 1893,
+          "sha256": "29920309d47abdb40d51ea3f7b4eeaa614f9f5a9e5646a4e2194fc16bcc713c6",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_054.txt"
+        },
+        {
+          "label": "〈豐〉第五十五 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_055.txt",
+          "bytes": 2079,
+          "sha256": "d57e1afa083166108ac66effd38dac15162983884a58ca887910aa6750cba786",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_055.txt"
+        },
+        {
+          "label": "〈旅〉第五十六 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_056.txt",
+          "bytes": 1866,
+          "sha256": "1864bfabfe52eaee4ea840774f8b89fd7d1ae023a0f6135a8b9bc8dfa386c2ef",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_056.txt"
+        },
+        {
+          "label": "〈巽〉第五十七 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_057.txt",
+          "bytes": 1788,
+          "sha256": "6b3b973bac09c9db8f086be74c5bf49caac60028d21149d0f5e5c5479a7ba8a2",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_057.txt"
+        },
+        {
+          "label": "〈兌〉第五十八 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_058.txt",
+          "bytes": 1614,
+          "sha256": "5eb85036276366c67a5248aaf45fc7b214c71fa77728c005186ccedd4fc58121",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_058.txt"
+        },
+        {
+          "label": "〈渙〉第五十九 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_059.txt",
+          "bytes": 1656,
+          "sha256": "9f7bfbcbf547bec0938347541df26d41acc3c27a2dce32a83876cd4023be0386",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_059.txt"
+        },
+        {
+          "label": "〈節〉第六十 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_060.txt",
+          "bytes": 1710,
+          "sha256": "f47700e18c08adec5ea399d3c17af6d34eb436a63334a088b2a5d17b8f0d9943",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_060.txt"
+        },
+        {
+          "label": "〈中孚〉第六十一 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_061.txt",
+          "bytes": 1740,
+          "sha256": "27644ab0ac8ab9046ce52756aa9d78ee5a0889800d5431a900dfe090c166cb86",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_061.txt"
+        },
+        {
+          "label": "〈小過〉第六十二 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_062.txt",
+          "bytes": 2085,
+          "sha256": "8d9e2c4aca8ece3b2d430f0e200eb3166f9749ec17330adec5f8d1259db364bd",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_062.txt"
+        },
+        {
+          "label": "〈既濟〉第六十三 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_063.txt",
+          "bytes": 1758,
+          "sha256": "5cd625c46c875135d6eb0e6b2b10ec64b3a87aae4296bd742271df1d1aa91ff9",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_063.txt"
+        },
+        {
+          "label": "〈未濟〉第六十四 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_064.txt",
+          "bytes": 1770,
+          "sha256": "a257dd859081a00335ac2c7087c826b5d37319180f59ebdaab327623615c2c74",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_064.txt"
+        },
+        {
+          "label": "〈繫辭上〉 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_065.txt",
+          "bytes": 12524,
+          "sha256": "63ab286b220bf490e5070727a6cf5c1fa0fc9dcce791e53599dee099c8352a16",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_065.txt"
+        },
+        {
+          "label": "〈繫辭下〉 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_066.txt",
+          "bytes": 10332,
+          "sha256": "d80dc891c9641f6b9ea1d6771e5c0fed4c508aebe032e107abae4243302c262f",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_066.txt"
+        },
+        {
+          "label": "〈說卦〉 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_067.txt",
+          "bytes": 5172,
+          "sha256": "da6132079587120c3592cfd468a9698f77d5278ac2d7b8c6374300af0f21cfef",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_067.txt"
+        },
+        {
+          "label": "〈序卦〉 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_068.txt",
+          "bytes": 4753,
+          "sha256": "0cbb83b7c8eb38304d3503d0c62f88fcdadd8b060bf59e53d60476b0a77099e0",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_068.txt"
+        },
+        {
+          "label": "〈雜卦〉 · 原始 TXT",
+          "path": "books/yijing/KR1a0001_069.txt",
+          "bytes": 1964,
+          "sha256": "b2441f68a9d1f06cae7657239f88bc234ad09f0d5b33f2566a736ad69f2c9761",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR1a0001/master/KR1a0001_069.txt"
+        }
+      ],
+      "sourceNote": "来源：kanripo/KR1a0001，底本标识 tls；保存仓库全部 69 个正文 TXT 和原目录。阅读版仅移除 Mandoku 页码、段落符及技术元数据，并合并同段内换行；原始 TXT 保留全部来源标记，正文文字未改写。包含六十四卦（彖、象及乾坤文言随卦收录），并含《繫辭上》《繫辭下》《說卦》《序卦》《雜卦》。",
+      "sectionCount": 69,
+      "characterCount": 21337,
+      "textCharacters": 32939,
+      "encoding": "UTF-8",
+      "volumes": [
+        {
+          "id": "full",
+          "label": "易经",
+          "sectionCount": 69,
+          "pages": null
+        }
+      ],
+      "htmlPath": "html/yijing.html",
+      "characters": 32939
+    },
+    {
+      "id": "daodejing",
+      "title": "道德经",
+      "kind": "text",
+      "files": [
+        {
+          "label": "《道德经》合并全文 TXT",
+          "path": "books/daodejing/daodejing-complete.txt",
+          "bytes": 26801,
+          "sha256": "1597ee2db8834c36de89d6fcd5ec8cf1f0741a8189fec4eb5c5f6617681b0d12",
+          "sourceUrl": "https://github.com/kwezdj123/DAODEJING/blob/master/道德经.md"
+        },
+        {
+          "label": "道德经 · 原始 Markdown",
+          "path": "books/daodejing/daodejing-original.md",
+          "bytes": 31333,
+          "sha256": "8c14648ecc50bcfb003b6bc908b58e454911e6cf7d8e79f00432ec2aac808a98",
+          "sourceUrl": "https://raw.githubusercontent.com/kwezdj123/DAODEJING/master/道德经.md"
+        }
+      ],
+      "sourceNote": "来源：kwezdj123/DAODEJING 的《道德经.md》，共 81 章。阅读版去掉标题 HTML、Markdown 代码围栏及字间排版空格，保留源文用字与标点；原始 Markdown 随附。",
+      "sectionCount": 81,
+      "characterCount": 5191,
+      "textCharacters": 7320,
+      "encoding": "UTF-8",
+      "volumes": [
+        {
+          "id": "full",
+          "label": "道德经",
+          "sectionCount": 81,
+          "pages": null
+        }
+      ],
+      "htmlPath": "html/daodejing.html",
+      "characters": 7320
+    },
+    {
+      "id": "zhuangzi",
+      "title": "庄子",
+      "kind": "text",
+      "files": [
+        {
+          "label": "《庄子》合并全文 TXT",
+          "path": "books/zhuangzi/zhuangzi-complete.txt",
+          "bytes": 246674,
+          "sha256": "540a0743af184a1c08325cdc4d5e9ef7a698f2708ec383d83bd750150254dafb",
+          "sourceUrl": "https://github.com/kanripo/KR5c0126"
+        },
+        {
+          "label": "来源仓库目录与版本说明",
+          "path": "books/zhuangzi/Readme.org",
+          "bytes": 1735,
+          "sha256": "815165d474c432a81c0a9350d894739649a6d77300879334b150c0ecb02322c7",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/Readme.org"
+        },
+        {
+          "label": "〈逍遙遊〉第一 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_001.txt",
+          "bytes": 9901,
+          "sha256": "bea1b72c0add5dcfbb8bbd652f87516dde8f9f572c33fd6471872c47dfcc7671",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_001.txt"
+        },
+        {
+          "label": "〈齊物論〉第二 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_002.txt",
+          "bytes": 21108,
+          "sha256": "fce1856136bd07e5024fcef90cc8d573e794b9ec2ada303c1e972d9e1e95f938",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_002.txt"
+        },
+        {
+          "label": "〈養生主〉第三 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_003.txt",
+          "bytes": 4252,
+          "sha256": "ba7f4021e79ad6eb99b916368aee2245525d1866d39b62157bb1d0df9f0ccac0",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_003.txt"
+        },
+        {
+          "label": "〈人間世〉第四 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_004.txt",
+          "bytes": 19925,
+          "sha256": "14fbc8989be973a146db7e9cd417498b95979a31e6ddab1fa37af97e38207fd8",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_004.txt"
+        },
+        {
+          "label": "〈德充符〉第五 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_005.txt",
+          "bytes": 12886,
+          "sha256": "686b706b2e70d3add8765aa6b24f6c2e97fbb8fb1b85777a61659ed2db735d6f",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_005.txt"
+        },
+        {
+          "label": "〈大宗師〉第六 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_006.txt",
+          "bytes": 20781,
+          "sha256": "54bf82df807b58d46f89c0ef4751fbefd7aaa0da0f49060f827b3e21c0455a56",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_006.txt"
+        },
+        {
+          "label": "〈應帝王〉第七 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_007.txt",
+          "bytes": 8122,
+          "sha256": "7f7f287748422dd6f8536d479e22cc44ad5be2a02a7f09ea142c2170faf24c12",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_007.txt"
+        },
+        {
+          "label": "〈駢拇〉第八 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_008.txt",
+          "bytes": 6682,
+          "sha256": "b28a5f998cd6a3dc43490d067febdfbf3f220440c2f72031f27180a0afd2f936",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_008.txt"
+        },
+        {
+          "label": "〈馬蹄〉第九 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_009.txt",
+          "bytes": 4257,
+          "sha256": "033c4e8be1db5b7a0dcbef181a10f5fb855bb662d2a74d91f10c7933926269b3",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_009.txt"
+        },
+        {
+          "label": "〈胠篋〉第十 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_010.txt",
+          "bytes": 8519,
+          "sha256": "b1649772ed37b1f313b40ba6c1ad54c5e6044d4dd17e534c9b7f247fde1ca70d",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_010.txt"
+        },
+        {
+          "label": "〈在宥〉第十一 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_011.txt",
+          "bytes": 16864,
+          "sha256": "4673c3ad1b92ef9fe2142af713f65c1486512a929c319c7f63d6f5a8ff5e1226",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_011.txt"
+        },
+        {
+          "label": "〈天地〉第十二 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_012.txt",
+          "bytes": 24087,
+          "sha256": "84ba5f82af4e08a3823db40414e619cb3bbd4689271c1e0381c4a80b4dfe8e73",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_012.txt"
+        },
+        {
+          "label": "〈天道〉第十三 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_013.txt",
+          "bytes": 18181,
+          "sha256": "8f3a496db5e95db543a716cebaea7924ff3dc8873dff2027d9f6b624dbcf089c",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_013.txt"
+        },
+        {
+          "label": "〈天運〉第十四 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_014.txt",
+          "bytes": 19730,
+          "sha256": "c6895288be8693123cd312f7c6e5d9c5c7efc7571aee835af3ee9d9c40ec017d",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_014.txt"
+        },
+        {
+          "label": "〈刻意〉第十五 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_015.txt",
+          "bytes": 4875,
+          "sha256": "99f2fd40427e96f226a944b2b27f6b0f0614d49a424171b13f32c314b7a99bcf",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_015.txt"
+        },
+        {
+          "label": "〈繕性〉第十六 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_016.txt",
+          "bytes": 4865,
+          "sha256": "74833786a8e67e283169f7975d5f553865ac8437af9bdc9698705700862f15b6",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_016.txt"
+        },
+        {
+          "label": "〈秋水〉第十七 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_017.txt",
+          "bytes": 20117,
+          "sha256": "6926f8662b7270c81a9436331d483d2b5f7faa31e0179ab61e4722989ac6605b",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_017.txt"
+        },
+        {
+          "label": "〈至樂〉第十八 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_018.txt",
+          "bytes": 9974,
+          "sha256": "5dd9588fb2397bb6e1c493c65d87036ab5a71b9eb56cd4684a54f5a2049f0e4c",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_018.txt"
+        },
+        {
+          "label": "〈達生〉第十九 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_019.txt",
+          "bytes": 18200,
+          "sha256": "8727162d96fd29611eda1521c1302d33e9d8caa3edd536aea583dcfbbf50a858",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_019.txt"
+        },
+        {
+          "label": "〈山木〉第二十 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_020.txt",
+          "bytes": 16796,
+          "sha256": "e7aa16f5221fd777ed4acf1e6b301b1e06161a33a3ac0ea0036c9f15b075aee4",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_020.txt"
+        },
+        {
+          "label": "〈田子方〉第二十一 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_021.txt",
+          "bytes": 17496,
+          "sha256": "47a6c9f8edb60282c2f51d70131888aa4c1106249a79afbe45380903e40ecfb0",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_021.txt"
+        },
+        {
+          "label": "〈知北遊〉第二十二 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_022.txt",
+          "bytes": 21192,
+          "sha256": "e550fd8758b77e666f76ed75720789bdf42e9713c05f95d38b4fd01d3cec0a10",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_022.txt"
+        },
+        {
+          "label": "〈庚桑楚〉第二十三 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_023.txt",
+          "bytes": 17818,
+          "sha256": "a7df5375636ddfff3ab99b10750b0731bf47ae8037b4d7be3d0d7442a0bc74d2",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_023.txt"
+        },
+        {
+          "label": "〈徐无鬼〉第二十四 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_024.txt",
+          "bytes": 25581,
+          "sha256": "67b89d1509e7961d87ea5521c8ee55f8bc839d9af58209e78c2048d1fa578f3c",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_024.txt"
+        },
+        {
+          "label": "〈則陽〉第二十五 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_025.txt",
+          "bytes": 19526,
+          "sha256": "a88c286610fed46ac98ac01a2581a67ded916d7fd009d18c24ee675369aa9856",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_025.txt"
+        },
+        {
+          "label": "〈外物〉第二十六 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_026.txt",
+          "bytes": 11622,
+          "sha256": "6a6a9040782ddc11cb002fcb93ce150ed21da7eecb885c985c9d740f22cdb2da",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_026.txt"
+        },
+        {
+          "label": "〈寓言〉第二十七 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_027.txt",
+          "bytes": 6973,
+          "sha256": "afda5fa037ed61f726df77cfba267879a10d5554f6ee0d6d8388233878e94e03",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_027.txt"
+        },
+        {
+          "label": "〈讓王〉第二十八 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_028.txt",
+          "bytes": 20201,
+          "sha256": "acff0e1ca0e69b67b5392ee01aa0192aaf10ff8c4d697a1facecf71da7feb9a2",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_028.txt"
+        },
+        {
+          "label": "〈盜跖〉第二十九 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_029.txt",
+          "bytes": 21671,
+          "sha256": "3f41319c60b83f1248c6e8e49166ef9faefee5b6bd0a5d78231c3ddcc367af33",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_029.txt"
+        },
+        {
+          "label": "〈說劍〉第三十 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_030.txt",
+          "bytes": 7920,
+          "sha256": "2d79bff2720f5b8ff49cc36540ed0fa5b8379170c79e72c9ca8a16d19028fd6b",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_030.txt"
+        },
+        {
+          "label": "〈漁父〉第三十一 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_031.txt",
+          "bytes": 12117,
+          "sha256": "34d5089ad55babfeb85140c8c4fe1b0561db2ba4c697284065321c6dc6063fb5",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_031.txt"
+        },
+        {
+          "label": "〈列御寇〉第三十二 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_032.txt",
+          "bytes": 12311,
+          "sha256": "47cf9ce80adde5fad157845ed5038aea5650fa6af0fdb39097e43418996dc334",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_032.txt"
+        },
+        {
+          "label": "〈天下〉第三十三 · 原始 TXT",
+          "path": "books/zhuangzi/KR5c0126_033.txt",
+          "bytes": 18411,
+          "sha256": "71e13f3b9914d15cecd41d512dfd109f4b366438257b2eac222c66eda7e41187",
+          "sourceUrl": "https://raw.githubusercontent.com/kanripo/KR5c0126/master/KR5c0126_033.txt"
+        }
+      ],
+      "sourceNote": "来源：kanripo/KR5c0126，底本标识 CHANT；保存仓库全部 33 个正文 TXT 和原目录。阅读版仅移除 Mandoku 页码、段落符及技术元数据，并合并同段内换行；原始 TXT 保留全部来源标记，正文文字未改写。",
+      "sectionCount": 33,
+      "characterCount": 65255,
+      "textCharacters": 83459,
+      "encoding": "UTF-8",
+      "volumes": [
+        {
+          "id": "full",
+          "label": "庄子",
+          "sectionCount": 33,
+          "pages": null
+        }
+      ],
+      "htmlPath": "html/zhuangzi.html",
+      "characters": 83470
+    },
+    {
+      "id": "bazi",
+      "title": "四柱八字 · 子平真诠评注",
+      "kind": "text",
+      "files": [
+        {
+          "label": "GitHub原文件（GB18030）",
+          "path": "books/bazi/source-ziping-gb18030.txt",
+          "bytes": 56534,
+          "sha256": "d4168da8f731e986e5628c6baf2a531949ae38e2edd4d19739e3130165908287",
+          "sourceUrl": "https://github.com/Carl-Tsoi/Lucky/blob/main/books/子平真诠.txt"
+        },
+        {
+          "label": "完整文字版（UTF-8）",
+          "path": "books/bazi/ziping-utf8.txt",
+          "bytes": 83156,
+          "sha256": "7eeaa403724dde4f11f13aa4b7ff45d6e04ee92aaba2b1ac40d9c11396f95db2",
+          "sourceUrl": "https://github.com/Carl-Tsoi/Lucky/blob/main/books/子平真诠.txt"
+        }
+      ],
+      "sourceNote": "“四柱八字”为图片中的主题，未确定同名书的作者或版本。本地收录相关典籍《子平真诠评注》的GitHub原文件全部内容；目录列48篇，正文第2–47篇缺少章标题，因此保留原文并按自然段分为连续阅读段，未据目录伪造正文分章。原文件为GB18030，阅读副本为UTF-8；原目录还存在“四十二”重复编号等讹误，均保留。",
+      "volumes": [
+        {
+          "id": "full",
+          "label": "四柱八字 · 子平真诠评注",
+          "sectionCount": 14,
+          "pages": null
+        }
+      ],
+      "htmlPath": "html/bazi.html",
+      "sectionCount": 14,
+      "characters": 28492
+    },
+    {
+      "id": "neijing",
+      "title": "黄帝内经 · 素问与灵枢经",
+      "kind": "text",
+      "files": [
+        {
+          "label": "《素问》GitHub原文件（GB18030）",
+          "path": "books/neijing/source-suwen-gb18030.txt",
+          "bytes": 233845,
+          "sha256": "ea3c93b19f3af1d4f3eb77d3bf5abc3b0a4677ecbf36e31971cc86846f3e7472",
+          "sourceUrl": "https://github.com/xiaopangxia/TCM-Ancient-Books/blob/master/437-黄帝内经素问.txt"
+        },
+        {
+          "label": "《灵枢经》原文件（UTF-8）",
+          "path": "books/neijing/lingshu-utf8.txt",
+          "bytes": 237906,
+          "sha256": "8f021438ccf275b31208967ee886b6ee90957c4c2ac081431b121826403b0729",
+          "sourceUrl": "https://gist.github.com/newrerio/d21e734ac435890620283f29560c79a3"
+        },
+        {
+          "label": "《素问》与《灵枢经》合并全文（UTF-8）",
+          "path": "books/neijing/neijing-complete-utf8.txt",
+          "bytes": 584946,
+          "sha256": "d849e03fe65ae13a1aac0cacd2e9dfb3ade29cb7ac354ad0a62ffeabb8e8b4d8",
+          "sourceUrl": "https://github.com/xiaopangxia/TCM-Ancient-Books/blob/master/437-黄帝内经素问.txt",
+          "sourceUrls": [
+            "https://github.com/xiaopangxia/TCM-Ancient-Books/blob/master/437-黄帝内经素问.txt",
+            "https://gist.github.com/newrerio/d21e734ac435890620283f29560c79a3"
+          ]
+        }
+      ],
+      "sourceNote": "本地收录《素问》81篇（另含原序、后序及书目信息）与《灵枢经》81篇。此《素问》数字文本的第72篇《刺法论》、第73篇《本病论》均有正文，属于补入这两篇的流传本，不是两篇存目无文的版本；保留源文件的字词、注记与可能的录入讹误。素问源文件为GB18030，灵枢原文件为UTF-8；已合并为UTF-8全文。医学文献按原貌收录。",
+      "volumes": [
+        {
+          "id": "full",
+          "label": "黄帝内经 · 素问与灵枢经",
+          "sectionCount": 166,
+          "pages": null
+        }
+      ],
+      "htmlPath": "html/neijing.html",
+      "sectionCount": 166,
+      "characters": 197391
+    },
+    {
+      "id": "yunqi",
+      "title": "五运六气 · 素问运气七篇",
+      "kind": "text",
+      "files": [
+        {
+          "label": "《天元纪大论》原始Markdown",
+          "path": "books/yunqi/suwen-66.md",
+          "bytes": 15664,
+          "sha256": "14b0b450fdd8f381adb4d7a79c98ae62d5214453787b7e424cdd257862e6da97",
+          "sourceUrl": "https://github.com/dhicoc/wuyun-liuqi-skills/blob/master/rag-knowledge-base/literature/%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%C2%B7%E7%B4%A0%E9%97%AE%E5%A4%A9%E5%85%83%E7%BA%AA%E5%A4%A7%E8%AE%BA%EF%BC%88%E5%8D%B7%E7%AC%AC%E5%8D%81%E4%B9%9D%C2%B7%E5%A4%A9%E5%85%83%E7%B4%80%E5%A4%A7%E8%AB%96%E7%AF%87%E7%AC%AC%E5%85%AD%E5%8D%81%E5%85%AD%EF%BC%89.md"
+        },
+        {
+          "label": "《五运行大论》原始Markdown",
+          "path": "books/yunqi/suwen-67.md",
+          "bytes": 25375,
+          "sha256": "40a81ab8748bcb248857815295dfe299435aabf9ad519e895206da164386e43d",
+          "sourceUrl": "https://github.com/dhicoc/wuyun-liuqi-skills/blob/master/rag-knowledge-base/literature/%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%C2%B7%E7%B4%A0%E9%97%AE%E4%BA%94%E8%BF%90%E8%A1%8C%E5%A4%A7%E8%AE%BA%EF%BC%88%E5%8D%B7%E7%AC%AC%E5%8D%81%E4%B9%9D%C2%B7%E4%BA%94%E9%81%8B%E8%A1%8C%E5%A4%A7%E8%AB%96%E7%AF%87%E7%AC%AC%E5%85%AD%E5%8D%81%E4%B8%83%EF%BC%89.md"
+        },
+        {
+          "label": "《六微旨大论》原始Markdown",
+          "path": "books/yunqi/suwen-68.md",
+          "bytes": 23489,
+          "sha256": "3fac2b942c1451650204c840dad4ea983807bfc45d3982306240627f26d9f806",
+          "sourceUrl": "https://github.com/dhicoc/wuyun-liuqi-skills/blob/master/rag-knowledge-base/literature/%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%C2%B7%E7%B4%A0%E9%97%AE%E5%85%AD%E5%BE%AE%E6%97%A8%E5%A4%A7%E8%AE%BA%EF%BC%88%E5%8D%B7%E7%AC%AC%E5%8D%81%E4%B9%9D%C2%B7%E5%85%AD%E5%BE%AE%E3%AB%96%E5%A4%A7%E8%AB%96%E7%AF%87%E7%AC%AC%E5%85%AD%E5%8D%81%E5%85%AB%EF%BC%89.md"
+        },
+        {
+          "label": "《气交变大论》原始Markdown",
+          "path": "books/yunqi/suwen-69.md",
+          "bytes": 24621,
+          "sha256": "f7a0f9e232991c396dd9120776512876899825bbbe863137a5f008f9086f3680",
+          "sourceUrl": "https://github.com/dhicoc/wuyun-liuqi-skills/blob/master/rag-knowledge-base/literature/%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%C2%B7%E7%B4%A0%E9%97%AE%E6%B0%94%E4%BA%A4%E5%8F%98%E5%A4%A7%E8%AE%BA%EF%BC%88%E5%8D%B7%E7%AC%AC%E4%BA%8C%E5%8D%81%C2%B7%E6%B0%A3%E4%BA%A4%E8%AE%8A%E5%A4%A7%E8%AB%96%E7%AF%87%E7%AC%AC%E5%85%AD%E5%8D%81%E4%B9%9D%EF%BC%89.md"
+        },
+        {
+          "label": "《五常政大论》原始Markdown",
+          "path": "books/yunqi/suwen-70.md",
+          "bytes": 49674,
+          "sha256": "7ff51ab3dfbe7e7f686336f0755b5aaed8e0eb857ae8eb0460c64c5d9a941a52",
+          "sourceUrl": "https://github.com/dhicoc/wuyun-liuqi-skills/blob/master/rag-knowledge-base/literature/%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%C2%B7%E7%B4%A0%E9%97%AE%E4%BA%94%E5%B8%B8%E6%94%BF%E5%A4%A7%E8%AE%BA%EF%BC%88%E5%8D%B7%E7%AC%AC%E4%BA%8C%E5%8D%81%C2%B7%E4%BA%94%E5%B8%B8%E6%94%BF%E5%A4%A7%E8%AB%96%E7%AF%87%E7%AC%AC%E4%B8%83%E5%8D%81%EF%BC%89.md"
+        },
+        {
+          "label": "《六元正纪大论》原始Markdown",
+          "path": "books/yunqi/suwen-71.md",
+          "bytes": 59520,
+          "sha256": "0476e5b18033ac4751962d730ec159205cb8bc04bcf39beeb1dd0a351b501d23",
+          "sourceUrl": "https://github.com/dhicoc/wuyun-liuqi-skills/blob/master/rag-knowledge-base/literature/%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%C2%B7%E7%B4%A0%E9%97%AE%E5%85%AD%E5%85%83%E6%AD%A3%E7%BA%AA%E5%A4%A7%E8%AE%BA%EF%BC%88%E5%8D%B7%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%B8%80%C2%B7%E5%85%AD%E5%85%83%E6%AD%A3%E7%B4%80%E5%A4%A7%E8%AB%96%E7%AF%87%E7%AC%AC%E4%B8%83%E5%8D%81%E4%B8%80%EF%BC%89.md"
+        },
+        {
+          "label": "《至真要大论》原始Markdown",
+          "path": "books/yunqi/suwen-74.md",
+          "bytes": 69955,
+          "sha256": "a49691e4988cb3ebe5f44f31b719265251f2a844b4bcc7ce46a7ee46cfb37a22",
+          "sourceUrl": "https://github.com/dhicoc/wuyun-liuqi-skills/blob/master/rag-knowledge-base/literature/%E9%BB%84%E5%B8%9D%E5%86%85%E7%BB%8F%C2%B7%E7%B4%A0%E9%97%AE%E8%87%B3%E7%9C%9F%E8%A6%81%E5%A4%A7%E8%AE%BA%EF%BC%88%E5%8D%B7%E7%AC%AC%E4%BA%8C%E5%8D%81%E4%BA%8C%C2%B7%E8%87%B3%E7%9C%9F%E8%A6%81%E5%A4%A7%E8%AB%96%E7%AF%87%E7%AC%AC%E4%B8%83%E5%8D%81%E5%9B%9B%EF%BC%89.md"
+        },
+        {
+          "label": "运气七篇合并全文（UTF-8）",
+          "path": "books/yunqi/yunqi-seven-chapters-utf8.txt",
+          "bytes": 265776,
+          "sha256": "08223a60d4333ada8c9e5f5e5e191c8036ff4519f77aa93d04da0920158db630",
+          "sourceUrl": "https://github.com/dhicoc/wuyun-liuqi-skills/tree/master/rag-knowledge-base/literature"
+        }
+      ],
+      "sourceNote": "“五运六气”为图片中的主题，尚未确定具体同名著作。本地收录《素问》运气七篇：第66、67、68、69、70、71、74篇。七份Markdown均已完整下载，源资料据《重广补注黄帝内经素问》（王冰次注、林亿等校正）整理，保留原文及夹注，不是无注白文。阅读版仅去掉文件YAML元数据与重复标题，原始Markdown完整保存。",
+      "volumes": [
+        {
+          "id": "full",
+          "label": "五运六气 · 素问运气七篇",
+          "sectionCount": 7,
+          "pages": null
+        }
+      ],
+      "htmlPath": "html/yunqi.html",
+      "sectionCount": 7,
+      "characters": 93970
+    },
+    {
+      "id": "mao",
+      "title": "毛泽东选集",
+      "kind": "text",
+      "files": [
+        {
+          "label": "第一卷",
+          "path": "books/mao/vol-1.pdf",
+          "bytes": 20953518,
+          "sha256": "c96f5d9a4b736b08f93b1cd14cbb5dc709935f8132126ac045ddbe0618f214ce",
+          "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第一卷].pdf",
+          "pages": 352
+        },
+        {
+          "label": "第二卷",
+          "path": "books/mao/vol-2.pdf",
+          "bytes": 25914549,
+          "sha256": "f8a0b818e0336a85025b3e7aeaa676d4b0b487e872bdbbebb3c26474204dfe64",
+          "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第二卷].pdf",
+          "pages": 458
+        },
+        {
+          "label": "第三卷",
+          "path": "books/mao/vol-3.pdf",
+          "bytes": 19010991,
+          "sha256": "3ff7bbc665fa8da32d54c2626cbc552ce3569487e064938b9d869725835acada",
+          "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第三卷].pdf",
+          "pages": 342
+        },
+        {
+          "label": "第四卷",
+          "path": "books/mao/vol-4.pdf",
+          "bytes": 15092634,
+          "sha256": "7354569ca9da1055c49ff6194eb9714bfbfcb2b99633441b12a35439b8f55b94",
+          "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第四卷].pdf",
+          "pages": 407
+        },
+        {
+          "label": "第五卷",
+          "path": "books/mao/vol-5.pdf",
+          "bytes": 1641026,
+          "sha256": "3d15c0c3b38817cd328a367e3feaa5b43a4a279a8bff1f898f505e430b77b611",
+          "sourceUrl": "https://raw.githubusercontent.com/OriginZero/TheGreatLeaderChairmanMAO/master/毛泽东选集.[第五卷].pdf",
+          "pages": 403
+        },
+        {
+          "label": "HTML 阅读文字导出",
+          "path": "books/mao/mao-complete-utf8.txt",
+          "bytes": 3835732,
+          "sha256": "08f745e7f45b1c69fd5725f3bf6056d75fbb85b6709fba9059df12b1eaa37d15",
+          "derived": true
+        }
+      ],
+      "sourceNote": "第一至第五卷已转换为可选择、可搜索的中文文字，按原 PDF 页序覆盖共1962页，保留肖像、封面与三幅战役地图。第三卷原 PDF 第151页文字截断、第152—153页内容流损坏，已据 echonoshy/Maozedong-xuanji 的《组织起来》文字版补全，并以原PDF第150页末句与第154页首句双向衔接；补文来源及区间在该节单独标明。其余正文直接提取文本层，仅整理排版空白，未逐字校勘。",
+      "ocr": false,
+      "conversion": "PDF 文字提取",
+      "conversionSources": [
+        {
+          "title": "组织起来",
+          "url": "https://github.com/echonoshy/Maozedong-xuanji/blob/master/docs/src/074-组织起来.md",
+          "downloadUrl": "https://raw.githubusercontent.com/echonoshy/Maozedong-xuanji/master/docs/src/074-组织起来.md",
+          "sha256": "021d68d08390d54c5c9f2f0bffc6f7687e4e194295901ac2247d337d9f34412f",
+          "appliesTo": {
+            "volume": "vol-3",
+            "pageStart": 151,
+            "pageEnd": 153
+          },
+          "startBoundary": "前方处于战争环境，还不能做到",
+          "endBoundary": "点因而脱离群众的工作同志"
+        }
+      ],
+      "volumes": [
+        {
+          "id": "vol-1",
+          "label": "第一卷",
+          "sectionCount": 352,
+          "pages": 352
+        },
+        {
+          "id": "vol-2",
+          "label": "第二卷",
+          "sectionCount": 458,
+          "pages": 458
+        },
+        {
+          "id": "vol-3",
+          "label": "第三卷",
+          "sectionCount": 340,
+          "pages": 342
+        },
+        {
+          "id": "vol-4",
+          "label": "第四卷",
+          "sectionCount": 407,
+          "pages": 407
+        },
+        {
+          "id": "vol-5",
+          "label": "第五卷",
+          "sectionCount": 403,
+          "pages": 403
+        }
+      ],
+      "htmlPath": "html/mao.html",
+      "sectionCount": 1960,
+      "characters": 1263866
+    },
+    {
+      "id": "sunzi",
+      "title": "孙子兵法",
+      "kind": "text",
+      "files": [
+        {
+          "label": "《孙子兵法》合并全文 TXT",
+          "path": "books/sunzi/sunzi-complete.txt",
+          "bytes": 23701,
+          "sha256": "decd54956c07bd2d9f2958c89f1d2216c2567acf3e8b406b080d854569ed4d18",
+          "sourceUrl": "https://github.com/hanzhaodeng/chinese-ancient-text/blob/master/孙子兵法.json"
+        },
+        {
+          "label": "孙子兵法 · 原始 JSON",
+          "path": "books/sunzi/sunzi-original.json",
+          "bytes": 23524,
+          "sha256": "a7a0d7bc8686222902a8c4b8914a43264c095758da818c99bd45db5dee9db391",
+          "sourceUrl": "https://raw.githubusercontent.com/hanzhaodeng/chinese-ancient-text/master/孙子兵法.json"
+        }
+      ],
+      "sourceNote": "来源：hanzhaodeng/chinese-ancient-text 的《孙子兵法.json》，保存十三篇全部正文。阅读版按原 JSON 篇名与段落显示，保留源文件中的个别括注和用字；原始 JSON 随附。",
+      "sectionCount": 13,
+      "characterCount": 6074,
+      "textCharacters": 7560,
+      "encoding": "UTF-8",
+      "volumes": [
+        {
+          "id": "full",
+          "label": "孙子兵法",
+          "sectionCount": 13,
+          "pages": null
+        }
+      ],
+      "htmlPath": "html/sunzi.html",
+      "characters": 7560
+    },
+    {
+      "id": "yinfu",
+      "title": "黄帝阴符经",
+      "kind": "text",
+      "files": [
+        {
+          "label": "《黄帝阴符经》GitHub原文件",
+          "path": "books/yinfu/source-yinfu.txt",
+          "bytes": 2035,
+          "sha256": "aa4d6f312fc4e9258ec33ae0367aa175f148b696b3811bc9e9ae038222791079",
+          "sourceUrl": "https://github.com/wenyuange/dao/blob/master/正统道藏洞真部/本文类/黄帝阴符经.txt"
+        },
+        {
+          "label": "完整文字版（UTF-8）",
+          "path": "books/yinfu/yinfu-utf8.txt",
+          "bytes": 2035,
+          "sha256": "aa4d6f312fc4e9258ec33ae0367aa175f148b696b3811bc9e9ae038222791079",
+          "sourceUrl": "https://github.com/wenyuange/dao/blob/master/正统道藏洞真部/本文类/黄帝阴符经.txt"
+        }
+      ],
+      "sourceNote": "《黄帝阴符经》上、中、下三章全文，另保留来源的经名与版本说明。底本为《正统道藏》洞真部本文类。原始UTF-8文件完整保存，未改写原文。",
+      "volumes": [
+        {
+          "id": "full",
+          "label": "黄帝阴符经",
+          "sectionCount": 4,
+          "pages": null
+        }
+      ],
+      "htmlPath": "html/yinfu.html",
+      "sectionCount": 4,
+      "characters": 639
+    },
+    {
+      "id": "qiti",
+      "title": "炁体源流",
+      "kind": "text",
+      "files": [
+        {
+          "label": "上册",
+          "path": "books/qiti/vol-1.pdf",
+          "bytes": 32408186,
+          "sha256": "9ae0ffeca973e686718ee68d5165f266303cb5046c4eafa6cc6898c5535ec511",
+          "sourceUrl": "https://raw.githubusercontent.com/ynhugo/ynhugo.github.io_old/master/post/book/米晶子/resources/炁體源流（上）.pdf",
+          "pages": 234
+        },
+        {
+          "label": "下册",
+          "path": "books/qiti/vol-2.pdf",
+          "bytes": 32915094,
+          "sha256": "4133e52a42c412e134ed2bf9e0e41db1b7001dfaeac2c4f849fb05f02f021aef",
+          "sourceUrl": "https://raw.githubusercontent.com/ynhugo/ynhugo.github.io_old/master/post/book/米晶子/resources/炁體源流（下）.pdf",
+          "pages": 278
+        },
+        {
+          "label": "HTML 阅读文字导出",
+          "path": "books/qiti/qiti-complete-utf8.txt",
+          "bytes": 446107,
+          "sha256": "206938c9256d26c5654312f038f61373b89c2923796359ba1006de82f8580c47",
+          "derived": true
+        }
+      ],
+      "sourceNote": "上下册共512个原文件页面均已纳入（上册234页、下册278页，含封面、图片页与扫描附带信息）。正文源PDF是扫描图，已用本地RapidOCR转换为可选择、搜索的文字，繁体竖排按右至左排序；OCR未逐字校订，可能有漏字、错字、标点或顺序偏差。每页保留PDF内原始扫描图供对照，封面、图示和表格以原页为准，原PDF继续保留。各卷末页原有文字层使用直接抽取。HTML页面序号采用原文件页码，不等同于书内印刷页码。",
+      "ocr": true,
+      "conversion": "PDF 文字提取",
+      "conversionSources": [],
+      "volumes": [
+        {
+          "id": "vol-1",
+          "label": "上册",
+          "sectionCount": 234,
+          "pages": null
+        },
+        {
+          "id": "vol-2",
+          "label": "下册",
+          "sectionCount": 278,
+          "pages": null
+        }
+      ],
+      "htmlPath": "html/qiti.html",
+      "sectionCount": 512,
+      "characters": 147218
+    }
+  ]
+}
