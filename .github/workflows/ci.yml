@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  engine-and-build:
+    name: 远征规则验收与构建可复现
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # 规则验收与游戏构建只用 Node 内置模块，不需要安装依赖。
+      - name: 远征规则验收
+        run: node work/qa-expedition-engine.cjs
+      - name: 重新构建游戏页
+        run: node work/build-game.cjs
+      - name: 成品与源码一致
+        run: git diff --exit-code -- outputs/earth-online-game.html outputs/index.html
