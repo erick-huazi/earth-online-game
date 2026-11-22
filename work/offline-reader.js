@@ -1,4 +1,36 @@
 const localLibrary=__LIBRARY_DATA__;
+const readerParams=new URLSearchParams(location.search);
+const readingGame=createReaderGameNavigation();
+
+function applyReadingEntry(){
+ readingGame.mount({
+  notify:message=>{toast(message);announce(message);},
+  keepReadingTab:()=>pendingNotes.size>0||pendingCompleted.size>0||pendingManualOps.size>0,
+  beforeLeaving:preserveManualBeforeLeaving
+ });
+ const id=readerParams.get('book'),raw=readerParams.get('section');
+ if(!ids.has(id)||!/^\d+$/.test(raw||''))return;
+ const index=Number(raw);
+ if(!Number.isSafeInteger(index)||index>=localLibrary[id].sections.length)return;
+ state.selected=id;
+ readingState.mode='full';
+ if(readingState.offsets[id]?.section!==index)readingState.offsets[id]={section:index,ratio:0};
+ readingState.positions[id]=index;
+ if(save()&&saveReading()){
+  const clean=new URL(location.href);
+  clean.searchParams.delete('book');
+  clean.searchParams.delete('section');
+  try{history.replaceState(history.state,'',clean.href);}catch(e){}
+ }
+}
+
+function preserveManualBeforeLeaving(link){
+ rememberReadingPosition();
+ if(!save()||!saveReading()||window.earthBookmarkStore?.hasPendingChanges()){
+  link.target='_blank';
+  link.rel='noopener';
+ }
+}
 const readingStorageKey='earth-online-reading-v1';
 let readingState={mode:'full',positions:{},offsets:{},fontSize:18,fontChosen:false};
 try{const saved=JSON.parse(localStorage.getItem(readingStorageKey)||'null');if(saved&&typeof saved==='object'){if(['guide','full'].includes(saved.mode))readingState.mode=saved.mode;if(saved.positions&&typeof saved.positions==='object')for(const id of ids)if(Number.isInteger(saved.positions[id])&&saved.positions[id]>=0)readingState.positions[id]=saved.positions[id];if(Number.isInteger(saved.fontSize)){readingState.fontSize=Math.min(26,Math.max(16,saved.fontSize));readingState.fontChosen=saved.fontSize!==18;}if(saved.fontChosen===true)readingState.fontChosen=true;}}catch(e){}
@@ -25,7 +57,14 @@ function renderLocalBook(){
  item.files.filter(f=>f.path.endsWith('.pdf')).forEach(f=>$('original-sources').append(localLink(f,'原版 '+f.label+' PDF ↓')));
  const catalog=document.createElement('a');catalog.href='books/download-catalog.json';catalog.download='download-catalog.json';catalog.textContent='下载记录 ↓';$('original-sources').append(catalog);
  $('source-links').replaceChildren();$('local-downloads').replaceChildren();
- const open=document.createElement('a');open.id='open-full-book';open.className='open-book';open.href=item.htmlPath;open.target='_blank';open.rel='noopener';open.textContent='展开全书 HTML ↗';$('local-downloads').append(open);
+ const open=document.createElement('a');open.id='open-full-book';open.className='open-book';open.href=item.htmlPath;open.rel='noopener';
+ if(readingGame.mode&&storageAvailable){
+  open.textContent='展开全书 HTML';
+  open.addEventListener('click',()=>preserveManualBeforeLeaving(open));
+ }else{
+  open.target='_blank';open.textContent='展开全书 HTML ↗';open.setAttribute('aria-label','展开全书 HTML，在新标签页打开');
+ }
+ $('local-downloads').append(open);
  const downloads=document.createElement('details');downloads.className='download-options';const summary=document.createElement('summary');summary.textContent='保存书籍';downloads.append(summary,localLink({path:item.htmlPath},'保存本书 HTML ↓'));$('local-downloads').append(downloads);
  const txt=textFile(item);if(txt){$('source-links').append(localLink(txt,'下载收录文字 TXT ↓'));downloads.append(localLink(txt,'保存收录文字 TXT ↓'));}
  $('volume-field').hidden=item.volumes.length<2;$('volume-select').replaceChildren();item.volumes.forEach(v=>{const o=document.createElement('option');o.value=v.id;o.textContent=v.label;$('volume-select').append(o);});
@@ -49,7 +88,9 @@ function renderSection(){
  const images=$('section-images');images.replaceChildren();for(const picture of section.images||[]){const figure=document.createElement('figure'),img=document.createElement('img'),caption=document.createElement('figcaption');img.src=picture.path;img.alt=picture.caption||section.title+' 原页';img.loading='lazy';caption.textContent=picture.caption||'原书图页';figure.append(img,caption);if(picture.role==='facsimile'&&text.trim()){const details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='展开本页影像，核对文字与图示';details.append(summary,figure);images.append(details);}else images.append(figure);}
  $('empty-page').hidden=Boolean(text.trim())||Boolean(section.images?.length);$('empty-page').textContent=section.blank?'原文件空白页，已保留页序。':'本页无可提取文字。';
  const within=item.sections.filter(s=>s.volumeId===section.volumeId),localIndex=within.indexOf(section);$('section-position').textContent=(localIndex+1)+' / '+within.length+' 节';$('prev-section').disabled=i===0;$('next-section').disabled=i===item.sections.length-1;
- $('tools-current').textContent=(item.volumes.length>1?volume.label+' · ':'')+(section.pageStart?'第 '+section.pageStart+' 页':section.title);$('open-full-book').href=item.htmlPath+'#section-'+i;restoreReaderPosition(savedRatio());window.earthBookmarkUI?.refresh();window.earthPageJump?.refresh();
+ $('tools-current').textContent=(item.volumes.length>1?volume.label+' · ':'')+(section.pageStart?'第 '+section.pageStart+' 页':section.title);
+ const fullURL=readingGame.carryTo(new URL(item.htmlPath,location.href));fullURL.hash='section-'+i;$('open-full-book').href=fullURL.href;
+ restoreReaderPosition(savedRatio());window.earthBookmarkUI?.refresh();window.earthPageJump?.refresh();
 }
 function goSection(index){rememberReadingPosition();readingState.positions[state.selected]=Math.min(Math.max(0,index),localItem().sections.length-1);readingState.offsets[state.selected]={section:sectionIndex(),ratio:0};saveReading();renderSection();announce('已打开'+localItem().sections[sectionIndex()].title);}
 function openSearchResult(index,bookId=state.selected,searchContext){

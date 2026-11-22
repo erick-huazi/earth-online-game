@@ -40,7 +40,13 @@ function closeQuest(){if($('quest-panel').open)$('quest-panel').close();renderWo
 function renderQuest(){
  const current=state.current;if(!current)return;const chapter=byId.get(current.id),phase=current.phase;
  $('quest-book').textContent=(current.id==='finale'?'终章':`第 ${chapters.indexOf(chapter)+1} 境`)+ ' / '+chapter.book;
- $('quest-reading').href=chapter.reading.href;$('quest-reading').textContent=(chapter.reading.label||'翻开本关原典')+' ↗';
+ const readingLink = $('quest-reading');
+ const bookURL = new URL(chapter.reading.href, location.href);
+ bookURL.searchParams.set('from', 'classic');
+ if (!storageOK) bookURL.searchParams.set('gameTab', 'kept');
+ readingLink.href = bookURL.href;
+ readingLink.target = storageOK ? '_self' : '_blank';
+ readingLink.textContent = (chapter.reading.label || '翻开本关原典') + (storageOK ? '' : '（新标签页）');
  $('quest-intro').hidden=phase!=='intro';$('scene-area').hidden=!['choice','feedback'].includes(phase);$('chapter-result').hidden=phase!=='result';$('hint-box').open=false;
  $('quest-title').textContent=chapter.title;$('quest-story').textContent=chapter.prologue;$('scene-progress').textContent=chapter.subtitle||'入世之旅';
  if(phase==='choice'||phase==='feedback'){
@@ -64,5 +70,9 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
  $('reset-game').addEventListener('click',()=>$('reset-dialog').showModal());$('cancel-reset').addEventListener('click',()=>$('reset-dialog').close());$('confirm-reset').addEventListener('click',()=>{state=fresh();save();$('reset-dialog').close();renderWorld();announce('已重新启程。典籍手册的阅读记录保持原样。');$('start-game').focus();});
  $('export-save').addEventListener('click',exportSave);$('import-save').addEventListener('change',importSave);matchMedia('(max-width:760px)').addEventListener('change',trail);
  let expeditionPriority=false;try{const exp=JSON.parse(localStorage.getItem('earth-online-expedition-v2')||'null');expeditionPriority=!!(exp?.run&&window.EarthExpedition?.validateRestore(exp.run));}catch(e){}
- renderWorld();if(state.current&&!expeditionPriority&&!location.hash.startsWith('#run='))showQuest();
+ renderWorld();
+ const destination = location.hash;
+ const resumeClassic = destination === '#classic-story' ||
+   (!expeditionPriority && destination !== '#expedition' && !destination.startsWith('#run='));
+ if (state.current && resumeClassic) showQuest();
 })();

@@ -1,6 +1,17 @@
 (() => {
   'use strict';
   const bookId = __BOOK_ID__;
+  const readingGame = createReaderGameNavigation();
+  readingGame.mount({notify: message => { document.getElementById('search-state').textContent = message; }});
+  const manualLinks = document.querySelectorAll('[data-manual-return]');
+  const manualURL = readingGame.carryTo(new URL('../earth-online-manual.html', location.href));
+  manualURL.searchParams.set('book', bookId);
+  manualURL.hash = 'reader';
+  for (const link of manualLinks) link.addEventListener('click', () => {
+    if (window.earthBookmarkStore?.hasPendingChanges()) { link.target = '_blank'; link.rel = 'noopener'; }
+  });
+  let manualSection = -1;
+
   const storageKey = 'earth-online-full-book-v1:' + bookId;
   const sections = Array.from(document.querySelectorAll('.book-section'));
   const paragraphs = sections.map(section => section.querySelector('.prose'));
@@ -123,6 +134,15 @@
   }
 
   function setActive(index) {
+    // Reading controls and the book heading can sit above chapter one.
+    // A visit to those controls should keep the last actual chapter as the return target.
+    const atHeading = index === 0 && sections[0].getBoundingClientRect().top > readingInset() + 4;
+    const returnIndex = atHeading && lastBodyPosition ? indexById.get(lastBodyPosition.sectionId) : index;
+    if (returnIndex !== manualSection) {
+      manualSection = returnIndex;
+      manualURL.searchParams.set('section', returnIndex);
+      for (const link of manualLinks) link.href = manualURL.href;
+    }
     jump.value = sections[index].id;
     if (activeIndex === index) return;
     if (activeIndex >= 0) directoryLinks[activeIndex].removeAttribute('aria-current');
@@ -400,7 +420,7 @@
     focus:()=>sections[currentIndex()].focus({preventScroll:true}),
     save:savePosition,
     open:entry=>{
-      if(entry.bookId!==bookId){const target=new URL(entry.bookId+'.html',location.href);target.searchParams.set('bookmark',entry.section);target.hash='section-'+entry.section;location.href=target.href;return false;}
+      if(entry.bookId!==bookId){const target=readingGame.carryTo(new URL(entry.bookId+'.html',location.href));target.searchParams.set('bookmark',entry.section);target.hash='section-'+entry.section;location.href=target.href;return false;}
       navigateTo('section-'+entry.section);
     }
   });

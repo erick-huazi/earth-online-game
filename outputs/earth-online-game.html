@@ -18,14 +18,57 @@
 .exp-option-fatal{border-color:#b9775a!important}.exp-deltas .exp-fatal{font-weight:700}.exp-record-note{color:var(--gold)!important;font-size:12px!important;letter-spacing:.08em;margin:10px 0 0}
 .exp-key-hint{display:none;font-size:10px;color:#93a78c;margin:14px 0 0;letter-spacing:.06em}@media (hover:hover) and (pointer:fine){.exp-key-hint{display:block}}
 @media (max-width:420px){.exp-ending-grid{gap:4px}.exp-ending-chip{padding:5px 2px}}
+.exp-hero-actions:has(#exp-resume:not([hidden])) #exp-daily-start {
+  background: transparent;
+  color: var(--ink);
+  border-color: #788769;
+}
+.exp-ending p.exp-comparison {
+  color: #d8dbbe;
+  margin: 16px auto;
+  max-width: 46ch;
+}
+.exp-ending p.exp-comparison[data-result="improved"] { color: var(--gold); }
+.exp-recap > summary { min-height: 44px; padding-block: 12px; }
+.exp-recap ol.exp-recap-list {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+.exp-recap-station {
+  padding: 15px 0;
+  border-bottom: 1px solid #465f48;
+}
+.exp-recap-station h4 {
+  font: 17px/1.55 var(--serif);
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.exp-recap-station p.exp-recap-route,
+.exp-recap-station p.exp-recap-insight {
+  font-size: 12px;
+  color: #c0caaa;
+}
+.exp-recap-station .exp-recap-resources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  padding: 0;
+  margin: 9px 0 0;
+  list-style: none;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: #d4ddc3;
+}
+.exp-recap-resources [data-after="0"] { color: #efb78f; }
 </style></head>
 <body>
 <noscript><p style="padding:24px;color:#ede9d9;background:#141e1a">山河远征需要启用 JavaScript 才能游玩；典籍手册的正文仍可直接阅读。</p></noscript>
 <a class="skip" href="#expedition">跳到山河远征</a>
-<header class="topbar"><a class="brand" href="#top"><span class="brand-seal">地</span><span>地球 <b>ONLINE</b><small>山河远征 · 单人策略游戏</small></span></a><nav aria-label="游戏导航"><a href="#expedition">山河远征</a><a href="earth-online-manual.html#library">典籍书库 ↗</a><a href="#camp">我的营地</a></nav><span class="local-badge"><i></i> 离线可玩</span></header>
+<header class="topbar"><a class="brand" href="#top"><span class="brand-seal">地</span><span>地球 <b>ONLINE</b><small>山河远征 · 单人策略游戏</small></span></a><nav aria-label="游戏导航"><a href="#expedition">山河远征</a><a href="earth-online-manual.html?from=expedition#library">典籍书库 ↗</a><a href="#camp">我的营地</a></nav><span class="local-badge"><i></i> 离线可玩</span></header>
 <main id="top">
 <section class="exp-hero" aria-labelledby="game-heading">
- <div class="exp-hero-copy"><p class="overline">EARTH ONLINE / 山河远征 · 第二季</p><h1 id="game-heading">入世一场。<br><em>这次，你能走多远？</em></h1><p class="exp-lead">一袋行粮，三枚书印，十二站未知山河。<br>没有标准答案。你的取舍，决定这次的归途。</p><div class="exp-hero-actions"><button id="exp-daily-start" class="primary">挑战今日山河 <span>↗</span></button><button id="exp-free-start" class="outline">自由远征</button></div><p class="exp-meta">约 3–5 分钟一局 · 离线可玩 · 自动续局</p><button id="start-game" class="quiet exp-classic-entry">进入经典剧情 · 33 场故事 →</button><span id="journey-caption" class="exp-hidden-caption">原旅程存档保留</span></div>
+ <div class="exp-hero-copy"><p class="overline">EARTH ONLINE / 山河远征 · 第二季</p><h1 id="game-heading">入世一场。<br><em>这次，你能走多远？</em></h1><p class="exp-lead">一袋行粮，三枚书印，十二站未知山河。<br>没有标准答案。你的取舍，决定这次的归途。</p><div class="exp-hero-actions"><button id="exp-resume" class="primary" hidden>继续上次远征</button><button id="exp-daily-start" class="primary">挑战今日山河 <span>↗</span></button><button id="exp-free-start" class="outline">自由远征</button></div><p class="exp-meta">约 3–5 分钟一局 · 离线可玩 · 自动续局</p><button id="start-game" class="quiet exp-classic-entry">进入经典剧情 · 33 场故事 →</button><span id="journey-caption" class="exp-hidden-caption">原旅程存档保留</span></div>
  <div class="exp-hero-art" aria-hidden="true"><div class="exp-orbit orbit-one"></div><div class="exp-orbit orbit-two"></div><div class="exp-orbit orbit-three"></div><span class="exp-orbit-label">十二站山河 / 一次自己的选择</span><div class="exp-mountain m-back"></div><div class="exp-mountain m-front"></div><span class="exp-sun"></span><div class="exp-art-card card-a"><small>若水 · 从容</small><b>水</b><span>取舍之间<br>另有一条路</span></div><div class="exp-art-card card-b"><small>知行 · 行动</small><b>行</b><span>带着答案<br>去下一站</span></div><div class="exp-art-tag"><i></i> 同一开局，千种归途</div></div>
 </section>
 <section id="expedition" class="exp-section" aria-labelledby="exp-heading" tabindex="-1">
@@ -54,7 +97,7 @@
 <aside class="journal"><p class="overline">下一站</p><h3 id="next-title">一叶渡口</h3><p id="next-description"></p><button id="next-quest" class="outline">前往探索 ↗</button><hr><h3 class="small-title">旅途的规则</h3><ol><li>每一境，有三次情境选择。</li><li>收集至少 4 / 6 点领悟，即可点灯。</li><li>未通过可以重试，已得进度保留。</li><li>十境之后，还有一场归途试炼。</li></ol><details><summary>典籍如何帮助通关？</summary><p>遇到难题，可展开“锦囊”或打开本关原典。这里的故事、选择与评分是原创游戏设计，不是原书引文或对现实人生的评价。</p></details><div class="journal-stamp" aria-hidden="true">读而<br>有思</div></aside></div></section>
 <section id="camp" class="camp" aria-labelledby="camp-title"><div class="section-heading"><div><p class="overline">我的营地</p><h2 id="camp-title">把沿途的光，收进行囊。</h2></div><span id="collection-count">0 / 10 信物</span></div><div id="collection" class="collection"></div><div class="save-tools"><div><h3>旅程存档</h3><p id="save-status">进度自动保存在当前浏览器，可导出带走。</p></div><div class="save-actions"><button id="export-save" class="outline">导出存档 ↓</button><label class="outline import-label" for="import-save">导入并合并 ↑<input id="import-save" type="file" accept="application/json,.json"></label><button id="reset-game" class="quiet">重新启程</button></div><p id="save-import-status" role="status"></p></div></section>
 <p id="game-status" class="live-status" role="status" aria-live="polite"></p>
-<footer><a href="earth-online-manual.html#library">打开完整典籍手册 ↗</a><p>情境与玩法为原创编排 · 传统医学、命理与修习内容仅作文化阅读<br>单人本地游戏 · 现实人生没有标准通关答案</p><span>EARTH ONLINE / 入世之旅</span></footer>
+<footer><a href="earth-online-manual.html?from=expedition#library">打开完整典籍手册 ↗</a><p>情境与玩法为原创编排 · 传统医学、命理与修习内容仅作文化阅读<br>单人本地游戏 · 现实人生没有标准通关答案</p><span>EARTH ONLINE / 入世之旅</span></footer>
 </main>
 <dialog id="quest-panel" aria-labelledby="quest-title"><div class="quest-shell"><header class="quest-header"><span id="quest-book"></span><button id="close-quest" class="icon-button" aria-label="保存进度并关闭关卡">×</button></header><div class="quest-body"><p id="scene-progress" class="overline"></p><h2 id="quest-title"></h2><p id="quest-story"></p><div id="quest-intro"><div class="quest-rules">三次选择 · 满分 6 点领悟 · 4 点即可通关</div><button id="enter-chapter" class="primary">踏入此境 →</button></div><div id="scene-area" hidden><div id="choices" class="choices"></div><div id="choice-feedback" class="feedback" hidden><p id="choice-score"></p><p id="choice-explanation"></p><button id="next-scene" class="primary">继续 →</button></div><details id="hint-box"><summary>打开锦囊</summary><p id="scene-hint"></p></details></div><div id="chapter-result" hidden><div id="result-seal" class="result-seal"></div><p id="result-description"></p><div class="result-actions"><button id="return-map" class="primary">回到山河 →</button><button id="retry-chapter" class="outline">再走一次</button></div></div><a id="quest-reading" class="reading-link" target="_blank" rel="noopener">翻开本关原典 ↗</a><p class="fiction-note">原创情境 · 非原典引文</p></div></div></dialog>
 <dialog id="reset-dialog" aria-labelledby="reset-title"><div class="reset-body"><h2 id="reset-title">要重新启程吗？</h2><p>这会清空本游戏的关卡、信物和当前旅程。典籍手册中的心得、书签和阅读进度不受影响。可先取消并导出存档。</p><div class="result-actions"><button id="cancel-reset" class="primary">保留旅程</button><button id="confirm-reset" class="outline">清空游戏进度</button></div></div></dialog>
@@ -1411,7 +1454,13 @@ function closeQuest(){if($('quest-panel').open)$('quest-panel').close();renderWo
 function renderQuest(){
  const current=state.current;if(!current)return;const chapter=byId.get(current.id),phase=current.phase;
  $('quest-book').textContent=(current.id==='finale'?'终章':`第 ${chapters.indexOf(chapter)+1} 境`)+ ' / '+chapter.book;
- $('quest-reading').href=chapter.reading.href;$('quest-reading').textContent=(chapter.reading.label||'翻开本关原典')+' ↗';
+ const readingLink = $('quest-reading');
+ const bookURL = new URL(chapter.reading.href, location.href);
+ bookURL.searchParams.set('from', 'classic');
+ if (!storageOK) bookURL.searchParams.set('gameTab', 'kept');
+ readingLink.href = bookURL.href;
+ readingLink.target = storageOK ? '_self' : '_blank';
+ readingLink.textContent = (chapter.reading.label || '翻开本关原典') + (storageOK ? '' : '（新标签页）');
  $('quest-intro').hidden=phase!=='intro';$('scene-area').hidden=!['choice','feedback'].includes(phase);$('chapter-result').hidden=phase!=='result';$('hint-box').open=false;
  $('quest-title').textContent=chapter.title;$('quest-story').textContent=chapter.prologue;$('scene-progress').textContent=chapter.subtitle||'入世之旅';
  if(phase==='choice'||phase==='feedback'){
@@ -1435,28 +1484,222 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
  $('reset-game').addEventListener('click',()=>$('reset-dialog').showModal());$('cancel-reset').addEventListener('click',()=>$('reset-dialog').close());$('confirm-reset').addEventListener('click',()=>{state=fresh();save();$('reset-dialog').close();renderWorld();announce('已重新启程。典籍手册的阅读记录保持原样。');$('start-game').focus();});
  $('export-save').addEventListener('click',exportSave);$('import-save').addEventListener('change',importSave);matchMedia('(max-width:760px)').addEventListener('change',trail);
  let expeditionPriority=false;try{const exp=JSON.parse(localStorage.getItem('earth-online-expedition-v2')||'null');expeditionPriority=!!(exp?.run&&window.EarthExpedition?.validateRestore(exp.run));}catch(e){}
- renderWorld();if(state.current&&!expeditionPriority&&!location.hash.startsWith('#run='))showQuest();
+ renderWorld();
+ const destination = location.hash;
+ const resumeClassic = destination === '#classic-story' ||
+   (!expeditionPriority && destination !== '#expedition' && !destination.startsWith('#run='));
+ if (state.current && resumeClassic) showQuest();
 })();
-</script><script>(()=>{'use strict';
-const E=window.EarthExpedition,L=window.LZString,$=id=>document.getElementById(id),KEY='earth-online-expedition-v2';
+</script><script>/* Local same-start records and the station review for completed expeditions. */
+(() => {
+  'use strict';
+
+  const engine = window.EarthExpedition;
+  const storageKey = 'earth-online-expedition-bests-v1';
+  const capacity = 32;
+  const resources = { stamina: '体力', supply: '补给', trust: '声望' };
+  let sessionRecords = [];
+  let pendingRecords = [];
+  let readable = true;
+
+  function element(tag, className, text) {
+    const item = document.createElement(tag);
+    if (className) item.className = className;
+    if (text !== undefined) item.textContent = text;
+    return item;
+  }
+
+  function validScore(value) {
+    return Number.isInteger(value) && value >= 0 && value <= 100000;
+  }
+
+  function validStart(record) {
+    return record && record.rules === engine.RULES &&
+      typeof record.seed === 'string' && /^[A-Za-z0-9_-]{1,48}$/.test(record.seed) &&
+      engine.roles.some(role => role.id === record.role);
+  }
+
+  function sameStart(left, right) {
+    return left.rules === right.rules && left.seed === right.seed && left.role === right.role;
+  }
+
+  function validReceipt(record) {
+    return validStart(record) && typeof record.attempt === 'string' &&
+      record.attempt.length > 0 && record.attempt.length < 100 &&
+      (record.previous === null || validScore(record.previous));
+  }
+
+  function receiptFor(record, run, attempt) {
+    if (!run || run.phase !== 'ending' || !validReceipt(record) ||
+        record.attempt !== attempt || !sameStart(record, run)) return null;
+    return {
+      rules: run.rules, seed: run.seed, role: run.role,
+      attempt, previous: record.previous, temporary: record.temporary === true
+    };
+  }
+
+  function mergePending(stored) {
+    const pending = pendingRecords.map(record => {
+      const other = stored.find(item => sameStart(item, record));
+      return other && other.best > record.best ? { ...record, best: other.best } : record;
+    });
+    return [...pending, ...stored.filter(item => !pending.some(record => sameStart(record, item)))].slice(0, capacity);
+  }
+
+  function loadRecords() {
+    try {
+      const raw = localStorage.getItem(storageKey);
+      readable = true;
+      let stored = [];
+      if (raw && raw.length < 24000) {
+        try { stored = JSON.parse(raw); } catch { /* A malformed table can be rebuilt from this page. */ }
+      }
+      const valid = Array.isArray(stored) ? stored.filter(entry => validReceipt(entry) && validScore(entry.best)).slice(0, capacity) : [];
+      sessionRecords = mergePending(valid);
+    } catch {
+      readable = false;
+    }
+    return sessionRecords;
+  }
+
+  window.addEventListener('storage', event => {
+    if (event.newValue !== null || (event.key !== storageKey && event.key !== null)) return;
+    try { if (event.storageArea !== localStorage) return; } catch { return; }
+    pendingRecords = [];
+    sessionRecords = [];
+  });
+
+  function recordFinish(run, attempt, score) {
+    const records = loadRecords();
+    const last = records.find(record => sameStart(record, run));
+    const savedReceipt = receiptFor(last, run, attempt);
+    if (savedReceipt) {
+      savedReceipt.temporary = pendingRecords.some(record => sameStart(record, run) && record.attempt === attempt);
+      return savedReceipt;
+    }
+    const receipt = { rules: run.rules, seed: run.seed, role: run.role, attempt, previous: last?.best ?? null };
+    const record = { ...receipt, best: Math.max(last?.best ?? 0, score) };
+    sessionRecords = [record, ...records.filter(item => !sameStart(item, run))].slice(0, capacity);
+    if (readable) {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(sessionRecords));
+        pendingRecords = [];
+        return receipt;
+      } catch {
+        // Retry with the next result if the browser becomes writable again.
+      }
+    }
+    pendingRecords = [record, ...pendingRecords.filter(item => !sameStart(item, run))].slice(0, capacity);
+    receipt.temporary = true;
+    return receipt;
+  }
+
+  function comparisonPanel(run, attempt, score, receipt) {
+    const panel = element('p', 'exp-comparison');
+    panel.id = 'exp-personal-comparison';
+    panel.dataset.score = String(score);
+    if (!receiptFor(receipt, run, attempt)) {
+      panel.dataset.result = 'unranked';
+      panel.textContent = '这份战报可逐站回看。再走一遍，可在本机记录同一开局的成绩。';
+      return panel;
+    }
+    if (receipt.previous === null) {
+      panel.dataset.result = 'first';
+      panel.textContent = '首次完成这个开局。在同一种子下用同一角色重玩，可比较两次的分数。';
+    } else {
+      const difference = score - receipt.previous;
+      panel.dataset.previousBest = String(receipt.previous);
+      panel.dataset.result = difference > 0 ? 'improved' : difference < 0 ? 'lower' : 'tied';
+      const change = difference > 0 ? '提高 ' + difference + ' 分' :
+        difference < 0 ? '少 ' + Math.abs(difference) + ' 分' : '成绩持平';
+      panel.textContent = '此前同局最佳 ' + receipt.previous + ' 分，本次 ' + change + '。';
+    }
+    if (receipt.temporary) panel.append(' 同局成绩暂时只保留在当前页面。');
+    return panel;
+  }
+
+  function signed(value) {
+    if (value > 0) return '+' + value;
+    return value < 0 ? '−' + Math.abs(value) : '0';
+  }
+
+  function buildStation(outcome) {
+    const station = element('li', 'exp-recap-station');
+    station.dataset.turn = String(outcome.turn);
+    const heading = element('h4', '', '第 ' + outcome.turn + ' 站 · ' + outcome.title);
+    const route = element('p', 'exp-recap-route', outcome.routeTitle + ' · ' + outcome.book);
+    const decision = element('p', 'exp-recap-choice', outcome.label);
+    const changes = element('div', 'exp-recap-resources');
+    for (const [key, label] of Object.entries(resources)) {
+      const after = outcome.resources[key];
+      const delta = outcome.delta[key];
+      const before = after - delta;
+      const item = element('span', '', label + ' ' + before + ' → ' + after + '（' + signed(delta) + '）');
+      Object.assign(item.dataset, { resource: key, before, after, delta });
+      if (after === 0) item.append(' · 归零');
+      changes.append(item);
+    }
+    station.append(heading, route, decision, changes, element('p', 'exp-recap-insight', '见识 +' + outcome.insight));
+    return station;
+  }
+
+  function stationReview(run) {
+    const details = element('details', 'exp-recap');
+    const list = element('ol', 'exp-recap-list');
+    list.id = 'exp-recap-list';
+    const intro = element('summary', '', '回看这一路的 ' + run.turn + ' 次取舍');
+    for (const outcome of run.history) list.append(buildStation(outcome));
+    details.append(intro, list);
+    return details;
+  }
+
+  window.EarthExpeditionRecap = Object.freeze({ receiptFor, recordFinish, comparisonPanel, stationReview });
+})();
+
+(()=>{'use strict';
+const E=window.EarthExpedition,recap=window.EarthExpeditionRecap,L=window.LZString,$=id=>document.getElementById(id),KEY='earth-online-expedition-v2';
 const names={stamina:'体力',supply:'补给',trust:'声望'},glyphs={walker:'行',planner:'谋',envoy:'和'};
 const node=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
 const button=(text,cls,fn)=>{const b=node('button',cls,text);b.type='button';b.addEventListener('click',fn);return b;};
 const day=()=>{const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).map(x=>[x.type,x.value]));return p.year+'-'+p.month+'-'+p.day;};
+const manualLinks=document.querySelectorAll('header a[href^="earth-online-manual.html"], footer a[href^="earth-online-manual.html"]');
 const seedDay=()=> 'day-'+day();
 const freshSeed=()=>{const a=new Uint32Array(2);if(window.crypto?.getRandomValues)crypto.getRandomValues(a);else {a[0]=Date.now()>>>0;a[1]=Math.floor(Math.random()*1e9);}return 'free-'+Array.from(a,n=>n.toString(36)).join('-');};
 const emptyProfile=()=>({best:0,finished:0,cleared:0,endings:[],last:null,daily:null,streak:null});
 const isDay=d=>typeof d==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(d),dayBefore=d=>new Date(Date.parse(d+'T00:00:00Z')-864e5).toISOString().slice(0,10);
 const score=n=>Number.isInteger(n)&&n>=0&&n<=100000;
+let comparison=null;
 let note={attempt:'',best:false,ending:false},run=null,profile=emptyProfile(),mode='daily',seed=seedDay(),role=E.roles[0].id,attempt='',recorded='',pending=null,shared=null,storageOK=true,shareData=null,celebrated='';
 function profileValid(p){if(!p||!Number.isInteger(p.best)||p.best<0||p.best>100000||!Number.isInteger(p.finished)||p.finished<0||p.finished>1000000||!Number.isInteger(p.cleared)||p.cleared<0||p.cleared>p.finished||!Array.isArray(p.endings)||p.endings.length>30||p.endings.some(x=>typeof x!=='string'||!x.length||x.length>64))return emptyProfile();return{best:p.best,finished:p.finished,cleared:p.cleared,endings:[...new Set(p.endings)],last:p.last&&typeof p.last.title==='string'&&p.last.title.length<80&&Number.isInteger(p.last.score)&&p.last.score>=0&&p.last.score<=100000?{title:p.last.title,score:p.last.score}:null,daily:p.daily&&isDay(p.daily.date)&&score(p.daily.best)?{date:p.daily.date,best:p.daily.best}:null,streak:p.streak&&isDay(p.streak.last)&&score(p.streak.count)&&p.streak.count>0?{last:p.streak.last,count:p.streak.count}:null};}
 const activeStreak=()=>{const t=day();return profile.streak&&(profile.streak.last===t||profile.streak.last===dayBefore(t))?profile.streak.count:0;};
 function status(s){$('exp-status').textContent=s;}
 function storageWarning(s){$('exp-storage-warning').hidden=false;$('exp-storage-warning').textContent=s;}
-try{const raw=localStorage.getItem(KEY);if(raw){if(raw.length>180000)throw Error('存档过大');const data=JSON.parse(raw);if(data.kind!=='earth-online-expedition'||data.version!==2)throw Error('版本不兼容');if(data.run){run=E.validateRestore(data.run);if(!run)throw Error('旅程记录不完整');}profile=profileValid(data.profile);mode=['daily','free','shared'].includes(data.mode)?data.mode:'free';if(run){seed=run.seed;role=run.role;}attempt=typeof data.attempt==='string'&&data.attempt.length<100?data.attempt:'restored';recorded=typeof data.recorded==='string'&&data.recorded.length<100?data.recorded:'';}}catch(e){run=null;storageOK=false;storageWarning('原远征存档无法读取，尚未覆盖。你可以导入备份或开始新远征；经典剧情与典籍记录不受影响。');}
-function save(){try{localStorage.setItem(KEY,JSON.stringify({kind:'earth-online-expedition',version:2,run,profile,mode,attempt,recorded}));storageOK=true;$('exp-storage-warning').hidden=true;}catch(e){storageOK=false;storageWarning('浏览器暂时无法保存。此页仍可游玩，请在关闭前使用“导出续局”。');}}
+try {
+ const raw=localStorage.getItem(KEY);
+ if (raw) {
+  if (raw.length>180000) throw Error('存档过大');
+  const data=JSON.parse(raw);
+  if (data.kind!=='earth-online-expedition'||data.version!==2) throw Error('版本不兼容');
+  if (data.run) {
+   run=E.validateRestore(data.run);
+   if (!run) throw Error('旅程记录不完整');
+   seed=run.seed;
+   role=run.role;
+  }
+  profile=profileValid(data.profile);
+  mode=['daily','free','shared'].includes(data.mode)?data.mode:'free';
+  attempt=typeof data.attempt==='string'&&data.attempt.length>0&&data.attempt.length<100?data.attempt:freshSeed();
+  recorded=run?.phase==='ending'?attempt:'';
+  comparison=recap.receiptFor(data.comparison,run,attempt);
+ }
+} catch {
+ run=null;
+ storageOK=false;
+ storageWarning('原远征存档无法读取，尚未覆盖。你可以导入备份或开始新远征；经典剧情与典籍记录不受影响。');
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({kind:'earth-online-expedition',version:2,run,profile,mode,attempt,recorded,comparison:recap.receiptFor(comparison,run,attempt)}));storageOK=true;$('exp-storage-warning').hidden=true;}catch(e){storageOK=false;storageWarning('浏览器暂时无法保存。此页仍可游玩，请在关闭前使用“导出续局”。');}}
 const endInfo=s=>{const e=s.ending;return typeof e==='object'&&e?{id:e.id||e.title,title:e.title||s.title,description:e.description||e.subtitle||e.desc||''}:{id:String(e||s.title),title:s.title||String(e),description:s.description||''};};
-function finalize(){if(!run||run.phase!=='ending'||recorded===attempt)return;const s=E.summarize(run),ending=endInfo(s),today=day();note={attempt,best:profile.finished>0&&s.score>profile.best,ending:!profile.endings.includes(ending.id)};if(run.seed==='day-'+today){profile.daily={date:today,best:Math.max(profile.daily?.date===today?profile.daily.best:0,s.score)};if(profile.streak?.last!==today)profile.streak={last:today,count:profile.streak?.last===dayBefore(today)?Math.min(100000,profile.streak.count+1):1};}profile.best=Math.max(profile.best,s.score);profile.finished=Math.min(1000000,profile.finished+1);if(s.completed)profile.cleared=Math.min(profile.finished,profile.cleared+1);if(!profile.endings.includes(ending.id)&&profile.endings.length<30)profile.endings.push(ending.id);profile.last={title:ending.title,score:s.score};recorded=attempt;save();}
+function finalize(){if(!run||run.phase!=='ending'||recorded===attempt)return;const s=E.summarize(run),ending=endInfo(s),today=day();note={attempt,best:profile.finished>0&&s.score>profile.best,ending:!profile.endings.includes(ending.id)};if(run.seed==='day-'+today){profile.daily={date:today,best:Math.max(profile.daily?.date===today?profile.daily.best:0,s.score)};if(profile.streak?.last!==today)profile.streak={last:today,count:profile.streak?.last===dayBefore(today)?Math.min(100000,profile.streak.count+1):1};}profile.best=Math.max(profile.best,s.score);profile.finished=Math.min(1000000,profile.finished+1);if(s.completed)profile.cleared=Math.min(profile.finished,profile.cleared+1);if(!profile.endings.includes(ending.id)&&profile.endings.length<30)profile.endings.push(ending.id);profile.last={title:ending.title,score:s.score};comparison=recap.recordFinish(run,attempt,s.score);recorded=attempt;save();}
 function renderLedger(){
  $('exp-best').textContent=profile.finished?String(profile.best):'—';const known=E.endings.filter(e=>profile.endings.includes(e.id)).length;$('exp-ending-count').textContent=known+' / '+E.endings.length;
  $('exp-endings').replaceChildren(...E.endings.map(e=>{const found=profile.endings.includes(e.id),n=node('span','exp-ending-chip'+(found?' found':''),found?e.title:'未遇见');n.setAttribute('role','listitem');n.title=found?(e.success?'走完十二站的归途':'中途归营的归途'):'还没有走到这个结局';return n;}));
@@ -1471,27 +1714,78 @@ function renderSetup(){
  $('exp-roles').replaceChildren(...E.roles.map(r=>{const b=button('','exp-card',()=>{role=r.id;renderSetup();$('exp-roles').querySelector('[data-role="'+role+'"]').focus();});b.dataset.role=r.id;b.setAttribute('aria-pressed',String(role===r.id));b.append(node('span','exp-card-icon',glyphs[r.id]||'行'),node('strong','',r.name),node('small','',r.description),node('em','',Object.keys(names).map(k=>names[k]+' '+r.resources[k]).join(' · ')));if(mode==='shared'){b.disabled=r.id!==role;b.title=r.id!==role?'朋友的挑战固定角色，以保持相同开局':'';}return b;}));
  $('exp-seed-label').textContent=(mode==='daily'?'今日共用种子 / ':'开局种子 / ')+seed;
 }
-function transition(next){if(!next)return;run=next;save();render(true);}
+function transition(next){if(!next)return;run=next;if(run.phase!=='ending')save();render(true);}
 function reveal(){if($('quest-panel').open)$('quest-panel').close();$('expedition').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
 function requestAction(fn){if(run&&run.phase!=='ending'){pending=fn;$('exp-confirm-dialog').showModal();}else fn();}
 function setup(nextMode,nextSeed,nextRole){run=null;mode=nextMode;seed=nextSeed;role=nextRole||E.roles[0].id;attempt='';recorded='';save();render(true);reveal();}
 function start(){if(run)return;run=E.create({seed,role});attempt=Date.now().toString(36)+'-'+freshSeed();recorded='';save();render(true);status('已启程。先看清路线的旅费和风险，再决定往哪里走。');}
 function deltas(delta){const row=node('div','exp-deltas');for(const k of Object.keys(names)){const value=delta?.[k]||0;row.append(node('span',value<0?'negative':'',names[k]+' '+(value>0?'+':'')+value));}return row;}
 function title(text,description){const h=node('h3','exp-step-title',text);h.tabIndex=-1;h.id='exp-stage-title';const parts=[h];if(description)parts.push(node('p','exp-subtitle',description));return parts;}
+function stationNumber(current) {
+ return ['route','event'].includes(current.phase) ? Math.min(current.turn + 1, E.TOTAL_TURNS) : current.turn;
+}
+function renderHomeActions() {
+ const resume=$('exp-resume'), active=Boolean(run && run.phase !== 'ending');
+ resume.hidden=!active;
+ if (active) resume.textContent='继续上次远征 · 第 ' + stationNumber(run) + ' 站 →';
+ for (const link of manualLinks) setReadingDestination(link,'earth-online-manual.html','#library');
+}
+function resumeRun() {
+ if (!run || run.phase === 'ending') return;
+ if ($('quest-panel').open) $('quest-panel').close();
+ const heading=$('exp-stage-title');
+ heading?.focus({preventScroll:true});
+ heading?.scrollIntoView({block:'center',behavior:'instant'});
+}
 function resourceView(){
- const visibleTurn=['route','event'].includes(run.phase)?Math.min(run.turn+1,12):run.turn;
+ const visibleTurn=stationNumber(run);
  $('exp-run-name').textContent=(mode==='daily'?'每日挑战':mode==='shared'?'同图挑战':'自由远征')+' / '+E.roles.find(r=>r.id===run.role).name+' / '+visibleTurn+' · 12';
  $('exp-track').replaceChildren(...Array.from({length:12},(_,i)=>{const s=node('span',i<run.turn?'done':i===run.turn?'active':'');s.title='第 '+(i+1)+' 站';return s;}));
  $('exp-resources').replaceChildren(...Object.keys(names).map(k=>{const n=node('div','exp-meter'+(run.resources[k]<=25?' danger':'')),head=node('div','exp-meter-head');head.append(node('span','',names[k]),node('strong','',run.resources[k]));const bar=node('div','exp-meter-bar'),fill=node('i');bar.setAttribute('role','meter');bar.setAttribute('aria-label',names[k]);bar.setAttribute('aria-valuemin','0');bar.setAttribute('aria-valuemax','100');bar.setAttribute('aria-valuenow',String(run.resources[k]));fill.style.width=run.resources[k]+'%';bar.append(fill);n.append(head,bar);return n;}));
  $('exp-relic-strip').replaceChildren(...run.relics.map(id=>{const r=E.relics.find(r=>r.id===id),n=button('◇ '+(r?.name||id),'exp-relic-pill',()=>status((r?.name||id)+'：'+(r?.description||'')));n.title=r?.description||'';n.setAttribute('aria-label',(r?.name||id)+'：'+(r?.description||''));return n;}));
 }
-function reading(bookId,book){if(!/^[a-z]+$/.test(bookId||''))return node('span');const a=node('a','exp-reading','这一站的灵感 / '+(book||'翻开对应原典')+' ↗');a.href='html/'+bookId+'.html';a.target='_blank';a.rel='noopener';return a;}
+function setReadingDestination(link,path,fragment='') {
+ link.href=path+'?from=expedition'+(storageOK?'':'&gameTab=kept')+fragment;
+ if (storageOK) { link.removeAttribute('target'); link.removeAttribute('rel'); link.removeAttribute('title'); }
+ else { link.target='_blank'; link.rel='noopener'; link.title='另开标签页，保留此页远征进度'; }
+}
+function reading(bookId,book) {
+ if (!window.EARTH_GAME_CHAPTERS.some(chapter=>chapter.id===bookId)) return node('span');
+ const link=node('a','exp-reading','这一站的灵感 / '+(book||'翻开对应原典')+(storageOK?' →':' ↗'));
+ setReadingDestination(link,'html/'+bookId+'.html');
+ return link;
+}
 function routeView(){const stage=$('exp-stage');stage.append(...title('第 '+(run.turn+1)+' 站 · 往哪里走？','旅费在本次行动结算时扣除。风险越高，机遇和消耗也越大。'));const cards=node('div','exp-cards');E.getRoutes(run).forEach((r,i)=>{const b=button('','exp-card',()=>{if(run?.phase==='route')transition(E.chooseRoute(run,r.id));});b.dataset.route=r.id;b.append(node('span','exp-card-icon',['径','渡','峰'][i]),node('strong','',r.title),node('small','',r.eventTitle+' · '+r.book),node('em','',['低','中','高'][r.risk]+'风险 · '+(r.insightBonus?('见识 +'+r.insightBonus):'稳步前行')),deltas(Object.fromEntries(Object.keys(names).map(k=>[k,-Math.abs(r.cost?.[k]||0)]))));cards.append(b);});stage.append(cards);}
 function eventView(){const e=E.getEvent(run),stage=$('exp-stage');stage.append(...title(e.title,(e.book||'原典主题')+' / '+(e.route?.title||'')),node('p','exp-event-body',e.body));const options=node('div','exp-options');options.setAttribute('role','group');options.setAttribute('aria-labelledby','exp-stage-title');e.options.forEach((o,i)=>{const b=button('','exp-option',()=>{if(run?.phase==='event'){transition(E.chooseOption(run,i));const change=run.lastOutcome;status('选择已记录。'+Object.keys(names).map(k=>names[k]+(change.delta[k]>=0?'增加':'减少')+Math.abs(change.delta[k])).join('，')+'。');}});b.dataset.option=String(i);const copy=node('div','exp-option-copy');const preview=deltas(o.delta);preview.append(node('span','','见识 +'+o.insight));if(Object.keys(names).some(k=>run.resources[k]+o.delta[k]<=0)){preview.append(node('span','negative exp-fatal','⚠ 资源将归零 · 就此归营'));b.classList.add('exp-option-fatal');}copy.append(node('strong','',o.label),preview);b.append(node('span','exp-option-letter','ABC'[i]),copy);options.append(b);});stage.append(options,node('p','exp-subtitle','显示的是包含旅费、书印和资源上限后的实际变化。'),reading(e.bookId,e.book));}
 function feedbackView(){const o=run.lastOutcome,stage=$('exp-stage');stage.append(...title('第 '+run.turn+' 站 · 留下的回声'));const box=node('div','exp-feedback');box.append(node('h4','',o.title),node('p','',o.label),node('p','',o.feedback),deltas(o.delta),node('p','', '见识 +'+o.insight));stage.append(box,button(run.turn===12||Object.values(run.resources).some(v=>v<=0)?'查看这次归途 →':run.turn===4||run.turn===8?'挑选一枚书印 →':'走向下一站 →','primary',()=>{if(run?.phase==='feedback')transition(E.advance(run));}),reading(o.bookId,''));}
 function relicView(){const stage=$('exp-stage');stage.append(...title('山河赠礼 · 选一枚书印。','不同书印会改变后续行动的资源收支。看清效果，再组成你的流派。'));const cards=node('div','exp-cards');E.getRelicChoices(run).forEach(r=>{const b=button('','exp-card',()=>{if(run?.phase==='relic'){transition(E.chooseRelic(run,r.id));status('已收下「'+r.name+'」。效果将用于接下来的选择。');}});b.dataset.relic=r.id;b.append(node('span','exp-card-icon',r.icon||r.name.charAt(0)),node('strong','',r.name),node('small','',r.description),node('em','','收下此印 →'));cards.append(b);});stage.append(cards);}
-function endingView(){const s=E.summarize(run),e=endInfo(s),stage=$('exp-stage'),box=node('div','exp-ending');box.append(node('div','exp-ending-icon',s.completed?'归':'歇'),...title(e.title,e.description),node('strong','exp-score',s.score),node('p','','旅程分 / '+run.turn+' 站 · '+run.insight+' 点见识 · '+run.relics.length+' 枚书印'));if(note.attempt===attempt&&(note.best||note.ending))box.append(node('p','exp-record-note',[note.best?'✦ 本机新纪录':'',note.ending?'✦ 新结局 · 已遇见 '+profile.endings.length+' / '+E.endings.length:''].filter(Boolean).join('　')));const actions=node('div','exp-result-actions');actions.append(button('生成我的山河战报 ↗','primary',openShare),button('同一开局，再走一遍','outline',()=>{const previous={seed:run.seed,role:run.role};run=null;seed=previous.seed;role=previous.role;start();}),button('换一张山河图','outline',()=>setup('free',freshSeed(),role)));box.append(actions);if(s.scoreBreakdown){const d=s.scoreBreakdown;box.append(node('p','exp-score-detail','见识 '+d.insight+' + 行程 '+d.journey+' + 储备 '+d.reserves+' + 书印 '+d.relics+' + 通关 '+d.completion));}const details=node('details','exp-recap'),ol=node('ol');details.append(node('summary','','回看这一路的 '+run.turn+' 次取舍'));for(const h of run.history)ol.append(node('li','',(h.title||h.eventTitle||'这一站')+'：'+(h.label||h.choiceLabel||'')));details.append(ol);box.append(details);stage.append(box);if(s.completed&&celebrated!==attempt){celebrated=attempt;if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&typeof window.confetti==='function')window.confetti({particleCount:65,spread:55,origin:{y:.7},colors:['#dfbf7a','#9adcc9','#dca57a'],disableForReducedMotion:true});}}
-function render(focus=false){finalize();$('exp-setup').hidden=!!run;$('exp-play').hidden=!run;$('exp-day').textContent=day();renderLedger();if(!run){renderSetup();if(focus)$('exp-role-heading').focus({preventScroll:true});return;}resourceView();$('exp-stage').replaceChildren();({route:routeView,event:eventView,feedback:feedbackView,relic:relicView,ending:endingView}[run.phase])();const hint={route:'键盘：按 1 / 2 / 3 选路线',event:'键盘：按 1 / 2 / 3 或 A / B / C 做取舍',relic:'键盘：按 1 / 2 / 3 收下书印',feedback:'键盘：按 Enter 继续'}[run.phase];if(hint)$('exp-stage').append(node('p','exp-key-hint',hint));if(focus)$('exp-stage-title')?.focus({preventScroll:true});}
+function endingView() {
+ const summary=E.summarize(run), ending=endInfo(summary), box=node('div','exp-ending');
+ box.append(node('div','exp-ending-icon',summary.completed?'归':'歇'),
+  ...title(ending.title,ending.description),node('strong','exp-score',summary.score),
+  node('p','','旅程分 / '+run.turn+' 站 · '+run.insight+' 点见识 · '+run.relics.length+' 枚书印'),
+  recap.comparisonPanel(run,attempt,summary.score,comparison));
+ if (note.attempt===attempt && (note.best||note.ending)) {
+  const milestones=[note.best?'✦ 本机新纪录':'',note.ending?'✦ 新结局 · 已遇见 '+profile.endings.length+' / '+E.endings.length:''];
+  box.append(node('p','exp-record-note',milestones.filter(Boolean).join('　')));
+ }
+ const actions=node('div','exp-result-actions');
+ actions.append(button('生成我的山河战报 ↗','primary',openShare),
+  button('同一开局，再走一遍','outline',()=>{seed=run.seed;role=run.role;run=null;start();}),
+  button('换一张山河图','outline',()=>setup('free',freshSeed(),role)));
+ box.append(actions);
+ const parts=summary.scoreBreakdown;
+ if (parts) box.append(node('p','exp-score-detail','见识 '+parts.insight+' + 行程 '+parts.journey+' + 储备 '+parts.reserves+' + 书印 '+parts.relics+' + 通关 '+parts.completion));
+ box.append(recap.stationReview(run));
+ $('exp-stage').append(box);
+ if (summary.completed && celebrated!==attempt) {
+  celebrated=attempt;
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && typeof window.confetti==='function') {
+   window.confetti({particleCount:65,spread:55,origin:{y:.7},colors:['#dfbf7a','#9adcc9','#dca57a'],disableForReducedMotion:true});
+  }
+ }
+}
+function render(focus=false){finalize();renderHomeActions();$('exp-setup').hidden=!!run;$('exp-play').hidden=!run;$('exp-day').textContent=day();renderLedger();if(!run){renderSetup();if(focus)$('exp-role-heading').focus({preventScroll:true});return;}resourceView();$('exp-stage').replaceChildren();({route:routeView,event:eventView,feedback:feedbackView,relic:relicView,ending:endingView}[run.phase])();const hint={route:'键盘：按 1 / 2 / 3 选路线',event:'键盘：按 1 / 2 / 3 或 A / B / C 做取舍',relic:'键盘：按 1 / 2 / 3 收下书印',feedback:'键盘：按 Enter 继续'}[run.phase];if(hint)$('exp-stage').append(node('p','exp-key-hint',hint));if(focus)$('exp-stage-title')?.focus({preventScroll:true});}
 function download(blob,name){const a=node('a'),url=URL.createObjectURL(blob);a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);}
 function exportRun(){if(!run)return;download(new Blob([JSON.stringify({kind:'earth-online-expedition-run',version:2,run},null,2)],{type:'application/json'}),'earth-online-expedition-save.json');status('远征续局文件已生成。经典剧情和阅读记录有各自的导出入口。');}
 function encodeChallenge(s){return L.compressToEncodedURIComponent(JSON.stringify({v:2,seed:s.seed,role:s.role}));}
@@ -1501,15 +1795,36 @@ function offerChallenge(data){shared=data;$('exp-shared-banner').hidden=false;$(
 function challengeURL(code){const hosted=['http:','https:'].includes(location.protocol)&&!['localhost','127.0.0.1','[::1]'].includes(location.hostname);const base=hosted?new URL(location.pathname,location.origin):new URL('https://39.107.91.13/earth-online/earth-online-game.html');base.hash='run='+code;return base.href;}
 function wrap(ctx,text,x,y,width,lineHeight){let line='';for(const char of String(text)){if(ctx.measureText(line+char).width>width&&line){ctx.fillText(line,x,y);line=char;y+=lineHeight;}else line+=char;}if(line)ctx.fillText(line,x,y);return y+lineHeight;}
 function card(){const c=$('exp-share-canvas'),ctx=c.getContext('2d'),s=E.summarize(run),e=endInfo(s);ctx.fillStyle='#12291e';ctx.fillRect(0,0,900,1200);ctx.strokeStyle='#82936a';ctx.lineWidth=2;ctx.strokeRect(30,30,840,1140);ctx.strokeStyle='#3c5840';for(let i=0;i<6;i++){ctx.beginPath();ctx.arc(700,250,120+i*45,0,Math.PI*2);ctx.stroke();}ctx.fillStyle='#d7bc77';ctx.font='22px sans-serif';ctx.fillText('地球 ONLINE  /  山河远征',70,100);ctx.fillStyle='#a9c8aa';ctx.font='19px sans-serif';ctx.fillText('同一开局，走自己的结局。',70,143);ctx.fillStyle='#f1e7c6';ctx.font='52px "Microsoft YaHei",sans-serif';wrap(ctx,e.title,70,245,750,66);ctx.fillStyle='#e5c783';ctx.font='150px Georgia,serif';ctx.fillText(String(s.score),65,455);ctx.fillStyle='#bcd1b4';ctx.font='24px sans-serif';ctx.fillText('旅程分 · '+run.turn+' / 12 站',75,500);ctx.fillText(E.roles.find(r=>r.id===run.role).name+' / '+run.insight+' 点见识',75,542);let y=625;ctx.font='23px sans-serif';for(const k of Object.keys(names)){ctx.fillStyle='#c6d7b9';ctx.fillText(names[k],75,y);ctx.fillStyle='#3d5940';ctx.fillRect(185,y-18,470,12);ctx.fillStyle='#a1cfa8';ctx.fillRect(185,y-18,4.7*run.resources[k],12);ctx.fillStyle='#eddfaf';ctx.fillText(String(run.resources[k]),700,y);y+=53;}ctx.font='24px "Microsoft YaHei",sans-serif';ctx.fillStyle='#dcc78f';y=wrap(ctx,run.relics.map(id=>E.relics.find(r=>r.id===id)?.name||id).join(' / '),75,825,750,36);ctx.font='17px sans-serif';ctx.fillStyle='#a8bea0';ctx.fillText('同图口令 · 在游戏中粘贴即可接力',75,935);ctx.font='16px monospace';wrap(ctx,shareData.code,75,972,750,25);ctx.font='18px sans-serif';ctx.fillStyle='#d3c398';ctx.fillText('EARTH ONLINE / 原创游戏 · 本机战报',75,1120);}
-function openShare(){if(!run||run.phase!=='ending')return;const code=encodeChallenge(run);const sum=E.summarize(run);shareData={code,url:challengeURL(code),text:'我在「山河远征」走出了「'+endInfo(sum).title+'」，'+sum.score+' 分。同一开局，你能走多远？'};$('exp-native-share').hidden=typeof navigator.share!=='function';$('exp-share-link').value=shareData.url;$('exp-share-status').textContent='';card();$('exp-share-dialog').showModal();}
+function openShare(){if(!run||run.phase!=='ending')return;const code=encodeChallenge(run);const sum=E.summarize(run);shareData={code,seed:run.seed,url:challengeURL(code),text:'我在「山河远征」走出了「'+endInfo(sum).title+'」，'+sum.score+' 分。同一开局，你能走多远？'};$('exp-native-share').hidden=typeof navigator.share!=='function';$('exp-share-link').value=shareData.url;$('exp-share-status').textContent='';$('exp-download-card').disabled=false;card();$('exp-share-dialog').showModal();}
+async function downloadShareCard() {
+ const report=shareData, control=$('exp-download-card'), message=$('exp-share-status');
+ if (!report || control.disabled || !$('exp-share-dialog').open) return;
+ control.disabled=true;
+ message.textContent='正在生成战报图片…';
+ let result;
+ try {
+  const blob=await new Promise(resolve=>$('exp-share-canvas').toBlob(resolve,'image/png'));
+  if (!blob) throw Error('PNG encoding failed');
+  download(blob,'earth-online-'+report.seed+'-report.png');
+  result='PNG 战报已生成。你可以自行发送给朋友。';
+ } catch {
+  result='战报图片生成失败，请重试或复制挑战链接。';
+ }
+ if (report===shareData) {
+  control.disabled=false;
+  if ($('exp-share-dialog').open) message.textContent=result;
+ }
+}
 window.EarthExpeditionShare=Object.freeze({encode:encodeChallenge,decode:decodeChallenge});
 const inputWrap=node('details','exp-code-entry'),inputLabel=node('label','','朋友发来了口令？'),codeInput=node('input');codeInput.id='exp-code-input';codeInput.maxLength=800;codeInput.placeholder='粘贴挑战口令或完整链接';codeInput.autocomplete='off';inputLabel.htmlFor=codeInput.id;inputWrap.append(node('summary','','我有朋友的挑战口令'),inputLabel,codeInput,button('读取邀约','outline',()=>{try{offerChallenge(readChallenge(codeInput.value));status('已读到邀约，点击“用这个开局挑战”即可出发。');$('exp-accept-shared').focus();}catch(e){status('没有读取到有效挑战：'+(e instanceof SyntaxError?'口令内容无效。':e.message));}}));$('exp-setup').append(inputWrap);
+ $('exp-resume').addEventListener('click',resumeRun);
  $('exp-daily-start').addEventListener('click',()=>{if(run&&mode==='daily'&&run.seed===seedDay()&&run.phase!=='ending'){reveal();status('已回到你尚未完成的今日远征。');}else requestAction(()=>setup('daily',seedDay()));});
  $('exp-free-start').addEventListener('click',()=>requestAction(()=>setup('free',freshSeed())));
  $('exp-begin').addEventListener('click',start);$('exp-export').addEventListener('click',exportRun);$('exp-new').addEventListener('click',()=>requestAction(()=>setup('free',freshSeed())));
  $('exp-cancel-new').addEventListener('click',()=>{pending=null;$('exp-confirm-dialog').close();});$('exp-confirm-new').addEventListener('click',()=>{const fn=pending;pending=null;$('exp-confirm-dialog').close();fn?.();});$('exp-confirm-dialog').addEventListener('cancel',()=>{pending=null;});
  $('exp-rules-open').addEventListener('click',()=>$('exp-rules-dialog').showModal());$('exp-rules-close').addEventListener('click',()=>$('exp-rules-dialog').close());$('exp-score-formula').textContent=E.scoreFormula||'具体得分会在本局结算时展示。';
- $('exp-share-close').addEventListener('click',()=>$('exp-share-dialog').close());$('exp-download-card').addEventListener('click',()=>$('exp-share-canvas').toBlob(blob=>{if(blob){download(blob,'earth-online-'+run.seed+'-report.png');$('exp-share-status').textContent='PNG 战报已生成。你可以自行发送给朋友。';}else $('exp-share-status').textContent='当前浏览器未能生成图片，请复制挑战链接。';},'image/png'));
+ $('exp-share-close').addEventListener('click',()=>$('exp-share-dialog').close());
+ $('exp-download-card').addEventListener('click',downloadShareCard);
  $('exp-copy-link').addEventListener('click',async()=>{try{if(!navigator.clipboard?.writeText)throw Error();await navigator.clipboard.writeText($('exp-share-link').value);$('exp-share-status').textContent='同图挑战链接已复制。';}catch(e){$('exp-share-link').focus();$('exp-share-link').select();$('exp-share-status').textContent='请复制已选中的链接，再发送给朋友。';}});
  $('exp-native-share').addEventListener('click',async()=>{if(!shareData)return;try{await navigator.share({title:'地球 Online · 山河远征',text:shareData.text,url:shareData.url});$('exp-share-status').textContent='已交给系统分享。';}catch(e){if(e?.name!=='AbortError')$('exp-share-status').textContent='系统分享未完成，请复制挑战链接。';}});
  document.addEventListener('keydown',e=>{

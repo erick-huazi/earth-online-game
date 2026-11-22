@@ -11,3 +11,46 @@
 .exp-option-fatal{border-color:#b9775a!important}.exp-deltas .exp-fatal{font-weight:700}.exp-record-note{color:var(--gold)!important;font-size:12px!important;letter-spacing:.08em;margin:10px 0 0}
 .exp-key-hint{display:none;font-size:10px;color:#93a78c;margin:14px 0 0;letter-spacing:.06em}@media (hover:hover) and (pointer:fine){.exp-key-hint{display:block}}
 @media (max-width:420px){.exp-ending-grid{gap:4px}.exp-ending-chip{padding:5px 2px}}
+.exp-hero-actions:has(#exp-resume:not([hidden])) #exp-daily-start {
+  background: transparent;
+  color: var(--ink);
+  border-color: #788769;
+}
+.exp-ending p.exp-comparison {
+  color: #d8dbbe;
+  margin: 16px auto;
+  max-width: 46ch;
+}
+.exp-ending p.exp-comparison[data-result="improved"] { color: var(--gold); }
+.exp-recap > summary { min-height: 44px; padding-block: 12px; }
+.exp-recap ol.exp-recap-list {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+.exp-recap-station {
+  padding: 15px 0;
+  border-bottom: 1px solid #465f48;
+}
+.exp-recap-station h4 {
+  font: 17px/1.55 var(--serif);
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.exp-recap-station p.exp-recap-route,
+.exp-recap-station p.exp-recap-insight {
+  font-size: 12px;
+  color: #c0caaa;
+}
+.exp-recap-station .exp-recap-resources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  padding: 0;
+  margin: 9px 0 0;
+  list-style: none;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: #d4ddc3;
+}
+.exp-recap-resources [data-after="0"] { color: #efb78f; }

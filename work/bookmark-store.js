@@ -129,6 +129,7 @@
     }
     return {
       read: function () { return visible(current()); },
+      hasPendingChanges: function () { return pending.size > 0; },
       // Backups must retain external entries hidden by the display limit while
       // a session has pending additions. This method never attempts a write.
       readForExport: function () { return clone(current()); },

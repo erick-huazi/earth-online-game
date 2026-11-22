@@ -16,6 +16,10 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 @media print{body{background:white;color:black}.topbar,.hero,.intro-band,.book-nav,.hero-actions,.route-section,.reader-actions,.reader-tail,.progress-section,.footer,.toast,.note-label span{display:none!important}.wrap{width:100%}.section{padding:10px 0}.section-head{margin-bottom:15px}.section-head h2{color:black}.section-head p{color:#333}.reading-layout{display:block;border:0}.reader{padding:20px;background:white;color:black}.reader-intro,.quest p{color:black}.note-area{background:white;color:black;border:1px solid #aaa}.rules{display:block}.rules h2,.rules p{color:black}.source-links{display:block}.source-note{color:#333}}
 __OFFLINE_CSS__
+#reader-game-return{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
+.topnav .return-kept-game{padding:0;border:0;background:none;color:inherit;font:inherit}
+@media(max-width:460px){.topbar-inner{gap:8px}.topnav{gap:8px;justify-content:flex-end;flex-wrap:wrap}}
+@media(max-width:380px){.topbar-inner{gap:6px}.brand{gap:6px}.topnav{gap:4px;flex-wrap:nowrap;font-size:11px}.topnav a{white-space:nowrap}}
 </style>
 </head>
 <body class="earth-manual">
@@ -26,7 +30,7 @@ FIRST VIEWPORT: Left oversized Chinese title and two actions; right interactive 
 FORM: Grounded direction 3, astronomical folio; pinned reference black/cream; seed 1d2aa615. Static overview with selected-detail reading.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->
 <a class="skip" href="#library">跳到典籍手册</a>
-<header class="topbar"><div class="wrap topbar-inner"><a class="brand" href="#top" aria-label="地球 Online 首页"><span class="brand-mark" aria-hidden="true">地</span><span class="brand-name">地球 ONLINE<small>A FIELD GUIDE TO LIVING</small></span></a><nav class="topnav" aria-label="页面导航"><a href="#library">典籍手册</a><a href="#route">阅读路线</a><a href="#progress">我的存档</a></nav><span class="save-state"><span class="save-dot"></span><span id="storage-state">本机存档</span></span></div></header>
+<header class="topbar"><div class="wrap topbar-inner"><a class="brand" href="#top" aria-label="地球 Online 首页"><span class="brand-mark" aria-hidden="true">地</span><span class="brand-name">地球 ONLINE<small>A FIELD GUIDE TO LIVING</small></span></a><nav class="topnav" aria-label="页面导航"><a id="reader-game-return" href="earth-online-game.html">进入游戏</a><a href="#library">典籍手册</a><a href="#route">阅读路线</a><a href="#progress">我的存档</a></nav><span class="save-state"><span class="save-dot"></span><span id="storage-state">本机存档</span></span></div></header>
 <main id="top" class="wrap">
 <section class="hero" aria-labelledby="hero-title"><div class="hero-copy"><h1 id="hero-title">地球<span class="english">Online</span><span class="second">通关手册</span></h1><p class="hero-thesis">世界没有标准答案。<br>你的玩法，可以自己写。</p><p class="hero-desc">从十部典籍出发，读懂变化，安顿内心，把思想带回生活。每读一页，多一个理解世界的角度。</p><div class="hero-actions"><a class="btn primary" href="#library">展开手册 <span aria-hidden="true">↗</span></a><a class="text-link" href="#route">从哪里开始读 →</a></div><div class="hero-foot">开放世界 · 自由探索 · 长期更新自己</div></div><div class="atlas" role="group" aria-label="十部典籍导航星图"><svg class="atlas-svg" viewBox="0 0 600 600" aria-hidden="true"><g fill="none" stroke="currentColor"><circle cx="300" cy="290" r="227" stroke-width=".7"/><circle cx="300" cy="290" r="206" stroke-width=".5" stroke-dasharray="2 6"/><circle cx="300" cy="290" r="149" stroke-width=".6"/><ellipse cx="300" cy="290" rx="73" ry="149" stroke-width=".6"/><ellipse cx="300" cy="290" rx="132" ry="149" stroke-width=".5"/><ellipse cx="300" cy="290" rx="149" ry="56" stroke-width=".6"/><ellipse cx="300" cy="290" rx="149" ry="108" stroke-width=".5"/><path d="M151 290h298M300 141v298" stroke-width=".6"/><ellipse cx="300" cy="290" rx="265" ry="79" transform="rotate(-29 300 290)" stroke-width=".6"/><path d="M300 49v11M300 520v11M60 290h11M530 290h11" stroke-width="1"/></g><circle cx="300" cy="290" r="95" fill="#171a16"/></svg><div class="atlas-title"><span class="earth">人间探索</span><span class="earth-en">EARTH / OPEN WORLD</span><span class="atlas-hint">点击节点，进入典籍</span></div><div id="atlas-nodes"></div><span class="atlas-caption">十个入口 / 同一个世界</span></div></section>
 <div class="intro-band"><p><strong>所谓“通关”</strong>，是多一点清醒、多一点行动，也多一点从容。</p><span class="meta">10 TEXTS · ONE LIFE</span></div>
@@ -193,7 +197,7 @@ $('export-button').addEventListener('click',()=>{const exported=manualSnapshotFo
 __OFFLINE_SCRIPT__
 __READER_ENHANCEMENTS__
 __ARCHIVE_SCRIPT__
-state=readLatestManual();noteBases={...state.notes};makeNav();renderBook();renderStorage();
+state=readLatestManual();noteBases={...state.notes};applyReadingEntry();makeNav();renderBook();renderStorage();
 __BOOKMARKS_INIT__
 </script>
 </body>

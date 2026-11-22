@@ -5,6 +5,8 @@
 .skip-link{position:fixed;top:8px;left:12px;z-index:20;padding:10px 16px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);transform:translateY(-180%)}.skip-link:focus{transform:translateY(0)}.toolbar input,.toolbar select,.toolbar button{min-height:44px;min-width:44px}.book-section:focus{outline:none}.book-section:focus-visible{outline:2px solid #796337;outline-offset:6px}
 @media(max-width:850px){.toolbar{grid-template-columns:44px 44px minmax(0,1fr) 48px}}
 @media print{nav,.top,.toolbar,.facsimile,footer,.skip-link{display:none}.layout{display:block}main{padding:0}.book-section{break-inside:auto}.prose{font-size:11pt}h2{break-after:avoid}}
+.reading-trail{display:flex;align-items:center;flex-wrap:wrap;gap:0 14px;width:100%;grid-column:1/-1}.reading-trail .search-state{flex:1 1 130px}.reading-trail a{display:inline-flex;align-items:center;min-height:44px;font-size:12px;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+@media(max-width:850px){.reading-trail{display:contents}.reading-trail [data-manual-return]{grid-column:1/3;grid-row:4}.reading-trail #reader-game-return{grid-column:3/5;grid-row:4;justify-self:end}}
 .bookmark-panel{font:12px/1.8 var(--sans);border-top:1px solid var(--paper-line,var(--line));margin:12px 0 0;color:var(--paper-ink,var(--ink))}.bookmark-panel>summary{cursor:pointer;min-height:44px;padding:10px 0}.bookmark-list{max-height:300px;overflow:auto}.bookmark-row{display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--paper-line,var(--line));padding:9px 0}.bookmark-row button,.bookmark-add,.bookmark-undo{font:12px/1.7 var(--sans);color:inherit;background:transparent;border:1px solid var(--paper-line,var(--line));min-height:44px;border-radius:2px;cursor:pointer;padding:8px 10px}.bookmark-open{flex:1;min-width:0;text-align:left;border:0!important}.bookmark-open strong,.bookmark-open span{display:block;overflow-wrap:anywhere}.bookmark-open strong{font-weight:500}.bookmark-open span,.bookmark-empty,.bookmark-status{color:var(--paper-muted,var(--muted));font-size:11px}.bookmark-remove{flex:0 0 auto}.bookmark-panel button:hover,.bookmark-add:hover{background:var(--bookmark-hover,#d8ddc8)}.bookmark-panel :focus-visible,.bookmark-add:focus-visible{outline:2px solid var(--bookmark-focus,#796337);outline-offset:3px}.bookmark-status{margin:10px 0;line-height:1.8}.bookmark-toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:14px 0}.bookmark-toolbar .bookmark-panel{border:0;margin:0;flex:1}.bookmark-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:30;max-width:min(520px,calc(100vw - 32px));width:max-content;margin:0;padding:11px 18px;background:#263020;color:#f4f0e5;font:13px/1.8 'Microsoft YaHei',sans-serif;border:1px solid #98a18c;border-radius:2px;overflow-wrap:anywhere}.earth-full-book .bookmark-panel{--paper-ink:var(--ink);--paper-muted:var(--muted);--paper-line:var(--line)}.toolbar .bookmark-add{font-size:11px;padding:6px;min-width:54px}.earth-full-book .bookmark-panel{margin-bottom:18px}.earth-full-book .bookmark-status{max-width:75ch}.earth-full-book .search-state{flex:1 1 60%}
 @media(max-width:850px){.earth-full-book .toolbar .search-state{grid-column:3;grid-row:3}.earth-full-book .toolbar .bookmark-add{grid-column:4;grid-row:3;min-width:44px;padding:3px 0;font-size:10px}}
 @media print{.bookmark-panel,.bookmark-add,.bookmark-toolbar,.bookmark-toast{display:none!important}}
@@ -69,7 +71,7 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
 .note-copy-actions button:hover{background:var(--appearance-hover,#d8ddc8)}.note-copy-actions button:focus-visible{outline:2px solid var(--paper-muted);outline-offset:3px}
 @media(max-width:850px){.search-options select{font-size:16px}.search-options{gap:5px}.search-options>span{flex-basis:100%}}
 @media print{.search-options,.note-copy-actions{display:none!important}}
-</style></head><body class="earth-full-book"><a class="skip-link" id="skip-reading" href="#section-0">跳到正文</a><a class="skip-link" href="#reading-controls">跳到目录与搜索</a><header class="top"><a class="brand" href="../earth-online-manual.html#library">地球 ONLINE · 典籍手册</a><a href="#top">返回书首 ↑</a></header><div class="layout"><nav aria-label="全书目录"><h2>孙子兵法 · 全书目录</h2><details open><summary>孙子兵法 · 13 节</summary><ol><li><a href="#section-0">始计篇</a></li><li><a href="#section-1">作战篇</a></li><li><a href="#section-2">谋攻篇</a></li><li><a href="#section-3">军形篇</a></li><li><a href="#section-4">兵势篇</a></li><li><a href="#section-5">虚实篇</a></li><li><a href="#section-6">军争篇</a></li><li><a href="#section-7">九变篇</a></li><li><a href="#section-8">行军篇</a></li><li><a href="#section-9">地形篇</a></li><li><a href="#section-10">九地篇</a></li><li><a href="#section-11">火攻篇</a></li><li><a href="#section-12">用间篇</a></li></ol></details></nav><main id="top"><header class="book-head"><h1>孙子兵法</h1><p>孙子兵法 · 13 个阅读节 · 全部收录文字均在本页</p><p>收录十三篇正文，含《始计篇》至《用间篇》，可离线阅读与搜索。</p><details class="conversion"><summary>版本与转换说明</summary><p>来源：hanzhaodeng/chinese-ancient-text 的《孙子兵法.json》，保存十三篇全部正文。阅读版按原 JSON 篇名与段落显示，保留源文件中的个别括注和用字；原始 JSON 随附。</p><p>页码指原文件中的位置；可使用浏览器查找在全文中定位。原页图保存在配套 books 文件夹。</p></details><div data-original-page-jump></div><details class="appearance-settings"><summary>阅读配色</summary><div data-reading-appearance></div></details><details class="bookmark-panel" data-bookmark-panel><summary>我的书签<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>书签保存在当前浏览器。导出后可在主手册合并恢复。</p><button class="bookmark-undo" data-bookmark-export type="button">导出本页书签 ↓</button><p class="bookmark-status" data-bookmark-export-status role="status"></p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><div class="search-options"><label for="search-mode">查找方式<select id="search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div></header><div class="toolbar" id="reading-controls" tabindex="-1" role="search" aria-label="全书目录与搜索"><label class="mobile-index" for="jump">目录</label><select id="jump" aria-label="全书章节目录"><option value="section-0">始计篇</option><option value="section-1">作战篇</option><option value="section-2">谋攻篇</option><option value="section-3">军形篇</option><option value="section-4">兵势篇</option><option value="section-5">虚实篇</option><option value="section-6">军争篇</option><option value="section-7">九变篇</option><option value="section-8">行军篇</option><option value="section-9">地形篇</option><option value="section-10">九地篇</option><option value="section-11">火攻篇</option><option value="section-12">用间篇</option></select><button id="smaller" aria-label="缩小字号">A−</button><button id="larger" aria-label="放大字号">A＋</button><input id="query" type="search" placeholder="搜索全书文字" aria-label="搜索全书文字"><button id="clear-search" type="button" disabled>清除</button><button id="prev-match" disabled>上处</button><button id="next-match" disabled>下处</button><button class="bookmark-add" data-bookmark-add type="button">存书签</button><span id="search-state" class="search-state" aria-live="polite">连续阅读全部内容，或用目录跳转。</span></div><section class="book-section" tabindex="-1" id="section-0" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">孙子兵法</p><h2>始计篇</h2><div class="prose">孙子曰：兵者，国之大事，死生之地，存亡之道，不可不察也。
+</style></head><body class="earth-full-book"><a class="skip-link" id="skip-reading" href="#section-0">跳到正文</a><a class="skip-link" href="#reading-controls">跳到目录与搜索</a><header class="top"><a class="brand" data-manual-return href="../earth-online-manual.html#library">地球 ONLINE · 典籍手册</a><a href="#top">返回书首 ↑</a></header><div class="layout"><nav aria-label="全书目录"><h2>孙子兵法 · 全书目录</h2><details open><summary>孙子兵法 · 13 节</summary><ol><li><a href="#section-0">始计篇</a></li><li><a href="#section-1">作战篇</a></li><li><a href="#section-2">谋攻篇</a></li><li><a href="#section-3">军形篇</a></li><li><a href="#section-4">兵势篇</a></li><li><a href="#section-5">虚实篇</a></li><li><a href="#section-6">军争篇</a></li><li><a href="#section-7">九变篇</a></li><li><a href="#section-8">行军篇</a></li><li><a href="#section-9">地形篇</a></li><li><a href="#section-10">九地篇</a></li><li><a href="#section-11">火攻篇</a></li><li><a href="#section-12">用间篇</a></li></ol></details></nav><main id="top"><header class="book-head"><h1>孙子兵法</h1><p>孙子兵法 · 13 个阅读节 · 全部收录文字均在本页</p><p>收录十三篇正文，含《始计篇》至《用间篇》，可离线阅读与搜索。</p><details class="conversion"><summary>版本与转换说明</summary><p>来源：hanzhaodeng/chinese-ancient-text 的《孙子兵法.json》，保存十三篇全部正文。阅读版按原 JSON 篇名与段落显示，保留源文件中的个别括注和用字；原始 JSON 随附。</p><p>页码指原文件中的位置；可使用浏览器查找在全文中定位。原页图保存在配套 books 文件夹。</p></details><div data-original-page-jump></div><details class="appearance-settings"><summary>阅读配色</summary><div data-reading-appearance></div></details><details class="bookmark-panel" data-bookmark-panel><summary>我的书签<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>书签保存在当前浏览器。导出后可在主手册合并恢复。</p><button class="bookmark-undo" data-bookmark-export type="button">导出本页书签 ↓</button><p class="bookmark-status" data-bookmark-export-status role="status"></p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><div class="search-options"><label for="search-mode">查找方式<select id="search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div></header><div class="toolbar" id="reading-controls" tabindex="-1" role="search" aria-label="全书目录与搜索"><label class="mobile-index" for="jump">目录</label><select id="jump" aria-label="全书章节目录"><option value="section-0">始计篇</option><option value="section-1">作战篇</option><option value="section-2">谋攻篇</option><option value="section-3">军形篇</option><option value="section-4">兵势篇</option><option value="section-5">虚实篇</option><option value="section-6">军争篇</option><option value="section-7">九变篇</option><option value="section-8">行军篇</option><option value="section-9">地形篇</option><option value="section-10">九地篇</option><option value="section-11">火攻篇</option><option value="section-12">用间篇</option></select><button id="smaller" aria-label="缩小字号">A−</button><button id="larger" aria-label="放大字号">A＋</button><input id="query" type="search" placeholder="搜索全书文字" aria-label="搜索全书文字"><button id="clear-search" type="button" disabled>清除</button><button id="prev-match" disabled>上处</button><button id="next-match" disabled>下处</button><button class="bookmark-add" data-bookmark-add type="button">存书签</button><div class="reading-trail"><span id="search-state" class="search-state" aria-live="polite">连续阅读全部内容，或用目录跳转。</span><a data-manual-return href="../earth-online-manual.html#library">在手册中读</a><a id="reader-game-return" href="../earth-online-game.html">进入游戏</a></div></div><section class="book-section" tabindex="-1" id="section-0" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">孙子兵法</p><h2>始计篇</h2><div class="prose">孙子曰：兵者，国之大事，死生之地，存亡之道，不可不察也。
 
 故经之以五事，校之以计，而索其情：一曰道，二曰天，三曰地，四曰将、五曰法。道者，令民与上同意也，故可以与之死，可以与之生，而不畏危。天者，阴阳，寒暑、时制也。地者，远近、险易、广狭、死生也。将者，智、信、仁、勇、严也。法者，曲制、官道、主用也。凡此五者，将莫不闻，知之者胜，不知者不胜。故校之以计，而索其情，曰：主孰有道？将孰有能？天地孰得？法令孰行？兵众孰强？士卒孰练？赏罚孰明？吾以此知胜负矣。
 
@@ -221,7 +223,7 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
 
 必索敌人之间来间我者，因而利之，导而舍之，故反间可得而用也。因是而知之，故乡间、内间可得而使也；因是而知之，故死间为诳事，可使告敌。因是而知之，故生间可使如期。五间之事，主必知之，知之必在于反间，故反间不可不厚也。
 
-昔殷之兴也，伊挚在夏；周之兴也，吕牙在殷。故惟明君贤将，能以上智为间者，必成大功。此兵之要，三军之所恃而动也。</div></section><footer><p>来源与原件</p><a href="https://github.com/hanzhaodeng/chinese-ancient-text/blob/master/孙子兵法.json" target="_blank" rel="noopener">打开十三篇原文 ↗</a><p><a href="../earth-online-manual.html#library">返回地球 Online 通关手册</a></p></footer></main></div><script>/*
+昔殷之兴也，伊挚在夏；周之兴也，吕牙在殷。故惟明君贤将，能以上智为间者，必成大功。此兵之要，三军之所恃而动也。</div></section><footer><p>来源与原件</p><a href="https://github.com/hanzhaodeng/chinese-ancient-text/blob/master/孙子兵法.json" target="_blank" rel="noopener">打开十三篇原文 ↗</a><p><a data-manual-return href="../earth-online-manual.html#library">返回地球 Online 通关手册</a></p></footer></main></div><script>/*
  * Character data derived from OpenCC TSCharacters.txt (Apache-2.0).
  * Upstream: BYVoid/OpenCC, commit c363a7ba51d487950982bd8a589211ffbfd95ba1.
  * Modified 2026-09-17: follow first-candidate chains to a stable character,
@@ -446,6 +448,7 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
     }
     return {
       read: function () { return visible(current()); },
+      hasPendingChanges: function () { return pending.size > 0; },
       // Backups must retain external entries hidden by the display limit while
       // a session has pending additions. This method never attempts a write.
       readForExport: function () { return clone(current()); },
@@ -655,10 +658,67 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
  };
 })();
 
+function createReaderGameNavigation() {
+  const params = new URLSearchParams(location.search);
+  const from = params.get('from');
+  const mode = from === 'expedition' || from === 'classic' ? from : '';
+  const keptGameTab = Boolean(mode && params.get('gameTab') === 'kept');
+
+  function carryTo(url) {
+    if (mode) url.searchParams.set('from', mode);
+    if (keptGameTab) url.searchParams.set('gameTab', 'kept');
+    return url;
+  }
+
+  function mount({notify, keepReadingTab, beforeLeaving}) {
+    const link = document.getElementById('reader-game-return');
+    if (keptGameTab) {
+      const button = document.createElement('button');
+      button.id = link.id;
+      button.type = 'button';
+      button.className = 'return-kept-game';
+      button.textContent = '回到游戏标签页';
+      link.replaceWith(button);
+      button.addEventListener('click', () => {
+        if (keepReadingTab?.() || window.earthBookmarkStore?.hasPendingChanges()) {
+          notify('请切回原游戏标签页，此页保留着尚未保存的阅读记录。');
+          return;
+        }
+        notify('请切回原游戏标签页，继续刚才的进度。');
+        window.close();
+      });
+      return;
+    }
+    if (mode) {
+      link.hash = mode === 'expedition' ? 'expedition' : 'classic-story';
+      link.textContent = mode === 'expedition' ? '返回本次远征' : '返回经典剧情';
+    }
+    link.addEventListener('click', () => {
+      beforeLeaving?.(link);
+      if (window.earthBookmarkStore?.hasPendingChanges()) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      }
+    });
+  }
+  return {mode, carryTo, mount};
+}
+
 const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath":"html/yijing.html"},{"id":"daodejing","title":"道德经","sectionCount":81,"htmlPath":"html/daodejing.html"},{"id":"zhuangzi","title":"庄子","sectionCount":33,"htmlPath":"html/zhuangzi.html"},{"id":"bazi","title":"四柱八字","sectionCount":14,"htmlPath":"html/bazi.html"},{"id":"neijing","title":"黄帝内经","sectionCount":166,"htmlPath":"html/neijing.html"},{"id":"yunqi","title":"五运六气","sectionCount":7,"htmlPath":"html/yunqi.html"},{"id":"mao","title":"毛泽东选集","sectionCount":1960,"htmlPath":"html/mao.html"},{"id":"sunzi","title":"孙子兵法","sectionCount":13,"htmlPath":"html/sunzi.html"},{"id":"yinfu","title":"阴符经","sectionCount":4,"htmlPath":"html/yinfu.html"},{"id":"qiti","title":"炁体源流","sectionCount":512,"htmlPath":"html/qiti.html"}];const pageJumpVolumes=[{"id":"full","label":"孙子兵法","sectionCount":13,"pages":null}];
 (() => {
   'use strict';
   const bookId = "sunzi";
+  const readingGame = createReaderGameNavigation();
+  readingGame.mount({notify: message => { document.getElementById('search-state').textContent = message; }});
+  const manualLinks = document.querySelectorAll('[data-manual-return]');
+  const manualURL = readingGame.carryTo(new URL('../earth-online-manual.html', location.href));
+  manualURL.searchParams.set('book', bookId);
+  manualURL.hash = 'reader';
+  for (const link of manualLinks) link.addEventListener('click', () => {
+    if (window.earthBookmarkStore?.hasPendingChanges()) { link.target = '_blank'; link.rel = 'noopener'; }
+  });
+  let manualSection = -1;
+
   const storageKey = 'earth-online-full-book-v1:' + bookId;
   const sections = Array.from(document.querySelectorAll('.book-section'));
   const paragraphs = sections.map(section => section.querySelector('.prose'));
@@ -781,6 +841,15 @@ const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath
   }
 
   function setActive(index) {
+    // Reading controls and the book heading can sit above chapter one.
+    // A visit to those controls should keep the last actual chapter as the return target.
+    const atHeading = index === 0 && sections[0].getBoundingClientRect().top > readingInset() + 4;
+    const returnIndex = atHeading && lastBodyPosition ? indexById.get(lastBodyPosition.sectionId) : index;
+    if (returnIndex !== manualSection) {
+      manualSection = returnIndex;
+      manualURL.searchParams.set('section', returnIndex);
+      for (const link of manualLinks) link.href = manualURL.href;
+    }
     jump.value = sections[index].id;
     if (activeIndex === index) return;
     if (activeIndex >= 0) directoryLinks[activeIndex].removeAttribute('aria-current');
@@ -1058,7 +1127,7 @@ const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath
     focus:()=>sections[currentIndex()].focus({preventScroll:true}),
     save:savePosition,
     open:entry=>{
-      if(entry.bookId!==bookId){const target=new URL(entry.bookId+'.html',location.href);target.searchParams.set('bookmark',entry.section);target.hash='section-'+entry.section;location.href=target.href;return false;}
+      if(entry.bookId!==bookId){const target=readingGame.carryTo(new URL(entry.bookId+'.html',location.href));target.searchParams.set('bookmark',entry.section);target.hash='section-'+entry.section;location.href=target.href;return false;}
       navigateTo('section-'+entry.section);
     }
   });
