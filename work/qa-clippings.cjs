@@ -142,6 +142,14 @@ async function saveSelections(page) {
   assert(await page.evaluate(()=>getSelection().isCollapsed));
   await page.keyboard.press('Enter');
   assert((await records(page)).some(e => e.anchor?.exact === quote));
+  const beforeCancel = (await records(page)).length;
+  await selectRange(body, 2, 11);
+  await page.keyboard.press('Tab');
+  await body.click({position:{x:2,y:3}});
+  await clipButton.focus();
+  await page.keyboard.press('Enter');
+  assert.equal((await records(page)).length, beforeCancel);
+  await page.locator('.bookmark-toast').filter({hasText:'先在同一节正文中选中'}).waitFor();
   await panel(page);
   const popup = page.waitForEvent('popup');
   await page.locator('.clipping-row').filter({hasText:quote}).locator('[data-clip-other]').click();
