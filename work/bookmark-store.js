@@ -6,10 +6,20 @@
 }(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   'use strict';
   var STORAGE_KEY = 'earth-online-bookmarks-v1';
+  // Older open tabs rewrite every v1 entry as a chapter bookmark. Keep quote
+  // anchors in their own key so those writers can never erase a clipping.
+  var CLIP_KEY = 'earth-online-clippings-v1';
   var LIMIT = 500;
   var own = function (object, key) { return Object.prototype.hasOwnProperty.call(object, key); };
-  var clone = function (entries) { return entries.map(function (entry) { return Object.assign({}, entry); }); };
-  var keyOf = function (entry) { return JSON.stringify([entry.bookId, entry.section]); };
+  var anchors = root.EarthQuoteAnchor || (typeof require === 'function' && require('./quote-anchor.js'));
+  var clone = function (entries) { return entries.map(function (entry) {
+    return entry.kind === 'clip' ? Object.assign({}, entry, {anchor: Object.assign({}, entry.anchor)}) : Object.assign({}, entry);
+  }); };
+  var keyOf = function (entry) {
+    var fields = [entry.bookId, entry.section];
+    if (entry.kind === 'clip' && entry.anchor) fields.push(entry.anchor.start, entry.anchor.end, entry.anchor.exact);
+    return JSON.stringify(fields);
+  };
 
   return function createBookmarkStore(options) {
     var bookSections = new Map();
@@ -33,7 +43,14 @@
       if (!validReference(entry.bookId, entry.section) || !Number.isSafeInteger(entry.textOffset) || entry.textOffset < 0 || entry.textOffset > 5000000) return null;
       if (typeof entry.title !== 'string' || entry.title.length > 240 || typeof entry.excerpt !== 'string' || entry.excerpt.length > 160) return null;
       if (typeof entry.createdAt !== 'number' || !Number.isFinite(entry.createdAt) || entry.createdAt <= 0 || typeof entry.updatedAt !== 'number' || !Number.isFinite(entry.updatedAt) || entry.updatedAt <= 0) return null;
-      return { bookId: entry.bookId, section: entry.section, textOffset: entry.textOffset, title: entry.title, excerpt: entry.excerpt, createdAt: entry.createdAt, updatedAt: entry.updatedAt };
+      var clean = { bookId: entry.bookId, section: entry.section, textOffset: entry.textOffset, title: entry.title, excerpt: entry.excerpt, createdAt: entry.createdAt, updatedAt: entry.updatedAt };
+      if (entry.kind === 'clip') {
+        if (!anchors || !anchors.valid(entry.anchor) || entry.anchor.start !== entry.textOffset) return null;
+        var a = entry.anchor;
+        clean.kind = 'clip';
+        clean.anchor = {start: a.start, end: a.end, exact: a.exact, prefix: a.prefix, suffix: a.suffix};
+      } else if (own(entry, 'kind') && entry.kind !== undefined) return null;
+      return clean;
     }
     function validate(entries) {
       var result = [];
@@ -49,16 +66,26 @@
       }
       return result;
     }
+    function readSaved(storage, key, clips) {
+      var raw = storage.getItem(key), saved;
+      try { saved = raw === null ? null : JSON.parse(raw); } catch (error) { saved = null; }
+      return saved && saved.version === 1 ? validate(saved.entries).filter(function (entry) {
+        return (entry.kind === 'clip') === clips;
+      }) : [];
+    }
+    function storageUpdates(entries) {
+      return [STORAGE_KEY, CLIP_KEY].map(function (key) {
+        var group = entries.filter(function (entry) { return (entry.kind === 'clip') === (key === CLIP_KEY); });
+        return [key, JSON.stringify({version: 1, entries: group})];
+      });
+    }
     function current() {
       // Reading each time also observes storage events without a listener or a
       // lifecycle API. If access is denied, retain the last readable snapshot.
       try {
         var storage = root.localStorage;
         if (storage && typeof storage.getItem === 'function') {
-          var raw = storage.getItem(STORAGE_KEY);
-          var saved;
-          try { saved = raw === null ? null : JSON.parse(raw); } catch (error) { saved = null; }
-          snapshot = saved && saved.version === 1 ? validate(saved.entries) : [];
+          snapshot = readSaved(storage, STORAGE_KEY, false).concat(readSaved(storage, CLIP_KEY, true));
         }
       } catch (error) { /* Session use remains available. */ }
       var combined = new Map(snapshot.map(function (entry) { return [keyOf(entry), entry]; }));
@@ -85,7 +112,24 @@
       try {
         var storage = root.localStorage;
         if (!storage || typeof storage.setItem !== 'function') throw new Error('Storage unavailable');
-        storage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, entries: entries }));
+        var touched = new Set();
+        function mark(value, key) { touched.add(JSON.parse(key).length > 2 ? CLIP_KEY : STORAGE_KEY); }
+        pending.forEach(mark);
+        changes.forEach(mark);
+        var written = [];
+        try {
+          storageUpdates(entries).forEach(function (update) {
+            if (!touched.has(update[0])) return;
+            var previous = storage.getItem(update[0]);
+            storage.setItem(update[0], update[1]);
+            written.push([update[0], previous]);
+          });
+        } catch (error) {
+          written.reverse().forEach(function (saved) {
+            try { if (saved[1] === null) storage.removeItem(saved[0]); else storage.setItem(saved[0], saved[1]); } catch (ignored) {}
+          });
+          throw error;
+        }
         // Do not expose a successful write before storage has accepted it.
         snapshot = clone(entries);
         pending.clear();
@@ -98,19 +142,20 @@
     function upsert(input) {
       var entries = current();
       var reference = input && typeof input === 'object' && !Array.isArray(input) ? input : {};
-      var index = entries.findIndex(function (entry) { return entry.bookId === reference.bookId && entry.section === reference.section; });
+      var key = keyOf(reference);
+      var index = entries.findIndex(function (entry) { return keyOf(entry) === key; });
       var previous = index >= 0 ? entries[index] : null;
       var now = Math.max(Date.now(), previous ? previous.updatedAt : 1);
-      var entry = sanitize({ bookId: reference.bookId, section: reference.section, textOffset: reference.textOffset, title: reference.title, excerpt: reference.excerpt, createdAt: previous ? previous.createdAt : now, updatedAt: now });
+      var entry = sanitize(Object.assign({}, reference, {createdAt: previous ? previous.createdAt : now, updatedAt: now}));
       if (!entry) throw new TypeError('Invalid bookmark');
       if (index < 0 && entries.length >= LIMIT) throw new RangeError('Bookmark limit reached');
       if (index >= 0) entries[index] = entry;
       else entries.push(entry);
       return commit(entries, new Map([[keyOf(entry), entry]]));
     }
-    function remove(bookId, section) {
+    function remove(bookId, section, anchor) {
       if (!validReference(bookId, section)) throw new TypeError('Invalid bookmark reference');
-      var key = keyOf({ bookId: bookId, section: section });
+      var key = keyOf({ bookId: bookId, section: section, kind: anchor ? 'clip' : undefined, anchor: anchor });
       var entries = current().filter(function (entry) { return keyOf(entry) !== key; });
       return commit(entries, new Map([[key, null]]));
     }
@@ -133,7 +178,7 @@
       // Backups must retain external entries hidden by the display limit while
       // a session has pending additions. This method never attempts a write.
       readForExport: function () { return clone(current()); },
-      validate: validate, upsert: upsert, remove: remove, merge: merge
+      keyOf: keyOf, storageUpdates: storageUpdates, validate: validate, upsert: upsert, remove: remove, merge: merge
     };
   };
 }));

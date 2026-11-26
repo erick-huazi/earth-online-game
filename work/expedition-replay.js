@@ -49,6 +49,7 @@
     const $ = id => document.getElementById(id);
     const dialog = $('exp-replay-dialog');
     const jump = $('exp-replay-jump');
+    const practice = window.EarthExpeditionPractice.mount();
     let viewed = null;
     let station = 0;
     function showStation(index) {
@@ -56,6 +57,7 @@
       const previousFocus = document.activeElement;
       station = Math.max(0, Math.min(index, viewed.turn - 1));
       const step = viewed.history[station];
+      $('exp-practice-start').textContent = '从第 ' + step.turn + ' 站练习';
       jump.value = String(station);
       $('exp-replay-prev').disabled = station === 0;
       $('exp-replay-next').disabled = station + 1 === viewed.turn;
@@ -75,7 +77,20 @@
       $('exp-replay-insight').textContent = '本站见识 +' + step.insight + (seal ? ' · 收下书印「' + seal.name + '」' : '');
       if (previousFocus?.disabled && dialog.contains(previousFocus)) jump.focus();
     }
+    function resetPractice() {
+      practice.clear();
+      $('exp-replay-title').textContent = '远征回放';
+      $('exp-replay-close').setAttribute('aria-label', '关闭回放');
+      $('exp-replay-summary').hidden = false;
+    }
+    function returnToStation() {
+      resetPractice();
+      $('exp-replay-view').hidden = false;
+      showStation(station);
+      $('exp-practice-start').focus();
+    }
     function open(code) {
+      resetPractice();
       try {
         viewed = decode(code);
         const summary = engine.summarize(viewed);
@@ -93,8 +108,22 @@
     $('exp-replay-prev').addEventListener('click', () => showStation(station - 1));
     $('exp-replay-next').addEventListener('click', () => showStation(station + 1));
     jump.addEventListener('change', () => showStation(Number(jump.value)));
+    $('exp-practice-start').addEventListener('click', () => {
+      if (!viewed) return;
+      $('exp-replay-view').hidden = true;
+      $('exp-replay-summary').hidden = true;
+      $('exp-replay-title').textContent = '回放练习';
+      $('exp-replay-close').setAttribute('aria-label', '退出练习并返回回放');
+      practice.start(viewed, station + 1);
+    });
+    $('exp-practice-return').addEventListener('click', returnToStation);
+    dialog.addEventListener('cancel', event => {
+      if (!practice.active) return;
+      event.preventDefault();
+      returnToStation();
+    });
     dialog.addEventListener('keydown', event => {
-      if (!viewed || event.target === jump || event.ctrlKey || event.metaKey || event.altKey) return;
+      if (!viewed || practice.active || event.target === jump || event.ctrlKey || event.metaKey || event.altKey) return;
       const targets = {ArrowLeft: station - 1, ArrowRight: station + 1, Home: 0, End: viewed.turn - 1};
       if (!Object.hasOwn(targets, event.key)) return;
       event.preventDefault();
@@ -106,9 +135,10 @@
       dialog.close();
       onChallenge(seed, role);
     });
-    $('exp-replay-close').addEventListener('click', () => dialog.close());
+    $('exp-replay-close').addEventListener('click', () => practice.active ? returnToStation() : dialog.close());
     dialog.addEventListener('close', () => {
       if (dialog.open) return;
+      resetPractice();
       viewed = null;
       if (location.hash.startsWith('#replay=')) {
         try { history.replaceState(history.state, '', '#expedition'); } catch { /* file URLs can restrict history. */ }

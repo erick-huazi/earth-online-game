@@ -12,6 +12,17 @@
 @media print{.bookmark-panel,.bookmark-add,.bookmark-toolbar,.bookmark-toast{display:none!important}}
 @media(max-width:550px){.bookmark-toolbar{display:block;position:relative}.bookmark-toolbar>.bookmark-add{position:absolute;right:0;top:0;margin-top:0}.bookmark-toolbar .bookmark-panel>summary{padding-right:85px}}
 .bookmark-toolbar{align-items:flex-start}.bookmark-toolbar .bookmark-panel{min-width:0}.bookmark-toolbar>.bookmark-add{margin-top:5px}.bookmark-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,.6fr);gap:5px 12px;margin:5px 0 12px}.bookmark-filters>label:first-child{grid-column:1}.bookmark-search-row{display:flex;gap:6px;grid-column:1;grid-row:2}.bookmark-scope-field{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;gap:5px}.bookmark-filters :is(input,select,button),.bookmark-more{min-width:0;min-height:44px;border:1px solid var(--paper-line,var(--line));border-radius:2px;background:var(--appearance-control,var(--paper));color:inherit;font:12px/1.6 var(--sans);padding:8px}.bookmark-filters input{width:100%;flex:1}.bookmark-filters input::placeholder{color:var(--paper-muted,var(--muted));opacity:1}.bookmark-filters button{flex:0 0 auto;min-width:44px}.bookmark-filters button:disabled{opacity:.5;cursor:default}.bookmark-more{width:100%;margin-top:8px}.bookmark-scope-field select{width:100%}@media(max-width:550px){.bookmark-filters{grid-template-columns:minmax(0,1fr)}.bookmark-scope-field{grid-column:1;grid-row:3}.bookmark-filters :is(input,select){font-size:16px}}
+.clipping-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:start}
+.clipping-row .bookmark-open span{white-space:pre-wrap;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.clipping-row [data-clip-other]{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px}
+@media(max-width:550px){
+ .bookmark-toolbar>.clip-add{right:66px}
+ .bookmark-toolbar .bookmark-panel>summary{padding-right:134px}
+ .clipping-row{grid-template-columns:1fr auto;gap:2px 8px}
+ .clipping-row .bookmark-open{grid-column:1/-1}
+ .clipping-row [data-clip-other]{justify-self:start}
+}
+@media(max-width:850px){.earth-full-book .toolbar .clip-add{grid-column:3;grid-row:3;justify-self:start;padding-inline:10px}.earth-full-book .toolbar .reading-trail .search-state{grid-row:5;grid-column:1/-1}}
 
 /* Optional reader palettes. Paper intentionally inherits the existing design. */
 body.earth-manual [data-reading-appearance],body.earth-full-book [data-reading-appearance]{margin:8px 0 16px;max-width:100%}
@@ -73,7 +84,7 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
 @media print{.search-options,.note-copy-actions{display:none!important}}
 
 .chapter-hits:not([hidden]){display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;scroll-margin-top:88px}.chapter-hits button{min-height:44px}.chapter-hits span{font-size:14px;font-variant-numeric:tabular-nums}.prose mark[aria-current],.book-section h2 mark[aria-current],.text-reading mark[aria-current]{color:#fff;background:#56430a;outline:2px solid currentColor;outline-offset:1px;text-decoration:underline;font-weight:700}@media print{.chapter-hits{display:none!important}}
-</style></head><body class="earth-full-book"><a class="skip-link" id="skip-reading" href="#section-0">跳到正文</a><a class="skip-link" href="#reading-controls">跳到目录与搜索</a><header class="top"><a class="brand" data-manual-return href="../earth-online-manual.html#library">地球 ONLINE · 典籍手册</a><a href="#top">返回书首 ↑</a></header><div class="layout"><nav aria-label="全书目录"><h2>五运六气 · 全书目录</h2><details open><summary>五运六气 · 素问运气七篇 · 7 节</summary><ol><li><a href="#section-0">第66篇 · 天元纪大论</a></li><li><a href="#section-1">第67篇 · 五运行大论</a></li><li><a href="#section-2">第68篇 · 六微旨大论</a></li><li><a href="#section-3">第69篇 · 气交变大论</a></li><li><a href="#section-4">第70篇 · 五常政大论</a></li><li><a href="#section-5">第71篇 · 六元正纪大论</a></li><li><a href="#section-6">第74篇 · 至真要大论</a></li></ol></details></nav><main id="top"><header class="book-head"><h1>五运六气</h1><p>五运六气 · 素问运气七篇 · 7 个阅读节 · 全部收录文字均在本页</p><p>图片未注明作者或版本。此处提供相关原典《素问》运气七篇，尚不能确定某一本同名著作。</p><details class="conversion"><summary>版本与转换说明</summary><p>“五运六气”为图片中的主题，尚未确定具体同名著作。本地收录《素问》运气七篇：第66、67、68、69、70、71、74篇。七份Markdown均已完整下载，源资料据《重广补注黄帝内经素问》（王冰次注、林亿等校正）整理，保留原文及夹注，不是无注白文。阅读版仅去掉文件YAML元数据与重复标题，原始Markdown完整保存。</p><p>页码指原文件中的位置；可使用浏览器查找在全文中定位。原页图保存在配套 books 文件夹。</p></details><div data-original-page-jump></div><details class="appearance-settings"><summary>阅读配色</summary><div data-reading-appearance></div></details><details class="bookmark-panel" data-bookmark-panel><summary>我的书签<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>书签保存在当前浏览器。导出后可在主手册合并恢复。</p><button class="bookmark-undo" data-bookmark-export type="button">导出本页书签 ↓</button><p class="bookmark-status" data-bookmark-export-status role="status"></p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><div class="search-options"><label for="search-mode">查找方式<select id="search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div></header><div class="toolbar" id="reading-controls" tabindex="-1" role="search" aria-label="全书目录与搜索"><label class="mobile-index" for="jump">目录</label><select id="jump" aria-label="全书章节目录"><option value="section-0">第66篇 · 天元纪大论</option><option value="section-1">第67篇 · 五运行大论</option><option value="section-2">第68篇 · 六微旨大论</option><option value="section-3">第69篇 · 气交变大论</option><option value="section-4">第70篇 · 五常政大论</option><option value="section-5">第71篇 · 六元正纪大论</option><option value="section-6">第74篇 · 至真要大论</option></select><button id="smaller" aria-label="缩小字号">A−</button><button id="larger" aria-label="放大字号">A＋</button><input id="query" type="search" placeholder="搜索全书文字" aria-label="搜索全书文字"><button id="clear-search" type="button" disabled>清除</button><button id="prev-match" disabled>上处</button><button id="next-match" disabled>下处</button><button class="bookmark-add" data-bookmark-add type="button">存书签</button><div class="reading-trail"><span id="search-state" class="search-state" aria-live="polite">连续阅读全部内容，或用目录跳转。</span><a data-manual-return href="../earth-online-manual.html#library">在手册中读</a><a id="reader-game-return" href="../earth-online-game.html">进入游戏</a></div></div><section class="book-section" tabindex="-1" id="section-0" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">五运六气 · 素问运气七篇</p><h2>第66篇 · 天元纪大论</h2><div class="prose">- **元信息**：来源 kanripo.org《黃帝內經素問》KR3e0001（唐·王冰次注，宋·林億等校正）；卷次 卷第十九；URL：https://www.kanripo.org/text/KR3e0001/019
+</style></head><body class="earth-full-book"><a class="skip-link" id="skip-reading" href="#section-0">跳到正文</a><a class="skip-link" href="#reading-controls">跳到目录与搜索</a><header class="top"><a class="brand" data-manual-return href="../earth-online-manual.html#library">地球 ONLINE · 典籍手册</a><a href="#top">返回书首 ↑</a></header><div class="layout"><nav aria-label="全书目录"><h2>五运六气 · 全书目录</h2><details open><summary>五运六气 · 素问运气七篇 · 7 节</summary><ol><li><a href="#section-0">第66篇 · 天元纪大论</a></li><li><a href="#section-1">第67篇 · 五运行大论</a></li><li><a href="#section-2">第68篇 · 六微旨大论</a></li><li><a href="#section-3">第69篇 · 气交变大论</a></li><li><a href="#section-4">第70篇 · 五常政大论</a></li><li><a href="#section-5">第71篇 · 六元正纪大论</a></li><li><a href="#section-6">第74篇 · 至真要大论</a></li></ol></details></nav><main id="top"><header class="book-head"><h1>五运六气</h1><p>五运六气 · 素问运气七篇 · 7 个阅读节 · 全部收录文字均在本页</p><p>图片未注明作者或版本。此处提供相关原典《素问》运气七篇，尚不能确定某一本同名著作。</p><details class="conversion"><summary>版本与转换说明</summary><p>“五运六气”为图片中的主题，尚未确定具体同名著作。本地收录《素问》运气七篇：第66、67、68、69、70、71、74篇。七份Markdown均已完整下载，源资料据《重广补注黄帝内经素问》（王冰次注、林亿等校正）整理，保留原文及夹注，不是无注白文。阅读版仅去掉文件YAML元数据与重复标题，原始Markdown完整保存。</p><p>页码指原文件中的位置；可使用浏览器查找在全文中定位。原页图保存在配套 books 文件夹。</p></details><div data-original-page-jump></div><details class="appearance-settings"><summary>阅读配色</summary><div data-reading-appearance></div></details><details class="bookmark-panel" data-bookmark-panel><summary>我的书签与摘录<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>书签与摘录保存在当前浏览器。导出后可在主手册合并恢复。</p><button class="bookmark-undo" data-bookmark-export type="button">导出书签与摘录 ↓</button><p class="bookmark-status" data-bookmark-export-status role="status"></p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><div class="search-options"><label for="search-mode">查找方式<select id="search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div></header><div class="toolbar" id="reading-controls" tabindex="-1" role="search" aria-label="全书目录与搜索"><label class="mobile-index" for="jump">目录</label><select id="jump" aria-label="全书章节目录"><option value="section-0">第66篇 · 天元纪大论</option><option value="section-1">第67篇 · 五运行大论</option><option value="section-2">第68篇 · 六微旨大论</option><option value="section-3">第69篇 · 气交变大论</option><option value="section-4">第70篇 · 五常政大论</option><option value="section-5">第71篇 · 六元正纪大论</option><option value="section-6">第74篇 · 至真要大论</option></select><button id="smaller" aria-label="缩小字号">A−</button><button id="larger" aria-label="放大字号">A＋</button><input id="query" type="search" placeholder="搜索全书文字" aria-label="搜索全书文字"><button id="clear-search" type="button" disabled>清除</button><button id="prev-match" disabled>上处</button><button id="next-match" disabled>下处</button><button class="bookmark-add" data-bookmark-add type="button">存书签</button><button class="bookmark-add clip-add" data-clip-add type="button" title="选中本节原文后保存">存摘录</button><div class="reading-trail"><span id="search-state" class="search-state" aria-live="polite">连续阅读全部内容，或用目录跳转。</span><a data-manual-return href="../earth-online-manual.html#library">在手册中读</a><a id="reader-game-return" href="../earth-online-game.html">进入游戏</a></div></div><section class="book-section" tabindex="-1" id="section-0" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">五运六气 · 素问运气七篇</p><h2>第66篇 · 天元纪大论</h2><div class="prose">- **元信息**：来源 kanripo.org《黃帝內經素問》KR3e0001（唐·王冰次注，宋·林億等校正）；卷次 卷第十九；URL：https://www.kanripo.org/text/KR3e0001/019
 
 - **原文**：
 
@@ -5004,6 +5015,64 @@ const EarthOccurrences = (() => {
  if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof window==='object'?window:globalThis);
 
+// DOM Range offsets use UTF-16 code units. Store both an exact quote and its
+// location so changing fonts, markup or the surrounding edition can be handled.
+(function (root) {
+  'use strict';
+  const contextLength = 32;
+  const maxLength = 1000;
+
+  function splitsPair(text, offset) {
+    const left = text.charCodeAt(offset - 1), right = text.charCodeAt(offset);
+    return left >= 0xd800 && left <= 0xdbff && right >= 0xdc00 && right <= 0xdfff;
+  }
+
+  function valid(anchor) {
+    return !!anchor && Number.isSafeInteger(anchor.start) && anchor.start >= 0 &&
+      Number.isSafeInteger(anchor.end) && typeof anchor.exact === 'string' &&
+      anchor.exact.length <= maxLength && !!anchor.exact.trim() &&
+      anchor.end - anchor.start === anchor.exact.length &&
+      typeof anchor.prefix === 'string' && anchor.prefix.length <= contextLength &&
+      typeof anchor.suffix === 'string' && anchor.suffix.length <= contextLength;
+  }
+
+  function capture(text, start, end) {
+    if (typeof text !== 'string' || !Number.isSafeInteger(start) || !Number.isSafeInteger(end) ||
+        start < 0 || end > text.length || start >= end || end - start > maxLength ||
+        splitsPair(text, start) || splitsPair(text, end)) return null;
+    let from = Math.max(0, start - contextLength), to = Math.min(text.length, end + contextLength);
+    if (splitsPair(text, from)) from++;
+    if (splitsPair(text, to)) to--;
+    const anchor = {start, end, exact: text.slice(start, end), prefix: text.slice(from, start), suffix: text.slice(end, to)};
+    return valid(anchor) ? anchor : null;
+  }
+
+  function resolve(text, anchor) {
+    if (typeof text !== 'string' || !valid(anchor)) return null;
+    const {start, end, exact, prefix, suffix} = anchor;
+    if (text.slice(start, end) === exact && text.slice(Math.max(0, start - prefix.length), start) === prefix &&
+        text.slice(end, end + suffix.length) === suffix && !splitsPair(text, start) && !splitsPair(text, end))
+      return {start, end};
+    let best = -1, bestScore = -1, count = 0, tied = false;
+    for (let i = text.indexOf(exact); i !== -1; i = text.indexOf(exact, i + 1)) {
+      const after = i + exact.length;
+      if (splitsPair(text, i) || splitsPair(text, after)) continue;
+      let left = 0, right = 0;
+      while (left < prefix.length && text[i - left - 1] === prefix[prefix.length - left - 1]) left++;
+      while (right < suffix.length && text[after + right] === suffix[right]) right++;
+      const score = left + right;
+      count++;
+      if (score > bestScore) { best = i; bestScore = score; tied = false; }
+      else if (score === bestScore) tied = true;
+    }
+    return count === 1 || (bestScore > 0 && !tied) ? {start: best, end: best + exact.length} : null;
+  }
+
+  const api = {capture, resolve, valid};
+  root.EarthQuoteAnchor = api;
+  if (typeof module === 'object' && module.exports) module.exports = api;
+})(typeof globalThis === 'undefined' ? this : globalThis);
+
 (function (root, factory) {
   'use strict';
   var createBookmarkStore = factory(root);
@@ -5012,10 +5081,20 @@ const EarthOccurrences = (() => {
 }(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   'use strict';
   var STORAGE_KEY = 'earth-online-bookmarks-v1';
+  // Older open tabs rewrite every v1 entry as a chapter bookmark. Keep quote
+  // anchors in their own key so those writers can never erase a clipping.
+  var CLIP_KEY = 'earth-online-clippings-v1';
   var LIMIT = 500;
   var own = function (object, key) { return Object.prototype.hasOwnProperty.call(object, key); };
-  var clone = function (entries) { return entries.map(function (entry) { return Object.assign({}, entry); }); };
-  var keyOf = function (entry) { return JSON.stringify([entry.bookId, entry.section]); };
+  var anchors = root.EarthQuoteAnchor || (typeof require === 'function' && require('./quote-anchor.js'));
+  var clone = function (entries) { return entries.map(function (entry) {
+    return entry.kind === 'clip' ? Object.assign({}, entry, {anchor: Object.assign({}, entry.anchor)}) : Object.assign({}, entry);
+  }); };
+  var keyOf = function (entry) {
+    var fields = [entry.bookId, entry.section];
+    if (entry.kind === 'clip' && entry.anchor) fields.push(entry.anchor.start, entry.anchor.end, entry.anchor.exact);
+    return JSON.stringify(fields);
+  };
 
   return function createBookmarkStore(options) {
     var bookSections = new Map();
@@ -5039,7 +5118,14 @@ const EarthOccurrences = (() => {
       if (!validReference(entry.bookId, entry.section) || !Number.isSafeInteger(entry.textOffset) || entry.textOffset < 0 || entry.textOffset > 5000000) return null;
       if (typeof entry.title !== 'string' || entry.title.length > 240 || typeof entry.excerpt !== 'string' || entry.excerpt.length > 160) return null;
       if (typeof entry.createdAt !== 'number' || !Number.isFinite(entry.createdAt) || entry.createdAt <= 0 || typeof entry.updatedAt !== 'number' || !Number.isFinite(entry.updatedAt) || entry.updatedAt <= 0) return null;
-      return { bookId: entry.bookId, section: entry.section, textOffset: entry.textOffset, title: entry.title, excerpt: entry.excerpt, createdAt: entry.createdAt, updatedAt: entry.updatedAt };
+      var clean = { bookId: entry.bookId, section: entry.section, textOffset: entry.textOffset, title: entry.title, excerpt: entry.excerpt, createdAt: entry.createdAt, updatedAt: entry.updatedAt };
+      if (entry.kind === 'clip') {
+        if (!anchors || !anchors.valid(entry.anchor) || entry.anchor.start !== entry.textOffset) return null;
+        var a = entry.anchor;
+        clean.kind = 'clip';
+        clean.anchor = {start: a.start, end: a.end, exact: a.exact, prefix: a.prefix, suffix: a.suffix};
+      } else if (own(entry, 'kind') && entry.kind !== undefined) return null;
+      return clean;
     }
     function validate(entries) {
       var result = [];
@@ -5055,16 +5141,26 @@ const EarthOccurrences = (() => {
       }
       return result;
     }
+    function readSaved(storage, key, clips) {
+      var raw = storage.getItem(key), saved;
+      try { saved = raw === null ? null : JSON.parse(raw); } catch (error) { saved = null; }
+      return saved && saved.version === 1 ? validate(saved.entries).filter(function (entry) {
+        return (entry.kind === 'clip') === clips;
+      }) : [];
+    }
+    function storageUpdates(entries) {
+      return [STORAGE_KEY, CLIP_KEY].map(function (key) {
+        var group = entries.filter(function (entry) { return (entry.kind === 'clip') === (key === CLIP_KEY); });
+        return [key, JSON.stringify({version: 1, entries: group})];
+      });
+    }
     function current() {
       // Reading each time also observes storage events without a listener or a
       // lifecycle API. If access is denied, retain the last readable snapshot.
       try {
         var storage = root.localStorage;
         if (storage && typeof storage.getItem === 'function') {
-          var raw = storage.getItem(STORAGE_KEY);
-          var saved;
-          try { saved = raw === null ? null : JSON.parse(raw); } catch (error) { saved = null; }
-          snapshot = saved && saved.version === 1 ? validate(saved.entries) : [];
+          snapshot = readSaved(storage, STORAGE_KEY, false).concat(readSaved(storage, CLIP_KEY, true));
         }
       } catch (error) { /* Session use remains available. */ }
       var combined = new Map(snapshot.map(function (entry) { return [keyOf(entry), entry]; }));
@@ -5091,7 +5187,24 @@ const EarthOccurrences = (() => {
       try {
         var storage = root.localStorage;
         if (!storage || typeof storage.setItem !== 'function') throw new Error('Storage unavailable');
-        storage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, entries: entries }));
+        var touched = new Set();
+        function mark(value, key) { touched.add(JSON.parse(key).length > 2 ? CLIP_KEY : STORAGE_KEY); }
+        pending.forEach(mark);
+        changes.forEach(mark);
+        var written = [];
+        try {
+          storageUpdates(entries).forEach(function (update) {
+            if (!touched.has(update[0])) return;
+            var previous = storage.getItem(update[0]);
+            storage.setItem(update[0], update[1]);
+            written.push([update[0], previous]);
+          });
+        } catch (error) {
+          written.reverse().forEach(function (saved) {
+            try { if (saved[1] === null) storage.removeItem(saved[0]); else storage.setItem(saved[0], saved[1]); } catch (ignored) {}
+          });
+          throw error;
+        }
         // Do not expose a successful write before storage has accepted it.
         snapshot = clone(entries);
         pending.clear();
@@ -5104,19 +5217,20 @@ const EarthOccurrences = (() => {
     function upsert(input) {
       var entries = current();
       var reference = input && typeof input === 'object' && !Array.isArray(input) ? input : {};
-      var index = entries.findIndex(function (entry) { return entry.bookId === reference.bookId && entry.section === reference.section; });
+      var key = keyOf(reference);
+      var index = entries.findIndex(function (entry) { return keyOf(entry) === key; });
       var previous = index >= 0 ? entries[index] : null;
       var now = Math.max(Date.now(), previous ? previous.updatedAt : 1);
-      var entry = sanitize({ bookId: reference.bookId, section: reference.section, textOffset: reference.textOffset, title: reference.title, excerpt: reference.excerpt, createdAt: previous ? previous.createdAt : now, updatedAt: now });
+      var entry = sanitize(Object.assign({}, reference, {createdAt: previous ? previous.createdAt : now, updatedAt: now}));
       if (!entry) throw new TypeError('Invalid bookmark');
       if (index < 0 && entries.length >= LIMIT) throw new RangeError('Bookmark limit reached');
       if (index >= 0) entries[index] = entry;
       else entries.push(entry);
       return commit(entries, new Map([[keyOf(entry), entry]]));
     }
-    function remove(bookId, section) {
+    function remove(bookId, section, anchor) {
       if (!validReference(bookId, section)) throw new TypeError('Invalid bookmark reference');
-      var key = keyOf({ bookId: bookId, section: section });
+      var key = keyOf({ bookId: bookId, section: section, kind: anchor ? 'clip' : undefined, anchor: anchor });
       var entries = current().filter(function (entry) { return keyOf(entry) !== key; });
       return commit(entries, new Map([[key, null]]));
     }
@@ -5139,10 +5253,113 @@ const EarthOccurrences = (() => {
       // Backups must retain external entries hidden by the display limit while
       // a session has pending additions. This method never attempts a write.
       readForExport: function () { return clone(current()); },
-      validate: validate, upsert: upsert, remove: remove, merge: merge
+      keyOf: keyOf, storageUpdates: storageUpdates, validate: validate, upsert: upsert, remove: remove, merge: merge
     };
   };
 }));
+
+// Convert only chapter body text to offsets. Search marks may split that text
+// into different nodes in the manual and in a standalone book.
+function createEarthClippings(adapter, store, render, message) {
+  const add = document.querySelector('[data-clip-add]');
+  const fullBook = document.body.classList.contains('earth-full-book');
+  let pressedSelection = null;
+
+  function selectionEntry() {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount !== 1 || selection.isCollapsed) return null;
+    const range = selection.getRangeAt(0);
+    const parent = range.startContainer.nodeType === 1 ? range.startContainer : range.startContainer.parentElement;
+    const body = parent?.closest('#fulltext-content, .book-section .prose');
+    if (!body || !body.contains(range.endContainer)) return null;
+    const current = adapter.forBody ? adapter.forBody(body) : adapter.current();
+    if (!current || current.element !== body) return null;
+    const before = document.createRange();
+    before.selectNodeContents(body);
+    before.setEnd(range.startContainer, range.startOffset);
+    const start = before.toString().length;
+    const anchor = EarthQuoteAnchor.capture(body.textContent, start, start + range.toString().length);
+    return anchor && {bookId: current.bookId, section: current.section, title: current.title.slice(0, 240),
+      textOffset: start, excerpt: anchor.exact.slice(0, 160), kind: 'clip', anchor};
+  }
+
+  add.addEventListener('pointerdown', () => { pressedSelection = selectionEntry(); });
+  add.addEventListener('pointercancel', () => { pressedSelection = null; });
+  add.addEventListener('mousedown', event => event.preventDefault());
+  add.addEventListener('click', event => {
+    const entry = selectionEntry() || (event.detail ? pressedSelection : null);
+    pressedSelection = null;
+    if (!entry) { message('请先在同一节正文中选中一段文字。较长的选段请分次摘录。'); return; }
+    try {
+      const result = store.upsert(entry);
+      render();
+      message(result.persisted ? '摘录已保存，可在“我的书签与摘录”中定位原文。' : '摘录暂存于此页，请在离开前导出备份。');
+    } catch (error) { message('未能保存摘录。书签与摘录最多共 500 条，请先腾出空间。'); }
+  });
+
+  function highlight(element, anchor) {
+    const position = EarthQuoteAnchor.resolve(element.textContent, anchor);
+    if (!position) return null;
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const range = document.createRange();
+    let offset = 0, started = false, node;
+    while ((node = walker.nextNode())) {
+      const next = offset + node.length;
+      if (!started && position.start < next) {
+        range.setStart(node, position.start - offset);
+        started = true;
+      }
+      if (started && position.end <= next) {
+        range.setEnd(node, position.end - offset);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        return range;
+      }
+      offset = next;
+    }
+    return null;
+  }
+
+  // The fragment stays on the device. It carries just this passage so opening
+  // another local HTML file works even when each file has isolated storage.
+  function url(entry, anotherView) {
+    const manual = fullBook && anotherView;
+    const book = adapter.books.find(book => book.id === entry.bookId);
+    const path = manual ? '../earth-online-manual.html' : fullBook ? entry.bookId + '.html' : book.htmlPath;
+    const target = adapter.carryTo(new URL(path, location.href));
+    if (manual) {
+      target.searchParams.set('book', entry.bookId);
+      target.searchParams.set('section', entry.section);
+    }
+    target.hash = 'clip=' + encodeURIComponent(JSON.stringify([entry.bookId, entry.section, entry.anchor]));
+    return target.href;
+  }
+
+  function link(entry, anotherView = true) {
+    const node = document.createElement('a');
+    node.href = url(entry, anotherView);
+    node.target = '_blank';
+    node.rel = 'noopener';
+    node.dataset.clipOther = '';
+    node.textContent = fullBook && anotherView ? '手册中读' : '全书中读';
+    node.setAttribute('aria-label', node.textContent + '（新标签页）');
+    return node;
+  }
+
+  function incoming() {
+    if (!location.hash.startsWith('#clip=') || location.hash.length > 24576) return null;
+    try {
+      const [bookId, section, anchor] = JSON.parse(decodeURIComponent(location.hash.slice(6)));
+      const book = adapter.books.find(book => book.id === bookId);
+      if (!book || !Number.isSafeInteger(section) || section < 0 || section >= book.sectionCount ||
+          !EarthQuoteAnchor.valid(anchor) || (fullBook && bookId !== adapter.current().bookId)) return null;
+      return {bookId, section, anchor, kind: 'clip'};
+    } catch (error) { return null; }
+  }
+
+  return {highlight, link, incoming};
+}
 
 (() => {
  'use strict';
@@ -5163,7 +5380,7 @@ const EarthOccurrences = (() => {
   const panel=document.querySelector('[data-bookmark-panel]'),list=panel.querySelector('[data-bookmark-list]'),status=panel.querySelector('[data-bookmark-status]'),undo=panel.querySelector('[data-bookmark-undo]'),add=document.querySelector('[data-bookmark-add]');
   const toast=document.createElement('p');toast.className='bookmark-toast';toast.hidden=true;toast.setAttribute('role','status');document.body.append(toast);
   const controls=document.createElement('div');controls.className='bookmark-filters';
-  controls.innerHTML='<label for="bookmark-search">查找书签</label><div class="bookmark-search-row"><input id="bookmark-search" data-bookmark-search type="search" maxlength="160" placeholder="书名、章节或摘录词句"><button type="button" data-bookmark-clear aria-label="清除书签筛选">清除</button></div><label class="bookmark-scope-field" for="bookmark-scope">书籍<select id="bookmark-scope" data-bookmark-scope><option value="all">全部典籍</option></select></label>';
+  controls.innerHTML='<label for="bookmark-search">查找书签与摘录</label><div class="bookmark-search-row"><input id="bookmark-search" data-bookmark-search type="search" maxlength="160" placeholder="书名、章节或摘录词句"><button type="button" data-bookmark-clear aria-label="清除书签筛选">清除</button></div><label class="bookmark-scope-field" for="bookmark-scope">书籍<select id="bookmark-scope" data-bookmark-scope><option value="all">全部典籍</option></select></label>';
   const search=controls.querySelector('[data-bookmark-search]'),scope=controls.querySelector('[data-bookmark-scope]'),clear=controls.querySelector('[data-bookmark-clear]');
   for(const book of adapter.books){const option=document.createElement('option');option.value=book.id;option.textContent=book.title;scope.append(option);}
   const resultCount=document.createElement('p');resultCount.className='bookmark-status';resultCount.dataset.bookmarkResultCount='';resultCount.setAttribute('role','status');
@@ -5172,10 +5389,12 @@ const EarthOccurrences = (() => {
   list.before(controls,capacity,resultCount);list.after(more);
   let removed=null,toastTimer,signature='',query='',visibleLimit=40,composing=false;
   const allEntries=()=>store.readForExport();
-  const matches=entry=>(scope.value==='all'||entry.bookId===scope.value)&&(!query||(adapter.books.find(b=>b.id===entry.bookId).title+' '+entry.title+' '+entry.excerpt).toLocaleLowerCase().includes(query));
+  const searchKey=value=>value.replace(/\s+/g,'').toLocaleLowerCase();
+  const matches=entry=>(scope.value==='all'||entry.bookId===scope.value)&&(!query||searchKey(adapter.books.find(b=>b.id===entry.bookId).title+' '+entry.title+' '+(entry.anchor?.exact||entry.excerpt)).includes(searchKey(query)));
   const capacityMessage='合并后的书签超过 500 枚，操作暂存在本页，已有书签保持原样。请先导出备份，再删除不再需要的书签。';
   function message(text){status.textContent=text;toast.textContent=text;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{toast.hidden=true},4200);}
-  function syncButton(entries){const current=adapter.current(),found=entries.some(e=>e.bookId===current.bookId&&e.section===current.section);add.textContent=found?'更新书签':'存书签';add.title=found?'更新本节书签到当前位置':'保存当前位置为书签';add.setAttribute('aria-label',add.title);}
+  const clips=createEarthClippings(adapter,store,render,message);
+  function syncButton(entries){const current=adapter.current(),found=entries.some(e=>e.kind!=='clip'&&e.bookId===current.bookId&&e.section===current.section);add.textContent=found?'更新书签':'存书签';add.title=found?'更新本节书签到当前位置':'保存当前位置为书签';add.setAttribute('aria-label',add.title);}
   function render(){
    const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit]);if(next===signature)return;signature=next;
    const previousScroll=list.scrollTop;panel.querySelector('[data-bookmark-count]').textContent=entries.length?' · '+entries.length:'';list.replaceChildren();
@@ -5183,17 +5402,22 @@ const EarthOccurrences = (() => {
    clear.disabled=!query&&scope.value==='all'&&!search.value;
    capacity.hidden=entries.length<=500;capacity.textContent=capacity.hidden?'':capacityMessage;
    const found=entries.filter(matches).sort((a,b)=>b.updatedAt-a.updatedAt),shown=found.slice(0,visibleLimit);
-   resultCount.textContent='显示 '+shown.length+' / '+found.length+' 枚匹配书签，共 '+entries.length+' 枚。';
+   resultCount.textContent='显示 '+shown.length+' / '+found.length+' 条匹配记录，共 '+entries.length+' 条。';
    more.hidden=shown.length>=found.length;more.textContent='再显示 '+Math.min(40,found.length-shown.length)+' 枚';
-   if(!found.length){const empty=document.createElement('p');empty.className='bookmark-empty';empty.textContent=!entries.length?'还没有书签。读到想回看的地方，点“存书签”。':'没有匹配的书签。可换个词句，或清除筛选查看全部。';list.append(empty);return;}
+   if(!found.length){const empty=document.createElement('p');empty.className='bookmark-empty';empty.textContent=!entries.length?'点“存书签”记住位置，或选中正文后点“存摘录”。':'没有匹配的书签或摘录。可换个词句，或清除筛选查看全部。';list.append(empty);return;}
    for(const entry of shown){
     const row=document.createElement('div');row.className='bookmark-row';
     const open=document.createElement('button');open.type='button';open.dataset.bookmarkOpen='';open.className='bookmark-open';
     const title=document.createElement('strong'),excerpt=document.createElement('span');const book=adapter.books.find(b=>b.id===entry.bookId);
-    title.textContent='《'+book.title+'》 · '+entry.title;excerpt.textContent=entry.excerpt||'本节开头';open.append(title,excerpt);open.addEventListener('click',()=>openEntry(entry));
+    const isClip=entry.kind==='clip',type=isClip?'摘录':'书签';
+    if(isClip){open.dataset.clipOpen='';row.classList.add('clipping-row');}
+    title.textContent=(isClip?'摘录 · ':'')+'《'+book.title+'》 · '+entry.title;excerpt.textContent=isClip?entry.anchor.exact:entry.excerpt||'本节开头';open.append(title,excerpt);open.addEventListener('click',()=>openEntry(entry));
     const remove=document.createElement('button');remove.type='button';remove.dataset.bookmarkRemove='';remove.className='bookmark-remove';remove.textContent='删除';remove.setAttribute('aria-label','删除《'+book.title+'》'+entry.title+'书签');
-    remove.addEventListener('click',()=>{const result=store.remove(entry.bookId,entry.section);removed=entry;undo.hidden=false;render();message(result.reason==='capacity'?capacityMessage:result.persisted?'书签已删除，可撤销。':'书签已临时删除；浏览器存储不可用。');undo.focus({preventScroll:true});});
-    row.append(open,remove);list.append(row);
+    if(isClip){remove.dataset.clipRemove='';remove.setAttribute('aria-label','删除《'+book.title+'》'+entry.title+'摘录');}
+    remove.addEventListener('click',()=>{const result=store.remove(entry.bookId,entry.section,entry.anchor);removed=entry;undo.hidden=false;render();message(result.reason==='capacity'?capacityMessage:result.persisted?type+'已删除，可撤销。':type+'已临时删除；浏览器存储不可用。');undo.focus({preventScroll:true});});
+    row.append(open);
+    if(isClip)row.append(clips.link(entry));
+    row.append(remove);list.append(row);
    }
    list.scrollTop=previousScroll;
   }
@@ -5205,21 +5429,24 @@ const EarthOccurrences = (() => {
   clear.addEventListener('click',()=>{search.value='';scope.value='all';composing=false;filter();search.focus({preventScroll:true});});
   more.addEventListener('click',()=>{const previous=list.querySelectorAll('[data-bookmark-open]').length;visibleLimit+=40;render();const next=list.querySelectorAll('[data-bookmark-open]')[previous];if(next){list.scrollTop+=next.getBoundingClientRect().top-list.getBoundingClientRect().top;next.focus({preventScroll:true});}});
   function openEntry(entry){
+   if(entry.kind==='clip'&&adapter.forBody&&entry.bookId!==adapter.current().bookId){clips.link(entry,false).click();return;}
    if(adapter.open(entry)===false)return;
    requestAnimationFrame(()=>{
-    const current=adapter.current();if(current.bookId!==entry.bookId||current.section!==entry.section)return;
-    const range=textRange(current.element,entry.textOffset);if(range){const delta=range.getBoundingClientRect().top-adapter.line();adapter.scrollBy(delta);}
-    adapter.focus();adapter.save();message('已回到书签中的词句。');render();
+    const current=adapter.forSection?.(entry.section)||adapter.current();if(current.bookId!==entry.bookId||current.section!==entry.section)return;
+    adapter.focus(entry.section);
+    const range=entry.kind==='clip'?clips.highlight(current.element,entry.anchor):textRange(current.element,entry.textOffset);
+    if(range){const first=range.getClientRects()[0];if(first)adapter.scrollBy(first.top-adapter.line());}
+    adapter.save();message(entry.kind==='clip'?(range?'已定位并选中摘录原文。':'原文已变动，无法唯一定位这段摘录。'):'已回到书签中的词句。');render();
    });
   }
   add.addEventListener('click',()=>{
    const current=adapter.current(),text=current.element.textContent,textOffset=captureTextOffset(current.element,adapter.line()),now=Date.now();
    try{const result=store.upsert({bookId:current.bookId,section:current.section,textOffset,title:current.title.slice(0,240),excerpt:text.slice(textOffset,textOffset+90).replace(/\s+/g,' '),createdAt:now,updatedAt:now});
-   render();message(result.reason==='capacity'?capacityMessage:result.persisted?'书签已保存，可在“我的书签”中回看。':document.body.classList.contains('earth-full-book')?'书签仅临时保存在当前页，请在“我的书签”中导出。':'书签仅临时保存在当前页，请及时下载完整备份。');}catch(e){message('未能添加书签。最多可保留 500 枚，请先删除不再需要的书签。');}
+   render();message(result.reason==='capacity'?capacityMessage:result.persisted?'书签已保存，可在“我的书签与摘录”中回看。':document.body.classList.contains('earth-full-book')?'书签仅临时保存在当前页，请在“我的书签与摘录”中导出。':'书签仅临时保存在当前页，请及时下载完整备份。');}catch(e){message('未能添加书签。最多可保留 500 枚，请先删除不再需要的书签。');}
   });
   undo.addEventListener('click',()=>{
    if(!removed)return;
-   const sameEntry=entry=>entry.bookId===removed.bookId&&entry.section===removed.section;
+   const sameEntry=entry=>store.keyOf(entry)===store.keyOf(removed);
    const existed=allEntries().some(sameEntry),result=store.merge([removed]),restored=allEntries().find(sameEntry);
    if(!restored){render();message('未能恢复：书签已达到 500 枚，已保留撤销入口；名额腾出后可重试。');undo.focus({preventScroll:true});return;}
    const keptExisting=existed||['textOffset','title','excerpt','createdAt','updatedAt'].some(key=>restored[key]!==removed[key]);
@@ -5227,10 +5454,12 @@ const EarthOccurrences = (() => {
    message(result.reason==='capacity'?capacityMessage:(keptExisting?(result.persisted?'本节已有新书签，已保留现有书签。':'本节已有新书签，已临时保留，请及时备份。'):(result.persisted?'已恢复删除的书签。':'书签已临时恢复，请及时备份。'))+(!matches(restored)?'当前筛选未显示这枚书签，可清除筛选查看。':''));
    list.querySelector('button')?.focus({preventScroll:true});
   });
-  addEventListener('storage',event=>{if(event.key==='earth-online-bookmarks-v1'||event.key===null)render();});
+  addEventListener('storage',event=>{if(event.key==='earth-online-bookmarks-v1'||event.key==='earth-online-clippings-v1'||event.key===null)render();});
   window.earthBookmarkUI={refresh:render,open:openEntry};render();
   const requested=new URL(location.href).searchParams.get('bookmark');
-  if(requested!==null&&/^\d+$/.test(requested)&&adapter.shouldOpenInitialBookmark?.()!==false){const current=adapter.current(),entry=allEntries().find(e=>e.bookId===current.bookId&&e.section===Number(requested));if(entry)requestAnimationFrame(()=>openEntry(entry));}
+  const incoming=clips.incoming();
+  if(incoming){requestAnimationFrame(()=>openEntry(incoming));}
+  else if(requested!==null&&/^\d+$/.test(requested)&&adapter.shouldOpenInitialBookmark?.()!==false){const current=adapter.current(),entry=allEntries().find(e=>e.kind!=='clip'&&e.bookId===current.bookId&&e.section===Number(requested));if(entry)requestAnimationFrame(()=>openEntry(entry));}
   return window.earthBookmarkUI;
  };
 })();
@@ -5310,7 +5539,7 @@ const EarthOccurrences = (() => {
   const data={format:'earth-online-backup',version:1,manual:{completed:[],notes:{}},reading:{},fullBooks:{},bookmarks:window.earthBookmarkStore.readForExport(),appearance:{theme:document.documentElement.dataset.readingTheme||'paper'},exportedAt:new Date().toISOString()};
   const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'})),link=document.createElement('a');
   link.href=url;link.download='地球Online-书签备份-'+new Date().toISOString().slice(0,10)+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-  document.querySelector('[data-bookmark-export-status]').textContent='书签备份已下载，可在主手册“备份与恢复”中合并。';
+  document.querySelector('[data-bookmark-export-status]').textContent='书签与摘录已导出，可在主手册“备份与恢复”中合并。';
  });
 })();
 
@@ -5824,17 +6053,22 @@ const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath
   });
   const originalPageBook={id:bookId,volumes:pageJumpVolumes,sections:sections.map(section=>({volumeId:section.dataset.volume,pageStart:Number(section.dataset.pageStart),pageEnd:Number(section.dataset.pageEnd)}))};
   mountOriginalPageJump({book:()=>originalPageBook,current:currentIndex,open:index=>{navigateTo(sections[index].id);sections[index].focus({preventScroll:true});}});
+  const sectionInfo=index=>({bookId,section:index,title:titles[index],element:paragraphs[index]});
   mountEarthBookmarks({
     books:bookmarkBooks,
+    carryTo:readingGame.carryTo,
+    forBody:element=>{const index=indexById.get(element.closest('.book-section').id);return index===undefined?null:sectionInfo(index);},
+    forSection:sectionInfo,
     shouldOpenInitialBookmark:()=>!resumedSavedPosition,
-    current:()=>{const index=currentIndex();return {bookId,section:index,title:sections[index].querySelector('h2').textContent,element:paragraphs[index]};},
+    current:()=>sectionInfo(currentIndex()),
     line:()=>readingInset()+12,
     scrollBy:delta=>scrollBy(0,delta),
-    focus:()=>sections[currentIndex()].focus({preventScroll:true}),
+    focus:index=>sections[index].focus({preventScroll:true}),
     save:savePosition,
     open:entry=>{
       if(entry.bookId!==bookId){const target=readingGame.carryTo(new URL(entry.bookId+'.html',location.href));target.searchParams.set('bookmark',entry.section);target.hash='section-'+entry.section;location.href=target.href;return false;}
       navigateTo('section-'+entry.section);
+      if(entry.kind==='clip')refreshHighlights(entry.section);
     }
   });
 })();

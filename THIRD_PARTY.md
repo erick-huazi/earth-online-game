@@ -33,3 +33,7 @@
 ## v2.4 二维码与回放
 
 分享二维码使用 qrcode-generator 2.0.4。构建时校验上游 JavaScript 的 SHA-256，且将完整 MIT 许可随离线包分发。jsQR 1.4.0 是开发依赖，用于解码测试中生成的 PNG。[编码器固定源码](https://github.com/kazuhikoarase/qrcode-generator/blob/83b7e8fe3fddd3b0368dbafd6ce56995bd25e3c8/js/dist/qrcode.js) · [解码器](https://github.com/cozmo/jsQR)
+
+## v2.5 属性测试
+
+fast-check 4.11.0（MIT）及其间接依赖 pure-rand 用于开发和持续集成。生成测试覆盖可重现的分叉与原文锚定；版本和 npm 完整性值见 package-lock.json。[固定上游源码](https://github.com/dubzzz/fast-check/tree/60d68efc639aba994f489bd0dedeceba2be4cf51)

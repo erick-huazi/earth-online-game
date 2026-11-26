@@ -430,17 +430,22 @@
   });
   const originalPageBook={id:bookId,volumes:pageJumpVolumes,sections:sections.map(section=>({volumeId:section.dataset.volume,pageStart:Number(section.dataset.pageStart),pageEnd:Number(section.dataset.pageEnd)}))};
   mountOriginalPageJump({book:()=>originalPageBook,current:currentIndex,open:index=>{navigateTo(sections[index].id);sections[index].focus({preventScroll:true});}});
+  const sectionInfo=index=>({bookId,section:index,title:titles[index],element:paragraphs[index]});
   mountEarthBookmarks({
     books:bookmarkBooks,
+    carryTo:readingGame.carryTo,
+    forBody:element=>{const index=indexById.get(element.closest('.book-section').id);return index===undefined?null:sectionInfo(index);},
+    forSection:sectionInfo,
     shouldOpenInitialBookmark:()=>!resumedSavedPosition,
-    current:()=>{const index=currentIndex();return {bookId,section:index,title:sections[index].querySelector('h2').textContent,element:paragraphs[index]};},
+    current:()=>sectionInfo(currentIndex()),
     line:()=>readingInset()+12,
     scrollBy:delta=>scrollBy(0,delta),
-    focus:()=>sections[currentIndex()].focus({preventScroll:true}),
+    focus:index=>sections[index].focus({preventScroll:true}),
     save:savePosition,
     open:entry=>{
       if(entry.bookId!==bookId){const target=readingGame.carryTo(new URL(entry.bookId+'.html',location.href));target.searchParams.set('bookmark',entry.section);target.hash='section-'+entry.section;location.href=target.href;return false;}
       navigateTo('section-'+entry.section);
+      if(entry.kind==='clip')refreshHighlights(entry.section);
     }
   });
 })();

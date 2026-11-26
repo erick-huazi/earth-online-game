@@ -113,6 +113,7 @@ function endingView() {
  }
  const actions=node('div','exp-result-actions');
  actions.append(button('生成我的山河战报 ↗','primary',openShare),
+  button('回放并练习','outline',()=>replay.open(window.EarthExpeditionReplay.encode(run))),
   button('同一开局，再走一遍','outline',()=>{seed=run.seed;role=run.role;run=null;start();}),
   button('换一张山河图','outline',()=>setup('free',freshSeed(),role)));
  box.append(actions);

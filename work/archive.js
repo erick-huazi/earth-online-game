@@ -9,7 +9,7 @@
   if(!Array.isArray(entries))return [];
   const found=[],seen=new Set();
   for(let start=0;start<entries.length;start+=500){
-   for(const entry of window.earthBookmarkStore.validate(entries.slice(start,start+500))){const key=entry.bookId+':'+entry.section;if(!seen.has(key)){seen.add(key);found.push(entry);}}
+   for(const entry of window.earthBookmarkStore.validate(entries.slice(start,start+500))){const key=window.earthBookmarkStore.keyOf(entry);if(!seen.has(key)){seen.add(key);found.push(entry);}}
   }
   return found;
  }
@@ -46,7 +46,7 @@
  function downloadArchive(){
   const blob=new Blob([JSON.stringify(collect(),null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
   a.href=url;a.download='地球Online-完整备份-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-  $('archive-status').textContent='完整备份已下载，包含心得及副本、探索标记、阅读位置、书签与配色。';
+  $('archive-status').textContent='完整备份已下载，包含心得及副本、探索标记、阅读位置、书签、摘录与配色。';
  }
  function merged(data){
   const next=manualSnapshotForExport(),reading=JSON.parse(JSON.stringify(readingState)),full={},stats={notes:0,conflicts:0,positions:0,noteCopies:0};
@@ -61,8 +61,8 @@
   // A fresh reader has no explicit chapter record; prefer the archive's font.
   const hasReadingPosition=Object.keys(readingState.positions).length||Object.values(readingState.offsets).some(o=>o.section>0||o.ratio>0);
   if(!hasReadingPosition&&!readingState.fontChosen&&readingState.fontSize===18&&data.reading.fontSize){reading.fontSize=data.reading.fontSize;reading.fontChosen=data.reading.fontChosen===true;}
-  const existing=window.earthBookmarkStore?.readForExport()||[],keys=new Set(existing.map(e=>e.bookId+':'+e.section));
-  const additional=data.bookmarks.filter(e=>!keys.has(e.bookId+':'+e.section));
+  const existing=window.earthBookmarkStore?.readForExport()||[],keys=new Set(existing.map(e=>window.earthBookmarkStore.keyOf(e)));
+  const additional=data.bookmarks.filter(e=>!keys.has(window.earthBookmarkStore.keyOf(e)));
   const bookmarks=window.earthBookmarkStore?.validate([...existing,...additional])||[];
   stats.bookmarks=Math.max(0,bookmarks.length-existing.length);
   stats.skippedBookmarks=additional.length-stats.bookmarks;stats.capacityConflict=existing.length>500;
@@ -91,7 +91,7 @@
   const next=merged(pending),updates=new Map([[storageKey,JSON.stringify(next.manual)],[readingStorageKey,JSON.stringify(next.reading)]]),old=new Map();
   if(next.stats.capacityConflict){$('archive-status').textContent='暂未恢复：当前合并的书签超过 500 枚。已保留全部记录，请先导出当前备份，再删除不再需要的书签。';return;}
   for(const [id,value]of Object.entries(next.fullBooks))updates.set(fullPrefix+id,JSON.stringify(value));
-  if(pending.bookmarks.length)updates.set('earth-online-bookmarks-v1',JSON.stringify({version:1,entries:next.bookmarks}));
+  if(pending.bookmarks.length)for(const [key,value] of window.earthBookmarkStore.storageUpdates(next.bookmarks))updates.set(key,value);
   if(next.appearance)updates.set('earth-online-appearance-v1',JSON.stringify(next.appearance));
   try{
    for(const key of updates.keys())old.set(key,localStorage.getItem(key));

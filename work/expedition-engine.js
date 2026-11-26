@@ -64,16 +64,18 @@
   if (action.t === 'relic' && keys === 2) return chooseRelic(state, action.id);
   throw Error('Unknown action');
  }
- // Recreate the decision with the resources, route and relics held at that station.
- function decisionAt(run, station) {
+ // Restore a completed station before the route or before the event choice.
+ function stationState(run, station, phase) {
   if (!Number.isInteger(station) || station < 1 || station > run.turn) return null;
   let state = create({ seed: run.seed, role: run.role });
   for (const action of run.actions) {
-   if (state.phase === 'event' && state.turn + 1 === station) return state;
+   if (state.phase === phase && state.turn + 1 === station) return state;
    state = applyAction(state, action);
   }
   return null;
  }
+ const decisionAt = (run, station) => stationState(run, station, 'event');
+ const stationStart = (run, station) => stationState(run, station, 'route');
  function validateRestore(raw){try{if(!raw||typeof raw!=='object'||Array.isArray(raw)||raw.version!==2||raw.rules!==RULES||!validSeed(raw.seed)||!roleById(raw.role)||!Array.isArray(raw.actions)||raw.actions.length>40)return null;if(!Number.isInteger(raw.turn)||raw.turn<0||raw.turn>12||!raw.resources||keys.some(k=>!Number.isInteger(raw.resources[k])||raw.resources[k]<0||raw.resources[k]>100))return null;if(!Array.isArray(raw.history)||raw.history.length>12||!Array.isArray(raw.relics)||raw.relics.length>3||!Number.isInteger(raw.insight)||raw.insight<0||raw.insight>1000)return null;let s=create({seed:raw.seed,role:raw.role});for(const action of raw.actions)s=applyAction(s,action);return stable(raw)===stable(s)?s:null;}catch{return null;}}
- g.EarthExpedition={RULES,TOTAL_TURNS,scoreFormula:'见识 × 5 + 已走回合 × 30 + 三项剩余资源均值向下取整 + 遗物数 × 20 + 完整通关奖励 100。资源归零结束；分数用于同规则、同种子、同角色的本地比较，不是人生评价。',roles:clone(roles),relics:clone(relics),endings:endings.map(e=>({id:e.id,title:e.title,success:e.success})),create,getRoutes,chooseRoute,getEvent,chooseOption,advance,getRelicChoices,chooseRelic,summarize,validateRestore,decisionAt};
+ g.EarthExpedition={RULES,TOTAL_TURNS,scoreFormula:'见识 × 5 + 已走回合 × 30 + 三项剩余资源均值向下取整 + 遗物数 × 20 + 完整通关奖励 100。资源归零结束；分数用于同规则、同种子、同角色的本地比较，不是人生评价。',roles:clone(roles),relics:clone(relics),endings:endings.map(e=>({id:e.id,title:e.title,success:e.success})),create,getRoutes,chooseRoute,getEvent,chooseOption,advance,getRelicChoices,chooseRelic,summarize,validateRestore,decisionAt,stationStart};
 })(typeof window==='undefined'?globalThis:window);

@@ -85,3 +85,20 @@
 .exp-replay-nav button:disabled { opacity: .55; }
 
 #exp-qr label, #exp-qr-message { color: #364b3e; font-size: 14px; }
+
+.exp-replay-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+#exp-practice { overflow-wrap: anywhere; }
+#exp-practice-origin { margin: 0; color: #43593e; }
+#exp-practice-title { margin: 6px 0 10px; font: 23px/1.45 var(--serif); }
+#exp-practice-resources { display: flex; flex-wrap: wrap; gap: 2px 14px; padding: 0; margin: 8px 0 0; list-style: none; font-weight: 600; font-variant-numeric: tabular-nums; }
+#exp-practice-seals { margin: 2px 0 12px; color: #485541; }
+#exp-practice-stage { display: grid; gap: 8px; padding-block: 12px; border-block: 1px solid #a7b098; }
+#exp-practice-stage p { margin: 0 0 4px; }
+#exp-practice-stage button { display: grid; gap: 3px; width: 100%; min-height: 44px; padding: 9px 12px; border: 1px solid #838f74; border-radius: 3px; background: #f6f2e6; color: #273d2a; text-align: left; }
+#exp-practice-stage button:hover { background: #e0e6d5; border-color: #506244; }
+#exp-practice-stage button span { color: #47563f; font-size: 13px; font-variant-numeric: tabular-nums; }
+#exp-practice :focus-visible { outline: 2px solid #435c38; outline-offset: 2px; }
+.exp-practice-result { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 2px 0 8px; padding: 10px 12px; background: #dfe6d3; }
+.exp-practice-result dt { font-weight: 600; }
+.exp-practice-result dd { margin: 0; }
+#exp-practice-return { margin-top: 12px; }

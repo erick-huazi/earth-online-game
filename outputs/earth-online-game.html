@@ -92,6 +92,23 @@
 .exp-replay-nav button:disabled { opacity: .55; }
 
 #exp-qr label, #exp-qr-message { color: #364b3e; font-size: 14px; }
+
+.exp-replay-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+#exp-practice { overflow-wrap: anywhere; }
+#exp-practice-origin { margin: 0; color: #43593e; }
+#exp-practice-title { margin: 6px 0 10px; font: 23px/1.45 var(--serif); }
+#exp-practice-resources { display: flex; flex-wrap: wrap; gap: 2px 14px; padding: 0; margin: 8px 0 0; list-style: none; font-weight: 600; font-variant-numeric: tabular-nums; }
+#exp-practice-seals { margin: 2px 0 12px; color: #485541; }
+#exp-practice-stage { display: grid; gap: 8px; padding-block: 12px; border-block: 1px solid #a7b098; }
+#exp-practice-stage p { margin: 0 0 4px; }
+#exp-practice-stage button { display: grid; gap: 3px; width: 100%; min-height: 44px; padding: 9px 12px; border: 1px solid #838f74; border-radius: 3px; background: #f6f2e6; color: #273d2a; text-align: left; }
+#exp-practice-stage button:hover { background: #e0e6d5; border-color: #506244; }
+#exp-practice-stage button span { color: #47563f; font-size: 13px; font-variant-numeric: tabular-nums; }
+#exp-practice :focus-visible { outline: 2px solid #435c38; outline-offset: 2px; }
+.exp-practice-result { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 2px 0 8px; padding: 10px 12px; background: #dfe6d3; }
+.exp-practice-result dt { font-weight: 600; }
+.exp-practice-result dd { margin: 0; }
+#exp-practice-return { margin-top: 12px; }
 </style></head>
 <body>
 <noscript><p style="padding:24px;color:#ede9d9;background:#141e1a">山河远征需要启用 JavaScript 才能游玩；典籍手册的正文仍可直接阅读。</p></noscript>
@@ -114,7 +131,7 @@
    <div id="exp-play" hidden><div class="exp-board-top"><span id="exp-run-name"></span><div class="exp-toolbar"><button id="exp-export" class="exp-small-button">导出续局</button><button id="exp-new" class="exp-small-button">另开一局</button></div></div><div id="exp-track" class="exp-track" aria-label="远征进度"></div><div id="exp-resources" class="exp-resources" aria-label="当前资源"></div><div id="exp-relic-strip" class="exp-relic-strip" aria-label="已得书印"></div><div id="exp-stage"></div></div>
    <div class="exp-board-foot"><span>资源归零则归营 · 走完十二站结算</span><button id="exp-rules-open" class="exp-small-button">玩法与计分</button></div>
   </div>
-  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="github-review-v2.4.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
+  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="github-review-v2.5.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
  </div>
  <p id="exp-status" class="exp-status" role="status" aria-live="polite"></p>
 </section>
@@ -128,8 +145,13 @@
  <p id="exp-replay-route"></p><strong id="exp-replay-action"></strong><p id="exp-replay-feedback"></p>
  <ul id="exp-replay-resources" aria-label="本站资源变化"></ul><p id="exp-replay-insight"></p></article>
  <div class="exp-replay-nav"><button id="exp-replay-prev" class="outline">上一站</button><button id="exp-replay-next" class="outline">下一站</button></div>
- <button id="exp-replay-challenge" class="primary">挑战这个开局</button>
- </div></div></dialog>
+ <div class="exp-replay-actions"><button id="exp-practice-start" class="primary">从本站练习</button><button id="exp-replay-challenge" class="outline">挑战这个开局</button></div>
+ </div>
+ <section id="exp-practice" hidden aria-labelledby="exp-practice-title">
+ <p id="exp-practice-origin"></p><h3 id="exp-practice-title" tabindex="-1"></h3>
+ <ul id="exp-practice-resources" aria-label="练习局面"></ul><p id="exp-practice-seals"></p>
+ <div id="exp-practice-stage"></div><button id="exp-practice-return" class="outline">返回回放</button>
+ </section></div></dialog>
 <dialog id="exp-share-dialog" aria-labelledby="exp-share-title"><div class="reset-body"><div class="exp-share-head"><h2 id="exp-share-title">把山河，寄给一个朋友。</h2><button id="exp-share-close" class="icon-button" aria-label="关闭分享">×</button></div><canvas id="exp-share-canvas" width="900" height="1200" aria-label="本局远征战报图片"></canvas><div class="result-actions"><button id="exp-download-card" class="primary">下载战报 PNG ↓</button><button id="exp-copy-link" class="outline">复制同图挑战链接</button><button id="exp-native-share" class="outline" hidden>用系统分享…</button></div><details class="exp-replay-share"><summary>分享本局逐站回放</summary><label for="exp-replay-link" class="exp-link-label">回放链接</label><textarea id="exp-replay-link" readonly rows="2"></textarea><button id="exp-copy-replay" class="outline">复制回放链接</button></details><label for="exp-share-link" class="exp-link-label">挑战链接（也可选中手动复制）</label><textarea id="exp-share-link" readonly rows="3"></textarea><p id="exp-share-status" role="status"></p><details id="exp-qr" class="exp-qr"><summary>用手机扫码打开</summary><label for="exp-qr-kind">二维码用途</label><select id="exp-qr-kind"><option value="replay">观看这局回放</option><option value="challenge">挑战同一开局</option></select><p id="exp-qr-message" role="status"></p><canvas id="exp-qr-image" aria-label="所选分享链接的二维码" hidden></canvas><a id="exp-qr-save" hidden>保存二维码 PNG</a></details><p class="exp-share-note">同图挑战分享种子和角色。回放还会分享这局的路线、选择与书印。</p></div></dialog>
 
 
@@ -3544,18 +3566,20 @@ var qrcode = function() {
   if (action.t === 'relic' && keys === 2) return chooseRelic(state, action.id);
   throw Error('Unknown action');
  }
- // Recreate the decision with the resources, route and relics held at that station.
- function decisionAt(run, station) {
+ // Restore a completed station before the route or before the event choice.
+ function stationState(run, station, phase) {
   if (!Number.isInteger(station) || station < 1 || station > run.turn) return null;
   let state = create({ seed: run.seed, role: run.role });
   for (const action of run.actions) {
-   if (state.phase === 'event' && state.turn + 1 === station) return state;
+   if (state.phase === phase && state.turn + 1 === station) return state;
    state = applyAction(state, action);
   }
   return null;
  }
+ const decisionAt = (run, station) => stationState(run, station, 'event');
+ const stationStart = (run, station) => stationState(run, station, 'route');
  function validateRestore(raw){try{if(!raw||typeof raw!=='object'||Array.isArray(raw)||raw.version!==2||raw.rules!==RULES||!validSeed(raw.seed)||!roleById(raw.role)||!Array.isArray(raw.actions)||raw.actions.length>40)return null;if(!Number.isInteger(raw.turn)||raw.turn<0||raw.turn>12||!raw.resources||keys.some(k=>!Number.isInteger(raw.resources[k])||raw.resources[k]<0||raw.resources[k]>100))return null;if(!Array.isArray(raw.history)||raw.history.length>12||!Array.isArray(raw.relics)||raw.relics.length>3||!Number.isInteger(raw.insight)||raw.insight<0||raw.insight>1000)return null;let s=create({seed:raw.seed,role:raw.role});for(const action of raw.actions)s=applyAction(s,action);return stable(raw)===stable(s)?s:null;}catch{return null;}}
- g.EarthExpedition={RULES,TOTAL_TURNS,scoreFormula:'见识 × 5 + 已走回合 × 30 + 三项剩余资源均值向下取整 + 遗物数 × 20 + 完整通关奖励 100。资源归零结束；分数用于同规则、同种子、同角色的本地比较，不是人生评价。',roles:clone(roles),relics:clone(relics),endings:endings.map(e=>({id:e.id,title:e.title,success:e.success})),create,getRoutes,chooseRoute,getEvent,chooseOption,advance,getRelicChoices,chooseRelic,summarize,validateRestore,decisionAt};
+ g.EarthExpedition={RULES,TOTAL_TURNS,scoreFormula:'见识 × 5 + 已走回合 × 30 + 三项剩余资源均值向下取整 + 遗物数 × 20 + 完整通关奖励 100。资源归零结束；分数用于同规则、同种子、同角色的本地比较，不是人生评价。',roles:clone(roles),relics:clone(relics),endings:endings.map(e=>({id:e.id,title:e.title,success:e.success})),create,getRoutes,chooseRoute,getEvent,chooseOption,advance,getRelicChoices,chooseRelic,summarize,validateRestore,decisionAt,stationStart};
 })(typeof window==='undefined'?globalThis:window);
 </script><script>/* Original interactive fiction. The library remains a separate source text. */
 window.EARTH_GAME_CONTENT_NOTICE = '原创情境游戏，借典籍主题展开；剧情、选项与评分不等同于原典结论。古代医学、命理及修炼材料用于文化阅读，不用于诊疗或预测。';
@@ -4083,6 +4107,114 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
   window.EarthExpeditionRecap = Object.freeze({ receiptFor, recordFinish, comparisonPanel, stationReview });
 })();
 
+/* A replay branch lives only inside this viewer. All moves use the ordinary expedition rules. */
+(() => {
+  'use strict';
+  const engine = window.EarthExpedition;
+  const resourceNames = {stamina: '体力', supply: '补给', trust: '声望'};
+  const signed = value => value > 0 ? '+' + value : String(value);
+  const changes = delta => Object.entries(resourceNames)
+    .filter(([key]) => delta[key] !== 0)
+    .map(([key, name]) => name + ' ' + signed(delta[key])).join(' · ');
+
+  function mount() {
+    const get = id => document.getElementById('exp-practice-' + id);
+    const panel = document.getElementById('exp-practice');
+    const stage = get('stage');
+    let source = null;
+    let startStation = 0;
+    let run = null;
+
+    function element(tag, text) {
+      const node = document.createElement(tag);
+      node.textContent = text;
+      return node;
+    }
+    function action(key, label, detail, change) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.move = key;
+      button.append(element('strong', label));
+      if (detail) button.append(element('span', detail));
+      button.addEventListener('click', () => {
+        if (!stage.contains(button)) return;
+        run = change(run);
+        render();
+      });
+      stage.append(button);
+    }
+    function render() {
+      const atChoice = run.phase === 'route' || run.phase === 'event';
+      const station = atChoice ? run.turn + 1 : run.turn;
+      const original = source.history[station - 1];
+      const title = get('title');
+      const prefix = '第 ' + station + ' 站 · ';
+      stage.dataset.phase = run.phase;
+      stage.replaceChildren();
+      get('resources').replaceChildren(...Object.entries(resourceNames).map(([key, name]) =>
+        element('li', name + ' ' + run.resources[key])), element('li', '见识 ' + run.insight));
+      get('seals').textContent = '随身书印 · ' + run.relics.map(id => engine.relics.find(r => r.id === id).name).join('、');
+      if (run.phase === 'route') {
+        title.textContent = prefix + '选择路线';
+        if (original) stage.append(element('p', '原回放走了「' + original.routeTitle + '」，遇到「' + original.title + '」。'));
+        for (const route of engine.getRoutes(run)) {
+          action(route.id, route.title + ' · ' + route.eventTitle, route.book + ' ｜ 路耗 ' + changes(route.cost), state => engine.chooseRoute(state, route.id));
+        }
+      } else if (run.phase === 'event') {
+        const event = engine.getEvent(run);
+        title.textContent = prefix + event.title;
+        stage.append(element('p', event.body));
+        if (original?.eventId === event.id) stage.append(element('p', '原回放选择「' + original.label + '」。'));
+        event.options.forEach((option, index) => {
+          const preview = [changes(option.delta), '见识 +' + option.insight].filter(Boolean).join(' · ');
+          action(String(index), option.label, preview, state => engine.chooseOption(state, index));
+        });
+      } else if (run.phase === 'feedback') {
+        const outcome = run.lastOutcome;
+        title.textContent = prefix + outcome.label;
+        stage.append(element('p', outcome.feedback), element('p', [changes(outcome.delta), '见识 +' + outcome.insight].filter(Boolean).join(' · ')));
+        action('advance', '继续练习', '', engine.advance);
+      } else if (run.phase === 'relic') {
+        title.textContent = prefix + '选一枚书印';
+        for (const relic of engine.getRelicChoices(run)) {
+          action(relic.id, relic.name, relic.description, state => engine.chooseRelic(state, relic.id));
+        }
+      } else {
+        const branch = engine.summarize(run);
+        const replay = engine.summarize(source);
+        title.textContent = '练习结局 · ' + branch.title;
+        stage.append(element('p', run.ending.description));
+        const comparison = document.createElement('dl');
+        comparison.className = 'exp-practice-result';
+        for (const [name, summary] of [['本次练习', branch], ['原局回放', replay]]) {
+          comparison.append(element('dt', name), element('dd', summary.title + ' · ' + summary.turn + ' 站 · ' + summary.score + ' 分'));
+        }
+        stage.append(comparison);
+        action('retry', '从第 ' + startStation + ' 站再试一次', '', () => engine.stationStart(source, startStation));
+      }
+      title.focus();
+    }
+    return {
+      start(replay, station) {
+        source = replay;
+        startStation = station;
+        run = engine.stationStart(source, station);
+        get('origin').textContent = '第 ' + station + ' 站分岔 · 练习仅在本次回放中有效';
+        get('return').textContent = '返回第 ' + station + ' 站回放';
+        panel.hidden = false;
+        render();
+      },
+      clear() {
+        panel.hidden = true;
+        source = run = null;
+        stage.replaceChildren();
+      },
+      get active() { return Boolean(run); }
+    };
+  }
+  window.EarthExpeditionPractice = Object.freeze({mount});
+})();
+
 /* A compact move log. Each decision is resolved using the same engine as local play. */
 (() => {
   'use strict';
@@ -4134,6 +4266,7 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
     const $ = id => document.getElementById(id);
     const dialog = $('exp-replay-dialog');
     const jump = $('exp-replay-jump');
+    const practice = window.EarthExpeditionPractice.mount();
     let viewed = null;
     let station = 0;
     function showStation(index) {
@@ -4141,6 +4274,7 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
       const previousFocus = document.activeElement;
       station = Math.max(0, Math.min(index, viewed.turn - 1));
       const step = viewed.history[station];
+      $('exp-practice-start').textContent = '从第 ' + step.turn + ' 站练习';
       jump.value = String(station);
       $('exp-replay-prev').disabled = station === 0;
       $('exp-replay-next').disabled = station + 1 === viewed.turn;
@@ -4160,7 +4294,20 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
       $('exp-replay-insight').textContent = '本站见识 +' + step.insight + (seal ? ' · 收下书印「' + seal.name + '」' : '');
       if (previousFocus?.disabled && dialog.contains(previousFocus)) jump.focus();
     }
+    function resetPractice() {
+      practice.clear();
+      $('exp-replay-title').textContent = '远征回放';
+      $('exp-replay-close').setAttribute('aria-label', '关闭回放');
+      $('exp-replay-summary').hidden = false;
+    }
+    function returnToStation() {
+      resetPractice();
+      $('exp-replay-view').hidden = false;
+      showStation(station);
+      $('exp-practice-start').focus();
+    }
     function open(code) {
+      resetPractice();
       try {
         viewed = decode(code);
         const summary = engine.summarize(viewed);
@@ -4178,8 +4325,22 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
     $('exp-replay-prev').addEventListener('click', () => showStation(station - 1));
     $('exp-replay-next').addEventListener('click', () => showStation(station + 1));
     jump.addEventListener('change', () => showStation(Number(jump.value)));
+    $('exp-practice-start').addEventListener('click', () => {
+      if (!viewed) return;
+      $('exp-replay-view').hidden = true;
+      $('exp-replay-summary').hidden = true;
+      $('exp-replay-title').textContent = '回放练习';
+      $('exp-replay-close').setAttribute('aria-label', '退出练习并返回回放');
+      practice.start(viewed, station + 1);
+    });
+    $('exp-practice-return').addEventListener('click', returnToStation);
+    dialog.addEventListener('cancel', event => {
+      if (!practice.active) return;
+      event.preventDefault();
+      returnToStation();
+    });
     dialog.addEventListener('keydown', event => {
-      if (!viewed || event.target === jump || event.ctrlKey || event.metaKey || event.altKey) return;
+      if (!viewed || practice.active || event.target === jump || event.ctrlKey || event.metaKey || event.altKey) return;
       const targets = {ArrowLeft: station - 1, ArrowRight: station + 1, Home: 0, End: viewed.turn - 1};
       if (!Object.hasOwn(targets, event.key)) return;
       event.preventDefault();
@@ -4191,9 +4352,10 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
       dialog.close();
       onChallenge(seed, role);
     });
-    $('exp-replay-close').addEventListener('click', () => dialog.close());
+    $('exp-replay-close').addEventListener('click', () => practice.active ? returnToStation() : dialog.close());
     dialog.addEventListener('close', () => {
       if (dialog.open) return;
+      resetPractice();
       viewed = null;
       if (location.hash.startsWith('#replay=')) {
         try { history.replaceState(history.state, '', '#expedition'); } catch { /* file URLs can restrict history. */ }
@@ -4319,6 +4481,7 @@ function endingView() {
  }
  const actions=node('div','exp-result-actions');
  actions.append(button('生成我的山河战报 ↗','primary',openShare),
+  button('回放并练习','outline',()=>replay.open(window.EarthExpeditionReplay.encode(run))),
   button('同一开局，再走一遍','outline',()=>{seed=run.seed;role=run.role;run=null;start();}),
   button('换一张山河图','outline',()=>setup('free',freshSeed(),role)));
  box.append(actions);

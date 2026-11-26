@@ -70,6 +70,8 @@ readme = '''地球 Online · 山河远征 v__GAME_VERSION__ / 游戏与完整典
 15. 在手册的原文检索中选择多词同章，输入用空格分开的词。
 16. 战报中可以分享只读回放或显示手机二维码。复制到另一台设备后可以逐站观看，也可以用相同开局挑战。
 17. 在阅读工具中输入检索词，用命中导航逐处跳转。
+18. 打开一份回放，选择要练习的站点，可以从本站重新选路。结束练习后可返回原回放。
+19. 在章节正文中选择想留下的文字，保存为摘录。以后可从摘录列表返回原段。
 
 经典剧情与原典
 1. 点击“进入经典剧情 · 33场故事”，仍可探索十境与归途终章，共33场原创情境、99个选项；每境三题，达到4/6点领悟即可解锁下一境。
@@ -85,7 +87,7 @@ readme = '''地球 Online · 山河远征 v__GAME_VERSION__ / 游戏与完整典
 readme = readme.replace('__GAME_VERSION__', version).replace('__GAME_DATE__', release_date)
 (out / '使用说明.txt').write_text(readme, encoding='utf-8')
 archive = out / 'earth-online-offline-library.zip'
-files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt', out / 'github-review-v2.4.html', out / 'github-review-v2.3.html', out / 'game-research-v2.html', out / 'game-research-v2.json', out / 'game-third-party-notices.txt'] + sorted((out / 'books').rglob('*')) + sorted((out / 'html').rglob('*.html'))
+files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt', out / 'github-review-v2.5.html', out / 'github-review-v2.4.html', out / 'github-review-v2.3.html', out / 'game-research-v2.html', out / 'game-research-v2.json', out / 'game-third-party-notices.txt'] + sorted((out / 'books').rglob('*')) + sorted((out / 'html').rglob('*.html'))
 files = [p for p in files if p.is_file() and not p.name.endswith('.part')]
 with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=5, allowZip64=True) as z:
     for p in files:
