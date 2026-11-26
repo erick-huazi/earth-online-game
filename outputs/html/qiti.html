@@ -8529,7 +8529,7 @@ const EarthOccurrences = (() => {
 function createEarthClippings(adapter, store, render, message) {
   const add = document.querySelector('[data-clip-add]');
   const fullBook = document.body.classList.contains('earth-full-book');
-  let pressedSelection = null;
+  let candidate = null, transferring = false;
 
   function selectionEntry() {
     const selection = window.getSelection();
@@ -8549,12 +8549,42 @@ function createEarthClippings(adapter, store, render, message) {
       textOffset: start, excerpt: anchor.exact.slice(0, 160), kind: 'clip', anchor};
   }
 
-  add.addEventListener('pointerdown', () => { pressedSelection = selectionEntry(); });
-  add.addEventListener('pointercancel', () => { pressedSelection = null; });
+  function resetSelection() { candidate = null; transferring = false; }
+  function keepSelection() {
+    const selected = selectionEntry();
+    if (selected || !window.getSelection()?.isCollapsed) candidate = selected;
+    transferring = true;
+  }
+  // Focus can collapse a DOM selection before a keyboard-generated click.
+  // Keep a validated snapshot across Tab navigation only. Cancel it when a
+  // user starts a different selection, clicks elsewhere or changes chapters.
+  document.addEventListener('selectionchange', () => {
+    if (!window.getSelection()?.isCollapsed) candidate = selectionEntry();
+    else if (!transferring) candidate = null;
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Tab') keepSelection();
+    else if (!(event.target === add && (event.key === 'Enter' || event.key === ' ')) && event.key !== 'Shift')
+      resetSelection();
+  }, true);
+  document.addEventListener('focusout', event => {
+    if (event.relatedTarget === add) keepSelection();
+  }, true);
+  document.addEventListener('pointerdown', event => {
+    if (event.target === add) keepSelection();
+    else resetSelection();
+  }, true);
+  add.addEventListener('pointercancel', resetSelection);
   add.addEventListener('mousedown', event => event.preventDefault());
-  add.addEventListener('click', event => {
-    const entry = selectionEntry() || (event.detail ? pressedSelection : null);
-    pressedSelection = null;
+  add.addEventListener('click', () => {
+    let entry = selectionEntry();
+    if (!entry && transferring && candidate && window.getSelection()?.isCollapsed) {
+      const body = adapter.forSection?.(candidate.section) || adapter.current();
+      if (body.bookId === candidate.bookId && body.section === candidate.section &&
+          body.element.textContent.slice(candidate.anchor.start, candidate.anchor.end) === candidate.anchor.exact)
+        entry = candidate;
+    }
+    resetSelection();
     if (!entry) { message('请先在同一节正文中选中一段文字。较长的选段请分次摘录。'); return; }
     try {
       const result = store.upsert(entry);

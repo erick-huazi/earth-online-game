@@ -125,10 +125,22 @@ async function saveSelections(page) {
   if (!await tools.evaluate(node => node.open)) await tools.locator('summary').click();
   await page.locator('#book-search').fill('道');
   await page.locator('button.search-result').first().click();
+  // Wait for the actual reading destination. Highlighting and moving focus
+  // happen in a frame after the results list closes.
+  await page.waitForFunction(() => document.activeElement?.id === 'text-reading' &&
+    !document.getElementById('chapter-hits').hidden);
   assert(await body.locator('mark').count() > 1);
   const quote = await selectRange(body, 1, 15);
-  await page.locator('[data-clip-add]').focus();
-  await page.locator('[data-clip-add]').press('Enter');
+  assert.equal(await page.evaluate(() => {const range=getSelection().getRangeAt(0);return range.startContainer===range.endContainer;}),false);
+  // Exercise engines which discard selection as the toolbar receives focus,
+  // including when Tab passes other controls on its way to the save button.
+  const clipButton = page.locator('[data-clip-add]');
+  await clipButton.evaluate(node => node.addEventListener('focus', () => getSelection().removeAllRanges(), {once:true}));
+  for (let tabs=0; tabs<20 && !await clipButton.evaluate(node=>node===document.activeElement); tabs++)
+    await page.keyboard.press('Tab');
+  assert(await clipButton.evaluate(node=>node===document.activeElement));
+  assert(await page.evaluate(()=>getSelection().isCollapsed));
+  await page.keyboard.press('Enter');
   assert((await records(page)).some(e => e.anchor?.exact === quote));
   await panel(page);
   const popup = page.waitForEvent('popup');
