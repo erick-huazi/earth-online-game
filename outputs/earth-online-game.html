@@ -61,6 +61,14 @@
   color: #d4ddc3;
 }
 .exp-recap-resources [data-after="0"] { color: #efb78f; }
+
+.exp-alternate { margin-top: 10px; }
+.exp-alternate summary { display: list-item; width: fit-content; min-height: 44px; padding: 10px 4px; color: var(--gold, #efcf8d); cursor: pointer; }
+.exp-alternate label { display: block; margin: 4px 0; color: #d8dfcf; font-size: 14px; }
+.exp-alternate select { display: block; width: 100%; max-width: 32rem; min-height: 44px; margin: 6px 0; padding: 4px 8px; color: #edf3e7; background: #172d24; border: 1px solid #879681; border-radius: 4px; font: inherit; }
+.exp-alternate-result ul { padding-left: 1.4em; margin: 8px 0 0; font-variant-numeric: tabular-nums; }
+.exp-alternate-result li { margin: 2px 0; }
+@media (max-width: 760px) { .exp-alternate select { font-size: 16px; } }
 </style></head>
 <body>
 <noscript><p style="padding:24px;color:#ede9d9;background:#141e1a">山河远征需要启用 JavaScript 才能游玩；典籍手册的正文仍可直接阅读。</p></noscript>
@@ -83,7 +91,7 @@
    <div id="exp-play" hidden><div class="exp-board-top"><span id="exp-run-name"></span><div class="exp-toolbar"><button id="exp-export" class="exp-small-button">导出续局</button><button id="exp-new" class="exp-small-button">另开一局</button></div></div><div id="exp-track" class="exp-track" aria-label="远征进度"></div><div id="exp-resources" class="exp-resources" aria-label="当前资源"></div><div id="exp-relic-strip" class="exp-relic-strip" aria-label="已得书印"></div><div id="exp-stage"></div></div>
    <div class="exp-board-foot"><span>资源归零则归营 · 走完十二站结算</span><button id="exp-rules-open" class="exp-small-button">玩法与计分</button></div>
   </div>
-  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="game-research-v2.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
+  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="github-review-v2.3.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
  </div>
  <p id="exp-status" class="exp-status" role="status" aria-live="polite"></p>
 </section>
@@ -1195,8 +1203,27 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
  function chooseRelic(state,id){requirePhase(state,'relic');if(state.relics.length>=3||!getRelicChoices(state).some(r=>r.id===id))throw Error('Unavailable relic');const s=clone(state);s.relics.push(id);s.phase='route';s.actions.push({t:'relic',id});return s;}
  function summarize(s){const completed=s.phase==='ending'&&Boolean(s.ending?.success),bonus=completed?100:0;const resourceScore=Math.floor(keys.reduce((n,k)=>n+s.resources[k],0)/3),score=s.insight*5+s.turn*30+resourceScore+s.relics.length*20+bonus;return {score,scoreBreakdown:{insight:s.insight*5,journey:s.turn*30,reserves:resourceScore,relics:s.relics.length*20,completion:bonus},title:s.ending?.title||'远征进行中',ending:clone(s.ending),completed,turn:s.turn,totalTurns:TOTAL_TURNS,resources:clone(s.resources),insight:s.insight,relics:s.relics.map(id=>clone(relicById(id))),history:clone(s.history),seed:s.seed,role:s.role,roleName:roleById(s.role).name,rules:RULES};}
  function stable(x){if(x===null||typeof x!=='object')return JSON.stringify(x);if(Array.isArray(x))return '['+x.map(stable).join(',')+']';return '{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+stable(x[k])).join(',')+'}';}
- function validateRestore(raw){try{if(!raw||typeof raw!=='object'||Array.isArray(raw)||raw.version!==2||raw.rules!==RULES||!validSeed(raw.seed)||!roleById(raw.role)||!Array.isArray(raw.actions)||raw.actions.length>40)return null;if(!Number.isInteger(raw.turn)||raw.turn<0||raw.turn>12||!raw.resources||keys.some(k=>!Number.isInteger(raw.resources[k])||raw.resources[k]<0||raw.resources[k]>100))return null;if(!Array.isArray(raw.history)||raw.history.length>12||!Array.isArray(raw.relics)||raw.relics.length>3||!Number.isInteger(raw.insight)||raw.insight<0||raw.insight>1000)return null;let s=create({seed:raw.seed,role:raw.role});for(const a of raw.actions){if(!a||typeof a!=='object'||Array.isArray(a))return null;if(a.t==='route'&&Object.keys(a).length===2&&typeof a.id==='string')s=chooseRoute(s,a.id);else if(a.t==='choice'&&Object.keys(a).length===2)s=chooseOption(s,a.index);else if(a.t==='advance'&&Object.keys(a).length===1)s=advance(s);else if(a.t==='relic'&&Object.keys(a).length===2&&typeof a.id==='string')s=chooseRelic(s,a.id);else return null;}return stable(raw)===stable(s)?s:null;}catch{return null;}}
- g.EarthExpedition={RULES,TOTAL_TURNS,scoreFormula:'见识 × 5 + 已走回合 × 30 + 三项剩余资源均值向下取整 + 遗物数 × 20 + 完整通关奖励 100。资源归零结束；分数用于同规则、同种子、同角色的本地比较，不是人生评价。',roles:clone(roles),relics:clone(relics),endings:endings.map(e=>({id:e.id,title:e.title,success:e.success})),create,getRoutes,chooseRoute,getEvent,chooseOption,advance,getRelicChoices,chooseRelic,summarize,validateRestore};
+ function applyAction(state, action) {
+  if (!action || typeof action !== 'object' || Array.isArray(action)) throw Error('Invalid action');
+  const keys = Object.keys(action).length;
+  if (action.t === 'route' && keys === 2) return chooseRoute(state, action.id);
+  if (action.t === 'choice' && keys === 2) return chooseOption(state, action.index);
+  if (action.t === 'advance' && keys === 1) return advance(state);
+  if (action.t === 'relic' && keys === 2) return chooseRelic(state, action.id);
+  throw Error('Unknown action');
+ }
+ // Recreate the decision with the resources, route and relics held at that station.
+ function decisionAt(run, station) {
+  if (!Number.isInteger(station) || station < 1 || station > run.turn) return null;
+  let state = create({ seed: run.seed, role: run.role });
+  for (const action of run.actions) {
+   if (state.phase === 'event' && state.turn + 1 === station) return state;
+   state = applyAction(state, action);
+  }
+  return null;
+ }
+ function validateRestore(raw){try{if(!raw||typeof raw!=='object'||Array.isArray(raw)||raw.version!==2||raw.rules!==RULES||!validSeed(raw.seed)||!roleById(raw.role)||!Array.isArray(raw.actions)||raw.actions.length>40)return null;if(!Number.isInteger(raw.turn)||raw.turn<0||raw.turn>12||!raw.resources||keys.some(k=>!Number.isInteger(raw.resources[k])||raw.resources[k]<0||raw.resources[k]>100))return null;if(!Array.isArray(raw.history)||raw.history.length>12||!Array.isArray(raw.relics)||raw.relics.length>3||!Number.isInteger(raw.insight)||raw.insight<0||raw.insight>1000)return null;let s=create({seed:raw.seed,role:raw.role});for(const action of raw.actions)s=applyAction(s,action);return stable(raw)===stable(s)?s:null;}catch{return null;}}
+ g.EarthExpedition={RULES,TOTAL_TURNS,scoreFormula:'见识 × 5 + 已走回合 × 30 + 三项剩余资源均值向下取整 + 遗物数 × 20 + 完整通关奖励 100。资源归零结束；分数用于同规则、同种子、同角色的本地比较，不是人生评价。',roles:clone(roles),relics:clone(relics),endings:endings.map(e=>({id:e.id,title:e.title,success:e.success})),create,getRoutes,chooseRoute,getEvent,chooseOption,advance,getRelicChoices,chooseRelic,summarize,validateRestore,decisionAt};
 })(typeof window==='undefined'?globalThis:window);
 </script><script>/* Original interactive fiction. The library remains a separate source text. */
 window.EARTH_GAME_CONTENT_NOTICE = '原创情境游戏，借典籍主题展开；剧情、选项与评分不等同于原典结论。古代医学、命理及修炼材料用于文化阅读，不用于诊疗或预测。';
@@ -1442,7 +1469,25 @@ function renderWorld(){
  $('traveler-line').textContent=won?'归途不是终点，下一步仍由你选择。':'走过的路，会成为你的答案。';
  $('start-game').textContent=state.current?'继续经典剧情 ↗':won?'重访经典十境 ↗':count?'继续经典剧情 ↗':'经典剧情 · 33 场故事 ↗';
  $('journey-caption').textContent=state.current?'正在探索 · '+byId.get(state.current.id).title:won?'全篇通关 · 可自由重访各境':'无需账号 · 进度保存在本机';
- $('map-nodes').replaceChildren(...chapters.map((c,i)=>{const b=el('button','map-node');b.dataset.chapter=c.id;b.disabled=!unlocked(c.id);b.classList.toggle('passed',passed(c.id));b.classList.toggle('available',unlocked(c.id)&&!passed(c.id));b.style.setProperty('--x',desktop[i][0]+'%');b.style.setProperty('--y',desktop[i][1]+'%');b.style.setProperty('--mx',(i%2?70:29)+'%');b.style.setProperty('--my',(7+i*8.4)+'%');b.setAttribute('aria-label',`${i+1}. ${c.title}，${c.book}，${b.disabled?'尚未解锁':passed(c.id)?'已通关，可重访':'可探索'}`);b.append(el('span','node-glyph',passed(c.id)?'✓':b.disabled?'·':c.icon),el('span','node-name',c.title),el('span','node-book',c.book));b.addEventListener('click',()=>openChapter(c.id));return b;}));
+ $('map-nodes').replaceChildren(...chapters.map((chapter,index)=>{
+  const button=el('button','map-node');
+  const cleared=passed(chapter.id);
+  button.dataset.chapter=chapter.id;
+  button.disabled=!unlocked(chapter.id);
+  button.classList.toggle('passed',cleared);
+  button.classList.toggle('available',!button.disabled&&!cleared);
+  button.style.setProperty('--x',desktop[index][0]+'%');
+  button.style.setProperty('--y',desktop[index][1]+'%');
+  button.style.setProperty('--mx',(index%2?70:29)+'%');
+  button.style.setProperty('--my',(7+index*8.4)+'%');
+  const glyph=el('span','node-glyph',cleared?'✓':button.disabled?'·':chapter.icon);
+  glyph.setAttribute('aria-hidden','true');
+  const status=button.disabled?'尚未解锁':cleared?'已通关，可重访':'可探索';
+  button.setAttribute('aria-description',`第 ${index+1} 境，${status}`);
+  button.append(glyph,el('span','node-name',chapter.title),el('span','node-book',chapter.book));
+  button.addEventListener('click',()=>openChapter(chapter.id));
+  return button;
+ }));
  $('finale-node').disabled=count<10;$('finale-node').querySelector('small').textContent=won?'已经通关 · 可再挑战':count===10?'十境已明 · 归途开启':'点亮十境后开启';
  const next=byId.get(nextId());$('next-title').textContent=won?'回到人间':next.title;$('next-description').textContent=won?'你已经走完十境与归途。带着信物重访旧路，也许会看见不一样的选择。':next.prologue;$('next-quest').textContent=won?'重访终章 ↗':'前往探索 ↗';
  $('collection-count').textContent=count+' / 10 信物';$('collection').replaceChildren(...chapters.map(c=>{const unlocked=passed(c.id),d=el('div','relic'+(unlocked?' earned':''));d.append(el('span','',unlocked?c.icon:'◇'),el('strong','',unlocked?c.artifact.name:'未得之物'),el('p','',unlocked?c.artifact.desc:c.title+' · 待探索'));return d;}));trail();
@@ -1450,7 +1495,16 @@ function renderWorld(){
 function showQuest(){returnFocus=document.activeElement;if(!$('quest-panel').open)$('quest-panel').showModal();renderQuest();}
 function openChapter(id){if(!unlocked(id))return;if(state.current?.id!==id){state.current={id,answers:[],phase:'intro'};save();}showQuest();}
 function restart(){const id=state.current.id;state.current={id,answers:[],phase:'choice'};save();renderQuest();}
-function closeQuest(){if($('quest-panel').open)$('quest-panel').close();renderWorld();if(returnFocus?.isConnected&&!returnFocus.disabled)returnFocus.focus({preventScroll:true});else $('start-game').focus({preventScroll:true});}
+function closeQuest(){
+ if($('quest-panel').open)$('quest-panel').close();
+ renderWorld();
+ const chapter=returnFocus?.dataset.chapter;
+ const opener=chapter
+  ? Array.from($('map-nodes').children).find(button=>button.dataset.chapter===chapter)
+  : returnFocus;
+ if(opener?.isConnected&&!opener.disabled)opener.focus({preventScroll:true});
+ else $('start-game').focus({preventScroll:true});
+}
 function renderQuest(){
  const current=state.current;if(!current)return;const chapter=byId.get(current.id),phase=current.phase;
  $('quest-book').textContent=(current.id==='finale'?'终章':`第 ${chapters.indexOf(chapter)+1} 境`)+ ' / '+chapter.book;
@@ -1480,7 +1534,7 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
  $('choices').setAttribute('role','group');$('choices').setAttribute('aria-labelledby','quest-title');$('next-scene').setAttribute('aria-describedby','choice-score choice-explanation');$('return-map').setAttribute('aria-describedby','result-description');
  $('start-game').addEventListener('click',()=>openChapter(state.current?.id||nextId()));$('next-quest').addEventListener('click',()=>openChapter(nextId()));$('finale-node').addEventListener('click',()=>openChapter('finale'));
  $('enter-chapter').addEventListener('click',()=>{if(state.current?.phase!=='intro')return;state.current.phase='choice';save();renderQuest();});$('next-scene').addEventListener('click',advance);$('retry-chapter').addEventListener('click',restart);$('close-quest').addEventListener('click',closeQuest);
- $('return-map').addEventListener('click',()=>{state.current=null;save();closeQuest();$('world-map').scrollIntoView({block:'start',behavior:'smooth'});});$('quest-panel').addEventListener('cancel',event=>{event.preventDefault();closeQuest();});
+ $('return-map').addEventListener('click',()=>{state.current=null;save();closeQuest();$('world-map').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});$('quest-panel').addEventListener('cancel',event=>{event.preventDefault();closeQuest();});
  $('reset-game').addEventListener('click',()=>$('reset-dialog').showModal());$('cancel-reset').addEventListener('click',()=>$('reset-dialog').close());$('confirm-reset').addEventListener('click',()=>{state=fresh();save();$('reset-dialog').close();renderWorld();announce('已重新启程。典籍手册的阅读记录保持原样。');$('start-game').focus();});
  $('export-save').addEventListener('click',exportSave);$('import-save').addEventListener('change',importSave);matchMedia('(max-width:760px)').addEventListener('change',trail);
  let expeditionPriority=false;try{const exp=JSON.parse(localStorage.getItem('earth-online-expedition-v2')||'null');expeditionPriority=!!(exp?.run&&window.EarthExpedition?.validateRestore(exp.run));}catch(e){}
@@ -1623,7 +1677,48 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
     return value < 0 ? '−' + Math.abs(value) : '0';
   }
 
-  function buildStation(outcome) {
+  function alternateChoices(run, outcome) {
+    const details = element('details', 'exp-alternate');
+    const heading = element('summary', '', '如果这一站换个选择');
+    details.append(heading);
+    details.addEventListener('toggle', () => {
+      if (!details.open || details.childElementCount > 1) return;
+      const before = engine.decisionAt(run, outcome.turn);
+      const options = engine.getEvent(before).options;
+      const label = element('label', '', '试算第 ' + outcome.turn + ' 站的另一种选择');
+      const select = element('select');
+      options.forEach((choice, i) => {
+        if (i === outcome.choice) return;
+        const option = element('option', '', choice.label);
+        option.value = String(i);
+        select.append(option);
+      });
+      label.append(select);
+      const result = element('div', 'exp-alternate-result');
+      result.setAttribute('aria-live', 'polite');
+      result.setAttribute('aria-atomic', 'true');
+      function update() {
+        const preview = engine.chooseOption(before, Number(select.value));
+        const next = engine.advance(preview);
+        const balances = element('ul');
+        for (const [key, name] of Object.entries(resources)) {
+          const value = preview.resources[key];
+          const diff = value - outcome.resources[key];
+          const comparison = diff === 0 ? '与实走相同' : '比实走' + (diff > 0 ? '多 ' : '少 ') + Math.abs(diff);
+          balances.append(element('li', '', name + ' ' + value + '（' + comparison + '）'));
+        }
+        const destination = next.ending ? '此处结算 · ' + next.ending.title :
+          next.phase === 'relic' ? '接下来挑选书印' : '可前往第 ' + (preview.turn + 1) + ' 站';
+        result.replaceChildren(balances, element('p', '', '本站见识 +' + preview.lastOutcome.insight + ' · ' + destination));
+      }
+      select.addEventListener('change', update);
+      details.append(label, result);
+      update();
+    });
+    return details;
+  }
+
+  function buildStation(run, outcome) {
     const station = element('li', 'exp-recap-station');
     station.dataset.turn = String(outcome.turn);
     const heading = element('h4', '', '第 ' + outcome.turn + ' 站 · ' + outcome.title);
@@ -1639,7 +1734,7 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
       if (after === 0) item.append(' · 归零');
       changes.append(item);
     }
-    station.append(heading, route, decision, changes, element('p', 'exp-recap-insight', '见识 +' + outcome.insight));
+    station.append(heading, route, decision, changes, element('p', 'exp-recap-insight', '见识 +' + outcome.insight), alternateChoices(run, outcome));
     return station;
   }
 
@@ -1648,7 +1743,7 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
     const list = element('ol', 'exp-recap-list');
     list.id = 'exp-recap-list';
     const intro = element('summary', '', '回看这一路的 ' + run.turn + ' 次取舍');
-    for (const outcome of run.history) list.append(buildStation(outcome));
+    for (const outcome of run.history) list.append(buildStation(run, outcome));
     details.append(intro, list);
     return details;
   }

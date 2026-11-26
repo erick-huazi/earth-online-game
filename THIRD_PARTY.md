@@ -23,3 +23,9 @@
 以上 MIT/ISC 许可只适用于对应库，不覆盖本仓库的书籍、扫描件、检索字表或所有原创代码。
 
 发现来源、转换或权利信息问题时，可在本仓库提交 Issue，注明材料名称和具体位置，以便核对和修正。
+
+## v2.3 检索与验收
+
+多词同章检索采用 MiniSearch v7.2.0 的 BM25+ 单词相关度公式，配合现有中文归一化与章节跳转。移植部分随手册保留上游 MIT 版权及许可。[MiniSearch 源码](https://github.com/lucaong/minisearch/blob/v7.2.0/src/MiniSearch.ts)
+
+可访问性回归在开发环境使用锁定的 axe-core 4.14.1（MPL-2.0）。游戏中的逐站推演使用本项目的远征规则重算，参考了 boardgame.io 对历史局面与正式存档的处理。[axe-core](https://github.com/dequelabs/axe-core) · [boardgame.io 客户端](https://github.com/boardgameio/boardgame.io/blob/main/docs/documentation/api/Client.md)

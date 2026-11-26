@@ -28,7 +28,25 @@ function renderWorld(){
  $('traveler-line').textContent=won?'归途不是终点，下一步仍由你选择。':'走过的路，会成为你的答案。';
  $('start-game').textContent=state.current?'继续经典剧情 ↗':won?'重访经典十境 ↗':count?'继续经典剧情 ↗':'经典剧情 · 33 场故事 ↗';
  $('journey-caption').textContent=state.current?'正在探索 · '+byId.get(state.current.id).title:won?'全篇通关 · 可自由重访各境':'无需账号 · 进度保存在本机';
- $('map-nodes').replaceChildren(...chapters.map((c,i)=>{const b=el('button','map-node');b.dataset.chapter=c.id;b.disabled=!unlocked(c.id);b.classList.toggle('passed',passed(c.id));b.classList.toggle('available',unlocked(c.id)&&!passed(c.id));b.style.setProperty('--x',desktop[i][0]+'%');b.style.setProperty('--y',desktop[i][1]+'%');b.style.setProperty('--mx',(i%2?70:29)+'%');b.style.setProperty('--my',(7+i*8.4)+'%');b.setAttribute('aria-label',`${i+1}. ${c.title}，${c.book}，${b.disabled?'尚未解锁':passed(c.id)?'已通关，可重访':'可探索'}`);b.append(el('span','node-glyph',passed(c.id)?'✓':b.disabled?'·':c.icon),el('span','node-name',c.title),el('span','node-book',c.book));b.addEventListener('click',()=>openChapter(c.id));return b;}));
+ $('map-nodes').replaceChildren(...chapters.map((chapter,index)=>{
+  const button=el('button','map-node');
+  const cleared=passed(chapter.id);
+  button.dataset.chapter=chapter.id;
+  button.disabled=!unlocked(chapter.id);
+  button.classList.toggle('passed',cleared);
+  button.classList.toggle('available',!button.disabled&&!cleared);
+  button.style.setProperty('--x',desktop[index][0]+'%');
+  button.style.setProperty('--y',desktop[index][1]+'%');
+  button.style.setProperty('--mx',(index%2?70:29)+'%');
+  button.style.setProperty('--my',(7+index*8.4)+'%');
+  const glyph=el('span','node-glyph',cleared?'✓':button.disabled?'·':chapter.icon);
+  glyph.setAttribute('aria-hidden','true');
+  const status=button.disabled?'尚未解锁':cleared?'已通关，可重访':'可探索';
+  button.setAttribute('aria-description',`第 ${index+1} 境，${status}`);
+  button.append(glyph,el('span','node-name',chapter.title),el('span','node-book',chapter.book));
+  button.addEventListener('click',()=>openChapter(chapter.id));
+  return button;
+ }));
  $('finale-node').disabled=count<10;$('finale-node').querySelector('small').textContent=won?'已经通关 · 可再挑战':count===10?'十境已明 · 归途开启':'点亮十境后开启';
  const next=byId.get(nextId());$('next-title').textContent=won?'回到人间':next.title;$('next-description').textContent=won?'你已经走完十境与归途。带着信物重访旧路，也许会看见不一样的选择。':next.prologue;$('next-quest').textContent=won?'重访终章 ↗':'前往探索 ↗';
  $('collection-count').textContent=count+' / 10 信物';$('collection').replaceChildren(...chapters.map(c=>{const unlocked=passed(c.id),d=el('div','relic'+(unlocked?' earned':''));d.append(el('span','',unlocked?c.icon:'◇'),el('strong','',unlocked?c.artifact.name:'未得之物'),el('p','',unlocked?c.artifact.desc:c.title+' · 待探索'));return d;}));trail();
@@ -36,7 +54,16 @@ function renderWorld(){
 function showQuest(){returnFocus=document.activeElement;if(!$('quest-panel').open)$('quest-panel').showModal();renderQuest();}
 function openChapter(id){if(!unlocked(id))return;if(state.current?.id!==id){state.current={id,answers:[],phase:'intro'};save();}showQuest();}
 function restart(){const id=state.current.id;state.current={id,answers:[],phase:'choice'};save();renderQuest();}
-function closeQuest(){if($('quest-panel').open)$('quest-panel').close();renderWorld();if(returnFocus?.isConnected&&!returnFocus.disabled)returnFocus.focus({preventScroll:true});else $('start-game').focus({preventScroll:true});}
+function closeQuest(){
+ if($('quest-panel').open)$('quest-panel').close();
+ renderWorld();
+ const chapter=returnFocus?.dataset.chapter;
+ const opener=chapter
+  ? Array.from($('map-nodes').children).find(button=>button.dataset.chapter===chapter)
+  : returnFocus;
+ if(opener?.isConnected&&!opener.disabled)opener.focus({preventScroll:true});
+ else $('start-game').focus({preventScroll:true});
+}
 function renderQuest(){
  const current=state.current;if(!current)return;const chapter=byId.get(current.id),phase=current.phase;
  $('quest-book').textContent=(current.id==='finale'?'终章':`第 ${chapters.indexOf(chapter)+1} 境`)+ ' / '+chapter.book;
@@ -66,7 +93,7 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
  $('choices').setAttribute('role','group');$('choices').setAttribute('aria-labelledby','quest-title');$('next-scene').setAttribute('aria-describedby','choice-score choice-explanation');$('return-map').setAttribute('aria-describedby','result-description');
  $('start-game').addEventListener('click',()=>openChapter(state.current?.id||nextId()));$('next-quest').addEventListener('click',()=>openChapter(nextId()));$('finale-node').addEventListener('click',()=>openChapter('finale'));
  $('enter-chapter').addEventListener('click',()=>{if(state.current?.phase!=='intro')return;state.current.phase='choice';save();renderQuest();});$('next-scene').addEventListener('click',advance);$('retry-chapter').addEventListener('click',restart);$('close-quest').addEventListener('click',closeQuest);
- $('return-map').addEventListener('click',()=>{state.current=null;save();closeQuest();$('world-map').scrollIntoView({block:'start',behavior:'smooth'});});$('quest-panel').addEventListener('cancel',event=>{event.preventDefault();closeQuest();});
+ $('return-map').addEventListener('click',()=>{state.current=null;save();closeQuest();$('world-map').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});$('quest-panel').addEventListener('cancel',event=>{event.preventDefault();closeQuest();});
  $('reset-game').addEventListener('click',()=>$('reset-dialog').showModal());$('cancel-reset').addEventListener('click',()=>$('reset-dialog').close());$('confirm-reset').addEventListener('click',()=>{state=fresh();save();$('reset-dialog').close();renderWorld();announce('已重新启程。典籍手册的阅读记录保持原样。');$('start-game').focus();});
  $('export-save').addEventListener('click',exportSave);$('import-save').addEventListener('change',importSave);matchMedia('(max-width:760px)').addEventListener('change',trail);
  let expeditionPriority=false;try{const exp=JSON.parse(localStorage.getItem('earth-online-expedition-v2')||'null');expeditionPriority=!!(exp?.run&&window.EarthExpedition?.validateRestore(exp.run));}catch(e){}

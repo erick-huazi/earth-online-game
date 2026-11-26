@@ -73,7 +73,8 @@ function renderLocalBook(){
 function renderChapterOptions(volumeId){const item=localItem();$('chapter-select').replaceChildren();item.sections.forEach((s,i)=>{if(s.volumeId!==volumeId)return;const o=document.createElement('option');o.value=i;o.textContent=s.pageStart?(s.title.includes('第 '+s.pageStart+' 页')?s.title:'第 '+s.pageStart+' 页 · '+s.title):String(i+1).padStart(2,'0')+' · '+s.title;$('chapter-select').append(o);});}
 function paintReadingText(){
  const container=$('fulltext-content'),section=localItem().sections[sectionIndex()];container.replaceChildren();const query=$('book-search').value.trim(),text=section.text||'';
- const ranges=EarthTextSearch.ranges(text,query,currentSearchMode(),500);let cursor=0;
+ const mode=currentSearchMode();
+ const ranges=mode==='terms'?EarthRankedSearch.mergeRanges(EarthTextSearch.termRanges(text,EarthRankedSearch.terms(query),'flexible',500).flat()).slice(0,500):EarthTextSearch.ranges(text,query,mode,500);let cursor=0;
  for(const range of ranges){container.append(document.createTextNode(text.slice(cursor,range.start)));const mark=document.createElement('mark');mark.textContent=text.slice(range.start,range.end);container.append(mark);cursor=range.end;}
  container.append(document.createTextNode(text.slice(cursor)));
  container.style.fontSize=readingState.fontSize+'px';$('font-smaller').disabled=readingState.fontSize<=16;$('font-larger').disabled=readingState.fontSize>=26;$('font-value').textContent='字号 '+readingState.fontSize;
@@ -116,6 +117,7 @@ function searchableSections(bookId){
  return searchTextCache.get(bookId);
 }
 function searchSnippet(section,query,mode){
+ if(mode==='terms')return rankedSnippet(section.text||'',EarthRankedSearch.terms(query));
  const snippet=document.createElement('span'),text=section.text||'',hit=EarthTextSearch.ranges(text,query,mode,1)[0];
  if(!hit){snippet.textContent=text.slice(0,110).replace(/\s+/g,' ');return snippet;}
  const start=Math.max(0,hit.start-25),end=Math.min(text.length,hit.end+65),mark=document.createElement('mark');
@@ -123,22 +125,44 @@ function searchSnippet(section,query,mode){
  snippet.append(document.createTextNode((start?'…':'')+text.slice(start,hit.start).replace(/\s+/g,' ')),mark,document.createTextNode(text.slice(hit.end,end).replace(/\s+/g,' ')+(end<text.length?'…':'')));
  return snippet;
 }
+function rankedSnippet(text, terms) {
+ const snippet=document.createElement('span');
+ const hits=EarthRankedSearch.mergeRanges(EarthTextSearch.termRanges(text,terms,'flexible',1).flat());
+ if(!hits.length){snippet.textContent=text.slice(0,100);return snippet;}
+ const windows=EarthRankedSearch.mergeRanges(hits.map(hit=>({start:Math.max(0,hit.start-12),end:Math.min(text.length,hit.end+21)}))).slice(0,2);
+ for(const [index,range] of windows.entries()){
+  if(index||range.start)snippet.append('…');
+  let cursor=range.start;
+  for(const hit of hits.filter(hit=>hit.start>=range.start&&hit.end<=range.end)){
+   snippet.append(text.slice(cursor,hit.start));
+   const mark=document.createElement('mark');mark.textContent=text.slice(hit.start,hit.end);snippet.append(mark);cursor=hit.end;
+  }
+  snippet.append(text.slice(cursor,range.end));
+ }
+ if(windows[windows.length-1].end<text.length)snippet.append('…');
+ return snippet;
+}
 async function searchBook(){
  const version=++searchVersion,query=$('book-search').value.trim(),results=$('search-results'),mode=currentSearchMode();
- const all=$('book-search-scope').value==='all',needle=EarthTextSearch.fold(query,mode),searchContext={query,mode,scope:all?'all':'current',bookId:state.selected};
+ const ranked=mode==='terms',foldMode=ranked?'flexible':mode;
+ const needles=ranked?EarthRankedSearch.terms(query):[EarthTextSearch.fold(query,mode)].filter(Boolean);
+ const all=$('book-search-scope').value==='all',searchContext={query,mode,scope:all?'all':'current',bookId:state.selected};
  const isCurrent=()=>version===searchVersion&&!searchComposing&&query===$('book-search').value.trim()&&mode===currentSearchMode()&&searchContext.scope===$('book-search-scope').value&&(all||state.selected===searchContext.bookId);
  results.replaceChildren();results.hidden=!query;$('return-search').hidden=true;
  if(!query){const ratio=readerRatio();paintReadingText();restoreReaderPosition(ratio);return;}
  const count=document.createElement('p');count.className='search-caption';count.setAttribute('role','status');results.append(count);
- if(!needle){count.textContent='请输入文字或数字；兼容检索会忽略标点和空白。';const ratio=readerRatio();paintReadingText();restoreReaderPosition(ratio);return;}
+ if(!needles.length){count.textContent='请输入要查的词，简繁兼容检索会忽略标点和空白。';const ratio=readerRatio();paintReadingText();restoreReaderPosition(ratio);return;}
  count.textContent='正在准备离线检索…';
- const matches=[];
+ const candidates=[];
  for(const book of all?books:books.filter(book=>book.id===state.selected)){
-  const item=localLibrary[book.id],cached=await searchableSections(book.id).ensure(mode);if(!isCurrent())return;
-  cached.forEach((entry,i)=>{if(entry.title.includes(needle)||entry.text.includes(needle))matches.push({book,item,i,section:item.sections[i]});});
+  const item=localLibrary[book.id],cached=await searchableSections(book.id).ensure(foldMode);if(!isCurrent())return;
+  cached.forEach((entry,i)=>{
+   if(ranked||entry.title.includes(needles[0])||entry.text.includes(needles[0]))candidates.push({book,item,i,section:item.sections[i],title:entry.title,text:entry.text});
+  });
  }
  if(!isCurrent())return;
- count.textContent=matches.length?(all?'全部 10 本':'本书')+'找到 '+matches.length+' 节匹配'+(all?' · '+new Set(matches.map(match=>match.book.id)).size+' 本书':'')+(matches.length>searchLimit?'，当前展示 '+searchLimit+' 节':''):'未找到“'+query+'”，试试更短的原文词句。';
+ const matches=ranked?EarthRankedSearch.rank(candidates,needles).map(i=>candidates[i]):candidates;
+ count.textContent=matches.length?(all?'全部 10 本':'本书')+'找到 '+matches.length+' 节匹配'+(all?' · '+new Set(matches.map(match=>match.book.id)).size+' 本书':'')+(ranked?' · 按相关度排序':'')+(matches.length>searchLimit?'，当前展示 '+searchLimit+' 节':''):(ranked?'没有章节同时包含所查的词，可减少一个词再试。':'未找到“'+query+'”，试试更短的原文词句。');
  matches.slice(0,searchLimit).forEach(({book,item,i,section})=>{
   const button=document.createElement('button');button.type='button';button.className='search-result';
   const heading=document.createElement('strong');heading.textContent='《'+book.title+'》 · '+(item.volumes.length>1?section.volumeLabel+' · ':'')+section.title+(section.pageStart?' · 第 '+section.pageStart+' 页':'');
@@ -154,7 +178,12 @@ for(const [id,delta] of [['font-smaller',-2],['font-larger',2]])$(id).addEventLi
 $('book-search').addEventListener('input',event=>{clearTimeout(searchTimer);searchVersion++;if(searchComposing||event.isComposing)return;searchLimit=40;searchTimer=setTimeout(searchBook,180);});
 $('book-search').addEventListener('compositionstart',()=>{searchComposing=true;searchVersion++;clearTimeout(searchTimer);});
 $('book-search').addEventListener('compositionend',()=>{searchComposing=false;clearTimeout(searchTimer);searchLimit=40;searchTimer=setTimeout(searchBook,180);});
-$('book-search-mode').addEventListener('change',()=>{clearTimeout(searchTimer);searchVersion++;searchLimit=40;if(!searchComposing)searchBook();});
+$('book-search-mode').addEventListener('change',()=>{
+ const ranked=currentSearchMode()==='terms';
+ $('book-search-help').textContent=ranked?'用空格分开词语，查同时包含各词的章节。支持简繁。':'查一句原文，或切换到「多词同章」查几个词。';
+ $('book-search').placeholder=ranked?'例如：天地 圣人':'输入想查找的词句';
+ clearTimeout(searchTimer);searchVersion++;searchLimit=40;if(!searchComposing)searchBook();
+});
 $('book-search-scope').addEventListener('change',()=>{clearTimeout(searchTimer);searchLimit=40;if(!searchComposing)searchBook();});
 $('search-clear').addEventListener('click',()=>{clearTimeout(searchTimer);searchVersion++;searchComposing=false;searchLimit=40;$('book-search').value='';searchBook();$('book-search').focus();});
 $('library-stats').textContent='10 项全书 HTML · 目录与全文搜索 · 可离线阅读';

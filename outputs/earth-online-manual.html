@@ -138,7 +138,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <div class="chapter-field"><label for="chapter-select">篇章 / 页码目录</label><select id="chapter-select"></select></div>
       <div class="reader-tools"><span class="font-label" id="font-value" aria-live="polite">字号 18</span><button type="button" class="reader-tool" id="font-smaller" aria-label="缩小字号">A−</button><button type="button" class="reader-tool" id="font-larger" aria-label="放大字号">A＋</button></div>
     </div>
-    <div class="search-options"><label for="book-search-mode">查找方式<select id="book-search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div>
+    <div class="search-options"><label for="book-search-mode">查找方式<select id="book-search-mode" aria-describedby="book-search-help"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option><option value="terms">多词同章 · 按相关度排序</option></select></label><span id="book-search-help">查一句原文，或切换到「多词同章」查几个词。</span></div>
     <div class="text-controls"><div class="book-search"><div class="search-label-row"><label for="book-search">搜索原文词句</label><label class="search-scope-label" for="book-search-scope">范围<select id="book-search-scope"><option value="current">当前书 · 全部卷册</option><option value="all">全部 10 本书</option></select></label></div><div class="search-box"><input type="search" id="book-search" placeholder="输入想查找的词句" maxlength="100"><button type="button" class="reader-tool search-clear" id="search-clear">清除</button></div></div></div>
     <div class="search-results" id="search-results" hidden></div>
     </div></details><button id="return-search" class="return-search" type="button" hidden>← 返回搜索结果</button>
@@ -384,7 +384,8 @@ function renderLocalBook(){
 function renderChapterOptions(volumeId){const item=localItem();$('chapter-select').replaceChildren();item.sections.forEach((s,i)=>{if(s.volumeId!==volumeId)return;const o=document.createElement('option');o.value=i;o.textContent=s.pageStart?(s.title.includes('第 '+s.pageStart+' 页')?s.title:'第 '+s.pageStart+' 页 · '+s.title):String(i+1).padStart(2,'0')+' · '+s.title;$('chapter-select').append(o);});}
 function paintReadingText(){
  const container=$('fulltext-content'),section=localItem().sections[sectionIndex()];container.replaceChildren();const query=$('book-search').value.trim(),text=section.text||'';
- const ranges=EarthTextSearch.ranges(text,query,currentSearchMode(),500);let cursor=0;
+ const mode=currentSearchMode();
+ const ranges=mode==='terms'?EarthRankedSearch.mergeRanges(EarthTextSearch.termRanges(text,EarthRankedSearch.terms(query),'flexible',500).flat()).slice(0,500):EarthTextSearch.ranges(text,query,mode,500);let cursor=0;
  for(const range of ranges){container.append(document.createTextNode(text.slice(cursor,range.start)));const mark=document.createElement('mark');mark.textContent=text.slice(range.start,range.end);container.append(mark);cursor=range.end;}
  container.append(document.createTextNode(text.slice(cursor)));
  container.style.fontSize=readingState.fontSize+'px';$('font-smaller').disabled=readingState.fontSize<=16;$('font-larger').disabled=readingState.fontSize>=26;$('font-value').textContent='字号 '+readingState.fontSize;
@@ -427,6 +428,7 @@ function searchableSections(bookId){
  return searchTextCache.get(bookId);
 }
 function searchSnippet(section,query,mode){
+ if(mode==='terms')return rankedSnippet(section.text||'',EarthRankedSearch.terms(query));
  const snippet=document.createElement('span'),text=section.text||'',hit=EarthTextSearch.ranges(text,query,mode,1)[0];
  if(!hit){snippet.textContent=text.slice(0,110).replace(/\s+/g,' ');return snippet;}
  const start=Math.max(0,hit.start-25),end=Math.min(text.length,hit.end+65),mark=document.createElement('mark');
@@ -434,22 +436,44 @@ function searchSnippet(section,query,mode){
  snippet.append(document.createTextNode((start?'…':'')+text.slice(start,hit.start).replace(/\s+/g,' ')),mark,document.createTextNode(text.slice(hit.end,end).replace(/\s+/g,' ')+(end<text.length?'…':'')));
  return snippet;
 }
+function rankedSnippet(text, terms) {
+ const snippet=document.createElement('span');
+ const hits=EarthRankedSearch.mergeRanges(EarthTextSearch.termRanges(text,terms,'flexible',1).flat());
+ if(!hits.length){snippet.textContent=text.slice(0,100);return snippet;}
+ const windows=EarthRankedSearch.mergeRanges(hits.map(hit=>({start:Math.max(0,hit.start-12),end:Math.min(text.length,hit.end+21)}))).slice(0,2);
+ for(const [index,range] of windows.entries()){
+  if(index||range.start)snippet.append('…');
+  let cursor=range.start;
+  for(const hit of hits.filter(hit=>hit.start>=range.start&&hit.end<=range.end)){
+   snippet.append(text.slice(cursor,hit.start));
+   const mark=document.createElement('mark');mark.textContent=text.slice(hit.start,hit.end);snippet.append(mark);cursor=hit.end;
+  }
+  snippet.append(text.slice(cursor,range.end));
+ }
+ if(windows[windows.length-1].end<text.length)snippet.append('…');
+ return snippet;
+}
 async function searchBook(){
  const version=++searchVersion,query=$('book-search').value.trim(),results=$('search-results'),mode=currentSearchMode();
- const all=$('book-search-scope').value==='all',needle=EarthTextSearch.fold(query,mode),searchContext={query,mode,scope:all?'all':'current',bookId:state.selected};
+ const ranked=mode==='terms',foldMode=ranked?'flexible':mode;
+ const needles=ranked?EarthRankedSearch.terms(query):[EarthTextSearch.fold(query,mode)].filter(Boolean);
+ const all=$('book-search-scope').value==='all',searchContext={query,mode,scope:all?'all':'current',bookId:state.selected};
  const isCurrent=()=>version===searchVersion&&!searchComposing&&query===$('book-search').value.trim()&&mode===currentSearchMode()&&searchContext.scope===$('book-search-scope').value&&(all||state.selected===searchContext.bookId);
  results.replaceChildren();results.hidden=!query;$('return-search').hidden=true;
  if(!query){const ratio=readerRatio();paintReadingText();restoreReaderPosition(ratio);return;}
  const count=document.createElement('p');count.className='search-caption';count.setAttribute('role','status');results.append(count);
- if(!needle){count.textContent='请输入文字或数字；兼容检索会忽略标点和空白。';const ratio=readerRatio();paintReadingText();restoreReaderPosition(ratio);return;}
+ if(!needles.length){count.textContent='请输入要查的词，简繁兼容检索会忽略标点和空白。';const ratio=readerRatio();paintReadingText();restoreReaderPosition(ratio);return;}
  count.textContent='正在准备离线检索…';
- const matches=[];
+ const candidates=[];
  for(const book of all?books:books.filter(book=>book.id===state.selected)){
-  const item=localLibrary[book.id],cached=await searchableSections(book.id).ensure(mode);if(!isCurrent())return;
-  cached.forEach((entry,i)=>{if(entry.title.includes(needle)||entry.text.includes(needle))matches.push({book,item,i,section:item.sections[i]});});
+  const item=localLibrary[book.id],cached=await searchableSections(book.id).ensure(foldMode);if(!isCurrent())return;
+  cached.forEach((entry,i)=>{
+   if(ranked||entry.title.includes(needles[0])||entry.text.includes(needles[0]))candidates.push({book,item,i,section:item.sections[i],title:entry.title,text:entry.text});
+  });
  }
  if(!isCurrent())return;
- count.textContent=matches.length?(all?'全部 10 本':'本书')+'找到 '+matches.length+' 节匹配'+(all?' · '+new Set(matches.map(match=>match.book.id)).size+' 本书':'')+(matches.length>searchLimit?'，当前展示 '+searchLimit+' 节':''):'未找到“'+query+'”，试试更短的原文词句。';
+ const matches=ranked?EarthRankedSearch.rank(candidates,needles).map(i=>candidates[i]):candidates;
+ count.textContent=matches.length?(all?'全部 10 本':'本书')+'找到 '+matches.length+' 节匹配'+(all?' · '+new Set(matches.map(match=>match.book.id)).size+' 本书':'')+(ranked?' · 按相关度排序':'')+(matches.length>searchLimit?'，当前展示 '+searchLimit+' 节':''):(ranked?'没有章节同时包含所查的词，可减少一个词再试。':'未找到“'+query+'”，试试更短的原文词句。');
  matches.slice(0,searchLimit).forEach(({book,item,i,section})=>{
   const button=document.createElement('button');button.type='button';button.className='search-result';
   const heading=document.createElement('strong');heading.textContent='《'+book.title+'》 · '+(item.volumes.length>1?section.volumeLabel+' · ':'')+section.title+(section.pageStart?' · 第 '+section.pageStart+' 页':'');
@@ -465,7 +489,12 @@ for(const [id,delta] of [['font-smaller',-2],['font-larger',2]])$(id).addEventLi
 $('book-search').addEventListener('input',event=>{clearTimeout(searchTimer);searchVersion++;if(searchComposing||event.isComposing)return;searchLimit=40;searchTimer=setTimeout(searchBook,180);});
 $('book-search').addEventListener('compositionstart',()=>{searchComposing=true;searchVersion++;clearTimeout(searchTimer);});
 $('book-search').addEventListener('compositionend',()=>{searchComposing=false;clearTimeout(searchTimer);searchLimit=40;searchTimer=setTimeout(searchBook,180);});
-$('book-search-mode').addEventListener('change',()=>{clearTimeout(searchTimer);searchVersion++;searchLimit=40;if(!searchComposing)searchBook();});
+$('book-search-mode').addEventListener('change',()=>{
+ const ranked=currentSearchMode()==='terms';
+ $('book-search-help').textContent=ranked?'用空格分开词语，查同时包含各词的章节。支持简繁。':'查一句原文，或切换到「多词同章」查几个词。';
+ $('book-search').placeholder=ranked?'例如：天地 圣人':'输入想查找的词句';
+ clearTimeout(searchTimer);searchVersion++;searchLimit=40;if(!searchComposing)searchBook();
+});
 $('book-search-scope').addEventListener('change',()=>{clearTimeout(searchTimer);searchLimit=40;if(!searchComposing)searchBook();});
 $('search-clear').addEventListener('click',()=>{clearTimeout(searchTimer);searchVersion++;searchComposing=false;searchLimit=40;$('book-search').value='';searchBook();$('book-search').focus();});
 $('library-stats').textContent='10 项全书 HTML · 目录与全文搜索 · 可离线阅读';
@@ -545,11 +574,10 @@ function createReaderGameNavigation() {
   const lower=text.toLowerCase();
   return mode==='exact'?lower:lower.replace(mappingPattern,character=>characters[character]).replace(ignored,'');
  }
- function ranges(text,query,mode='flexible',limit=100){
-  checkMode(mode);checkText(text);checkText(query);
-  if(!Number.isFinite(limit)||limit<=0)return [];
-  const maximum=Math.floor(limit),needle=fold(query,mode);
-  if(!maximum||!needle||!text)return [];
+ function termRanges(text,queries,mode='flexible',limit=100){
+  checkMode(mode);checkText(text);
+  const needles=queries.map(query=>fold(query,mode)),maximum=Math.floor(limit);
+  if(!Number.isFinite(limit)||maximum<=0||!needles.some(Boolean)||!text)return needles.map(()=>[]);
   // The full-library fold never allocates this position map. Only a requested
   // section builds it, in original UTF-16 units for text slicing/DOM ranges.
   const lower=text.toLowerCase(),pieces=[],starts=[],ends=[];
@@ -569,17 +597,22 @@ function createReaderGameNavigation() {
    }
    originalOffset=originalEnd;
   }
-  const normalized=pieces.join(''),found=[];
-  let from=0,previousEnd=-1;
-  while(found.length<maximum){
-   const position=normalized.indexOf(needle,from);if(position===-1)break;
-   const start=starts[position],end=ends[position+needle.length-1];
-   if(start>=previousEnd){found.push({start,end});previousEnd=end;}
-   from=position+needle.length;
-  }
-  return found;
+  const normalized=pieces.join('');
+  return needles.map(needle=>{
+   const found=[];
+   if(!needle)return found;
+   let from=0,previousEnd=-1;
+   while(found.length<maximum){
+    const position=normalized.indexOf(needle,from);if(position===-1)break;
+    const start=starts[position],end=ends[position+needle.length-1];
+    if(start>=previousEnd){found.push({start,end});previousEnd=end;}
+    from=position+needle.length;
+   }
+   return found;
+  });
  }
- const api=Object.freeze({fold,ranges});root.EarthTextSearch=api;
+ function ranges(text,query,mode='flexible',limit=100){return termRanges(text,[query],mode,limit)[0];}
+ const api=Object.freeze({fold,ranges,termRanges});root.EarthTextSearch=api;
  if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof window==='object'?window:globalThis);
 
@@ -617,6 +650,92 @@ function createReaderGameNavigation() {
  const api=Object.freeze({create});root.EarthSearchIndex=api;
  if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof window==='object'?window:globalThis);
+
+/*!
+ * BM25+ scoring function adapted from Luca Ongaro's MiniSearch v7.2.0.
+ * https://github.com/lucaong/minisearch/blob/v7.2.0/src/MiniSearch.ts
+ *
+ * Copyright 2022 Luca Ongaro
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+(function(root) {
+  'use strict';
+
+  function terms(query) {
+    return [...new Set(query.split(/\s+/u).map(term => root.EarthTextSearch.fold(term, 'flexible')).filter(Boolean))];
+  }
+
+  function frequency(text, term) {
+    let count = 0;
+    let offset = 0;
+    while ((offset = text.indexOf(term, offset)) !== -1) {
+      count++;
+      offset += term.length;
+    }
+    return count;
+  }
+
+  // MiniSearch BM25+ with its default k, b and d.
+  // Fields use normalized text length so classical Chinese needs no word dictionary.
+  function fieldScore(tf, matched, total, length, average) {
+    if (!tf) return 0;
+    const k = 1.2, b = 0.7, d = 0.5;
+    const idf = Math.log(1 + (total - matched + 0.5) / (matched + 0.5));
+    return idf * (d + tf * (k + 1) / (tf + k * (1 - b + b * length / average)));
+  }
+
+  function rank(rows, needles) {
+    if (!rows.length || !needles.length || needles.some(term => !term)) return [];
+    let titleLength = 0, bodyLength = 0;
+    const titleDocuments = needles.map(() => 0);
+    const bodyDocuments = needles.map(() => 0);
+    const matches = [];
+    rows.forEach((row, index) => {
+      titleLength += row.title.length;
+      bodyLength += row.text.length;
+      const titleHits = [], bodyHits = [];
+      let allFound = true;
+      for (let i = 0; i < needles.length; i++) {
+        const title = frequency(row.title, needles[i]);
+        const body = frequency(row.text, needles[i]);
+        titleHits.push(title);
+        bodyHits.push(body);
+        if (title) titleDocuments[i]++;
+        if (body) bodyDocuments[i]++;
+        if (!title && !body) allFound = false;
+      }
+      if (allFound) matches.push({ index, titleHits, bodyHits });
+    });
+    const averageTitle = titleLength / rows.length || 1;
+    const averageBody = bodyLength / rows.length || 1;
+    for (const hit of matches) {
+      const row = rows[hit.index];
+      hit.score = needles.reduce((score, _, i) => score
+        + 3 * fieldScore(hit.titleHits[i], titleDocuments[i], rows.length, row.title.length, averageTitle)
+        + fieldScore(hit.bodyHits[i], bodyDocuments[i], rows.length, row.text.length, averageBody), 0);
+    }
+    return matches.sort((a, b) => b.score - a.score || a.index - b.index).map(hit => hit.index);
+  }
+
+  function mergeRanges(ranges) {
+    const merged = [];
+    for (const range of ranges.sort((a, b) => a.start - b.start || b.end - a.end)) {
+      const last = merged[merged.length - 1];
+      if (last && range.start < last.end) last.end = Math.max(last.end, range.end);
+      else merged.push({ ...range });
+    }
+    return merged;
+  }
+
+  const api = Object.freeze({ terms, rank, mergeRanges });
+  root.EarthRankedSearch = api;
+  if (typeof module === 'object' && module.exports) module.exports = api;
+})(typeof window === 'object' ? window : globalThis);
 
 (function (root, factory) {
   'use strict';

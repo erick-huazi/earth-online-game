@@ -9,7 +9,7 @@
       <div class="chapter-field"><label for="chapter-select">篇章 / 页码目录</label><select id="chapter-select"></select></div>
       <div class="reader-tools"><span class="font-label" id="font-value" aria-live="polite">字号 18</span><button type="button" class="reader-tool" id="font-smaller" aria-label="缩小字号">A−</button><button type="button" class="reader-tool" id="font-larger" aria-label="放大字号">A＋</button></div>
     </div>
-    <div class="search-options"><label for="book-search-mode">查找方式<select id="book-search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div>
+    <div class="search-options"><label for="book-search-mode">查找方式<select id="book-search-mode" aria-describedby="book-search-help"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option><option value="terms">多词同章 · 按相关度排序</option></select></label><span id="book-search-help">查一句原文，或切换到「多词同章」查几个词。</span></div>
     <div class="text-controls"><div class="book-search"><div class="search-label-row"><label for="book-search">搜索原文词句</label><label class="search-scope-label" for="book-search-scope">范围<select id="book-search-scope"><option value="current">当前书 · 全部卷册</option><option value="all">全部 10 本书</option></select></label></div><div class="search-box"><input type="search" id="book-search" placeholder="输入想查找的词句" maxlength="100"><button type="button" class="reader-tool search-clear" id="search-clear">清除</button></div></div></div>
     <div class="search-results" id="search-results" hidden></div>
     </div></details><button id="return-search" class="return-search" type="button" hidden>← 返回搜索结果</button>

@@ -24,3 +24,11 @@ jobs:
         run: npm run build
       - name: 成品与源码一致
         run: git diff --exit-code -- outputs/
+      - name: 安装固定版本的验收依赖
+        run: npm ci
+      - name: 验证检索与游戏的无障碍交互
+        env:
+          PLAYWRIGHT_CHANNEL: chrome
+        run: |
+          npm run test:search
+          npm run test:a11y

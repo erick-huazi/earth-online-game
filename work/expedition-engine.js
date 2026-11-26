@@ -55,6 +55,25 @@
  function chooseRelic(state,id){requirePhase(state,'relic');if(state.relics.length>=3||!getRelicChoices(state).some(r=>r.id===id))throw Error('Unavailable relic');const s=clone(state);s.relics.push(id);s.phase='route';s.actions.push({t:'relic',id});return s;}
  function summarize(s){const completed=s.phase==='ending'&&Boolean(s.ending?.success),bonus=completed?100:0;const resourceScore=Math.floor(keys.reduce((n,k)=>n+s.resources[k],0)/3),score=s.insight*5+s.turn*30+resourceScore+s.relics.length*20+bonus;return {score,scoreBreakdown:{insight:s.insight*5,journey:s.turn*30,reserves:resourceScore,relics:s.relics.length*20,completion:bonus},title:s.ending?.title||'远征进行中',ending:clone(s.ending),completed,turn:s.turn,totalTurns:TOTAL_TURNS,resources:clone(s.resources),insight:s.insight,relics:s.relics.map(id=>clone(relicById(id))),history:clone(s.history),seed:s.seed,role:s.role,roleName:roleById(s.role).name,rules:RULES};}
  function stable(x){if(x===null||typeof x!=='object')return JSON.stringify(x);if(Array.isArray(x))return '['+x.map(stable).join(',')+']';return '{'+Object.keys(x).sort().map(k=>JSON.stringify(k)+':'+stable(x[k])).join(',')+'}';}
- function validateRestore(raw){try{if(!raw||typeof raw!=='object'||Array.isArray(raw)||raw.version!==2||raw.rules!==RULES||!validSeed(raw.seed)||!roleById(raw.role)||!Array.isArray(raw.actions)||raw.actions.length>40)return null;if(!Number.isInteger(raw.turn)||raw.turn<0||raw.turn>12||!raw.resources||keys.some(k=>!Number.isInteger(raw.resources[k])||raw.resources[k]<0||raw.resources[k]>100))return null;if(!Array.isArray(raw.history)||raw.history.length>12||!Array.isArray(raw.relics)||raw.relics.length>3||!Number.isInteger(raw.insight)||raw.insight<0||raw.insight>1000)return null;let s=create({seed:raw.seed,role:raw.role});for(const a of raw.actions){if(!a||typeof a!=='object'||Array.isArray(a))return null;if(a.t==='route'&&Object.keys(a).length===2&&typeof a.id==='string')s=chooseRoute(s,a.id);else if(a.t==='choice'&&Object.keys(a).length===2)s=chooseOption(s,a.index);else if(a.t==='advance'&&Object.keys(a).length===1)s=advance(s);else if(a.t==='relic'&&Object.keys(a).length===2&&typeof a.id==='string')s=chooseRelic(s,a.id);else return null;}return stable(raw)===stable(s)?s:null;}catch{return null;}}
- g.EarthExpedition={RULES,TOTAL_TURNS,scoreFormula:'见识 × 5 + 已走回合 × 30 + 三项剩余资源均值向下取整 + 遗物数 × 20 + 完整通关奖励 100。资源归零结束；分数用于同规则、同种子、同角色的本地比较，不是人生评价。',roles:clone(roles),relics:clone(relics),endings:endings.map(e=>({id:e.id,title:e.title,success:e.success})),create,getRoutes,chooseRoute,getEvent,chooseOption,advance,getRelicChoices,chooseRelic,summarize,validateRestore};
+ function applyAction(state, action) {
+  if (!action || typeof action !== 'object' || Array.isArray(action)) throw Error('Invalid action');
+  const keys = Object.keys(action).length;
+  if (action.t === 'route' && keys === 2) return chooseRoute(state, action.id);
+  if (action.t === 'choice' && keys === 2) return chooseOption(state, action.index);
+  if (action.t === 'advance' && keys === 1) return advance(state);
+  if (action.t === 'relic' && keys === 2) return chooseRelic(state, action.id);
+  throw Error('Unknown action');
+ }
+ // Recreate the decision with the resources, route and relics held at that station.
+ function decisionAt(run, station) {
+  if (!Number.isInteger(station) || station < 1 || station > run.turn) return null;
+  let state = create({ seed: run.seed, role: run.role });
+  for (const action of run.actions) {
+   if (state.phase === 'event' && state.turn + 1 === station) return state;
+   state = applyAction(state, action);
+  }
+  return null;
+ }
+ function validateRestore(raw){try{if(!raw||typeof raw!=='object'||Array.isArray(raw)||raw.version!==2||raw.rules!==RULES||!validSeed(raw.seed)||!roleById(raw.role)||!Array.isArray(raw.actions)||raw.actions.length>40)return null;if(!Number.isInteger(raw.turn)||raw.turn<0||raw.turn>12||!raw.resources||keys.some(k=>!Number.isInteger(raw.resources[k])||raw.resources[k]<0||raw.resources[k]>100))return null;if(!Array.isArray(raw.history)||raw.history.length>12||!Array.isArray(raw.relics)||raw.relics.length>3||!Number.isInteger(raw.insight)||raw.insight<0||raw.insight>1000)return null;let s=create({seed:raw.seed,role:raw.role});for(const action of raw.actions)s=applyAction(s,action);return stable(raw)===stable(s)?s:null;}catch{return null;}}
+ g.EarthExpedition={RULES,TOTAL_TURNS,scoreFormula:'见识 × 5 + 已走回合 × 30 + 三项剩余资源均值向下取整 + 遗物数 × 20 + 完整通关奖励 100。资源归零结束；分数用于同规则、同种子、同角色的本地比较，不是人生评价。',roles:clone(roles),relics:clone(relics),endings:endings.map(e=>({id:e.id,title:e.title,success:e.success})),create,getRoutes,chooseRoute,getEvent,chooseOption,advance,getRelicChoices,chooseRelic,summarize,validateRestore,decisionAt};
 })(typeof window==='undefined'?globalThis:window);

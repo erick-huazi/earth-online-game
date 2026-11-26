@@ -23,6 +23,23 @@ check('Corrupt or forged saves, unknown fields, invalid seeds and oversized acti
 check('Illegal transitions and double choices fail instead of duplicating rewards',()=>{const s=start();assert.throws(()=>E.chooseOption(s,0));assert.throws(()=>E.chooseRelic(s,'water_seal'));const event=E.chooseRoute(s,'quiet');assert.throws(()=>E.chooseRoute(event,'hazard'));for(const i of [-1,3,1.5,NaN])assert.throws(()=>E.chooseOption(event,i));const feedback=E.chooseOption(event,0);assert.throws(()=>E.chooseOption(feedback,0));});
 check('Summaries expose a reproducible score formula and full book-linked recap',()=>{const s=journey('summary','safe'),summary=E.summarize(s);assert.equal(summary.score,Object.values(summary.scoreBreakdown).reduce((n,x)=>n+x,0));assert.equal(summary.history.length,s.turn);assert(summary.history.every(h=>h.bookId&&h.label&&h.delta));assert(summary.ending.id&&summary.ending.title&&summary.ending.description);assert(E.scoreFormula.includes('100'));});
 check('Ending catalogue lists nine unique endings and covers every reachable result',()=>{assert.equal(E.endings.length,9);assert.equal(new Set(E.endings.map(e=>e.id)).size,9);assert.equal(E.endings.filter(e=>!e.success).length,3);const seen=new Set();for(const strategy of ['safe','random','risk','fixed0','fixed1','fixed2'])for(let i=0;i<60;i++){const s=journey('catalogue-'+i,strategy,E.roles[i%3].id),known=E.endings.find(e=>e.id===s.ending.id);assert(known,s.ending.id);assert.equal(known.title,s.ending.title);assert.equal(known.success,s.ending.success);seen.add(s.ending.id);}assert(seen.size>=7,'Simulated strategies should reach most endings: '+[...seen].join(','));});
+check('Replay restores each decision including route costs and equipped relics', () => {
+ for (const strategy of ['safe','risk','random']) {
+  const decisions=[];
+  const run=journey('historical-choice',strategy,'planner',state=>{
+   if (state.phase==='event') decisions.push(state);
+  });
+  const original=JSON.stringify(run);
+  for (const outcome of run.history) {
+   const before=E.decisionAt(run,outcome.turn);
+   assert.deepEqual(before,decisions[outcome.turn-1]);
+   assert.deepEqual(E.chooseOption(before,outcome.choice).lastOutcome,outcome);
+   for (let i=0;i<3;i++) assert(E.validateRestore(E.chooseOption(before,i)));
+  }
+  assert.equal(E.decisionAt(run,run.turn+1),null);
+  assert.equal(JSON.stringify(run),original);
+ }
+});
 const simulations=[];
 check('Balance simulation over 120 seeds per strategy and rotating roles',()=>{for(const strategy of ['safe','random','risk','fixed0','fixed1','fixed2']){let wins=0,turns=0,score=0;const endings={};for(let i=0;i<120;i++){const s=journey('balance-'+i,strategy,E.roles[i%3].id),summary=E.summarize(s);wins+=Number(summary.completed);turns+=s.turn;score+=summary.score;endings[summary.ending.id]=(endings[summary.ending.id]||0)+1;}simulations.push({strategy,runs:120,wins,winRate:Number((wins/120).toFixed(3)),meanTurns:Number((turns/120).toFixed(2)),meanScore:Math.round(score/120),endings});}assert(simulations.find(s=>s.strategy==='safe').wins>=110,'Balanced choices should consistently be viable');assert(simulations.find(s=>s.strategy==='random').wins<110,'Random choices should carry meaningful risk');assert(simulations.filter(s=>s.strategy.startsWith('fixed')).every(s=>s.wins<110),'Fixed option position should not guarantee survival');});
 const report={date:new Date().toISOString().slice(0,10),rules:E.RULES,tests,simulations,note:'模拟策略评估，不是真人通关率、留存率或商业表现；safe/risk 根据可见资源做贪心取舍，固定选项序号并不固定资源策略。'};

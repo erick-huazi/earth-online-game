@@ -97,11 +97,10 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
   const lower=text.toLowerCase();
   return mode==='exact'?lower:lower.replace(mappingPattern,character=>characters[character]).replace(ignored,'');
  }
- function ranges(text,query,mode='flexible',limit=100){
-  checkMode(mode);checkText(text);checkText(query);
-  if(!Number.isFinite(limit)||limit<=0)return [];
-  const maximum=Math.floor(limit),needle=fold(query,mode);
-  if(!maximum||!needle||!text)return [];
+ function termRanges(text,queries,mode='flexible',limit=100){
+  checkMode(mode);checkText(text);
+  const needles=queries.map(query=>fold(query,mode)),maximum=Math.floor(limit);
+  if(!Number.isFinite(limit)||maximum<=0||!needles.some(Boolean)||!text)return needles.map(()=>[]);
   // The full-library fold never allocates this position map. Only a requested
   // section builds it, in original UTF-16 units for text slicing/DOM ranges.
   const lower=text.toLowerCase(),pieces=[],starts=[],ends=[];
@@ -121,17 +120,22 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
    }
    originalOffset=originalEnd;
   }
-  const normalized=pieces.join(''),found=[];
-  let from=0,previousEnd=-1;
-  while(found.length<maximum){
-   const position=normalized.indexOf(needle,from);if(position===-1)break;
-   const start=starts[position],end=ends[position+needle.length-1];
-   if(start>=previousEnd){found.push({start,end});previousEnd=end;}
-   from=position+needle.length;
-  }
-  return found;
+  const normalized=pieces.join('');
+  return needles.map(needle=>{
+   const found=[];
+   if(!needle)return found;
+   let from=0,previousEnd=-1;
+   while(found.length<maximum){
+    const position=normalized.indexOf(needle,from);if(position===-1)break;
+    const start=starts[position],end=ends[position+needle.length-1];
+    if(start>=previousEnd){found.push({start,end});previousEnd=end;}
+    from=position+needle.length;
+   }
+   return found;
+  });
  }
- const api=Object.freeze({fold,ranges});root.EarthTextSearch=api;
+ function ranges(text,query,mode='flexible',limit=100){return termRanges(text,[query],mode,limit)[0];}
+ const api=Object.freeze({fold,ranges,termRanges});root.EarthTextSearch=api;
  if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof window==='object'?window:globalThis);
 

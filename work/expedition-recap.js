@@ -131,7 +131,48 @@
     return value < 0 ? '−' + Math.abs(value) : '0';
   }
 
-  function buildStation(outcome) {
+  function alternateChoices(run, outcome) {
+    const details = element('details', 'exp-alternate');
+    const heading = element('summary', '', '如果这一站换个选择');
+    details.append(heading);
+    details.addEventListener('toggle', () => {
+      if (!details.open || details.childElementCount > 1) return;
+      const before = engine.decisionAt(run, outcome.turn);
+      const options = engine.getEvent(before).options;
+      const label = element('label', '', '试算第 ' + outcome.turn + ' 站的另一种选择');
+      const select = element('select');
+      options.forEach((choice, i) => {
+        if (i === outcome.choice) return;
+        const option = element('option', '', choice.label);
+        option.value = String(i);
+        select.append(option);
+      });
+      label.append(select);
+      const result = element('div', 'exp-alternate-result');
+      result.setAttribute('aria-live', 'polite');
+      result.setAttribute('aria-atomic', 'true');
+      function update() {
+        const preview = engine.chooseOption(before, Number(select.value));
+        const next = engine.advance(preview);
+        const balances = element('ul');
+        for (const [key, name] of Object.entries(resources)) {
+          const value = preview.resources[key];
+          const diff = value - outcome.resources[key];
+          const comparison = diff === 0 ? '与实走相同' : '比实走' + (diff > 0 ? '多 ' : '少 ') + Math.abs(diff);
+          balances.append(element('li', '', name + ' ' + value + '（' + comparison + '）'));
+        }
+        const destination = next.ending ? '此处结算 · ' + next.ending.title :
+          next.phase === 'relic' ? '接下来挑选书印' : '可前往第 ' + (preview.turn + 1) + ' 站';
+        result.replaceChildren(balances, element('p', '', '本站见识 +' + preview.lastOutcome.insight + ' · ' + destination));
+      }
+      select.addEventListener('change', update);
+      details.append(label, result);
+      update();
+    });
+    return details;
+  }
+
+  function buildStation(run, outcome) {
     const station = element('li', 'exp-recap-station');
     station.dataset.turn = String(outcome.turn);
     const heading = element('h4', '', '第 ' + outcome.turn + ' 站 · ' + outcome.title);
@@ -147,7 +188,7 @@
       if (after === 0) item.append(' · 归零');
       changes.append(item);
     }
-    station.append(heading, route, decision, changes, element('p', 'exp-recap-insight', '见识 +' + outcome.insight));
+    station.append(heading, route, decision, changes, element('p', 'exp-recap-insight', '见识 +' + outcome.insight), alternateChoices(run, outcome));
     return station;
   }
 
@@ -156,7 +197,7 @@
     const list = element('ol', 'exp-recap-list');
     list.id = 'exp-recap-list';
     const intro = element('summary', '', '回看这一路的 ' + run.turn + ' 次取舍');
-    for (const outcome of run.history) list.append(buildStation(outcome));
+    for (const outcome of run.history) list.append(buildStation(run, outcome));
     details.append(intro, list);
     return details;
   }

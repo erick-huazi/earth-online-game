@@ -54,3 +54,11 @@
   color: #d4ddc3;
 }
 .exp-recap-resources [data-after="0"] { color: #efb78f; }
+
+.exp-alternate { margin-top: 10px; }
+.exp-alternate summary { display: list-item; width: fit-content; min-height: 44px; padding: 10px 4px; color: var(--gold, #efcf8d); cursor: pointer; }
+.exp-alternate label { display: block; margin: 4px 0; color: #d8dfcf; font-size: 14px; }
+.exp-alternate select { display: block; width: 100%; max-width: 32rem; min-height: 44px; margin: 6px 0; padding: 4px 8px; color: #edf3e7; background: #172d24; border: 1px solid #879681; border-radius: 4px; font: inherit; }
+.exp-alternate-result ul { padding-left: 1.4em; margin: 8px 0 0; font-variant-numeric: tabular-nums; }
+.exp-alternate-result li { margin: 2px 0; }
+@media (max-width: 760px) { .exp-alternate select { font-size: 16px; } }

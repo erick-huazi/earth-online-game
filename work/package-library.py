@@ -66,6 +66,8 @@ readme = '''地球 Online · 山河远征 v__GAME_VERSION__ / 游戏与完整典
 
 12. 首页“继续上次远征”可恢复未完成的旅程。结算后展开行程，查看每站的资源收支；用同一角色重走同一个开局，可与本机同规则下的历史最佳分比较。
 13. 从游戏打开原典后，可用书页上的入口回到对应模式。手册和全书页之间的阅读链接会携带当前书目与章节。
+14. 结算后展开一站的“如果这一站换个选择”，即可比较另外两种行动的资源结余与去向。
+15. 在手册的原文检索中选择多词同章，输入用空格分开的词。
 
 经典剧情与原典
 1. 点击“进入经典剧情 · 33场故事”，仍可探索十境与归途终章，共33场原创情境、99个选项；每境三题，达到4/6点领悟即可解锁下一境。
@@ -81,7 +83,7 @@ readme = '''地球 Online · 山河远征 v__GAME_VERSION__ / 游戏与完整典
 readme = readme.replace('__GAME_VERSION__', version).replace('__GAME_DATE__', release_date)
 (out / '使用说明.txt').write_text(readme, encoding='utf-8')
 archive = out / 'earth-online-offline-library.zip'
-files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt', out / 'game-research-v2.html', out / 'game-research-v2.json', out / 'game-third-party-notices.txt'] + sorted((out / 'books').rglob('*')) + sorted((out / 'html').rglob('*.html'))
+files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt', out / 'github-review-v2.3.html', out / 'game-research-v2.html', out / 'game-research-v2.json', out / 'game-third-party-notices.txt'] + sorted((out / 'books').rglob('*')) + sorted((out / 'html').rglob('*.html'))
 files = [p for p in files if p.is_file() and not p.name.endswith('.part')]
 with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=5, allowZip64=True) as z:
     for p in files:

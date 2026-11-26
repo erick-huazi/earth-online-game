@@ -18,7 +18,7 @@ async function exported(page){const wait=page.waitForEvent('download');await pag
 async function importData(page,data){await page.locator('#exp-import').setInputFiles({name:'expedition.json',mimeType:'application/json',buffer:Buffer.isBuffer(data)?data:Buffer.from(data)});}
 async function assertVisibleRecap(page, run) {
  const recap = page.locator('.exp-recap');
- if (!await recap.evaluate(element => element.open)) await recap.locator('summary').click();
+ if (!await recap.evaluate(element => element.open)) await recap.locator(':scope > summary').click();
  const rows = recap.locator('#exp-recap-list > li');
  assert.equal(await rows.count(), run.history.length);
  for (const [index, station] of run.history.entries()) {
@@ -90,6 +90,32 @@ try{
  await test('同文档分享链接变化即时呈现邀请并保留现有旅程',async page=>{await open(page);await page.locator('#exp-begin').click();const before=await getRun(page),c=await code(page,'qa-hashchange','envoy');await page.goto(base+'#run='+c);await page.locator('#exp-accept-shared').waitFor();assert.deepEqual(await getRun(page),before);});
  await test('每日挑战采用北京时间日期，三种角色起点正确',async page=>{await open(page);const day=await page.evaluate(()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()));assert.equal(await page.locator('#exp-day').textContent(),day);await page.locator('[data-role="planner"]').click();await page.locator('#exp-begin').click();const s=await getRun(page);assert.equal(s.role,'planner');assert.equal(s.seed,'day-'+day);assert.deepEqual(s.resources,{stamina:58,supply:78,trust:50});});
  await test('路线预览/实际delta一致且双击不重复结算',async page=>{await sharedStart(page);await page.locator('[data-route]').first().click();const before=await getRun(page),expected=await page.evaluate(k=>EarthExpedition.getEvent(JSON.parse(localStorage.getItem(k)).run).options[0].delta,key);await page.locator('[data-option="0"]').evaluate(b=>{b.click();b.click();});const after=await getRun(page);assert.equal(after.turn,1);assert.equal(after.phase,'feedback');for(const k of Object.keys(expected))assert.equal(after.resources[k],before.resources[k]+expected[k]);assert.equal(after.history.length,1);});
+ await test('复盘在手机上可试算两种选择，结算成绩与存档保持一致', async page => {
+  await sharedStart(page, 'qa-alternate');
+  const run = await finish(page);
+  const saved = await page.evaluate(k => localStorage.getItem(k), key);
+  await page.locator('.exp-recap > summary').click();
+  const station = page.locator('.exp-recap-station').last();
+  await station.locator('.exp-alternate summary').click();
+  const select = station.getByRole('combobox');
+  const options = await select.locator('option').evaluateAll(items => items.map(o => o.value));
+  assert.equal(options.length, 2);
+  const actual = run.history.at(-1);
+  assert(!options.includes(String(actual.choice)));
+  for (const index of options) {
+   await select.selectOption(index);
+   const preview = await page.evaluate(({run,index}) => {
+    const before = EarthExpedition.decisionAt(run, run.turn);
+    return EarthExpedition.chooseOption(before, Number(index));
+   }, {run,index});
+   const content = await station.locator('.exp-alternate-result').innerText();
+   for (const [k,v] of Object.entries({stamina:'体力',supply:'补给',trust:'声望'}))
+    assert(content.includes(v+' '+preview.resources[k]+'（'));
+   assert(content.includes('本站见识 +'+preview.lastOutcome.insight));
+  }
+  assert.equal(await page.evaluate(k => localStorage.getItem(k), key), saved);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+ }, {viewport:{width:320,height:800}});
  await test('十二站通关、复盘、战报编码反馈与重试、下载 PNG 及同局重开', async page => {
   await sharedStart(page, 'qa-world-12');
   const finished = await finish(page);
@@ -184,7 +210,7 @@ try{
   assert(await page.locator('.exp-ending .exp-subtitle').textContent());
   assert(await page.getByRole('button', {name: '同一开局，再走一遍'}).isVisible());
   await assertVisibleRecap(page, run);
-  await page.locator('.exp-recap summary').evaluate(summary => summary.scrollIntoView({block:'start'}));
+  await page.locator('.exp-recap > summary').evaluate(summary => summary.scrollIntoView({block:'start'}));
   await page.screenshot({path:path.join(__dirname, 'v2-recap-320.png')});
  }, {viewport: {width: 320, height: 844}});
  await test('分享保留部署子路径、剪贴板拒绝可手动复制、减少动态不放烟花',async(page,context)=>{await context.addInitScript(()=>{Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>Promise.reject(new DOMException('Denied'))}});});const hosted='https://earth-online.example/nested/game/earth-online-game.html';await page.route('https://earth-online.example/**',route=>route.fulfill({path:file,contentType:'text/html; charset=utf-8'}));await page.goto(hosted);await page.evaluate(()=>{window.__confettiCalls=0;window.confetti=()=>window.__confettiCalls++;});await page.locator('#exp-begin').click();await finish(page);assert.equal(await page.evaluate(()=>window.__confettiCalls),0);await page.getByRole('button',{name:'生成我的山河战报'}).click();assert((await page.locator('#exp-share-link').inputValue()).startsWith(hosted+'#run='));await page.locator('#exp-copy-link').click();assert.match(await page.locator('#exp-share-status').textContent(),/已选中|请复制/);assert(await page.locator('#exp-share-link').evaluate(e=>e.selectionEnd-e.selectionStart===e.value.length));await page.setViewportSize({width:320,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:path.join(__dirname,'v2-share-dialog-320.png')});});

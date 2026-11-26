@@ -41,7 +41,11 @@ v2 增加可离线玩的短局策略远征，同时保留原有 33 场故事和�
 
 ## GitHub 项目怎样融入游戏
 
-评分按本轮玩法适配 30、离线 20、维护与稳定 15、许可 15、体积性能适配 10、接入成本 10 计算，属于项目适配判断，星数不计分。完整证据见 [研究报告](outputs/game-research-v2.html) 和 [评分 JSON](outputs/game-research-v2.json)。
+手册的「多词同章」支持用空格分开的简繁词语，例如“天地 圣人”。可在当前书或十本全书内查找，并从结果跳到命中的章节。
+
+v2.3 的候选、固定上游版本、逐项分数与实际接入位置见[本轮评估](https://39.107.91.13/earth-online/github-review-v2.3.html)。复盘中的「如果这一站换个选择」会从本局行动记录还原当时的资源和书印，可以比较另外两种选择。
+
+最初远征版本的评分按玩法适配 30、离线 20、维护与稳定 15、许可 15、体积性能适配 10、接入成本 10 计算，属于项目适配判断，星数不计分。完整证据见 [研究报告](outputs/game-research-v2.html) 和 [评分 JSON](outputs/game-research-v2.json)。
 
 | 项目 | 评分 | 本轮采用方式 |
 | --- | ---: | --- |
@@ -107,7 +111,7 @@ npx playwright install chromium
 npm test
 ```
 
-只检查远征规则可运行 `npm run test:engine`。GitHub Actions 在推送和合并请求时运行规则验收，重新构建游戏、手册与十本全书，并核对它们与仓库内的成品一致。完整浏览器验收可用上面的 `npm test` 在本机运行。
+只检查远征规则可运行 `npm run test:engine`。GitHub Actions 在推送和合并请求时运行规则验收，重新构建游戏、手册与十本全书，并核对它们与仓库内的成品一致。CI 还在 Chrome 中运行无障碍与多词检索验收。完整浏览器验收可用上面的 `npm test` 在本机运行。
 
 版本变化见 [CHANGELOG.md](CHANGELOG.md)。
 
