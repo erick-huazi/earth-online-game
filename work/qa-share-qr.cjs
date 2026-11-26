@@ -14,10 +14,20 @@ async function check() {
     });
     await page.context().setOffline(true);
     await page.goto(pathToFileURL(path.resolve(__dirname, '../outputs/earth-online-game.html')).href);
-    await page.locator('#exp-begin').click();
-    const stage = page.locator('#exp-stage');
-    for (let i = 0; i < 45 && !await stage.locator('.exp-ending').count(); i++)
-      await stage.locator('[data-route], [data-option], [data-relic], :scope > button.primary').first().click();
+    const completed = await page.evaluate(() => {
+      const engine = window.EarthExpedition;
+      let run = engine.create({seed:'qr-export-test',role:'walker'});
+      while (run.phase !== 'ending') {
+        if (run.phase === 'relic') run = engine.chooseRelic(run,engine.getRelicChoices(run)[0].id);
+        run = engine.chooseRoute(run,engine.getRoutes(run)[0].id);
+        run = engine.advance(engine.chooseOption(run,0));
+      }
+      return run;
+    });
+    await page.locator('#exp-import').setInputFiles({
+      name:'qr-journey.json',mimeType:'application/json',
+      buffer:Buffer.from(JSON.stringify({kind:'earth-online-expedition-run',version:2,run:completed}))
+    });
     const share = page.getByRole('button', {name:/生成我的山河战报/});
     await share.click();
     const panel = page.locator('#exp-qr');
