@@ -109,6 +109,8 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
 @media(max-width:850px){.search-options select{font-size:16px}.search-options{gap:5px}.search-options>span{flex-basis:100%}}
 @media print{.search-options,.note-copy-actions{display:none!important}}
 
+.chapter-hits:not([hidden]){display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;scroll-margin-top:88px}.chapter-hits button{min-height:44px}.chapter-hits span{font-size:14px;font-variant-numeric:tabular-nums}.prose mark[aria-current],.book-section h2 mark[aria-current],.text-reading mark[aria-current]{color:#fff;background:#56430a;outline:2px solid currentColor;outline-offset:1px;text-decoration:underline;font-weight:700}@media print{.chapter-hits{display:none!important}}
+
 #reader-game-return{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
 .topnav .return-kept-game{padding:0;border:0;background:none;color:inherit;font:inherit}
 @media(max-width:460px){.topbar-inner{gap:8px}.topnav{gap:8px;justify-content:flex-end;flex-wrap:wrap}}
@@ -142,6 +144,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <div class="text-controls"><div class="book-search"><div class="search-label-row"><label for="book-search">搜索原文词句</label><label class="search-scope-label" for="book-search-scope">范围<select id="book-search-scope"><option value="current">当前书 · 全部卷册</option><option value="all">全部 10 本书</option></select></label></div><div class="search-box"><input type="search" id="book-search" placeholder="输入想查找的词句" maxlength="100"><button type="button" class="reader-tool search-clear" id="search-clear">清除</button></div></div></div>
     <div class="search-results" id="search-results" hidden></div>
     </div></details><button id="return-search" class="return-search" type="button" hidden>← 返回搜索结果</button>
+    <div class="chapter-hits" id="chapter-hits" role="group" aria-label="本章命中导航" hidden>
+      <button type="button" class="reader-tool" id="chapter-prev-hit">上一处</button>
+      <span id="chapter-hit-count" role="status" aria-atomic="true"></span>
+      <button type="button" class="reader-tool" id="chapter-next-hit">下一处</button>
+    </div>
     <div class="text-reading" id="text-reading" tabindex="0" role="region" aria-label="原文阅读区"><p class="section-origin" id="section-origin"></p><h4 id="section-title"></h4><p id="section-source" class="section-origin" hidden></p><div id="fulltext-content" class="fulltext-content"></div><p id="empty-page" class="reading-position" hidden></p><div id="section-images" class="section-images"></div></div>
     <div class="local-chapter-nav"><button class="reader-tool" type="button" id="prev-section">← 上一节</button><span id="section-position"></span><button class="reader-tool" type="button" id="next-section">下一节 →</button></div>
     <div class="bookmark-toolbar"><details class="bookmark-panel" data-bookmark-panel><summary>我的书签<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>保存在当前浏览器，可随完整备份导出。</p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><button class="bookmark-add" data-bookmark-add type="button">存书签</button></div>
@@ -382,13 +389,36 @@ function renderLocalBook(){
  renderSection();updateReadingMode();
 }
 function renderChapterOptions(volumeId){const item=localItem();$('chapter-select').replaceChildren();item.sections.forEach((s,i)=>{if(s.volumeId!==volumeId)return;const o=document.createElement('option');o.value=i;o.textContent=s.pageStart?(s.title.includes('第 '+s.pageStart+' 页')?s.title:'第 '+s.pageStart+' 页 · '+s.title):String(i+1).padStart(2,'0')+' · '+s.title;$('chapter-select').append(o);});}
+let chapterHits=null, currentHit=-1;
 function paintReadingText(){
- const container=$('fulltext-content'),section=localItem().sections[sectionIndex()];container.replaceChildren();const query=$('book-search').value.trim(),text=section.text||'';
- const mode=currentSearchMode();
- const ranges=mode==='terms'?EarthRankedSearch.mergeRanges(EarthTextSearch.termRanges(text,EarthRankedSearch.terms(query),'flexible',500).flat()).slice(0,500):EarthTextSearch.ranges(text,query,mode,500);let cursor=0;
- for(const range of ranges){container.append(document.createTextNode(text.slice(cursor,range.start)));const mark=document.createElement('mark');mark.textContent=text.slice(range.start,range.end);container.append(mark);cursor=range.end;}
- container.append(document.createTextNode(text.slice(cursor)));
+ const container=$('fulltext-content'),section=localItem().sections[sectionIndex()],text=section.text||'';
+ const mode=currentSearchMode(),query=$('book-search').value.trim();
+ if(!chapterHits || chapterHits.section!==section || chapterHits.mode!==mode || chapterHits.query!==query){
+  const find=value=>mode==='terms'
+   ? EarthRankedSearch.mergeRanges(EarthTextSearch.termRanges(value,EarthRankedSearch.terms(query),'flexible',value.length).flat())
+   : EarthTextSearch.ranges(value,query,mode,value.length);
+  const title=find(section.title),body=find(text);
+  chapterHits={section,mode,query,title,body,total:title.length+body.length};
+  currentHit=-1;
+ }
+ EarthOccurrences.paint($('section-title'),section.title,chapterHits.title,currentHit);
+ EarthOccurrences.paint(container,text,chapterHits.body,currentHit-chapterHits.title.length);
+ $('chapter-hits').hidden=currentHit<0;
+ $('chapter-hit-count').textContent=currentHit<0?'':'本章第 '+(currentHit+1)+' / '+chapterHits.total+' 处';
+ $('chapter-prev-hit').disabled=$('chapter-next-hit').disabled=chapterHits.total<2;
  container.style.fontSize=readingState.fontSize+'px';$('font-smaller').disabled=readingState.fontSize<=16;$('font-larger').disabled=readingState.fontSize>=26;$('font-value').textContent='字号 '+readingState.fontSize;
+}
+function showChapterHit(index) {
+ currentHit=index;
+ paintReadingText();
+ const reader=$('text-reading'),mark=reader.querySelector('mark[aria-current]');
+ if(mark)reader.scrollTop+=mark.getBoundingClientRect().top-reader.getBoundingClientRect().top-38;
+}
+for(const [id,delta] of [['chapter-prev-hit',-1],['chapter-next-hit',1]]){
+ $(id).addEventListener('click',()=>{
+  showChapterHit(EarthOccurrences.advance(currentHit,delta,chapterHits.total));
+  rememberReadingPosition();saveReading();
+ });
 }
 function renderSection(){
  const item=localItem(),i=sectionIndex(),section=item.sections[i],volume=item.volumes.find(v=>v.id===section.volumeId);
@@ -411,7 +441,14 @@ function openSearchResult(index,bookId=state.selected,searchContext){
  if(bookId!==state.selected){preserveSearchNavigation=true;try{selectBook(bookId,false);}finally{preserveSearchNavigation=false;}}
  goSection(index);$('search-results').hidden=true;$('return-search').hidden=false;
  if(matchMedia('(max-width:760px)').matches)$('reading-tools').open=false;
- requestAnimationFrame(()=>{const reader=$('text-reading'),mark=$('fulltext-content').querySelector('mark');if(mark)reader.scrollTop+=mark.getBoundingClientRect().top-reader.getBoundingClientRect().top-60;reader.scrollIntoView({block:'start',behavior:'instant'});reader.focus({preventScroll:true});rememberReadingPosition();saveReading();});
+ const opened=chapterHits;
+ requestAnimationFrame(()=>{
+  if(chapterHits!==opened||$('return-search').hidden)return;
+  const reader=$('text-reading');
+  showChapterHit(chapterHits.total?0:-1);
+  ($('chapter-hits').hidden?reader:$('chapter-hits')).scrollIntoView({block:'start',behavior:'instant'});
+  reader.focus({preventScroll:true});rememberReadingPosition();saveReading();
+ });
 }
 let searchTimer,searchLimit=40,searchComposing=false,preserveSearchNavigation=false;
 const searchTextCache=new Map();let searchVersion=0;
@@ -504,7 +541,7 @@ function flushReadingPosition(){clearTimeout(positionSaveTimer);rememberReadingP
 addEventListener('pagehide',flushReadingPosition);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushReadingPosition();});
 $('return-search').addEventListener('click',()=>{$('reading-tools').open=true;$('search-results').hidden=false;$('return-search').hidden=true;$('book-search').focus();});
-$('book-search').addEventListener('focus',()=>{if($('book-search').value.trim()){$('search-results').hidden=false;$('return-search').hidden=true;}});
+$('book-search').addEventListener('focus',()=>{if($('book-search').value.trim()){$('search-results').hidden=false;$('return-search').hidden=true;if(currentHit>=0){currentHit=-1;paintReadingText();}}});
 $('reading-tools').open=!matchMedia('(max-width:760px)').matches;
 
 function createReaderGameNavigation() {
@@ -615,6 +652,47 @@ function createReaderGameNavigation() {
  const api=Object.freeze({fold,ranges,termRanges});root.EarthTextSearch=api;
  if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof window==='object'?window:globalThis);
+
+// Paint just a window of marks. The cursor may reach every occurrence in the text.
+const EarthOccurrences = (() => {
+  function count(folded, needle) {
+    if (!needle) return 0;
+    let total = 0, offset = 0;
+    while ((offset = folded.indexOf(needle, offset)) !== -1) {
+      total++;
+      offset += needle.length;
+    }
+    return total;
+  }
+
+  function advance(current, step, total) {
+    if (!total) return -1;
+    if (current < 0) return step < 0 ? total - 1 : 0;
+    return (current + step + total) % total;
+  }
+
+  function paint(element, text, ranges, selected = -1) {
+    if (!ranges.length) {
+      if (element.childElementCount || element.textContent !== text) element.textContent = text;
+      return;
+    }
+    const fragment = document.createDocumentFragment();
+    const first = Math.max(0, Math.min(selected - 50, ranges.length - 100));
+    const end = Math.min(ranges.length, first + 100);
+    let offset = 0;
+    for (let i = first; i < end; i++) {
+      const range = ranges[i];
+      const mark = document.createElement('mark');
+      if (i === selected) mark.setAttribute('aria-current', 'true');
+      mark.textContent = text.slice(range.start, range.end);
+      fragment.append(text.slice(offset, range.start), mark);
+      offset = range.end;
+    }
+    fragment.append(text.slice(offset));
+    element.replaceChildren(fragment);
+  }
+  return { count, advance, paint };
+})();
 
 (function(root){
  'use strict';

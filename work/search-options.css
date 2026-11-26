@@ -7,3 +7,5 @@
 .note-copy-actions button:hover{background:var(--appearance-hover,#d8ddc8)}.note-copy-actions button:focus-visible{outline:2px solid var(--paper-muted);outline-offset:3px}
 @media(max-width:850px){.search-options select{font-size:16px}.search-options{gap:5px}.search-options>span{flex-basis:100%}}
 @media print{.search-options,.note-copy-actions{display:none!important}}
+
+.chapter-hits:not([hidden]){display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;scroll-margin-top:88px}.chapter-hits button{min-height:44px}.chapter-hits span{font-size:14px;font-variant-numeric:tabular-nums}.prose mark[aria-current],.book-section h2 mark[aria-current],.text-reading mark[aria-current]{color:#fff;background:#56430a;outline:2px solid currentColor;outline-offset:1px;text-decoration:underline;font-weight:700}@media print{.chapter-hits{display:none!important}}

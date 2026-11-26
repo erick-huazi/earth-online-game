@@ -16,7 +16,9 @@
   const sections = Array.from(document.querySelectorAll('.book-section'));
   const paragraphs = sections.map(section => section.querySelector('.prose'));
   const texts = paragraphs.map(paragraph => paragraph.textContent);
-  const searchIndex=EarthSearchIndex.create(sections.map((section,index)=>({title:section.querySelector('h2').textContent,text:texts[index]})));
+  const headings=sections.map(section=>section.querySelector('h2'));
+  const titles=headings.map(heading=>heading.textContent);
+  const searchIndex=EarthSearchIndex.create(titles.map((title,index)=>({title,text:texts[index]})));
   const indexById = new Map(sections.map((section, index) => [section.id, index]));
   const directory = document.querySelector('nav');
   const directoryLinks = Array.from(directory.querySelectorAll('a[href^="#section-"]'));
@@ -35,7 +37,7 @@
   returnReading.disabled = true;
   document.querySelector('.book-head h1').after(returnReading);
   let size = parseInt(getComputedStyle(sections[0].querySelector('.prose')).fontSize, 10) || 19;
-  let activeIndex = -1, matches = [], currentMatch = -1;
+  let activeIndex = -1, matches = [], totalHits = 0, currentMatch = -1;
   let searchTimer, saveTimer, scrollFrame;
   let userInteracted = false, initialized = false;
   let navigationVersion = 0;
@@ -302,18 +304,27 @@
       }
       if (Number.isInteger(extraIndex)) wanted.add(extraIndex);
     }
-    for (const [index, query] of highlighted) {
-      if (!wanted.has(index) || query !== searchedMode+':'+searchedQuery) {
+    const key=searchedMode+':'+searchedQuery;
+    for (const [index, record] of highlighted) {
+      if (!wanted.has(index) || record.key !== key) {
+        headings[index].textContent = titles[index];
         paragraphs[index].textContent = texts[index];
         highlighted.delete(index);
       }
     }
+    const group=currentMatch<0?null:matches.find(entry=>entry.end>currentMatch);
     for (const index of wanted) {
-      if (highlighted.has(index)) continue;
-      const text=texts[index],ranges=EarthTextSearch.ranges(text,searchedQuery,searchedMode,100);if(!ranges.length)continue;
-      const fragment=document.createDocumentFragment();let cursor=0;
-      for(const range of ranges){fragment.append(document.createTextNode(text.slice(cursor,range.start)));const mark=document.createElement('mark');mark.textContent=text.slice(range.start,range.end);fragment.append(mark);cursor=range.end;}
-      fragment.append(document.createTextNode(text.slice(cursor)));paragraphs[index].replaceChildren(fragment);highlighted.set(index,searchedMode+':'+searchedQuery);
+      const selected=group?.index===index?currentMatch-group.start:-1;
+      let record=highlighted.get(index);
+      if (record?.selected===selected) continue;
+      if (!record) {
+        record={key,title:EarthTextSearch.ranges(titles[index],searchedQuery,searchedMode,titles[index].length),
+          body:EarthTextSearch.ranges(texts[index],searchedQuery,searchedMode,texts[index].length)};
+        highlighted.set(index,record);
+      }
+      EarthOccurrences.paint(headings[index],titles[index],record.title,selected);
+      EarthOccurrences.paint(paragraphs[index],texts[index],record.body,selected-record.title.length);
+      record.selected=selected;
     }
   }
 
@@ -322,15 +333,17 @@
     clearTimeout(searchTimer);
     if (queryInput.value.trim() !== searchedQuery||searchMode.value!==searchedMode) await searchBook();
     if (composing||queryInput.value.trim()!==searchedQuery||searchMode.value!==searchedMode||!matches.length) return;
-    currentMatch = currentMatch < 0 ? (delta < 0 ? matches.length - 1 : 0) : (currentMatch + delta + matches.length) % matches.length;
-    searchState.textContent = '第 ' + (currentMatch + 1) + ' / ' + matches.length + ' 节匹配';
+    currentMatch = EarthOccurrences.advance(currentMatch,delta,totalHits);
+    const {index}=matches.find(group=>group.end>currentMatch);
+    searchState.textContent = '全书第 ' + (currentMatch + 1) + ' / ' + totalHits + ' 处 · ' + titles[index];
     updateInset();
-    const index = matches[currentMatch];
     navigateTo(sections[index].id);
     refreshHighlights(index);
-    const mark = paragraphs[index].querySelector('mark');
-    if (mark) scrollTo(0, scrollY + mark.getBoundingClientRect().top - readingInset() - 12);
-    sections[index].focus({preventScroll: true});
+    const mark=sections[index].querySelector('mark[aria-current]');
+    if (mark) {
+      scrollTo(0,scrollY+mark.getBoundingClientRect().top-readingInset()-12);
+      clampedPosition={index,scrollY};
+    }
     readingPosition = capturePosition();
     savePosition();
   }
@@ -341,13 +354,19 @@
     const indexed=needle?await searchIndex.ensure(mode):[];
     if(version!==searchVersion||composing||query!==queryInput.value.trim()||mode!==searchMode.value)return;
     const position=capturePosition(),previousMatches=matches;
-    matches=needle?indexed.flatMap((entry,index)=>entry.title.includes(needle)||entry.text.includes(needle)?[index]:[]):[];
-    const nextMatches=new Set(matches);
-    for(const index of previousMatches)if(!nextMatches.has(index))sections[index].classList.remove('match');
-    for(const index of matches)sections[index].classList.add('match');
+    matches=[];totalHits=0;
+    indexed.forEach((entry,index)=>{
+      const hits=EarthOccurrences.count(entry.title,needle)+EarthOccurrences.count(entry.text,needle);
+      if (!hits) return;
+      matches.push({index,start:totalHits,end:totalHits+hits});
+      totalHits+=hits;
+    });
+    const nextMatches=new Set(matches.map(group=>group.index));
+    for(const {index} of previousMatches)if(!nextMatches.has(index))sections[index].classList.remove('match');
+    for(const {index} of matches)sections[index].classList.add('match');
     searchedQuery=query;searchedMode=mode;currentMatch=-1;refreshHighlights();
     document.getElementById('prev-match').disabled=document.getElementById('next-match').disabled=!matches.length;clearSearch.disabled=!queryInput.value;
-    searchState.textContent=query?(!needle?'请输入文字或数字；兼容检索会忽略标点和空白。':matches.length?'找到 '+matches.length+' 节匹配，点“下处”前往。':'未找到，请尝试更短的原文词句。'):'连续阅读全部内容，或用目录跳转。';
+    searchState.textContent=query?(!needle?'请输入文字或数字；兼容检索会忽略标点和空白。':matches.length?'找到 '+matches.length+' 节匹配，共 '+totalHits+' 处。':'未找到，请尝试更短的原文词句。'):'连续阅读全部内容，或用目录跳转。';
     updateInset();restorePosition(position);savePosition();
   }
   function scheduleSearch(event) {

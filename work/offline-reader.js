@@ -71,13 +71,36 @@ function renderLocalBook(){
  renderSection();updateReadingMode();
 }
 function renderChapterOptions(volumeId){const item=localItem();$('chapter-select').replaceChildren();item.sections.forEach((s,i)=>{if(s.volumeId!==volumeId)return;const o=document.createElement('option');o.value=i;o.textContent=s.pageStart?(s.title.includes('第 '+s.pageStart+' 页')?s.title:'第 '+s.pageStart+' 页 · '+s.title):String(i+1).padStart(2,'0')+' · '+s.title;$('chapter-select').append(o);});}
+let chapterHits=null, currentHit=-1;
 function paintReadingText(){
- const container=$('fulltext-content'),section=localItem().sections[sectionIndex()];container.replaceChildren();const query=$('book-search').value.trim(),text=section.text||'';
- const mode=currentSearchMode();
- const ranges=mode==='terms'?EarthRankedSearch.mergeRanges(EarthTextSearch.termRanges(text,EarthRankedSearch.terms(query),'flexible',500).flat()).slice(0,500):EarthTextSearch.ranges(text,query,mode,500);let cursor=0;
- for(const range of ranges){container.append(document.createTextNode(text.slice(cursor,range.start)));const mark=document.createElement('mark');mark.textContent=text.slice(range.start,range.end);container.append(mark);cursor=range.end;}
- container.append(document.createTextNode(text.slice(cursor)));
+ const container=$('fulltext-content'),section=localItem().sections[sectionIndex()],text=section.text||'';
+ const mode=currentSearchMode(),query=$('book-search').value.trim();
+ if(!chapterHits || chapterHits.section!==section || chapterHits.mode!==mode || chapterHits.query!==query){
+  const find=value=>mode==='terms'
+   ? EarthRankedSearch.mergeRanges(EarthTextSearch.termRanges(value,EarthRankedSearch.terms(query),'flexible',value.length).flat())
+   : EarthTextSearch.ranges(value,query,mode,value.length);
+  const title=find(section.title),body=find(text);
+  chapterHits={section,mode,query,title,body,total:title.length+body.length};
+  currentHit=-1;
+ }
+ EarthOccurrences.paint($('section-title'),section.title,chapterHits.title,currentHit);
+ EarthOccurrences.paint(container,text,chapterHits.body,currentHit-chapterHits.title.length);
+ $('chapter-hits').hidden=currentHit<0;
+ $('chapter-hit-count').textContent=currentHit<0?'':'本章第 '+(currentHit+1)+' / '+chapterHits.total+' 处';
+ $('chapter-prev-hit').disabled=$('chapter-next-hit').disabled=chapterHits.total<2;
  container.style.fontSize=readingState.fontSize+'px';$('font-smaller').disabled=readingState.fontSize<=16;$('font-larger').disabled=readingState.fontSize>=26;$('font-value').textContent='字号 '+readingState.fontSize;
+}
+function showChapterHit(index) {
+ currentHit=index;
+ paintReadingText();
+ const reader=$('text-reading'),mark=reader.querySelector('mark[aria-current]');
+ if(mark)reader.scrollTop+=mark.getBoundingClientRect().top-reader.getBoundingClientRect().top-38;
+}
+for(const [id,delta] of [['chapter-prev-hit',-1],['chapter-next-hit',1]]){
+ $(id).addEventListener('click',()=>{
+  showChapterHit(EarthOccurrences.advance(currentHit,delta,chapterHits.total));
+  rememberReadingPosition();saveReading();
+ });
 }
 function renderSection(){
  const item=localItem(),i=sectionIndex(),section=item.sections[i],volume=item.volumes.find(v=>v.id===section.volumeId);
@@ -100,7 +123,14 @@ function openSearchResult(index,bookId=state.selected,searchContext){
  if(bookId!==state.selected){preserveSearchNavigation=true;try{selectBook(bookId,false);}finally{preserveSearchNavigation=false;}}
  goSection(index);$('search-results').hidden=true;$('return-search').hidden=false;
  if(matchMedia('(max-width:760px)').matches)$('reading-tools').open=false;
- requestAnimationFrame(()=>{const reader=$('text-reading'),mark=$('fulltext-content').querySelector('mark');if(mark)reader.scrollTop+=mark.getBoundingClientRect().top-reader.getBoundingClientRect().top-60;reader.scrollIntoView({block:'start',behavior:'instant'});reader.focus({preventScroll:true});rememberReadingPosition();saveReading();});
+ const opened=chapterHits;
+ requestAnimationFrame(()=>{
+  if(chapterHits!==opened||$('return-search').hidden)return;
+  const reader=$('text-reading');
+  showChapterHit(chapterHits.total?0:-1);
+  ($('chapter-hits').hidden?reader:$('chapter-hits')).scrollIntoView({block:'start',behavior:'instant'});
+  reader.focus({preventScroll:true});rememberReadingPosition();saveReading();
+ });
 }
 let searchTimer,searchLimit=40,searchComposing=false,preserveSearchNavigation=false;
 const searchTextCache=new Map();let searchVersion=0;
@@ -193,5 +223,5 @@ function flushReadingPosition(){clearTimeout(positionSaveTimer);rememberReadingP
 addEventListener('pagehide',flushReadingPosition);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushReadingPosition();});
 $('return-search').addEventListener('click',()=>{$('reading-tools').open=true;$('search-results').hidden=false;$('return-search').hidden=true;$('book-search').focus();});
-$('book-search').addEventListener('focus',()=>{if($('book-search').value.trim()){$('search-results').hidden=false;$('return-search').hidden=true;}});
+$('book-search').addEventListener('focus',()=>{if($('book-search').value.trim()){$('search-results').hidden=false;$('return-search').hidden=true;if(currentHit>=0){currentHit=-1;paintReadingText();}}});
 $('reading-tools').open=!matchMedia('(max-width:760px)').matches;

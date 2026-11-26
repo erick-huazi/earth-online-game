@@ -39,6 +39,10 @@ v2 增加可离线玩的短局策略远征，同时保留原有 33 场故事和�
 
 远征存档使用 `earth-online-expedition-v2`，经典剧情仍使用 `earth-online-game-v1`。浏览器或网址不同，记录可能分别保存；换设备前请从相应模式导出存档。远征续局文件只恢复该局，不等于全部本机成就档案。原创事件、剧情与评分是游戏设计，不是原典引文。
 
+## 分享回放与查找原文
+
+完成远征后打开战报，可以把回放链接发给朋友，或在「用手机扫码打开」中选择观看回放或挑战同一开局。二维码在当前设备生成，也可保存成 PNG。手册和独立书页提供逐处定位，适合在一章内分辨同一个词的多次出现。[本轮项目与 Agent 评分](https://39.107.91.13/earth-online/github-review-v2.4.html)
+
 ## GitHub 项目怎样融入游戏
 
 手册的「多词同章」支持用空格分开的简繁词语，例如“天地 圣人”。可在当前书或十本全书内查找，并从结果跳到命中的章节。
@@ -58,7 +62,7 @@ v2.3 的候选、固定上游版本、逐项分数与实际接入位置见[本�
 | [Phaser](https://github.com/phaserjs/phaser) | 74 | 未来实时玩法候选，本轮未引入 |
 | [PixiJS](https://github.com/pixijs/pixijs) | 72 | 未来大规模渲染候选，本轮未引入 |
 
-三份实际采用的运行时代码合计 31,359 字节，构建时内嵌，无运行时 CDN 请求。固定版本、来源与哈希见 [`work/vendor/manifest.json`](work/vendor/manifest.json)，完整 MIT/ISC 许可随离线包保留在 [`outputs/game-third-party-notices.txt`](outputs/game-third-party-notices.txt)。
+初版的三份运行时代码合计 31,359 字节，构建时内嵌，无运行时 CDN 请求。固定版本、来源与哈希见 [`work/vendor/manifest.json`](work/vendor/manifest.json)，完整 MIT/ISC 许可随离线包保留在 [`outputs/game-third-party-notices.txt`](outputs/game-third-party-notices.txt)。
 
 ## 收录书目
 
@@ -103,6 +107,8 @@ python work/package-library.py
 
 ## 验证
 
+仓库内的 [earth-online-playtest 技能](.agents/skills/earth-online-playtest/SKILL.md) 提供远征回放、手机扫码与原文定位的验收流程。从仓库打开 Codex 时可用 `$earth-online-playtest` 调用。
+
 测试覆盖经典剧情、远征规则、浏览器游玩流程和原典阅读往返。用例包括逐站资源复算、同开局成绩比较、旧存档续玩、战报 PNG 下载、移动端布局，以及从离线书页返回游戏。
 
 ```sh
@@ -124,7 +130,7 @@ npm test
 | `outputs/` | 可直接运行的完整网站、书籍原件与来源记录 |
 | `work/game-*`、`work/game.css`、`work/game.js` | 游戏模板、剧情、样式与逻辑 |
 | `work/expedition-*`、`work/expedition.css` | 山河远征内容、规则、界面与样式 |
-| `work/vendor/` | 三个固定版本依赖、完整许可与哈希清单 |
+| `work/vendor/` | 固定版本依赖、完整许可与哈希清单 |
 | `work/build-game.cjs` | 游戏构建入口 |
 | `work/build.cjs`、`work/full-book.cjs` | 手册与独立全书页构建入口 |
 | `work/download-manifests/`、`work/html-manifests/` | 书目与转换文本清单 |

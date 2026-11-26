@@ -71,6 +71,8 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
 .note-copy-actions button:hover{background:var(--appearance-hover,#d8ddc8)}.note-copy-actions button:focus-visible{outline:2px solid var(--paper-muted);outline-offset:3px}
 @media(max-width:850px){.search-options select{font-size:16px}.search-options{gap:5px}.search-options>span{flex-basis:100%}}
 @media print{.search-options,.note-copy-actions{display:none!important}}
+
+.chapter-hits:not([hidden]){display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;scroll-margin-top:88px}.chapter-hits button{min-height:44px}.chapter-hits span{font-size:14px;font-variant-numeric:tabular-nums}.prose mark[aria-current],.book-section h2 mark[aria-current],.text-reading mark[aria-current]{color:#fff;background:#56430a;outline:2px solid currentColor;outline-offset:1px;text-decoration:underline;font-weight:700}@media print{.chapter-hits{display:none!important}}
 </style></head><body class="earth-full-book"><a class="skip-link" id="skip-reading" href="#section-0">跳到正文</a><a class="skip-link" href="#reading-controls">跳到目录与搜索</a><header class="top"><a class="brand" data-manual-return href="../earth-online-manual.html#library">地球 ONLINE · 典籍手册</a><a href="#top">返回书首 ↑</a></header><div class="layout"><nav aria-label="全书目录"><h2>阴符经 · 全书目录</h2><details open><summary>黄帝阴符经 · 4 节</summary><ol><li><a href="#section-0">原书说明</a></li><li><a href="#section-1">神仙抱一演道章上</a></li><li><a href="#section-2">富国安民演法章中</a></li><li><a href="#section-3">强兵战胜演术章下</a></li></ol></details></nav><main id="top"><header class="book-head"><h1>阴符经</h1><p>黄帝阴符经 · 4 个阅读节 · 全部收录文字均在本页</p><p>《黄帝阴符经》TXT 原文，上、中、下三章，文件标注底本为《正统道藏》。</p><details class="conversion"><summary>版本与转换说明</summary><p>《黄帝阴符经》上、中、下三章全文，另保留来源的经名与版本说明。底本为《正统道藏》洞真部本文类。原始UTF-8文件完整保存，未改写原文。</p><p>页码指原文件中的位置；可使用浏览器查找在全文中定位。原页图保存在配套 books 文件夹。</p></details><div data-original-page-jump></div><details class="appearance-settings"><summary>阅读配色</summary><div data-reading-appearance></div></details><details class="bookmark-panel" data-bookmark-panel><summary>我的书签<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>书签保存在当前浏览器。导出后可在主手册合并恢复。</p><button class="bookmark-undo" data-bookmark-export type="button">导出本页书签 ↓</button><p class="bookmark-status" data-bookmark-export-status role="status"></p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><div class="search-options"><label for="search-mode">查找方式<select id="search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div></header><div class="toolbar" id="reading-controls" tabindex="-1" role="search" aria-label="全书目录与搜索"><label class="mobile-index" for="jump">目录</label><select id="jump" aria-label="全书章节目录"><option value="section-0">原书说明</option><option value="section-1">神仙抱一演道章上</option><option value="section-2">富国安民演法章中</option><option value="section-3">强兵战胜演术章下</option></select><button id="smaller" aria-label="缩小字号">A−</button><button id="larger" aria-label="放大字号">A＋</button><input id="query" type="search" placeholder="搜索全书文字" aria-label="搜索全书文字"><button id="clear-search" type="button" disabled>清除</button><button id="prev-match" disabled>上处</button><button id="next-match" disabled>下处</button><button class="bookmark-add" data-bookmark-add type="button">存书签</button><div class="reading-trail"><span id="search-state" class="search-state" aria-live="polite">连续阅读全部内容，或用目录跳转。</span><a data-manual-return href="../earth-online-manual.html#library">在手册中读</a><a id="reader-game-return" href="../earth-online-game.html">进入游戏</a></div></div><section class="book-section" tabindex="-1" id="section-0" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">黄帝阴符经</p><h2>原书说明</h2><div class="prose">黄帝阴符经
 　　经名：黄帝阴符经。简称《阴符经》。撰人不详，传说出於战国黄老家之手，一说系北魏寇谦之或唐李筌撰。一卷。底本出处：《正统道藏》洞真部本文类。</div></section>
 <section class="book-section" tabindex="-1" id="section-1" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">黄帝阴符经</p><h2>神仙抱一演道章上</h2><div class="prose">观天之道，执天之行，尽矣。天有五贼，见之者昌。五贼在心，施行於天。宇宙在乎手，万化生乎身。天性，人也。人心，机也。立天之道，以定人也。天发杀机，移星易宿。地发杀机，龙蛇起陆。人发杀机，天地反覆。天人合发，万变定基。性有巧拙，可以伏藏。九窍之邪，在乎三要，可以动静。火生於木，祸发必克。奸生於国，时动必溃。知之修炼，谓之圣人。天生天杀，道之理也。</div></section>
@@ -138,6 +140,47 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
  const api=Object.freeze({fold,ranges,termRanges});root.EarthTextSearch=api;
  if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof window==='object'?window:globalThis);
+
+// Paint just a window of marks. The cursor may reach every occurrence in the text.
+const EarthOccurrences = (() => {
+  function count(folded, needle) {
+    if (!needle) return 0;
+    let total = 0, offset = 0;
+    while ((offset = folded.indexOf(needle, offset)) !== -1) {
+      total++;
+      offset += needle.length;
+    }
+    return total;
+  }
+
+  function advance(current, step, total) {
+    if (!total) return -1;
+    if (current < 0) return step < 0 ? total - 1 : 0;
+    return (current + step + total) % total;
+  }
+
+  function paint(element, text, ranges, selected = -1) {
+    if (!ranges.length) {
+      if (element.childElementCount || element.textContent !== text) element.textContent = text;
+      return;
+    }
+    const fragment = document.createDocumentFragment();
+    const first = Math.max(0, Math.min(selected - 50, ranges.length - 100));
+    const end = Math.min(ranges.length, first + 100);
+    let offset = 0;
+    for (let i = first; i < end; i++) {
+      const range = ranges[i];
+      const mark = document.createElement('mark');
+      if (i === selected) mark.setAttribute('aria-current', 'true');
+      mark.textContent = text.slice(range.start, range.end);
+      fragment.append(text.slice(offset, range.start), mark);
+      offset = range.end;
+    }
+    fragment.append(text.slice(offset));
+    element.replaceChildren(fragment);
+  }
+  return { count, advance, paint };
+})();
 
 (function(root){
  'use strict';
@@ -580,7 +623,9 @@ const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath
   const sections = Array.from(document.querySelectorAll('.book-section'));
   const paragraphs = sections.map(section => section.querySelector('.prose'));
   const texts = paragraphs.map(paragraph => paragraph.textContent);
-  const searchIndex=EarthSearchIndex.create(sections.map((section,index)=>({title:section.querySelector('h2').textContent,text:texts[index]})));
+  const headings=sections.map(section=>section.querySelector('h2'));
+  const titles=headings.map(heading=>heading.textContent);
+  const searchIndex=EarthSearchIndex.create(titles.map((title,index)=>({title,text:texts[index]})));
   const indexById = new Map(sections.map((section, index) => [section.id, index]));
   const directory = document.querySelector('nav');
   const directoryLinks = Array.from(directory.querySelectorAll('a[href^="#section-"]'));
@@ -599,7 +644,7 @@ const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath
   returnReading.disabled = true;
   document.querySelector('.book-head h1').after(returnReading);
   let size = parseInt(getComputedStyle(sections[0].querySelector('.prose')).fontSize, 10) || 19;
-  let activeIndex = -1, matches = [], currentMatch = -1;
+  let activeIndex = -1, matches = [], totalHits = 0, currentMatch = -1;
   let searchTimer, saveTimer, scrollFrame;
   let userInteracted = false, initialized = false;
   let navigationVersion = 0;
@@ -866,18 +911,27 @@ const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath
       }
       if (Number.isInteger(extraIndex)) wanted.add(extraIndex);
     }
-    for (const [index, query] of highlighted) {
-      if (!wanted.has(index) || query !== searchedMode+':'+searchedQuery) {
+    const key=searchedMode+':'+searchedQuery;
+    for (const [index, record] of highlighted) {
+      if (!wanted.has(index) || record.key !== key) {
+        headings[index].textContent = titles[index];
         paragraphs[index].textContent = texts[index];
         highlighted.delete(index);
       }
     }
+    const group=currentMatch<0?null:matches.find(entry=>entry.end>currentMatch);
     for (const index of wanted) {
-      if (highlighted.has(index)) continue;
-      const text=texts[index],ranges=EarthTextSearch.ranges(text,searchedQuery,searchedMode,100);if(!ranges.length)continue;
-      const fragment=document.createDocumentFragment();let cursor=0;
-      for(const range of ranges){fragment.append(document.createTextNode(text.slice(cursor,range.start)));const mark=document.createElement('mark');mark.textContent=text.slice(range.start,range.end);fragment.append(mark);cursor=range.end;}
-      fragment.append(document.createTextNode(text.slice(cursor)));paragraphs[index].replaceChildren(fragment);highlighted.set(index,searchedMode+':'+searchedQuery);
+      const selected=group?.index===index?currentMatch-group.start:-1;
+      let record=highlighted.get(index);
+      if (record?.selected===selected) continue;
+      if (!record) {
+        record={key,title:EarthTextSearch.ranges(titles[index],searchedQuery,searchedMode,titles[index].length),
+          body:EarthTextSearch.ranges(texts[index],searchedQuery,searchedMode,texts[index].length)};
+        highlighted.set(index,record);
+      }
+      EarthOccurrences.paint(headings[index],titles[index],record.title,selected);
+      EarthOccurrences.paint(paragraphs[index],texts[index],record.body,selected-record.title.length);
+      record.selected=selected;
     }
   }
 
@@ -886,15 +940,17 @@ const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath
     clearTimeout(searchTimer);
     if (queryInput.value.trim() !== searchedQuery||searchMode.value!==searchedMode) await searchBook();
     if (composing||queryInput.value.trim()!==searchedQuery||searchMode.value!==searchedMode||!matches.length) return;
-    currentMatch = currentMatch < 0 ? (delta < 0 ? matches.length - 1 : 0) : (currentMatch + delta + matches.length) % matches.length;
-    searchState.textContent = '第 ' + (currentMatch + 1) + ' / ' + matches.length + ' 节匹配';
+    currentMatch = EarthOccurrences.advance(currentMatch,delta,totalHits);
+    const {index}=matches.find(group=>group.end>currentMatch);
+    searchState.textContent = '全书第 ' + (currentMatch + 1) + ' / ' + totalHits + ' 处 · ' + titles[index];
     updateInset();
-    const index = matches[currentMatch];
     navigateTo(sections[index].id);
     refreshHighlights(index);
-    const mark = paragraphs[index].querySelector('mark');
-    if (mark) scrollTo(0, scrollY + mark.getBoundingClientRect().top - readingInset() - 12);
-    sections[index].focus({preventScroll: true});
+    const mark=sections[index].querySelector('mark[aria-current]');
+    if (mark) {
+      scrollTo(0,scrollY+mark.getBoundingClientRect().top-readingInset()-12);
+      clampedPosition={index,scrollY};
+    }
     readingPosition = capturePosition();
     savePosition();
   }
@@ -905,13 +961,19 @@ const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath
     const indexed=needle?await searchIndex.ensure(mode):[];
     if(version!==searchVersion||composing||query!==queryInput.value.trim()||mode!==searchMode.value)return;
     const position=capturePosition(),previousMatches=matches;
-    matches=needle?indexed.flatMap((entry,index)=>entry.title.includes(needle)||entry.text.includes(needle)?[index]:[]):[];
-    const nextMatches=new Set(matches);
-    for(const index of previousMatches)if(!nextMatches.has(index))sections[index].classList.remove('match');
-    for(const index of matches)sections[index].classList.add('match');
+    matches=[];totalHits=0;
+    indexed.forEach((entry,index)=>{
+      const hits=EarthOccurrences.count(entry.title,needle)+EarthOccurrences.count(entry.text,needle);
+      if (!hits) return;
+      matches.push({index,start:totalHits,end:totalHits+hits});
+      totalHits+=hits;
+    });
+    const nextMatches=new Set(matches.map(group=>group.index));
+    for(const {index} of previousMatches)if(!nextMatches.has(index))sections[index].classList.remove('match');
+    for(const {index} of matches)sections[index].classList.add('match');
     searchedQuery=query;searchedMode=mode;currentMatch=-1;refreshHighlights();
     document.getElementById('prev-match').disabled=document.getElementById('next-match').disabled=!matches.length;clearSearch.disabled=!queryInput.value;
-    searchState.textContent=query?(!needle?'请输入文字或数字；兼容检索会忽略标点和空白。':matches.length?'找到 '+matches.length+' 节匹配，点“下处”前往。':'未找到，请尝试更短的原文词句。'):'连续阅读全部内容，或用目录跳转。';
+    searchState.textContent=query?(!needle?'请输入文字或数字；兼容检索会忽略标点和空白。':matches.length?'找到 '+matches.length+' 节匹配，共 '+totalHits+' 处。':'未找到，请尝试更短的原文词句。'):'连续阅读全部内容，或用目录跳转。';
     updateInset();restorePosition(position);savePosition();
   }
   function scheduleSearch(event) {

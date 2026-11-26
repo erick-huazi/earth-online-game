@@ -100,6 +100,6 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
  renderWorld();
  const destination = location.hash;
  const resumeClassic = destination === '#classic-story' ||
-   (!expeditionPriority && destination !== '#expedition' && !destination.startsWith('#run='));
+   (!expeditionPriority && destination !== '#expedition' && !destination.startsWith('#run=') && !destination.startsWith('#replay='));
  if (state.current && resumeClassic) showQuest();
 })();

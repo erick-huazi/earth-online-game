@@ -29,3 +29,7 @@
 多词同章检索采用 MiniSearch v7.2.0 的 BM25+ 单词相关度公式，配合现有中文归一化与章节跳转。移植部分随手册保留上游 MIT 版权及许可。[MiniSearch 源码](https://github.com/lucaong/minisearch/blob/v7.2.0/src/MiniSearch.ts)
 
 可访问性回归在开发环境使用锁定的 axe-core 4.14.1（MPL-2.0）。游戏中的逐站推演使用本项目的远征规则重算，参考了 boardgame.io 对历史局面与正式存档的处理。[axe-core](https://github.com/dequelabs/axe-core) · [boardgame.io 客户端](https://github.com/boardgameio/boardgame.io/blob/main/docs/documentation/api/Client.md)
+
+## v2.4 二维码与回放
+
+分享二维码使用 qrcode-generator 2.0.4。构建时校验上游 JavaScript 的 SHA-256，且将完整 MIT 许可随离线包分发。jsQR 1.4.0 是开发依赖，用于解码测试中生成的 PNG。[编码器固定源码](https://github.com/kazuhikoarase/qrcode-generator/blob/83b7e8fe3fddd3b0368dbafd6ce56995bd25e3c8/js/dist/qrcode.js) · [解码器](https://github.com/cozmo/jsQR)

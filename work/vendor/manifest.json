@@ -1,5 +1,6 @@
 {
   "retrievedDate": "2026-11-08",
+  "updatedDate": "2026-11-26",
   "files": [
     {
       "repo": "davidbau/seedrandom",
@@ -67,6 +68,24 @@
       "derived": "Full license header extracted, comment delimiters removed",
       "bytes": 1050,
       "sha256": "54624bc262234371635aacf512f779e523fc06412869108d0758b71569f7c41a"
+    },
+    {
+      "repo": "kazuhikoarase/qrcode-generator",
+      "commit": "83b7e8fe3fddd3b0368dbafd6ce56995bd25e3c8",
+      "path": "work/vendor/qrcode-generator-2.0.4.js",
+      "sourcePath": "js/dist/qrcode.js",
+      "url": "https://raw.githubusercontent.com/kazuhikoarase/qrcode-generator/83b7e8fe3fddd3b0368dbafd6ce56995bd25e3c8/js/dist/qrcode.js",
+      "bytes": 56694,
+      "sha256": "79ec86f82856005b1c887905cfccfcfbec3821ca61c7fd5a952faa5f778f791c"
+    },
+    {
+      "repo": "kazuhikoarase/qrcode-generator",
+      "commit": "83b7e8fe3fddd3b0368dbafd6ce56995bd25e3c8",
+      "path": "work/vendor/LICENSE-qrcode-generator-2.0.4.txt",
+      "sourcePath": "LICENSE",
+      "url": "https://raw.githubusercontent.com/kazuhikoarase/qrcode-generator/83b7e8fe3fddd3b0368dbafd6ce56995bd25e3c8/LICENSE",
+      "bytes": 1071,
+      "sha256": "3a850fa5f08101db6f40676c2786e10bd2cd5fff7b12ffdf1e0c434d4e49d90c"
     }
   ]
 }

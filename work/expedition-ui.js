@@ -134,10 +134,10 @@ function encodeChallenge(s){return L.compressToEncodedURIComponent(JSON.stringif
 function decodeChallenge(code){if(typeof code!=='string'||code.length<5||code.length>320||!/^[A-Za-z0-9+$-]+$/.test(code))throw Error('挑战口令格式不正确。');const raw=L.decompressFromEncodedURIComponent(code);if(!raw||raw.length>200)throw Error('挑战口令无法读取。');const p=JSON.parse(raw);if(Object.keys(p).sort().join(',')!=='role,seed,v'||p.v!==2||typeof p.seed!=='string'||!/^[A-Za-z0-9_-]{1,48}$/.test(p.seed)||!E.roles.some(r=>r.id===p.role))throw Error('挑战开局无效或版本不兼容。');return{seed:p.seed,role:p.role};}
 function readChallenge(value){const trimmed=String(value).trim();const code=trimmed.includes('#run=')?trimmed.split('#run=')[1]:trimmed;return decodeChallenge(code);}
 function offerChallenge(data){shared=data;$('exp-shared-banner').hidden=false;$('exp-shared-text').textContent='开局 '+data.seed+' · '+E.roles.find(r=>r.id===data.role).name+'。相同角色与山河，走出你自己的结局。';}
-function challengeURL(code){const hosted=['http:','https:'].includes(location.protocol)&&!['localhost','127.0.0.1','[::1]'].includes(location.hostname);const base=hosted?new URL(location.pathname,location.origin):new URL('https://39.107.91.13/earth-online/earth-online-game.html');base.hash='run='+code;return base.href;}
+function challengeURL(code,kind='run'){const hosted=['http:','https:'].includes(location.protocol)&&!['localhost','127.0.0.1','[::1]'].includes(location.hostname);const base=hosted?new URL(location.pathname,location.origin):new URL('https://39.107.91.13/earth-online/earth-online-game.html');base.hash=kind+'='+code;return base.href;}
 function wrap(ctx,text,x,y,width,lineHeight){let line='';for(const char of String(text)){if(ctx.measureText(line+char).width>width&&line){ctx.fillText(line,x,y);line=char;y+=lineHeight;}else line+=char;}if(line)ctx.fillText(line,x,y);return y+lineHeight;}
 function card(){const c=$('exp-share-canvas'),ctx=c.getContext('2d'),s=E.summarize(run),e=endInfo(s);ctx.fillStyle='#12291e';ctx.fillRect(0,0,900,1200);ctx.strokeStyle='#82936a';ctx.lineWidth=2;ctx.strokeRect(30,30,840,1140);ctx.strokeStyle='#3c5840';for(let i=0;i<6;i++){ctx.beginPath();ctx.arc(700,250,120+i*45,0,Math.PI*2);ctx.stroke();}ctx.fillStyle='#d7bc77';ctx.font='22px sans-serif';ctx.fillText('地球 ONLINE  /  山河远征',70,100);ctx.fillStyle='#a9c8aa';ctx.font='19px sans-serif';ctx.fillText('同一开局，走自己的结局。',70,143);ctx.fillStyle='#f1e7c6';ctx.font='52px "Microsoft YaHei",sans-serif';wrap(ctx,e.title,70,245,750,66);ctx.fillStyle='#e5c783';ctx.font='150px Georgia,serif';ctx.fillText(String(s.score),65,455);ctx.fillStyle='#bcd1b4';ctx.font='24px sans-serif';ctx.fillText('旅程分 · '+run.turn+' / 12 站',75,500);ctx.fillText(E.roles.find(r=>r.id===run.role).name+' / '+run.insight+' 点见识',75,542);let y=625;ctx.font='23px sans-serif';for(const k of Object.keys(names)){ctx.fillStyle='#c6d7b9';ctx.fillText(names[k],75,y);ctx.fillStyle='#3d5940';ctx.fillRect(185,y-18,470,12);ctx.fillStyle='#a1cfa8';ctx.fillRect(185,y-18,4.7*run.resources[k],12);ctx.fillStyle='#eddfaf';ctx.fillText(String(run.resources[k]),700,y);y+=53;}ctx.font='24px "Microsoft YaHei",sans-serif';ctx.fillStyle='#dcc78f';y=wrap(ctx,run.relics.map(id=>E.relics.find(r=>r.id===id)?.name||id).join(' / '),75,825,750,36);ctx.font='17px sans-serif';ctx.fillStyle='#a8bea0';ctx.fillText('同图口令 · 在游戏中粘贴即可接力',75,935);ctx.font='16px monospace';wrap(ctx,shareData.code,75,972,750,25);ctx.font='18px sans-serif';ctx.fillStyle='#d3c398';ctx.fillText('EARTH ONLINE / 原创游戏 · 本机战报',75,1120);}
-function openShare(){if(!run||run.phase!=='ending')return;const code=encodeChallenge(run);const sum=E.summarize(run);shareData={code,seed:run.seed,url:challengeURL(code),text:'我在「山河远征」走出了「'+endInfo(sum).title+'」，'+sum.score+' 分。同一开局，你能走多远？'};$('exp-native-share').hidden=typeof navigator.share!=='function';$('exp-share-link').value=shareData.url;$('exp-share-status').textContent='';$('exp-download-card').disabled=false;card();$('exp-share-dialog').showModal();}
+function openShare(){if(!run||run.phase!=='ending')return;const code=encodeChallenge(run);const sum=E.summarize(run);shareData={code,seed:run.seed,url:challengeURL(code),text:'我在「山河远征」走出了「'+endInfo(sum).title+'」，'+sum.score+' 分。同一开局，你能走多远？'};$('exp-native-share').hidden=typeof navigator.share!=='function';$('exp-share-link').value=shareData.url;$('exp-replay-link').value=challengeURL(window.EarthExpeditionReplay.encode(run),'replay');$('exp-share-status').textContent='';$('exp-download-card').disabled=false;card();$('exp-share-dialog').showModal();}
 async function downloadShareCard() {
  const report=shareData, control=$('exp-download-card'), message=$('exp-share-status');
  if (!report || control.disabled || !$('exp-share-dialog').open) return;
@@ -158,7 +158,28 @@ async function downloadShareCard() {
  }
 }
 window.EarthExpeditionShare=Object.freeze({encode:encodeChallenge,decode:decodeChallenge});
-const inputWrap=node('details','exp-code-entry'),inputLabel=node('label','','朋友发来了口令？'),codeInput=node('input');codeInput.id='exp-code-input';codeInput.maxLength=800;codeInput.placeholder='粘贴挑战口令或完整链接';codeInput.autocomplete='off';inputLabel.htmlFor=codeInput.id;inputWrap.append(node('summary','','我有朋友的挑战口令'),inputLabel,codeInput,button('读取邀约','outline',()=>{try{offerChallenge(readChallenge(codeInput.value));status('已读到邀约，点击“用这个开局挑战”即可出发。');$('exp-accept-shared').focus();}catch(e){status('没有读取到有效挑战：'+(e instanceof SyntaxError?'口令内容无效。':e.message));}}));$('exp-setup').append(inputWrap);
+const replay=window.EarthExpeditionReplay.mount((seed,role)=>requestAction(()=>setup('shared',seed,role)));
+const inputWrap=node('details','exp-code-entry'), inputLabel=node('label','','朋友的口令或分享链接'), codeInput=node('input');
+codeInput.id='exp-code-input';
+codeInput.maxLength=1200;
+codeInput.placeholder='粘贴同图挑战或逐站回放';
+codeInput.autocomplete='off';
+inputLabel.htmlFor=codeInput.id;
+function acceptCode(){
+ const value=codeInput.value.trim(), fragment=value.includes('#')?value.slice(value.indexOf('#')+1):value;
+ if(fragment.startsWith('replay=')||fragment.startsWith('R1.')){
+  replay.open(fragment.replace(/^replay=/,''));
+  return;
+ }
+ try{
+  offerChallenge(readChallenge(value));
+  status('已读到邀约，点击“用这个开局挑战”即可出发。');
+  $('exp-accept-shared').focus();
+ }catch(e){status('没有读取到有效挑战：'+(e instanceof SyntaxError?'口令内容无效。':e.message));}
+}
+inputWrap.append(node('summary','','打开朋友的挑战或回放'),inputLabel,codeInput,button('读取邀约','outline',acceptCode));
+codeInput.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.isComposing){event.preventDefault();acceptCode();}});
+$('exp-board').insertBefore(inputWrap,$('exp-board').querySelector('.exp-board-foot'));
  $('exp-resume').addEventListener('click',resumeRun);
  $('exp-daily-start').addEventListener('click',()=>{if(run&&mode==='daily'&&run.seed===seedDay()&&run.phase!=='ending'){reveal();status('已回到你尚未完成的今日远征。');}else requestAction(()=>setup('daily',seedDay()));});
  $('exp-free-start').addEventListener('click',()=>requestAction(()=>setup('free',freshSeed())));
@@ -167,7 +188,15 @@ const inputWrap=node('details','exp-code-entry'),inputLabel=node('label','','朋
  $('exp-rules-open').addEventListener('click',()=>$('exp-rules-dialog').showModal());$('exp-rules-close').addEventListener('click',()=>$('exp-rules-dialog').close());$('exp-score-formula').textContent=E.scoreFormula||'具体得分会在本局结算时展示。';
  $('exp-share-close').addEventListener('click',()=>$('exp-share-dialog').close());
  $('exp-download-card').addEventListener('click',downloadShareCard);
- $('exp-copy-link').addEventListener('click',async()=>{try{if(!navigator.clipboard?.writeText)throw Error();await navigator.clipboard.writeText($('exp-share-link').value);$('exp-share-status').textContent='同图挑战链接已复制。';}catch(e){$('exp-share-link').focus();$('exp-share-link').select();$('exp-share-status').textContent='请复制已选中的链接，再发送给朋友。';}});
+ function copyShareLink(controlId,fieldId,success){
+  $(controlId).addEventListener('click',async()=>{
+   const field=$(fieldId);
+   try{await navigator.clipboard.writeText(field.value);$('exp-share-status').textContent=success;}
+   catch{field.focus();field.select();$('exp-share-status').textContent='请复制已选中的链接，再发送给朋友。';}
+  });
+ }
+ copyShareLink('exp-copy-link','exp-share-link','同图挑战链接已复制。');
+ copyShareLink('exp-copy-replay','exp-replay-link','逐站回放链接已复制。');
  $('exp-native-share').addEventListener('click',async()=>{if(!shareData)return;try{await navigator.share({title:'地球 Online · 山河远征',text:shareData.text,url:shareData.url});$('exp-share-status').textContent='已交给系统分享。';}catch(e){if(e?.name!=='AbortError')$('exp-share-status').textContent='系统分享未完成，请复制挑战链接。';}});
  document.addEventListener('keydown',e=>{
   if(!run||e.defaultPrevented||e.repeat||e.isComposing||e.ctrlKey||e.metaKey||e.altKey||document.querySelector('dialog[open]'))return;
@@ -179,7 +208,15 @@ const inputWrap=node('details','exp-code-entry'),inputLabel=node('label','','朋
  });
  $('exp-accept-shared').addEventListener('click',()=>{if(shared)requestAction(()=>{setup('shared',shared.seed,shared.role);$('exp-shared-banner').hidden=true;});});
  $('exp-import').addEventListener('change',async event=>{const f=event.target.files?.[0];if(!f)return;try{if(f.size>150000)throw Error('文件过大。');const raw=JSON.parse(await f.text());if(raw.kind!=='earth-online-expedition-run'||raw.version!==2)throw Error('请选择远征导出的续局文件。');const incoming=E.validateRestore(raw.run);if(!incoming)throw Error('记录不完整或规则版本不兼容。');requestAction(()=>{run=incoming;seed=run.seed;role=run.role;mode=seed.startsWith('day-')?'daily':'free';attempt=Date.now().toString(36)+'-import';recorded=run.phase==='ending'?attempt:'';save();render(true);$('exp-import-status').textContent='续局已导入；本机最佳成绩和经典剧情记录保留。';reveal();});}catch(e){$('exp-import-status').textContent='未导入：'+(e instanceof SyntaxError?'JSON 格式无效。':e.message)+' 当前旅程保持不变。';}finally{event.target.value='';}});
- function readHashChallenge(){if(!location.hash.startsWith('#run='))return;try{const data=decodeChallenge(location.hash.slice(5));if(mode==='shared'&&run?.seed===data.seed&&run?.role===data.role){$('exp-shared-banner').hidden=true;return;}offerChallenge(data);status('收到同图挑战，确认后再开始。');}catch(e){shared=null;$('exp-shared-banner').hidden=true;status('链接里的挑战口令无效；你的原旅程保持不变。');}}
+ function readHashChallenge(){
+  if(location.hash.startsWith('#replay=')){
+   shared=null;
+   $('exp-shared-banner').hidden=true;
+   replay.open(location.hash.slice(8));
+   return;
+  }
+  replay.close();
+  if(!location.hash.startsWith('#run='))return;try{const data=decodeChallenge(location.hash.slice(5));if(mode==='shared'&&run?.seed===data.seed&&run?.role===data.role){$('exp-shared-banner').hidden=true;return;}offerChallenge(data);status('收到同图挑战，确认后再开始。');}catch(e){shared=null;$('exp-shared-banner').hidden=true;status('链接里的挑战口令无效；你的原旅程保持不变。');}}
  render();readHashChallenge();window.addEventListener('hashchange',readHashChallenge);
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)$('exp-day').textContent=day();});
 })();

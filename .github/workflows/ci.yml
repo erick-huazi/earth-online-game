@@ -32,3 +32,5 @@ jobs:
         run: |
           npm run test:search
           npm run test:a11y
+          npm run test:sharing
+          npm run test:occurrence
