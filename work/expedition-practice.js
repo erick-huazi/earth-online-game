@@ -14,13 +14,46 @@
     const stage = get('stage');
     let source = null;
     let startStation = 0;
-    let run = null;
+    let timeline = null;
 
     function element(tag, text) {
       const node = document.createElement(tag);
       node.textContent = text;
       return node;
     }
+    const controls = element('div', '');
+    controls.className = 'exp-replay-nav exp-practice-history';
+    controls.setAttribute('role', 'group');
+    controls.setAttribute('aria-label', '练习步骤');
+    const undo = element('button', '撤销一步');
+    const redo = element('button', '重做一步');
+    const stepCount = element('span', '');
+    stepCount.setAttribute('role', 'status');
+    for (const [button, id, keys] of [[undo, 'undo', 'Control+Z Meta+Z'], [redo, 'redo', 'Control+Shift+Z Meta+Shift+Z Control+Y']]) {
+      button.type = 'button';
+      button.className = 'outline';
+      button.id = 'exp-practice-' + id;
+      button.setAttribute('aria-keyshortcuts', keys);
+      button.title = keys.split(' ').join(' / ');
+    }
+    controls.append(undo, redo, stepCount);
+    stage.before(controls);
+    function moveInHistory(button) {
+      if (!timeline || button.disabled) return;
+      if (button === undo) timeline.undo();
+      else timeline.redo();
+      render(button);
+    }
+    undo.addEventListener('click', () => moveInHistory(undo));
+    redo.addEventListener('click', () => moveInHistory(redo));
+    panel.addEventListener('keydown', event => {
+      if (!(event.ctrlKey || event.metaKey) || event.altKey || event.isComposing || event.defaultPrevented ||
+          event.target.closest('input, select, textarea, [contenteditable="true"]')) return;
+      const key = event.key.toLowerCase();
+      if (key !== 'z' && !(key === 'y' && event.ctrlKey && !event.shiftKey)) return;
+      event.preventDefault();
+      moveInHistory(event.shiftKey || key === 'y' ? redo : undo);
+    });
     function action(key, label, detail, change) {
       const button = document.createElement('button');
       button.type = 'button';
@@ -29,7 +62,9 @@
       if (detail) button.append(element('span', detail));
       button.addEventListener('click', () => {
         if (!stage.contains(button)) return;
-        run = change(run);
+        const next = change(timeline.present);
+        if (key === 'retry') timeline = window.EarthPracticeHistory.create(next);
+        else timeline.commit(next);
         render();
       });
       stage.append(button);
@@ -39,6 +74,7 @@
       return engine.relics.find(seal => seal.id === journey.relics[station / 4])?.name || null;
     }
     function stationDifference(station) {
+      const run = timeline.present;
       const trial = run.history[station - 1], original = source.history[station - 1];
       if (!trial) return '仅原局到达';
       if (!original) return '仅练习到达';
@@ -49,6 +85,7 @@
       return '';
     }
     function appendStationComparison() {
+      const run = timeline.present;
       const details = element('details', '');
       details.className = 'exp-station-compare';
       const select = element('select', '');
@@ -110,7 +147,8 @@
       details.append(summary, label, select, choices, table);
       stage.append(details);
     }
-    function render() {
+    function render(historyButton) {
+      const run = timeline.present;
       const atChoice = run.phase === 'route' || run.phase === 'event';
       const station = atChoice ? run.turn + 1 : run.turn;
       const original = source.history[station - 1];
@@ -118,6 +156,9 @@
       const prefix = '第 ' + station + ' 站 · ';
       stage.dataset.phase = run.phase;
       stage.replaceChildren();
+      undo.disabled = !timeline.canUndo;
+      redo.disabled = !timeline.canRedo;
+      stepCount.textContent = '第 ' + timeline.position + ' / ' + timeline.steps + ' 步';
       get('resources').replaceChildren(...Object.entries(resourceNames).map(([key, name]) =>
         element('li', name + ' ' + run.resources[key])), element('li', '见识 ' + run.insight));
       get('seals').textContent = '随身书印 · ' + run.relics.map(id => engine.relics.find(r => r.id === id).name).join('、');
@@ -161,13 +202,15 @@
         appendStationComparison();
         action('retry', '从第 ' + startStation + ' 站再试一次', '', () => engine.stationStart(source, startStation));
       }
-      title.focus();
+      if (!historyButton) title.focus();
+      else if (!historyButton.disabled) historyButton.focus();
+      else (historyButton === undo ? redo : undo).focus();
     }
     return {
       start(replay, station) {
         source = replay;
         startStation = station;
-        run = engine.stationStart(source, station);
+        timeline = window.EarthPracticeHistory.create(engine.stationStart(source, station));
         get('origin').textContent = '第 ' + station + ' 站分岔 · 练习仅在本次回放中有效';
         get('return').textContent = '返回第 ' + station + ' 站回放';
         panel.hidden = false;
@@ -175,10 +218,10 @@
       },
       clear() {
         panel.hidden = true;
-        source = run = null;
+        source = timeline = null;
         stage.replaceChildren();
       },
-      get active() { return Boolean(run); }
+      get active() { return Boolean(timeline); }
     };
   }
   window.EarthExpeditionPractice = Object.freeze({mount});

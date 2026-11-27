@@ -27,6 +27,20 @@
  .clipping-row [data-clip-other]{justify-self:start}
 }
 @media(max-width:850px){.earth-full-book .toolbar .clip-add{grid-column:3;grid-row:3;justify-self:start;padding-inline:10px}.earth-full-book .toolbar .reading-trail .search-state{grid-row:5;grid-column:1/-1}}
+.recall-entry{margin:12px 0;padding:14px 0;border-block:1px solid var(--paper-line,var(--line,#777))}
+.recall-entry h3,.recall-entry p{margin:0 0 6px}
+.recall-entry p,.recall-dialog [data-recall-progress]{font-size:.88rem;line-height:1.55}
+.recall-actions{display:flex;flex-wrap:wrap;gap:8px}
+.recall-actions button{min-height:44px;min-width:44px;padding:7px 14px;max-width:100%;color:inherit;background:transparent;border:1px solid currentColor;border-radius:3px;font:inherit;cursor:pointer}
+.recall-actions button:disabled{opacity:.55;cursor:default}
+.bookmark-panel .recall-actions :is([data-recall-start],[data-recall-reveal],[data-recall-known]){background:var(--appearance-selected,#314d3c);color:var(--appearance-on-selected,#fff);border-color:currentColor}
+.recall-dialog{box-sizing:border-box;width:min(92vw,32rem);max-height:85vh;max-height:85dvh;overflow:auto;padding:clamp(16px,4vw,28px);border:1px solid currentColor;border-radius:5px;background:var(--appearance-control,var(--paper,#f4eedf));color:var(--paper-ink,var(--ink,#273020));overscroll-behavior:contain}
+.recall-dialog::backdrop{background:rgb(16 25 19 / 74%)}
+.recall-dialog h2{margin:0 0 .65em;font:600 1.45rem/1.3 serif;color:inherit}
+.recall-dialog [data-recall-quote]{margin:1.2rem 0;padding:.15rem .25rem .15rem .8rem;border-inline-start:3px solid currentColor;white-space:pre-wrap;overflow-wrap:anywhere;color:inherit;font:500 1.18rem/1.65 serif}
+.recall-dialog [data-recall-source],.recall-dialog [data-recall-result]{margin:1rem 0;overflow-wrap:anywhere;font-weight:bold}
+.recall-dialog [hidden]{display:none!important}
+.recall-dialog :focus-visible,.recall-entry :focus-visible{outline:2px solid currentColor;outline-offset:2px}
 
 /* Optional reader palettes. Paper intentionally inherits the existing design. */
 body.earth-manual [data-reading-appearance],body.earth-full-book [data-reading-appearance]{margin:8px 0 16px;max-width:100%}
@@ -4200,6 +4214,133 @@ function createEarthQuoteExport(panel, adapter, readEntries, matches, message) {
   return refresh;
 }
 
+// Each round snapshots the filtered clippings. Ratings belong only to this dialog.
+function createEarthRecall(panel, adapter, readEntries, matches) {
+  'use strict';
+  const books = new Map(adapter.books.map(book => [book.id, book]));
+  const samples = adapter.books.flatMap(book => book.recallSample ? [book.recallSample] : []);
+  const entry = document.createElement('section');
+  // The hash is handled explicitly. A second native fragment jump to the
+  // container during page load would steal focus from the start button.
+  entry.dataset.recallEntry = '';
+  entry.className = 'recall-entry';
+  entry.innerHTML = '<h3>辨典挑战</h3><p data-recall-hint></p><div class="recall-actions"><button type="button" data-recall-start></button><button type="button" data-recall-read>去读原文</button></div>';
+  panel.querySelector('[data-bookmark-list]').before(entry);
+  const start = entry.querySelector('[data-recall-start]');
+  const read = entry.querySelector('[data-recall-read]');
+  const hint = entry.querySelector('[data-recall-hint]');
+  const dialog = document.createElement('dialog');
+  dialog.className = 'recall-dialog';
+  dialog.dataset.recallDialog = '';
+  dialog.setAttribute('aria-labelledby', 'recall-title');
+  dialog.innerHTML = '<h2 id="recall-title">辨典挑战</h2><p data-recall-progress></p><blockquote tabindex="-1" data-recall-quote></blockquote><p tabindex="-1" data-recall-source hidden></p><p tabindex="-1" data-recall-result hidden></p><div class="recall-actions"><button type="button" data-recall-reveal>揭晓出处</button><button type="button" data-recall-again>再练</button><button type="button" data-recall-known>记得</button><button type="button" data-recall-retry>只练没记住的</button><button type="button" data-recall-close>退出挑战</button></div>';
+  // Native showModal promotes the dialog visually while keeping the reader's
+  // paper, night and white palette variables in its inheritance chain.
+  entry.after(dialog);
+  const part = key => dialog.querySelector('[data-recall-' + key + ']');
+  const quote = part('quote'), source = part('source'), result = part('result');
+  const reveal = part('reveal'), again = part('again'), known = part('known'), retry = part('retry');
+  let round = [], missed = [], index = 0, practiceName = '';
+
+  function pool(entries) {
+    const passages = new Map();
+    let hasClips = false;
+    for (const clip of entries) {
+      if (clip.kind !== 'clip') continue;
+      hasClips = true;
+      const text = clip.anchor.exact;
+      const key = text.normalize('NFKC').replace(/[\s\p{P}]+/gu,'').toLowerCase();
+      if (!key) continue;
+      let group = passages.get(key);
+      if (!group) {
+        group = {bookId:clip.bookId, section:clip.section, multiple:false, card:null};
+        passages.set(key,group);
+      }
+      if (clip.bookId !== group.bookId || clip.section !== group.section) group.multiple = true;
+      if (!group.card && matches(clip)) {
+        group.card = {bookId:clip.bookId, title:clip.title || '第 ' + (clip.section + 1) + ' 阅读节', text};
+      }
+    }
+    const cards = Array.from(passages.values()).filter(group => group.card && !group.multiple).map(group => group.card);
+    return {hasClips,cards};
+  }
+  function refresh(entries) {
+    const {hasClips,cards} = pool(entries);
+    start.textContent = hasClips ? '开始辨典' : '试玩三题';
+    start.disabled = hasClips && !cards.length;
+    if (!hasClips) hint.textContent = '先试三道原典示例。选中正文后点「存摘录」，就能用自己的原句出题。';
+    else if (!cards.length) hint.textContent = '当前筛选中没有可辨认唯一出处的摘录。可更换筛选，或去正文存入新摘录。';
+    else hint.textContent = '当前可出 ' + cards.length + ' 题。每局最多五题，看原句回忆书名和章节。';
+  }
+  function showQuestion() {
+    part('progress').textContent = practiceName + ' · 第 ' + (index + 1) + ' / ' + round.length + ' 题 · 出自哪一书、哪一章？';
+    quote.textContent = round[index].text;
+    source.textContent = '';
+    quote.hidden = reveal.hidden = false;
+    source.hidden = result.hidden = again.hidden = known.hidden = retry.hidden = true;
+    quote.focus();
+  }
+  function begin(cards, name) {
+    round = cards;
+    index = 0;
+    missed = [];
+    practiceName = name;
+    if (!dialog.open) dialog.showModal();
+    showQuestion();
+  }
+  start.addEventListener('click', () => {
+    const {hasClips,cards} = pool(readEntries());
+    if (!hasClips) { begin(samples, '原典示例'); return; }
+    if (!cards.length) { refresh(readEntries()); read.focus(); return; }
+    for (let i = 0; i < Math.min(cards.length,5); i++) {
+      const j = i + Math.floor(Math.random() * (cards.length-i));
+      [cards[i],cards[j]] = [cards[j],cards[i]];
+    }
+    begin(cards.slice(0,5), '我的摘录');
+  });
+  reveal.addEventListener('click', () => {
+    const card = round[index], book = books.get(card.bookId);
+    source.textContent = '出处 · 《' + book.title + '》 · ' + card.title;
+    reveal.hidden = true;
+    source.hidden = again.hidden = known.hidden = false;
+    source.focus();
+  });
+  function rate(remembered) {
+    if (!remembered) missed.push(round[index]);
+    if (++index < round.length) { showQuestion(); return; }
+    part('progress').textContent = practiceName + ' · 本轮完成';
+    quote.hidden = source.hidden = again.hidden = known.hidden = true;
+    retry.hidden = !missed.length;
+    result.hidden = false;
+    result.textContent = '自评记得 ' + (round.length - missed.length) + ' 题，待再练 ' + missed.length + ' 题。';
+    result.focus();
+  }
+  again.addEventListener('click', () => rate(false));
+  known.addEventListener('click', () => rate(true));
+  retry.addEventListener('click', () => begin(missed, '再练'));
+  part('close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => {
+    round = []; missed = [];
+    quote.textContent = source.textContent = result.textContent = '';
+    (start.disabled ? read : start).focus();
+  });
+  read.addEventListener('click', () => {
+    const section = adapter.current().section;
+    panel.open = false;
+    adapter.focus(section);
+    adapter.current().element.scrollIntoView({block:'nearest',behavior:'instant'});
+  });
+  function followLink() {
+    if (location.hash !== '#recall') return;
+    adapter.showReader?.();
+    panel.open = true;
+    (start.disabled ? read : start).focus();
+    entry.scrollIntoView({block:'center',behavior:'instant'});
+  }
+  addEventListener('hashchange', followLink);
+  return {refresh, followLink};
+}
+
 (() => {
  'use strict';
  // Text offsets survive reflow, changed fonts and a different reader layout.
@@ -4234,9 +4375,10 @@ function createEarthQuoteExport(panel, adapter, readEntries, matches, message) {
   function message(text){status.textContent=text;toast.textContent=text;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{toast.hidden=true},4200);}
   const clips=createEarthClippings(adapter,store,render,message);
   const refreshExport=createEarthQuoteExport(panel,adapter,allEntries,matches,message);
+  const recall=createEarthRecall(panel,adapter,allEntries,matches);
   function syncButton(entries){const current=adapter.current(),found=entries.some(e=>e.kind!=='clip'&&e.bookId===current.bookId&&e.section===current.section);add.textContent=found?'更新书签':'存书签';add.title=found?'更新本节书签到当前位置':'保存当前位置为书签';add.setAttribute('aria-label',add.title);}
   function render(){
-   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit,adapter.current().bookId]);if(next===signature)return;signature=next;refreshExport(entries);
+   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit,adapter.current().bookId]);if(next===signature)return;signature=next;refreshExport(entries);recall.refresh(entries);
    const previousScroll=list.scrollTop;panel.querySelector('[data-bookmark-count]').textContent=entries.length?' · '+entries.length:'';list.replaceChildren();
    controls.hidden=!entries.length&&!query&&scope.value==='all';resultCount.hidden=controls.hidden;
    clear.disabled=!query&&scope.value==='all'&&!search.value;
@@ -4296,6 +4438,7 @@ function createEarthQuoteExport(panel, adapter, readEntries, matches, message) {
   });
   addEventListener('storage',event=>{if(event.key==='earth-online-bookmarks-v1'||event.key==='earth-online-clippings-v1'||event.key===null)render();});
   window.earthBookmarkUI={refresh:render,open:openEntry};render();
+  if(location.hash==='#recall')requestAnimationFrame(recall.followLink);
   const requested=new URL(location.href).searchParams.get('bookmark');
   const incoming=clips.incoming();
   if(incoming){requestAnimationFrame(()=>openEntry(incoming));}
@@ -4460,7 +4603,7 @@ function createReaderGameNavigation() {
   return {mode, carryTo, mount};
 }
 
-const bookmarkBooks=[{"id":"yijing","title":"易经","edition":"易经","sectionCount":69,"htmlPath":"html/yijing.html"},{"id":"daodejing","title":"道德经","edition":"道德经","sectionCount":81,"htmlPath":"html/daodejing.html"},{"id":"zhuangzi","title":"庄子","edition":"庄子","sectionCount":33,"htmlPath":"html/zhuangzi.html"},{"id":"bazi","title":"四柱八字","edition":"四柱八字 · 子平真诠评注","sectionCount":14,"htmlPath":"html/bazi.html"},{"id":"neijing","title":"黄帝内经","edition":"黄帝内经 · 素问与灵枢经","sectionCount":166,"htmlPath":"html/neijing.html"},{"id":"yunqi","title":"五运六气","edition":"五运六气 · 素问运气七篇","sectionCount":7,"htmlPath":"html/yunqi.html"},{"id":"mao","title":"毛泽东选集","edition":"毛泽东选集","sectionCount":1960,"htmlPath":"html/mao.html"},{"id":"sunzi","title":"孙子兵法","edition":"孙子兵法","sectionCount":13,"htmlPath":"html/sunzi.html"},{"id":"yinfu","title":"阴符经","edition":"黄帝阴符经","sectionCount":4,"htmlPath":"html/yinfu.html"},{"id":"qiti","title":"炁体源流","edition":"炁体源流","sectionCount":512,"htmlPath":"html/qiti.html"}];const pageJumpVolumes=[{"id":"full","label":"庄子","sectionCount":33,"pages":null}];
+const bookmarkBooks=[{"id":"yijing","title":"易经","edition":"易经","sectionCount":69,"htmlPath":"html/yijing.html","recallSample":{"bookId":"yijing","title":"〈乾〉第一","text":"九二：見龍在田，利見大人。"}},{"id":"daodejing","title":"道德经","edition":"道德经","sectionCount":81,"htmlPath":"html/daodejing.html","recallSample":{"bookId":"daodejing","title":"第一章","text":"玄之又玄，众妙之门。"}},{"id":"zhuangzi","title":"庄子","edition":"庄子","sectionCount":33,"htmlPath":"html/zhuangzi.html","recallSample":{"bookId":"zhuangzi","title":"〈逍遙遊〉第一","text":"北冥有魚，其名為鯤。"}},{"id":"bazi","title":"四柱八字","edition":"四柱八字 · 子平真诠评注","sectionCount":14,"htmlPath":"html/bazi.html"},{"id":"neijing","title":"黄帝内经","edition":"黄帝内经 · 素问与灵枢经","sectionCount":166,"htmlPath":"html/neijing.html"},{"id":"yunqi","title":"五运六气","edition":"五运六气 · 素问运气七篇","sectionCount":7,"htmlPath":"html/yunqi.html"},{"id":"mao","title":"毛泽东选集","edition":"毛泽东选集","sectionCount":1960,"htmlPath":"html/mao.html"},{"id":"sunzi","title":"孙子兵法","edition":"孙子兵法","sectionCount":13,"htmlPath":"html/sunzi.html"},{"id":"yinfu","title":"阴符经","edition":"黄帝阴符经","sectionCount":4,"htmlPath":"html/yinfu.html"},{"id":"qiti","title":"炁体源流","edition":"炁体源流","sectionCount":512,"htmlPath":"html/qiti.html"}];const pageJumpVolumes=[{"id":"full","label":"庄子","sectionCount":33,"pages":null}];
 (() => {
   'use strict';
   const bookId = "zhuangzi";

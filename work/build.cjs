@@ -36,8 +36,15 @@ if(template.includes('__OFFLINE_SCRIPT__')){
   library[book.id]=normalizedBook(item,root);
  }
  const bookmarkBooks=books.map(book=>({id:book.id,title:book.title,edition:library[book.id].title,sectionCount:library[book.id].sections.length,htmlPath:library[book.id].htmlPath}));
+ // Fix the three tutorial prompts to exact passages in the shipped editions.
+ const prompts = {daodejing:'玄之又玄，众妙之门。', zhuangzi:'北冥有魚，其名為鯤。', yijing:'九二：見龍在田，利見大人。'};
+ for (const [id,text] of Object.entries(prompts)) {
+  const chapters = library[id].sections.filter(section => section.text.includes(text));
+  if (chapters.length !== 1) throw new Error('Missing or ambiguous recall sample in ' + id);
+  bookmarkBooks.find(book => book.id === id).recallSample = {bookId:id, title:chapters[0].title, text};
+ }
  for(const book of books)fullBook(library[book.id],book,root,bookmarkBooks);
- const enhancements=['reader-game-return.js','search-normalizer.js','find-occurrences.js','search-index.js','ranked-search.js','quote-anchor.js','bookmark-store.js','clippings.js','quote-export.js','bookmarks.js','reading-appearance.js','page-jump.js'].map(file=>fs.readFileSync(path.join(__dirname,file),'utf8')).join('\n');
+ const enhancements=['reader-game-return.js','search-normalizer.js','find-occurrences.js','search-index.js','ranked-search.js','quote-anchor.js','bookmark-store.js','clippings.js','quote-export.js','recall.js','bookmarks.js','reading-appearance.js','page-jump.js'].map(file=>fs.readFileSync(path.join(__dirname,file),'utf8')).join('\n');
  const offlineScript=fs.readFileSync(path.join(__dirname,'offline-reader.js'),'utf8').replace('__LIBRARY_DATA__',embed(library));
  template=template.replace('__OFFLINE_CSS__',()=>['offline-reader.css','bookmarks.css','reading-appearance.css','page-jump.css','search-options.css'].map(file=>fs.readFileSync(path.join(__dirname,file),'utf8')).join('\n'))
   .replace('__OFFLINE_PANE__',()=>fs.readFileSync(path.join(__dirname,'offline-pane.html'),'utf8'))

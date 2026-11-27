@@ -32,9 +32,10 @@
   function message(text){status.textContent=text;toast.textContent=text;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{toast.hidden=true},4200);}
   const clips=createEarthClippings(adapter,store,render,message);
   const refreshExport=createEarthQuoteExport(panel,adapter,allEntries,matches,message);
+  const recall=createEarthRecall(panel,adapter,allEntries,matches);
   function syncButton(entries){const current=adapter.current(),found=entries.some(e=>e.kind!=='clip'&&e.bookId===current.bookId&&e.section===current.section);add.textContent=found?'更新书签':'存书签';add.title=found?'更新本节书签到当前位置':'保存当前位置为书签';add.setAttribute('aria-label',add.title);}
   function render(){
-   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit,adapter.current().bookId]);if(next===signature)return;signature=next;refreshExport(entries);
+   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit,adapter.current().bookId]);if(next===signature)return;signature=next;refreshExport(entries);recall.refresh(entries);
    const previousScroll=list.scrollTop;panel.querySelector('[data-bookmark-count]').textContent=entries.length?' · '+entries.length:'';list.replaceChildren();
    controls.hidden=!entries.length&&!query&&scope.value==='all';resultCount.hidden=controls.hidden;
    clear.disabled=!query&&scope.value==='all'&&!search.value;
@@ -94,6 +95,7 @@
   });
   addEventListener('storage',event=>{if(event.key==='earth-online-bookmarks-v1'||event.key==='earth-online-clippings-v1'||event.key===null)render();});
   window.earthBookmarkUI={refresh:render,open:openEntry};render();
+  if(location.hash==='#recall')requestAnimationFrame(recall.followLink);
   const requested=new URL(location.href).searchParams.get('bookmark');
   const incoming=clips.incoming();
   if(incoming){requestAnimationFrame(()=>openEntry(incoming));}

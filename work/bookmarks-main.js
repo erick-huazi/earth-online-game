@@ -1,6 +1,7 @@
 mountEarthBookmarks({
  books:__BOOKMARK_BOOKS__,
  carryTo:readingGame.carryTo,
+ showReader:()=>{readingState.mode='full';updateReadingMode();},
  current:()=>({bookId:state.selected,section:sectionIndex(),title:localItem().sections[sectionIndex()].title,element:$('fulltext-content')}),
  line:()=>$('text-reading').getBoundingClientRect().top+25,
  scrollBy:delta=>{$('text-reading').scrollTop+=delta;},

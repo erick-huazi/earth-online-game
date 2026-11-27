@@ -40,7 +40,7 @@ function fullBook(item,book,root,bookmarkBooks){
  const options=item.sections.map((s,i)=>'<option value="section-'+i+'">'+(item.volumes.length>1?esc(s.volumeLabel)+' · ':'')+(s.pageStart?s.pageStart+' · ':'')+esc(s.title)+'</option>').join('');
  const readerScript=fs.readFileSync(path.join(__dirname,'full-book-reader.js'),'utf8').replace('__BOOK_ID__',JSON.stringify(item.id).replace(/</g,'\\u003c'));
  const enhancementCSS=['bookmarks.css','reading-appearance.css','page-jump.css','search-options.css'].map(file=>fs.readFileSync(path.join(__dirname,file),'utf8')).join('\n');
- const enhancementScript=['search-normalizer.js','find-occurrences.js','search-index.js','quote-anchor.js','bookmark-store.js','clippings.js','quote-export.js','bookmarks.js','reading-appearance.js','bookmark-export.js','page-jump.js','reader-game-return.js'].map(file=>fs.readFileSync(path.join(__dirname,file),'utf8')).join('\n');
+ const enhancementScript=['search-normalizer.js','find-occurrences.js','search-index.js','quote-anchor.js','bookmark-store.js','clippings.js','quote-export.js','recall.js','bookmarks.js','reading-appearance.js','bookmark-export.js','page-jump.js','reader-game-return.js'].map(file=>fs.readFileSync(path.join(__dirname,file),'utf8')).join('\n');
  const bookmarkMetadata=JSON.stringify(bookmarkBooks).replace(/</g,'\\u003c');
  const pageMetadata=JSON.stringify(item.volumes).replace(/</g,'\\u003c');
  const html=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(book.title)} · 全书 HTML</title><style>

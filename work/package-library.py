@@ -76,6 +76,8 @@ readme = '''地球 Online · 山河远征 v__GAME_VERSION__ / 游戏与完整典
 19. 在章节正文中选择想留下的文字，保存为摘录。以后可从摘录列表返回原段。
 20. 练习结算后可逐站对照原局，查看路线、行动与资源。
 21. 在书签与摘录面板可选范围导出 Markdown，保留原文与出处。
+22. 远征练习可逐步撤销与重做。从更早一步改走新路线后可继续试到结局。
+23. 从游戏首页或摘录面板进入辨典挑战，看原句回忆出处，揭晓后可把难题留给下一轮。
 
 经典剧情与原典
 1. 点击“进入经典剧情 · 33场故事”，仍可探索十境与归途终章，共33场原创情境、99个选项；每境三题，达到4/6点领悟即可解锁下一境。
@@ -91,7 +93,7 @@ readme = '''地球 Online · 山河远征 v__GAME_VERSION__ / 游戏与完整典
 readme = readme.replace('__GAME_VERSION__', version).replace('__GAME_DATE__', release_date)
 (out / '使用说明.txt').write_text(readme, encoding='utf-8', newline='\n')
 archive = out / 'earth-online-offline-library.zip'
-files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt', out / 'github-review-v2.6.html', out / 'github-review-v2.5.html', out / 'github-review-v2.4.html', out / 'github-review-v2.3.html', out / 'game-research-v2.html', out / 'game-research-v2.json', out / 'game-third-party-notices.txt']
+files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt', out / 'github-review-v2.7.html', out / 'github-review-v2.6.html', out / 'github-review-v2.5.html', out / 'github-review-v2.4.html', out / 'github-review-v2.3.html', out / 'game-research-v2.html', out / 'game-research-v2.json', out / 'game-third-party-notices.txt']
 files += [p for p in (out / 'books').rglob('*') if p.is_file() and not p.name.endswith('.part')]
 files += list((out / 'html').glob('*.html'))
 files.sort(key=lambda p: p.relative_to(out).as_posix())
