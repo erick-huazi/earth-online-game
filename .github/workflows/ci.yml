@@ -34,6 +34,7 @@ jobs:
           npm run test:a11y
           npm run test:sharing
           npm run test:occurrence
+          node work/qa-reading-return.cjs
           npm run test:properties
           npm run test:practice
           npm run test:clippings

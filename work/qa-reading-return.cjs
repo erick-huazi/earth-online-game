@@ -117,6 +117,14 @@ async function main() {
         await page.locator('#open-full-book').click();
         await page.waitForFunction(() => document.getElementById('jump')?.value === 'section-8');
         assert.equal(await page.locator('#jump').inputValue(), 'section-8');
+        // Revealing a visible sticky link must not move the reading line.
+        await page.locator(manualReturn).evaluate(async link => {
+          link.scrollIntoView({block:'nearest', inline:'nearest'});
+          link.focus();
+          await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        });
+        assert.equal(await page.locator('#jump').inputValue(), 'section-8');
+        assert.equal((await urlOf(page, manualReturn)).searchParams.get('section'), '8');
         await page.locator(manualReturn).click();
         await page.locator('#chapter-select option:checked').waitFor({state: 'attached'});
         assert.equal(await page.locator('#book-note').inputValue(), '留下这一章的阅读心得');

@@ -204,7 +204,9 @@
   }
 
   function updateInset() {
-    document.documentElement.style.scrollPaddingTop = readingInset() + 'px';
+    // Only chapter anchors sit below the toolbar. Applying this inset to the
+    // viewport can scroll an already-visible sticky control into a prior chapter.
+    document.documentElement.style.setProperty('--chapter-inset', readingInset() + 'px');
   }
 
   function navigateTo(id) {
