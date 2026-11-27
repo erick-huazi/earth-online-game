@@ -13,6 +13,10 @@
 @media(max-width:550px){.bookmark-toolbar{display:block;position:relative}.bookmark-toolbar>.bookmark-add{position:absolute;right:0;top:0;margin-top:0}.bookmark-toolbar .bookmark-panel>summary{padding-right:85px}}
 .bookmark-toolbar{align-items:flex-start}.bookmark-toolbar .bookmark-panel{min-width:0}.bookmark-toolbar>.bookmark-add{margin-top:5px}.bookmark-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,.6fr);gap:5px 12px;margin:5px 0 12px}.bookmark-filters>label:first-child{grid-column:1}.bookmark-search-row{display:flex;gap:6px;grid-column:1;grid-row:2}.bookmark-scope-field{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;gap:5px}.bookmark-filters :is(input,select,button),.bookmark-more{min-width:0;min-height:44px;border:1px solid var(--paper-line,var(--line));border-radius:2px;background:var(--appearance-control,var(--paper));color:inherit;font:12px/1.6 var(--sans);padding:8px}.bookmark-filters input{width:100%;flex:1}.bookmark-filters input::placeholder{color:var(--paper-muted,var(--muted));opacity:1}.bookmark-filters button{flex:0 0 auto;min-width:44px}.bookmark-filters button:disabled{opacity:.5;cursor:default}.bookmark-more{width:100%;margin-top:8px}.bookmark-scope-field select{width:100%}@media(max-width:550px){.bookmark-filters{grid-template-columns:minmax(0,1fr)}.bookmark-scope-field{grid-column:1;grid-row:3}.bookmark-filters :is(input,select){font-size:16px}}
 .clipping-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:start}
+.quote-export{display:flex;flex-wrap:wrap;align-items:end;gap:8px;margin:12px 0}
+.quote-export label{display:grid;gap:3px;min-width:0;max-width:100%}
+.quote-export :is(select,button){min-width:0;max-width:100%;min-height:44px;padding:6px 10px;border:1px solid var(--paper-line,var(--line));border-radius:2px;background:var(--appearance-control,var(--paper));font:inherit;color:inherit}
+.quote-export button:disabled{opacity:.55}
 .clipping-row .bookmark-open span{white-space:pre-wrap;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .clipping-row [data-clip-other]{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px}
 @media(max-width:550px){
@@ -84,7 +88,7 @@ html:is([data-reading-theme="night"],[data-reading-theme="white"]) :is(body.eart
 @media print{.search-options,.note-copy-actions{display:none!important}}
 
 .chapter-hits:not([hidden]){display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:8px;scroll-margin-top:88px}.chapter-hits button{min-height:44px}.chapter-hits span{font-size:14px;font-variant-numeric:tabular-nums}.prose mark[aria-current],.book-section h2 mark[aria-current],.text-reading mark[aria-current]{color:#fff;background:#56430a;outline:2px solid currentColor;outline-offset:1px;text-decoration:underline;font-weight:700}@media print{.chapter-hits{display:none!important}}
-</style></head><body class="earth-full-book"><a class="skip-link" id="skip-reading" href="#section-0">跳到正文</a><a class="skip-link" href="#reading-controls">跳到目录与搜索</a><header class="top"><a class="brand" data-manual-return href="../earth-online-manual.html#library">地球 ONLINE · 典籍手册</a><a href="#top">返回书首 ↑</a></header><div class="layout"><nav aria-label="全书目录"><h2>阴符经 · 全书目录</h2><details open><summary>黄帝阴符经 · 4 节</summary><ol><li><a href="#section-0">原书说明</a></li><li><a href="#section-1">神仙抱一演道章上</a></li><li><a href="#section-2">富国安民演法章中</a></li><li><a href="#section-3">强兵战胜演术章下</a></li></ol></details></nav><main id="top"><header class="book-head"><h1>阴符经</h1><p>黄帝阴符经 · 4 个阅读节 · 全部收录文字均在本页</p><p>《黄帝阴符经》TXT 原文，上、中、下三章，文件标注底本为《正统道藏》。</p><details class="conversion"><summary>版本与转换说明</summary><p>《黄帝阴符经》上、中、下三章全文，另保留来源的经名与版本说明。底本为《正统道藏》洞真部本文类。原始UTF-8文件完整保存，未改写原文。</p><p>页码指原文件中的位置；可使用浏览器查找在全文中定位。原页图保存在配套 books 文件夹。</p></details><div data-original-page-jump></div><details class="appearance-settings"><summary>阅读配色</summary><div data-reading-appearance></div></details><details class="bookmark-panel" data-bookmark-panel><summary>我的书签与摘录<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>书签与摘录保存在当前浏览器。导出后可在主手册合并恢复。</p><button class="bookmark-undo" data-bookmark-export type="button">导出书签与摘录 ↓</button><p class="bookmark-status" data-bookmark-export-status role="status"></p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><div class="search-options"><label for="search-mode">查找方式<select id="search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div></header><div class="toolbar" id="reading-controls" tabindex="-1" role="search" aria-label="全书目录与搜索"><label class="mobile-index" for="jump">目录</label><select id="jump" aria-label="全书章节目录"><option value="section-0">原书说明</option><option value="section-1">神仙抱一演道章上</option><option value="section-2">富国安民演法章中</option><option value="section-3">强兵战胜演术章下</option></select><button id="smaller" aria-label="缩小字号">A−</button><button id="larger" aria-label="放大字号">A＋</button><input id="query" type="search" placeholder="搜索全书文字" aria-label="搜索全书文字"><button id="clear-search" type="button" disabled>清除</button><button id="prev-match" disabled>上处</button><button id="next-match" disabled>下处</button><button class="bookmark-add" data-bookmark-add type="button">存书签</button><button class="bookmark-add clip-add" data-clip-add type="button" title="选中本节原文后保存">存摘录</button><div class="reading-trail"><span id="search-state" class="search-state" aria-live="polite">连续阅读全部内容，或用目录跳转。</span><a data-manual-return href="../earth-online-manual.html#library">在手册中读</a><a id="reader-game-return" href="../earth-online-game.html">进入游戏</a></div></div><section class="book-section" tabindex="-1" id="section-0" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">黄帝阴符经</p><h2>原书说明</h2><div class="prose">黄帝阴符经
+</style></head><body class="earth-full-book"><a class="skip-link" id="skip-reading" href="#section-0">跳到正文</a><a class="skip-link" href="#reading-controls">跳到目录与搜索</a><header class="top"><a class="brand" data-manual-return href="../earth-online-manual.html#library">地球 ONLINE · 典籍手册</a><a href="#top">返回书首 ↑</a></header><div class="layout"><nav aria-label="全书目录"><h2>阴符经 · 全书目录</h2><details open><summary>黄帝阴符经 · 4 节</summary><ol><li><a href="#section-0">原书说明</a></li><li><a href="#section-1">神仙抱一演道章上</a></li><li><a href="#section-2">富国安民演法章中</a></li><li><a href="#section-3">强兵战胜演术章下</a></li></ol></details></nav><main id="top"><header class="book-head"><h1>阴符经</h1><p>黄帝阴符经 · 4 个阅读节 · 全部收录文字均在本页</p><p>《黄帝阴符经》TXT 原文，上、中、下三章，文件标注底本为《正统道藏》。</p><details class="conversion"><summary>版本与转换说明</summary><p>《黄帝阴符经》上、中、下三章全文，另保留来源的经名与版本说明。底本为《正统道藏》洞真部本文类。原始UTF-8文件完整保存，未改写原文。</p><p>页码指原文件中的位置；可使用浏览器查找在全文中定位。原页图保存在配套 books 文件夹。</p></details><div data-original-page-jump></div><details class="appearance-settings"><summary>阅读配色</summary><div data-reading-appearance></div></details><details class="bookmark-panel" data-bookmark-panel><summary>我的书签与摘录<span data-bookmark-count></span></summary><div class="bookmark-list" data-bookmark-list></div><p class="bookmark-status" data-bookmark-status>书签与摘录保存在当前浏览器。导出后可在主手册合并恢复。</p><button class="bookmark-undo" data-bookmark-export type="button">下载书签与摘录备份（JSON）</button><p class="bookmark-status" data-bookmark-export-status role="status"></p><button class="bookmark-undo" data-bookmark-undo type="button" hidden>撤销删除</button></details><div class="search-options"><label for="search-mode">查找方式<select id="search-mode"><option value="flexible">简繁与标点兼容</option><option value="exact">按原文精确匹配</option></select></label><span>只改变匹配方式，正文保留原样。</span></div></header><div class="toolbar" id="reading-controls" tabindex="-1" role="search" aria-label="全书目录与搜索"><label class="mobile-index" for="jump">目录</label><select id="jump" aria-label="全书章节目录"><option value="section-0">原书说明</option><option value="section-1">神仙抱一演道章上</option><option value="section-2">富国安民演法章中</option><option value="section-3">强兵战胜演术章下</option></select><button id="smaller" aria-label="缩小字号">A−</button><button id="larger" aria-label="放大字号">A＋</button><input id="query" type="search" placeholder="搜索全书文字" aria-label="搜索全书文字"><button id="clear-search" type="button" disabled>清除</button><button id="prev-match" disabled>上处</button><button id="next-match" disabled>下处</button><button class="bookmark-add" data-bookmark-add type="button">存书签</button><button class="bookmark-add clip-add" data-clip-add type="button" title="选中本节原文后保存">存摘录</button><div class="reading-trail"><span id="search-state" class="search-state" aria-live="polite">连续阅读全部内容，或用目录跳转。</span><a data-manual-return href="../earth-online-manual.html#library">在手册中读</a><a id="reader-game-return" href="../earth-online-game.html">进入游戏</a></div></div><section class="book-section" tabindex="-1" id="section-0" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">黄帝阴符经</p><h2>原书说明</h2><div class="prose">黄帝阴符经
 　　经名：黄帝阴符经。简称《阴符经》。撰人不详，传说出於战国黄老家之手，一说系北魏寇谦之或唐李筌撰。一卷。底本出处：《正统道藏》洞真部本文类。</div></section>
 <section class="book-section" tabindex="-1" id="section-1" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">黄帝阴符经</p><h2>神仙抱一演道章上</h2><div class="prose">观天之道，执天之行，尽矣。天有五贼，见之者昌。五贼在心，施行於天。宇宙在乎手，万化生乎身。天性，人也。人心，机也。立天之道，以定人也。天发杀机，移星易宿。地发杀机，龙蛇起陆。人发杀机，天地反覆。天人合发，万变定基。性有巧拙，可以伏藏。九窍之邪，在乎三要，可以动静。火生於木，祸发必克。奸生於国，时动必溃。知之修炼，谓之圣人。天生天杀，道之理也。</div></section>
 <section class="book-section" tabindex="-1" id="section-2" data-volume="full" data-page-start="0" data-page-end="0"><p class="origin">黄帝阴符经</p><h2>富国安民演法章中</h2><div class="prose">天地，万物之盗；万物，人之盗；人，万物之盗。三盗既宜，三才既安。故曰：食其时，百骸理。动其机，万化安。人知其神而神，不知不神而所以神也。日月有数，大小有定。圣功生焉，神明出焉。其盗机也，天下莫能见，莫能知。君子得之固躬，小人得之轻命。</div></section>
@@ -604,6 +608,99 @@ function createEarthClippings(adapter, store, render, message) {
   return {highlight, link, incoming};
 }
 
+// Produce portable notes from the saved quote, including when its source edition has changed.
+function createEarthQuoteExport(panel, adapter, readEntries, matches, message) {
+  'use strict';
+  const controls = document.createElement('div');
+  controls.className = 'quote-export';
+  controls.innerHTML = '<label>导出摘录范围<select data-clip-export-scope><option value="filtered"></option><option value="book"></option></select></label><button data-clip-export type="button">下载 Markdown</button>';
+  panel.querySelector('[data-bookmark-more]').after(controls);
+  const scope = controls.querySelector('select');
+  const button = controls.querySelector('button');
+  const books = new Map(adapter.books.map(book => [book.id, book]));
+
+  function inScope(entry, bookId) {
+    return entry.kind === 'clip' && (scope.value === 'book' ? entry.bookId === bookId : matches(entry));
+  }
+  function refresh(entries) {
+    const book = books.get(adapter.current().bookId);
+    const clips = entries.filter(entry => entry.kind === 'clip');
+    const count = clips.filter(matches).length;
+    const bookCount = clips.filter(entry => entry.bookId === book.id).length;
+    scope.options[0].textContent = '当前筛选（' + count + ' 段）';
+    scope.options[1].textContent = '正在读的《' + book.title + '》（' + bookCount + ' 段）';
+    button.disabled = (scope.value === 'book' ? bookCount : count) === 0;
+  }
+
+  // Escape Markdown syntax before inserting our own markup. Indentation in
+  // source text must stay inside the quote, including tabs and leading spaces.
+  function literal(line) {
+    return line.replace(/[!-\/:-@\[-`{-~]/g, '\\$&')
+      .replace(/\t/g, '&#9;').replace(/^ +| +$/g, spaces => '&#32;'.repeat(spaces.length));
+  }
+  function quotation(text) {
+    const normalized = text.replace(/\r\n?/g, '\n');
+    const trailing = normalized.match(/\n+$/)?.[0].length || 0;
+    const body = normalized.slice(0, normalized.length - trailing);
+    return body.split('\n').map(line => '> ' + literal(line)).join('\\\n') + '&#10;'.repeat(trailing);
+  }
+  function chapterLabel(entry) {
+    return entry.title.replace(/[\r\n]+/g, ' ').trim() || '第 ' + (entry.section + 1) + ' 阅读节';
+  }
+  function markdown(entries) {
+    const blocks = ['# 地球 Online · 原文摘录'];
+    for (const book of adapter.books) {
+      const quotes = entries.filter(entry => entry.bookId === book.id)
+        .sort((a, b) => a.section - b.section || a.anchor.start - b.anchor.start || a.anchor.end - b.anchor.end);
+      if (!quotes.length) continue;
+      const edition = '《' + literal(book.edition || book.title) + '》';
+      blocks.push('## ' + edition);
+      let citation = '';
+      let section = -1;
+      for (const entry of quotes) {
+        if (entry.section !== section) {
+          if (citation) blocks.push(citation);
+          section = entry.section;
+          const chapter = literal(chapterLabel(entry));
+          const url = 'https://39.107.91.13/earth-online/html/' + encodeURIComponent(book.id) + '.html#section-' + section;
+          blocks.push('### ' + chapter);
+          citation = '出处：[' + edition + ' · ' + chapter + ' · 第 ' + (section + 1) + ' 阅读节](' + url + ')';
+        }
+        blocks.push(quotation(entry.anchor.exact));
+      }
+      blocks.push(citation);
+    }
+    return blocks.join('\n\n') + '\n';
+  }
+
+  scope.addEventListener('change', () => refresh(readEntries()));
+  button.addEventListener('click', () => {
+    const entries = readEntries();
+    const bookId = adapter.current().bookId;
+    const selected = entries.filter(entry => inScope(entry, bookId));
+    refresh(entries);
+    if (!selected.length) { message('这个范围没有可导出的摘录。'); return; }
+    let url;
+    const link = document.createElement('a');
+    try {
+      url = URL.createObjectURL(new Blob([markdown(selected)], {type:'text/markdown;charset=utf-8'}));
+      link.href = url;
+      const label = scope.value === 'book' ? books.get(bookId).title : '筛选结果';
+      link.download = '地球Online-摘录-' + label + '-' + new Date().toISOString().slice(0, 10) + '.md';
+      link.hidden = true;
+      document.body.append(link);
+      link.click();
+      message('已发起下载，共 ' + selected.length + ' 段原文摘录。');
+    } catch (error) {
+      message('未能生成摘录文件，请重试。');
+    } finally {
+      link.remove();
+      if (url) setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+  });
+  return refresh;
+}
+
 (() => {
  'use strict';
  // Text offsets survive reflow, changed fonts and a different reader layout.
@@ -637,9 +734,10 @@ function createEarthClippings(adapter, store, render, message) {
   const capacityMessage='合并后的书签超过 500 枚，操作暂存在本页，已有书签保持原样。请先导出备份，再删除不再需要的书签。';
   function message(text){status.textContent=text;toast.textContent=text;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{toast.hidden=true},4200);}
   const clips=createEarthClippings(adapter,store,render,message);
+  const refreshExport=createEarthQuoteExport(panel,adapter,allEntries,matches,message);
   function syncButton(entries){const current=adapter.current(),found=entries.some(e=>e.kind!=='clip'&&e.bookId===current.bookId&&e.section===current.section);add.textContent=found?'更新书签':'存书签';add.title=found?'更新本节书签到当前位置':'保存当前位置为书签';add.setAttribute('aria-label',add.title);}
   function render(){
-   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit]);if(next===signature)return;signature=next;
+   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit,adapter.current().bookId]);if(next===signature)return;signature=next;refreshExport(entries);
    const previousScroll=list.scrollTop;panel.querySelector('[data-bookmark-count]').textContent=entries.length?' · '+entries.length:'';list.replaceChildren();
    controls.hidden=!entries.length&&!query&&scope.value==='all';resultCount.hidden=controls.hidden;
    clear.disabled=!query&&scope.value==='all'&&!search.value;
@@ -863,7 +961,7 @@ function createReaderGameNavigation() {
   return {mode, carryTo, mount};
 }
 
-const bookmarkBooks=[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath":"html/yijing.html"},{"id":"daodejing","title":"道德经","sectionCount":81,"htmlPath":"html/daodejing.html"},{"id":"zhuangzi","title":"庄子","sectionCount":33,"htmlPath":"html/zhuangzi.html"},{"id":"bazi","title":"四柱八字","sectionCount":14,"htmlPath":"html/bazi.html"},{"id":"neijing","title":"黄帝内经","sectionCount":166,"htmlPath":"html/neijing.html"},{"id":"yunqi","title":"五运六气","sectionCount":7,"htmlPath":"html/yunqi.html"},{"id":"mao","title":"毛泽东选集","sectionCount":1960,"htmlPath":"html/mao.html"},{"id":"sunzi","title":"孙子兵法","sectionCount":13,"htmlPath":"html/sunzi.html"},{"id":"yinfu","title":"阴符经","sectionCount":4,"htmlPath":"html/yinfu.html"},{"id":"qiti","title":"炁体源流","sectionCount":512,"htmlPath":"html/qiti.html"}];const pageJumpVolumes=[{"id":"full","label":"黄帝阴符经","sectionCount":4,"pages":null}];
+const bookmarkBooks=[{"id":"yijing","title":"易经","edition":"易经","sectionCount":69,"htmlPath":"html/yijing.html"},{"id":"daodejing","title":"道德经","edition":"道德经","sectionCount":81,"htmlPath":"html/daodejing.html"},{"id":"zhuangzi","title":"庄子","edition":"庄子","sectionCount":33,"htmlPath":"html/zhuangzi.html"},{"id":"bazi","title":"四柱八字","edition":"四柱八字 · 子平真诠评注","sectionCount":14,"htmlPath":"html/bazi.html"},{"id":"neijing","title":"黄帝内经","edition":"黄帝内经 · 素问与灵枢经","sectionCount":166,"htmlPath":"html/neijing.html"},{"id":"yunqi","title":"五运六气","edition":"五运六气 · 素问运气七篇","sectionCount":7,"htmlPath":"html/yunqi.html"},{"id":"mao","title":"毛泽东选集","edition":"毛泽东选集","sectionCount":1960,"htmlPath":"html/mao.html"},{"id":"sunzi","title":"孙子兵法","edition":"孙子兵法","sectionCount":13,"htmlPath":"html/sunzi.html"},{"id":"yinfu","title":"阴符经","edition":"黄帝阴符经","sectionCount":4,"htmlPath":"html/yinfu.html"},{"id":"qiti","title":"炁体源流","edition":"炁体源流","sectionCount":512,"htmlPath":"html/qiti.html"}];const pageJumpVolumes=[{"id":"full","label":"黄帝阴符经","sectionCount":4,"pages":null}];
 (() => {
   'use strict';
   const bookId = "yinfu";

@@ -1,6 +1,6 @@
 ---
 name: earth-online-playtest
-description: 验收地球 Online 的战报分享、从指定站点练习、原文搜索和摘录定位。在调整远征回放、阅读存储或离线版本时使用。
+description: 验收地球 Online 的战报、分站练习与对照、原文检索、摘录定位及下载。在调整远征回放、阅读存储或离线版本时使用。
 ---
 
 # 地球 Online 游玩验收
@@ -16,9 +16,13 @@ description: 验收地球 Online 的战报分享、从指定站点练习、原�
 | 从回放接手 | `npm run test:practice` | 接收方先有进行中的远征，再从朋友战报的中间站开始练习。选择不同路线、走到结局并退出。比对原回放站点及接收方正式存档。 |
 | 保存原文摘录 | `npm run test:clippings` | 在同章保存两段原文，与旧章节书签一并导出后恢复。从手册和独立全书进入摘录，对照高亮原句。用重复语句检查前后文，无法确定位置时核对界面提示。 |
 | 多词与键盘 | `npm run test:search`、`npm run test:a11y` | 测试简繁查询、多个词同章及键盘焦点。使用窄屏，并在断网的 `file://` 页面验证本地交互。 |
+| 练习逐站对照 | `npm run test:compare` | 从已知行动记录选一站改走支线。核对默认显示的分歧站、两边的选择及站末资源，再到其中一方已经归营的站。用键盘返回原回放，比较进入前后的正式存档。 |
+| Markdown 摘录 | `npm run test:quote-export` | 准备两本书的摘录和普通书签。执行筛选并点击导出，从浏览器实际下载的文件字节解析 CommonMark；核对书名、章名、完整引文和条数，再检查无匹配时的反馈。 |
 
 改动涉及共享引擎或保存逻辑时，运行 `npm test`。若浏览器验收失败，保留输入、界面状态和失败断言，核对成品是否重建，再判断是选择器失效还是玩家操作被打断。反馈中区分已在本机验证和已在公网验证的结果。
 
 改动涉及路线重演或文本锚点时，运行 `npm run test:properties`。用正向游戏过程记录的入站状态校验回放重建，用已知文本偏移校验引文定位。失败后将 fast-check 输出的种子和收缩路径填入 `FC_SEED`、`FC_PATH`，并把 `FC_CASE` 设为失败的用例名再运行。工具与设计来源见[项目评估](../../../outputs/github-review-v2.5.html)。
 
 浏览器验收采用 Playwright Test Planner 的场景规划方法及 webapp-testing 的浏览器侦察方法。[Playwright Test Agents](https://github.com/microsoft/playwright/blob/main/docs/src/test-agents-js.md) · [webapp-testing](https://github.com/anthropics/skills/tree/main/skills/webapp-testing)
+
+对照与导出用例采用“准备、操作、断言”的结构。让断言读取玩家看到的字段或拿到的文件，为每个流程保留一个结果容易被算错的反例。[JavaScript Testing Patterns 固定来源](https://github.com/wshobson/agents/blob/c96b5f6552dba32e4492307493ee613581430715/plugins/javascript-typescript/skills/javascript-testing-patterns/SKILL.md)

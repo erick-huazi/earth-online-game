@@ -50,6 +50,10 @@
 @media(max-width:550px){.bookmark-toolbar{display:block;position:relative}.bookmark-toolbar>.bookmark-add{position:absolute;right:0;top:0;margin-top:0}.bookmark-toolbar .bookmark-panel>summary{padding-right:85px}}
 .bookmark-toolbar{align-items:flex-start}.bookmark-toolbar .bookmark-panel{min-width:0}.bookmark-toolbar>.bookmark-add{margin-top:5px}.bookmark-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,.6fr);gap:5px 12px;margin:5px 0 12px}.bookmark-filters>label:first-child{grid-column:1}.bookmark-search-row{display:flex;gap:6px;grid-column:1;grid-row:2}.bookmark-scope-field{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;gap:5px}.bookmark-filters :is(input,select,button),.bookmark-more{min-width:0;min-height:44px;border:1px solid var(--paper-line,var(--line));border-radius:2px;background:var(--appearance-control,var(--paper));color:inherit;font:12px/1.6 var(--sans);padding:8px}.bookmark-filters input{width:100%;flex:1}.bookmark-filters input::placeholder{color:var(--paper-muted,var(--muted));opacity:1}.bookmark-filters button{flex:0 0 auto;min-width:44px}.bookmark-filters button:disabled{opacity:.5;cursor:default}.bookmark-more{width:100%;margin-top:8px}.bookmark-scope-field select{width:100%}@media(max-width:550px){.bookmark-filters{grid-template-columns:minmax(0,1fr)}.bookmark-scope-field{grid-column:1;grid-row:3}.bookmark-filters :is(input,select){font-size:16px}}
 .clipping-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:start}
+.quote-export{display:flex;flex-wrap:wrap;align-items:end;gap:8px;margin:12px 0}
+.quote-export label{display:grid;gap:3px;min-width:0;max-width:100%}
+.quote-export :is(select,button){min-width:0;max-width:100%;min-height:44px;padding:6px 10px;border:1px solid var(--paper-line,var(--line));border-radius:2px;background:var(--appearance-control,var(--paper));font:inherit;color:inherit}
+.quote-export button:disabled{opacity:.55}
 .clipping-row .bookmark-open span{white-space:pre-wrap;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .clipping-row [data-clip-other]{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px}
 @media(max-width:550px){
@@ -172,7 +176,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section id="progress" class="progress-section" aria-labelledby="progress-heading"><div><h2 id="progress-heading">每一次思考，都算进度。</h2><p>“已探索”是你留下的阅读标记。<br>把书读进生活，才是这份手册的下一页。</p></div><div><div class="progress-meta"><div class="progress-count"><span id="completed-count">0</span><small> / 10</small></div><span class="progress-label" id="progress-label">尚未留下探索标记</span></div><div class="progress-track" role="progressbar" aria-label="典籍探索进度" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div><div class="progress-bottom"><p class="small-caption" id="archive-note">进度与心得保存在本机，随时导出留存。</p><button class="export-button" id="export-button" type="button">导出我的阅读存档 ↓</button></div></div></section>
 <details class="archive-tools" id="archive-tools"><summary>备份与恢复阅读记录</summary><p>下载完整备份，可在其他浏览器恢复心得、探索标记、阅读位置、书签、摘录与配色。恢复前可预览；本机已有记录优先保留。全书页导出的书签与摘录也可在这里合并。</p><div class="archive-actions"><button type="button" class="btn" id="archive-export">下载完整备份 ↓</button><button type="button" class="btn" id="archive-select">选择备份文件</button><input type="file" id="archive-file" accept=".json,application/json" hidden><button type="button" class="btn btn-primary" id="archive-apply" hidden disabled>合并恢复记录</button></div><p id="archive-status" role="status">JSON 备份可用于恢复；“导出我的阅读存档”仍保留为可阅读的 Markdown 文件。</p></details>
 <aside class="rules" aria-labelledby="rules-heading"><h2 id="rules-heading">进入世界之前</h2><p>本手册以游戏语言组织阅读。“四柱八字”与“五运六气”对应相关原典，图片未提供可确定的同名书版本。传统命理、修炼与医理内容宜结合历史语境和现代知识辨析；阅读心得不替代医疗建议，也不提供命运预测。原文与 PDF 已从 GitHub 下载至本地书库，导语与小任务为原创阅读辅助。</p></aside>
-<footer class="footer"><span><strong>地球 ONLINE · 通关手册</strong> / 阅读地图 2026</span><span><a href="deep-optimization-checklist.html" target="_blank" rel="noopener">本轮优化清单 ↗</a> · <a href="github-optimization-report.html" target="_blank" rel="noopener">GitHub 选型评分与优化记录 ↗</a></span></footer>
+<footer class="footer"><span><strong>地球 ONLINE · 通关手册</strong> / 阅读地图 2026</span><span><a href="github-review-v2.6.html">v2.6 项目与技能评分</a> · <a href="deep-optimization-checklist.html" target="_blank" rel="noopener">历史优化清单 ↗</a> · <a href="github-optimization-report.html" target="_blank" rel="noopener">GitHub 选型评分与优化记录 ↗</a></span></footer>
 </main><div id="live-message" class="status-live" aria-live="polite"></div><div class="toast" id="toast" hidden role="status"></div><noscript><p style="padding:24px">请启用浏览器 JavaScript 以显示书目和记录阅读进度。</p></noscript>
 <script>
 'use strict';
@@ -1202,6 +1206,99 @@ function createEarthClippings(adapter, store, render, message) {
   return {highlight, link, incoming};
 }
 
+// Produce portable notes from the saved quote, including when its source edition has changed.
+function createEarthQuoteExport(panel, adapter, readEntries, matches, message) {
+  'use strict';
+  const controls = document.createElement('div');
+  controls.className = 'quote-export';
+  controls.innerHTML = '<label>导出摘录范围<select data-clip-export-scope><option value="filtered"></option><option value="book"></option></select></label><button data-clip-export type="button">下载 Markdown</button>';
+  panel.querySelector('[data-bookmark-more]').after(controls);
+  const scope = controls.querySelector('select');
+  const button = controls.querySelector('button');
+  const books = new Map(adapter.books.map(book => [book.id, book]));
+
+  function inScope(entry, bookId) {
+    return entry.kind === 'clip' && (scope.value === 'book' ? entry.bookId === bookId : matches(entry));
+  }
+  function refresh(entries) {
+    const book = books.get(adapter.current().bookId);
+    const clips = entries.filter(entry => entry.kind === 'clip');
+    const count = clips.filter(matches).length;
+    const bookCount = clips.filter(entry => entry.bookId === book.id).length;
+    scope.options[0].textContent = '当前筛选（' + count + ' 段）';
+    scope.options[1].textContent = '正在读的《' + book.title + '》（' + bookCount + ' 段）';
+    button.disabled = (scope.value === 'book' ? bookCount : count) === 0;
+  }
+
+  // Escape Markdown syntax before inserting our own markup. Indentation in
+  // source text must stay inside the quote, including tabs and leading spaces.
+  function literal(line) {
+    return line.replace(/[!-\/:-@\[-`{-~]/g, '\\$&')
+      .replace(/\t/g, '&#9;').replace(/^ +| +$/g, spaces => '&#32;'.repeat(spaces.length));
+  }
+  function quotation(text) {
+    const normalized = text.replace(/\r\n?/g, '\n');
+    const trailing = normalized.match(/\n+$/)?.[0].length || 0;
+    const body = normalized.slice(0, normalized.length - trailing);
+    return body.split('\n').map(line => '> ' + literal(line)).join('\\\n') + '&#10;'.repeat(trailing);
+  }
+  function chapterLabel(entry) {
+    return entry.title.replace(/[\r\n]+/g, ' ').trim() || '第 ' + (entry.section + 1) + ' 阅读节';
+  }
+  function markdown(entries) {
+    const blocks = ['# 地球 Online · 原文摘录'];
+    for (const book of adapter.books) {
+      const quotes = entries.filter(entry => entry.bookId === book.id)
+        .sort((a, b) => a.section - b.section || a.anchor.start - b.anchor.start || a.anchor.end - b.anchor.end);
+      if (!quotes.length) continue;
+      const edition = '《' + literal(book.edition || book.title) + '》';
+      blocks.push('## ' + edition);
+      let citation = '';
+      let section = -1;
+      for (const entry of quotes) {
+        if (entry.section !== section) {
+          if (citation) blocks.push(citation);
+          section = entry.section;
+          const chapter = literal(chapterLabel(entry));
+          const url = 'https://39.107.91.13/earth-online/html/' + encodeURIComponent(book.id) + '.html#section-' + section;
+          blocks.push('### ' + chapter);
+          citation = '出处：[' + edition + ' · ' + chapter + ' · 第 ' + (section + 1) + ' 阅读节](' + url + ')';
+        }
+        blocks.push(quotation(entry.anchor.exact));
+      }
+      blocks.push(citation);
+    }
+    return blocks.join('\n\n') + '\n';
+  }
+
+  scope.addEventListener('change', () => refresh(readEntries()));
+  button.addEventListener('click', () => {
+    const entries = readEntries();
+    const bookId = adapter.current().bookId;
+    const selected = entries.filter(entry => inScope(entry, bookId));
+    refresh(entries);
+    if (!selected.length) { message('这个范围没有可导出的摘录。'); return; }
+    let url;
+    const link = document.createElement('a');
+    try {
+      url = URL.createObjectURL(new Blob([markdown(selected)], {type:'text/markdown;charset=utf-8'}));
+      link.href = url;
+      const label = scope.value === 'book' ? books.get(bookId).title : '筛选结果';
+      link.download = '地球Online-摘录-' + label + '-' + new Date().toISOString().slice(0, 10) + '.md';
+      link.hidden = true;
+      document.body.append(link);
+      link.click();
+      message('已发起下载，共 ' + selected.length + ' 段原文摘录。');
+    } catch (error) {
+      message('未能生成摘录文件，请重试。');
+    } finally {
+      link.remove();
+      if (url) setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+  });
+  return refresh;
+}
+
 (() => {
  'use strict';
  // Text offsets survive reflow, changed fonts and a different reader layout.
@@ -1235,9 +1332,10 @@ function createEarthClippings(adapter, store, render, message) {
   const capacityMessage='合并后的书签超过 500 枚，操作暂存在本页，已有书签保持原样。请先导出备份，再删除不再需要的书签。';
   function message(text){status.textContent=text;toast.textContent=text;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{toast.hidden=true},4200);}
   const clips=createEarthClippings(adapter,store,render,message);
+  const refreshExport=createEarthQuoteExport(panel,adapter,allEntries,matches,message);
   function syncButton(entries){const current=adapter.current(),found=entries.some(e=>e.kind!=='clip'&&e.bookId===current.bookId&&e.section===current.section);add.textContent=found?'更新书签':'存书签';add.title=found?'更新本节书签到当前位置':'保存当前位置为书签';add.setAttribute('aria-label',add.title);}
   function render(){
-   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit]);if(next===signature)return;signature=next;
+   const entries=allEntries();syncButton(entries);const next=JSON.stringify([entries,query,scope.value,visibleLimit,adapter.current().bookId]);if(next===signature)return;signature=next;refreshExport(entries);
    const previousScroll=list.scrollTop;panel.querySelector('[data-bookmark-count]').textContent=entries.length?' · '+entries.length:'';list.replaceChildren();
    controls.hidden=!entries.length&&!query&&scope.value==='all';resultCount.hidden=controls.hidden;
    clear.disabled=!query&&scope.value==='all'&&!search.value;
@@ -1514,7 +1612,7 @@ function createEarthClippings(adapter, store, render, message) {
 
 state=readLatestManual();noteBases={...state.notes};applyReadingEntry();makeNav();renderBook();renderStorage();
 mountEarthBookmarks({
- books:[{"id":"yijing","title":"易经","sectionCount":69,"htmlPath":"html/yijing.html"},{"id":"daodejing","title":"道德经","sectionCount":81,"htmlPath":"html/daodejing.html"},{"id":"zhuangzi","title":"庄子","sectionCount":33,"htmlPath":"html/zhuangzi.html"},{"id":"bazi","title":"四柱八字","sectionCount":14,"htmlPath":"html/bazi.html"},{"id":"neijing","title":"黄帝内经","sectionCount":166,"htmlPath":"html/neijing.html"},{"id":"yunqi","title":"五运六气","sectionCount":7,"htmlPath":"html/yunqi.html"},{"id":"mao","title":"毛泽东选集","sectionCount":1960,"htmlPath":"html/mao.html"},{"id":"sunzi","title":"孙子兵法","sectionCount":13,"htmlPath":"html/sunzi.html"},{"id":"yinfu","title":"阴符经","sectionCount":4,"htmlPath":"html/yinfu.html"},{"id":"qiti","title":"炁体源流","sectionCount":512,"htmlPath":"html/qiti.html"}],
+ books:[{"id":"yijing","title":"易经","edition":"易经","sectionCount":69,"htmlPath":"html/yijing.html"},{"id":"daodejing","title":"道德经","edition":"道德经","sectionCount":81,"htmlPath":"html/daodejing.html"},{"id":"zhuangzi","title":"庄子","edition":"庄子","sectionCount":33,"htmlPath":"html/zhuangzi.html"},{"id":"bazi","title":"四柱八字","edition":"四柱八字 · 子平真诠评注","sectionCount":14,"htmlPath":"html/bazi.html"},{"id":"neijing","title":"黄帝内经","edition":"黄帝内经 · 素问与灵枢经","sectionCount":166,"htmlPath":"html/neijing.html"},{"id":"yunqi","title":"五运六气","edition":"五运六气 · 素问运气七篇","sectionCount":7,"htmlPath":"html/yunqi.html"},{"id":"mao","title":"毛泽东选集","edition":"毛泽东选集","sectionCount":1960,"htmlPath":"html/mao.html"},{"id":"sunzi","title":"孙子兵法","edition":"孙子兵法","sectionCount":13,"htmlPath":"html/sunzi.html"},{"id":"yinfu","title":"阴符经","edition":"黄帝阴符经","sectionCount":4,"htmlPath":"html/yinfu.html"},{"id":"qiti","title":"炁体源流","edition":"炁体源流","sectionCount":512,"htmlPath":"html/qiti.html"}],
  carryTo:readingGame.carryTo,
  current:()=>({bookId:state.selected,section:sectionIndex(),title:localItem().sections[sectionIndex()].title,element:$('fulltext-content')}),
  line:()=>$('text-reading').getBoundingClientRect().top+25,

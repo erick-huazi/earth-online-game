@@ -37,3 +37,13 @@ jobs:
           npm run test:properties
           npm run test:practice
           npm run test:clippings
+          npm run test:compare
+          npm run test:quote-export
+      - name: 核对离线包可重复生成
+        run: |
+          python3 work/package-library.py
+          sha256sum outputs/earth-online-offline-library.zip > "$RUNNER_TEMP/earth-library.sha256"
+          touch -t 200001010000 outputs/earth-online-game.html
+          python3 work/package-library.py
+          sha256sum -c "$RUNNER_TEMP/earth-library.sha256"
+          git diff --exit-code -- outputs/

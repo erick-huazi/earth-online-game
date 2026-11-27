@@ -37,3 +37,7 @@
 ## v2.5 属性测试
 
 fast-check 4.11.0（MIT）及其间接依赖 pure-rand 用于开发和持续集成。生成测试覆盖可重现的分叉与原文锚定；版本和 npm 完整性值见 package-lock.json。[固定上游源码](https://github.com/dubzzz/fast-check/tree/60d68efc639aba994f489bd0dedeceba2be4cf51)
+
+## v2.6 摘录导出验收
+
+开发与 CI 使用 commonmark 0.31.2 解析实际下载的 Markdown，校验章节和引文结构。依赖及完整性值见 package-lock.json。[CommonMark.js 固定源码](https://github.com/commonmark/commonmark.js/tree/cb2c2303d3550ec6ef28ceb2841f148e8761eebf) · [上游许可证](https://github.com/commonmark/commonmark.js/blob/cb2c2303d3550ec6ef28ceb2841f148e8761eebf/LICENSE)

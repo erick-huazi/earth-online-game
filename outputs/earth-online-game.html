@@ -109,6 +109,18 @@
 .exp-practice-result dt { font-weight: 600; }
 .exp-practice-result dd { margin: 0; }
 #exp-practice-return { margin-top: 12px; }
+.exp-station-compare { min-width: 0; padding: 0 10px; border: 1px solid #a7b098; border-radius: 4px; color: #293528; font-size: 15px; }
+.exp-station-compare summary { padding: 12px 0; cursor: pointer; font-weight: 700; color: inherit; }
+.exp-station-compare summary span { display: inline-block; margin-inline-start: .6em; color: #485541; font-size: 13px; font-weight: 400; }
+.exp-station-compare label { display: block; margin-bottom: 4px; }
+.exp-station-compare select { box-sizing: border-box; width: 100%; min-height: 44px; padding: 5px 8px; background: #f6f2e6; color: #273d2a; border: 1px solid #838f74; border-radius: 3px; font: inherit; }
+.exp-compare-choices { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; margin: 12px 0; }
+.exp-compare-choices dt { color: #485541; }
+.exp-compare-choices dd { margin: 0; }
+.exp-station-compare table { width: 100%; margin-bottom: 12px; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.exp-station-compare caption { padding: 4px 0; text-align: left; font-weight: 700; }
+.exp-station-compare th, .exp-station-compare td { padding: 4px; border-bottom: 1px solid #bac1ab; text-align: right; }
+.exp-station-compare th:first-child { text-align: left; }
 </style></head>
 <body>
 <noscript><p style="padding:24px;color:#ede9d9;background:#141e1a">山河远征需要启用 JavaScript 才能游玩；典籍手册的正文仍可直接阅读。</p></noscript>
@@ -131,7 +143,7 @@
    <div id="exp-play" hidden><div class="exp-board-top"><span id="exp-run-name"></span><div class="exp-toolbar"><button id="exp-export" class="exp-small-button">导出续局</button><button id="exp-new" class="exp-small-button">另开一局</button></div></div><div id="exp-track" class="exp-track" aria-label="远征进度"></div><div id="exp-resources" class="exp-resources" aria-label="当前资源"></div><div id="exp-relic-strip" class="exp-relic-strip" aria-label="已得书印"></div><div id="exp-stage"></div></div>
    <div class="exp-board-foot"><span>资源归零则归营 · 走完十二站结算</span><button id="exp-rules-open" class="exp-small-button">玩法与计分</button></div>
   </div>
-  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="github-review-v2.5.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
+  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="github-review-v2.6.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
  </div>
  <p id="exp-status" class="exp-status" role="status" aria-live="polite"></p>
 </section>
@@ -4143,6 +4155,82 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
       });
       stage.append(button);
     }
+    function sealAfter(journey, station) {
+      if (station !== 4 && station !== 8) return null;
+      return engine.relics.find(seal => seal.id === journey.relics[station / 4])?.name || null;
+    }
+    function stationDifference(station) {
+      const trial = run.history[station - 1], original = source.history[station - 1];
+      if (!trial) return '仅原局到达';
+      if (!original) return '仅练习到达';
+      if (trial.routeId !== original.routeId) return '路线不同';
+      if (trial.eventId !== original.eventId) return '遭遇不同';
+      if (trial.choice !== original.choice) return '行动不同';
+      if (sealAfter(run, station) !== sealAfter(source, station)) return '书印不同';
+      return '';
+    }
+    function appendStationComparison() {
+      const details = element('details', '');
+      details.className = 'exp-station-compare';
+      const select = element('select', '');
+      select.id = 'exp-compare-station';
+      const lastStation = Math.max(run.turn, source.turn);
+      let firstDifference;
+      for (let station = startStation; station <= lastStation; station++) {
+        const difference = stationDifference(station);
+        if (difference && firstDifference === undefined) firstDifference = station;
+        select.add(new Option('第 ' + station + ' 站' + (difference ? ' · ' + difference : ''), String(station)));
+      }
+      const summary = element('summary', '逐站对照');
+      summary.append(element('span', firstDifference === undefined ? '两次行程选择一致' : '首次不同在第 ' + firstDifference + ' 站'));
+      select.value = String(firstDifference ?? startStation);
+      const label = element('label', '查看站点');
+      label.htmlFor = select.id;
+      const choices = element('dl', '');
+      choices.className = 'exp-compare-choices';
+      const table = element('table', '');
+      table.createCaption().textContent = '站末资源与本站见识';
+      const header = table.createTHead().insertRow();
+      for (const name of ['项目', '练习', '原局', '练习减原局']) {
+        const cell = element('th', name);
+        cell.scope = 'col';
+        header.append(cell);
+      }
+      const body = table.createTBody();
+      function showStation() {
+        const station = Number(select.value);
+        choices.replaceChildren();
+        for (const [name, journey] of [['本次练习', run], ['原局回放', source]]) {
+          const step = journey.history[station - 1];
+          const description = element('dd', '');
+          if (step) {
+            description.append(element('strong', step.routeTitle + ' · ' + step.title), element('p', step.label));
+            const seal = sealAfter(journey, station);
+            if (seal) description.append(element('p', '收下书印「' + seal + '」'));
+          } else {
+            description.textContent = '已在第 ' + journey.turn + ' 站归营 · ' + journey.ending.title;
+          }
+          choices.append(element('dt', name), description);
+        }
+        const trial = run.history[station - 1], original = source.history[station - 1];
+        body.replaceChildren();
+        for (const [key, name] of Object.entries({...resourceNames, insight: '本站见识'})) {
+          const row = body.insertRow();
+          const heading = element('th', name);
+          heading.scope = 'row';
+          row.append(heading);
+          const value = step => key === 'insight' ? step?.insight : step?.resources[key];
+          const a = value(trial), b = value(original);
+          row.insertCell().textContent = a ?? '—';
+          row.insertCell().textContent = b ?? '—';
+          row.insertCell().textContent = trial && original ? signed(a - b) : '—';
+        }
+      }
+      select.addEventListener('change', showStation);
+      showStation();
+      details.append(summary, label, select, choices, table);
+      stage.append(details);
+    }
     function render() {
       const atChoice = run.phase === 'route' || run.phase === 'event';
       const station = atChoice ? run.turn + 1 : run.turn;
@@ -4190,6 +4278,8 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
           comparison.append(element('dt', name), element('dd', summary.title + ' · ' + summary.turn + ' 站 · ' + summary.score + ' 分'));
         }
         stage.append(comparison);
+        stage.append(element('p', '练习得分较原局 ' + signed(branch.score - replay.score) + ' 分'));
+        appendStationComparison();
         action('retry', '从第 ' + startStation + ' 站再试一次', '', () => engine.stationStart(source, startStation));
       }
       title.focus();

@@ -102,3 +102,15 @@
 .exp-practice-result dt { font-weight: 600; }
 .exp-practice-result dd { margin: 0; }
 #exp-practice-return { margin-top: 12px; }
+.exp-station-compare { min-width: 0; padding: 0 10px; border: 1px solid #a7b098; border-radius: 4px; color: #293528; font-size: 15px; }
+.exp-station-compare summary { padding: 12px 0; cursor: pointer; font-weight: 700; color: inherit; }
+.exp-station-compare summary span { display: inline-block; margin-inline-start: .6em; color: #485541; font-size: 13px; font-weight: 400; }
+.exp-station-compare label { display: block; margin-bottom: 4px; }
+.exp-station-compare select { box-sizing: border-box; width: 100%; min-height: 44px; padding: 5px 8px; background: #f6f2e6; color: #273d2a; border: 1px solid #838f74; border-radius: 3px; font: inherit; }
+.exp-compare-choices { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; margin: 12px 0; }
+.exp-compare-choices dt { color: #485541; }
+.exp-compare-choices dd { margin: 0; }
+.exp-station-compare table { width: 100%; margin-bottom: 12px; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.exp-station-compare caption { padding: 4px 0; text-align: left; font-weight: 700; }
+.exp-station-compare th, .exp-station-compare td { padding: 4px; border-bottom: 1px solid #bac1ab; text-align: right; }
+.exp-station-compare th:first-child { text-align: left; }

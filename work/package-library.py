@@ -1,4 +1,6 @@
 from pathlib import Path
+from datetime import date
+from tempfile import NamedTemporaryFile
 import zipfile
 import json
 import re
@@ -72,6 +74,8 @@ readme = '''地球 Online · 山河远征 v__GAME_VERSION__ / 游戏与完整典
 17. 在阅读工具中输入检索词，用命中导航逐处跳转。
 18. 打开一份回放，选择要练习的站点，可以从本站重新选路。结束练习后可返回原回放。
 19. 在章节正文中选择想留下的文字，保存为摘录。以后可从摘录列表返回原段。
+20. 练习结算后可逐站对照原局，查看路线、行动与资源。
+21. 在书签与摘录面板可选范围导出 Markdown，保留原文与出处。
 
 经典剧情与原典
 1. 点击“进入经典剧情 · 33场故事”，仍可探索十境与归途终章，共33场原创情境、99个选项；每境三题，达到4/6点领悟即可解锁下一境。
@@ -85,23 +89,35 @@ readme = '''地球 Online · 山河远征 v__GAME_VERSION__ / 游戏与完整典
 
 ''' + readme
 readme = readme.replace('__GAME_VERSION__', version).replace('__GAME_DATE__', release_date)
-(out / '使用说明.txt').write_text(readme, encoding='utf-8')
+(out / '使用说明.txt').write_text(readme, encoding='utf-8', newline='\n')
 archive = out / 'earth-online-offline-library.zip'
-files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt', out / 'github-review-v2.5.html', out / 'github-review-v2.4.html', out / 'github-review-v2.3.html', out / 'game-research-v2.html', out / 'game-research-v2.json', out / 'game-third-party-notices.txt'] + sorted((out / 'books').rglob('*')) + sorted((out / 'html').rglob('*.html'))
-files = [p for p in files if p.is_file() and not p.name.endswith('.part')]
-with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=5, allowZip64=True) as z:
-    for p in files:
-        z.write(p, p.relative_to(out).as_posix())
-with zipfile.ZipFile(archive) as z:
-    corrupt = z.testzip()
-    if corrupt:
-        raise RuntimeError('Archive integrity error: ' + corrupt)
-    names = set(z.namelist())
-    assert 'earth-online-manual.html' in names
-    assert {'game-research-v2.html', 'game-research-v2.json', 'game-third-party-notices.txt'} <= names
-    catalog = json.loads((out / 'books' / 'download-catalog.json').read_text(encoding='utf-8'))
-    for b in catalog['books']:
-        assert b['htmlPath'] in names, b['htmlPath']
-        for f in b['files']:
-            assert f['path'] in names, f['path']
+files = [out / 'index.html', out / 'earth-online-game.html', out / 'earth-online-manual.html', out / '使用说明.txt', out / 'github-optimization-report.html', out / 'github-optimization-report.md', out / 'github-optimization-evidence.json', out / 'deep-optimization-checklist.html', out / 'deep-optimization-checklist.md', out / 'search-normalization-sources.json', out / '第三方许可-检索字表.txt', out / 'github-review-v2.6.html', out / 'github-review-v2.5.html', out / 'github-review-v2.4.html', out / 'github-review-v2.3.html', out / 'game-research-v2.html', out / 'game-research-v2.json', out / 'game-third-party-notices.txt']
+files += [p for p in (out / 'books').rglob('*') if p.is_file() and not p.name.endswith('.part')]
+files += list((out / 'html').glob('*.html'))
+files.sort(key=lambda p: p.relative_to(out).as_posix())
+day = date.fromisoformat(release_date)
+stamp = (day.year, day.month, day.day, 0, 0, 0)
+with NamedTemporaryFile(dir=out, prefix='offline-library-', suffix='.part', delete=False) as temp:
+    candidate = Path(temp.name)
+
+try:
+    with zipfile.ZipFile(candidate, 'w') as z:
+        for path in files:
+            entry = zipfile.ZipInfo(path.relative_to(out).as_posix(), stamp)
+            entry.create_system = 3
+            entry.external_attr = 0o100644 << 16
+            z.writestr(entry, path.read_bytes(), compress_type=zipfile.ZIP_DEFLATED, compresslevel=5)
+    with zipfile.ZipFile(candidate) as z:
+        corrupt = z.testzip()
+        if corrupt:
+            raise RuntimeError('Archive integrity error: ' + corrupt)
+        names = set(z.namelist())
+        catalog = json.loads((out / 'books' / 'download-catalog.json').read_text(encoding='utf-8'))
+        for book in catalog['books']:
+            for name in [book['htmlPath'], *(file['path'] for file in book['files'])]:
+                if name not in names:
+                    raise ValueError('Missing book file: ' + name)
+    candidate.replace(archive)
+finally:
+    candidate.unlink(missing_ok=True)
 print(json.dumps({'archive': str(archive), 'bytes': archive.stat().st_size, 'files': len(files), 'integrity': 'passed'},ensure_ascii=False))

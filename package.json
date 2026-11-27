@@ -1,12 +1,14 @@
 {
   "name": "earth-online-game",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": true,
   "description": "地球 Online · 山河远征：短局资源策略、同图挑战与完整典籍阅读",
   "scripts": {
     "build": "node work/build.cjs && node work/build-game.cjs",
     "build:game": "node work/build-game.cjs",
-    "test": "node work/qa-earth-game.cjs && node work/qa-expedition-engine.cjs && node work/qa-expedition-browser.cjs && node work/qa-reading-return.cjs && npm run test:search && npm run test:a11y && npm run test:sharing && npm run test:occurrence && npm run test:practice && npm run test:clippings && npm run test:properties",
+    "test": "node work/qa-earth-game.cjs && node work/qa-expedition-engine.cjs && node work/qa-expedition-browser.cjs && node work/qa-reading-return.cjs && npm run test:search && npm run test:a11y && npm run test:sharing && npm run test:occurrence && npm run test:practice && npm run test:clippings && npm run test:properties && npm run test:compare && npm run test:quote-export",
+    "test:compare": "node work/qa-compare.cjs",
+    "test:quote-export": "node work/qa-quote-export.cjs",
     "test:search": "node work/qa-ranked-search.cjs",
     "test:sharing": "node work/qa-replay.cjs && node work/qa-share-qr.cjs",
     "test:practice": "node work/qa-practice.cjs",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "axe-core": "4.14.1",
+    "commonmark": "0.31.2",
     "fast-check": "4.11.0",
     "jsqr": "1.4.0",
     "playwright": "1.62.1"

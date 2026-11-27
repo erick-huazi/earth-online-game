@@ -35,9 +35,9 @@ if(template.includes('__OFFLINE_SCRIPT__')){
   if(item.kind==='text'&&(!item.sections.length||item.sections.some(s=>!s.title||!s.text||!s.text.trim())))throw new Error('Incomplete text: '+book.id);
   library[book.id]=normalizedBook(item,root);
  }
- const bookmarkBooks=books.map(book=>({id:book.id,title:book.title,sectionCount:library[book.id].sections.length,htmlPath:library[book.id].htmlPath}));
+ const bookmarkBooks=books.map(book=>({id:book.id,title:book.title,edition:library[book.id].title,sectionCount:library[book.id].sections.length,htmlPath:library[book.id].htmlPath}));
  for(const book of books)fullBook(library[book.id],book,root,bookmarkBooks);
- const enhancements=['reader-game-return.js','search-normalizer.js','find-occurrences.js','search-index.js','ranked-search.js','quote-anchor.js','bookmark-store.js','clippings.js','bookmarks.js','reading-appearance.js','page-jump.js'].map(file=>fs.readFileSync(path.join(__dirname,file),'utf8')).join('\n');
+ const enhancements=['reader-game-return.js','search-normalizer.js','find-occurrences.js','search-index.js','ranked-search.js','quote-anchor.js','bookmark-store.js','clippings.js','quote-export.js','bookmarks.js','reading-appearance.js','page-jump.js'].map(file=>fs.readFileSync(path.join(__dirname,file),'utf8')).join('\n');
  const offlineScript=fs.readFileSync(path.join(__dirname,'offline-reader.js'),'utf8').replace('__LIBRARY_DATA__',embed(library));
  template=template.replace('__OFFLINE_CSS__',()=>['offline-reader.css','bookmarks.css','reading-appearance.css','page-jump.css','search-options.css'].map(file=>fs.readFileSync(path.join(__dirname,file),'utf8')).join('\n'))
   .replace('__OFFLINE_PANE__',()=>fs.readFileSync(path.join(__dirname,'offline-pane.html'),'utf8'))
