@@ -42,6 +42,8 @@
 .recall-dialog [hidden]{display:none!important}
 .recall-dialog :focus-visible,.recall-entry :focus-visible{outline:2px solid currentColor;outline-offset:2px}
 
+.recall-actions [data-daily-canon-link]{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px;font:inherit}
+
 /* Optional reader palettes. Paper intentionally inherits the existing design. */
 body.earth-manual [data-reading-appearance],body.earth-full-book [data-reading-appearance]{margin:8px 0 16px;max-width:100%}
 .appearance-field{display:flex;align-items:center;gap:14px;max-width:100%;font-size:12px}
@@ -5517,6 +5519,14 @@ function createEarthRecall(panel, adapter, readEntries, matches) {
   const start = entry.querySelector('[data-recall-start]');
   const read = entry.querySelector('[data-recall-read]');
   const hint = entry.querySelector('[data-recall-hint]');
+  const daily = document.createElement('a');
+  daily.dataset.dailyCanonLink = '';
+  daily.href = (document.body.classList.contains('earth-full-book') ? '../' : '') + 'earth-online-game.html#daily-canon';
+  daily.textContent = '参加每日五题 ↗';
+  daily.setAttribute('aria-label', '参加每日五题（新标签页）');
+  daily.target = '_blank';
+  daily.rel = 'noopener';
+  entry.querySelector('.recall-actions').append(daily);
   const dialog = document.createElement('dialog');
   dialog.className = 'recall-dialog';
   dialog.dataset.recallDialog = '';
@@ -5848,11 +5858,14 @@ function createEarthRecall(panel, adapter, readEntries, matches) {
 function createReaderGameNavigation() {
   const params = new URLSearchParams(location.search);
   const from = params.get('from');
-  const mode = from === 'expedition' || from === 'classic' ? from : '';
+  const mode = ['expedition', 'classic', 'daily-canon'].includes(from) ? from : '';
+  const requestedDay = params.get('day') || '';
+  const day = mode === 'daily-canon' && /^\d{4}-\d{2}-\d{2}$/.test(requestedDay) ? requestedDay : '';
   const keptGameTab = Boolean(mode && params.get('gameTab') === 'kept');
 
   function carryTo(url) {
     if (mode) url.searchParams.set('from', mode);
+    if (day) url.searchParams.set('day', day);
     if (keptGameTab) url.searchParams.set('gameTab', 'kept');
     return url;
   }
@@ -5876,7 +5889,13 @@ function createReaderGameNavigation() {
       });
       return;
     }
-    if (mode) {
+    if (mode === 'daily-canon') {
+      const gameURL = new URL(link.href);
+      if (day) gameURL.searchParams.set('day', day);
+      gameURL.hash = 'daily-canon';
+      link.href = gameURL.href;
+      link.textContent = '返回每日辨典';
+    } else if (mode) {
       link.hash = mode === 'expedition' ? 'expedition' : 'classic-story';
       link.textContent = mode === 'expedition' ? '返回本次远征' : '返回经典剧情';
     }

@@ -13,6 +13,14 @@ function createEarthRecall(panel, adapter, readEntries, matches) {
   const start = entry.querySelector('[data-recall-start]');
   const read = entry.querySelector('[data-recall-read]');
   const hint = entry.querySelector('[data-recall-hint]');
+  const daily = document.createElement('a');
+  daily.dataset.dailyCanonLink = '';
+  daily.href = (document.body.classList.contains('earth-full-book') ? '../' : '') + 'earth-online-game.html#daily-canon';
+  daily.textContent = '参加每日五题 ↗';
+  daily.setAttribute('aria-label', '参加每日五题（新标签页）');
+  daily.target = '_blank';
+  daily.rel = 'noopener';
+  entry.querySelector('.recall-actions').append(daily);
   const dialog = document.createElement('dialog');
   dialog.className = 'recall-dialog';
   dialog.dataset.recallDialog = '';

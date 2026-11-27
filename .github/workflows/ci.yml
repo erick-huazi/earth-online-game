@@ -42,6 +42,7 @@ jobs:
           npm run test:quote-export
           npm run test:history
           npm run test:recall
+          npm run test:daily-canon
       - name: 核对离线包可重复生成
         run: |
           python3 work/package-library.py

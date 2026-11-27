@@ -32,3 +32,5 @@
 .recall-dialog [data-recall-source],.recall-dialog [data-recall-result]{margin:1rem 0;overflow-wrap:anywhere;font-weight:bold}
 .recall-dialog [hidden]{display:none!important}
 .recall-dialog :focus-visible,.recall-entry :focus-visible{outline:2px solid currentColor;outline-offset:2px}
+
+.recall-actions [data-daily-canon-link]{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px;font:inherit}

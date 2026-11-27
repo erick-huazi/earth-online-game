@@ -1,11 +1,14 @@
 function createReaderGameNavigation() {
   const params = new URLSearchParams(location.search);
   const from = params.get('from');
-  const mode = from === 'expedition' || from === 'classic' ? from : '';
+  const mode = ['expedition', 'classic', 'daily-canon'].includes(from) ? from : '';
+  const requestedDay = params.get('day') || '';
+  const day = mode === 'daily-canon' && /^\d{4}-\d{2}-\d{2}$/.test(requestedDay) ? requestedDay : '';
   const keptGameTab = Boolean(mode && params.get('gameTab') === 'kept');
 
   function carryTo(url) {
     if (mode) url.searchParams.set('from', mode);
+    if (day) url.searchParams.set('day', day);
     if (keptGameTab) url.searchParams.set('gameTab', 'kept');
     return url;
   }
@@ -29,7 +32,13 @@ function createReaderGameNavigation() {
       });
       return;
     }
-    if (mode) {
+    if (mode === 'daily-canon') {
+      const gameURL = new URL(link.href);
+      if (day) gameURL.searchParams.set('day', day);
+      gameURL.hash = 'daily-canon';
+      link.href = gameURL.href;
+      link.textContent = '返回每日辨典';
+    } else if (mode) {
       link.hash = mode === 'expedition' ? 'expedition' : 'classic-story';
       link.textContent = mode === 'expedition' ? '返回本次远征' : '返回经典剧情';
     }

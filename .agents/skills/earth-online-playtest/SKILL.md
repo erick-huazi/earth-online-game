@@ -1,6 +1,6 @@
 ---
 name: earth-online-playtest
-description: 验收地球 Online 的战报、练习历史与逐站对照、原文检索、摘录与辨典挑战。在调整远征回放、阅读交互或离线版本时使用。
+description: 验收地球 Online 的远征、每日辨典、摘录挑战和阅读往返。在调整游戏状态、日期规则、阅读交互或离线版本时使用。
 ---
 
 # 地球 Online 游玩验收
@@ -20,6 +20,7 @@ description: 验收地球 Online 的战报、练习历史与逐站对照、原�
 | Markdown 摘录 | `npm run test:quote-export` | 准备两本书的摘录和普通书签。执行筛选并点击导出，从浏览器实际下载的文件字节解析 CommonMark；核对书名、章名、完整引文和条数，再检查无匹配时的反馈。 |
 | 练习历史 | `npm run test:history` | 在不同阶段撤销、重做，至少一次从结局回退。核对原路重做时的资源和结局。改选后确认旧未来无法再做。退出并比较正式存档。 |
 | 辨典挑战 | `npm run test:recall` | 从没有摘录的游戏首页打开挑战，再用另一份有普通书签与摘录的档案按筛选出题。揭晓之前不能读到答案。标记一条再练，核对下一轮只出现留下的原句，退出后核对阅读记录。 |
+| 每日辨典 | `npm run test:daily-canon` | 用两个不同时区的浏览器，在同一绝对时刻走完五题，比较题句和选项顺序。首答后刷新并查看原典，验证选中的是原句，返回时日期与首答一致。冻结时钟跨过北京时间零点，原局保留原日，重新进入今日挑战才换题。 |
 
 改动涉及共享引擎或保存逻辑时，运行 `npm test`。若浏览器验收失败，保留输入、界面状态和失败断言，核对成品是否重建，再判断是选择器失效还是玩家操作被打断。反馈中区分已在本机验证和已在公网验证的结果。
 
@@ -30,3 +31,5 @@ description: 验收地球 Online 的战报、练习历史与逐站对照、原�
 对照与导出用例采用“准备、操作、断言”的结构。让断言读取玩家看到的字段或拿到的文件，为每个流程保留一个结果容易被算错的反例。[JavaScript Testing Patterns 固定来源](https://github.com/wshobson/agents/blob/c96b5f6552dba32e4492307493ee613581430715/plugins/javascript-typescript/skills/javascript-testing-patterns/SKILL.md)
 
 练习历史的模型用两摞独立记录预测每次操作之后的状态。对照当前值、可否撤销和可否重做。若生成的序列失败，把 fast-check 输出的种子与收缩路径填入 `FC_SEED` 与 `FC_PATH`，把命令序列的 replayPath 填入 `FC_COMMAND_PATH`，再执行 `node work/qa-history-model.cjs` 重现。[本轮来源与采用方式](../../../outputs/github-review-v2.7.html)
+
+每日辨典的日期边界使用 Playwright Clock 固定浏览器时刻。核对分享时取实际复制或显示供复制的文案，检查得分、结果格与日期链接；题句、出处和选项答案应留在题面。发布前读取本次运行的退出码、测试断言和线上成品哈希，再报告已验证行为。[Playwright Clock](https://github.com/microsoft/playwright/blob/26a9e470a7b3c7822084b09fb7f13902c5f37b51/docs/src/clock.md) · [Verification Before Completion](https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/verification-before-completion/SKILL.md)
