@@ -64,6 +64,25 @@ async function main() {
     const channel = process.env.PLAYWRIGHT_CHANNEL;
     browser = await chromium.launch(channel ? {channel} : {});
 
+    await check(browser, '在线与离线手册均能从阅读备份进入辨典存档，原页保留', async (page, context) => {
+      for (const root of [base, pathToFileURL(output + path.sep).href]) {
+        await page.goto(root + game);
+        await page.locator('#start-game').click();
+        await page.locator('#quest-panel[open]').waitFor();
+        await page.goto(root + manual + '#progress');
+        await page.locator('#archive-tools summary').click();
+        const popup = page.waitForEvent('popup');
+        await page.getByRole('link', {name:/打开辨典存档/}).click();
+        const archive = await popup;
+        await archive.getByRole('dialog', {name:'辨典存档'}).waitFor();
+        assert.equal(new URL(archive.url()).hash, '#canon-transfer');
+        assert.equal(await archive.locator('#quest-panel').isVisible(), false);
+        assert(await page.locator('#archive-tools').evaluate(el=>el.open));
+        await archive.close();
+        assert.equal(context.pages().length, 1);
+      }
+    });
+
     await check(browser, '全书与手册保留错题复习入口，在线和离线都能返回', async page => {
       const offline = pathToFileURL(output + path.sep).href;
       for (const root of [base, offline]) {

@@ -100,6 +100,6 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
  renderWorld();
  const destination = location.hash;
  const resumeClassic = destination === '#classic-story' ||
-   (!expeditionPriority && !['#expedition', '#daily-canon', '#canon-practice'].includes(destination) && !destination.startsWith('#run=') && !destination.startsWith('#replay='));
+   (!expeditionPriority && !['#expedition', '#daily-canon', '#canon-practice', '#canon-transfer'].includes(destination) && !destination.startsWith('#run=') && !destination.startsWith('#replay='));
  if (state.current && resumeClassic) showQuest();
 })();

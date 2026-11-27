@@ -20,6 +20,9 @@
   let overviewDay;
   let midnightTimer;
 
+  window.EarthCanonPracticePage = Object.freeze({pending: () => memoryOnly ? state : null,
+    imported: saved => { state = saved; memoryOnly = false; }});
+
   function load() {
     if (memoryOnly) return state;
     try {

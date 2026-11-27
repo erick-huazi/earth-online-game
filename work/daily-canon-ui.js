@@ -62,7 +62,8 @@
     link.replaceChildren('《' + quiz.books[card.bookId] + '》 · ' + card.title + ' ', action);
     return link;
   }
-  window.EarthDailyCanonPage = Object.freeze({sourceLink, savedRounds: () => rounds.values()});
+  window.EarthDailyCanonPage = Object.freeze({sourceLink, savedRounds: () => rounds.values(),
+    imported: saved => { for (const round of saved) if (rounds.has(round.day)) rounds.set(round.day, round); persistent = true; }});
   function shareText() {
     return quiz.share(state) + '\n' + datedURL(day, true);
   }

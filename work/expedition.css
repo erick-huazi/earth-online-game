@@ -119,16 +119,16 @@
 
 /* The daily quiz reads like a compact leaf from the accompanying books. */
 #canon-entry{display:inline-flex;align-items:center;justify-content:center;min-height:48px;text-decoration:none}
-:is(#canon-dialog,#practice-dialog){width:min(590px,calc(100vw - 28px));max-height:calc(100vh - 28px);max-height:calc(100dvh - 28px);margin:auto;padding:0;overflow:auto;background:#f2eddf;color:#28382a;overscroll-behavior:contain}
-:is(#canon-dialog,#practice-dialog) [hidden]{display:none!important}
-:is(#canon-dialog,#practice-dialog) :focus-visible{outline:3px solid #745724;outline-offset:3px}
-:is(#canon-dialog,#practice-dialog) .canon-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px clamp(18px,5vw,34px) 16px;border-bottom:1px solid #bbbba5}
-:is(#canon-dialog,#practice-dialog) h2{margin:0;font:600 clamp(27px,5vw,38px)/1.25 "Songti SC",SimSun,serif;color:#273729}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog){width:min(590px,calc(100vw - 28px));max-height:calc(100vh - 28px);max-height:calc(100dvh - 28px);margin:auto;padding:0;overflow:auto;background:#f2eddf;color:#28382a;overscroll-behavior:contain}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) [hidden]{display:none!important}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) :focus-visible{outline:3px solid #745724;outline-offset:3px}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px clamp(18px,5vw,34px) 16px;border-bottom:1px solid #bbbba5}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) h2{margin:0;font:600 clamp(27px,5vw,38px)/1.25 "Songti SC",SimSun,serif;color:#273729}
 :is(#canon-date,#practice-date),.canon-track{margin:0 0 4px;color:#526147;font-size:13px;letter-spacing:.03em}
-:is(#canon-close,#practice-close),:is(#canon-options,#practice-options) button,:is(#canon-dialog,#practice-dialog) .canon-primary{min-height:44px;border:1px solid #81896f;border-radius:3px;background:#f7f3e8;color:#29382a}
-:is(#canon-close,#practice-close){font-size:14px;padding:4px 12px}
-:is(#canon-dialog,#practice-dialog) .canon-body{padding:18px clamp(18px,5vw,34px) 24px}
-:is(#canon-dialog,#practice-dialog) .canon-track{display:flex;align-items:center;justify-content:space-between;gap:12px}
+:is(#canon-close,#practice-close,#transfer-close),:is(#canon-options,#practice-options) button,:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-primary{min-height:44px;border:1px solid #81896f;border-radius:3px;background:#f7f3e8;color:#29382a}
+:is(#canon-close,#practice-close,#transfer-close){font-size:14px;padding:4px 12px}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-body{padding:18px clamp(18px,5vw,34px) 24px}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-track{display:flex;align-items:center;justify-content:space-between;gap:12px}
 #canon-marks{display:flex;gap:4px}
 #canon-marks i{width:14px;height:5px;background:#c7c9b6}
 #canon-marks .right{background:#41664b}
@@ -139,20 +139,20 @@
 :is(#canon-options,#practice-options){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 :is(#canon-options,#practice-options) button{display:flex;align-items:center;gap:5px;padding:8px;font-size:15px;justify-content:center;font-weight:600;line-height:1.55}
 :is(#canon-options,#practice-options) button span{font-size:12px;color:#5b624e;font-weight:400}
-:is(#canon-options,#practice-options) button:hover:not(:disabled),:is(#canon-close,#practice-close):hover{background:#dedfc9;color:#263728}
+:is(#canon-options,#practice-options) button:hover:not(:disabled),:is(#canon-close,#practice-close,#transfer-close):hover{background:#dedfc9;color:#263728}
 :is(#canon-options,#practice-options) button:disabled{opacity:1;background:#eae7da;color:#555c4b;cursor:default}
 :is(#canon-options,#practice-options) button.right{background:#d6e1ce;border:2px solid #486344;color:#243e25}
 :is(#canon-options,#practice-options) button.wrong{background:#eadcd2;border-color:#9b6143;color:#70422f}
 :is(#canon-verdict,#practice-verdict){margin-top:17px;padding-top:12px;border-top:1px solid #bbbba5}
 :is(#canon-feedback,#practice-feedback){margin:0 0 3px;color:#293e29;font-weight:600}
-:is(#canon-dialog,#practice-dialog) a{color:#3b5435;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-:is(#canon-dialog,#practice-dialog) .canon-link-action{display:inline-block;white-space:nowrap}
-:is(#canon-dialog,#practice-dialog) .canon-primary{display:block;padding:8px 18px;background:#355239;color:#fff;border-color:#355239;font-weight:600}
-:is(#canon-dialog,#practice-dialog) .canon-primary:hover{background:#26422c;color:#fff}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) a{color:#3b5435;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-link-action{display:inline-block;white-space:nowrap}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-primary{display:block;padding:8px 18px;background:#355239;color:#fff;border-color:#355239;font-weight:600}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-primary:hover{background:#26422c;color:#fff}
 :is(#canon-next,#practice-next){margin-top:13px}
 :is(#canon-summary,#practice-summary){margin:2px 0 20px;font:600 clamp(25px,5vw,34px)/1.5 "Songti SC",SimSun,serif;color:#263728}
-:is(#canon-dialog,#practice-dialog) details{margin-top:14px;border-top:1px solid #bbbba5}
-:is(#canon-dialog,#practice-dialog) summary{min-height:44px;padding:11px 2px;cursor:pointer;font-weight:600;color:#354532}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) details{margin-top:14px;border-top:1px solid #bbbba5}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) summary{min-height:44px;padding:11px 2px;cursor:pointer;font-weight:600;color:#354532}
 #canon-share-text{box-sizing:border-box;width:100%;padding:8px;background:#fcfaf2;color:#29382a;font-family:inherit;font-size:14px;line-height:1.6}
 #canon-answers{padding-inline-start:1.6rem;margin:0}
 #canon-answers li{margin:.8rem 0 1rem}
@@ -160,7 +160,7 @@
 #canon-answers p,#canon-copy-status,:is(#canon-storage,#practice-storage),#canon-notice{color:#514e3c;font-size:14px;line-height:1.5}
 #canon-answers p{margin:0}
 #canon-copy-status:empty{display:none}
-@media(max-width:450px){:is(#canon-options,#practice-options){grid-template-columns:1fr}:is(#canon-options,#practice-options) button{justify-content:flex-start;padding-inline:14px;gap:10px}:is(#canon-dialog,#practice-dialog) .canon-heading{padding-top:16px}}
+@media(max-width:450px){:is(#canon-options,#practice-options){grid-template-columns:1fr}:is(#canon-options,#practice-options) button{justify-content:flex-start;padding-inline:14px;gap:10px}:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-heading{padding-top:16px}}
 
 .canon-result-actions{display:flex;gap:8px 16px;align-items:center;flex-wrap:wrap}
 #practice-entry,#canon-to-practice,#practice-daily{display:inline-flex;align-items:center;min-height:44px}
@@ -173,3 +173,21 @@
 #practice-rules p{margin:0 0 5px}
 #practice-daily{margin-top:5px}
 #practice-source{display:inline-block;min-height:44px;padding-block:10px}
+
+#practice-transfer,#canon-transfer-link,.transfer-actions a{display:inline-flex;align-items:center;min-height:44px}
+#practice-transfer{margin-inline-start:12px}
+.transfer-intro{margin:0 0 14px;line-height:1.55}
+.transfer-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}
+.transfer-file-label,#transfer-cancel{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 14px;color:#29382a;background:#f7f3e8;border:1px solid #81896f;border-radius:3px;font:inherit;cursor:pointer}
+.transfer-file-label input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.transfer-file-label:focus-within{outline:3px solid #745724;outline-offset:3px}
+#transfer-preview{margin-top:18px;border-top:1px solid #bbbba5}
+#transfer-range,#transfer-status,#transfer-days{overflow-wrap:anywhere;line-height:1.55}
+#transfer-range time{white-space:nowrap}
+#transfer-preview h3{margin:16px 0 6px;font-size:20px;color:#273729}
+#transfer-stats{margin:0 0 16px}
+#transfer-stats div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #ceccbb;padding:5px 0}
+#transfer-stats dd{margin:0;font-weight:700}
+#transfer-days{max-height:9rem;overflow:auto}
+#transfer-status:empty{display:none}
+@media(max-width:420px){#practice-transfer{display:flex;margin-inline-start:0}}

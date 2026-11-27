@@ -126,16 +126,16 @@
 
 /* The daily quiz reads like a compact leaf from the accompanying books. */
 #canon-entry{display:inline-flex;align-items:center;justify-content:center;min-height:48px;text-decoration:none}
-:is(#canon-dialog,#practice-dialog){width:min(590px,calc(100vw - 28px));max-height:calc(100vh - 28px);max-height:calc(100dvh - 28px);margin:auto;padding:0;overflow:auto;background:#f2eddf;color:#28382a;overscroll-behavior:contain}
-:is(#canon-dialog,#practice-dialog) [hidden]{display:none!important}
-:is(#canon-dialog,#practice-dialog) :focus-visible{outline:3px solid #745724;outline-offset:3px}
-:is(#canon-dialog,#practice-dialog) .canon-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px clamp(18px,5vw,34px) 16px;border-bottom:1px solid #bbbba5}
-:is(#canon-dialog,#practice-dialog) h2{margin:0;font:600 clamp(27px,5vw,38px)/1.25 "Songti SC",SimSun,serif;color:#273729}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog){width:min(590px,calc(100vw - 28px));max-height:calc(100vh - 28px);max-height:calc(100dvh - 28px);margin:auto;padding:0;overflow:auto;background:#f2eddf;color:#28382a;overscroll-behavior:contain}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) [hidden]{display:none!important}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) :focus-visible{outline:3px solid #745724;outline-offset:3px}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px clamp(18px,5vw,34px) 16px;border-bottom:1px solid #bbbba5}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) h2{margin:0;font:600 clamp(27px,5vw,38px)/1.25 "Songti SC",SimSun,serif;color:#273729}
 :is(#canon-date,#practice-date),.canon-track{margin:0 0 4px;color:#526147;font-size:13px;letter-spacing:.03em}
-:is(#canon-close,#practice-close),:is(#canon-options,#practice-options) button,:is(#canon-dialog,#practice-dialog) .canon-primary{min-height:44px;border:1px solid #81896f;border-radius:3px;background:#f7f3e8;color:#29382a}
-:is(#canon-close,#practice-close){font-size:14px;padding:4px 12px}
-:is(#canon-dialog,#practice-dialog) .canon-body{padding:18px clamp(18px,5vw,34px) 24px}
-:is(#canon-dialog,#practice-dialog) .canon-track{display:flex;align-items:center;justify-content:space-between;gap:12px}
+:is(#canon-close,#practice-close,#transfer-close),:is(#canon-options,#practice-options) button,:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-primary{min-height:44px;border:1px solid #81896f;border-radius:3px;background:#f7f3e8;color:#29382a}
+:is(#canon-close,#practice-close,#transfer-close){font-size:14px;padding:4px 12px}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-body{padding:18px clamp(18px,5vw,34px) 24px}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-track{display:flex;align-items:center;justify-content:space-between;gap:12px}
 #canon-marks{display:flex;gap:4px}
 #canon-marks i{width:14px;height:5px;background:#c7c9b6}
 #canon-marks .right{background:#41664b}
@@ -146,20 +146,20 @@
 :is(#canon-options,#practice-options){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 :is(#canon-options,#practice-options) button{display:flex;align-items:center;gap:5px;padding:8px;font-size:15px;justify-content:center;font-weight:600;line-height:1.55}
 :is(#canon-options,#practice-options) button span{font-size:12px;color:#5b624e;font-weight:400}
-:is(#canon-options,#practice-options) button:hover:not(:disabled),:is(#canon-close,#practice-close):hover{background:#dedfc9;color:#263728}
+:is(#canon-options,#practice-options) button:hover:not(:disabled),:is(#canon-close,#practice-close,#transfer-close):hover{background:#dedfc9;color:#263728}
 :is(#canon-options,#practice-options) button:disabled{opacity:1;background:#eae7da;color:#555c4b;cursor:default}
 :is(#canon-options,#practice-options) button.right{background:#d6e1ce;border:2px solid #486344;color:#243e25}
 :is(#canon-options,#practice-options) button.wrong{background:#eadcd2;border-color:#9b6143;color:#70422f}
 :is(#canon-verdict,#practice-verdict){margin-top:17px;padding-top:12px;border-top:1px solid #bbbba5}
 :is(#canon-feedback,#practice-feedback){margin:0 0 3px;color:#293e29;font-weight:600}
-:is(#canon-dialog,#practice-dialog) a{color:#3b5435;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-:is(#canon-dialog,#practice-dialog) .canon-link-action{display:inline-block;white-space:nowrap}
-:is(#canon-dialog,#practice-dialog) .canon-primary{display:block;padding:8px 18px;background:#355239;color:#fff;border-color:#355239;font-weight:600}
-:is(#canon-dialog,#practice-dialog) .canon-primary:hover{background:#26422c;color:#fff}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) a{color:#3b5435;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-link-action{display:inline-block;white-space:nowrap}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-primary{display:block;padding:8px 18px;background:#355239;color:#fff;border-color:#355239;font-weight:600}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-primary:hover{background:#26422c;color:#fff}
 :is(#canon-next,#practice-next){margin-top:13px}
 :is(#canon-summary,#practice-summary){margin:2px 0 20px;font:600 clamp(25px,5vw,34px)/1.5 "Songti SC",SimSun,serif;color:#263728}
-:is(#canon-dialog,#practice-dialog) details{margin-top:14px;border-top:1px solid #bbbba5}
-:is(#canon-dialog,#practice-dialog) summary{min-height:44px;padding:11px 2px;cursor:pointer;font-weight:600;color:#354532}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) details{margin-top:14px;border-top:1px solid #bbbba5}
+:is(#canon-dialog,#practice-dialog,#transfer-dialog) summary{min-height:44px;padding:11px 2px;cursor:pointer;font-weight:600;color:#354532}
 #canon-share-text{box-sizing:border-box;width:100%;padding:8px;background:#fcfaf2;color:#29382a;font-family:inherit;font-size:14px;line-height:1.6}
 #canon-answers{padding-inline-start:1.6rem;margin:0}
 #canon-answers li{margin:.8rem 0 1rem}
@@ -167,7 +167,7 @@
 #canon-answers p,#canon-copy-status,:is(#canon-storage,#practice-storage),#canon-notice{color:#514e3c;font-size:14px;line-height:1.5}
 #canon-answers p{margin:0}
 #canon-copy-status:empty{display:none}
-@media(max-width:450px){:is(#canon-options,#practice-options){grid-template-columns:1fr}:is(#canon-options,#practice-options) button{justify-content:flex-start;padding-inline:14px;gap:10px}:is(#canon-dialog,#practice-dialog) .canon-heading{padding-top:16px}}
+@media(max-width:450px){:is(#canon-options,#practice-options){grid-template-columns:1fr}:is(#canon-options,#practice-options) button{justify-content:flex-start;padding-inline:14px;gap:10px}:is(#canon-dialog,#practice-dialog,#transfer-dialog) .canon-heading{padding-top:16px}}
 
 .canon-result-actions{display:flex;gap:8px 16px;align-items:center;flex-wrap:wrap}
 #practice-entry,#canon-to-practice,#practice-daily{display:inline-flex;align-items:center;min-height:44px}
@@ -180,6 +180,24 @@
 #practice-rules p{margin:0 0 5px}
 #practice-daily{margin-top:5px}
 #practice-source{display:inline-block;min-height:44px;padding-block:10px}
+
+#practice-transfer,#canon-transfer-link,.transfer-actions a{display:inline-flex;align-items:center;min-height:44px}
+#practice-transfer{margin-inline-start:12px}
+.transfer-intro{margin:0 0 14px;line-height:1.55}
+.transfer-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}
+.transfer-file-label,#transfer-cancel{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 14px;color:#29382a;background:#f7f3e8;border:1px solid #81896f;border-radius:3px;font:inherit;cursor:pointer}
+.transfer-file-label input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.transfer-file-label:focus-within{outline:3px solid #745724;outline-offset:3px}
+#transfer-preview{margin-top:18px;border-top:1px solid #bbbba5}
+#transfer-range,#transfer-status,#transfer-days{overflow-wrap:anywhere;line-height:1.55}
+#transfer-range time{white-space:nowrap}
+#transfer-preview h3{margin:16px 0 6px;font-size:20px;color:#273729}
+#transfer-stats{margin:0 0 16px}
+#transfer-stats div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #ceccbb;padding:5px 0}
+#transfer-stats dd{margin:0;font-weight:700}
+#transfer-days{max-height:9rem;overflow:auto}
+#transfer-status:empty{display:none}
+@media(max-width:420px){#practice-transfer{display:flex;margin-inline-start:0}}
 </style></head>
 <body>
 <noscript><p style="padding:24px;color:#ede9d9;background:#141e1a">山河远征需要启用 JavaScript 才能游玩；典籍手册的正文仍可直接阅读。</p></noscript>
@@ -202,7 +220,7 @@
    <div id="exp-play" hidden><div class="exp-board-top"><span id="exp-run-name"></span><div class="exp-toolbar"><button id="exp-export" class="exp-small-button">导出续局</button><button id="exp-new" class="exp-small-button">另开一局</button></div></div><div id="exp-track" class="exp-track" aria-label="远征进度"></div><div id="exp-resources" class="exp-resources" aria-label="当前资源"></div><div id="exp-relic-strip" class="exp-relic-strip" aria-label="已得书印"></div><div id="exp-stage"></div></div>
    <div class="exp-board-foot"><span>资源归零则归营 · 走完十二站结算</span><button id="exp-rules-open" class="exp-small-button">玩法与计分</button></div>
   </div>
-  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="github-review-v2.9.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
+  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="github-review-v2.10.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
  </div>
  <p id="exp-status" class="exp-status" role="status" aria-live="polite"></p>
 </section>
@@ -243,7 +261,7 @@
     </section>
     <section id="canon-finished" hidden aria-labelledby="canon-summary">
       <h3 id="canon-summary" tabindex="-1"></h3>
-      <div class="canon-result-actions"><button type="button" class="canon-primary" id="canon-copy">复制无剧透战绩</button><a id="canon-to-practice" href="#canon-practice" aria-haspopup="dialog">去错题复习 →</a></div>
+      <div class="canon-result-actions"><button type="button" class="canon-primary" id="canon-copy">复制无剧透战绩</button><a id="canon-to-practice" href="#canon-practice" aria-haspopup="dialog">去错题复习 →</a><a id="canon-transfer-link" href="#canon-transfer" aria-haspopup="dialog">辨典存档</a></div>
       <p id="canon-future-review" hidden></p>
       <p id="canon-copy-status" role="status"></p>
       <details id="canon-share"><summary>查看可复制的战绩与同日链接</summary><textarea id="canon-share-text" rows="4" readonly aria-label="无剧透战绩和同日链接"></textarea></details>
@@ -261,6 +279,7 @@
       <p id="practice-schedule"></p>
       <button type="button" class="canon-primary" id="practice-start">开始重练</button>
       <a id="practice-daily" href="#daily-canon">去答每日五题 →</a>
+      <a id="practice-transfer" href="#canon-transfer" aria-haspopup="dialog">导出或导入辨典存档 →</a>
       <details id="practice-rules"><summary>复习如何安排？</summary><p>每日辨典的错题会记到这里。每轮最多五题，答对后依次间隔 1、3、7 天再练，第四次到期答对即掌握。答错的题可以今天再练。重练单独记录，每日首答战绩保留。</p></details>
     </section>
     <section id="practice-play" aria-labelledby="practice-prompt" hidden>
@@ -274,6 +293,26 @@
         <button type="button" id="practice-next" class="canon-primary"></button>
       </div>
     </section>
+  </div>
+</dialog>
+
+<dialog id="transfer-dialog" aria-labelledby="transfer-title">
+  <header class="canon-heading"><h2 id="transfer-title" tabindex="-1">辨典存档</h2><button id="transfer-close" type="button" aria-label="关闭辨典存档">关闭</button></header>
+  <div class="canon-body">
+    <p class="transfer-intro">换设备时，把每日首答和错题复习进度一起带走。</p>
+    <div class="transfer-actions">
+      <button id="transfer-export" type="button" class="canon-primary">下载本机存档</button>
+      <label class="transfer-file-label">选择存档文件<input id="transfer-file" type="file" accept="application/json,.json"></label>
+    </div>
+    <section id="transfer-preview" aria-labelledby="transfer-caption" hidden>
+      <h3 id="transfer-caption" tabindex="-1">合并预览</h3>
+      <p id="transfer-range"></p>
+      <dl id="transfer-stats"></dl>
+      <details id="transfer-conflicts" hidden><summary>查看首答冲突的日期</summary><ul id="transfer-days"></ul></details>
+      <div class="transfer-actions"><button id="transfer-apply" class="canon-primary" type="button">确认合并</button><button id="transfer-cancel" type="button">取消</button></div>
+    </section>
+    <p id="transfer-status" role="status" tabindex="-1"></p>
+    <div id="transfer-result" class="transfer-actions" hidden><a id="transfer-resume" href="#daily-canon">打开每日辨典</a><a id="transfer-practice" href="#canon-practice">查看错题复习 →</a></div>
   </div>
 </dialog>
 
@@ -4020,7 +4059,7 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
  renderWorld();
  const destination = location.hash;
  const resumeClassic = destination === '#classic-story' ||
-   (!expeditionPriority && !['#expedition', '#daily-canon', '#canon-practice'].includes(destination) && !destination.startsWith('#run=') && !destination.startsWith('#replay='));
+   (!expeditionPriority && !['#expedition', '#daily-canon', '#canon-practice', '#canon-transfer'].includes(destination) && !destination.startsWith('#run=') && !destination.startsWith('#replay='));
  if (state.current && resumeClassic) showQuest();
 })();
 </script><script>/* Local same-start records and the station review for completed expeditions. */
@@ -5302,7 +5341,8 @@ $('exp-board').insertBefore(inputWrap,$('exp-board').querySelector('.exp-board-f
     link.replaceChildren('《' + quiz.books[card.bookId] + '》 · ' + card.title + ' ', action);
     return link;
   }
-  window.EarthDailyCanonPage = Object.freeze({sourceLink, savedRounds: () => rounds.values()});
+  window.EarthDailyCanonPage = Object.freeze({sourceLink, savedRounds: () => rounds.values(),
+    imported: saved => { for (const round of saved) if (rounds.has(round.day)) rounds.set(round.day, round); persistent = true; }});
   function shareText() {
     return quiz.share(state) + '\n' + datedURL(day, true);
   }
@@ -5487,6 +5527,9 @@ $('exp-board').insertBefore(inputWrap,$('exp-board').querySelector('.exp-board-f
   let completed = false;
   let overviewDay;
   let midnightTimer;
+
+  window.EarthCanonPracticePage = Object.freeze({pending: () => memoryOnly ? state : null,
+    imported: saved => { state = saved; memoryOnly = false; }});
 
   function load() {
     if (memoryOnly) return state;
@@ -5702,6 +5745,459 @@ $('exp-board').insertBefore(inputWrap,$('exp-board').querySelector('.exp-board-f
   });
   window.addEventListener('hashchange', route);
   window.addEventListener('popstate', route);
+  route();
+})();
+
+// Pure conversion and merge of the dated quiz and personal practice records.
+(() => {
+  'use strict';
+  const commonJS = typeof module === 'object' && module.exports;
+  const quiz = commonJS ? require('./daily-canon.js') : globalThis.EarthDailyCanon;
+  const review = commonJS ? require('./canon-practice.js') : globalThis.EarthCanonPractice;
+  const bank = commonJS ? require('./daily-canon-bank.js') : globalThis.EarthDailyCanonBank;
+  const MAX_BYTES = 2 * 1024 * 1024;
+  const MAX_ROUNDS = 8192;
+  const formatName = 'earth-online-canon-backup';
+  // This fixed edition's existing signature covers every bank entry, the
+  // rules version, the deck order and the order of offered choices.
+  const catalog = quiz.create('2026-11-27').deck;
+  const encoder = new TextEncoder();
+  const roundKeys = ['rules', 'day', 'deck', 'index', 'answers'];
+  const cardKeys = ['stage', 'due', 'lastReviewed', 'sourceDay'];
+  // Only daily.restore's frozen snapshots (including the answers array) are
+  // keys. Parsed file data and live localStorage input are always revalidated.
+  const missedIds = new WeakMap();
+
+  function fail(message) { throw new Error(message); }
+  function object(value) {
+    return value !== null && typeof value === 'object' && !Array.isArray(value);
+  }
+  function fields(value, keys) {
+    return object(value) && Object.keys(value).length === keys.length &&
+      keys.every(key => Object.prototype.hasOwnProperty.call(value, key));
+  }
+
+  function verifyRound(raw) {
+    if (missedIds.has(raw)) return raw;
+    if (!fields(raw, roundKeys)) fail('日卷字段不完整或版本不兼容。');
+    const round = quiz.restore(raw, raw.day);
+    if (!round) fail('日卷的日期、题库或首答记录校验失败。');
+    const deck = quiz.questions(round.day);
+    missedIds.set(round, round.answers.flatMap((pick,i) => pick !== deck[i].bookId ? [deck[i].id] : []));
+    return round;
+  }
+
+  function normalize(snapshot) {
+    if (!snapshot || !Array.isArray(snapshot.rounds)) fail('每日答题记录格式有误。');
+    if (snapshot.rounds.length > MAX_ROUNDS) fail('备份超过可处理的日卷数量。');
+    const days = new Set();
+    const rounds = snapshot.rounds.map(raw => {
+      const round = verifyRound(raw);
+      if (days.has(round.day)) fail('备份中出现重复的日卷日期。');
+      days.add(round.day);
+      return round;
+    }).sort((a, b) => a.day.localeCompare(b.day));
+
+    const rawPractice = snapshot.practice;
+    if (rawPractice === null) return { rounds, practice:review.create() };
+    if (!fields(rawPractice, ['rules', 'cards']) || !object(rawPractice.cards)) fail('错题本格式有误。');
+    const ids = Object.keys(rawPractice.cards).sort();
+    if (ids.length > bank.length) fail('错题数量超过题库容量。');
+    const restored = review.restore(rawPractice);
+    if (!restored || ids.length !== Object.keys(restored.cards).length) fail('错题本含有未知题目或无效的复习进度。');
+    const cards = {};
+    for (const id of ids) {
+      const card = restored.cards[id];
+      if (!fields(rawPractice.cards[id], cardKeys) || !quiz.questions(card.sourceDay).some(row => row.id === id)) {
+        fail('错题来源或复习字段校验失败。');
+      }
+      cards[id] = card;
+    }
+    return { rounds, practice:{ rules:restored.rules, cards } };
+  }
+
+  // Accidental-edit detection over canonical UTF-8 content. The exported
+  // record is personal game data and this checksum is not an identity proof.
+  function checksum(payload) {
+    let hash = 2166136261;
+    for (const byte of encoder.encode(JSON.stringify(payload))) hash = Math.imul(hash ^ byte, 16777619);
+    return (hash >>> 0).toString(16).padStart(8, '0');
+  }
+  function envelope(snapshot) {
+    return { format:formatName, version:1, catalog, rounds:snapshot.rounds, practice:snapshot.practice };
+  }
+  function checkSize(text) {
+    if (typeof text !== 'string' || text.length > MAX_BYTES || encoder.encode(text).length > MAX_BYTES) {
+      fail('请选择 2 MiB 以内的辨典 JSON 备份。');
+    }
+  }
+  function format(snapshot) {
+    const payload = envelope(normalize(snapshot));
+    const text = JSON.stringify({ ...payload, checksum:checksum(payload) });
+    checkSize(text);
+    return text;
+  }
+  function parse(text) {
+    checkSize(text);
+    let raw;
+    try { raw = JSON.parse(text.replace(/^\uFEFF/, '')); }
+    catch { fail('备份不是完整的 JSON 文件。'); }
+    if (!fields(raw, ['format','version','catalog','rounds','practice','checksum']) ||
+        raw.format !== formatName || raw.version !== 1 || raw.catalog !== catalog) {
+      fail('备份类型、版本或题库与当前游戏不匹配。');
+    }
+    const snapshot = normalize(raw);
+    if (raw.checksum !== checksum(envelope(snapshot))) fail('备份校验码不符，文件内容可能已经改变。');
+    return snapshot;
+  }
+
+  function combineCard(a, b) {
+    if (!a) return b;
+    const last = (x, y) => x > y ? x : y;
+    const dateA = last(a.sourceDay, a.lastReviewed || '');
+    const dateB = last(b.sourceDay, b.lastReviewed || '');
+    // A later genuine miss can reopen a mastered card. Equal-day progress is
+    // ranked by stage because neither store has a trustworthy time-of-day.
+    const winner = dateB > dateA || (dateB === dateA && b.stage > a.stage) ? b : a;
+    return { ...winner, sourceDay:last(a.sourceDay,b.sourceDay),
+      lastReviewed:last(a.lastReviewed || '',b.lastReviewed || '') || null };
+  }
+
+  function plan(local, incoming, day) {
+    if (!quiz.isDay(day)) fail('当前复习日期无效。');
+    const before = normalize(local);
+    const source = normalize(incoming);
+    const roundsByDay = new Map(before.rounds.map(round => [round.day, round]));
+    const stats = { addedRounds:0, advancedRounds:0, conflictRounds:0, unchangedRounds:0, addedCards:0, updatedCards:0 };
+    for (const round of source.rounds) {
+      const existing = roundsByDay.get(round.day);
+      if (!existing) {
+        stats.addedRounds++;
+        roundsByDay.set(round.day, round);
+        continue;
+      }
+      const common = Math.min(existing.answers.length, round.answers.length);
+      if (round.answers.slice(0, common).some((pick, i) => pick !== existing.answers[i])) {
+        stats.conflictRounds++;
+      } else if (round.answers.length > existing.answers.length || round.index > existing.index) {
+        stats.advancedRounds++;
+        roundsByDay.set(round.day, round);
+      } else stats.unchangedRounds++;
+    }
+    if (roundsByDay.size > MAX_ROUNDS) fail('合并后的日卷数量超过上限。');
+    const rounds = [...roundsByDay.values()].sort((a, b) => a.day.localeCompare(b.day));
+    const localCards = before.practice.cards;
+    const cards = { ...localCards };
+    for (const [id, other] of Object.entries(source.practice.cards)) cards[id] = combineCard(cards[id], other);
+    // Explicit old review records remain useful even when a dated paper was
+    // lost or differs. Infer additional misses only from accepted rounds.
+    let practice = { rules:before.practice.rules, cards };
+    const seen = new Set();
+    for (let i = rounds.length - 1; i >= 0 && seen.size < bank.length; i--) {
+      const round = rounds[i];
+      if (round.day > day) continue;
+      const misses = missedIds.get(round);
+      // Only the latest eligible miss of each card can affect its schedule.
+      // Reuse the review engine for those editions (at most one per card).
+      if (misses.some(id => !seen.has(id))) {
+        practice = review.importRound(practice, round, day);
+        for (const id of misses) seen.add(id);
+      }
+    }
+    for (const [id, card] of Object.entries(practice.cards)) {
+      if (!localCards[id]) stats.addedCards++;
+      else if (cardKeys.some(key => card[key] !== localCards[id][key])) stats.updatedCards++;
+    }
+    return { rounds, practice, stats };
+  }
+
+  const api = Object.freeze({ MAX_BYTES, MAX_ROUNDS, normalize, format, parse, plan });
+  if (commonJS) module.exports = api;
+  else globalThis.EarthCanonTransfer = api;
+})();
+
+// A portable save contains only daily papers and their personal review record.
+(() => {
+  'use strict';
+  const transfer = window.EarthCanonTransfer;
+  const daily = window.EarthDailyCanon;
+  const practice = window.EarthCanonPractice;
+  const dailyPage = window.EarthDailyCanonPage;
+  const practicePage = window.EarthCanonPracticePage;
+  const prefix = 'earth-online-daily-canon-v1:';
+  const get = name => document.getElementById('transfer-' + name);
+  const dialog = get('dialog');
+  let request = 0, incoming, preview, busy = false, opener;
+  let diskCache = new Map();
+
+  function readLocal() {
+    const raw = new Map(), papers = new Map();
+    let storedPractice = null, available = true;
+    try {
+      for (const key of Object.keys(localStorage)) {
+        if (key !== practice.storageKey && !key.startsWith(prefix)) continue;
+        const bytes = localStorage.getItem(key);
+        if (bytes === null) continue;
+        const cached = diskCache.get(key);
+        const parsed = cached?.bytes === bytes ? cached.record : JSON.parse(bytes);
+        if (!parsed || (key !== practice.storageKey && key !== prefix + parsed.day)) {
+          throw new Error('本机辨典记录格式异常，请保留原记录。');
+        }
+        raw.set(key, bytes);
+        if (key === practice.storageKey) storedPractice = parsed;
+        else papers.set(parsed.day, parsed);
+      }
+    } catch (error) {
+      if (error.name !== 'SecurityError') throw error;
+      available = false;
+    }
+    // Validate disk records before combining them with progress held by this tab.
+    const disk = {rounds:[...papers.values()], practice:storedPractice};
+    const canonical = transfer.normalize(disk);
+    diskCache = new Map();
+    for (const record of canonical.rounds) {
+      papers.set(record.day,record);
+      const key = prefix + record.day;
+      diskCache.set(key,{record,bytes:raw.get(key)});
+    }
+    storedPractice = canonical.practice;
+    for (const held of dailyPage.savedRounds()) {
+      const other = papers.get(held.day);
+      if (!other || (held.index + held.answers.length > other.index + other.answers.length &&
+          other.answers.every((answer,i) => held.answers[i] === answer))) papers.set(held.day, held);
+    }
+    const pending = practicePage.pending();
+    if (pending) storedPractice = transfer.plan({rounds:[],practice:storedPractice},
+      {rounds:[],practice:pending},daily.today()).practice;
+    return {raw,available, data:{rounds:[...papers.values()],practice:storedPractice}};
+  }
+
+  function clearPreview() {
+    request++;
+    incoming = preview = null;
+    get('file').value = '';
+    get('preview').hidden = true;
+    get('result').hidden = true;
+  }
+
+  function printPreview(local, plan) {
+    preview = plan;
+    const days = incoming.rounds.map(round => round.day).sort();
+    const count = Object.keys(incoming.practice?.cards || {}).length;
+    get('range').textContent = '文件包含 ' + days.length + ' 份日卷、' + count + ' 张复习卡。';
+    if (days.length) {
+      const time = day => {
+        const node = document.createElement('time');
+        node.dateTime = node.textContent = day;
+        return node;
+      };
+      get('range').append(time(days[0]));
+      if (days.length > 1) get('range').append(' 至 ',time(days.at(-1)));
+      get('range').append('。');
+    }
+    const labels = {addedRounds:'新增日卷',advancedRounds:'可接续的日卷',conflictRounds:'首答冲突 · 保留本机',
+      unchangedRounds:'已有日卷',addedCards:'新增复习卡',updatedCards:'更新复习进度'};
+    const rows = Object.entries(labels).map(([key,label]) => {
+      const row = document.createElement('div'), term = document.createElement('dt'), value = document.createElement('dd');
+      term.textContent = label;
+      value.textContent = plan.stats[key];
+      row.append(term,value);
+      return row;
+    });
+    get('stats').replaceChildren(...rows);
+    const existing = new Map(local.data.rounds.map(round => [round.day,round.answers]));
+    const conflictDays = incoming.rounds.filter(round => {
+      const answers = existing.get(round.day);
+      return answers && round.answers.some((answer,i) => i < answers.length && answers[i] !== answer);
+    });
+    get('days').replaceChildren(...conflictDays.map(round => {
+      const li = document.createElement('li'); li.textContent = round.day; return li;
+    }));
+    get('conflicts').hidden = !conflictDays.length;
+    get('conflicts').open = false;
+    get('preview').hidden = false;
+    get('apply').disabled = !local.available;
+    get('caption').focus();
+  }
+
+  get('export').addEventListener('click', () => {
+    let url;
+    try {
+      const local = readLocal();
+      const bytes = transfer.format(local.data);
+      url = URL.createObjectURL(new Blob([bytes],{type:'application/json'}));
+      const link = document.createElement('a');
+      link.href = url; link.download = 'earth-online-canon-' + daily.today() + '.json';
+      document.body.append(link); link.click(); link.remove();
+      get('status').textContent = local.available ? '已生成 JSON 文件，可在另一台设备打开辨典存档并选择该文件。'
+        : '已导出当前页可读取的辨典记录。';
+    } catch (error) { get('status').textContent = '无法导出。' + problem(error); }
+    finally { if (url) setTimeout(() => URL.revokeObjectURL(url), 30000); }
+  });
+
+  function problem(error) {
+    if (error instanceof SyntaxError) return 'JSON 或本机记录格式无效。';
+    if (error.name === 'QuotaExceededError') return '浏览器存储空间不足。';
+    if (error.name === 'SecurityError') return '浏览器拒绝访问存储。';
+    return error.message;
+  }
+  get('file').addEventListener('change', async () => {
+    const file = get('file').files[0];
+    clearPreview();
+    const token = request;
+    get('status').textContent = '';
+    if (!file) return;
+    get('status').textContent = '正在核对文件与本机记录…';
+    try {
+      if (file.size > transfer.MAX_BYTES) throw new Error('文件超过 2 MiB。');
+      const data = transfer.parse(await file.text());
+      if (token !== request || !dialog.open) return;
+      const local = readLocal(), plan = transfer.plan(local.data,data,daily.today());
+      incoming = data;
+      printPreview(local,plan);
+      get('status').textContent = local.available ? '' : '当前浏览器无法保存，可在允许本地存储的浏览器中导入。';
+    } catch (error) {
+      if (token === request) get('status').textContent = '无法预览。' + problem(error);
+    }
+  });
+  get('cancel').addEventListener('click', () => {
+    clearPreview();
+    get('status').textContent = '已取消合并。';
+    get('file').focus();
+  });
+
+  // Match the per-day and practice locks used by v2.8/v2.9 tabs as well.
+  // The practice lock serializes imports; date locks protect first answers
+  // even when an older copy of the game is running in another tab.
+  function locked(key, action) {
+    if (!navigator.locks) return action();
+    let entered = false;
+    return navigator.locks.request(key, () => { entered = true; return action(); }).catch(error => {
+      if (entered || error.name !== 'SecurityError') throw error;
+      return action();
+    });
+  }
+  function paperEqual(a, b) {
+    return a && a.deck === b.deck && a.index === b.index && a.answers.length === b.answers.length &&
+      a.answers.every((value,i) => value === b.answers[i]);
+  }
+  function practiceEqual(a,b) {
+    const left = a?.cards || {}, right = b.cards;
+    return Object.keys(left).length === Object.keys(right).length && Object.entries(right).every(([id,card]) =>
+      Object.keys(card).every(k=>left[id] && left[id][k] === card[k]));
+  }
+  function showResult(plan) {
+    const fileDays = new Set(incoming.rounds.map(round=>round.day));
+    const matches = plan.rounds.filter(round=>fileDays.has(round.day)).sort((a,b)=>b.day.localeCompare(a.day));
+    const next = matches.find(round=>daily.phase(round) !== 'finished') || matches[0];
+    clearPreview();
+    get('resume').hidden = !next;
+    if (next) {
+      const url = new URL(location.href);
+      url.searchParams.set('day',next.day); url.hash='daily-canon';
+      get('resume').href=url.href;
+      get('resume').textContent=(daily.phase(next)==='finished'?'查看 ':'继续 ')+next.day+' 日卷 →';
+    }
+    get('result').hidden = false;
+    get('status').focus();
+  }
+  async function commit() {
+    const token = request, local = readLocal(), day = daily.today();
+    if (!local.available) throw new Error('当前浏览器无法持久保存。');
+    if (!dialog.open || !incoming) return;
+    const next = transfer.plan(local.data,incoming,day);
+    if (JSON.stringify(next) !== JSON.stringify(preview)) {
+      printPreview(local,next);
+      get('status').textContent = '本机进度已变化，请核对更新后的预览并再次确认。';
+      return;
+    }
+    const writes = [];
+    const add = (key,value) => writes.push({key,before:local.raw.get(key) ?? null,after:JSON.stringify(value)});
+    for (const paper of next.rounds) {
+      const key = prefix + paper.day, before = local.raw.get(key);
+      if (!paperEqual(before ? JSON.parse(before) : null,paper)) add(key,paper);
+    }
+    const previousPractice = local.raw.get(practice.storageKey);
+    if (!practiceEqual(previousPractice ? JSON.parse(previousPractice) : null, next.practice)) add(practice.storageKey,next.practice);
+    // Acquire only affected daily locks, in date order, then do all writes and
+    // any rollback synchronously. Navigation, storage events and ordinary
+    // v2.8/v2.9 answers cannot intervene between individual writes in this tab.
+    const dayKeys = writes.map(change=>change.key).filter(key=>key !== practice.storageKey);
+    function applyLocked() {
+      if (request !== token || !dialog.open) return;
+      const fresh = readLocal();
+      const latest = transfer.plan(fresh.data,incoming,daily.today());
+      if (JSON.stringify(next) !== JSON.stringify(latest) ||
+          writes.some(change=>(fresh.raw.get(change.key) ?? null) !== change.before)) {
+        printPreview(fresh,latest);
+        get('status').textContent = '本机进度已变化，请核对更新后的预览并再次确认。';
+        return;
+      }
+      const applied = [];
+      try {
+        for (const change of writes) {
+          localStorage.setItem(change.key,change.after);
+          applied.push(change);
+        }
+      } catch (error) {
+        let retained = 0;
+        for (const change of applied.reverse()) {
+          try {
+            if (localStorage.getItem(change.key) !== change.after) { retained++; continue; }
+            if (change.before === null) localStorage.removeItem(change.key);
+            else localStorage.setItem(change.key,change.before);
+          } catch { retained++; }
+        }
+        throw new Error(problem(error) + (retained ? '部分记录有后续变动或无法回退，请重选文件核对剩余更改。' : '此次合并未写入，修复后可重试。'));
+      }
+      dailyPage.imported(next.rounds);
+      practicePage.imported(next.practice);
+      get('status').textContent = writes.length ? '辨典存档已合并。' : '已核对，本机已有这些记录。';
+      showResult(next);
+    }
+    function lockDay(index) {
+      if (index === dayKeys.length || !navigator.locks) return applyLocked();
+      if (request !== token || !dialog.open) return;
+      return locked(dayKeys[index],()=>lockDay(index+1));
+    }
+    await lockDay(0);
+  }
+  get('apply').addEventListener('click', async () => {
+    if (busy || !incoming) return;
+    busy = true;
+    get('status').textContent = '正在核对并合并存档…';
+    for (const id of ['apply','cancel','file','close','export']) get(id).disabled = true;
+    try { await locked(practice.storageKey,commit); }
+    catch (error) { get('status').textContent = '合并未完成。' + problem(error); }
+    finally {
+      busy = false;
+      for (const id of ['apply','cancel','file','close','export']) get(id).disabled = false;
+    }
+  });
+  function close() {
+    if (busy) return;
+    if (opener) history.back();
+    else location.replace('#canon-practice');
+  }
+  for (const id of ['practice-transfer','canon-transfer-link']) document.getElementById(id).addEventListener('click',event => {
+    if (!(event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)) opener = event.currentTarget;
+  });
+  get('close').addEventListener('click',close);
+  dialog.addEventListener('cancel',event => {event.preventDefault(); close();});
+  function route() {
+    if (location.hash !== '#canon-transfer') {
+      if (dialog.open) {
+        dialog.close(); clearPreview(); diskCache.clear();
+        if (opener?.closest('dialog[open]')) opener.focus({preventScroll:true});
+        opener = null;
+      }
+    } else if (!dialog.open) {
+      clearPreview(); get('status').textContent = '';
+      dialog.showModal(); get('title').focus();
+    }
+  }
+  window.addEventListener('hashchange',route);
+  window.addEventListener('popstate',route);
   route();
 })();
 </script></body></html>

@@ -22,6 +22,7 @@ description: 验收地球 Online 的远征、每日辨典、摘录挑战和阅�
 | 辨典挑战 | `npm run test:recall` | 从没有摘录的游戏首页打开挑战，再用另一份有普通书签与摘录的档案按筛选出题。揭晓之前不能读到答案。标记一条再练，核对下一轮只出现留下的原句，退出后核对阅读记录。 |
 | 每日辨典 | `npm run test:daily-canon` | 用两个不同时区的浏览器，在同一绝对时刻走完五题，比较题句和选项顺序。首答后刷新并查看原典，验证选中的是原句，返回时日期与首答一致。冻结时钟跨过北京时间零点，原局保留原日，重新进入今日挑战才换题。 |
 | 错题复习 | `npm run test:canon-practice` | 用已作答的 v2.8 日卷做输入，覆盖重复导入、跨日到期、再次出错和第 4 次按期答对。每次复习后比较原日卷首答。 |
+| 辨典存档 | `npm run test:canon-transfer` | 用两个隔离的浏览器实际下载并导入 JSON。给接收设备留一份相同开头的日卷和一份首答冲突的日卷，比较取消、确认和重复选择后的数据。 |
 
 改动涉及共享引擎或保存逻辑时，运行 `npm test`。若浏览器验收失败，保留输入、界面状态和失败断言，核对成品是否重建，再判断是选择器失效还是玩家操作被打断。反馈中区分已在本机验证和已在公网验证的结果。
 
@@ -36,3 +37,5 @@ description: 验收地球 Online 的远征、每日辨典、摘录挑战和阅�
 每日辨典的日期边界使用 Playwright Clock 固定浏览器时刻。核对分享时取实际复制或显示供复制的文案，检查得分、结果格与日期链接；题句、出处和选项答案应留在题面。发布前读取本次运行的退出码、测试断言和线上成品哈希，再报告已验证行为。[Playwright Clock](https://github.com/microsoft/playwright/blob/26a9e470a7b3c7822084b09fb7f13902c5f37b51/docs/src/clock.md) · [Verification Before Completion](https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/skills/verification-before-completion/SKILL.md)
 
 复习存档测试取同一批旧日卷，调换导入顺序、重复导入，并在保存与恢复之间插入答题。检查各卡的阶段、下次日期和完整的每日首答。浏览器另从旧版游戏亲自留下一道错题，在同一来源加载新版，揭晓后实际打开原书并返回。[Property-Based Testing 技能](https://github.com/trailofbits/skills/blob/149d7b21f4067765b82e67029730b42d228ef4b4/plugins/property-based-testing/skills/property-based-testing/SKILL.md)
+
+验证迁移时，在旧版本离线游戏里答题、重练，再原位升级后下载。接收端重新打开各日期，核对可接续的题序、冲突日的原答案和下次复习日期。中断测试让另一个标签持有最后一份日卷的写锁，在两次写入之间真正关闭正在导入的标签；再选择同一文件，核对已保存的记录与此前的首答。[Dexie 的导入预览](https://github.com/dexie/Dexie.js/blob/95666bf5370a222a21d7f53130d87b42e9b7bac7/addons/dexie-export-import/README.md) · [Git 的快进合并](https://github.com/git/git/blob/acba8bf9753134d9bde89f94369f775838a8c5fe/Documentation/git-merge.adoc)

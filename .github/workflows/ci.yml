@@ -44,6 +44,7 @@ jobs:
           npm run test:recall
           npm run test:daily-canon
           npm run test:canon-practice
+          npm run test:canon-transfer
       - name: 核对离线包可重复生成
         run: |
           python3 work/package-library.py
