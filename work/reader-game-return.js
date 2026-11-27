@@ -1,7 +1,7 @@
 function createReaderGameNavigation() {
   const params = new URLSearchParams(location.search);
   const from = params.get('from');
-  const mode = ['expedition', 'classic', 'daily-canon'].includes(from) ? from : '';
+  const mode = ['expedition', 'classic', 'daily-canon', 'canon-practice'].includes(from) ? from : '';
   const requestedDay = params.get('day') || '';
   const day = mode === 'daily-canon' && /^\d{4}-\d{2}-\d{2}$/.test(requestedDay) ? requestedDay : '';
   const keptGameTab = Boolean(mode && params.get('gameTab') === 'kept');
@@ -38,6 +38,9 @@ function createReaderGameNavigation() {
       gameURL.hash = 'daily-canon';
       link.href = gameURL.href;
       link.textContent = '返回每日辨典';
+    } else if (mode === 'canon-practice') {
+      link.hash = 'canon-practice';
+      link.textContent = '返回错题复习';
     } else if (mode) {
       link.hash = mode === 'expedition' ? 'expedition' : 'classic-story';
       link.textContent = mode === 'expedition' ? '返回本次远征' : '返回经典剧情';

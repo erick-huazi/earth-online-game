@@ -119,45 +119,57 @@
 
 /* The daily quiz reads like a compact leaf from the accompanying books. */
 #canon-entry{display:inline-flex;align-items:center;justify-content:center;min-height:48px;text-decoration:none}
-#canon-dialog{width:min(590px,calc(100vw - 28px));max-height:calc(100vh - 28px);max-height:calc(100dvh - 28px);margin:auto;padding:0;overflow:auto;background:#f2eddf;color:#28382a;overscroll-behavior:contain}
-#canon-dialog [hidden]{display:none!important}
-#canon-dialog :focus-visible{outline:3px solid #745724;outline-offset:3px}
-#canon-dialog .canon-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px clamp(18px,5vw,34px) 16px;border-bottom:1px solid #bbbba5}
-#canon-dialog h2{margin:0;font:600 clamp(27px,5vw,38px)/1.25 "Songti SC",SimSun,serif;color:#273729}
-#canon-date,.canon-track{margin:0 0 4px;color:#526147;font-size:13px;letter-spacing:.03em}
-#canon-close,#canon-options button,#canon-dialog .canon-primary{min-height:44px;border:1px solid #81896f;border-radius:3px;background:#f7f3e8;color:#29382a}
-#canon-close{font-size:14px;padding:4px 12px}
-#canon-dialog .canon-body{padding:18px clamp(18px,5vw,34px) 24px}
-#canon-dialog .canon-track{display:flex;align-items:center;justify-content:space-between;gap:12px}
+:is(#canon-dialog,#practice-dialog){width:min(590px,calc(100vw - 28px));max-height:calc(100vh - 28px);max-height:calc(100dvh - 28px);margin:auto;padding:0;overflow:auto;background:#f2eddf;color:#28382a;overscroll-behavior:contain}
+:is(#canon-dialog,#practice-dialog) [hidden]{display:none!important}
+:is(#canon-dialog,#practice-dialog) :focus-visible{outline:3px solid #745724;outline-offset:3px}
+:is(#canon-dialog,#practice-dialog) .canon-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px clamp(18px,5vw,34px) 16px;border-bottom:1px solid #bbbba5}
+:is(#canon-dialog,#practice-dialog) h2{margin:0;font:600 clamp(27px,5vw,38px)/1.25 "Songti SC",SimSun,serif;color:#273729}
+:is(#canon-date,#practice-date),.canon-track{margin:0 0 4px;color:#526147;font-size:13px;letter-spacing:.03em}
+:is(#canon-close,#practice-close),:is(#canon-options,#practice-options) button,:is(#canon-dialog,#practice-dialog) .canon-primary{min-height:44px;border:1px solid #81896f;border-radius:3px;background:#f7f3e8;color:#29382a}
+:is(#canon-close,#practice-close){font-size:14px;padding:4px 12px}
+:is(#canon-dialog,#practice-dialog) .canon-body{padding:18px clamp(18px,5vw,34px) 24px}
+:is(#canon-dialog,#practice-dialog) .canon-track{display:flex;align-items:center;justify-content:space-between;gap:12px}
 #canon-marks{display:flex;gap:4px}
 #canon-marks i{width:14px;height:5px;background:#c7c9b6}
 #canon-marks .right{background:#41664b}
 #canon-marks .wrong{background:#985838}
 #canon-marks .current{background:#876a30}
-#canon-quote{margin:18px 0 23px;padding:0 0 0 14px;border-inline-start:3px solid #817342;color:#263728;font:500 clamp(21px,4.6vw,30px)/1.65 "Songti SC",SimSun,serif;white-space:pre-line;overflow-wrap:anywhere}
-#canon-prompt{margin:0 0 9px;color:#354432;font-family:inherit;font-size:15px;font-weight:600;line-height:1.5}
-#canon-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-#canon-options button{display:flex;align-items:center;gap:5px;padding:8px;font-size:15px;justify-content:center;font-weight:600;line-height:1.55}
-#canon-options button span{font-size:12px;color:#5b624e;font-weight:400}
-#canon-options button:hover:not(:disabled),#canon-close:hover{background:#dedfc9;color:#263728}
-#canon-options button:disabled{opacity:1;background:#eae7da;color:#555c4b;cursor:default}
-#canon-options button.right{background:#d6e1ce;border:2px solid #486344;color:#243e25}
-#canon-options button.wrong{background:#eadcd2;border-color:#9b6143;color:#70422f}
-#canon-verdict{margin-top:17px;padding-top:12px;border-top:1px solid #bbbba5}
-#canon-feedback{margin:0 0 3px;color:#293e29;font-weight:600}
-#canon-dialog a{color:#3b5435;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-#canon-dialog .canon-link-action{display:inline-block;white-space:nowrap}
-#canon-dialog .canon-primary{display:block;padding:8px 18px;background:#355239;color:#fff;border-color:#355239;font-weight:600}
-#canon-dialog .canon-primary:hover{background:#26422c;color:#fff}
-#canon-next{margin-top:13px}
-#canon-summary{margin:2px 0 20px;font:600 clamp(25px,5vw,34px)/1.5 "Songti SC",SimSun,serif;color:#263728}
-#canon-dialog details{margin-top:14px;border-top:1px solid #bbbba5}
-#canon-dialog summary{min-height:44px;padding:11px 2px;cursor:pointer;font-weight:600;color:#354532}
+:is(#canon-quote,#practice-quote){margin:18px 0 23px;padding:0 0 0 14px;border-inline-start:3px solid #817342;color:#263728;font:500 clamp(21px,4.6vw,30px)/1.65 "Songti SC",SimSun,serif;white-space:pre-line;overflow-wrap:anywhere}
+:is(#canon-prompt,#practice-prompt){margin:0 0 9px;color:#354432;font-family:inherit;font-size:15px;font-weight:600;line-height:1.5}
+:is(#canon-options,#practice-options){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+:is(#canon-options,#practice-options) button{display:flex;align-items:center;gap:5px;padding:8px;font-size:15px;justify-content:center;font-weight:600;line-height:1.55}
+:is(#canon-options,#practice-options) button span{font-size:12px;color:#5b624e;font-weight:400}
+:is(#canon-options,#practice-options) button:hover:not(:disabled),:is(#canon-close,#practice-close):hover{background:#dedfc9;color:#263728}
+:is(#canon-options,#practice-options) button:disabled{opacity:1;background:#eae7da;color:#555c4b;cursor:default}
+:is(#canon-options,#practice-options) button.right{background:#d6e1ce;border:2px solid #486344;color:#243e25}
+:is(#canon-options,#practice-options) button.wrong{background:#eadcd2;border-color:#9b6143;color:#70422f}
+:is(#canon-verdict,#practice-verdict){margin-top:17px;padding-top:12px;border-top:1px solid #bbbba5}
+:is(#canon-feedback,#practice-feedback){margin:0 0 3px;color:#293e29;font-weight:600}
+:is(#canon-dialog,#practice-dialog) a{color:#3b5435;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+:is(#canon-dialog,#practice-dialog) .canon-link-action{display:inline-block;white-space:nowrap}
+:is(#canon-dialog,#practice-dialog) .canon-primary{display:block;padding:8px 18px;background:#355239;color:#fff;border-color:#355239;font-weight:600}
+:is(#canon-dialog,#practice-dialog) .canon-primary:hover{background:#26422c;color:#fff}
+:is(#canon-next,#practice-next){margin-top:13px}
+:is(#canon-summary,#practice-summary){margin:2px 0 20px;font:600 clamp(25px,5vw,34px)/1.5 "Songti SC",SimSun,serif;color:#263728}
+:is(#canon-dialog,#practice-dialog) details{margin-top:14px;border-top:1px solid #bbbba5}
+:is(#canon-dialog,#practice-dialog) summary{min-height:44px;padding:11px 2px;cursor:pointer;font-weight:600;color:#354532}
 #canon-share-text{box-sizing:border-box;width:100%;padding:8px;background:#fcfaf2;color:#29382a;font-family:inherit;font-size:14px;line-height:1.6}
 #canon-answers{padding-inline-start:1.6rem;margin:0}
 #canon-answers li{margin:.8rem 0 1rem}
 #canon-answers blockquote{margin:0 0 .3rem;font:500 18px/1.6 "Songti SC",SimSun,serif;color:#263728}
-#canon-answers p,#canon-copy-status,#canon-storage,#canon-notice{color:#514e3c;font-size:14px;line-height:1.5}
+#canon-answers p,#canon-copy-status,:is(#canon-storage,#practice-storage),#canon-notice{color:#514e3c;font-size:14px;line-height:1.5}
 #canon-answers p{margin:0}
 #canon-copy-status:empty{display:none}
-@media(max-width:450px){#canon-options{grid-template-columns:1fr}#canon-options button{justify-content:flex-start;padding-inline:14px;gap:10px}#canon-dialog .canon-heading{padding-top:16px}}
+@media(max-width:450px){:is(#canon-options,#practice-options){grid-template-columns:1fr}:is(#canon-options,#practice-options) button{justify-content:flex-start;padding-inline:14px;gap:10px}:is(#canon-dialog,#practice-dialog) .canon-heading{padding-top:16px}}
+
+.canon-result-actions{display:flex;gap:8px 16px;align-items:center;flex-wrap:wrap}
+#practice-entry,#canon-to-practice,#practice-daily{display:inline-flex;align-items:center;min-height:44px}
+#practice-home .practice-counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 1rem;border-block:1px solid #bbbba5}
+.practice-counts div{padding:10px 2px}
+.practice-counts dt{color:#51604c;font-size:14px}
+.practice-counts dd{margin:3px 0 0;color:#293e29;font:600 26px/1.3 Georgia,serif;font-variant-numeric:tabular-nums}
+#practice-schedule,#practice-rules p{color:#384937;font-size:15px;line-height:1.65}
+#practice-schedule{margin:0 0 15px}
+#practice-rules p{margin:0 0 5px}
+#practice-daily{margin-top:5px}
+#practice-source{display:inline-block;min-height:44px;padding-block:10px}

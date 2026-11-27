@@ -42,17 +42,18 @@
     url.hash = 'daily-canon';
     return url.href;
   }
-  function sourceURL(card) {
+  function sourceURL(card, mode) {
     const url = new URL('html/' + card.bookId + '.html', location.href);
-    url.searchParams.set('from', 'daily-canon');
-    url.searchParams.set('day', day);
+    url.searchParams.set('from', mode);
+    if (mode === 'daily-canon') url.searchParams.set('day', day);
+    else url.searchParams.set('gameTab', 'kept');
     const anchor = {start:card.start, end:card.start + card.text.length, exact:card.text,
       prefix:card.prefix, suffix:card.suffix};
     url.hash = 'clip=' + encodeURIComponent(JSON.stringify([card.bookId, card.section, anchor]));
     return url.href;
   }
-  function sourceLink(card, link = document.createElement('a')) {
-    link.href = sourceURL(card);
+  function sourceLink(card, link = document.createElement('a'), mode = 'daily-canon') {
+    link.href = sourceURL(card, mode);
     link.target = '_blank';
     link.rel = 'noopener';
     const action = document.createElement('span');
@@ -61,6 +62,7 @@
     link.replaceChildren('《' + quiz.books[card.bookId] + '》 · ' + card.title + ' ', action);
     return link;
   }
+  window.EarthDailyCanonPage = Object.freeze({sourceLink, savedRounds: () => rounds.values()});
   function shareText() {
     return quiz.share(state) + '\n' + datedURL(day, true);
   }
@@ -84,6 +86,9 @@
     get('finished').hidden = phase !== 'finished';
     if (phase === 'finished') {
       get('summary').textContent = '答对 ' + quiz.score(state) + ' / ' + questions.length + ' 题';
+      const futureMisses = day > quiz.today() && quiz.score(state) < questions.length;
+      get('future-review').hidden = !futureMisses;
+      if (futureMisses) get('future-review').textContent = '本场错题将在 ' + day + '（北京时间）加入复习。';
       get('share-text').value = shareText();
       review();
       get('summary').focus();

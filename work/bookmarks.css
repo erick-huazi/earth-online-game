@@ -33,4 +33,4 @@
 .recall-dialog [hidden]{display:none!important}
 .recall-dialog :focus-visible,.recall-entry :focus-visible{outline:2px solid currentColor;outline-offset:2px}
 
-.recall-actions [data-daily-canon-link]{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px;font:inherit}
+.recall-actions a{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px;font:inherit}

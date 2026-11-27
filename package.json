@@ -1,12 +1,13 @@
 {
   "name": "earth-online-game",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "private": true,
   "description": "地球 Online · 山河远征：短局资源策略、同图挑战与完整典籍阅读",
   "scripts": {
     "build": "node work/build.cjs && node work/build-game.cjs",
     "build:game": "node work/build-game.cjs",
-    "test": "node work/qa-earth-game.cjs && node work/qa-expedition-engine.cjs && node work/qa-expedition-browser.cjs && node work/qa-reading-return.cjs && npm run test:search && npm run test:a11y && npm run test:sharing && npm run test:occurrence && npm run test:practice && npm run test:clippings && npm run test:properties && npm run test:compare && npm run test:quote-export && npm run test:history && npm run test:recall && npm run test:daily-canon",
+    "test": "node work/qa-earth-game.cjs && node work/qa-expedition-engine.cjs && node work/qa-expedition-browser.cjs && node work/qa-reading-return.cjs && npm run test:search && npm run test:a11y && npm run test:sharing && npm run test:occurrence && npm run test:practice && npm run test:clippings && npm run test:properties && npm run test:compare && npm run test:quote-export && npm run test:history && npm run test:recall && npm run test:daily-canon && npm run test:canon-practice",
+    "test:canon-practice": "node work/qa-canon-practice.cjs && node work/qa-canon-practice-ui.cjs",
     "test:history": "node work/qa-history-model.cjs && node work/qa-practice-history.cjs",
     "test:daily-canon": "node work/qa-daily-canon.cjs && node work/qa-daily-play.cjs && node work/qa-canon-clock.cjs",
     "test:recall": "node work/qa-recall.cjs",

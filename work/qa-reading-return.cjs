@@ -64,6 +64,23 @@ async function main() {
     const channel = process.env.PLAYWRIGHT_CHANNEL;
     browser = await chromium.launch(channel ? {channel} : {});
 
+    await check(browser, '全书与手册保留错题复习入口，在线和离线都能返回', async page => {
+      const offline = pathToFileURL(output + path.sep).href;
+      for (const root of [base, offline]) {
+        await page.goto(root + 'html/daodejing.html?from=canon-practice#section-4');
+        assert.equal((await urlOf(page, gameReturn)).href, root + game + '#canon-practice');
+        assert.equal((await urlOf(page, manualReturn)).searchParams.get('from'), 'canon-practice');
+        await page.locator(manualReturn).click();
+        assert.equal((await urlOf(page, gameReturn)).hash, '#canon-practice');
+        assert.equal((await urlOf(page, '#open-full-book')).searchParams.get('from'), 'canon-practice');
+        for (const reader of [manual, 'html/daodejing.html']) {
+          await page.goto(root + reader + '#recall');
+          const link = page.getByRole('link', {name:'复习我的错题（新标签页）'});
+          assert.equal(new URL(await link.getAttribute('href'), page.url()).href, root + game + '#canon-practice');
+        }
+      }
+    });
+
     await check(browser, '远征与经典同时有进度时，阅读后回到原模式、原阶段', async (page, context) => {
       await page.goto(base + game);
       await page.locator('#exp-begin').click();

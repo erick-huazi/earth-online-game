@@ -79,7 +79,7 @@
 .recall-dialog [hidden]{display:none!important}
 .recall-dialog :focus-visible,.recall-entry :focus-visible{outline:2px solid currentColor;outline-offset:2px}
 
-.recall-actions [data-daily-canon-link]{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px;font:inherit}
+.recall-actions a{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:3px;font:inherit}
 
 /* Optional reader palettes. Paper intentionally inherits the existing design. */
 body.earth-manual [data-reading-appearance],body.earth-full-book [data-reading-appearance]{margin:8px 0 16px;max-width:100%}
@@ -192,7 +192,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section id="progress" class="progress-section" aria-labelledby="progress-heading"><div><h2 id="progress-heading">每一次思考，都算进度。</h2><p>“已探索”是你留下的阅读标记。<br>把书读进生活，才是这份手册的下一页。</p></div><div><div class="progress-meta"><div class="progress-count"><span id="completed-count">0</span><small> / 10</small></div><span class="progress-label" id="progress-label">尚未留下探索标记</span></div><div class="progress-track" role="progressbar" aria-label="典籍探索进度" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div><div class="progress-bottom"><p class="small-caption" id="archive-note">进度与心得保存在本机，随时导出留存。</p><button class="export-button" id="export-button" type="button">导出我的阅读存档 ↓</button></div></div></section>
 <details class="archive-tools" id="archive-tools"><summary>备份与恢复阅读记录</summary><p>下载完整备份，可在其他浏览器恢复心得、探索标记、阅读位置、书签、摘录与配色。恢复前可预览；本机已有记录优先保留。全书页导出的书签与摘录也可在这里合并。</p><div class="archive-actions"><button type="button" class="btn" id="archive-export">下载完整备份 ↓</button><button type="button" class="btn" id="archive-select">选择备份文件</button><input type="file" id="archive-file" accept=".json,application/json" hidden><button type="button" class="btn btn-primary" id="archive-apply" hidden disabled>合并恢复记录</button></div><p id="archive-status" role="status">JSON 备份可用于恢复；“导出我的阅读存档”仍保留为可阅读的 Markdown 文件。</p></details>
 <aside class="rules" aria-labelledby="rules-heading"><h2 id="rules-heading">进入世界之前</h2><p>本手册以游戏语言组织阅读。“四柱八字”与“五运六气”对应相关原典，图片未提供可确定的同名书版本。传统命理、修炼与医理内容宜结合历史语境和现代知识辨析；阅读心得不替代医疗建议，也不提供命运预测。原文与 PDF 已从 GitHub 下载至本地书库，导语与小任务为原创阅读辅助。</p></aside>
-<footer class="footer"><span><strong>地球 ONLINE · 通关手册</strong> / 阅读地图 2026</span><span><a href="github-review-v2.8.html">v2.8 项目与技能评分</a> · <a href="deep-optimization-checklist.html" target="_blank" rel="noopener">历史优化清单 ↗</a> · <a href="github-optimization-report.html" target="_blank" rel="noopener">GitHub 选型评分与优化记录 ↗</a></span></footer>
+<footer class="footer"><span><strong>地球 ONLINE · 通关手册</strong> / 阅读地图 2026</span><span><a href="github-review-v2.9.html">v2.9 项目与技能评分</a> · <a href="deep-optimization-checklist.html" target="_blank" rel="noopener">历史优化清单 ↗</a> · <a href="github-optimization-report.html" target="_blank" rel="noopener">GitHub 选型评分与优化记录 ↗</a></span></footer>
 </main><div id="live-message" class="status-live" aria-live="polite"></div><div class="toast" id="toast" hidden role="status"></div><noscript><p style="padding:24px">请启用浏览器 JavaScript 以显示书目和记录阅读进度。</p></noscript>
 <script>
 'use strict';
@@ -578,7 +578,7 @@ $('reading-tools').open=!matchMedia('(max-width:760px)').matches;
 function createReaderGameNavigation() {
   const params = new URLSearchParams(location.search);
   const from = params.get('from');
-  const mode = ['expedition', 'classic', 'daily-canon'].includes(from) ? from : '';
+  const mode = ['expedition', 'classic', 'daily-canon', 'canon-practice'].includes(from) ? from : '';
   const requestedDay = params.get('day') || '';
   const day = mode === 'daily-canon' && /^\d{4}-\d{2}-\d{2}$/.test(requestedDay) ? requestedDay : '';
   const keptGameTab = Boolean(mode && params.get('gameTab') === 'kept');
@@ -615,6 +615,9 @@ function createReaderGameNavigation() {
       gameURL.hash = 'daily-canon';
       link.href = gameURL.href;
       link.textContent = '返回每日辨典';
+    } else if (mode === 'canon-practice') {
+      link.hash = 'canon-practice';
+      link.textContent = '返回错题复习';
     } else if (mode) {
       link.hash = mode === 'expedition' ? 'expedition' : 'classic-story';
       link.textContent = mode === 'expedition' ? '返回本次远征' : '返回经典剧情';
@@ -1339,14 +1342,20 @@ function createEarthRecall(panel, adapter, readEntries, matches) {
   const start = entry.querySelector('[data-recall-start]');
   const read = entry.querySelector('[data-recall-read]');
   const hint = entry.querySelector('[data-recall-hint]');
-  const daily = document.createElement('a');
-  daily.dataset.dailyCanonLink = '';
-  daily.href = (document.body.classList.contains('earth-full-book') ? '../' : '') + 'earth-online-game.html#daily-canon';
-  daily.textContent = '参加每日五题 ↗';
-  daily.setAttribute('aria-label', '参加每日五题（新标签页）');
-  daily.target = '_blank';
-  daily.rel = 'noopener';
-  entry.querySelector('.recall-actions').append(daily);
+  const gamePath = (document.body.classList.contains('earth-full-book') ? '../' : '') + 'earth-online-game.html';
+  for (const [hash, label, key] of [
+    ['daily-canon', '参加每日五题', 'dailyCanonLink'],
+    ['canon-practice', '复习我的错题', 'canonPracticeLink']
+  ]) {
+    const link = document.createElement('a');
+    link.dataset[key] = '';
+    link.href = gamePath + '#' + hash;
+    link.textContent = label + ' ↗';
+    link.setAttribute('aria-label', label + '（新标签页）');
+    link.target = '_blank';
+    link.rel = 'noopener';
+    entry.querySelector('.recall-actions').append(link);
+  }
   const dialog = document.createElement('dialog');
   dialog.className = 'recall-dialog';
   dialog.dataset.recallDialog = '';

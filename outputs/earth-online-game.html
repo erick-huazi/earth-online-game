@@ -126,48 +126,60 @@
 
 /* The daily quiz reads like a compact leaf from the accompanying books. */
 #canon-entry{display:inline-flex;align-items:center;justify-content:center;min-height:48px;text-decoration:none}
-#canon-dialog{width:min(590px,calc(100vw - 28px));max-height:calc(100vh - 28px);max-height:calc(100dvh - 28px);margin:auto;padding:0;overflow:auto;background:#f2eddf;color:#28382a;overscroll-behavior:contain}
-#canon-dialog [hidden]{display:none!important}
-#canon-dialog :focus-visible{outline:3px solid #745724;outline-offset:3px}
-#canon-dialog .canon-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px clamp(18px,5vw,34px) 16px;border-bottom:1px solid #bbbba5}
-#canon-dialog h2{margin:0;font:600 clamp(27px,5vw,38px)/1.25 "Songti SC",SimSun,serif;color:#273729}
-#canon-date,.canon-track{margin:0 0 4px;color:#526147;font-size:13px;letter-spacing:.03em}
-#canon-close,#canon-options button,#canon-dialog .canon-primary{min-height:44px;border:1px solid #81896f;border-radius:3px;background:#f7f3e8;color:#29382a}
-#canon-close{font-size:14px;padding:4px 12px}
-#canon-dialog .canon-body{padding:18px clamp(18px,5vw,34px) 24px}
-#canon-dialog .canon-track{display:flex;align-items:center;justify-content:space-between;gap:12px}
+:is(#canon-dialog,#practice-dialog){width:min(590px,calc(100vw - 28px));max-height:calc(100vh - 28px);max-height:calc(100dvh - 28px);margin:auto;padding:0;overflow:auto;background:#f2eddf;color:#28382a;overscroll-behavior:contain}
+:is(#canon-dialog,#practice-dialog) [hidden]{display:none!important}
+:is(#canon-dialog,#practice-dialog) :focus-visible{outline:3px solid #745724;outline-offset:3px}
+:is(#canon-dialog,#practice-dialog) .canon-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px clamp(18px,5vw,34px) 16px;border-bottom:1px solid #bbbba5}
+:is(#canon-dialog,#practice-dialog) h2{margin:0;font:600 clamp(27px,5vw,38px)/1.25 "Songti SC",SimSun,serif;color:#273729}
+:is(#canon-date,#practice-date),.canon-track{margin:0 0 4px;color:#526147;font-size:13px;letter-spacing:.03em}
+:is(#canon-close,#practice-close),:is(#canon-options,#practice-options) button,:is(#canon-dialog,#practice-dialog) .canon-primary{min-height:44px;border:1px solid #81896f;border-radius:3px;background:#f7f3e8;color:#29382a}
+:is(#canon-close,#practice-close){font-size:14px;padding:4px 12px}
+:is(#canon-dialog,#practice-dialog) .canon-body{padding:18px clamp(18px,5vw,34px) 24px}
+:is(#canon-dialog,#practice-dialog) .canon-track{display:flex;align-items:center;justify-content:space-between;gap:12px}
 #canon-marks{display:flex;gap:4px}
 #canon-marks i{width:14px;height:5px;background:#c7c9b6}
 #canon-marks .right{background:#41664b}
 #canon-marks .wrong{background:#985838}
 #canon-marks .current{background:#876a30}
-#canon-quote{margin:18px 0 23px;padding:0 0 0 14px;border-inline-start:3px solid #817342;color:#263728;font:500 clamp(21px,4.6vw,30px)/1.65 "Songti SC",SimSun,serif;white-space:pre-line;overflow-wrap:anywhere}
-#canon-prompt{margin:0 0 9px;color:#354432;font-family:inherit;font-size:15px;font-weight:600;line-height:1.5}
-#canon-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-#canon-options button{display:flex;align-items:center;gap:5px;padding:8px;font-size:15px;justify-content:center;font-weight:600;line-height:1.55}
-#canon-options button span{font-size:12px;color:#5b624e;font-weight:400}
-#canon-options button:hover:not(:disabled),#canon-close:hover{background:#dedfc9;color:#263728}
-#canon-options button:disabled{opacity:1;background:#eae7da;color:#555c4b;cursor:default}
-#canon-options button.right{background:#d6e1ce;border:2px solid #486344;color:#243e25}
-#canon-options button.wrong{background:#eadcd2;border-color:#9b6143;color:#70422f}
-#canon-verdict{margin-top:17px;padding-top:12px;border-top:1px solid #bbbba5}
-#canon-feedback{margin:0 0 3px;color:#293e29;font-weight:600}
-#canon-dialog a{color:#3b5435;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-#canon-dialog .canon-link-action{display:inline-block;white-space:nowrap}
-#canon-dialog .canon-primary{display:block;padding:8px 18px;background:#355239;color:#fff;border-color:#355239;font-weight:600}
-#canon-dialog .canon-primary:hover{background:#26422c;color:#fff}
-#canon-next{margin-top:13px}
-#canon-summary{margin:2px 0 20px;font:600 clamp(25px,5vw,34px)/1.5 "Songti SC",SimSun,serif;color:#263728}
-#canon-dialog details{margin-top:14px;border-top:1px solid #bbbba5}
-#canon-dialog summary{min-height:44px;padding:11px 2px;cursor:pointer;font-weight:600;color:#354532}
+:is(#canon-quote,#practice-quote){margin:18px 0 23px;padding:0 0 0 14px;border-inline-start:3px solid #817342;color:#263728;font:500 clamp(21px,4.6vw,30px)/1.65 "Songti SC",SimSun,serif;white-space:pre-line;overflow-wrap:anywhere}
+:is(#canon-prompt,#practice-prompt){margin:0 0 9px;color:#354432;font-family:inherit;font-size:15px;font-weight:600;line-height:1.5}
+:is(#canon-options,#practice-options){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+:is(#canon-options,#practice-options) button{display:flex;align-items:center;gap:5px;padding:8px;font-size:15px;justify-content:center;font-weight:600;line-height:1.55}
+:is(#canon-options,#practice-options) button span{font-size:12px;color:#5b624e;font-weight:400}
+:is(#canon-options,#practice-options) button:hover:not(:disabled),:is(#canon-close,#practice-close):hover{background:#dedfc9;color:#263728}
+:is(#canon-options,#practice-options) button:disabled{opacity:1;background:#eae7da;color:#555c4b;cursor:default}
+:is(#canon-options,#practice-options) button.right{background:#d6e1ce;border:2px solid #486344;color:#243e25}
+:is(#canon-options,#practice-options) button.wrong{background:#eadcd2;border-color:#9b6143;color:#70422f}
+:is(#canon-verdict,#practice-verdict){margin-top:17px;padding-top:12px;border-top:1px solid #bbbba5}
+:is(#canon-feedback,#practice-feedback){margin:0 0 3px;color:#293e29;font-weight:600}
+:is(#canon-dialog,#practice-dialog) a{color:#3b5435;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+:is(#canon-dialog,#practice-dialog) .canon-link-action{display:inline-block;white-space:nowrap}
+:is(#canon-dialog,#practice-dialog) .canon-primary{display:block;padding:8px 18px;background:#355239;color:#fff;border-color:#355239;font-weight:600}
+:is(#canon-dialog,#practice-dialog) .canon-primary:hover{background:#26422c;color:#fff}
+:is(#canon-next,#practice-next){margin-top:13px}
+:is(#canon-summary,#practice-summary){margin:2px 0 20px;font:600 clamp(25px,5vw,34px)/1.5 "Songti SC",SimSun,serif;color:#263728}
+:is(#canon-dialog,#practice-dialog) details{margin-top:14px;border-top:1px solid #bbbba5}
+:is(#canon-dialog,#practice-dialog) summary{min-height:44px;padding:11px 2px;cursor:pointer;font-weight:600;color:#354532}
 #canon-share-text{box-sizing:border-box;width:100%;padding:8px;background:#fcfaf2;color:#29382a;font-family:inherit;font-size:14px;line-height:1.6}
 #canon-answers{padding-inline-start:1.6rem;margin:0}
 #canon-answers li{margin:.8rem 0 1rem}
 #canon-answers blockquote{margin:0 0 .3rem;font:500 18px/1.6 "Songti SC",SimSun,serif;color:#263728}
-#canon-answers p,#canon-copy-status,#canon-storage,#canon-notice{color:#514e3c;font-size:14px;line-height:1.5}
+#canon-answers p,#canon-copy-status,:is(#canon-storage,#practice-storage),#canon-notice{color:#514e3c;font-size:14px;line-height:1.5}
 #canon-answers p{margin:0}
 #canon-copy-status:empty{display:none}
-@media(max-width:450px){#canon-options{grid-template-columns:1fr}#canon-options button{justify-content:flex-start;padding-inline:14px;gap:10px}#canon-dialog .canon-heading{padding-top:16px}}
+@media(max-width:450px){:is(#canon-options,#practice-options){grid-template-columns:1fr}:is(#canon-options,#practice-options) button{justify-content:flex-start;padding-inline:14px;gap:10px}:is(#canon-dialog,#practice-dialog) .canon-heading{padding-top:16px}}
+
+.canon-result-actions{display:flex;gap:8px 16px;align-items:center;flex-wrap:wrap}
+#practice-entry,#canon-to-practice,#practice-daily{display:inline-flex;align-items:center;min-height:44px}
+#practice-home .practice-counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 1rem;border-block:1px solid #bbbba5}
+.practice-counts div{padding:10px 2px}
+.practice-counts dt{color:#51604c;font-size:14px}
+.practice-counts dd{margin:3px 0 0;color:#293e29;font:600 26px/1.3 Georgia,serif;font-variant-numeric:tabular-nums}
+#practice-schedule,#practice-rules p{color:#384937;font-size:15px;line-height:1.65}
+#practice-schedule{margin:0 0 15px}
+#practice-rules p{margin:0 0 5px}
+#practice-daily{margin-top:5px}
+#practice-source{display:inline-block;min-height:44px;padding-block:10px}
 </style></head>
 <body>
 <noscript><p style="padding:24px;color:#ede9d9;background:#141e1a">山河远征需要启用 JavaScript 才能游玩；典籍手册的正文仍可直接阅读。</p></noscript>
@@ -175,7 +187,7 @@
 <header class="topbar"><a class="brand" href="#top"><span class="brand-seal">地</span><span>地球 <b>ONLINE</b><small>山河远征 · 单人策略游戏</small></span></a><nav aria-label="游戏导航"><a href="#expedition">山河远征</a><a href="earth-online-manual.html?from=expedition#library">典籍书库 ↗</a><a href="#camp">我的营地</a></nav><span class="local-badge"><i></i> 离线可玩</span></header>
 <main id="top">
 <section class="exp-hero" aria-labelledby="game-heading">
- <div class="exp-hero-copy"><p class="overline">EARTH ONLINE / 山河远征 · 第二季</p><h1 id="game-heading">入世一场。<br><em>这次，你能走多远？</em></h1><p class="exp-lead">一袋行粮，三枚书印，十二站未知山河。<br>没有标准答案。你的取舍，决定这次的归途。</p><div class="exp-hero-actions"><button id="exp-resume" class="primary" hidden>继续上次远征</button><button id="exp-daily-start" class="primary">挑战今日山河 <span>↗</span></button><button id="exp-free-start" class="outline">自由远征</button><a id="canon-entry" href="#daily-canon" class="outline" aria-haspopup="dialog">每日辨典 · 五题</a></div><p class="exp-meta">约 3–5 分钟一局 · 离线可玩 · 自动续局</p><button id="start-game" class="quiet exp-classic-entry">进入经典剧情 · 33 场故事 →</button><a class="quiet exp-recall-link" href="earth-online-manual.html?from=expedition#recall">用我的摘录辨典 →</a><span id="journey-caption" class="exp-hidden-caption">原旅程存档保留</span></div>
+ <div class="exp-hero-copy"><p class="overline">EARTH ONLINE / 山河远征 · 第二季</p><h1 id="game-heading">入世一场。<br><em>这次，你能走多远？</em></h1><p class="exp-lead">一袋行粮，三枚书印，十二站未知山河。<br>没有标准答案。你的取舍，决定这次的归途。</p><div class="exp-hero-actions"><button id="exp-resume" class="primary" hidden>继续上次远征</button><button id="exp-daily-start" class="primary">挑战今日山河 <span>↗</span></button><button id="exp-free-start" class="outline">自由远征</button><a id="canon-entry" href="#daily-canon" class="outline" aria-haspopup="dialog">每日辨典 · 五题</a></div><p class="exp-meta">约 3–5 分钟一局 · 离线可玩 · 自动续局</p><button id="start-game" class="quiet exp-classic-entry">进入经典剧情 · 33 场故事 →</button><a id="practice-entry" class="quiet exp-recall-link" href="#canon-practice" aria-haspopup="dialog">错题复习 →</a><a class="quiet exp-recall-link" href="earth-online-manual.html?from=expedition#recall">用我的摘录辨典 →</a><span id="journey-caption" class="exp-hidden-caption">原旅程存档保留</span></div>
  <div class="exp-hero-art" aria-hidden="true"><div class="exp-orbit orbit-one"></div><div class="exp-orbit orbit-two"></div><div class="exp-orbit orbit-three"></div><span class="exp-orbit-label">十二站山河 / 一次自己的选择</span><div class="exp-mountain m-back"></div><div class="exp-mountain m-front"></div><span class="exp-sun"></span><div class="exp-art-card card-a"><small>若水 · 从容</small><b>水</b><span>取舍之间<br>另有一条路</span></div><div class="exp-art-card card-b"><small>知行 · 行动</small><b>行</b><span>带着答案<br>去下一站</span></div><div class="exp-art-tag"><i></i> 同一开局，千种归途</div></div>
 </section>
 <section id="expedition" class="exp-section" aria-labelledby="exp-heading" tabindex="-1">
@@ -190,7 +202,7 @@
    <div id="exp-play" hidden><div class="exp-board-top"><span id="exp-run-name"></span><div class="exp-toolbar"><button id="exp-export" class="exp-small-button">导出续局</button><button id="exp-new" class="exp-small-button">另开一局</button></div></div><div id="exp-track" class="exp-track" aria-label="远征进度"></div><div id="exp-resources" class="exp-resources" aria-label="当前资源"></div><div id="exp-relic-strip" class="exp-relic-strip" aria-label="已得书印"></div><div id="exp-stage"></div></div>
    <div class="exp-board-foot"><span>资源归零则归营 · 走完十二站结算</span><button id="exp-rules-open" class="exp-small-button">玩法与计分</button></div>
   </div>
-  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="github-review-v2.8.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
+  <aside class="exp-ledger"><p class="overline">行者手记 / LOCAL RECORD</p><h3>每次回来，<br>都带点新的东西。</h3><div class="exp-personal"><div><strong id="exp-best">—</strong><span>本机最佳旅程分</span></div><div><strong id="exp-ending-count">0</strong><span>已遇见的结局</span></div></div><p id="exp-daily-record" class="exp-muted exp-daily-record"></p><div id="exp-milestones" class="exp-milestones"></div><h4>结局图鉴</h4><div id="exp-endings" class="exp-ending-grid" role="list" aria-label="结局图鉴"></div><div class="exp-ledger-line"></div><h4>最近一次远行</h4><p id="exp-last-run" class="exp-muted">还没有足迹。第一步，就从今天开始。</p><div id="exp-recent-log" class="exp-recent-log"></div><label class="outline import-label exp-import-label" for="exp-import">导入远征存档<input id="exp-import" type="file" accept="application/json,.json"></label><p id="exp-import-status" role="status"></p><a href="github-review-v2.9.html" class="exp-report-link">这次升级，融合了什么？ ↗</a></aside>
  </div>
  <p id="exp-status" class="exp-status" role="status" aria-live="polite"></p>
 </section>
@@ -231,10 +243,36 @@
     </section>
     <section id="canon-finished" hidden aria-labelledby="canon-summary">
       <h3 id="canon-summary" tabindex="-1"></h3>
-      <div class="canon-result-actions"><button type="button" class="canon-primary" id="canon-copy">复制无剧透战绩</button></div>
+      <div class="canon-result-actions"><button type="button" class="canon-primary" id="canon-copy">复制无剧透战绩</button><a id="canon-to-practice" href="#canon-practice" aria-haspopup="dialog">去错题复习 →</a></div>
+      <p id="canon-future-review" hidden></p>
       <p id="canon-copy-status" role="status"></p>
       <details id="canon-share"><summary>查看可复制的战绩与同日链接</summary><textarea id="canon-share-text" rows="4" readonly aria-label="无剧透战绩和同日链接"></textarea></details>
       <details id="canon-review-list"><summary id="canon-review">回看这五题</summary><ol id="canon-answers"></ol></details>
+    </section>
+  </div>
+</dialog>
+<dialog id="practice-dialog" aria-labelledby="practice-title">
+  <header class="canon-heading"><div><p id="practice-date"></p><h2 id="practice-title">错题复习</h2></div><button id="practice-close" type="button" aria-label="关闭错题复习">关闭</button></header>
+  <div class="canon-body">
+    <p id="practice-storage" role="status" hidden>浏览器存储不可用，复习进度暂存在此页。</p>
+    <section id="practice-home" aria-labelledby="practice-summary">
+      <h3 id="practice-summary" tabindex="-1"></h3>
+      <dl class="practice-counts"><div><dt>到期可练</dt><dd id="practice-due"></dd></div><div><dt>已掌握</dt><dd id="practice-mastered"></dd></div><div><dt>累计错题</dt><dd id="practice-total"></dd></div></dl>
+      <p id="practice-schedule"></p>
+      <button type="button" class="canon-primary" id="practice-start">开始重练</button>
+      <a id="practice-daily" href="#daily-canon">去答每日五题 →</a>
+      <details id="practice-rules"><summary>复习如何安排？</summary><p>每日辨典的错题会记到这里。每轮最多五题，答对后依次间隔 1、3、7 天再练，第四次到期答对即掌握。答错的题可以今天再练。重练单独记录，每日首答战绩保留。</p></details>
+    </section>
+    <section id="practice-play" aria-labelledby="practice-prompt" hidden>
+      <p id="practice-progress" class="canon-track"></p>
+      <blockquote id="practice-quote" tabindex="-1" aria-describedby="practice-progress"></blockquote>
+      <h3 id="practice-prompt">这段话出自哪部典籍？</h3>
+      <div id="practice-options"></div>
+      <div id="practice-verdict" hidden>
+        <p id="practice-feedback" tabindex="-1"></p>
+        <a id="practice-source" target="_blank" rel="noopener">读这段原文 ↗</a>
+        <button type="button" id="practice-next" class="canon-primary"></button>
+      </div>
     </section>
   </div>
 </dialog>
@@ -3982,7 +4020,7 @@ async function importSave(event){const file=event.target.files[0];if(!file)retur
  renderWorld();
  const destination = location.hash;
  const resumeClassic = destination === '#classic-story' ||
-   (!expeditionPriority && destination !== '#expedition' && destination !== '#daily-canon' && !destination.startsWith('#run=') && !destination.startsWith('#replay='));
+   (!expeditionPriority && !['#expedition', '#daily-canon', '#canon-practice'].includes(destination) && !destination.startsWith('#run=') && !destination.startsWith('#replay='));
  if (state.current && resumeClassic) showQuest();
 })();
 </script><script>/* Local same-start records and the station review for completed expeditions. */
@@ -5074,6 +5112,132 @@ $('exp-board').insertBefore(inputWrap,$('exp-board').querySelector('.exp-board-f
   else globalThis.EarthDailyCanon = api;
 })();
 
+// Personal review uses the immutable first answers of the dated game as input.
+(() => {
+  'use strict';
+  const commonJS = typeof module === 'object' && module.exports;
+  const quiz = commonJS ? require('./daily-canon.js') : globalThis.EarthDailyCanon;
+  const bank = commonJS ? require('./daily-canon-bank.js') : globalThis.EarthDailyCanonBank;
+  const seedrandom = commonJS ? require('./vendor/seedrandom-3.0.5.min.js') : Math.seedrandom;
+  const byId = new Map(bank.map(card => [card.id, card]));
+  const books = Object.keys(quiz.books);
+  const rules = 'canon-practice-v1';
+  const storageKey = 'earth-online-' + rules;
+  const gaps = [1, 3, 7];
+  const mastered = gaps.length + 1;
+
+  function later(day, interval) {
+    const date = new Date(day + 'T00:00:00Z');
+    date.setUTCDate(date.getUTCDate() + interval);
+    if (date.getUTCFullYear() > 9999) return '9999-12-31';
+    return date.toISOString().slice(0, 10);
+  }
+
+  function snapshot(cards) {
+    return Object.freeze({ rules, cards:Object.freeze(cards) });
+  }
+
+  function create() {
+    return snapshot({});
+  }
+
+  function valid(record) {
+    if (!record || !quiz.isDay(record.sourceDay)) return false;
+    const { stage, due, lastReviewed, sourceDay } = record;
+    if (lastReviewed !== null && !quiz.isDay(lastReviewed)) return false;
+    if (stage === 0) {
+      return due === (lastReviewed && lastReviewed > sourceDay ? lastReviewed : sourceDay);
+    }
+    if (!Number.isInteger(stage) || stage < 1 || stage > mastered ||
+        !lastReviewed || lastReviewed < sourceDay) return false;
+    return stage === mastered ? due === null : due === later(lastReviewed, gaps[stage - 1]);
+  }
+
+  function restore(raw) {
+    if (!raw || raw.rules !== rules || !raw.cards || typeof raw.cards !== 'object' ||
+        Array.isArray(raw.cards)) return null;
+    const cards = {};
+    for (const [id, record] of Object.entries(raw.cards)) {
+      if (!byId.has(id) || !valid(record)) continue;
+      const { stage, due, lastReviewed, sourceDay } = record;
+      cards[id] = Object.freeze({ stage, due, lastReviewed, sourceDay });
+    }
+    return snapshot(cards);
+  }
+
+  function importRound(state, raw, today) {
+    if (!quiz.isDay(today) || !quiz.isDay(raw?.day) || raw.day > today) return state;
+    const round = quiz.restore(raw, raw.day);
+    if (!round) return state;
+    const deck = quiz.questions(round.day);
+    let cards = state.cards;
+    round.answers.forEach((pick, index) => {
+      const { id, bookId } = deck[index];
+      const previous = cards[id];
+      if (pick === bookId || (previous && previous.sourceDay >= round.day)) return;
+      if (cards === state.cards) cards = { ...cards };
+      // Reopening an old edition can update provenance. Only a miss from a
+      // later calendar day can supersede what the player has since practised.
+      const lastReviewed = previous?.lastReviewed ?? null;
+      const next = lastReviewed && lastReviewed >= round.day
+        ? { ...previous, sourceDay:round.day }
+        : { stage:0, due:round.day, lastReviewed, sourceDay:round.day };
+      cards[id] = Object.freeze(next);
+    });
+    return cards === state.cards ? state : snapshot(cards);
+  }
+
+  function isDue(record, today) {
+    return record.stage < mastered && record.due <= today &&
+      (record.stage === 0 || record.lastReviewed !== today);
+  }
+
+  function reviewCard(id, stage, today) {
+    const options = books.slice();
+    const random = new seedrandom([rules, id, stage, today].join('|'));
+    for (let i = options.length - 1; i > 0; i--) {
+      const other = Math.floor(random() * (i + 1));
+      [options[i], options[other]] = [options[other], options[i]];
+    }
+    return { ...byId.get(id), options };
+  }
+
+  function queue(state, today) {
+    if (!quiz.isDay(today)) throw new RangeError('Expected a Beijing date');
+    return Object.entries(state.cards)
+      .filter(([, record]) => isDue(record, today))
+      .sort(([idA, a], [idB, b]) => a.due.localeCompare(b.due) ||
+        Number(a.lastReviewed === today) - Number(b.lastReviewed === today) || idA.localeCompare(idB))
+      .map(([id, record]) => ({ id, ...record, card:reviewCard(id, record.stage, today) }));
+  }
+
+  function summary(state, today) {
+    if (!quiz.isDay(today)) throw new RangeError('Expected a Beijing date');
+    const records = Object.values(state.cards);
+    let due = 0, done = 0, nextDue = null;
+    for (const record of records) {
+      if (record.stage === mastered) done++;
+      else if (isDue(record, today)) due++;
+      else if (record.due > today && (!nextDue || record.due < nextDue)) nextDue = record.due;
+    }
+    return { total:records.length, due, learning:records.length - done, mastered:done, nextDue };
+  }
+
+  function answer(state, id, pick, today) {
+    if (!quiz.isDay(today) || !byId.has(id) || !books.includes(pick)) return state;
+    const previous = state.cards[id];
+    if (!previous || !isDue(previous, today)) return state;
+    const stage = pick === byId.get(id).bookId ? previous.stage + 1 : 0;
+    const due = stage === mastered ? null : later(today, gaps[stage - 1] || 0);
+    const next = Object.freeze({ ...previous, stage, due, lastReviewed:today });
+    return snapshot({ ...state.cards, [id]:next });
+  }
+
+  const api = Object.freeze({ storageKey, create, restore, importRound, queue, summary, answer });
+  if (commonJS) module.exports = api;
+  else globalThis.EarthCanonPractice = api;
+})();
+
 // Daily Canon runs independently of the expedition and classic game saves.
 (() => {
   'use strict';
@@ -5118,17 +5282,18 @@ $('exp-board').insertBefore(inputWrap,$('exp-board').querySelector('.exp-board-f
     url.hash = 'daily-canon';
     return url.href;
   }
-  function sourceURL(card) {
+  function sourceURL(card, mode) {
     const url = new URL('html/' + card.bookId + '.html', location.href);
-    url.searchParams.set('from', 'daily-canon');
-    url.searchParams.set('day', day);
+    url.searchParams.set('from', mode);
+    if (mode === 'daily-canon') url.searchParams.set('day', day);
+    else url.searchParams.set('gameTab', 'kept');
     const anchor = {start:card.start, end:card.start + card.text.length, exact:card.text,
       prefix:card.prefix, suffix:card.suffix};
     url.hash = 'clip=' + encodeURIComponent(JSON.stringify([card.bookId, card.section, anchor]));
     return url.href;
   }
-  function sourceLink(card, link = document.createElement('a')) {
-    link.href = sourceURL(card);
+  function sourceLink(card, link = document.createElement('a'), mode = 'daily-canon') {
+    link.href = sourceURL(card, mode);
     link.target = '_blank';
     link.rel = 'noopener';
     const action = document.createElement('span');
@@ -5137,6 +5302,7 @@ $('exp-board').insertBefore(inputWrap,$('exp-board').querySelector('.exp-board-f
     link.replaceChildren('《' + quiz.books[card.bookId] + '》 · ' + card.title + ' ', action);
     return link;
   }
+  window.EarthDailyCanonPage = Object.freeze({sourceLink, savedRounds: () => rounds.values()});
   function shareText() {
     return quiz.share(state) + '\n' + datedURL(day, true);
   }
@@ -5160,6 +5326,9 @@ $('exp-board').insertBefore(inputWrap,$('exp-board').querySelector('.exp-board-f
     get('finished').hidden = phase !== 'finished';
     if (phase === 'finished') {
       get('summary').textContent = '答对 ' + quiz.score(state) + ' / ' + questions.length + ' 题';
+      const futureMisses = day > quiz.today() && quiz.score(state) < questions.length;
+      get('future-review').hidden = !futureMisses;
+      if (futureMisses) get('future-review').textContent = '本场错题将在 ' + day + '（北京时间）加入复习。';
       get('share-text').value = shareText();
       review();
       get('summary').focus();
@@ -5292,6 +5461,245 @@ $('exp-board').insertBefore(inputWrap,$('exp-board').querySelector('.exp-board-f
   get('close').addEventListener('click', close);
   dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
   dialog.addEventListener('close', () => { if (!dialog.open && !document.querySelector('dialog[open]')) get('entry').focus({preventScroll:true}); });
+  window.addEventListener('hashchange', route);
+  window.addEventListener('popstate', route);
+  route();
+})();
+
+// Wrong-answer practice owns a separate record; historical daily rounds are read-only.
+(() => {
+  'use strict';
+  const engine = window.EarthCanonPractice;
+  const daily = window.EarthDailyCanon;
+  const dailyPage = window.EarthDailyCanonPage;
+  const get = name => document.getElementById('practice-' + name);
+  const dialog = get('dialog');
+  const dailyPrefix = 'earth-online-daily-canon-v1:';
+  let state = engine.create();
+  let memoryOnly = false;
+  let entry;
+  let generation = 0;
+  let round = [];
+  let position = 0;
+  let correctCount = 0;
+  let graded = false;
+  let busy = false;
+  let completed = false;
+  let overviewDay;
+  let midnightTimer;
+
+  function load() {
+    if (memoryOnly) return state;
+    try {
+      const raw = localStorage.getItem(engine.storageKey);
+      return raw ? engine.restore(JSON.parse(raw)) || engine.create() : engine.create();
+    } catch (error) {
+      if (error instanceof SyntaxError) return engine.create();
+      memoryOnly = true;
+      return state;
+    }
+  }
+
+  function collect(saved, day) {
+    // A player's pre-upgrade answers may span many different daily keys.
+    let updated = saved;
+    if (!memoryOnly) {
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (!key || !key.startsWith(dailyPrefix)) continue;
+          const date = key.slice(dailyPrefix.length);
+          if (!daily.isDay(date)) continue;
+          let record;
+          try { record = JSON.parse(localStorage.getItem(key)); }
+          catch (error) { if (error instanceof SyntaxError) continue; throw error; }
+          if (record?.day === date) updated = engine.importRound(updated, record, day);
+        }
+      } catch { memoryOnly = true; }
+    }
+    for (const record of dailyPage.savedRounds()) updated = engine.importRound(updated, record, day);
+    return updated;
+  }
+
+  function transact(change) {
+    function update() {
+      const before = load();
+      state = change(before);
+      if (!memoryOnly && state !== before) {
+        try { localStorage.setItem(engine.storageKey, JSON.stringify(state)); }
+        catch { memoryOnly = true; }
+      }
+      get('storage').hidden = !memoryOnly;
+    }
+    if (!navigator.locks) { update(); return Promise.resolve(); }
+    return navigator.locks.request(engine.storageKey, update).catch(error => {
+      if (error.name !== 'SecurityError') throw error;
+      update();
+    });
+  }
+
+  function overview(focus) {
+    const day = daily.today();
+    overviewDay = day;
+    clearTimeout(midnightTimer);
+    // A Beijing date ends at 16:00 UTC, irrespective of the device's timezone.
+    const midnight = Date.parse(day + 'T16:00:00Z');
+    midnightTimer = setTimeout(refreshDay, Math.max(1, midnight - Date.now() + 50));
+    const stats = engine.summary(state, day);
+    const count = Math.min(stats.due, 5);
+    get('play').hidden = true;
+    get('home').hidden = false;
+    get('date').textContent = day + ' · 本机复习记录';
+    get('summary').textContent = completed ? '本轮答对 ' + correctCount + ' / ' + round.length + ' 题'
+      : stats.total ? '我的复习进度' : '还没有错题';
+    for (const name of ['due','mastered','total']) get(name).textContent = stats[name];
+    get('schedule').textContent = !stats.total ? '先参加每日辨典，答错的原句会出现在这里。'
+      : stats.due ? (stats.nextDue ? '下一批原句将在 ' + stats.nextDue + ' 到期。' : '')
+      : stats.nextDue ? '今天的复习已完成，下次复习在 ' + stats.nextDue + '（北京时间）。'
+      : '收录的原句已全部掌握。';
+    get('schedule').hidden = !get('schedule').textContent;
+    get('start').hidden = !count;
+    get('start').textContent = '重练 ' + count + ' 题';
+    if (focus) get('summary').focus();
+  }
+  async function refreshDay() {
+    if (!dialog.open || get('home').hidden || overviewDay === daily.today()) return;
+    const token = generation;
+    await transact(saved => collect(saved, daily.today()));
+    if (dialog.open && token === generation && !get('home').hidden) overview(false);
+  }
+  window.addEventListener('focus', refreshDay);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshDay(); });
+
+  function present() {
+    const {card} = round[position];
+    graded = false;
+    busy = false;
+    get('home').hidden = true;
+    get('play').hidden = false;
+    get('verdict').hidden = true;
+    get('progress').textContent = '第 ' + (position + 1) + ' / ' + round.length + ' 题 · 简体题面';
+    get('quote').textContent = card.prompt;
+    get('options').replaceChildren(...card.options.map((id, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.practiceChoice = id;
+      const key = document.createElement('span');
+      key.setAttribute('aria-hidden','true');
+      key.textContent = index + 1;
+      button.append(key, '《' + daily.books[id] + '》');
+      button.addEventListener('click', () => grade(id));
+      return button;
+    }));
+    get('quote').focus();
+  }
+
+  async function grade(pick) {
+    if (graded || busy || get('play').hidden) return;
+    busy = true;
+    const token = generation;
+    const {id,card} = round[position];
+    const day = daily.today();
+    let counted = false;
+    await transact(saved => {
+      const updated = engine.answer(saved, id, pick, day);
+      counted = updated !== saved;
+      return updated;
+    });
+    if (!dialog.open || generation !== token) return;
+    graded = true;
+    busy = false;
+    if (card.bookId === pick) correctCount++;
+    for (const button of get('options').children) {
+      button.disabled = true;
+      if (button.dataset.practiceChoice === card.bookId) button.className = 'right';
+      else if (button.dataset.practiceChoice === pick) button.className = 'wrong';
+    }
+    const result = state.cards[id];
+    const response = pick === card.bookId ? '答对了。' : '你选了《' + daily.books[pick] + '》。';
+    const schedule = !result ? '' : !result.due ? '这题已掌握。'
+      : result.due > day ? '下次复习在 ' + result.due + '。' : '今天可以再练这题。';
+    get('feedback').textContent = response + '原文出自《' + daily.books[card.bookId] + '》。' +
+      (counted ? '' : '另一页已更新复习记录。') + schedule;
+    get('progress').textContent = '第 ' + (position + 1) + ' / ' + round.length + ' 题 · 馆藏原文';
+    get('quote').textContent = card.text;
+    dailyPage.sourceLink(card, get('source'), 'canon-practice');
+    get('verdict').hidden = false;
+    get('next').textContent = position + 1 === round.length ? '查看复习进度' : '下一题';
+    get('feedback').focus();
+  }
+
+  get('start').addEventListener('click', async () => {
+    const token = generation;
+    const day = daily.today();
+    await transact(saved => collect(saved, day));
+    if (!dialog.open || generation !== token || get('home').hidden) return;
+    round = engine.queue(state, day).slice(0,5);
+    position = correctCount = 0;
+    completed = false;
+    if (round.length) present(); else overview(true);
+  });
+  get('next').addEventListener('click', () => {
+    if (!graded || get('play').hidden) return;
+    if (position + 1 < round.length) { position++; present(); }
+    else { completed = true; overview(true); }
+  });
+  dialog.addEventListener('keydown', event => {
+    if (get('play').hidden || graded || event.repeat || event.isComposing || event.ctrlKey ||
+        event.metaKey || event.altKey || !['1','2','3'].includes(event.key)) return;
+    event.preventDefault();
+    grade(round[position].card.options[Number(event.key)-1]);
+  });
+
+  for (const link of [get('entry'), document.getElementById('canon-to-practice')]) {
+    link.addEventListener('click', event => {
+      if (!(event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)) entry = link;
+    });
+  }
+  function close() {
+    if (entry) { history.back(); return; }
+    location.replace('#expedition');
+  }
+  get('close').addEventListener('click', close);
+  dialog.addEventListener('close', () => clearTimeout(midnightTimer));
+  dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
+  get('daily').addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    document.getElementById('canon-entry').click();
+    dialog.close();
+    generation++;
+    entry = null;
+  });
+  async function route() {
+    if (location.hash !== '#canon-practice') {
+      if (dialog.open) {
+        generation++;
+        dialog.close();
+        const returnTo = entry || get('entry');
+        if (!returnTo.closest('dialog:not([open])') && (!document.querySelector('dialog[open]') || returnTo.closest('dialog[open]'))) {
+          returnTo.focus({preventScroll:true});
+        }
+        entry = null;
+      }
+      return;
+    }
+    if (dialog.open) return;
+    const token = ++generation;
+    completed = false;
+    get('rules').open = false;
+    get('home').hidden = true;
+    get('play').hidden = true;
+    dialog.showModal();
+    await transact(saved => collect(saved, daily.today()));
+    if (dialog.open && token === generation) overview(true);
+  }
+  window.addEventListener('storage', async event => {
+    if (!dialog.open || (event.key && !event.key.startsWith(dailyPrefix) && event.key !== engine.storageKey)) return;
+    const token = generation;
+    await transact(saved => event.key?.startsWith(dailyPrefix) ? collect(saved, daily.today()) : saved);
+    if (dialog.open && token === generation && !get('home').hidden) overview(false);
+  });
   window.addEventListener('hashchange', route);
   window.addEventListener('popstate', route);
   route();
